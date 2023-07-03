@@ -1,0 +1,40 @@
+import { OsmosisGammV1beta1QueryEstimateSwapExactAmountInService as SwapService } from "cosmes/protobufs";
+
+import { RpcClient } from "../clients/RpcClient";
+
+export type SimulateOsmosisSinglePoolSwapParams = {
+  poolId: bigint;
+  fromAsset: string;
+  fromAmount: bigint;
+  toAsset: string;
+};
+
+/**
+ * Simulates the amount of `toAsset` assets that would be received by swapping
+ * `fromAmount` amount of `fromAsset` assets via the `poolId` pool.
+ */
+export async function simulateOsmosisSinglePoolSwap(
+  endpoint: string,
+  {
+    poolId,
+    fromAsset,
+    fromAmount,
+    toAsset,
+  }: SimulateOsmosisSinglePoolSwapParams
+): Promise<bigint> {
+  const { tokenOutAmount } = await RpcClient.query(
+    endpoint,
+    SwapService, // TODO: migrate to poolmanager once it's ready
+    {
+      poolId,
+      tokenIn: fromAmount.toString() + fromAsset,
+      routes: [
+        {
+          poolId,
+          tokenOutDenom: toAsset,
+        },
+      ],
+    }
+  );
+  return BigInt(tokenOutAmount);
+}

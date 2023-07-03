@@ -1,0 +1,22 @@
+<svg
+   width="580"
+   height="580"
+   viewBox="0 0 153 153"
+   version="1.1"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+   <rect width="580" height="580" fill="#0F172A" />
+   <path
+      d="M 60.854168,121.70833 A 42.333332,42.333332 0 0 1 30.919981,109.30919 42.333332,42.333332 0 0 1 18.520836,79.375 h 42.333332 z"
+      style="fill:#ddd6fe;fill-opacity:1" />
+   <path
+      d="m -92.604164,-79.375011 a 42.333332,42.333332 0 0 1 -29.934186,-12.399147 42.333332,42.333332 0 0 1 -12.39915,-29.934182 h 42.333336 z"
+      transform="scale(-1)" style="fill:#a78bfa;fill-opacity:1" />
+   <path
+      d="M 74.083336,-18.520836 A 42.333332,42.333332 0 0 1 44.149149,-30.919982 42.333332,42.333332 0 0 1 31.750004,-60.854168 h 42.333332 z"
+      transform="rotate(90)" style="fill:#ede9fe;fill-opacity:1" />
+   <rect width="21.166666" height="42.333332" x="66.145828" y="31.750002"
+      style="fill:#f5f3ff;fill-opacity:1;stroke-width:0.264583" />
+   <rect width="21.166666" height="42.333332" x="66.145828" y="79.375008"
+      style="fill:#c4b5fd;fill-opacity:1;stroke-width:0.264583" />
+</svg>

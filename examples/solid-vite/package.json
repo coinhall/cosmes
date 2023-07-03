@@ -1,0 +1,27 @@
+{
+  "name": "@cosmes/solid-vite",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "buffer": "^6.0.3",
+    "cosmes": "link:../..",
+    "solid-js": "^1.7.3",
+    "@walletconnect-v1/browser-utils": "npm:@walletconnect/browser-utils@^1.8.0",
+    "@walletconnect-v1/client": "npm:@walletconnect/client@^1.8.0",
+    "@walletconnect-v1/core": "npm:@walletconnect/core@^1.8.0",
+    "@walletconnect-v1/iso-crypto": "npm:@walletconnect/iso-crypto@^1.8.0",
+    "@walletconnect-v1/utils": "npm:@walletconnect/utils@^1.8.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.14",
+    "postcss": "^8.4.23",
+    "tailwindcss": "^3.3.2",
+    "vite": "^4.3.5",
+    "vite-plugin-solid": "^2.7.0"
+  }
+}
