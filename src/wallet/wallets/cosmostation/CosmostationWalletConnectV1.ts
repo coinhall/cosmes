@@ -1,6 +1,5 @@
 import { PlainMessage } from "@bufbuild/protobuf";
-import { isAndroid, isMobile } from "@walletconnect-v1/browser-utils";
-import WalletConnect from "@walletconnect-v1/client";
+import WalletConnect from "@walletconnect/legacy-client";
 import { Adapter, broadcastTx } from "cosmes/client";
 import { fromBase64ToUint8Array } from "cosmes/codec";
 import {
@@ -10,6 +9,7 @@ import {
 
 import { WalletName } from "../../constants/WalletName";
 import { WalletType } from "../../constants/WalletType";
+import { isAndroid, isMobile } from "../../utils/os";
 import {
   BroadcastTxOptions,
   ConnectedWallet,

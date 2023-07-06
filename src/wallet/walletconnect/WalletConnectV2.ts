@@ -1,7 +1,7 @@
-import { isAndroid, isMobile } from "@walletconnect-v1/browser-utils";
 import SignClient from "@walletconnect/sign-client";
 
 import { StdSignDoc } from "@keplr-wallet/types";
+import { isAndroid, isMobile } from "../utils/os";
 import { MobileAppDetails, QRCodeModal } from "./QRCodeModal";
 
 /** The JSON data stored in `localStorage` to recover previous sessions. */
