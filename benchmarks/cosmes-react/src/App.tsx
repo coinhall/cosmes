@@ -1,5 +1,3 @@
-import { useState } from "preact/hooks";
-
 import { MsgSend } from "cosmes/client";
 import {
   ConnectedWallet,
@@ -7,6 +5,7 @@ import {
   UnsignedTx,
   WalletType,
 } from "cosmes/wallet";
+import { useState } from "react";
 
 const WC_PROJECT_ID = "2b7d5a2da89dd74fed821d184acabf95";
 const TX_MEMO = "signed via cosmes";
@@ -77,14 +76,14 @@ export function App() {
   }
 
   return (
-    <div class="min-h-screen bg-gray-900 flex flex-col justify-center items-center text-gray-100 space-y-2">
-      <div class="font-mono text-xs text-center">
+    <div className="min-h-screen bg-gray-900 flex flex-col justify-center items-center text-gray-100 space-y-2">
+      <div className="font-mono text-xs text-center">
         Address: {wallet?.address ?? "-"}
       </div>
 
       {wallet ? (
         <button
-          class="py-1 px-3 rounded bg-red-600 text-red-50"
+          className="py-1 px-3 rounded bg-red-600 text-red-50"
           onClick={onDisconnectClick}
         >
           Disconnect from Keplr
@@ -92,13 +91,13 @@ export function App() {
       ) : (
         <>
           <button
-            class="py-1 px-3 rounded bg-green-600 text-green-50"
+            className="py-1 px-3 rounded bg-green-600 text-green-50"
             onClick={() => onConnectClick(WalletType.EXTENSION)}
           >
             Connect Keplr Extension
           </button>
           <button
-            class="py-1 px-3 rounded bg-green-600 text-green-50"
+            className="py-1 px-3 rounded bg-green-600 text-green-50"
             onClick={() => onConnectClick(WalletType.WALLETCONNECT)}
           >
             Connect Keplr WalletConnect
@@ -107,7 +106,7 @@ export function App() {
       )}
 
       <button
-        class="py-1 px-3 bg-blue-600 text-blue-50 rounded"
+        className="py-1 px-3 bg-blue-600 text-blue-50 rounded"
         onClick={broadcastTx}
       >
         Send self 1 uosmo

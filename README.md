@@ -110,11 +110,11 @@ This directory is a [Cosmos Kit](https://cosmoskit.com) alternative to manage va
 
 ## Benchmarks
 
-See [`benchmarks/preact-cosmes-keplr`](./benchmarks/preact-cosmes-keplr), which is able to connect to Keplr via browser extension and WalletConnect v2 and successfully simulate, execute, and poll for a `MsgSend` transaction. Running `vite build` yields the following JavaScript bundle size (inclusive of **all** dependencies):
+See [`benchmarks/cosmes-react`](./benchmarks/cosmes-react), which is able to connect to Keplr via browser extension and WalletConnect v2 and successfully simulate, execute, and poll for a `MsgSend` transaction. Running `vite build` yields the following JavaScript bundle size (inclusive of **all** dependencies):
 
 | Minified | Gzipped |
 | -------- | ------- |
-| 407 KB   | 104 KB  |
+| 537 KB   | 144 KB  |
 
 ## Contributing
 
