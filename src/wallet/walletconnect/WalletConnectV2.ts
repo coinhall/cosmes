@@ -1,4 +1,4 @@
-import { isAndroid, isMobile } from "@walletconnect-v1/browser-utils";
+import { isAndroid, isMobile } from "@walletconnect/legacy-utils";
 import SignClient from "@walletconnect/sign-client";
 
 import { StdSignDoc } from "@keplr-wallet/types";

@@ -1,5 +1,5 @@
-import { isAndroid, isMobile } from "@walletconnect-v1/browser-utils";
-import { IQRCodeModal } from "@walletconnect-v1/types";
+import type { IQRCodeModal } from "@walletconnect/legacy-types";
+import { isAndroid, isMobile } from "@walletconnect/legacy-utils";
 
 import { qrcodegen } from "./qrcodegen";
 

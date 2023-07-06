@@ -1,6 +1,6 @@
 import { PlainMessage } from "@bufbuild/protobuf";
-import { isMobile } from "@walletconnect-v1/browser-utils";
-import WalletConnect from "@walletconnect-v1/client";
+import WalletConnect from "@walletconnect/legacy-client";
+import { isMobile } from "@walletconnect/legacy-utils";
 import { Adapter } from "cosmes/client";
 import { fromStringToBase64 } from "cosmes/codec";
 import { CosmosBaseV1beta1Coin as Coin } from "cosmes/protobufs";

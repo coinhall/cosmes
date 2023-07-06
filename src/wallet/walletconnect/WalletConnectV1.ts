@@ -1,5 +1,5 @@
-import WalletConnect from "@walletconnect-v1/client";
-import type { IWalletConnectSession } from "@walletconnect-v1/types";
+import WalletConnect from "@walletconnect/legacy-client";
+import type { IWalletConnectSession } from "@walletconnect/legacy-types";
 
 import { MobileAppDetails, QRCodeModal } from "./QRCodeModal";
 
