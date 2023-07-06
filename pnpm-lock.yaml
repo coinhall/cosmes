@@ -34,9 +34,6 @@ importers:
       '@walletconnect/legacy-types':
         specifier: ^2.0.0
         version: 2.0.0
-      '@walletconnect/legacy-utils':
-        specifier: ^2.0.0
-        version: 2.0.0
       '@walletconnect/sign-client':
         specifier: ^2.8.0
         version: 2.8.0

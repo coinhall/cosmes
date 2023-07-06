@@ -1,6 +1,6 @@
 import type { IQRCodeModal } from "@walletconnect/legacy-types";
-import { isAndroid, isMobile } from "@walletconnect/legacy-utils";
 
+import { isAndroid, isMobile } from "../utils/os";
 import { qrcodegen } from "./qrcodegen";
 
 export type MobileAppDetails = {
