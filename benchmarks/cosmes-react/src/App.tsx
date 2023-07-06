@@ -1,14 +1,7 @@
-import { MsgSend } from "cosmes/client";
-import {
-  ConnectedWallet,
-  KeplrController,
-  UnsignedTx,
-  WalletType,
-} from "cosmes/wallet";
+import { ConnectedWallet, KeplrController, WalletType } from "cosmes/wallet";
 import { useState } from "react";
 
 const WC_PROJECT_ID = "2b7d5a2da89dd74fed821d184acabf95";
-const TX_MEMO = "signed via cosmes";
 const OSMOSIS_CHAIN_INFO = {
   chainId: "osmosis-1",
   rpc: "https://rpc.osmosis.zone",
@@ -33,46 +26,6 @@ export function App() {
   async function onDisconnectClick() {
     Keplr.disconnect(["osmosis-1"]);
     setWallet(null);
-  }
-
-  async function broadcastTx() {
-    if (!wallet) {
-      alert("Please connect to Keplr first.");
-      return;
-    }
-    try {
-      const msgs = [
-        new MsgSend({
-          fromAddress: wallet.address,
-          toAddress: wallet.address,
-          amount: [
-            {
-              denom: "uosmo",
-              amount: "1",
-            },
-          ],
-        }),
-      ];
-      const { sequence, accountNumber } = await wallet.getAccount();
-      const unsignedTx: UnsignedTx = {
-        msgs,
-        memo: TX_MEMO,
-      };
-      const fee = await wallet.estimateFee(unsignedTx, {
-        sequence,
-      });
-      const txHash = await wallet.broadcastTx(unsignedTx, {
-        sequence,
-        accountNumber,
-        fee,
-      });
-      const res = await wallet.pollTx(txHash);
-      console.log(res);
-      alert("Broadcast success!\n\nTx hash: " + res.txResponse.txhash);
-    } catch (err) {
-      console.error(err);
-      alert((err as Error).message);
-    }
   }
 
   return (
@@ -104,13 +57,6 @@ export function App() {
           </button>
         </>
       )}
-
-      <button
-        className="py-1 px-3 bg-blue-600 text-blue-50 rounded"
-        onClick={broadcastTx}
-      >
-        Send self 1 uosmo
-      </button>
     </div>
   );
 }

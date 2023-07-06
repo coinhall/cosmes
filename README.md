@@ -16,6 +16,7 @@ A tree-shakeable, framework agnostic, [pure ESM](https://gist.github.com/sindres
   - [`cosmes/protobufs`](#cosmesprotobufs)
   - [`cosmes/wallet`](#cosmeswallet)
 - [Benchmarks](#benchmarks)
+  - [Results](#results)
 - [Contributing](#contributing)
 
 ## Installing
@@ -106,15 +107,23 @@ This directory is a [Cosmos Kit](https://cosmoskit.com) alternative to manage va
 - Supports Station, Keplr, Leap, and Cosmostation wallets
 - Supports both browser extension (desktop) and WalletConnect (mobile)
 - Unified interface for connecting and signing transactions
-- Supports signing of arbitrary messages (for wallets that support it)
+- Signing of arbitrary messages (for wallets that support it)
+- Simultaneous connections to multiple WalletConnect wallets
 
 ## Benchmarks
 
-See [`benchmarks/cosmes-react`](./benchmarks/cosmes-react), which is able to connect to Keplr via browser extension and WalletConnect v2 and successfully simulate, execute, and poll for a `MsgSend` transaction. Running `vite build` yields the following JavaScript bundle size (inclusive of **all** dependencies):
+See the [`benchmarks`](./benchmarks) folder, where the JS bundle size of CosmES is compared against [Cosmos Kit](https://cosmoskit.com). The following points are adhered to:
 
-| Minified | Gzipped |
-| -------- | ------- |
-| 537 KB   | 144 KB  |
+- Apps should only contain the minimal functionality of connecting to Osmosis via Keplr using both the browser extension and WalletConnect wallets
+- Apps should be built using React (as Cosmos Kit has a [hard dependency](https://docs.cosmoskit.com/get-started)) and Vite
+- Use the bundle size as reported by Vite after running the `vite build` command
+
+### Results
+
+| Package    | Minified | Gzipped |
+|------------|----------|---------|
+| CosmES     | 529 KB   | 143 KB  |
+| Cosmos Kit | 5770 KB  | 1356 KB |
 
 ## Contributing
 
