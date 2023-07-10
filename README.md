@@ -5,6 +5,7 @@
 
 A tree-shakeable, framework agnostic, [pure ESM](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c) alternative of [CosmJS](https://github.com/cosmos/cosmjs) and [Cosmos Kit](https://cosmoskit.com).
 
+- [Features](#features)
 - [Installing](#installing)
   - [Using with TypeScript](#using-with-typescript)
   - [Using with Vite](#using-with-vite)
@@ -18,6 +19,15 @@ A tree-shakeable, framework agnostic, [pure ESM](https://gist.github.com/sindres
 - [Benchmarks](#benchmarks)
   - [Results](#results)
 - [Contributing](#contributing)
+
+## Features
+
+- **Fully tree-shakeable**: import and bundle only the modules you need
+- **Framework agnostic**: integrate with any web framework (React, Vue, Svelte, etc.)
+- **Lightweight and  minimal**: 143 KB gzipped to connect a React app to Keplr via browser extension or WalletConnect (see [benchmarks](#benchmarks))
+- **Uses modern web APIs**: no dependencies on Node.js and minimal dependencies on third-party libraries where possible
+- **Supports modern bundlers**: works with Vite, SWC, Rollup, etc.
+- **Fully typed**: written in TypeScript and ships with type definitions
 
 ## Installing
 
@@ -116,7 +126,7 @@ See the [`benchmarks`](./benchmarks) folder, where the JS bundle size of CosmES 
 
 - Apps should only contain the minimal functionality of connecting to Osmosis via Keplr using both the browser extension and WalletConnect wallets
 - Apps should be built using React (as Cosmos Kit has a [hard dependency](https://docs.cosmoskit.com/get-started)) and Vite
-- Use the bundle size as reported by Vite after running the `vite build` command
+- Use the bundle size as reported by Vite after running the `vite build` command (including the size of all other dependencies like React)
 
 ### Results
 
