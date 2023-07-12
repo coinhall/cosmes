@@ -5,7 +5,7 @@
 
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
 import { Message, proto3 } from "@bufbuild/protobuf";
-import { BalancerToConcentratedPoolLink } from "./genesis_pb.js";
+import { BalancerToConcentratedPoolLink } from "./shared_pb.js";
 
 /**
  * ReplaceMigrationRecordsProposal is a gov Content type for updating the

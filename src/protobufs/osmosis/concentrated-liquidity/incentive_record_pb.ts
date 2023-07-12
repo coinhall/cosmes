@@ -5,6 +5,7 @@
 
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
 import { Duration, Message, proto3, protoInt64, Timestamp } from "@bufbuild/protobuf";
+import { DecCoin } from "../../cosmos/base/v1beta1/coin_pb.js";
 
 /**
  * IncentiveRecord is the high-level struct we use to deal with an independent
@@ -16,26 +17,16 @@ import { Duration, Message, proto3, protoInt64, Timestamp } from "@bufbuild/prot
  */
 export class IncentiveRecord extends Message<IncentiveRecord> {
   /**
-   * @generated from field: uint64 pool_id = 1;
+   * incentive_id is the id uniquely identifying this incentive record.
+   *
+   * @generated from field: uint64 incentive_id = 1;
+   */
+  incentiveId = protoInt64.zero;
+
+  /**
+   * @generated from field: uint64 pool_id = 2;
    */
   poolId = protoInt64.zero;
-
-  /**
-   * incentive_denom is the denom of the token being distributed as part of this
-   * incentive record
-   *
-   * @generated from field: string incentive_denom = 2;
-   */
-  incentiveDenom = "";
-
-  /**
-   * incentiveCreator is the address that created the incentive record. This
-   * address does not have any special privileges – it is only kept to keep
-   * incentive records created by different addresses separate.
-   *
-   * @generated from field: string incentive_creator_addr = 3;
-   */
-  incentiveCreatorAddr = "";
 
   /**
    * incentive record body holds necessary
@@ -61,9 +52,8 @@ export class IncentiveRecord extends Message<IncentiveRecord> {
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "osmosis.concentratedliquidity.v1beta1.IncentiveRecord";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "pool_id", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
-    { no: 2, name: "incentive_denom", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 3, name: "incentive_creator_addr", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 1, name: "incentive_id", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+    { no: 2, name: "pool_id", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
     { no: 4, name: "incentive_record_body", kind: "message", T: IncentiveRecordBody },
     { no: 5, name: "min_uptime", kind: "message", T: Duration },
   ]);
@@ -93,11 +83,11 @@ export class IncentiveRecord extends Message<IncentiveRecord> {
  */
 export class IncentiveRecordBody extends Message<IncentiveRecordBody> {
   /**
-   * remaining_amount is the total amount of incentives to be distributed
+   * remaining_coin is the total amount of incentives to be distributed
    *
-   * @generated from field: string remaining_amount = 1;
+   * @generated from field: cosmos.base.v1beta1.DecCoin remaining_coin = 1;
    */
-  remainingAmount = "";
+  remainingCoin?: DecCoin;
 
   /**
    * emission_rate is the incentive emission rate per second
@@ -121,7 +111,7 @@ export class IncentiveRecordBody extends Message<IncentiveRecordBody> {
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "osmosis.concentratedliquidity.v1beta1.IncentiveRecordBody";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "remaining_amount", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 1, name: "remaining_coin", kind: "message", T: DecCoin },
     { no: 2, name: "emission_rate", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "start_time", kind: "message", T: Timestamp },
   ]);

@@ -10,7 +10,7 @@ import { QueryParamsRequest, QueryParamsResponse } from "./query_pb.js";
 const TYPE_NAME = "cosmos.consensus.v1.Query";
 
 /**
- * Params queries the parameters of x/consensus_param module.
+ * Params queries the parameters of x/consensus module.
  *
  * @generated from rpc cosmos.consensus.v1.Query.Params
  */

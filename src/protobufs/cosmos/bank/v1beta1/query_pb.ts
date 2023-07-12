@@ -626,6 +626,8 @@ export class QueryParamsRequest extends Message<QueryParamsRequest> {
  */
 export class QueryParamsResponse extends Message<QueryParamsResponse> {
   /**
+   * params provides the parameters of the bank module.
+   *
    * @generated from field: cosmos.bank.v1beta1.Params params = 1;
    */
   params?: Params;

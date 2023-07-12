@@ -10,7 +10,7 @@ import { MsgUpdateParams, MsgUpdateParamsResponse } from "./tx_pb.js";
 const TYPE_NAME = "cosmos.consensus.v1.Msg";
 
 /**
- * UpdateParams defines a governance operation for updating the x/consensus_param module parameters.
+ * UpdateParams defines a governance operation for updating the x/consensus module parameters.
  * The authority is defined in the keeper.
  *
  * Since: cosmos-sdk 0.47

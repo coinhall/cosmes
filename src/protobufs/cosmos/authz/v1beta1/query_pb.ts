@@ -217,7 +217,7 @@ export class QueryGranterGrantsResponse extends Message<QueryGranterGrantsRespon
 }
 
 /**
- * QueryGranteeGrantsRequest is the request type for the Query/IssuedGrants RPC method.
+ * QueryGranteeGrantsRequest is the request type for the Query/GranteeGrants RPC method.
  *
  * @generated from message cosmos.authz.v1beta1.QueryGranteeGrantsRequest
  */

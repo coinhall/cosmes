@@ -5,7 +5,7 @@
 
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
 import { Message, proto3, protoInt64 } from "@bufbuild/protobuf";
-import { Coin, DecCoin } from "../../cosmos/base/v1beta1/coin_pb.js";
+import { Coin } from "../../cosmos/base/v1beta1/coin_pb.js";
 
 /**
  * ===================== MsgCreatePosition
@@ -522,9 +522,9 @@ export class MsgCollectIncentivesResponse extends Message<MsgCollectIncentivesRe
   collectedIncentives: Coin[] = [];
 
   /**
-   * @generated from field: repeated cosmos.base.v1beta1.DecCoin forfeited_incentives = 2;
+   * @generated from field: repeated cosmos.base.v1beta1.Coin forfeited_incentives = 2;
    */
-  forfeitedIncentives: DecCoin[] = [];
+  forfeitedIncentives: Coin[] = [];
 
   constructor(data?: PartialMessage<MsgCollectIncentivesResponse>) {
     super();
@@ -535,7 +535,7 @@ export class MsgCollectIncentivesResponse extends Message<MsgCollectIncentivesRe
   static readonly typeName = "osmosis.concentratedliquidity.v1beta1.MsgCollectIncentivesResponse";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "collected_incentives", kind: "message", T: Coin, repeated: true },
-    { no: 2, name: "forfeited_incentives", kind: "message", T: DecCoin, repeated: true },
+    { no: 2, name: "forfeited_incentives", kind: "message", T: Coin, repeated: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgCollectIncentivesResponse {

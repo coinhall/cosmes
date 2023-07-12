@@ -10,7 +10,8 @@
 
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
 import { Message, proto3, protoInt64, Timestamp } from "@bufbuild/protobuf";
-import { Coin, DecCoin } from "../../cosmos/base/v1beta1/coin_pb.js";
+import { Coin } from "../../cosmos/base/v1beta1/coin_pb.js";
+import { PeriodLock } from "../lockup/lock_pb.js";
 
 /**
  * Position contains position's id, address, pool id, lower tick, upper tick
@@ -126,9 +127,9 @@ export class FullPositionBreakdown extends Message<FullPositionBreakdown> {
   claimableIncentives: Coin[] = [];
 
   /**
-   * @generated from field: repeated cosmos.base.v1beta1.DecCoin forfeited_incentives = 6;
+   * @generated from field: repeated cosmos.base.v1beta1.Coin forfeited_incentives = 6;
    */
-  forfeitedIncentives: DecCoin[] = [];
+  forfeitedIncentives: Coin[] = [];
 
   constructor(data?: PartialMessage<FullPositionBreakdown>) {
     super();
@@ -143,7 +144,7 @@ export class FullPositionBreakdown extends Message<FullPositionBreakdown> {
     { no: 3, name: "asset1", kind: "message", T: Coin },
     { no: 4, name: "claimable_spread_rewards", kind: "message", T: Coin, repeated: true },
     { no: 5, name: "claimable_incentives", kind: "message", T: Coin, repeated: true },
-    { no: 6, name: "forfeited_incentives", kind: "message", T: DecCoin, repeated: true },
+    { no: 6, name: "forfeited_incentives", kind: "message", T: Coin, repeated: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): FullPositionBreakdown {
@@ -160,6 +161,49 @@ export class FullPositionBreakdown extends Message<FullPositionBreakdown> {
 
   static equals(a: FullPositionBreakdown | PlainMessage<FullPositionBreakdown> | undefined, b: FullPositionBreakdown | PlainMessage<FullPositionBreakdown> | undefined): boolean {
     return proto3.util.equals(FullPositionBreakdown, a, b);
+  }
+}
+
+/**
+ * @generated from message osmosis.concentratedliquidity.v1beta1.PositionWithPeriodLock
+ */
+export class PositionWithPeriodLock extends Message<PositionWithPeriodLock> {
+  /**
+   * @generated from field: osmosis.concentratedliquidity.v1beta1.Position position = 1;
+   */
+  position?: Position;
+
+  /**
+   * @generated from field: osmosis.lockup.PeriodLock locks = 2;
+   */
+  locks?: PeriodLock;
+
+  constructor(data?: PartialMessage<PositionWithPeriodLock>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "osmosis.concentratedliquidity.v1beta1.PositionWithPeriodLock";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "position", kind: "message", T: Position },
+    { no: 2, name: "locks", kind: "message", T: PeriodLock },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PositionWithPeriodLock {
+    return new PositionWithPeriodLock().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): PositionWithPeriodLock {
+    return new PositionWithPeriodLock().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): PositionWithPeriodLock {
+    return new PositionWithPeriodLock().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: PositionWithPeriodLock | PlainMessage<PositionWithPeriodLock> | undefined, b: PositionWithPeriodLock | PlainMessage<PositionWithPeriodLock> | undefined): boolean {
+    return proto3.util.equals(PositionWithPeriodLock, a, b);
   }
 }
 

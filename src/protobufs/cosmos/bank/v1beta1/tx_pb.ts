@@ -275,6 +275,8 @@ export class MsgUpdateParamsResponse extends Message<MsgUpdateParamsResponse> {
  */
 export class MsgSetSendEnabled extends Message<MsgSetSendEnabled> {
   /**
+   * authority is the address that controls the module.
+   *
    * @generated from field: string authority = 1;
    */
   authority = "";

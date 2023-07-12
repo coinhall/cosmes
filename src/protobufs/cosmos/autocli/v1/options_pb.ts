@@ -368,11 +368,19 @@ export class PositionalArgDescriptor extends Message<PositionalArgDescriptor> {
   /**
    * varargs makes a positional parameter a varargs parameter. This can only be
    * applied to last positional parameter and the proto_field must a repeated
-   * field.
+   * field. Note: It is mutually exclusive with optional.
    *
    * @generated from field: bool varargs = 2;
    */
   varargs = false;
+
+  /**
+   * optional makes the last positional parameter optional. 
+   * Note: It is mutually exclusive with varargs.
+   *
+   * @generated from field: bool optional = 3;
+   */
+  optional = false;
 
   constructor(data?: PartialMessage<PositionalArgDescriptor>) {
     super();
@@ -384,6 +392,7 @@ export class PositionalArgDescriptor extends Message<PositionalArgDescriptor> {
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "proto_field", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "varargs", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+    { no: 3, name: "optional", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PositionalArgDescriptor {

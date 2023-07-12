@@ -479,7 +479,7 @@ export class Vote extends Message<Vote> {
   options: WeightedVoteOption[] = [];
 
   /**
-   * metadata is any arbitrary metadata to attached to the vote.
+   * metadata is any arbitrary metadata attached to the vote.
    * the recommended format of the metadata is to be found here: https://docs.cosmos.network/v0.47/modules/gov#vote-5
    *
    * @generated from field: string metadata = 5;

@@ -64,7 +64,7 @@ export class MsgSubmitProposal extends Message<MsgSubmitProposal> {
   summary = "";
 
   /**
-   * expedided defines if the proposal is expedited or not
+   * expedited defines if the proposal is expedited or not
    *
    * Since: cosmos-sdk 0.50
    *
@@ -614,11 +614,15 @@ export class MsgUpdateParamsResponse extends Message<MsgUpdateParamsResponse> {
  */
 export class MsgCancelProposal extends Message<MsgCancelProposal> {
   /**
+   * proposal_id defines the unique id of the proposal.
+   *
    * @generated from field: uint64 proposal_id = 1;
    */
   proposalId = protoInt64.zero;
 
   /**
+   * proposer is the account address of the proposer.
+   *
    * @generated from field: string proposer = 2;
    */
   proposer = "";
@@ -662,6 +666,8 @@ export class MsgCancelProposal extends Message<MsgCancelProposal> {
  */
 export class MsgCancelProposalResponse extends Message<MsgCancelProposalResponse> {
   /**
+   * proposal_id defines the unique id of the proposal.
+   *
    * @generated from field: uint64 proposal_id = 1;
    */
   proposalId = protoInt64.zero;

@@ -30,6 +30,8 @@ export class Params extends Message<Params> {
    * from CL to Balancer pools will be discounted to encourage LPs to migrate.
    * e.g. a rate of 0.05 means Balancer LPs get 5% less incentives than full
    * range CL LPs.
+   * This field can range from (0,1]. If set to 1, it indicates that all
+   * incentives stay at cl pool.
    *
    * @generated from field: string balancer_shares_reward_discount = 3;
    */

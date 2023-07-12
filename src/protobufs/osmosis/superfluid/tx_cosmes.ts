@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { MsgAddToConcentratedLiquiditySuperfluidPosition, MsgAddToConcentratedLiquiditySuperfluidPositionResponse, MsgCreateFullRangePositionAndSuperfluidDelegate, MsgCreateFullRangePositionAndSuperfluidDelegateResponse, MsgLockAndSuperfluidDelegate, MsgLockAndSuperfluidDelegateResponse, MsgSuperfluidDelegate, MsgSuperfluidDelegateResponse, MsgSuperfluidUnbondLock, MsgSuperfluidUnbondLockResponse, MsgSuperfluidUndelegate, MsgSuperfluidUndelegateAndUnbondLock, MsgSuperfluidUndelegateAndUnbondLockResponse, MsgSuperfluidUndelegateResponse, MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition, MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionResponse, MsgUnPoolWhitelistedPool, MsgUnPoolWhitelistedPoolResponse } from "./tx_pb.js";
+import { MsgAddToConcentratedLiquiditySuperfluidPosition, MsgAddToConcentratedLiquiditySuperfluidPositionResponse, MsgCreateFullRangePositionAndSuperfluidDelegate, MsgCreateFullRangePositionAndSuperfluidDelegateResponse, MsgLockAndSuperfluidDelegate, MsgLockAndSuperfluidDelegateResponse, MsgLockExistingFullRangePositionAndSFStake, MsgLockExistingFullRangePositionAndSFStakeResponse, MsgSuperfluidDelegate, MsgSuperfluidDelegateResponse, MsgSuperfluidUnbondLock, MsgSuperfluidUnbondLockResponse, MsgSuperfluidUndelegate, MsgSuperfluidUndelegateAndUnbondLock, MsgSuperfluidUndelegateAndUnbondLockResponse, MsgSuperfluidUndelegateResponse, MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition, MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionResponse, MsgUnPoolWhitelistedPool, MsgUnPoolWhitelistedPoolResponse } from "./tx_pb.js";
 
 const TYPE_NAME = "osmosis.superfluid.Msg";
 
@@ -106,5 +106,15 @@ export const MsgAddToConcentratedLiquiditySuperfluidPositionService = {
   method: "AddToConcentratedLiquiditySuperfluidPosition",
   Request: MsgAddToConcentratedLiquiditySuperfluidPosition,
   Response: MsgAddToConcentratedLiquiditySuperfluidPositionResponse,
+} as const;
+
+/**
+ * @generated from rpc osmosis.superfluid.Msg.LockExistingFullRangePositionAndSFStake
+ */
+export const MsgLockExistingFullRangePositionAndSFStakeService = {
+  typeName: TYPE_NAME,
+  method: "LockExistingFullRangePositionAndSFStake",
+  Request: MsgLockExistingFullRangePositionAndSFStake,
+  Response: MsgLockExistingFullRangePositionAndSFStakeResponse,
 } as const;
 

@@ -65,6 +65,8 @@ export class GenesisState extends Message<GenesisState> {
   redelegations: Redelegation[] = [];
 
   /**
+   * exported defines a bool to identify whether the chain dealing with exported or initialized genesis.
+   *
    * @generated from field: bool exported = 8;
    */
   exported = false;

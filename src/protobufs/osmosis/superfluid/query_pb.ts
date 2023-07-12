@@ -6,7 +6,7 @@
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
 import { Message, proto3, protoInt64 } from "@bufbuild/protobuf";
 import { Params } from "./params_pb.js";
-import { OsmoEquivalentMultiplierRecord, SuperfluidAsset, SuperfluidAssetType, SuperfluidDelegationRecord } from "./superfluid_pb.js";
+import { ConcentratedPoolUserPositionRecord, OsmoEquivalentMultiplierRecord, SuperfluidAsset, SuperfluidAssetType, SuperfluidDelegationRecord } from "./superfluid_pb.js";
 import { PageRequest, PageResponse } from "../../cosmos/base/query/v1beta1/pagination_pb.js";
 import { Coin } from "../../cosmos/base/v1beta1/coin_pb.js";
 import { SyntheticLock } from "../lockup/lock_pb.js";
@@ -1279,6 +1279,154 @@ export class QueryUnpoolWhitelistResponse extends Message<QueryUnpoolWhitelistRe
 
   static equals(a: QueryUnpoolWhitelistResponse | PlainMessage<QueryUnpoolWhitelistResponse> | undefined, b: QueryUnpoolWhitelistResponse | PlainMessage<QueryUnpoolWhitelistResponse> | undefined): boolean {
     return proto3.util.equals(QueryUnpoolWhitelistResponse, a, b);
+  }
+}
+
+/**
+ * @generated from message osmosis.superfluid.UserConcentratedSuperfluidPositionsDelegatedRequest
+ */
+export class UserConcentratedSuperfluidPositionsDelegatedRequest extends Message<UserConcentratedSuperfluidPositionsDelegatedRequest> {
+  /**
+   * @generated from field: string delegator_address = 1;
+   */
+  delegatorAddress = "";
+
+  constructor(data?: PartialMessage<UserConcentratedSuperfluidPositionsDelegatedRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "osmosis.superfluid.UserConcentratedSuperfluidPositionsDelegatedRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "delegator_address", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): UserConcentratedSuperfluidPositionsDelegatedRequest {
+    return new UserConcentratedSuperfluidPositionsDelegatedRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): UserConcentratedSuperfluidPositionsDelegatedRequest {
+    return new UserConcentratedSuperfluidPositionsDelegatedRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): UserConcentratedSuperfluidPositionsDelegatedRequest {
+    return new UserConcentratedSuperfluidPositionsDelegatedRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: UserConcentratedSuperfluidPositionsDelegatedRequest | PlainMessage<UserConcentratedSuperfluidPositionsDelegatedRequest> | undefined, b: UserConcentratedSuperfluidPositionsDelegatedRequest | PlainMessage<UserConcentratedSuperfluidPositionsDelegatedRequest> | undefined): boolean {
+    return proto3.util.equals(UserConcentratedSuperfluidPositionsDelegatedRequest, a, b);
+  }
+}
+
+/**
+ * @generated from message osmosis.superfluid.UserConcentratedSuperfluidPositionsDelegatedResponse
+ */
+export class UserConcentratedSuperfluidPositionsDelegatedResponse extends Message<UserConcentratedSuperfluidPositionsDelegatedResponse> {
+  /**
+   * @generated from field: repeated osmosis.superfluid.ConcentratedPoolUserPositionRecord cl_pool_user_position_records = 1;
+   */
+  clPoolUserPositionRecords: ConcentratedPoolUserPositionRecord[] = [];
+
+  constructor(data?: PartialMessage<UserConcentratedSuperfluidPositionsDelegatedResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "osmosis.superfluid.UserConcentratedSuperfluidPositionsDelegatedResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "cl_pool_user_position_records", kind: "message", T: ConcentratedPoolUserPositionRecord, repeated: true },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): UserConcentratedSuperfluidPositionsDelegatedResponse {
+    return new UserConcentratedSuperfluidPositionsDelegatedResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): UserConcentratedSuperfluidPositionsDelegatedResponse {
+    return new UserConcentratedSuperfluidPositionsDelegatedResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): UserConcentratedSuperfluidPositionsDelegatedResponse {
+    return new UserConcentratedSuperfluidPositionsDelegatedResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: UserConcentratedSuperfluidPositionsDelegatedResponse | PlainMessage<UserConcentratedSuperfluidPositionsDelegatedResponse> | undefined, b: UserConcentratedSuperfluidPositionsDelegatedResponse | PlainMessage<UserConcentratedSuperfluidPositionsDelegatedResponse> | undefined): boolean {
+    return proto3.util.equals(UserConcentratedSuperfluidPositionsDelegatedResponse, a, b);
+  }
+}
+
+/**
+ * @generated from message osmosis.superfluid.UserConcentratedSuperfluidPositionsUndelegatingRequest
+ */
+export class UserConcentratedSuperfluidPositionsUndelegatingRequest extends Message<UserConcentratedSuperfluidPositionsUndelegatingRequest> {
+  /**
+   * @generated from field: string delegator_address = 1;
+   */
+  delegatorAddress = "";
+
+  constructor(data?: PartialMessage<UserConcentratedSuperfluidPositionsUndelegatingRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "osmosis.superfluid.UserConcentratedSuperfluidPositionsUndelegatingRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "delegator_address", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): UserConcentratedSuperfluidPositionsUndelegatingRequest {
+    return new UserConcentratedSuperfluidPositionsUndelegatingRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): UserConcentratedSuperfluidPositionsUndelegatingRequest {
+    return new UserConcentratedSuperfluidPositionsUndelegatingRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): UserConcentratedSuperfluidPositionsUndelegatingRequest {
+    return new UserConcentratedSuperfluidPositionsUndelegatingRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: UserConcentratedSuperfluidPositionsUndelegatingRequest | PlainMessage<UserConcentratedSuperfluidPositionsUndelegatingRequest> | undefined, b: UserConcentratedSuperfluidPositionsUndelegatingRequest | PlainMessage<UserConcentratedSuperfluidPositionsUndelegatingRequest> | undefined): boolean {
+    return proto3.util.equals(UserConcentratedSuperfluidPositionsUndelegatingRequest, a, b);
+  }
+}
+
+/**
+ * @generated from message osmosis.superfluid.UserConcentratedSuperfluidPositionsUndelegatingResponse
+ */
+export class UserConcentratedSuperfluidPositionsUndelegatingResponse extends Message<UserConcentratedSuperfluidPositionsUndelegatingResponse> {
+  /**
+   * @generated from field: repeated osmosis.superfluid.ConcentratedPoolUserPositionRecord cl_pool_user_position_records = 1;
+   */
+  clPoolUserPositionRecords: ConcentratedPoolUserPositionRecord[] = [];
+
+  constructor(data?: PartialMessage<UserConcentratedSuperfluidPositionsUndelegatingResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "osmosis.superfluid.UserConcentratedSuperfluidPositionsUndelegatingResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "cl_pool_user_position_records", kind: "message", T: ConcentratedPoolUserPositionRecord, repeated: true },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): UserConcentratedSuperfluidPositionsUndelegatingResponse {
+    return new UserConcentratedSuperfluidPositionsUndelegatingResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): UserConcentratedSuperfluidPositionsUndelegatingResponse {
+    return new UserConcentratedSuperfluidPositionsUndelegatingResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): UserConcentratedSuperfluidPositionsUndelegatingResponse {
+    return new UserConcentratedSuperfluidPositionsUndelegatingResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: UserConcentratedSuperfluidPositionsUndelegatingResponse | PlainMessage<UserConcentratedSuperfluidPositionsUndelegatingResponse> | undefined, b: UserConcentratedSuperfluidPositionsUndelegatingResponse | PlainMessage<UserConcentratedSuperfluidPositionsUndelegatingResponse> | undefined): boolean {
+    return proto3.util.equals(UserConcentratedSuperfluidPositionsUndelegatingResponse, a, b);
   }
 }
 

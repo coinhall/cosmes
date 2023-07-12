@@ -620,7 +620,7 @@ export class MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition extends Me
   sender = "";
 
   /**
-   * @generated from field: uint64 lock_id = 2;
+   * @generated from field: int64 lock_id = 2;
    */
   lockId = protoInt64.zero;
 
@@ -645,7 +645,7 @@ export class MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition extends Me
   static readonly typeName = "osmosis.superfluid.MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "sender", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "lock_id", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+    { no: 2, name: "lock_id", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
     { no: 3, name: "shares_to_migrate", kind: "message", T: Coin },
     { no: 4, name: "token_out_mins", kind: "message", T: Coin, repeated: true },
   ]);
@@ -841,6 +841,94 @@ export class MsgAddToConcentratedLiquiditySuperfluidPositionResponse extends Mes
 
   static equals(a: MsgAddToConcentratedLiquiditySuperfluidPositionResponse | PlainMessage<MsgAddToConcentratedLiquiditySuperfluidPositionResponse> | undefined, b: MsgAddToConcentratedLiquiditySuperfluidPositionResponse | PlainMessage<MsgAddToConcentratedLiquiditySuperfluidPositionResponse> | undefined): boolean {
     return proto3.util.equals(MsgAddToConcentratedLiquiditySuperfluidPositionResponse, a, b);
+  }
+}
+
+/**
+ * ===================== MsgLockExistingFullRangePositionAndSFStake
+ *
+ * @generated from message osmosis.superfluid.MsgLockExistingFullRangePositionAndSFStake
+ */
+export class MsgLockExistingFullRangePositionAndSFStake extends Message<MsgLockExistingFullRangePositionAndSFStake> {
+  /**
+   * @generated from field: uint64 position_id = 1;
+   */
+  positionId = protoInt64.zero;
+
+  /**
+   * @generated from field: string sender = 2;
+   */
+  sender = "";
+
+  /**
+   * @generated from field: string val_addr = 3;
+   */
+  valAddr = "";
+
+  constructor(data?: PartialMessage<MsgLockExistingFullRangePositionAndSFStake>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "osmosis.superfluid.MsgLockExistingFullRangePositionAndSFStake";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "position_id", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+    { no: 2, name: "sender", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "val_addr", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgLockExistingFullRangePositionAndSFStake {
+    return new MsgLockExistingFullRangePositionAndSFStake().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MsgLockExistingFullRangePositionAndSFStake {
+    return new MsgLockExistingFullRangePositionAndSFStake().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MsgLockExistingFullRangePositionAndSFStake {
+    return new MsgLockExistingFullRangePositionAndSFStake().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: MsgLockExistingFullRangePositionAndSFStake | PlainMessage<MsgLockExistingFullRangePositionAndSFStake> | undefined, b: MsgLockExistingFullRangePositionAndSFStake | PlainMessage<MsgLockExistingFullRangePositionAndSFStake> | undefined): boolean {
+    return proto3.util.equals(MsgLockExistingFullRangePositionAndSFStake, a, b);
+  }
+}
+
+/**
+ * @generated from message osmosis.superfluid.MsgLockExistingFullRangePositionAndSFStakeResponse
+ */
+export class MsgLockExistingFullRangePositionAndSFStakeResponse extends Message<MsgLockExistingFullRangePositionAndSFStakeResponse> {
+  /**
+   * @generated from field: uint64 concentrated_lock_id = 1;
+   */
+  concentratedLockId = protoInt64.zero;
+
+  constructor(data?: PartialMessage<MsgLockExistingFullRangePositionAndSFStakeResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "osmosis.superfluid.MsgLockExistingFullRangePositionAndSFStakeResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "concentrated_lock_id", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgLockExistingFullRangePositionAndSFStakeResponse {
+    return new MsgLockExistingFullRangePositionAndSFStakeResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MsgLockExistingFullRangePositionAndSFStakeResponse {
+    return new MsgLockExistingFullRangePositionAndSFStakeResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MsgLockExistingFullRangePositionAndSFStakeResponse {
+    return new MsgLockExistingFullRangePositionAndSFStakeResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: MsgLockExistingFullRangePositionAndSFStakeResponse | PlainMessage<MsgLockExistingFullRangePositionAndSFStakeResponse> | undefined, b: MsgLockExistingFullRangePositionAndSFStakeResponse | PlainMessage<MsgLockExistingFullRangePositionAndSFStakeResponse> | undefined): boolean {
+    return proto3.util.equals(MsgLockExistingFullRangePositionAndSFStakeResponse, a, b);
   }
 }
 

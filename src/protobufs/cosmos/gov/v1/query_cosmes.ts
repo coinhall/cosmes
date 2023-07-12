@@ -82,7 +82,7 @@ export const QueryParamsService = {
 } as const;
 
 /**
- * Deposit queries single deposit information based proposalID, depositAddr.
+ * Deposit queries single deposit information based on proposalID, depositAddr.
  *
  * @generated from rpc cosmos.gov.v1.Query.Deposit
  */

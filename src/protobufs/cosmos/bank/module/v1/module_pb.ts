@@ -13,7 +13,7 @@ import { Message, proto3 } from "@bufbuild/protobuf";
  */
 export class Module extends Message<Module> {
   /**
-   * blocked_module_accounts configures exceptional module accounts which should be blocked from receiving funds.
+   * blocked_module_accounts_override configures exceptional module accounts which should be blocked from receiving funds.
    * If left empty it defaults to the list of account names supplied in the auth module configuration as
    * module_account_permissions
    *

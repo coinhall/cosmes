@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { AllAssetsRequest, AllAssetsResponse, AllIntermediaryAccountsRequest, AllIntermediaryAccountsResponse, AssetMultiplierRequest, AssetMultiplierResponse, AssetTypeRequest, AssetTypeResponse, ConnectedIntermediaryAccountRequest, ConnectedIntermediaryAccountResponse, EstimateSuperfluidDelegatedAmountByValidatorDenomRequest, EstimateSuperfluidDelegatedAmountByValidatorDenomResponse, QueryParamsRequest, QueryParamsResponse, QueryTotalDelegationByDelegatorRequest, QueryTotalDelegationByDelegatorResponse, QueryTotalDelegationByValidatorForDenomRequest, QueryTotalDelegationByValidatorForDenomResponse, QueryUnpoolWhitelistRequest, QueryUnpoolWhitelistResponse, SuperfluidDelegationAmountRequest, SuperfluidDelegationAmountResponse, SuperfluidDelegationsByDelegatorRequest, SuperfluidDelegationsByDelegatorResponse, SuperfluidDelegationsByValidatorDenomRequest, SuperfluidDelegationsByValidatorDenomResponse, SuperfluidUndelegationsByDelegatorRequest, SuperfluidUndelegationsByDelegatorResponse, TotalSuperfluidDelegationsRequest, TotalSuperfluidDelegationsResponse } from "./query_pb.js";
+import { AllAssetsRequest, AllAssetsResponse, AllIntermediaryAccountsRequest, AllIntermediaryAccountsResponse, AssetMultiplierRequest, AssetMultiplierResponse, AssetTypeRequest, AssetTypeResponse, ConnectedIntermediaryAccountRequest, ConnectedIntermediaryAccountResponse, EstimateSuperfluidDelegatedAmountByValidatorDenomRequest, EstimateSuperfluidDelegatedAmountByValidatorDenomResponse, QueryParamsRequest, QueryParamsResponse, QueryTotalDelegationByDelegatorRequest, QueryTotalDelegationByDelegatorResponse, QueryTotalDelegationByValidatorForDenomRequest, QueryTotalDelegationByValidatorForDenomResponse, QueryUnpoolWhitelistRequest, QueryUnpoolWhitelistResponse, SuperfluidDelegationAmountRequest, SuperfluidDelegationAmountResponse, SuperfluidDelegationsByDelegatorRequest, SuperfluidDelegationsByDelegatorResponse, SuperfluidDelegationsByValidatorDenomRequest, SuperfluidDelegationsByValidatorDenomResponse, SuperfluidUndelegationsByDelegatorRequest, SuperfluidUndelegationsByDelegatorResponse, TotalSuperfluidDelegationsRequest, TotalSuperfluidDelegationsResponse, UserConcentratedSuperfluidPositionsDelegatedRequest, UserConcentratedSuperfluidPositionsDelegatedResponse, UserConcentratedSuperfluidPositionsUndelegatingRequest, UserConcentratedSuperfluidPositionsUndelegatingResponse } from "./query_pb.js";
 
 const TYPE_NAME = "osmosis.superfluid.Query";
 
@@ -191,5 +191,25 @@ export const QueryUnpoolWhitelistService = {
   method: "UnpoolWhitelist",
   Request: QueryUnpoolWhitelistRequest,
   Response: QueryUnpoolWhitelistResponse,
+} as const;
+
+/**
+ * @generated from rpc osmosis.superfluid.Query.UserConcentratedSuperfluidPositionsDelegated
+ */
+export const QueryUserConcentratedSuperfluidPositionsDelegatedService = {
+  typeName: TYPE_NAME,
+  method: "UserConcentratedSuperfluidPositionsDelegated",
+  Request: UserConcentratedSuperfluidPositionsDelegatedRequest,
+  Response: UserConcentratedSuperfluidPositionsDelegatedResponse,
+} as const;
+
+/**
+ * @generated from rpc osmosis.superfluid.Query.UserConcentratedSuperfluidPositionsUndelegating
+ */
+export const QueryUserConcentratedSuperfluidPositionsUndelegatingService = {
+  typeName: TYPE_NAME,
+  method: "UserConcentratedSuperfluidPositionsUndelegating",
+  Request: UserConcentratedSuperfluidPositionsUndelegatingRequest,
+  Response: UserConcentratedSuperfluidPositionsUndelegatingResponse,
 } as const;
 

@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { AllPoolsRequest, AllPoolsResponse, EstimateSinglePoolSwapExactAmountInRequest, EstimateSinglePoolSwapExactAmountOutRequest, EstimateSwapExactAmountInRequest, EstimateSwapExactAmountInResponse, EstimateSwapExactAmountOutRequest, EstimateSwapExactAmountOutResponse, NumPoolsRequest, NumPoolsResponse, ParamsRequest, ParamsResponse, PoolRequest, PoolResponse, SpotPriceRequest, SpotPriceResponse, TotalPoolLiquidityRequest, TotalPoolLiquidityResponse } from "./query_pb.js";
+import { AllPoolsRequest, AllPoolsResponse, EstimateSinglePoolSwapExactAmountInRequest, EstimateSinglePoolSwapExactAmountOutRequest, EstimateSwapExactAmountInRequest, EstimateSwapExactAmountInResponse, EstimateSwapExactAmountOutRequest, EstimateSwapExactAmountOutResponse, NumPoolsRequest, NumPoolsResponse, ParamsRequest, ParamsResponse, PoolRequest, PoolResponse, SpotPriceRequest, SpotPriceResponse, TotalLiquidityRequest, TotalLiquidityResponse, TotalPoolLiquidityRequest, TotalPoolLiquidityResponse } from "./query_pb.js";
 
 const TYPE_NAME = "osmosis.poolmanager.v1beta1.Query";
 
@@ -111,6 +111,8 @@ export const QuerySpotPriceService = {
 } as const;
 
 /**
+ * TotalPoolLiquidity returns the total liquidity of the specified pool.
+ *
  * @generated from rpc osmosis.poolmanager.v1beta1.Query.TotalPoolLiquidity
  */
 export const QueryTotalPoolLiquidityService = {
@@ -118,5 +120,17 @@ export const QueryTotalPoolLiquidityService = {
   method: "TotalPoolLiquidity",
   Request: TotalPoolLiquidityRequest,
   Response: TotalPoolLiquidityResponse,
+} as const;
+
+/**
+ * TotalLiquidity returns the total liquidity across all pools.
+ *
+ * @generated from rpc osmosis.poolmanager.v1beta1.Query.TotalLiquidity
+ */
+export const QueryTotalLiquidityService = {
+  typeName: TYPE_NAME,
+  method: "TotalLiquidity",
+  Request: TotalLiquidityRequest,
+  Response: TotalLiquidityResponse,
 } as const;
 

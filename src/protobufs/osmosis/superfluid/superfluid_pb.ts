@@ -6,6 +6,7 @@
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
 import { Message, proto3, protoInt64 } from "@bufbuild/protobuf";
 import { Coin } from "../../cosmos/base/v1beta1/coin_pb.js";
+import { SyntheticLock } from "../lockup/lock_pb.js";
 
 /**
  * SuperfluidAssetType indicates whether the superfluid asset is
@@ -341,6 +342,73 @@ export class UnpoolWhitelistedPools extends Message<UnpoolWhitelistedPools> {
 
   static equals(a: UnpoolWhitelistedPools | PlainMessage<UnpoolWhitelistedPools> | undefined, b: UnpoolWhitelistedPools | PlainMessage<UnpoolWhitelistedPools> | undefined): boolean {
     return proto3.util.equals(UnpoolWhitelistedPools, a, b);
+  }
+}
+
+/**
+ * @generated from message osmosis.superfluid.ConcentratedPoolUserPositionRecord
+ */
+export class ConcentratedPoolUserPositionRecord extends Message<ConcentratedPoolUserPositionRecord> {
+  /**
+   * @generated from field: string validator_address = 1;
+   */
+  validatorAddress = "";
+
+  /**
+   * @generated from field: uint64 position_id = 2;
+   */
+  positionId = protoInt64.zero;
+
+  /**
+   * @generated from field: uint64 lock_id = 3;
+   */
+  lockId = protoInt64.zero;
+
+  /**
+   * @generated from field: osmosis.lockup.SyntheticLock synthetic_lock = 4;
+   */
+  syntheticLock?: SyntheticLock;
+
+  /**
+   * @generated from field: cosmos.base.v1beta1.Coin delegation_amount = 5;
+   */
+  delegationAmount?: Coin;
+
+  /**
+   * @generated from field: cosmos.base.v1beta1.Coin equivalent_staked_amount = 6;
+   */
+  equivalentStakedAmount?: Coin;
+
+  constructor(data?: PartialMessage<ConcentratedPoolUserPositionRecord>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "osmosis.superfluid.ConcentratedPoolUserPositionRecord";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "validator_address", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "position_id", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+    { no: 3, name: "lock_id", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+    { no: 4, name: "synthetic_lock", kind: "message", T: SyntheticLock },
+    { no: 5, name: "delegation_amount", kind: "message", T: Coin },
+    { no: 6, name: "equivalent_staked_amount", kind: "message", T: Coin },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ConcentratedPoolUserPositionRecord {
+    return new ConcentratedPoolUserPositionRecord().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ConcentratedPoolUserPositionRecord {
+    return new ConcentratedPoolUserPositionRecord().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ConcentratedPoolUserPositionRecord {
+    return new ConcentratedPoolUserPositionRecord().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: ConcentratedPoolUserPositionRecord | PlainMessage<ConcentratedPoolUserPositionRecord> | undefined, b: ConcentratedPoolUserPositionRecord | PlainMessage<ConcentratedPoolUserPositionRecord> | undefined): boolean {
+    return proto3.util.equals(ConcentratedPoolUserPositionRecord, a, b);
   }
 }
 

@@ -664,7 +664,7 @@ export class SpotPriceResponse extends Message<SpotPriceResponse> {
 }
 
 /**
- * =============================== PoolLiquidity
+ * =============================== TotalPoolLiquidity
  *
  * @generated from message osmosis.poolmanager.v1beta1.TotalPoolLiquidityRequest
  */
@@ -736,6 +736,76 @@ export class TotalPoolLiquidityResponse extends Message<TotalPoolLiquidityRespon
 
   static equals(a: TotalPoolLiquidityResponse | PlainMessage<TotalPoolLiquidityResponse> | undefined, b: TotalPoolLiquidityResponse | PlainMessage<TotalPoolLiquidityResponse> | undefined): boolean {
     return proto3.util.equals(TotalPoolLiquidityResponse, a, b);
+  }
+}
+
+/**
+ * =============================== TotalLiquidity
+ *
+ * @generated from message osmosis.poolmanager.v1beta1.TotalLiquidityRequest
+ */
+export class TotalLiquidityRequest extends Message<TotalLiquidityRequest> {
+  constructor(data?: PartialMessage<TotalLiquidityRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "osmosis.poolmanager.v1beta1.TotalLiquidityRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TotalLiquidityRequest {
+    return new TotalLiquidityRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TotalLiquidityRequest {
+    return new TotalLiquidityRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TotalLiquidityRequest {
+    return new TotalLiquidityRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: TotalLiquidityRequest | PlainMessage<TotalLiquidityRequest> | undefined, b: TotalLiquidityRequest | PlainMessage<TotalLiquidityRequest> | undefined): boolean {
+    return proto3.util.equals(TotalLiquidityRequest, a, b);
+  }
+}
+
+/**
+ * @generated from message osmosis.poolmanager.v1beta1.TotalLiquidityResponse
+ */
+export class TotalLiquidityResponse extends Message<TotalLiquidityResponse> {
+  /**
+   * @generated from field: repeated cosmos.base.v1beta1.Coin liquidity = 1;
+   */
+  liquidity: Coin[] = [];
+
+  constructor(data?: PartialMessage<TotalLiquidityResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "osmosis.poolmanager.v1beta1.TotalLiquidityResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "liquidity", kind: "message", T: Coin, repeated: true },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TotalLiquidityResponse {
+    return new TotalLiquidityResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TotalLiquidityResponse {
+    return new TotalLiquidityResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TotalLiquidityResponse {
+    return new TotalLiquidityResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: TotalLiquidityResponse | PlainMessage<TotalLiquidityResponse> | undefined, b: TotalLiquidityResponse | PlainMessage<TotalLiquidityResponse> | undefined): boolean {
+    return proto3.util.equals(TotalLiquidityResponse, a, b);
   }
 }
 

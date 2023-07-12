@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { CFMMPoolIdLinkFromConcentratedPoolIdRequest, CFMMPoolIdLinkFromConcentratedPoolIdResponse, ClaimableIncentivesRequest, ClaimableIncentivesResponse, ClaimableSpreadRewardsRequest, ClaimableSpreadRewardsResponse, IncentiveRecordsRequest, IncentiveRecordsResponse, LiquidityNetInDirectionRequest, LiquidityNetInDirectionResponse, LiquidityPerTickRangeRequest, LiquidityPerTickRangeResponse, ParamsRequest, ParamsResponse, PoolAccumulatorRewardsRequest, PoolAccumulatorRewardsResponse, PoolsRequest, PoolsResponse, PositionByIdRequest, PositionByIdResponse, TickAccumulatorTrackersRequest, TickAccumulatorTrackersResponse, UserPositionsRequest, UserPositionsResponse } from "./query_pb.js";
+import { CFMMPoolIdLinkFromConcentratedPoolIdRequest, CFMMPoolIdLinkFromConcentratedPoolIdResponse, ClaimableIncentivesRequest, ClaimableIncentivesResponse, ClaimableSpreadRewardsRequest, ClaimableSpreadRewardsResponse, GetTotalLiquidityRequest, GetTotalLiquidityResponse, IncentiveRecordsRequest, IncentiveRecordsResponse, LiquidityNetInDirectionRequest, LiquidityNetInDirectionResponse, LiquidityPerTickRangeRequest, LiquidityPerTickRangeResponse, ParamsRequest, ParamsResponse, PoolAccumulatorRewardsRequest, PoolAccumulatorRewardsResponse, PoolsRequest, PoolsResponse, PositionByIdRequest, PositionByIdResponse, TickAccumulatorTrackersRequest, TickAccumulatorTrackersResponse, UserPositionsRequest, UserPositionsResponse, UserUnbondingPositionsRequest, UserUnbondingPositionsResponse } from "./query_pb.js";
 
 const TYPE_NAME = "osmosis.concentratedliquidity.v1beta1.Query";
 
@@ -157,5 +157,30 @@ export const QueryCFMMPoolIdLinkFromConcentratedPoolIdService = {
   method: "CFMMPoolIdLinkFromConcentratedPoolId",
   Request: CFMMPoolIdLinkFromConcentratedPoolIdRequest,
   Response: CFMMPoolIdLinkFromConcentratedPoolIdResponse,
+} as const;
+
+/**
+ * UserUnbondingPositions returns the position and lock info of unbonding
+ * positions of the given address.
+ *
+ * @generated from rpc osmosis.concentratedliquidity.v1beta1.Query.UserUnbondingPositions
+ */
+export const QueryUserUnbondingPositionsService = {
+  typeName: TYPE_NAME,
+  method: "UserUnbondingPositions",
+  Request: UserUnbondingPositionsRequest,
+  Response: UserUnbondingPositionsResponse,
+} as const;
+
+/**
+ * GetTotalLiquidity returns total liquidity across all cl pools.
+ *
+ * @generated from rpc osmosis.concentratedliquidity.v1beta1.Query.GetTotalLiquidity
+ */
+export const QueryGetTotalLiquidityService = {
+  typeName: TYPE_NAME,
+  method: "GetTotalLiquidity",
+  Request: GetTotalLiquidityRequest,
+  Response: GetTotalLiquidityResponse,
 } as const;
 

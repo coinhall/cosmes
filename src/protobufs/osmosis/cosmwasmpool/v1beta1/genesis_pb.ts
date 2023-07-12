@@ -4,7 +4,7 @@
 // @ts-nocheck
 
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
-import { Message, proto3 } from "@bufbuild/protobuf";
+import { Any, Message, proto3 } from "@bufbuild/protobuf";
 import { Params } from "./params_pb.js";
 
 /**
@@ -20,6 +20,11 @@ export class GenesisState extends Message<GenesisState> {
    */
   params?: Params;
 
+  /**
+   * @generated from field: repeated google.protobuf.Any pools = 2;
+   */
+  pools: Any[] = [];
+
   constructor(data?: PartialMessage<GenesisState>) {
     super();
     proto3.util.initPartial(data, this);
@@ -29,6 +34,7 @@ export class GenesisState extends Message<GenesisState> {
   static readonly typeName = "osmosis.cosmwasmpool.v1beta1.GenesisState";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "params", kind: "message", T: Params },
+    { no: 2, name: "pools", kind: "message", T: Any, repeated: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): GenesisState {
