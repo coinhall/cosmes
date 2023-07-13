@@ -292,8 +292,6 @@ export {
   MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionResponse as OsmosisSuperfluidMsgUnlockAndMigrateSharesToFullRangeConcentratedPositionResponse,
   MsgAddToConcentratedLiquiditySuperfluidPosition as OsmosisSuperfluidMsgAddToConcentratedLiquiditySuperfluidPosition,
   MsgAddToConcentratedLiquiditySuperfluidPositionResponse as OsmosisSuperfluidMsgAddToConcentratedLiquiditySuperfluidPositionResponse,
-  MsgLockExistingFullRangePositionAndSFStake as OsmosisSuperfluidMsgLockExistingFullRangePositionAndSFStake,
-  MsgLockExistingFullRangePositionAndSFStakeResponse as OsmosisSuperfluidMsgLockExistingFullRangePositionAndSFStakeResponse,
 } from "./osmosis/superfluid/tx_pb.js";
 export {
   MsgSuperfluidDelegateService as OsmosisSuperfluidMsgSuperfluidDelegateService,
@@ -305,7 +303,6 @@ export {
   MsgUnPoolWhitelistedPoolService as OsmosisSuperfluidMsgUnPoolWhitelistedPoolService,
   MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionService as OsmosisSuperfluidMsgUnlockAndMigrateSharesToFullRangeConcentratedPositionService,
   MsgAddToConcentratedLiquiditySuperfluidPositionService as OsmosisSuperfluidMsgAddToConcentratedLiquiditySuperfluidPositionService,
-  MsgLockExistingFullRangePositionAndSFStakeService as OsmosisSuperfluidMsgLockExistingFullRangePositionAndSFStakeService,
 } from "./osmosis/superfluid/tx_cosmes.js";
 export {
   SuperfluidAssetType as OsmosisSuperfluidSuperfluidAssetType,
@@ -2181,8 +2178,6 @@ export {
 export {
   Coin as CosmosBaseV1beta1Coin,
   DecCoin as CosmosBaseV1beta1DecCoin,
-  IntProto as CosmosBaseV1beta1IntProto,
-  DecProto as CosmosBaseV1beta1DecProto,
 } from "./cosmos/base/v1beta1/coin_pb.js";
 export {
   Block as CosmosBaseTendermintV1beta1Block,

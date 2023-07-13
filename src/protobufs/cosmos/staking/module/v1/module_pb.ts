@@ -28,6 +28,20 @@ export class Module extends Message<Module> {
    */
   authority = "";
 
+  /**
+   * bech32_prefix_validator is the bech32 validator prefix for the app.
+   *
+   * @generated from field: string bech32_prefix_validator = 3;
+   */
+  bech32PrefixValidator = "";
+
+  /**
+   * bech32_prefix_consensus is the bech32 consensus node prefix for the app.
+   *
+   * @generated from field: string bech32_prefix_consensus = 4;
+   */
+  bech32PrefixConsensus = "";
+
   constructor(data?: PartialMessage<Module>) {
     super();
     proto3.util.initPartial(data, this);
@@ -38,6 +52,8 @@ export class Module extends Message<Module> {
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "hooks_order", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
     { no: 2, name: "authority", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "bech32_prefix_validator", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 4, name: "bech32_prefix_consensus", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Module {

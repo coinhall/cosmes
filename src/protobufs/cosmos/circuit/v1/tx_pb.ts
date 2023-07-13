@@ -68,7 +68,7 @@ export class MsgAuthorizeCircuitBreaker extends Message<MsgAuthorizeCircuitBreak
 }
 
 /**
- * MsgAuthorizeCircuitBreaker defines the Msg/AuthorizeCircuitBreaker response type.
+ * MsgAuthorizeCircuitBreakerResponse defines the Msg/AuthorizeCircuitBreaker response type.
  *
  * @generated from message cosmos.circuit.v1.MsgAuthorizeCircuitBreakerResponse
  */
@@ -160,7 +160,7 @@ export class MsgTripCircuitBreaker extends Message<MsgTripCircuitBreaker> {
 }
 
 /**
- * MsgTripCircuitBreaker defines the Msg/TripCircuitBreaker response type.
+ * MsgTripCircuitBreakerResponse defines the Msg/TripCircuitBreaker response type.
  *
  * @generated from message cosmos.circuit.v1.MsgTripCircuitBreakerResponse
  */

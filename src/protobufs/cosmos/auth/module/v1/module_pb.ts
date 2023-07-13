@@ -33,13 +33,6 @@ export class Module extends Message<Module> {
    */
   authority = "";
 
-  /**
-   * bech32_prefix_validator is the bech32 validator prefix for the app.
-   *
-   * @generated from field: string bech32_prefix_validator = 4;
-   */
-  bech32PrefixValidator = "";
-
   constructor(data?: PartialMessage<Module>) {
     super();
     proto3.util.initPartial(data, this);
@@ -51,7 +44,6 @@ export class Module extends Message<Module> {
     { no: 1, name: "bech32_prefix", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "module_account_permissions", kind: "message", T: ModuleAccountPermission, repeated: true },
     { no: 3, name: "authority", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 4, name: "bech32_prefix_validator", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Module {
