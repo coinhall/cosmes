@@ -116,7 +116,7 @@ This directory is a [Cosmos Kit](https://cosmoskit.com) alternative to manage va
 
 - Supports Station, Keplr, Leap, and Cosmostation wallets
 - Supports both browser extension (desktop) and WalletConnect (mobile)
-- Unified interface for connecting and signing transactions
+- Unified interface for connecting, signing transactions and arbitrary messages, and event handling
 - Signing of arbitrary messages (for wallets that support it)
 - Simultaneous connections to multiple WalletConnect wallets
 
@@ -132,7 +132,7 @@ See the [`benchmarks`](./benchmarks) folder, where the JS bundle size of CosmES 
 
 | Package    | Minified | Gzipped |
 |------------|----------|---------|
-| CosmES     | 529 KB   | 143 KB  |
+| CosmES     | 532 KB   | 144 KB  |
 | Cosmos Kit | 5770 KB  | 1356 KB |
 
 ## Contributing
