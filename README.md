@@ -116,7 +116,7 @@ This directory is a [Cosmos Kit](https://cosmoskit.com) alternative to manage va
 
 - Supports Station, Keplr, Leap, and Cosmostation wallets
 - Supports both browser extension (desktop) and WalletConnect (mobile)
-- Unified interface for connecting, signing transactions and arbitrary messages, and event handling
+- Unified interface for connecting, signing, and event handling
 - Signing of arbitrary messages (for wallets that support it)
 - Simultaneous connections to multiple WalletConnect wallets
 
