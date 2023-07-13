@@ -6,7 +6,7 @@ import { CosmosBaseV1beta1Coin as Coin } from "cosmes/protobufs";
 
 import { WalletName } from "../../constants/WalletName";
 import { WalletType } from "../../constants/WalletType";
-import { getTxRawFromKeplrSignature } from "../../utils/stdSignDocToTxRaw";
+import { toSignedTxRaw } from "../../utils/tx";
 import {
   BroadcastTxOptions,
   ConnectedWallet,
@@ -75,7 +75,7 @@ export class LeapExtension extends ConnectedWallet {
     );
     const txHash = await this.ext.sendTx(
       this.chainId,
-      getTxRawFromKeplrSignature(tx, signature.signature, signed).toBinary(),
+      toSignedTxRaw(tx, signature.signature, signed).toBinary(),
       "sync" as BroadcastMode
     );
     return fromUint8ArrayToHex(txHash).toUpperCase();

@@ -8,10 +8,10 @@ import {
 } from "cosmes/protobufs";
 
 /**
- * Returns a signed `TxRaw` with the given `tx`, `signature`, and `stdSignDoc`.
+ * Returns a signed `TxRaw` by combining the given `tx`, `signature`, and `stdSignDoc`.
  * This function can be used across all Keplr-like wallets.
  */
-export function getTxRawFromKeplrSignature(
+export function toSignedTxRaw(
   tx: Tx,
   signature: string,
   { sequence, fee, memo }: StdSignDoc
