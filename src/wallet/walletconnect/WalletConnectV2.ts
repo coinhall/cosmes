@@ -1,4 +1,5 @@
 import SignClient from "@walletconnect/sign-client";
+import debounce from "lodash/debounce";
 
 import { StdSignDoc } from "@keplr-wallet/types";
 import { isAndroid, isMobile } from "../utils/os";
@@ -48,6 +49,7 @@ export class WalletConnectV2 {
   private readonly mobileAppDetails: MobileAppDetails;
   private readonly sessionStorageKey: string;
   private readonly onDisconnectCbs: Set<() => unknown>;
+  private readonly onAccountChangeCbs: Set<() => unknown>;
   private signClient: SignClient | null;
 
   constructor(projectId: string, mobileAppDetails: MobileAppDetails) {
@@ -55,30 +57,44 @@ export class WalletConnectV2 {
     this.mobileAppDetails = mobileAppDetails;
     this.sessionStorageKey = `cosmes.wallet.${mobileAppDetails.name.toLowerCase()}.wcSession`;
     this.onDisconnectCbs = new Set();
+    this.onAccountChangeCbs = new Set();
     this.signClient = null;
   }
 
   public async connect(chainIds: string[]): Promise<void> {
+    // Initialise the sign client and event listeners if they don't already exist
     if (!this.signClient) {
-      // Initialise the sign client if it doesn't already exist
       this.signClient = await SignClient.init({
         projectId: this.projectId,
       });
-      // Register event listeners
+      // Disconnect if the session is disconnected or expired
       this.signClient.on("session_delete", ({ topic }) =>
         this.disconnect(topic)
       );
       this.signClient.on("session_expire", ({ topic }) =>
         this.disconnect(topic)
       );
+      // Handle the `accountsChanged` event
+      const handleAccountChange = debounce(
+        // Handler is debounced as the `accountsChanged` event is fired once for
+        // each connected chain, but we only want to trigger the callback once.
+        () => this.onAccountChangeCbs.forEach((cb) => cb()),
+        300,
+        { leading: true, trailing: false }
+      );
+      this.signClient.on("session_event", ({ params }) => {
+        if (params.event.name === Event.ACCOUNTS_CHANGED) {
+          handleAccountChange();
+        }
+      });
     }
 
     // Check if a valid session already exists
-    const session = localStorage.getItem(this.sessionStorageKey);
+    const oldSession = localStorage.getItem(this.sessionStorageKey);
     const chainIdsSet = new Set(chainIds);
-    if (session) {
+    if (oldSession) {
       const { topic, chainIds: storedIds } = JSON.parse(
-        session
+        oldSession
       ) as StorageSession;
       const storedIdsSet = new Set(storedIds);
       if (chainIds.every((id) => storedIdsSet.has(id))) {
@@ -116,17 +132,31 @@ export class WalletConnectV2 {
       const { topic } = await approval();
       modal.close();
       // Save this new session to local storage
-      const session: StorageSession = {
+      const newSession: StorageSession = {
         topic,
         chainIds: [...chainIdsSet],
       };
-      localStorage.setItem(this.sessionStorageKey, JSON.stringify(session));
+      localStorage.setItem(this.sessionStorageKey, JSON.stringify(newSession));
+      // Disconnect the older session if it exists
+      if (oldSession) {
+        const { topic } = JSON.parse(oldSession) as StorageSession;
+        this.signClient.disconnect({
+          topic,
+          // TODO: use the actual reason
+          reason: { code: -1, message: "" },
+        });
+      }
     }
   }
 
   public onDisconnect(cb: () => unknown): () => void {
     this.onDisconnectCbs.add(cb);
     return () => this.onDisconnectCbs.delete(cb);
+  }
+
+  public onAccountChange(cb: () => unknown): () => void {
+    this.onAccountChangeCbs.add(cb);
+    return () => this.onAccountChangeCbs.delete(cb);
   }
 
   public async getAccount(chainId: string): Promise<GetAccountResponse> {
@@ -197,8 +227,6 @@ export class WalletConnectV2 {
       // Ignore stale disconnects; clean up only if the topic matches
       localStorage.removeItem(this.sessionStorageKey);
       this.onDisconnectCbs.forEach((cb) => cb());
-      // TODO: call the WC disconnect method
-      // this.signClient?.disconnect({ topic });
     }
   }
 

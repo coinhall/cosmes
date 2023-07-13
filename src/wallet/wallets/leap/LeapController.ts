@@ -3,6 +3,7 @@ import { fromBase64ToUint8Array } from "cosmes/codec";
 
 import { WalletName } from "../../constants/WalletName";
 import { WalletType } from "../../constants/WalletType";
+import { onWindowEvent } from "../../utils/window";
 import { WalletConnectV2 } from "../../walletconnect/WalletConnectV2";
 import { ConnectedWallet } from "../ConnectedWallet";
 import { ChainInfo, WalletController } from "../WalletController";
@@ -20,6 +21,7 @@ export class LeapController extends WalletController {
       android: LeapWcUri.ANDROID,
       ios: LeapWcUri.IOS,
     });
+    this.registerAccountChangeHandlers();
   }
 
   public async isInstalled(type: WalletType) {
@@ -63,5 +65,12 @@ export class LeapController extends WalletController {
       );
     }
     return wallets;
+  }
+
+  protected registerAccountChangeHandlers() {
+    onWindowEvent("leap_keystorechange", () =>
+      this.changeAccount(WalletType.EXTENSION)
+    );
+    this.wc.onAccountChange(() => this.changeAccount(WalletType.WALLETCONNECT));
   }
 }

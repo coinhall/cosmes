@@ -4,6 +4,7 @@ import { CosmosCryptoSecp256k1PubKey } from "cosmes/protobufs";
 
 import { WalletName } from "../../constants/WalletName";
 import { WalletType } from "../../constants/WalletType";
+import { onWindowEvent } from "../../utils/window";
 import { WalletConnectV1 } from "../../walletconnect/WalletConnectV1";
 import { ConnectedWallet } from "../ConnectedWallet";
 import { ChainInfo, WalletController } from "../WalletController";
@@ -35,6 +36,7 @@ export class StationController extends WalletController {
         signingMethods: [],
       }
     );
+    this.registerAccountChangeHandlers();
   }
 
   public async isInstalled(type: WalletType) {
@@ -95,6 +97,13 @@ export class StationController extends WalletController {
       );
     }
     return wallets;
+  }
+
+  protected registerAccountChangeHandlers() {
+    onWindowEvent("station_wallet_change", () =>
+      this.changeAccount(WalletType.EXTENSION)
+    );
+    // Station's WalletConnect v1 doesn't support account change events
   }
 
   private async getPubKey(
