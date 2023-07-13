@@ -16,6 +16,8 @@ export type ChainInfo<T extends string> = {
   gasPrice: PlainMessage<Coin>;
 };
 
+export type EventCallback = (wallets: ConnectedWallet[]) => unknown;
+
 /**
  * Controls initial connection to the wallet, and instantiates the
  * various `ConnectedWallet` instances.
@@ -25,13 +27,15 @@ export abstract class WalletController {
   public readonly id: WalletName;
   /** Map of chain ID to connected wallets. */
   public readonly connectedWallets: Map<string, ConnectedWallet>;
-  private readonly onDisconnectCbs: Set<(chainIds: string[]) => unknown>;
+  private readonly onDisconnectCbs: Set<EventCallback>;
+  protected readonly onAccountChangeCbs: Set<EventCallback>;
   private isWcOnDisconnectRegistered: boolean;
 
   constructor(id: WalletName) {
     this.id = id;
     this.connectedWallets = new Map();
     this.onDisconnectCbs = new Set();
+    this.onAccountChangeCbs = new Set();
     this.isWcOnDisconnectRegistered = false;
   }
 
@@ -84,31 +88,75 @@ export abstract class WalletController {
     if (callbackIds.length === 0) {
       return;
     }
+    const disconnectedWallets: ConnectedWallet[] = [];
     for (const id of callbackIds) {
-      this.connectedWallets.delete(id);
+      const wallet = this.connectedWallets.get(id);
+      if (wallet) {
+        disconnectedWallets.push(wallet);
+        this.connectedWallets.delete(id);
+      }
     }
     for (const cb of this.onDisconnectCbs) {
-      cb(callbackIds);
+      cb(disconnectedWallets);
     }
   }
 
   /**
-   * Registers a callback to be called when the wallet is disconnected.
+   * Should be called when any account changes are detected. This will disconnect
+   * from all chains that were connected via the given `walletType`, and emit the
+   * `onAccountChange` event.
+   */
+  protected changeAccount(walletType: WalletType) {
+    // Find all wallets that were connected via the given `walletType`
+    const wallets = [...this.connectedWallets.values()].filter(
+      (wallet) => wallet.type === walletType
+    );
+    // Disconnect from those chains
+    const chainIds = wallets.map((wallet) => wallet.chainId);
+    this.disconnect(chainIds);
+    // Fire the account change callbacks
+    for (const cb of this.onAccountChangeCbs) {
+      cb(wallets);
+    }
+  }
+
+  /**
+   * Registers a callback that is called when the wallet is disconnected.
    * Returns an `unsubscribe` function that should be called after the
    * callback is no longer needed.
    *
    * ```ts
-   * const unsubscribe = walletController.onDisconnect((chainIds) => {
-   *   // do something with the chain IDs that were disconnected
-   *   console.log(chainIds);
+   * const unsubscribe = walletController.onDisconnect((wallets) => {
+   *   // do something with the wallets that were disconnected
+   *   console.log(wallets);
    *   // unsubscribe from this callback (if necessary)
    *   unsubsribe();
    * });
    * ```
    */
-  public onDisconnect(cb: (chainIds: string[]) => unknown): () => void {
+  public onDisconnect(cb: EventCallback): () => void {
     this.onDisconnectCbs.add(cb);
     return () => this.onDisconnectCbs.delete(cb);
+  }
+
+  /**
+   * Registers a callback that is called when the wallet's account is changed after
+   * the initial connection. When the account changes, the `onDisconnect` event
+   * will also be fired before this `onAccountChange` event. Returns an `unsubscribe`
+   * function that should be called after the callback is no longer needed.
+   *
+   * ```ts
+   * const unsubscribe = walletController.onAccountChange((wallets) => {
+   *   // do something with the wallets that were affected
+   *   console.log(wallets);
+   *   // unsubscribe from this callback (if necessary)
+   *   unsubsribe();
+   * });
+   * ```
+   */
+  public onAccountChange(cb: EventCallback): () => void {
+    this.onAccountChangeCbs.add(cb);
+    return () => this.onAccountChangeCbs.delete(cb);
   }
 
   protected abstract connectExtension<T extends string>(
@@ -121,4 +169,6 @@ export abstract class WalletController {
     wallets: Map<T, ConnectedWallet>;
     wc: WalletConnectV1 | WalletConnectV2;
   }>;
+
+  protected abstract registerAccountChangeHandlers(): void;
 }

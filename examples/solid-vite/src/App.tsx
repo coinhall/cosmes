@@ -110,25 +110,39 @@ const App: Component = () => {
 
   onMount(() => {
     for (const controller of Object.values(CONTROLLERS)) {
-      controller.onDisconnect((chainIds) => {
-        console.log("Wallet disconnected", { wallet: controller.id, chainIds });
-        for (const chainId of chainIds) {
+      // Register to diconnect event
+      controller.onDisconnect((wallets) => {
+        const chains = wallets.map((w) => w.chainId);
+        console.log("Wallet disconnected", {
+          wallet: controller.id,
+          chains,
+        });
+        for (const chain of chains) {
           // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-          setWallets(chainId, undefined!);
+          setWallets(chain, undefined!);
         }
+      });
+      // Register to account change event
+      controller.onAccountChange((wallets) => {
+        // Reconnect the affected wallets
+        const chains = wallets.map((w) => w.chainId);
+        console.log("Wallet account changed", {
+          wallet: controller.id,
+          chains,
+        });
+        connect(wallets[0].type, chains);
       });
     }
   });
 
-  async function connect() {
+  async function connect(type: WalletType, chainIds: string[]) {
     try {
-      const res = await CONTROLLERS[wallet()].connect(type(), [
-        {
-          chainId: chain(),
-          rpc: getRpc(chain()),
-          gasPrice: getGasPrice(chain()),
-        },
-      ]);
+      const chainInfos = chainIds.map((chainId) => ({
+        chainId,
+        rpc: getRpc(chainId),
+        gasPrice: getGasPrice(chainId),
+      }));
+      const res = await CONTROLLERS[wallet()].connect(type, chainInfos);
       setWallets({ ...wallets, ...Object.fromEntries(res) });
     } catch (err) {
       console.error(err);
@@ -243,7 +257,7 @@ const App: Component = () => {
         </button>
         <button
           class="bg-green-700 hover:bg-green-600 text-green-100 p-2 rounded"
-          onClick={connect}
+          onClick={() => connect(type(), [chain()])}
         >
           Connect
         </button>

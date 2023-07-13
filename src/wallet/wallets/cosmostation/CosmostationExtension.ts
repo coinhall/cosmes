@@ -5,7 +5,7 @@ import { CosmosBaseV1beta1Coin as Coin } from "cosmes/protobufs";
 
 import { WalletName } from "../../constants/WalletName";
 import { WalletType } from "../../constants/WalletType";
-import { getTxRawFromKeplrSignature } from "../../utils/stdSignDocToTxRaw";
+import { toSignedTxRaw } from "../../utils/tx";
 import {
   BroadcastTxOptions,
   ConnectedWallet,
@@ -91,7 +91,7 @@ export class CosmostationExtension extends ConnectedWallet {
         params: {
           chainName: this.chainId,
           txBytes: fromUint8ArrayToBase64(
-            getTxRawFromKeplrSignature(tx, signature, signed_doc).toBinary()
+            toSignedTxRaw(tx, signature, signed_doc).toBinary()
           ),
           mode: 2, // for SYNC mode
         },

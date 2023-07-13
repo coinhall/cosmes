@@ -1,5 +1,19 @@
 # Changelog
 
+## `v0.0.26`
+
+### Breaking Changes
+
+- The `onDisconnect` callback in the `WalletController` class now accepts a function that contains a list of disconnected wallets instead of a list of disconnected chain ID strings
+
+### Features
+
+- Added the `onAccountChange` event to the `WalletController` class to allow consumers to detect wallet account changes (works for all wallets except Station via WalletConnect v1)
+
+### Miscellaneous
+
+- Added `lodash` as peer dependency
+
 ## `v0.0.25`
 
 ### Improvements

@@ -9,7 +9,11 @@ export {
   type SignArbitraryResponse,
   type UnsignedTx,
 } from "./wallets/ConnectedWallet";
-export { WalletController } from "./wallets/WalletController";
+export {
+  WalletController,
+  type ChainInfo,
+  type EventCallback,
+} from "./wallets/WalletController";
 export { CosmostationController } from "./wallets/cosmostation/CosmostationController";
 export { KeplrController } from "./wallets/keplr/KeplrController";
 export { LeapController } from "./wallets/leap/LeapController";
