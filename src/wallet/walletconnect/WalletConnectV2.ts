@@ -1,5 +1,5 @@
 import SignClient from "@walletconnect/sign-client";
-import debounce from "lodash/debounce";
+import { debounce } from "lodash-es";
 
 import { StdSignDoc } from "@keplr-wallet/types";
 import { isAndroid, isMobile } from "../utils/os";

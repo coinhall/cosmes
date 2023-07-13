@@ -10,7 +10,7 @@ import { spawnSync } from "child_process";
 import degit from "degit";
 import { mkdirSync, readFileSync, rmSync, writeFileSync } from "fs";
 import { globSync } from "glob";
-import _ from "lodash";
+import { capitalize } from "lodash-es";
 import { dirname, join } from "path";
 import { fileURLToPath } from "url";
 
@@ -92,10 +92,7 @@ function generateIndexExports(dir) {
     .split("/")
     .map((name) =>
       // convert name to PascalCase
-      name
-        .split("-")
-        .map((str) => _.capitalize(str))
-        .join("")
+      name.split("-").map(capitalize).join("")
     )
     .join("");
   for (const file of files) {

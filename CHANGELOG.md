@@ -1,5 +1,11 @@
 # Changelog
 
+## `v0.0.27`
+
+### Miscellaneous
+
+- Changed `lodash` dependency to `lodash-es`
+
 ## `v0.0.26`
 
 ### Breaking Changes
