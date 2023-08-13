@@ -40,7 +40,7 @@ export class StationWalletConnectV1 extends ConnectedWallet {
   }
 
   public async signArbitrary(data: string): Promise<SignArbitraryResponse> {
-    const res = await this.sendRequest<SignBytesResponse["result"]>(
+    const res = await this.sendRequest<SignBytesResponse>(
       "signBytes",
       fromStringToBase64(data)
     );
@@ -57,7 +57,7 @@ export class StationWalletConnectV1 extends ConnectedWallet {
   ): Promise<string> {
     const { fee } = await this.prepBroadcastTx(unsignedTx, opts);
     const { msgs, memo } = unsignedTx;
-    const { txhash } = await this.sendRequest<PostResponse["result"]>(
+    const { txhash } = await this.sendRequest<PostResponse>(
       "post",
       toStationTx(this.chainId, fee, msgs, memo)
     );
