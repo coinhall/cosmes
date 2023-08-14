@@ -10,19 +10,16 @@ import { ConnectedWallet } from "../ConnectedWallet";
 import { ChainInfo, WalletController } from "../WalletController";
 import { StationExtension } from "./StationExtension";
 import { StationWalletConnectV1 } from "./StationWalletConnectV1";
-import { ExtensionDispatcher } from "./extension/ExtensionDispatcher";
 
 const TERRA_CLASSIC_CHAIN_ID = "columbus-5";
 const TERRA_CHAIN_ID = "phoenix-1";
 const TERRA_CHAINS = [TERRA_CLASSIC_CHAIN_ID, TERRA_CHAIN_ID];
 
 export class StationController extends WalletController {
-  private readonly ext: ExtensionDispatcher;
   private readonly wc: WalletConnectV1;
 
   constructor() {
     super(WalletName.STATION);
-    this.ext = new ExtensionDispatcher();
     this.wc = new WalletConnectV1(
       "cosmes.wallet.station.wcSession",
       {
@@ -40,7 +37,7 @@ export class StationController extends WalletController {
   }
 
   public async isInstalled(type: WalletType) {
-    return type === WalletType.EXTENSION ? this.ext.isInstalled() : true;
+    return type === WalletType.EXTENSION ? "station" in window : true;
   }
 
   protected async connectWalletConnect<T extends string>(
@@ -73,10 +70,11 @@ export class StationController extends WalletController {
 
   protected async connectExtension<T extends string>(chains: ChainInfo<T>[]) {
     const wallets = new Map<T, ConnectedWallet>();
-    if (!this.ext.isInstalled()) {
+    const ext = window.station;
+    if (!ext) {
       throw new Error("Station extension is not installed");
     }
-    const { addresses, pubkey } = await this.ext.connect();
+    const { addresses, pubkey } = await ext.connect();
     // Station will only return one or the other, but not both
     // so we simply set the other one manually
     addresses[TERRA_CLASSIC_CHAIN_ID] ??= addresses[TERRA_CHAIN_ID];
@@ -93,7 +91,7 @@ export class StationController extends WalletController {
           await this.getPubKey(rpc, address);
       wallets.set(
         chainId,
-        new StationExtension(this.ext, chainId, key, address, rpc, gasPrice)
+        new StationExtension(ext, chainId, key, address, rpc, gasPrice)
       );
     }
     return wallets;

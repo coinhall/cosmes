@@ -1,10 +1,24 @@
 export type Window = {
-  isStationExtensionAvailable: boolean;
+  station: Station;
 };
 
-type ErrorResponse = {
-  code: number;
-  message: string;
+/**
+ * A subset of the Station extension API that is injected into the `window` object.
+ *
+ * @see https://github.com/terra-money/wallet-kit/blob/79600bb096d64754160909871dfdf89944120ce8/src/%40terra-money/station-connector/index.ts#L66
+ */
+export type Station = {
+  connect: () => Promise<ConnectResponse>;
+  getPublicKey: () => Promise<GetPubKeyResponse>;
+  signBytes(bytes: string, purgeQueue?: boolean): Promise<SignBytesResponse>;
+  post: (tx: StationTx, purgeQueue?: boolean) => Promise<PostResponse>;
+};
+
+export type StationTx = {
+  chainID: string;
+  msgs: string[];
+  fee?: string;
+  memo?: string;
 };
 
 export type ConnectResponse = {
@@ -36,21 +50,13 @@ export type GetPubKeyResponse = {
 };
 
 export type SignBytesResponse = {
-  success: boolean;
-  result: {
-    public_key: string;
-    signature: string;
-    recid: number;
-  };
-  error?: ErrorResponse | undefined;
+  public_key: string;
+  signature: string;
+  recid: number;
 };
 
 export type PostResponse = {
-  success: boolean;
-  result: {
-    code?: number | undefined;
-    raw_log: string;
-    txhash: string;
-  };
-  error?: ErrorResponse | undefined;
+  code?: number | undefined;
+  raw_log: string;
+  txhash: string;
 };

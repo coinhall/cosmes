@@ -1,6 +1,8 @@
 import { Adapter } from "cosmes/client";
 import { CosmosTxV1beta1Fee as Fee } from "cosmes/protobufs";
 
+import { StationTx } from "../types";
+
 /**
  * Translates the given args to a tx that can be sent to either
  * the Station extension wallet or WalletConnect wallet.
@@ -10,7 +12,7 @@ export function toStationTx(
   fee: Fee,
   msgs: Adapter[],
   memo?: string | undefined
-) {
+): StationTx {
   return {
     chainID: chainId,
     fee: toStationFee(fee),
