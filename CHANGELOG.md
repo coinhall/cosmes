@@ -1,5 +1,11 @@
 # Changelog
 
+## `v0.0.28`
+
+### Features
+
+- Updated Station extension to use the new APIs injected into the `window` scope
+
 ## `v0.0.27`
 
 ### Miscellaneous
