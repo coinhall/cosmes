@@ -38,6 +38,10 @@ const REPOS = [
     repo: "osmosis-labs/osmosis",
     paths: ["proto"],
   },
+  {
+    repo: "cosmos/ibc-go#main",
+    paths: ["proto"],
+  }
 ];
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
