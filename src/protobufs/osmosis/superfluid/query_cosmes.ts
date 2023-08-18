@@ -194,6 +194,8 @@ export const QueryUnpoolWhitelistService = {
 } as const;
 
 /**
+ * Returns all of a user's full range CL positions that are superfluid staked.
+ *
  * @generated from rpc osmosis.superfluid.Query.UserConcentratedSuperfluidPositionsDelegated
  */
 export const QueryUserConcentratedSuperfluidPositionsDelegatedService = {

@@ -8,6 +8,7 @@ import { Any, Message, proto3, protoInt64 } from "@bufbuild/protobuf";
 import { PageRequest, PageResponse } from "../../../cosmos/base/query/v1beta1/pagination_pb.js";
 import { Coin } from "../../../cosmos/base/v1beta1/coin_pb.js";
 import { SwapAmountInRoute, SwapAmountOutRoute } from "../../poolmanager/v1beta1/swap_route_pb.js";
+import { MigrationRecords } from "./shared_pb.js";
 
 /**
  * =============================== Pool
@@ -1341,6 +1342,76 @@ export class QueryConcentratedPoolIdLinkFromCFMMResponse extends Message<QueryCo
 
   static equals(a: QueryConcentratedPoolIdLinkFromCFMMResponse | PlainMessage<QueryConcentratedPoolIdLinkFromCFMMResponse> | undefined, b: QueryConcentratedPoolIdLinkFromCFMMResponse | PlainMessage<QueryConcentratedPoolIdLinkFromCFMMResponse> | undefined): boolean {
     return proto3.util.equals(QueryConcentratedPoolIdLinkFromCFMMResponse, a, b);
+  }
+}
+
+/**
+ * =============================== QueryCFMMConcentratedPoolLinks
+ *
+ * @generated from message osmosis.gamm.v1beta1.QueryCFMMConcentratedPoolLinksRequest
+ */
+export class QueryCFMMConcentratedPoolLinksRequest extends Message<QueryCFMMConcentratedPoolLinksRequest> {
+  constructor(data?: PartialMessage<QueryCFMMConcentratedPoolLinksRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "osmosis.gamm.v1beta1.QueryCFMMConcentratedPoolLinksRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): QueryCFMMConcentratedPoolLinksRequest {
+    return new QueryCFMMConcentratedPoolLinksRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): QueryCFMMConcentratedPoolLinksRequest {
+    return new QueryCFMMConcentratedPoolLinksRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): QueryCFMMConcentratedPoolLinksRequest {
+    return new QueryCFMMConcentratedPoolLinksRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: QueryCFMMConcentratedPoolLinksRequest | PlainMessage<QueryCFMMConcentratedPoolLinksRequest> | undefined, b: QueryCFMMConcentratedPoolLinksRequest | PlainMessage<QueryCFMMConcentratedPoolLinksRequest> | undefined): boolean {
+    return proto3.util.equals(QueryCFMMConcentratedPoolLinksRequest, a, b);
+  }
+}
+
+/**
+ * @generated from message osmosis.gamm.v1beta1.QueryCFMMConcentratedPoolLinksResponse
+ */
+export class QueryCFMMConcentratedPoolLinksResponse extends Message<QueryCFMMConcentratedPoolLinksResponse> {
+  /**
+   * @generated from field: osmosis.gamm.v1beta1.MigrationRecords migration_records = 1;
+   */
+  migrationRecords?: MigrationRecords;
+
+  constructor(data?: PartialMessage<QueryCFMMConcentratedPoolLinksResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "osmosis.gamm.v1beta1.QueryCFMMConcentratedPoolLinksResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "migration_records", kind: "message", T: MigrationRecords },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): QueryCFMMConcentratedPoolLinksResponse {
+    return new QueryCFMMConcentratedPoolLinksResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): QueryCFMMConcentratedPoolLinksResponse {
+    return new QueryCFMMConcentratedPoolLinksResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): QueryCFMMConcentratedPoolLinksResponse {
+    return new QueryCFMMConcentratedPoolLinksResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: QueryCFMMConcentratedPoolLinksResponse | PlainMessage<QueryCFMMConcentratedPoolLinksResponse> | undefined, b: QueryCFMMConcentratedPoolLinksResponse | PlainMessage<QueryCFMMConcentratedPoolLinksResponse> | undefined): boolean {
+    return proto3.util.equals(QueryCFMMConcentratedPoolLinksResponse, a, b);
   }
 }
 

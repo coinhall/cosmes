@@ -131,6 +131,61 @@ export class EstimateSwapExactAmountInRequest extends Message<EstimateSwapExactA
 }
 
 /**
+ * @generated from message osmosis.poolmanager.v1beta1.EstimateSwapExactAmountInWithPrimitiveTypesRequest
+ */
+export class EstimateSwapExactAmountInWithPrimitiveTypesRequest extends Message<EstimateSwapExactAmountInWithPrimitiveTypesRequest> {
+  /**
+   * @generated from field: uint64 pool_id = 1;
+   */
+  poolId = protoInt64.zero;
+
+  /**
+   * @generated from field: string token_in = 2;
+   */
+  tokenIn = "";
+
+  /**
+   * @generated from field: repeated uint64 routes_pool_id = 3;
+   */
+  routesPoolId: bigint[] = [];
+
+  /**
+   * @generated from field: repeated string routes_token_out_denom = 4;
+   */
+  routesTokenOutDenom: string[] = [];
+
+  constructor(data?: PartialMessage<EstimateSwapExactAmountInWithPrimitiveTypesRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "osmosis.poolmanager.v1beta1.EstimateSwapExactAmountInWithPrimitiveTypesRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "pool_id", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+    { no: 2, name: "token_in", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "routes_pool_id", kind: "scalar", T: 4 /* ScalarType.UINT64 */, repeated: true },
+    { no: 4, name: "routes_token_out_denom", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): EstimateSwapExactAmountInWithPrimitiveTypesRequest {
+    return new EstimateSwapExactAmountInWithPrimitiveTypesRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): EstimateSwapExactAmountInWithPrimitiveTypesRequest {
+    return new EstimateSwapExactAmountInWithPrimitiveTypesRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): EstimateSwapExactAmountInWithPrimitiveTypesRequest {
+    return new EstimateSwapExactAmountInWithPrimitiveTypesRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: EstimateSwapExactAmountInWithPrimitiveTypesRequest | PlainMessage<EstimateSwapExactAmountInWithPrimitiveTypesRequest> | undefined, b: EstimateSwapExactAmountInWithPrimitiveTypesRequest | PlainMessage<EstimateSwapExactAmountInWithPrimitiveTypesRequest> | undefined): boolean {
+    return proto3.util.equals(EstimateSwapExactAmountInWithPrimitiveTypesRequest, a, b);
+  }
+}
+
+/**
  * @generated from message osmosis.poolmanager.v1beta1.EstimateSinglePoolSwapExactAmountInRequest
  */
 export class EstimateSinglePoolSwapExactAmountInRequest extends Message<EstimateSinglePoolSwapExactAmountInRequest> {
@@ -264,6 +319,61 @@ export class EstimateSwapExactAmountOutRequest extends Message<EstimateSwapExact
 
   static equals(a: EstimateSwapExactAmountOutRequest | PlainMessage<EstimateSwapExactAmountOutRequest> | undefined, b: EstimateSwapExactAmountOutRequest | PlainMessage<EstimateSwapExactAmountOutRequest> | undefined): boolean {
     return proto3.util.equals(EstimateSwapExactAmountOutRequest, a, b);
+  }
+}
+
+/**
+ * @generated from message osmosis.poolmanager.v1beta1.EstimateSwapExactAmountOutWithPrimitiveTypesRequest
+ */
+export class EstimateSwapExactAmountOutWithPrimitiveTypesRequest extends Message<EstimateSwapExactAmountOutWithPrimitiveTypesRequest> {
+  /**
+   * @generated from field: uint64 pool_id = 1;
+   */
+  poolId = protoInt64.zero;
+
+  /**
+   * @generated from field: repeated uint64 routes_pool_id = 2;
+   */
+  routesPoolId: bigint[] = [];
+
+  /**
+   * @generated from field: repeated string routes_token_in_denom = 3;
+   */
+  routesTokenInDenom: string[] = [];
+
+  /**
+   * @generated from field: string token_out = 4;
+   */
+  tokenOut = "";
+
+  constructor(data?: PartialMessage<EstimateSwapExactAmountOutWithPrimitiveTypesRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "osmosis.poolmanager.v1beta1.EstimateSwapExactAmountOutWithPrimitiveTypesRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "pool_id", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+    { no: 2, name: "routes_pool_id", kind: "scalar", T: 4 /* ScalarType.UINT64 */, repeated: true },
+    { no: 3, name: "routes_token_in_denom", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
+    { no: 4, name: "token_out", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): EstimateSwapExactAmountOutWithPrimitiveTypesRequest {
+    return new EstimateSwapExactAmountOutWithPrimitiveTypesRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): EstimateSwapExactAmountOutWithPrimitiveTypesRequest {
+    return new EstimateSwapExactAmountOutWithPrimitiveTypesRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): EstimateSwapExactAmountOutWithPrimitiveTypesRequest {
+    return new EstimateSwapExactAmountOutWithPrimitiveTypesRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: EstimateSwapExactAmountOutWithPrimitiveTypesRequest | PlainMessage<EstimateSwapExactAmountOutWithPrimitiveTypesRequest> | undefined, b: EstimateSwapExactAmountOutWithPrimitiveTypesRequest | PlainMessage<EstimateSwapExactAmountOutWithPrimitiveTypesRequest> | undefined): boolean {
+    return proto3.util.equals(EstimateSwapExactAmountOutWithPrimitiveTypesRequest, a, b);
   }
 }
 

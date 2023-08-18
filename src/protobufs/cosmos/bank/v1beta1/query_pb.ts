@@ -835,6 +835,90 @@ export class QueryDenomMetadataResponse extends Message<QueryDenomMetadataRespon
 }
 
 /**
+ * QueryDenomMetadataByQueryStringRequest is the request type for the Query/DenomMetadata RPC method.
+ * Identical with QueryDenomMetadataRequest but receives denom as query string.
+ *
+ * @generated from message cosmos.bank.v1beta1.QueryDenomMetadataByQueryStringRequest
+ */
+export class QueryDenomMetadataByQueryStringRequest extends Message<QueryDenomMetadataByQueryStringRequest> {
+  /**
+   * denom is the coin denom to query the metadata for.
+   *
+   * @generated from field: string denom = 1;
+   */
+  denom = "";
+
+  constructor(data?: PartialMessage<QueryDenomMetadataByQueryStringRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "cosmos.bank.v1beta1.QueryDenomMetadataByQueryStringRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "denom", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): QueryDenomMetadataByQueryStringRequest {
+    return new QueryDenomMetadataByQueryStringRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): QueryDenomMetadataByQueryStringRequest {
+    return new QueryDenomMetadataByQueryStringRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): QueryDenomMetadataByQueryStringRequest {
+    return new QueryDenomMetadataByQueryStringRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: QueryDenomMetadataByQueryStringRequest | PlainMessage<QueryDenomMetadataByQueryStringRequest> | undefined, b: QueryDenomMetadataByQueryStringRequest | PlainMessage<QueryDenomMetadataByQueryStringRequest> | undefined): boolean {
+    return proto3.util.equals(QueryDenomMetadataByQueryStringRequest, a, b);
+  }
+}
+
+/**
+ * QueryDenomMetadataByQueryStringResponse is the response type for the Query/DenomMetadata RPC
+ * method. Identical with QueryDenomMetadataResponse but receives denom as query string in request.
+ *
+ * @generated from message cosmos.bank.v1beta1.QueryDenomMetadataByQueryStringResponse
+ */
+export class QueryDenomMetadataByQueryStringResponse extends Message<QueryDenomMetadataByQueryStringResponse> {
+  /**
+   * metadata describes and provides all the client information for the requested token.
+   *
+   * @generated from field: cosmos.bank.v1beta1.Metadata metadata = 1;
+   */
+  metadata?: Metadata;
+
+  constructor(data?: PartialMessage<QueryDenomMetadataByQueryStringResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "cosmos.bank.v1beta1.QueryDenomMetadataByQueryStringResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "metadata", kind: "message", T: Metadata },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): QueryDenomMetadataByQueryStringResponse {
+    return new QueryDenomMetadataByQueryStringResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): QueryDenomMetadataByQueryStringResponse {
+    return new QueryDenomMetadataByQueryStringResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): QueryDenomMetadataByQueryStringResponse {
+    return new QueryDenomMetadataByQueryStringResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: QueryDenomMetadataByQueryStringResponse | PlainMessage<QueryDenomMetadataByQueryStringResponse> | undefined, b: QueryDenomMetadataByQueryStringResponse | PlainMessage<QueryDenomMetadataByQueryStringResponse> | undefined): boolean {
+    return proto3.util.equals(QueryDenomMetadataByQueryStringResponse, a, b);
+  }
+}
+
+/**
  * QueryDenomOwnersRequest defines the request type for the DenomOwners RPC query,
  * which queries for a paginated set of all account holders of a particular
  * denomination.

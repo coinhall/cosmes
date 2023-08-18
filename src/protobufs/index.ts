@@ -292,6 +292,8 @@ export {
   MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionResponse as OsmosisSuperfluidMsgUnlockAndMigrateSharesToFullRangeConcentratedPositionResponse,
   MsgAddToConcentratedLiquiditySuperfluidPosition as OsmosisSuperfluidMsgAddToConcentratedLiquiditySuperfluidPosition,
   MsgAddToConcentratedLiquiditySuperfluidPositionResponse as OsmosisSuperfluidMsgAddToConcentratedLiquiditySuperfluidPositionResponse,
+  MsgUnbondConvertAndStake as OsmosisSuperfluidMsgUnbondConvertAndStake,
+  MsgUnbondConvertAndStakeResponse as OsmosisSuperfluidMsgUnbondConvertAndStakeResponse,
 } from "./osmosis/superfluid/tx_pb.js";
 export {
   MsgSuperfluidDelegateService as OsmosisSuperfluidMsgSuperfluidDelegateService,
@@ -303,6 +305,7 @@ export {
   MsgUnPoolWhitelistedPoolService as OsmosisSuperfluidMsgUnPoolWhitelistedPoolService,
   MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionService as OsmosisSuperfluidMsgUnlockAndMigrateSharesToFullRangeConcentratedPositionService,
   MsgAddToConcentratedLiquiditySuperfluidPositionService as OsmosisSuperfluidMsgAddToConcentratedLiquiditySuperfluidPositionService,
+  MsgUnbondConvertAndStakeService as OsmosisSuperfluidMsgUnbondConvertAndStakeService,
 } from "./osmosis/superfluid/tx_cosmes.js";
 export {
   SuperfluidAssetType as OsmosisSuperfluidSuperfluidAssetType,
@@ -392,8 +395,8 @@ export {
   MsgSetHotRoutesResponse as OsmosisProtorevV1beta1MsgSetHotRoutesResponse,
   MsgSetDeveloperAccount as OsmosisProtorevV1beta1MsgSetDeveloperAccount,
   MsgSetDeveloperAccountResponse as OsmosisProtorevV1beta1MsgSetDeveloperAccountResponse,
-  MsgSetPoolWeights as OsmosisProtorevV1beta1MsgSetPoolWeights,
-  MsgSetPoolWeightsResponse as OsmosisProtorevV1beta1MsgSetPoolWeightsResponse,
+  MsgSetInfoByPoolType as OsmosisProtorevV1beta1MsgSetInfoByPoolType,
+  MsgSetInfoByPoolTypeResponse as OsmosisProtorevV1beta1MsgSetInfoByPoolTypeResponse,
   MsgSetMaxPoolPointsPerTx as OsmosisProtorevV1beta1MsgSetMaxPoolPointsPerTx,
   MsgSetMaxPoolPointsPerTxResponse as OsmosisProtorevV1beta1MsgSetMaxPoolPointsPerTxResponse,
   MsgSetMaxPoolPointsPerBlock as OsmosisProtorevV1beta1MsgSetMaxPoolPointsPerBlock,
@@ -406,7 +409,7 @@ export {
   MsgSetDeveloperAccountService as OsmosisProtorevV1beta1MsgSetDeveloperAccountService,
   MsgSetMaxPoolPointsPerTxService as OsmosisProtorevV1beta1MsgSetMaxPoolPointsPerTxService,
   MsgSetMaxPoolPointsPerBlockService as OsmosisProtorevV1beta1MsgSetMaxPoolPointsPerBlockService,
-  MsgSetPoolWeightsService as OsmosisProtorevV1beta1MsgSetPoolWeightsService,
+  MsgSetInfoByPoolTypeService as OsmosisProtorevV1beta1MsgSetInfoByPoolTypeService,
   MsgSetBaseDenomsService as OsmosisProtorevV1beta1MsgSetBaseDenomsService,
 } from "./osmosis/protorev/v1beta1/tx_cosmes.js";
 export {
@@ -428,8 +431,8 @@ export {
   QueryGetProtoRevAdminAccountResponse as OsmosisProtorevV1beta1QueryGetProtoRevAdminAccountResponse,
   QueryGetProtoRevDeveloperAccountRequest as OsmosisProtorevV1beta1QueryGetProtoRevDeveloperAccountRequest,
   QueryGetProtoRevDeveloperAccountResponse as OsmosisProtorevV1beta1QueryGetProtoRevDeveloperAccountResponse,
-  QueryGetProtoRevPoolWeightsRequest as OsmosisProtorevV1beta1QueryGetProtoRevPoolWeightsRequest,
-  QueryGetProtoRevPoolWeightsResponse as OsmosisProtorevV1beta1QueryGetProtoRevPoolWeightsResponse,
+  QueryGetProtoRevInfoByPoolTypeRequest as OsmosisProtorevV1beta1QueryGetProtoRevInfoByPoolTypeRequest,
+  QueryGetProtoRevInfoByPoolTypeResponse as OsmosisProtorevV1beta1QueryGetProtoRevInfoByPoolTypeResponse,
   QueryGetProtoRevMaxPoolPointsPerBlockRequest as OsmosisProtorevV1beta1QueryGetProtoRevMaxPoolPointsPerBlockRequest,
   QueryGetProtoRevMaxPoolPointsPerBlockResponse as OsmosisProtorevV1beta1QueryGetProtoRevMaxPoolPointsPerBlockResponse,
   QueryGetProtoRevMaxPoolPointsPerTxRequest as OsmosisProtorevV1beta1QueryGetProtoRevMaxPoolPointsPerTxRequest,
@@ -451,7 +454,7 @@ export {
   QueryGetProtoRevTokenPairArbRoutesService as OsmosisProtorevV1beta1QueryGetProtoRevTokenPairArbRoutesService,
   QueryGetProtoRevAdminAccountService as OsmosisProtorevV1beta1QueryGetProtoRevAdminAccountService,
   QueryGetProtoRevDeveloperAccountService as OsmosisProtorevV1beta1QueryGetProtoRevDeveloperAccountService,
-  QueryGetProtoRevPoolWeightsService as OsmosisProtorevV1beta1QueryGetProtoRevPoolWeightsService,
+  QueryGetProtoRevInfoByPoolTypeService as OsmosisProtorevV1beta1QueryGetProtoRevInfoByPoolTypeService,
   QueryGetProtoRevMaxPoolPointsPerTxService as OsmosisProtorevV1beta1QueryGetProtoRevMaxPoolPointsPerTxService,
   QueryGetProtoRevMaxPoolPointsPerBlockService as OsmosisProtorevV1beta1QueryGetProtoRevMaxPoolPointsPerBlockService,
   QueryGetProtoRevBaseDenomsService as OsmosisProtorevV1beta1QueryGetProtoRevBaseDenomsService,
@@ -464,6 +467,12 @@ export {
   Trade as OsmosisProtorevV1beta1Trade,
   RouteStatistics as OsmosisProtorevV1beta1RouteStatistics,
   PoolWeights as OsmosisProtorevV1beta1PoolWeights,
+  InfoByPoolType as OsmosisProtorevV1beta1InfoByPoolType,
+  StablePoolInfo as OsmosisProtorevV1beta1StablePoolInfo,
+  BalancerPoolInfo as OsmosisProtorevV1beta1BalancerPoolInfo,
+  ConcentratedPoolInfo as OsmosisProtorevV1beta1ConcentratedPoolInfo,
+  CosmwasmPoolInfo as OsmosisProtorevV1beta1CosmwasmPoolInfo,
+  WeightMap as OsmosisProtorevV1beta1WeightMap,
   BaseDenom as OsmosisProtorevV1beta1BaseDenom,
 } from "./osmosis/protorev/v1beta1/protorev_pb.js";
 export {
@@ -502,9 +511,11 @@ export {
   ParamsRequest as OsmosisPoolmanagerV1beta1ParamsRequest,
   ParamsResponse as OsmosisPoolmanagerV1beta1ParamsResponse,
   EstimateSwapExactAmountInRequest as OsmosisPoolmanagerV1beta1EstimateSwapExactAmountInRequest,
+  EstimateSwapExactAmountInWithPrimitiveTypesRequest as OsmosisPoolmanagerV1beta1EstimateSwapExactAmountInWithPrimitiveTypesRequest,
   EstimateSinglePoolSwapExactAmountInRequest as OsmosisPoolmanagerV1beta1EstimateSinglePoolSwapExactAmountInRequest,
   EstimateSwapExactAmountInResponse as OsmosisPoolmanagerV1beta1EstimateSwapExactAmountInResponse,
   EstimateSwapExactAmountOutRequest as OsmosisPoolmanagerV1beta1EstimateSwapExactAmountOutRequest,
+  EstimateSwapExactAmountOutWithPrimitiveTypesRequest as OsmosisPoolmanagerV1beta1EstimateSwapExactAmountOutWithPrimitiveTypesRequest,
   EstimateSinglePoolSwapExactAmountOutRequest as OsmosisPoolmanagerV1beta1EstimateSinglePoolSwapExactAmountOutRequest,
   EstimateSwapExactAmountOutResponse as OsmosisPoolmanagerV1beta1EstimateSwapExactAmountOutResponse,
   NumPoolsRequest as OsmosisPoolmanagerV1beta1NumPoolsRequest,
@@ -523,8 +534,10 @@ export {
 export {
   QueryParamsService as OsmosisPoolmanagerV1beta1QueryParamsService,
   QueryEstimateSwapExactAmountInService as OsmosisPoolmanagerV1beta1QueryEstimateSwapExactAmountInService,
+  QueryEstimateSwapExactAmountInWithPrimitiveTypesService as OsmosisPoolmanagerV1beta1QueryEstimateSwapExactAmountInWithPrimitiveTypesService,
   QueryEstimateSinglePoolSwapExactAmountInService as OsmosisPoolmanagerV1beta1QueryEstimateSinglePoolSwapExactAmountInService,
   QueryEstimateSwapExactAmountOutService as OsmosisPoolmanagerV1beta1QueryEstimateSwapExactAmountOutService,
+  QueryEstimateSwapExactAmountOutWithPrimitiveTypesService as OsmosisPoolmanagerV1beta1QueryEstimateSwapExactAmountOutWithPrimitiveTypesService,
   QueryEstimateSinglePoolSwapExactAmountOutService as OsmosisPoolmanagerV1beta1QueryEstimateSinglePoolSwapExactAmountOutService,
   QueryNumPoolsService as OsmosisPoolmanagerV1beta1QueryNumPoolsService,
   QueryPoolService as OsmosisPoolmanagerV1beta1QueryPoolService,
@@ -766,6 +779,19 @@ export {
   GenesisState as OsmosisIbcRateLimitV1beta1GenesisState,
 } from "./osmosis/ibc-rate-limit/v1beta1/genesis_pb.js";
 export {
+  MsgEmitIBCAck as OsmosisIbcHooksMsgEmitIBCAck,
+  MsgEmitIBCAckResponse as OsmosisIbcHooksMsgEmitIBCAckResponse,
+} from "./osmosis/ibc-hooks/tx_pb.js";
+export {
+  MsgEmitIBCAckService as OsmosisIbcHooksMsgEmitIBCAckService,
+} from "./osmosis/ibc-hooks/tx_cosmes.js";
+export {
+  Params as OsmosisIbcHooksParams,
+} from "./osmosis/ibc-hooks/params_pb.js";
+export {
+  GenesisState as OsmosisIbcHooksGenesisState,
+} from "./osmosis/ibc-hooks/genesis_pb.js";
+export {
   QuerySpotPriceRequest as OsmosisGammV2QuerySpotPriceRequest,
   QuerySpotPriceResponse as OsmosisGammV2QuerySpotPriceResponse,
 } from "./osmosis/gamm/v2/query_pb.js";
@@ -837,6 +863,8 @@ export {
   QueryTotalLiquidityResponse as OsmosisGammV1beta1QueryTotalLiquidityResponse,
   QueryConcentratedPoolIdLinkFromCFMMRequest as OsmosisGammV1beta1QueryConcentratedPoolIdLinkFromCFMMRequest,
   QueryConcentratedPoolIdLinkFromCFMMResponse as OsmosisGammV1beta1QueryConcentratedPoolIdLinkFromCFMMResponse,
+  QueryCFMMConcentratedPoolLinksRequest as OsmosisGammV1beta1QueryCFMMConcentratedPoolLinksRequest,
+  QueryCFMMConcentratedPoolLinksResponse as OsmosisGammV1beta1QueryCFMMConcentratedPoolLinksResponse,
 } from "./osmosis/gamm/v1beta1/query_pb.js";
 export {
   QueryPoolsService as OsmosisGammV1beta1QueryPoolsService,
@@ -855,10 +883,14 @@ export {
   QueryEstimateSwapExactAmountInService as OsmosisGammV1beta1QueryEstimateSwapExactAmountInService,
   QueryEstimateSwapExactAmountOutService as OsmosisGammV1beta1QueryEstimateSwapExactAmountOutService,
   QueryConcentratedPoolIdLinkFromCFMMService as OsmosisGammV1beta1QueryConcentratedPoolIdLinkFromCFMMService,
+  QueryCFMMConcentratedPoolLinksService as OsmosisGammV1beta1QueryCFMMConcentratedPoolLinksService,
 } from "./osmosis/gamm/v1beta1/query_cosmes.js";
 export {
   ReplaceMigrationRecordsProposal as OsmosisGammV1beta1ReplaceMigrationRecordsProposal,
   UpdateMigrationRecordsProposal as OsmosisGammV1beta1UpdateMigrationRecordsProposal,
+  PoolRecordWithCFMMLink as OsmosisGammV1beta1PoolRecordWithCFMMLink,
+  CreateConcentratedLiquidityPoolsAndLinktoCFMMProposal as OsmosisGammV1beta1CreateConcentratedLiquidityPoolsAndLinktoCFMMProposal,
+  SetScalingFactorControllerProposal as OsmosisGammV1beta1SetScalingFactorControllerProposal,
 } from "./osmosis/gamm/v1beta1/gov_pb.js";
 export {
   Params as OsmosisGammV1beta1Params,
@@ -1107,6 +1139,445 @@ export {
   Record as OsmosisAccumV1beta1Record,
 } from "./osmosis/accum/v1beta1/accum_pb.js";
 export {
+  ClientState as IbcLightclientsTendermintV1ClientState,
+  ConsensusState as IbcLightclientsTendermintV1ConsensusState,
+  Misbehaviour as IbcLightclientsTendermintV1Misbehaviour,
+  Header as IbcLightclientsTendermintV1Header,
+  Fraction as IbcLightclientsTendermintV1Fraction,
+} from "./ibc/lightclients/tendermint/v1/tendermint_pb.js";
+export {
+  ClientState as IbcLightclientsSolomachineV3ClientState,
+  ConsensusState as IbcLightclientsSolomachineV3ConsensusState,
+  Header as IbcLightclientsSolomachineV3Header,
+  Misbehaviour as IbcLightclientsSolomachineV3Misbehaviour,
+  SignatureAndData as IbcLightclientsSolomachineV3SignatureAndData,
+  TimestampedSignatureData as IbcLightclientsSolomachineV3TimestampedSignatureData,
+  SignBytes as IbcLightclientsSolomachineV3SignBytes,
+  HeaderData as IbcLightclientsSolomachineV3HeaderData,
+} from "./ibc/lightclients/solomachine/v3/solomachine_pb.js";
+export {
+  DataType as IbcLightclientsSolomachineV2DataType,
+  ClientState as IbcLightclientsSolomachineV2ClientState,
+  ConsensusState as IbcLightclientsSolomachineV2ConsensusState,
+  Header as IbcLightclientsSolomachineV2Header,
+  Misbehaviour as IbcLightclientsSolomachineV2Misbehaviour,
+  SignatureAndData as IbcLightclientsSolomachineV2SignatureAndData,
+  TimestampedSignatureData as IbcLightclientsSolomachineV2TimestampedSignatureData,
+  SignBytes as IbcLightclientsSolomachineV2SignBytes,
+  HeaderData as IbcLightclientsSolomachineV2HeaderData,
+  ClientStateData as IbcLightclientsSolomachineV2ClientStateData,
+  ConsensusStateData as IbcLightclientsSolomachineV2ConsensusStateData,
+  ConnectionStateData as IbcLightclientsSolomachineV2ConnectionStateData,
+  ChannelStateData as IbcLightclientsSolomachineV2ChannelStateData,
+  PacketCommitmentData as IbcLightclientsSolomachineV2PacketCommitmentData,
+  PacketAcknowledgementData as IbcLightclientsSolomachineV2PacketAcknowledgementData,
+  PacketReceiptAbsenceData as IbcLightclientsSolomachineV2PacketReceiptAbsenceData,
+  NextSequenceRecvData as IbcLightclientsSolomachineV2NextSequenceRecvData,
+} from "./ibc/lightclients/solomachine/v2/solomachine_pb.js";
+export {
+  ClientState as IbcLightclientsLocalhostV2ClientState,
+} from "./ibc/lightclients/localhost/v2/localhost_pb.js";
+export {
+  GenesisState as IbcCoreTypesV1GenesisState,
+} from "./ibc/core/types/v1/genesis_pb.js";
+export {
+  MsgConnectionOpenInit as IbcCoreConnectionV1MsgConnectionOpenInit,
+  MsgConnectionOpenInitResponse as IbcCoreConnectionV1MsgConnectionOpenInitResponse,
+  MsgConnectionOpenTry as IbcCoreConnectionV1MsgConnectionOpenTry,
+  MsgConnectionOpenTryResponse as IbcCoreConnectionV1MsgConnectionOpenTryResponse,
+  MsgConnectionOpenAck as IbcCoreConnectionV1MsgConnectionOpenAck,
+  MsgConnectionOpenAckResponse as IbcCoreConnectionV1MsgConnectionOpenAckResponse,
+  MsgConnectionOpenConfirm as IbcCoreConnectionV1MsgConnectionOpenConfirm,
+  MsgConnectionOpenConfirmResponse as IbcCoreConnectionV1MsgConnectionOpenConfirmResponse,
+  MsgUpdateParams as IbcCoreConnectionV1MsgUpdateParams,
+  MsgUpdateParamsResponse as IbcCoreConnectionV1MsgUpdateParamsResponse,
+} from "./ibc/core/connection/v1/tx_pb.js";
+export {
+  MsgConnectionOpenInitService as IbcCoreConnectionV1MsgConnectionOpenInitService,
+  MsgConnectionOpenTryService as IbcCoreConnectionV1MsgConnectionOpenTryService,
+  MsgConnectionOpenAckService as IbcCoreConnectionV1MsgConnectionOpenAckService,
+  MsgConnectionOpenConfirmService as IbcCoreConnectionV1MsgConnectionOpenConfirmService,
+  MsgUpdateConnectionParamsService as IbcCoreConnectionV1MsgUpdateConnectionParamsService,
+} from "./ibc/core/connection/v1/tx_cosmes.js";
+export {
+  QueryConnectionRequest as IbcCoreConnectionV1QueryConnectionRequest,
+  QueryConnectionResponse as IbcCoreConnectionV1QueryConnectionResponse,
+  QueryConnectionsRequest as IbcCoreConnectionV1QueryConnectionsRequest,
+  QueryConnectionsResponse as IbcCoreConnectionV1QueryConnectionsResponse,
+  QueryClientConnectionsRequest as IbcCoreConnectionV1QueryClientConnectionsRequest,
+  QueryClientConnectionsResponse as IbcCoreConnectionV1QueryClientConnectionsResponse,
+  QueryConnectionClientStateRequest as IbcCoreConnectionV1QueryConnectionClientStateRequest,
+  QueryConnectionClientStateResponse as IbcCoreConnectionV1QueryConnectionClientStateResponse,
+  QueryConnectionConsensusStateRequest as IbcCoreConnectionV1QueryConnectionConsensusStateRequest,
+  QueryConnectionConsensusStateResponse as IbcCoreConnectionV1QueryConnectionConsensusStateResponse,
+  QueryConnectionParamsRequest as IbcCoreConnectionV1QueryConnectionParamsRequest,
+  QueryConnectionParamsResponse as IbcCoreConnectionV1QueryConnectionParamsResponse,
+} from "./ibc/core/connection/v1/query_pb.js";
+export {
+  QueryConnectionService as IbcCoreConnectionV1QueryConnectionService,
+  QueryConnectionsService as IbcCoreConnectionV1QueryConnectionsService,
+  QueryClientConnectionsService as IbcCoreConnectionV1QueryClientConnectionsService,
+  QueryConnectionClientStateService as IbcCoreConnectionV1QueryConnectionClientStateService,
+  QueryConnectionConsensusStateService as IbcCoreConnectionV1QueryConnectionConsensusStateService,
+  QueryConnectionParamsService as IbcCoreConnectionV1QueryConnectionParamsService,
+} from "./ibc/core/connection/v1/query_cosmes.js";
+export {
+  GenesisState as IbcCoreConnectionV1GenesisState,
+} from "./ibc/core/connection/v1/genesis_pb.js";
+export {
+  State as IbcCoreConnectionV1State,
+  ConnectionEnd as IbcCoreConnectionV1ConnectionEnd,
+  IdentifiedConnection as IbcCoreConnectionV1IdentifiedConnection,
+  Counterparty as IbcCoreConnectionV1Counterparty,
+  ClientPaths as IbcCoreConnectionV1ClientPaths,
+  ConnectionPaths as IbcCoreConnectionV1ConnectionPaths,
+  Version as IbcCoreConnectionV1Version,
+  Params as IbcCoreConnectionV1Params,
+} from "./ibc/core/connection/v1/connection_pb.js";
+export {
+  MerkleRoot as IbcCoreCommitmentV1MerkleRoot,
+  MerklePrefix as IbcCoreCommitmentV1MerklePrefix,
+  MerklePath as IbcCoreCommitmentV1MerklePath,
+  MerkleProof as IbcCoreCommitmentV1MerkleProof,
+} from "./ibc/core/commitment/v1/commitment_pb.js";
+export {
+  MsgCreateClient as IbcCoreClientV1MsgCreateClient,
+  MsgCreateClientResponse as IbcCoreClientV1MsgCreateClientResponse,
+  MsgUpdateClient as IbcCoreClientV1MsgUpdateClient,
+  MsgUpdateClientResponse as IbcCoreClientV1MsgUpdateClientResponse,
+  MsgUpgradeClient as IbcCoreClientV1MsgUpgradeClient,
+  MsgUpgradeClientResponse as IbcCoreClientV1MsgUpgradeClientResponse,
+  MsgSubmitMisbehaviour as IbcCoreClientV1MsgSubmitMisbehaviour,
+  MsgSubmitMisbehaviourResponse as IbcCoreClientV1MsgSubmitMisbehaviourResponse,
+  MsgUpdateParams as IbcCoreClientV1MsgUpdateParams,
+  MsgUpdateParamsResponse as IbcCoreClientV1MsgUpdateParamsResponse,
+} from "./ibc/core/client/v1/tx_pb.js";
+export {
+  MsgCreateClientService as IbcCoreClientV1MsgCreateClientService,
+  MsgUpdateClientService as IbcCoreClientV1MsgUpdateClientService,
+  MsgUpgradeClientService as IbcCoreClientV1MsgUpgradeClientService,
+  MsgSubmitMisbehaviourService as IbcCoreClientV1MsgSubmitMisbehaviourService,
+  MsgUpdateClientParamsService as IbcCoreClientV1MsgUpdateClientParamsService,
+} from "./ibc/core/client/v1/tx_cosmes.js";
+export {
+  QueryClientStateRequest as IbcCoreClientV1QueryClientStateRequest,
+  QueryClientStateResponse as IbcCoreClientV1QueryClientStateResponse,
+  QueryClientStatesRequest as IbcCoreClientV1QueryClientStatesRequest,
+  QueryClientStatesResponse as IbcCoreClientV1QueryClientStatesResponse,
+  QueryConsensusStateRequest as IbcCoreClientV1QueryConsensusStateRequest,
+  QueryConsensusStateResponse as IbcCoreClientV1QueryConsensusStateResponse,
+  QueryConsensusStatesRequest as IbcCoreClientV1QueryConsensusStatesRequest,
+  QueryConsensusStatesResponse as IbcCoreClientV1QueryConsensusStatesResponse,
+  QueryConsensusStateHeightsRequest as IbcCoreClientV1QueryConsensusStateHeightsRequest,
+  QueryConsensusStateHeightsResponse as IbcCoreClientV1QueryConsensusStateHeightsResponse,
+  QueryClientStatusRequest as IbcCoreClientV1QueryClientStatusRequest,
+  QueryClientStatusResponse as IbcCoreClientV1QueryClientStatusResponse,
+  QueryClientParamsRequest as IbcCoreClientV1QueryClientParamsRequest,
+  QueryClientParamsResponse as IbcCoreClientV1QueryClientParamsResponse,
+  QueryUpgradedClientStateRequest as IbcCoreClientV1QueryUpgradedClientStateRequest,
+  QueryUpgradedClientStateResponse as IbcCoreClientV1QueryUpgradedClientStateResponse,
+  QueryUpgradedConsensusStateRequest as IbcCoreClientV1QueryUpgradedConsensusStateRequest,
+  QueryUpgradedConsensusStateResponse as IbcCoreClientV1QueryUpgradedConsensusStateResponse,
+} from "./ibc/core/client/v1/query_pb.js";
+export {
+  QueryClientStateService as IbcCoreClientV1QueryClientStateService,
+  QueryClientStatesService as IbcCoreClientV1QueryClientStatesService,
+  QueryConsensusStateService as IbcCoreClientV1QueryConsensusStateService,
+  QueryConsensusStatesService as IbcCoreClientV1QueryConsensusStatesService,
+  QueryConsensusStateHeightsService as IbcCoreClientV1QueryConsensusStateHeightsService,
+  QueryClientStatusService as IbcCoreClientV1QueryClientStatusService,
+  QueryClientParamsService as IbcCoreClientV1QueryClientParamsService,
+  QueryUpgradedClientStateService as IbcCoreClientV1QueryUpgradedClientStateService,
+  QueryUpgradedConsensusStateService as IbcCoreClientV1QueryUpgradedConsensusStateService,
+} from "./ibc/core/client/v1/query_cosmes.js";
+export {
+  GenesisState as IbcCoreClientV1GenesisState,
+  GenesisMetadata as IbcCoreClientV1GenesisMetadata,
+  IdentifiedGenesisMetadata as IbcCoreClientV1IdentifiedGenesisMetadata,
+} from "./ibc/core/client/v1/genesis_pb.js";
+export {
+  IdentifiedClientState as IbcCoreClientV1IdentifiedClientState,
+  ConsensusStateWithHeight as IbcCoreClientV1ConsensusStateWithHeight,
+  ClientConsensusStates as IbcCoreClientV1ClientConsensusStates,
+  ClientUpdateProposal as IbcCoreClientV1ClientUpdateProposal,
+  UpgradeProposal as IbcCoreClientV1UpgradeProposal,
+  Height as IbcCoreClientV1Height,
+  Params as IbcCoreClientV1Params,
+} from "./ibc/core/client/v1/client_pb.js";
+export {
+  ResponseResultType as IbcCoreChannelV1ResponseResultType,
+  MsgChannelOpenInit as IbcCoreChannelV1MsgChannelOpenInit,
+  MsgChannelOpenInitResponse as IbcCoreChannelV1MsgChannelOpenInitResponse,
+  MsgChannelOpenTry as IbcCoreChannelV1MsgChannelOpenTry,
+  MsgChannelOpenTryResponse as IbcCoreChannelV1MsgChannelOpenTryResponse,
+  MsgChannelOpenAck as IbcCoreChannelV1MsgChannelOpenAck,
+  MsgChannelOpenAckResponse as IbcCoreChannelV1MsgChannelOpenAckResponse,
+  MsgChannelOpenConfirm as IbcCoreChannelV1MsgChannelOpenConfirm,
+  MsgChannelOpenConfirmResponse as IbcCoreChannelV1MsgChannelOpenConfirmResponse,
+  MsgChannelCloseInit as IbcCoreChannelV1MsgChannelCloseInit,
+  MsgChannelCloseInitResponse as IbcCoreChannelV1MsgChannelCloseInitResponse,
+  MsgChannelCloseConfirm as IbcCoreChannelV1MsgChannelCloseConfirm,
+  MsgChannelCloseConfirmResponse as IbcCoreChannelV1MsgChannelCloseConfirmResponse,
+  MsgRecvPacket as IbcCoreChannelV1MsgRecvPacket,
+  MsgRecvPacketResponse as IbcCoreChannelV1MsgRecvPacketResponse,
+  MsgTimeout as IbcCoreChannelV1MsgTimeout,
+  MsgTimeoutResponse as IbcCoreChannelV1MsgTimeoutResponse,
+  MsgTimeoutOnClose as IbcCoreChannelV1MsgTimeoutOnClose,
+  MsgTimeoutOnCloseResponse as IbcCoreChannelV1MsgTimeoutOnCloseResponse,
+  MsgAcknowledgement as IbcCoreChannelV1MsgAcknowledgement,
+  MsgAcknowledgementResponse as IbcCoreChannelV1MsgAcknowledgementResponse,
+} from "./ibc/core/channel/v1/tx_pb.js";
+export {
+  MsgChannelOpenInitService as IbcCoreChannelV1MsgChannelOpenInitService,
+  MsgChannelOpenTryService as IbcCoreChannelV1MsgChannelOpenTryService,
+  MsgChannelOpenAckService as IbcCoreChannelV1MsgChannelOpenAckService,
+  MsgChannelOpenConfirmService as IbcCoreChannelV1MsgChannelOpenConfirmService,
+  MsgChannelCloseInitService as IbcCoreChannelV1MsgChannelCloseInitService,
+  MsgChannelCloseConfirmService as IbcCoreChannelV1MsgChannelCloseConfirmService,
+  MsgRecvPacketService as IbcCoreChannelV1MsgRecvPacketService,
+  MsgTimeoutService as IbcCoreChannelV1MsgTimeoutService,
+  MsgTimeoutOnCloseService as IbcCoreChannelV1MsgTimeoutOnCloseService,
+  MsgAcknowledgementService as IbcCoreChannelV1MsgAcknowledgementService,
+} from "./ibc/core/channel/v1/tx_cosmes.js";
+export {
+  QueryChannelRequest as IbcCoreChannelV1QueryChannelRequest,
+  QueryChannelResponse as IbcCoreChannelV1QueryChannelResponse,
+  QueryChannelsRequest as IbcCoreChannelV1QueryChannelsRequest,
+  QueryChannelsResponse as IbcCoreChannelV1QueryChannelsResponse,
+  QueryConnectionChannelsRequest as IbcCoreChannelV1QueryConnectionChannelsRequest,
+  QueryConnectionChannelsResponse as IbcCoreChannelV1QueryConnectionChannelsResponse,
+  QueryChannelClientStateRequest as IbcCoreChannelV1QueryChannelClientStateRequest,
+  QueryChannelClientStateResponse as IbcCoreChannelV1QueryChannelClientStateResponse,
+  QueryChannelConsensusStateRequest as IbcCoreChannelV1QueryChannelConsensusStateRequest,
+  QueryChannelConsensusStateResponse as IbcCoreChannelV1QueryChannelConsensusStateResponse,
+  QueryPacketCommitmentRequest as IbcCoreChannelV1QueryPacketCommitmentRequest,
+  QueryPacketCommitmentResponse as IbcCoreChannelV1QueryPacketCommitmentResponse,
+  QueryPacketCommitmentsRequest as IbcCoreChannelV1QueryPacketCommitmentsRequest,
+  QueryPacketCommitmentsResponse as IbcCoreChannelV1QueryPacketCommitmentsResponse,
+  QueryPacketReceiptRequest as IbcCoreChannelV1QueryPacketReceiptRequest,
+  QueryPacketReceiptResponse as IbcCoreChannelV1QueryPacketReceiptResponse,
+  QueryPacketAcknowledgementRequest as IbcCoreChannelV1QueryPacketAcknowledgementRequest,
+  QueryPacketAcknowledgementResponse as IbcCoreChannelV1QueryPacketAcknowledgementResponse,
+  QueryPacketAcknowledgementsRequest as IbcCoreChannelV1QueryPacketAcknowledgementsRequest,
+  QueryPacketAcknowledgementsResponse as IbcCoreChannelV1QueryPacketAcknowledgementsResponse,
+  QueryUnreceivedPacketsRequest as IbcCoreChannelV1QueryUnreceivedPacketsRequest,
+  QueryUnreceivedPacketsResponse as IbcCoreChannelV1QueryUnreceivedPacketsResponse,
+  QueryUnreceivedAcksRequest as IbcCoreChannelV1QueryUnreceivedAcksRequest,
+  QueryUnreceivedAcksResponse as IbcCoreChannelV1QueryUnreceivedAcksResponse,
+  QueryNextSequenceReceiveRequest as IbcCoreChannelV1QueryNextSequenceReceiveRequest,
+  QueryNextSequenceReceiveResponse as IbcCoreChannelV1QueryNextSequenceReceiveResponse,
+  QueryNextSequenceSendRequest as IbcCoreChannelV1QueryNextSequenceSendRequest,
+  QueryNextSequenceSendResponse as IbcCoreChannelV1QueryNextSequenceSendResponse,
+} from "./ibc/core/channel/v1/query_pb.js";
+export {
+  QueryChannelService as IbcCoreChannelV1QueryChannelService,
+  QueryChannelsService as IbcCoreChannelV1QueryChannelsService,
+  QueryConnectionChannelsService as IbcCoreChannelV1QueryConnectionChannelsService,
+  QueryChannelClientStateService as IbcCoreChannelV1QueryChannelClientStateService,
+  QueryChannelConsensusStateService as IbcCoreChannelV1QueryChannelConsensusStateService,
+  QueryPacketCommitmentService as IbcCoreChannelV1QueryPacketCommitmentService,
+  QueryPacketCommitmentsService as IbcCoreChannelV1QueryPacketCommitmentsService,
+  QueryPacketReceiptService as IbcCoreChannelV1QueryPacketReceiptService,
+  QueryPacketAcknowledgementService as IbcCoreChannelV1QueryPacketAcknowledgementService,
+  QueryPacketAcknowledgementsService as IbcCoreChannelV1QueryPacketAcknowledgementsService,
+  QueryUnreceivedPacketsService as IbcCoreChannelV1QueryUnreceivedPacketsService,
+  QueryUnreceivedAcksService as IbcCoreChannelV1QueryUnreceivedAcksService,
+  QueryNextSequenceReceiveService as IbcCoreChannelV1QueryNextSequenceReceiveService,
+  QueryNextSequenceSendService as IbcCoreChannelV1QueryNextSequenceSendService,
+} from "./ibc/core/channel/v1/query_cosmes.js";
+export {
+  GenesisState as IbcCoreChannelV1GenesisState,
+  PacketSequence as IbcCoreChannelV1PacketSequence,
+} from "./ibc/core/channel/v1/genesis_pb.js";
+export {
+  State as IbcCoreChannelV1State,
+  Order as IbcCoreChannelV1Order,
+  Channel as IbcCoreChannelV1Channel,
+  IdentifiedChannel as IbcCoreChannelV1IdentifiedChannel,
+  Counterparty as IbcCoreChannelV1Counterparty,
+  Packet as IbcCoreChannelV1Packet,
+  PacketState as IbcCoreChannelV1PacketState,
+  PacketId as IbcCoreChannelV1PacketId,
+  Acknowledgement as IbcCoreChannelV1Acknowledgement,
+  Timeout as IbcCoreChannelV1Timeout,
+} from "./ibc/core/channel/v1/channel_pb.js";
+export {
+  FungibleTokenPacketData as IbcApplicationsTransferV2FungibleTokenPacketData,
+} from "./ibc/applications/transfer/v2/packet_pb.js";
+export {
+  MsgTransfer as IbcApplicationsTransferV1MsgTransfer,
+  MsgTransferResponse as IbcApplicationsTransferV1MsgTransferResponse,
+  MsgUpdateParams as IbcApplicationsTransferV1MsgUpdateParams,
+  MsgUpdateParamsResponse as IbcApplicationsTransferV1MsgUpdateParamsResponse,
+} from "./ibc/applications/transfer/v1/tx_pb.js";
+export {
+  MsgTransferService as IbcApplicationsTransferV1MsgTransferService,
+  MsgUpdateParamsService as IbcApplicationsTransferV1MsgUpdateParamsService,
+} from "./ibc/applications/transfer/v1/tx_cosmes.js";
+export {
+  DenomTrace as IbcApplicationsTransferV1DenomTrace,
+  Params as IbcApplicationsTransferV1Params,
+} from "./ibc/applications/transfer/v1/transfer_pb.js";
+export {
+  QueryDenomTraceRequest as IbcApplicationsTransferV1QueryDenomTraceRequest,
+  QueryDenomTraceResponse as IbcApplicationsTransferV1QueryDenomTraceResponse,
+  QueryDenomTracesRequest as IbcApplicationsTransferV1QueryDenomTracesRequest,
+  QueryDenomTracesResponse as IbcApplicationsTransferV1QueryDenomTracesResponse,
+  QueryParamsRequest as IbcApplicationsTransferV1QueryParamsRequest,
+  QueryParamsResponse as IbcApplicationsTransferV1QueryParamsResponse,
+  QueryDenomHashRequest as IbcApplicationsTransferV1QueryDenomHashRequest,
+  QueryDenomHashResponse as IbcApplicationsTransferV1QueryDenomHashResponse,
+  QueryEscrowAddressRequest as IbcApplicationsTransferV1QueryEscrowAddressRequest,
+  QueryEscrowAddressResponse as IbcApplicationsTransferV1QueryEscrowAddressResponse,
+  QueryTotalEscrowForDenomRequest as IbcApplicationsTransferV1QueryTotalEscrowForDenomRequest,
+  QueryTotalEscrowForDenomResponse as IbcApplicationsTransferV1QueryTotalEscrowForDenomResponse,
+} from "./ibc/applications/transfer/v1/query_pb.js";
+export {
+  QueryDenomTraceService as IbcApplicationsTransferV1QueryDenomTraceService,
+  QueryDenomTracesService as IbcApplicationsTransferV1QueryDenomTracesService,
+  QueryParamsService as IbcApplicationsTransferV1QueryParamsService,
+  QueryDenomHashService as IbcApplicationsTransferV1QueryDenomHashService,
+  QueryEscrowAddressService as IbcApplicationsTransferV1QueryEscrowAddressService,
+  QueryTotalEscrowForDenomService as IbcApplicationsTransferV1QueryTotalEscrowForDenomService,
+} from "./ibc/applications/transfer/v1/query_cosmes.js";
+export {
+  GenesisState as IbcApplicationsTransferV1GenesisState,
+} from "./ibc/applications/transfer/v1/genesis_pb.js";
+export {
+  Allocation as IbcApplicationsTransferV1Allocation,
+  TransferAuthorization as IbcApplicationsTransferV1TransferAuthorization,
+} from "./ibc/applications/transfer/v1/authz_pb.js";
+export {
+  Type as IbcApplicationsInterchainAccountsV1Type,
+  InterchainAccountPacketData as IbcApplicationsInterchainAccountsV1InterchainAccountPacketData,
+  CosmosTx as IbcApplicationsInterchainAccountsV1CosmosTx,
+} from "./ibc/applications/interchain_accounts/v1/packet_pb.js";
+export {
+  Metadata as IbcApplicationsInterchainAccountsV1Metadata,
+} from "./ibc/applications/interchain_accounts/v1/metadata_pb.js";
+export {
+  InterchainAccount as IbcApplicationsInterchainAccountsV1InterchainAccount,
+} from "./ibc/applications/interchain_accounts/v1/account_pb.js";
+export {
+  MsgUpdateParams as IbcApplicationsInterchainAccountsHostV1MsgUpdateParams,
+  MsgUpdateParamsResponse as IbcApplicationsInterchainAccountsHostV1MsgUpdateParamsResponse,
+} from "./ibc/applications/interchain_accounts/host/v1/tx_pb.js";
+export {
+  MsgUpdateParamsService as IbcApplicationsInterchainAccountsHostV1MsgUpdateParamsService,
+} from "./ibc/applications/interchain_accounts/host/v1/tx_cosmes.js";
+export {
+  QueryParamsRequest as IbcApplicationsInterchainAccountsHostV1QueryParamsRequest,
+  QueryParamsResponse as IbcApplicationsInterchainAccountsHostV1QueryParamsResponse,
+} from "./ibc/applications/interchain_accounts/host/v1/query_pb.js";
+export {
+  QueryParamsService as IbcApplicationsInterchainAccountsHostV1QueryParamsService,
+} from "./ibc/applications/interchain_accounts/host/v1/query_cosmes.js";
+export {
+  Params as IbcApplicationsInterchainAccountsHostV1Params,
+} from "./ibc/applications/interchain_accounts/host/v1/host_pb.js";
+export {
+  GenesisState as IbcApplicationsInterchainAccountsGenesisV1GenesisState,
+  ControllerGenesisState as IbcApplicationsInterchainAccountsGenesisV1ControllerGenesisState,
+  HostGenesisState as IbcApplicationsInterchainAccountsGenesisV1HostGenesisState,
+  ActiveChannel as IbcApplicationsInterchainAccountsGenesisV1ActiveChannel,
+  RegisteredInterchainAccount as IbcApplicationsInterchainAccountsGenesisV1RegisteredInterchainAccount,
+} from "./ibc/applications/interchain_accounts/genesis/v1/genesis_pb.js";
+export {
+  MsgRegisterInterchainAccount as IbcApplicationsInterchainAccountsControllerV1MsgRegisterInterchainAccount,
+  MsgRegisterInterchainAccountResponse as IbcApplicationsInterchainAccountsControllerV1MsgRegisterInterchainAccountResponse,
+  MsgSendTx as IbcApplicationsInterchainAccountsControllerV1MsgSendTx,
+  MsgSendTxResponse as IbcApplicationsInterchainAccountsControllerV1MsgSendTxResponse,
+  MsgUpdateParams as IbcApplicationsInterchainAccountsControllerV1MsgUpdateParams,
+  MsgUpdateParamsResponse as IbcApplicationsInterchainAccountsControllerV1MsgUpdateParamsResponse,
+} from "./ibc/applications/interchain_accounts/controller/v1/tx_pb.js";
+export {
+  MsgRegisterInterchainAccountService as IbcApplicationsInterchainAccountsControllerV1MsgRegisterInterchainAccountService,
+  MsgSendTxService as IbcApplicationsInterchainAccountsControllerV1MsgSendTxService,
+  MsgUpdateParamsService as IbcApplicationsInterchainAccountsControllerV1MsgUpdateParamsService,
+} from "./ibc/applications/interchain_accounts/controller/v1/tx_cosmes.js";
+export {
+  QueryInterchainAccountRequest as IbcApplicationsInterchainAccountsControllerV1QueryInterchainAccountRequest,
+  QueryInterchainAccountResponse as IbcApplicationsInterchainAccountsControllerV1QueryInterchainAccountResponse,
+  QueryParamsRequest as IbcApplicationsInterchainAccountsControllerV1QueryParamsRequest,
+  QueryParamsResponse as IbcApplicationsInterchainAccountsControllerV1QueryParamsResponse,
+} from "./ibc/applications/interchain_accounts/controller/v1/query_pb.js";
+export {
+  QueryInterchainAccountService as IbcApplicationsInterchainAccountsControllerV1QueryInterchainAccountService,
+  QueryParamsService as IbcApplicationsInterchainAccountsControllerV1QueryParamsService,
+} from "./ibc/applications/interchain_accounts/controller/v1/query_cosmes.js";
+export {
+  Params as IbcApplicationsInterchainAccountsControllerV1Params,
+} from "./ibc/applications/interchain_accounts/controller/v1/controller_pb.js";
+export {
+  MsgRegisterPayee as IbcApplicationsFeeV1MsgRegisterPayee,
+  MsgRegisterPayeeResponse as IbcApplicationsFeeV1MsgRegisterPayeeResponse,
+  MsgRegisterCounterpartyPayee as IbcApplicationsFeeV1MsgRegisterCounterpartyPayee,
+  MsgRegisterCounterpartyPayeeResponse as IbcApplicationsFeeV1MsgRegisterCounterpartyPayeeResponse,
+  MsgPayPacketFee as IbcApplicationsFeeV1MsgPayPacketFee,
+  MsgPayPacketFeeResponse as IbcApplicationsFeeV1MsgPayPacketFeeResponse,
+  MsgPayPacketFeeAsync as IbcApplicationsFeeV1MsgPayPacketFeeAsync,
+  MsgPayPacketFeeAsyncResponse as IbcApplicationsFeeV1MsgPayPacketFeeAsyncResponse,
+} from "./ibc/applications/fee/v1/tx_pb.js";
+export {
+  MsgRegisterPayeeService as IbcApplicationsFeeV1MsgRegisterPayeeService,
+  MsgRegisterCounterpartyPayeeService as IbcApplicationsFeeV1MsgRegisterCounterpartyPayeeService,
+  MsgPayPacketFeeService as IbcApplicationsFeeV1MsgPayPacketFeeService,
+  MsgPayPacketFeeAsyncService as IbcApplicationsFeeV1MsgPayPacketFeeAsyncService,
+} from "./ibc/applications/fee/v1/tx_cosmes.js";
+export {
+  QueryIncentivizedPacketsRequest as IbcApplicationsFeeV1QueryIncentivizedPacketsRequest,
+  QueryIncentivizedPacketsResponse as IbcApplicationsFeeV1QueryIncentivizedPacketsResponse,
+  QueryIncentivizedPacketRequest as IbcApplicationsFeeV1QueryIncentivizedPacketRequest,
+  QueryIncentivizedPacketResponse as IbcApplicationsFeeV1QueryIncentivizedPacketResponse,
+  QueryIncentivizedPacketsForChannelRequest as IbcApplicationsFeeV1QueryIncentivizedPacketsForChannelRequest,
+  QueryIncentivizedPacketsForChannelResponse as IbcApplicationsFeeV1QueryIncentivizedPacketsForChannelResponse,
+  QueryTotalRecvFeesRequest as IbcApplicationsFeeV1QueryTotalRecvFeesRequest,
+  QueryTotalRecvFeesResponse as IbcApplicationsFeeV1QueryTotalRecvFeesResponse,
+  QueryTotalAckFeesRequest as IbcApplicationsFeeV1QueryTotalAckFeesRequest,
+  QueryTotalAckFeesResponse as IbcApplicationsFeeV1QueryTotalAckFeesResponse,
+  QueryTotalTimeoutFeesRequest as IbcApplicationsFeeV1QueryTotalTimeoutFeesRequest,
+  QueryTotalTimeoutFeesResponse as IbcApplicationsFeeV1QueryTotalTimeoutFeesResponse,
+  QueryPayeeRequest as IbcApplicationsFeeV1QueryPayeeRequest,
+  QueryPayeeResponse as IbcApplicationsFeeV1QueryPayeeResponse,
+  QueryCounterpartyPayeeRequest as IbcApplicationsFeeV1QueryCounterpartyPayeeRequest,
+  QueryCounterpartyPayeeResponse as IbcApplicationsFeeV1QueryCounterpartyPayeeResponse,
+  QueryFeeEnabledChannelsRequest as IbcApplicationsFeeV1QueryFeeEnabledChannelsRequest,
+  QueryFeeEnabledChannelsResponse as IbcApplicationsFeeV1QueryFeeEnabledChannelsResponse,
+  QueryFeeEnabledChannelRequest as IbcApplicationsFeeV1QueryFeeEnabledChannelRequest,
+  QueryFeeEnabledChannelResponse as IbcApplicationsFeeV1QueryFeeEnabledChannelResponse,
+} from "./ibc/applications/fee/v1/query_pb.js";
+export {
+  QueryIncentivizedPacketsService as IbcApplicationsFeeV1QueryIncentivizedPacketsService,
+  QueryIncentivizedPacketService as IbcApplicationsFeeV1QueryIncentivizedPacketService,
+  QueryIncentivizedPacketsForChannelService as IbcApplicationsFeeV1QueryIncentivizedPacketsForChannelService,
+  QueryTotalRecvFeesService as IbcApplicationsFeeV1QueryTotalRecvFeesService,
+  QueryTotalAckFeesService as IbcApplicationsFeeV1QueryTotalAckFeesService,
+  QueryTotalTimeoutFeesService as IbcApplicationsFeeV1QueryTotalTimeoutFeesService,
+  QueryPayeeService as IbcApplicationsFeeV1QueryPayeeService,
+  QueryCounterpartyPayeeService as IbcApplicationsFeeV1QueryCounterpartyPayeeService,
+  QueryFeeEnabledChannelsService as IbcApplicationsFeeV1QueryFeeEnabledChannelsService,
+  QueryFeeEnabledChannelService as IbcApplicationsFeeV1QueryFeeEnabledChannelService,
+} from "./ibc/applications/fee/v1/query_cosmes.js";
+export {
+  Metadata as IbcApplicationsFeeV1Metadata,
+} from "./ibc/applications/fee/v1/metadata_pb.js";
+export {
+  GenesisState as IbcApplicationsFeeV1GenesisState,
+  FeeEnabledChannel as IbcApplicationsFeeV1FeeEnabledChannel,
+  RegisteredPayee as IbcApplicationsFeeV1RegisteredPayee,
+  RegisteredCounterpartyPayee as IbcApplicationsFeeV1RegisteredCounterpartyPayee,
+  ForwardRelayerAddress as IbcApplicationsFeeV1ForwardRelayerAddress,
+} from "./ibc/applications/fee/v1/genesis_pb.js";
+export {
+  Fee as IbcApplicationsFeeV1Fee,
+  PacketFee as IbcApplicationsFeeV1PacketFee,
+  PacketFees as IbcApplicationsFeeV1PacketFees,
+  IdentifiedPacketFees as IbcApplicationsFeeV1IdentifiedPacketFees,
+} from "./ibc/applications/fee/v1/fee_pb.js";
+export {
+  IncentivizedAcknowledgement as IbcApplicationsFeeV1IncentivizedAcknowledgement,
+} from "./ibc/applications/fee/v1/ack_pb.js";
+export {
   AccessType as CosmwasmWasmV1AccessType,
   ContractCodeHistoryOperationType as CosmwasmWasmV1ContractCodeHistoryOperationType,
   AccessTypeParam as CosmwasmWasmV1AccessTypeParam,
@@ -1145,6 +1616,10 @@ export {
   MsgUnpinCodesResponse as CosmwasmWasmV1MsgUnpinCodesResponse,
   MsgStoreAndInstantiateContract as CosmwasmWasmV1MsgStoreAndInstantiateContract,
   MsgStoreAndInstantiateContractResponse as CosmwasmWasmV1MsgStoreAndInstantiateContractResponse,
+  MsgAddCodeUploadParamsAddresses as CosmwasmWasmV1MsgAddCodeUploadParamsAddresses,
+  MsgAddCodeUploadParamsAddressesResponse as CosmwasmWasmV1MsgAddCodeUploadParamsAddressesResponse,
+  MsgRemoveCodeUploadParamsAddresses as CosmwasmWasmV1MsgRemoveCodeUploadParamsAddresses,
+  MsgRemoveCodeUploadParamsAddressesResponse as CosmwasmWasmV1MsgRemoveCodeUploadParamsAddressesResponse,
 } from "./cosmwasm/wasm/v1/tx_pb.js";
 export {
   MsgStoreCodeService as CosmwasmWasmV1MsgStoreCodeService,
@@ -1160,6 +1635,8 @@ export {
   MsgPinCodesService as CosmwasmWasmV1MsgPinCodesService,
   MsgUnpinCodesService as CosmwasmWasmV1MsgUnpinCodesService,
   MsgStoreAndInstantiateContractService as CosmwasmWasmV1MsgStoreAndInstantiateContractService,
+  MsgRemoveCodeUploadParamsAddressesService as CosmwasmWasmV1MsgRemoveCodeUploadParamsAddressesService,
+  MsgAddCodeUploadParamsAddressesService as CosmwasmWasmV1MsgAddCodeUploadParamsAddressesService,
 } from "./cosmwasm/wasm/v1/tx_cosmes.js";
 export {
   QueryContractInfoRequest as CosmwasmWasmV1QueryContractInfoRequest,
@@ -2321,6 +2798,8 @@ export {
   QueryDenomsMetadataResponse as CosmosBankV1beta1QueryDenomsMetadataResponse,
   QueryDenomMetadataRequest as CosmosBankV1beta1QueryDenomMetadataRequest,
   QueryDenomMetadataResponse as CosmosBankV1beta1QueryDenomMetadataResponse,
+  QueryDenomMetadataByQueryStringRequest as CosmosBankV1beta1QueryDenomMetadataByQueryStringRequest,
+  QueryDenomMetadataByQueryStringResponse as CosmosBankV1beta1QueryDenomMetadataByQueryStringResponse,
   QueryDenomOwnersRequest as CosmosBankV1beta1QueryDenomOwnersRequest,
   DenomOwner as CosmosBankV1beta1DenomOwner,
   QueryDenomOwnersResponse as CosmosBankV1beta1QueryDenomOwnersResponse,
@@ -2336,6 +2815,7 @@ export {
   QuerySupplyOfService as CosmosBankV1beta1QuerySupplyOfService,
   QueryParamsService as CosmosBankV1beta1QueryParamsService,
   QueryDenomMetadataService as CosmosBankV1beta1QueryDenomMetadataService,
+  QueryDenomMetadataByQueryStringService as CosmosBankV1beta1QueryDenomMetadataByQueryStringService,
   QueryDenomsMetadataService as CosmosBankV1beta1QueryDenomsMetadataService,
   QueryDenomOwnersService as CosmosBankV1beta1QueryDenomOwnersService,
   QuerySendEnabledService as CosmosBankV1beta1QuerySendEnabledService,
@@ -2490,3 +2970,12 @@ export {
   Module as CosmosAppRuntimeV1alpha1Module,
   StoreKeyConfig as CosmosAppRuntimeV1alpha1StoreKeyConfig,
 } from "./cosmos/app/runtime/v1alpha1/module_pb.js";
+export {
+  GenesisOwners as CapabilityV1GenesisOwners,
+  GenesisState as CapabilityV1GenesisState,
+} from "./capability/v1/genesis_pb.js";
+export {
+  Capability as CapabilityV1Capability,
+  Owner as CapabilityV1Owner,
+  CapabilityOwners as CapabilityV1CapabilityOwners,
+} from "./capability/v1/capability_pb.js";

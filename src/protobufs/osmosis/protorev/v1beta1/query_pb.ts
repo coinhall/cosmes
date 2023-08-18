@@ -7,7 +7,7 @@ import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialM
 import { Message, proto3, protoInt64 } from "@bufbuild/protobuf";
 import { Params } from "./params_pb.js";
 import { Coin } from "../../../cosmos/base/v1beta1/coin_pb.js";
-import { BaseDenom, PoolWeights, RouteStatistics, TokenPairArbRoutes } from "./protorev_pb.js";
+import { BaseDenom, InfoByPoolType, RouteStatistics, TokenPairArbRoutes } from "./protorev_pb.js";
 
 /**
  * QueryParamsRequest is request type for the Query/Params RPC method.
@@ -711,78 +711,79 @@ export class QueryGetProtoRevDeveloperAccountResponse extends Message<QueryGetPr
 }
 
 /**
- * QueryGetProtoRevPoolWeightsRequest is request type for the
- * Query/GetProtoRevPoolWeights RPC method.
+ * QueryGetProtoRevInfoByPoolTypeRequest is request type for the
+ * Query/GetProtoRevInfoByPoolType RPC method.
  *
- * @generated from message osmosis.protorev.v1beta1.QueryGetProtoRevPoolWeightsRequest
+ * @generated from message osmosis.protorev.v1beta1.QueryGetProtoRevInfoByPoolTypeRequest
  */
-export class QueryGetProtoRevPoolWeightsRequest extends Message<QueryGetProtoRevPoolWeightsRequest> {
-  constructor(data?: PartialMessage<QueryGetProtoRevPoolWeightsRequest>) {
+export class QueryGetProtoRevInfoByPoolTypeRequest extends Message<QueryGetProtoRevInfoByPoolTypeRequest> {
+  constructor(data?: PartialMessage<QueryGetProtoRevInfoByPoolTypeRequest>) {
     super();
     proto3.util.initPartial(data, this);
   }
 
   static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "osmosis.protorev.v1beta1.QueryGetProtoRevPoolWeightsRequest";
+  static readonly typeName = "osmosis.protorev.v1beta1.QueryGetProtoRevInfoByPoolTypeRequest";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
   ]);
 
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): QueryGetProtoRevPoolWeightsRequest {
-    return new QueryGetProtoRevPoolWeightsRequest().fromBinary(bytes, options);
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): QueryGetProtoRevInfoByPoolTypeRequest {
+    return new QueryGetProtoRevInfoByPoolTypeRequest().fromBinary(bytes, options);
   }
 
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): QueryGetProtoRevPoolWeightsRequest {
-    return new QueryGetProtoRevPoolWeightsRequest().fromJson(jsonValue, options);
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): QueryGetProtoRevInfoByPoolTypeRequest {
+    return new QueryGetProtoRevInfoByPoolTypeRequest().fromJson(jsonValue, options);
   }
 
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): QueryGetProtoRevPoolWeightsRequest {
-    return new QueryGetProtoRevPoolWeightsRequest().fromJsonString(jsonString, options);
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): QueryGetProtoRevInfoByPoolTypeRequest {
+    return new QueryGetProtoRevInfoByPoolTypeRequest().fromJsonString(jsonString, options);
   }
 
-  static equals(a: QueryGetProtoRevPoolWeightsRequest | PlainMessage<QueryGetProtoRevPoolWeightsRequest> | undefined, b: QueryGetProtoRevPoolWeightsRequest | PlainMessage<QueryGetProtoRevPoolWeightsRequest> | undefined): boolean {
-    return proto3.util.equals(QueryGetProtoRevPoolWeightsRequest, a, b);
+  static equals(a: QueryGetProtoRevInfoByPoolTypeRequest | PlainMessage<QueryGetProtoRevInfoByPoolTypeRequest> | undefined, b: QueryGetProtoRevInfoByPoolTypeRequest | PlainMessage<QueryGetProtoRevInfoByPoolTypeRequest> | undefined): boolean {
+    return proto3.util.equals(QueryGetProtoRevInfoByPoolTypeRequest, a, b);
   }
 }
 
 /**
- * QueryGetProtoRevPoolWeightsResponse is response type for the
- * Query/GetProtoRevPoolWeights RPC method.
+ * QueryGetProtoRevInfoByPoolTypeResponse is response type for the
+ * Query/GetProtoRevInfoByPoolType RPC method.
  *
- * @generated from message osmosis.protorev.v1beta1.QueryGetProtoRevPoolWeightsResponse
+ * @generated from message osmosis.protorev.v1beta1.QueryGetProtoRevInfoByPoolTypeResponse
  */
-export class QueryGetProtoRevPoolWeightsResponse extends Message<QueryGetProtoRevPoolWeightsResponse> {
+export class QueryGetProtoRevInfoByPoolTypeResponse extends Message<QueryGetProtoRevInfoByPoolTypeResponse> {
   /**
-   * pool_weights is a list of all of the pool weights
+   * InfoByPoolType contains all information pertaining to how different
+   * pool types are handled by the module.
    *
-   * @generated from field: osmosis.protorev.v1beta1.PoolWeights pool_weights = 1;
+   * @generated from field: osmosis.protorev.v1beta1.InfoByPoolType info_by_pool_type = 1;
    */
-  poolWeights?: PoolWeights;
+  infoByPoolType?: InfoByPoolType;
 
-  constructor(data?: PartialMessage<QueryGetProtoRevPoolWeightsResponse>) {
+  constructor(data?: PartialMessage<QueryGetProtoRevInfoByPoolTypeResponse>) {
     super();
     proto3.util.initPartial(data, this);
   }
 
   static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "osmosis.protorev.v1beta1.QueryGetProtoRevPoolWeightsResponse";
+  static readonly typeName = "osmosis.protorev.v1beta1.QueryGetProtoRevInfoByPoolTypeResponse";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "pool_weights", kind: "message", T: PoolWeights },
+    { no: 1, name: "info_by_pool_type", kind: "message", T: InfoByPoolType },
   ]);
 
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): QueryGetProtoRevPoolWeightsResponse {
-    return new QueryGetProtoRevPoolWeightsResponse().fromBinary(bytes, options);
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): QueryGetProtoRevInfoByPoolTypeResponse {
+    return new QueryGetProtoRevInfoByPoolTypeResponse().fromBinary(bytes, options);
   }
 
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): QueryGetProtoRevPoolWeightsResponse {
-    return new QueryGetProtoRevPoolWeightsResponse().fromJson(jsonValue, options);
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): QueryGetProtoRevInfoByPoolTypeResponse {
+    return new QueryGetProtoRevInfoByPoolTypeResponse().fromJson(jsonValue, options);
   }
 
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): QueryGetProtoRevPoolWeightsResponse {
-    return new QueryGetProtoRevPoolWeightsResponse().fromJsonString(jsonString, options);
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): QueryGetProtoRevInfoByPoolTypeResponse {
+    return new QueryGetProtoRevInfoByPoolTypeResponse().fromJsonString(jsonString, options);
   }
 
-  static equals(a: QueryGetProtoRevPoolWeightsResponse | PlainMessage<QueryGetProtoRevPoolWeightsResponse> | undefined, b: QueryGetProtoRevPoolWeightsResponse | PlainMessage<QueryGetProtoRevPoolWeightsResponse> | undefined): boolean {
-    return proto3.util.equals(QueryGetProtoRevPoolWeightsResponse, a, b);
+  static equals(a: QueryGetProtoRevInfoByPoolTypeResponse | PlainMessage<QueryGetProtoRevInfoByPoolTypeResponse> | undefined, b: QueryGetProtoRevInfoByPoolTypeResponse | PlainMessage<QueryGetProtoRevInfoByPoolTypeResponse> | undefined): boolean {
+    return proto3.util.equals(QueryGetProtoRevInfoByPoolTypeResponse, a, b);
   }
 }
 

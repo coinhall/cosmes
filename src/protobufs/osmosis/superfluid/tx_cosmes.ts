@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { MsgAddToConcentratedLiquiditySuperfluidPosition, MsgAddToConcentratedLiquiditySuperfluidPositionResponse, MsgCreateFullRangePositionAndSuperfluidDelegate, MsgCreateFullRangePositionAndSuperfluidDelegateResponse, MsgLockAndSuperfluidDelegate, MsgLockAndSuperfluidDelegateResponse, MsgSuperfluidDelegate, MsgSuperfluidDelegateResponse, MsgSuperfluidUnbondLock, MsgSuperfluidUnbondLockResponse, MsgSuperfluidUndelegate, MsgSuperfluidUndelegateAndUnbondLock, MsgSuperfluidUndelegateAndUnbondLockResponse, MsgSuperfluidUndelegateResponse, MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition, MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionResponse, MsgUnPoolWhitelistedPool, MsgUnPoolWhitelistedPoolResponse } from "./tx_pb.js";
+import { MsgAddToConcentratedLiquiditySuperfluidPosition, MsgAddToConcentratedLiquiditySuperfluidPositionResponse, MsgCreateFullRangePositionAndSuperfluidDelegate, MsgCreateFullRangePositionAndSuperfluidDelegateResponse, MsgLockAndSuperfluidDelegate, MsgLockAndSuperfluidDelegateResponse, MsgSuperfluidDelegate, MsgSuperfluidDelegateResponse, MsgSuperfluidUnbondLock, MsgSuperfluidUnbondLockResponse, MsgSuperfluidUndelegate, MsgSuperfluidUndelegateAndUnbondLock, MsgSuperfluidUndelegateAndUnbondLockResponse, MsgSuperfluidUndelegateResponse, MsgUnbondConvertAndStake, MsgUnbondConvertAndStakeResponse, MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition, MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionResponse, MsgUnPoolWhitelistedPool, MsgUnPoolWhitelistedPoolResponse } from "./tx_pb.js";
 
 const TYPE_NAME = "osmosis.superfluid.Msg";
 
@@ -106,5 +106,18 @@ export const MsgAddToConcentratedLiquiditySuperfluidPositionService = {
   method: "AddToConcentratedLiquiditySuperfluidPosition",
   Request: MsgAddToConcentratedLiquiditySuperfluidPosition,
   Response: MsgAddToConcentratedLiquiditySuperfluidPositionResponse,
+} as const;
+
+/**
+ * UnbondConvertAndStake breaks all locks / superfluid staked assets,
+ * converts them to osmo then stakes the osmo to the designated validator.
+ *
+ * @generated from rpc osmosis.superfluid.Msg.UnbondConvertAndStake
+ */
+export const MsgUnbondConvertAndStakeService = {
+  typeName: TYPE_NAME,
+  method: "UnbondConvertAndStake",
+  Request: MsgUnbondConvertAndStake,
+  Response: MsgUnbondConvertAndStakeResponse,
 } as const;
 

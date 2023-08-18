@@ -35,7 +35,11 @@ const REPOS = [
     paths: ["proto"],
   },
   {
-    repo: "osmosis-labs/osmosis",
+    repo: "osmosis-labs/osmosis#main",
+    paths: ["proto"],
+  },
+  {
+    repo: "cosmos/ibc-go#main",
     paths: ["proto"],
   },
 ];
@@ -91,8 +95,8 @@ function generateIndexExports(dir) {
     .replace(PROTOBUFS_DIR + "/", "")
     .split("/")
     .map((name) =>
-      // convert name to PascalCase
-      name.split("-").map(capitalize).join("")
+      // convert all names to PascalCase
+      name.split(/[-_]/).map(capitalize).join("")
     )
     .join("");
   for (const file of files) {

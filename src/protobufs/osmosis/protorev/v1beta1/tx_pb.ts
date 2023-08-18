@@ -5,7 +5,7 @@
 
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
 import { Message, proto3, protoInt64 } from "@bufbuild/protobuf";
-import { BaseDenom, PoolWeights, TokenPairArbRoutes } from "./protorev_pb.js";
+import { BaseDenom, InfoByPoolType, TokenPairArbRoutes } from "./protorev_pb.js";
 
 /**
  * MsgSetHotRoutes defines the Msg/SetHotRoutes request type.
@@ -174,11 +174,11 @@ export class MsgSetDeveloperAccountResponse extends Message<MsgSetDeveloperAccou
 }
 
 /**
- * MsgSetPoolWeights defines the Msg/SetPoolWeights request type.
+ * MsgSetInfoByPoolType defines the Msg/SetInfoByPoolType request type.
  *
- * @generated from message osmosis.protorev.v1beta1.MsgSetPoolWeights
+ * @generated from message osmosis.protorev.v1beta1.MsgSetInfoByPoolType
  */
-export class MsgSetPoolWeights extends Message<MsgSetPoolWeights> {
+export class MsgSetInfoByPoolType extends Message<MsgSetInfoByPoolType> {
   /**
    * admin is the account that is authorized to set the pool weights.
    *
@@ -187,71 +187,71 @@ export class MsgSetPoolWeights extends Message<MsgSetPoolWeights> {
   admin = "";
 
   /**
-   * pool_weights is the list of pool weights to set.
+   * info_by_pool_type contains information about the pool types.
    *
-   * @generated from field: osmosis.protorev.v1beta1.PoolWeights pool_weights = 2;
+   * @generated from field: osmosis.protorev.v1beta1.InfoByPoolType info_by_pool_type = 2;
    */
-  poolWeights?: PoolWeights;
+  infoByPoolType?: InfoByPoolType;
 
-  constructor(data?: PartialMessage<MsgSetPoolWeights>) {
+  constructor(data?: PartialMessage<MsgSetInfoByPoolType>) {
     super();
     proto3.util.initPartial(data, this);
   }
 
   static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "osmosis.protorev.v1beta1.MsgSetPoolWeights";
+  static readonly typeName = "osmosis.protorev.v1beta1.MsgSetInfoByPoolType";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "admin", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "pool_weights", kind: "message", T: PoolWeights },
+    { no: 2, name: "info_by_pool_type", kind: "message", T: InfoByPoolType },
   ]);
 
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgSetPoolWeights {
-    return new MsgSetPoolWeights().fromBinary(bytes, options);
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgSetInfoByPoolType {
+    return new MsgSetInfoByPoolType().fromBinary(bytes, options);
   }
 
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MsgSetPoolWeights {
-    return new MsgSetPoolWeights().fromJson(jsonValue, options);
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MsgSetInfoByPoolType {
+    return new MsgSetInfoByPoolType().fromJson(jsonValue, options);
   }
 
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MsgSetPoolWeights {
-    return new MsgSetPoolWeights().fromJsonString(jsonString, options);
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MsgSetInfoByPoolType {
+    return new MsgSetInfoByPoolType().fromJsonString(jsonString, options);
   }
 
-  static equals(a: MsgSetPoolWeights | PlainMessage<MsgSetPoolWeights> | undefined, b: MsgSetPoolWeights | PlainMessage<MsgSetPoolWeights> | undefined): boolean {
-    return proto3.util.equals(MsgSetPoolWeights, a, b);
+  static equals(a: MsgSetInfoByPoolType | PlainMessage<MsgSetInfoByPoolType> | undefined, b: MsgSetInfoByPoolType | PlainMessage<MsgSetInfoByPoolType> | undefined): boolean {
+    return proto3.util.equals(MsgSetInfoByPoolType, a, b);
   }
 }
 
 /**
- * MsgSetPoolWeightsResponse defines the Msg/SetPoolWeights response type.
+ * MsgSetInfoByPoolTypeResponse defines the Msg/SetInfoByPoolType response type.
  *
- * @generated from message osmosis.protorev.v1beta1.MsgSetPoolWeightsResponse
+ * @generated from message osmosis.protorev.v1beta1.MsgSetInfoByPoolTypeResponse
  */
-export class MsgSetPoolWeightsResponse extends Message<MsgSetPoolWeightsResponse> {
-  constructor(data?: PartialMessage<MsgSetPoolWeightsResponse>) {
+export class MsgSetInfoByPoolTypeResponse extends Message<MsgSetInfoByPoolTypeResponse> {
+  constructor(data?: PartialMessage<MsgSetInfoByPoolTypeResponse>) {
     super();
     proto3.util.initPartial(data, this);
   }
 
   static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "osmosis.protorev.v1beta1.MsgSetPoolWeightsResponse";
+  static readonly typeName = "osmosis.protorev.v1beta1.MsgSetInfoByPoolTypeResponse";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
   ]);
 
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgSetPoolWeightsResponse {
-    return new MsgSetPoolWeightsResponse().fromBinary(bytes, options);
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgSetInfoByPoolTypeResponse {
+    return new MsgSetInfoByPoolTypeResponse().fromBinary(bytes, options);
   }
 
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MsgSetPoolWeightsResponse {
-    return new MsgSetPoolWeightsResponse().fromJson(jsonValue, options);
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MsgSetInfoByPoolTypeResponse {
+    return new MsgSetInfoByPoolTypeResponse().fromJson(jsonValue, options);
   }
 
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MsgSetPoolWeightsResponse {
-    return new MsgSetPoolWeightsResponse().fromJsonString(jsonString, options);
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MsgSetInfoByPoolTypeResponse {
+    return new MsgSetInfoByPoolTypeResponse().fromJsonString(jsonString, options);
   }
 
-  static equals(a: MsgSetPoolWeightsResponse | PlainMessage<MsgSetPoolWeightsResponse> | undefined, b: MsgSetPoolWeightsResponse | PlainMessage<MsgSetPoolWeightsResponse> | undefined): boolean {
-    return proto3.util.equals(MsgSetPoolWeightsResponse, a, b);
+  static equals(a: MsgSetInfoByPoolTypeResponse | PlainMessage<MsgSetInfoByPoolTypeResponse> | undefined, b: MsgSetInfoByPoolTypeResponse | PlainMessage<MsgSetInfoByPoolTypeResponse> | undefined): boolean {
+    return proto3.util.equals(MsgSetInfoByPoolTypeResponse, a, b);
   }
 }
 

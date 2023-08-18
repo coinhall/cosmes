@@ -238,6 +238,9 @@ export class RouteStatistics extends Message<RouteStatistics> {
  * corresponds to the amount of time (in ms) it takes to execute a swap on that
  * pool type.
  *
+ * DEPRECATED: This field is deprecated and will be removed in the next
+ * release. It is replaced by the `info_by_pool_type` field.
+ *
  * @generated from message osmosis.protorev.v1beta1.PoolWeights
  */
 export class PoolWeights extends Message<PoolWeights> {
@@ -262,6 +265,13 @@ export class PoolWeights extends Message<PoolWeights> {
    */
   concentratedWeight = protoInt64.zero;
 
+  /**
+   * The weight of a cosmwasm pool
+   *
+   * @generated from field: uint64 cosmwasm_weight = 4;
+   */
+  cosmwasmWeight = protoInt64.zero;
+
   constructor(data?: PartialMessage<PoolWeights>) {
     super();
     proto3.util.initPartial(data, this);
@@ -273,6 +283,7 @@ export class PoolWeights extends Message<PoolWeights> {
     { no: 1, name: "stable_weight", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
     { no: 2, name: "balancer_weight", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
     { no: 3, name: "concentrated_weight", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+    { no: 4, name: "cosmwasm_weight", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PoolWeights {
@@ -289,6 +300,297 @@ export class PoolWeights extends Message<PoolWeights> {
 
   static equals(a: PoolWeights | PlainMessage<PoolWeights> | undefined, b: PoolWeights | PlainMessage<PoolWeights> | undefined): boolean {
     return proto3.util.equals(PoolWeights, a, b);
+  }
+}
+
+/**
+ * InfoByPoolType contains information pertaining to how expensive (in terms of
+ * gas and time) it is to execute a swap on a given pool type. This distinction
+ * is made and necessary because the execution time ranges significantly between
+ * the different pool types.
+ *
+ * @generated from message osmosis.protorev.v1beta1.InfoByPoolType
+ */
+export class InfoByPoolType extends Message<InfoByPoolType> {
+  /**
+   * The stable pool info
+   *
+   * @generated from field: osmosis.protorev.v1beta1.StablePoolInfo stable = 1;
+   */
+  stable?: StablePoolInfo;
+
+  /**
+   * The balancer pool info
+   *
+   * @generated from field: osmosis.protorev.v1beta1.BalancerPoolInfo balancer = 2;
+   */
+  balancer?: BalancerPoolInfo;
+
+  /**
+   * The concentrated pool info
+   *
+   * @generated from field: osmosis.protorev.v1beta1.ConcentratedPoolInfo concentrated = 3;
+   */
+  concentrated?: ConcentratedPoolInfo;
+
+  /**
+   * The cosmwasm pool info
+   *
+   * @generated from field: osmosis.protorev.v1beta1.CosmwasmPoolInfo cosmwasm = 4;
+   */
+  cosmwasm?: CosmwasmPoolInfo;
+
+  constructor(data?: PartialMessage<InfoByPoolType>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "osmosis.protorev.v1beta1.InfoByPoolType";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "stable", kind: "message", T: StablePoolInfo },
+    { no: 2, name: "balancer", kind: "message", T: BalancerPoolInfo },
+    { no: 3, name: "concentrated", kind: "message", T: ConcentratedPoolInfo },
+    { no: 4, name: "cosmwasm", kind: "message", T: CosmwasmPoolInfo },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): InfoByPoolType {
+    return new InfoByPoolType().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): InfoByPoolType {
+    return new InfoByPoolType().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): InfoByPoolType {
+    return new InfoByPoolType().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: InfoByPoolType | PlainMessage<InfoByPoolType> | undefined, b: InfoByPoolType | PlainMessage<InfoByPoolType> | undefined): boolean {
+    return proto3.util.equals(InfoByPoolType, a, b);
+  }
+}
+
+/**
+ * StablePoolInfo contains meta data pertaining to a stableswap pool type.
+ *
+ * @generated from message osmosis.protorev.v1beta1.StablePoolInfo
+ */
+export class StablePoolInfo extends Message<StablePoolInfo> {
+  /**
+   * The weight of a stableswap pool
+   *
+   * @generated from field: uint64 weight = 1;
+   */
+  weight = protoInt64.zero;
+
+  constructor(data?: PartialMessage<StablePoolInfo>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "osmosis.protorev.v1beta1.StablePoolInfo";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "weight", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): StablePoolInfo {
+    return new StablePoolInfo().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): StablePoolInfo {
+    return new StablePoolInfo().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): StablePoolInfo {
+    return new StablePoolInfo().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: StablePoolInfo | PlainMessage<StablePoolInfo> | undefined, b: StablePoolInfo | PlainMessage<StablePoolInfo> | undefined): boolean {
+    return proto3.util.equals(StablePoolInfo, a, b);
+  }
+}
+
+/**
+ * BalancerPoolInfo contains meta data pertaining to a balancer pool type.
+ *
+ * @generated from message osmosis.protorev.v1beta1.BalancerPoolInfo
+ */
+export class BalancerPoolInfo extends Message<BalancerPoolInfo> {
+  /**
+   * The weight of a balancer pool
+   *
+   * @generated from field: uint64 weight = 1;
+   */
+  weight = protoInt64.zero;
+
+  constructor(data?: PartialMessage<BalancerPoolInfo>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "osmosis.protorev.v1beta1.BalancerPoolInfo";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "weight", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): BalancerPoolInfo {
+    return new BalancerPoolInfo().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): BalancerPoolInfo {
+    return new BalancerPoolInfo().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): BalancerPoolInfo {
+    return new BalancerPoolInfo().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: BalancerPoolInfo | PlainMessage<BalancerPoolInfo> | undefined, b: BalancerPoolInfo | PlainMessage<BalancerPoolInfo> | undefined): boolean {
+    return proto3.util.equals(BalancerPoolInfo, a, b);
+  }
+}
+
+/**
+ * ConcentratedPoolInfo contains meta data pertaining to a concentrated pool
+ * type.
+ *
+ * @generated from message osmosis.protorev.v1beta1.ConcentratedPoolInfo
+ */
+export class ConcentratedPoolInfo extends Message<ConcentratedPoolInfo> {
+  /**
+   * The weight of a concentrated pool
+   *
+   * @generated from field: uint64 weight = 1;
+   */
+  weight = protoInt64.zero;
+
+  /**
+   * The maximum number of ticks we can move when rebalancing
+   *
+   * @generated from field: uint64 max_ticks_crossed = 2;
+   */
+  maxTicksCrossed = protoInt64.zero;
+
+  constructor(data?: PartialMessage<ConcentratedPoolInfo>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "osmosis.protorev.v1beta1.ConcentratedPoolInfo";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "weight", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+    { no: 2, name: "max_ticks_crossed", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ConcentratedPoolInfo {
+    return new ConcentratedPoolInfo().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ConcentratedPoolInfo {
+    return new ConcentratedPoolInfo().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ConcentratedPoolInfo {
+    return new ConcentratedPoolInfo().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: ConcentratedPoolInfo | PlainMessage<ConcentratedPoolInfo> | undefined, b: ConcentratedPoolInfo | PlainMessage<ConcentratedPoolInfo> | undefined): boolean {
+    return proto3.util.equals(ConcentratedPoolInfo, a, b);
+  }
+}
+
+/**
+ * CosmwasmPoolInfo contains meta data pertaining to a cosmwasm pool type.
+ *
+ * @generated from message osmosis.protorev.v1beta1.CosmwasmPoolInfo
+ */
+export class CosmwasmPoolInfo extends Message<CosmwasmPoolInfo> {
+  /**
+   * The weight of a cosmwasm pool (by contract address)
+   *
+   * @generated from field: repeated osmosis.protorev.v1beta1.WeightMap weight_maps = 1;
+   */
+  weightMaps: WeightMap[] = [];
+
+  constructor(data?: PartialMessage<CosmwasmPoolInfo>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "osmosis.protorev.v1beta1.CosmwasmPoolInfo";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "weight_maps", kind: "message", T: WeightMap, repeated: true },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): CosmwasmPoolInfo {
+    return new CosmwasmPoolInfo().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): CosmwasmPoolInfo {
+    return new CosmwasmPoolInfo().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): CosmwasmPoolInfo {
+    return new CosmwasmPoolInfo().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: CosmwasmPoolInfo | PlainMessage<CosmwasmPoolInfo> | undefined, b: CosmwasmPoolInfo | PlainMessage<CosmwasmPoolInfo> | undefined): boolean {
+    return proto3.util.equals(CosmwasmPoolInfo, a, b);
+  }
+}
+
+/**
+ * WeightMap maps a contract address to a weight. The weight of an address
+ * corresponds to the amount of ms required to execute a swap on that contract.
+ *
+ * @generated from message osmosis.protorev.v1beta1.WeightMap
+ */
+export class WeightMap extends Message<WeightMap> {
+  /**
+   * The weight of a cosmwasm pool (by contract address)
+   *
+   * @generated from field: uint64 weight = 1;
+   */
+  weight = protoInt64.zero;
+
+  /**
+   * The contract address
+   *
+   * @generated from field: string contract_address = 2;
+   */
+  contractAddress = "";
+
+  constructor(data?: PartialMessage<WeightMap>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "osmosis.protorev.v1beta1.WeightMap";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "weight", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+    { no: 2, name: "contract_address", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): WeightMap {
+    return new WeightMap().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): WeightMap {
+    return new WeightMap().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): WeightMap {
+    return new WeightMap().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: WeightMap | PlainMessage<WeightMap> | undefined, b: WeightMap | PlainMessage<WeightMap> | undefined): boolean {
+    return proto3.util.equals(WeightMap, a, b);
   }
 }
 

@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { AllPoolsRequest, AllPoolsResponse, EstimateSinglePoolSwapExactAmountInRequest, EstimateSinglePoolSwapExactAmountOutRequest, EstimateSwapExactAmountInRequest, EstimateSwapExactAmountInResponse, EstimateSwapExactAmountOutRequest, EstimateSwapExactAmountOutResponse, NumPoolsRequest, NumPoolsResponse, ParamsRequest, ParamsResponse, PoolRequest, PoolResponse, SpotPriceRequest, SpotPriceResponse, TotalLiquidityRequest, TotalLiquidityResponse, TotalPoolLiquidityRequest, TotalPoolLiquidityResponse } from "./query_pb.js";
+import { AllPoolsRequest, AllPoolsResponse, EstimateSinglePoolSwapExactAmountInRequest, EstimateSinglePoolSwapExactAmountOutRequest, EstimateSwapExactAmountInRequest, EstimateSwapExactAmountInResponse, EstimateSwapExactAmountInWithPrimitiveTypesRequest, EstimateSwapExactAmountOutRequest, EstimateSwapExactAmountOutResponse, EstimateSwapExactAmountOutWithPrimitiveTypesRequest, NumPoolsRequest, NumPoolsResponse, ParamsRequest, ParamsResponse, PoolRequest, PoolResponse, SpotPriceRequest, SpotPriceResponse, TotalLiquidityRequest, TotalLiquidityResponse, TotalPoolLiquidityRequest, TotalPoolLiquidityResponse } from "./query_pb.js";
 
 const TYPE_NAME = "osmosis.poolmanager.v1beta1.Query";
 
@@ -30,6 +30,27 @@ export const QueryEstimateSwapExactAmountInService = {
 } as const;
 
 /**
+ * EstimateSwapExactAmountInWithPrimitiveTypes is an alternative query for
+ * EstimateSwapExactAmountIn. Supports query via GRPC-Gateway by using
+ * primitive types instead of repeated structs. Each index in the
+ * routes_pool_id field corresponds to the respective routes_token_out_denom
+ * value, thus they are required to have the same length and are grouped
+ * together as pairs.
+ * example usage:
+ * http://0.0.0.0:1317/osmosis/poolmanager/v1beta1/1/estimate/
+ * swap_exact_amount_in_with_primitive_types?token_in=100000stake&routes_token_out_denom=uatom
+ * &routes_token_out_denom=uion&routes_pool_id=1&routes_pool_id=2
+ *
+ * @generated from rpc osmosis.poolmanager.v1beta1.Query.EstimateSwapExactAmountInWithPrimitiveTypes
+ */
+export const QueryEstimateSwapExactAmountInWithPrimitiveTypesService = {
+  typeName: TYPE_NAME,
+  method: "EstimateSwapExactAmountInWithPrimitiveTypes",
+  Request: EstimateSwapExactAmountInWithPrimitiveTypesRequest,
+  Response: EstimateSwapExactAmountInResponse,
+} as const;
+
+/**
  * @generated from rpc osmosis.poolmanager.v1beta1.Query.EstimateSinglePoolSwapExactAmountIn
  */
 export const QueryEstimateSinglePoolSwapExactAmountInService = {
@@ -48,6 +69,18 @@ export const QueryEstimateSwapExactAmountOutService = {
   typeName: TYPE_NAME,
   method: "EstimateSwapExactAmountOut",
   Request: EstimateSwapExactAmountOutRequest,
+  Response: EstimateSwapExactAmountOutResponse,
+} as const;
+
+/**
+ * Estimates swap amount in given out.
+ *
+ * @generated from rpc osmosis.poolmanager.v1beta1.Query.EstimateSwapExactAmountOutWithPrimitiveTypes
+ */
+export const QueryEstimateSwapExactAmountOutWithPrimitiveTypesService = {
+  typeName: TYPE_NAME,
+  method: "EstimateSwapExactAmountOutWithPrimitiveTypes",
+  Request: EstimateSwapExactAmountOutWithPrimitiveTypesRequest,
   Response: EstimateSwapExactAmountOutResponse,
 } as const;
 

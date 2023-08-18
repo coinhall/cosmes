@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { MsgClearAdmin, MsgClearAdminResponse, MsgExecuteContract, MsgExecuteContractResponse, MsgInstantiateContract, MsgInstantiateContract2, MsgInstantiateContract2Response, MsgInstantiateContractResponse, MsgMigrateContract, MsgMigrateContractResponse, MsgPinCodes, MsgPinCodesResponse, MsgStoreAndInstantiateContract, MsgStoreAndInstantiateContractResponse, MsgStoreCode, MsgStoreCodeResponse, MsgSudoContract, MsgSudoContractResponse, MsgUnpinCodes, MsgUnpinCodesResponse, MsgUpdateAdmin, MsgUpdateAdminResponse, MsgUpdateInstantiateConfig, MsgUpdateInstantiateConfigResponse, MsgUpdateParams, MsgUpdateParamsResponse } from "./tx_pb.js";
+import { MsgAddCodeUploadParamsAddresses, MsgAddCodeUploadParamsAddressesResponse, MsgClearAdmin, MsgClearAdminResponse, MsgExecuteContract, MsgExecuteContractResponse, MsgInstantiateContract, MsgInstantiateContract2, MsgInstantiateContract2Response, MsgInstantiateContractResponse, MsgMigrateContract, MsgMigrateContractResponse, MsgPinCodes, MsgPinCodesResponse, MsgRemoveCodeUploadParamsAddresses, MsgRemoveCodeUploadParamsAddressesResponse, MsgStoreAndInstantiateContract, MsgStoreAndInstantiateContractResponse, MsgStoreCode, MsgStoreCodeResponse, MsgSudoContract, MsgSudoContractResponse, MsgUnpinCodes, MsgUnpinCodesResponse, MsgUpdateAdmin, MsgUpdateAdminResponse, MsgUpdateInstantiateConfig, MsgUpdateInstantiateConfigResponse, MsgUpdateParams, MsgUpdateParamsResponse } from "./tx_pb.js";
 
 const TYPE_NAME = "cosmwasm.wasm.v1.Msg";
 
@@ -178,5 +178,33 @@ export const MsgStoreAndInstantiateContractService = {
   method: "StoreAndInstantiateContract",
   Request: MsgStoreAndInstantiateContract,
   Response: MsgStoreAndInstantiateContractResponse,
+} as const;
+
+/**
+ * RemoveCodeUploadParamsAddresses defines a governance operation for
+ * removing addresses from code upload params.
+ * The authority is defined in the keeper.
+ *
+ * @generated from rpc cosmwasm.wasm.v1.Msg.RemoveCodeUploadParamsAddresses
+ */
+export const MsgRemoveCodeUploadParamsAddressesService = {
+  typeName: TYPE_NAME,
+  method: "RemoveCodeUploadParamsAddresses",
+  Request: MsgRemoveCodeUploadParamsAddresses,
+  Response: MsgRemoveCodeUploadParamsAddressesResponse,
+} as const;
+
+/**
+ * AddCodeUploadParamsAddresses defines a governance operation for
+ * adding addresses to code upload params.
+ * The authority is defined in the keeper.
+ *
+ * @generated from rpc cosmwasm.wasm.v1.Msg.AddCodeUploadParamsAddresses
+ */
+export const MsgAddCodeUploadParamsAddressesService = {
+  typeName: TYPE_NAME,
+  method: "AddCodeUploadParamsAddresses",
+  Request: MsgAddCodeUploadParamsAddresses,
+  Response: MsgAddCodeUploadParamsAddressesResponse,
 } as const;
 
