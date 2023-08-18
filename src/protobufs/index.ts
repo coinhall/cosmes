@@ -1448,65 +1448,65 @@ export {
   TransferAuthorization as IbcApplicationsTransferV1TransferAuthorization,
 } from "./ibc/applications/transfer/v1/authz_pb.js";
 export {
-  Type as IbcApplicationsInterchain_accountsV1Type,
-  InterchainAccountPacketData as IbcApplicationsInterchain_accountsV1InterchainAccountPacketData,
-  CosmosTx as IbcApplicationsInterchain_accountsV1CosmosTx,
+  Type as IbcApplicationsInterchainAccountsV1Type,
+  InterchainAccountPacketData as IbcApplicationsInterchainAccountsV1InterchainAccountPacketData,
+  CosmosTx as IbcApplicationsInterchainAccountsV1CosmosTx,
 } from "./ibc/applications/interchain_accounts/v1/packet_pb.js";
 export {
-  Metadata as IbcApplicationsInterchain_accountsV1Metadata,
+  Metadata as IbcApplicationsInterchainAccountsV1Metadata,
 } from "./ibc/applications/interchain_accounts/v1/metadata_pb.js";
 export {
-  InterchainAccount as IbcApplicationsInterchain_accountsV1InterchainAccount,
+  InterchainAccount as IbcApplicationsInterchainAccountsV1InterchainAccount,
 } from "./ibc/applications/interchain_accounts/v1/account_pb.js";
 export {
-  MsgUpdateParams as IbcApplicationsInterchain_accountsHostV1MsgUpdateParams,
-  MsgUpdateParamsResponse as IbcApplicationsInterchain_accountsHostV1MsgUpdateParamsResponse,
+  MsgUpdateParams as IbcApplicationsInterchainAccountsHostV1MsgUpdateParams,
+  MsgUpdateParamsResponse as IbcApplicationsInterchainAccountsHostV1MsgUpdateParamsResponse,
 } from "./ibc/applications/interchain_accounts/host/v1/tx_pb.js";
 export {
-  MsgUpdateParamsService as IbcApplicationsInterchain_accountsHostV1MsgUpdateParamsService,
+  MsgUpdateParamsService as IbcApplicationsInterchainAccountsHostV1MsgUpdateParamsService,
 } from "./ibc/applications/interchain_accounts/host/v1/tx_cosmes.js";
 export {
-  QueryParamsRequest as IbcApplicationsInterchain_accountsHostV1QueryParamsRequest,
-  QueryParamsResponse as IbcApplicationsInterchain_accountsHostV1QueryParamsResponse,
+  QueryParamsRequest as IbcApplicationsInterchainAccountsHostV1QueryParamsRequest,
+  QueryParamsResponse as IbcApplicationsInterchainAccountsHostV1QueryParamsResponse,
 } from "./ibc/applications/interchain_accounts/host/v1/query_pb.js";
 export {
-  QueryParamsService as IbcApplicationsInterchain_accountsHostV1QueryParamsService,
+  QueryParamsService as IbcApplicationsInterchainAccountsHostV1QueryParamsService,
 } from "./ibc/applications/interchain_accounts/host/v1/query_cosmes.js";
 export {
-  Params as IbcApplicationsInterchain_accountsHostV1Params,
+  Params as IbcApplicationsInterchainAccountsHostV1Params,
 } from "./ibc/applications/interchain_accounts/host/v1/host_pb.js";
 export {
-  GenesisState as IbcApplicationsInterchain_accountsGenesisV1GenesisState,
-  ControllerGenesisState as IbcApplicationsInterchain_accountsGenesisV1ControllerGenesisState,
-  HostGenesisState as IbcApplicationsInterchain_accountsGenesisV1HostGenesisState,
-  ActiveChannel as IbcApplicationsInterchain_accountsGenesisV1ActiveChannel,
-  RegisteredInterchainAccount as IbcApplicationsInterchain_accountsGenesisV1RegisteredInterchainAccount,
+  GenesisState as IbcApplicationsInterchainAccountsGenesisV1GenesisState,
+  ControllerGenesisState as IbcApplicationsInterchainAccountsGenesisV1ControllerGenesisState,
+  HostGenesisState as IbcApplicationsInterchainAccountsGenesisV1HostGenesisState,
+  ActiveChannel as IbcApplicationsInterchainAccountsGenesisV1ActiveChannel,
+  RegisteredInterchainAccount as IbcApplicationsInterchainAccountsGenesisV1RegisteredInterchainAccount,
 } from "./ibc/applications/interchain_accounts/genesis/v1/genesis_pb.js";
 export {
-  MsgRegisterInterchainAccount as IbcApplicationsInterchain_accountsControllerV1MsgRegisterInterchainAccount,
-  MsgRegisterInterchainAccountResponse as IbcApplicationsInterchain_accountsControllerV1MsgRegisterInterchainAccountResponse,
-  MsgSendTx as IbcApplicationsInterchain_accountsControllerV1MsgSendTx,
-  MsgSendTxResponse as IbcApplicationsInterchain_accountsControllerV1MsgSendTxResponse,
-  MsgUpdateParams as IbcApplicationsInterchain_accountsControllerV1MsgUpdateParams,
-  MsgUpdateParamsResponse as IbcApplicationsInterchain_accountsControllerV1MsgUpdateParamsResponse,
+  MsgRegisterInterchainAccount as IbcApplicationsInterchainAccountsControllerV1MsgRegisterInterchainAccount,
+  MsgRegisterInterchainAccountResponse as IbcApplicationsInterchainAccountsControllerV1MsgRegisterInterchainAccountResponse,
+  MsgSendTx as IbcApplicationsInterchainAccountsControllerV1MsgSendTx,
+  MsgSendTxResponse as IbcApplicationsInterchainAccountsControllerV1MsgSendTxResponse,
+  MsgUpdateParams as IbcApplicationsInterchainAccountsControllerV1MsgUpdateParams,
+  MsgUpdateParamsResponse as IbcApplicationsInterchainAccountsControllerV1MsgUpdateParamsResponse,
 } from "./ibc/applications/interchain_accounts/controller/v1/tx_pb.js";
 export {
-  MsgRegisterInterchainAccountService as IbcApplicationsInterchain_accountsControllerV1MsgRegisterInterchainAccountService,
-  MsgSendTxService as IbcApplicationsInterchain_accountsControllerV1MsgSendTxService,
-  MsgUpdateParamsService as IbcApplicationsInterchain_accountsControllerV1MsgUpdateParamsService,
+  MsgRegisterInterchainAccountService as IbcApplicationsInterchainAccountsControllerV1MsgRegisterInterchainAccountService,
+  MsgSendTxService as IbcApplicationsInterchainAccountsControllerV1MsgSendTxService,
+  MsgUpdateParamsService as IbcApplicationsInterchainAccountsControllerV1MsgUpdateParamsService,
 } from "./ibc/applications/interchain_accounts/controller/v1/tx_cosmes.js";
 export {
-  QueryInterchainAccountRequest as IbcApplicationsInterchain_accountsControllerV1QueryInterchainAccountRequest,
-  QueryInterchainAccountResponse as IbcApplicationsInterchain_accountsControllerV1QueryInterchainAccountResponse,
-  QueryParamsRequest as IbcApplicationsInterchain_accountsControllerV1QueryParamsRequest,
-  QueryParamsResponse as IbcApplicationsInterchain_accountsControllerV1QueryParamsResponse,
+  QueryInterchainAccountRequest as IbcApplicationsInterchainAccountsControllerV1QueryInterchainAccountRequest,
+  QueryInterchainAccountResponse as IbcApplicationsInterchainAccountsControllerV1QueryInterchainAccountResponse,
+  QueryParamsRequest as IbcApplicationsInterchainAccountsControllerV1QueryParamsRequest,
+  QueryParamsResponse as IbcApplicationsInterchainAccountsControllerV1QueryParamsResponse,
 } from "./ibc/applications/interchain_accounts/controller/v1/query_pb.js";
 export {
-  QueryInterchainAccountService as IbcApplicationsInterchain_accountsControllerV1QueryInterchainAccountService,
-  QueryParamsService as IbcApplicationsInterchain_accountsControllerV1QueryParamsService,
+  QueryInterchainAccountService as IbcApplicationsInterchainAccountsControllerV1QueryInterchainAccountService,
+  QueryParamsService as IbcApplicationsInterchainAccountsControllerV1QueryParamsService,
 } from "./ibc/applications/interchain_accounts/controller/v1/query_cosmes.js";
 export {
-  Params as IbcApplicationsInterchain_accountsControllerV1Params,
+  Params as IbcApplicationsInterchainAccountsControllerV1Params,
 } from "./ibc/applications/interchain_accounts/controller/v1/controller_pb.js";
 export {
   MsgRegisterPayee as IbcApplicationsFeeV1MsgRegisterPayee,
