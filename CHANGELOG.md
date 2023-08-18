@@ -1,5 +1,11 @@
 # Changelog
 
+## `v0.0.30`
+
+### Features
+
+- Added ICS 23 protobufs from [`cosmos/ics23`](https://github.com/cosmos/ics23) to fix `ibc-go` dependency issues
+
 ## `v0.0.29`
 
 ### Features

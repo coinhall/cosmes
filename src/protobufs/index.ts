@@ -2141,6 +2141,23 @@ export {
   Module as CosmosMintModuleV1Module,
 } from "./cosmos/mint/module/v1/module_pb.js";
 export {
+  HashOp as CosmosIcs23V1HashOp,
+  LengthOp as CosmosIcs23V1LengthOp,
+  ExistenceProof as CosmosIcs23V1ExistenceProof,
+  NonExistenceProof as CosmosIcs23V1NonExistenceProof,
+  CommitmentProof as CosmosIcs23V1CommitmentProof,
+  LeafOp as CosmosIcs23V1LeafOp,
+  InnerOp as CosmosIcs23V1InnerOp,
+  ProofSpec as CosmosIcs23V1ProofSpec,
+  InnerSpec as CosmosIcs23V1InnerSpec,
+  BatchProof as CosmosIcs23V1BatchProof,
+  BatchEntry as CosmosIcs23V1BatchEntry,
+  CompressedBatchProof as CosmosIcs23V1CompressedBatchProof,
+  CompressedBatchEntry as CosmosIcs23V1CompressedBatchEntry,
+  CompressedExistenceProof as CosmosIcs23V1CompressedExistenceProof,
+  CompressedNonExistenceProof as CosmosIcs23V1CompressedNonExistenceProof,
+} from "./cosmos/ics23/v1/proofs_pb.js";
+export {
   VoteOption as CosmosGroupV1VoteOption,
   ProposalStatus as CosmosGroupV1ProposalStatus,
   ProposalExecutorResult as CosmosGroupV1ProposalExecutorResult,

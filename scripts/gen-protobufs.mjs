@@ -31,15 +31,19 @@ const REPOS = [
     paths: ["proto"],
   },
   {
+    repo: "cosmos/ics23#master",
+    paths: ["proto"],
+  },
+  {
+    repo: "cosmos/ibc-go#main",
+    paths: ["proto"],
+  },
+  {
     repo: "CosmWasm/wasmd#main",
     paths: ["proto"],
   },
   {
     repo: "osmosis-labs/osmosis#main",
-    paths: ["proto"],
-  },
-  {
-    repo: "cosmos/ibc-go#main",
     paths: ["proto"],
   },
 ];
