@@ -1,5 +1,12 @@
 # Changelog
 
+## `v0.0.29`
+
+### Features
+
+- Added IBC protobufs from [`cosmos/ibc-go`](https://github.com/cosmos/ibc-go)
+- Added `MsgIbcTransfer` model
+
 ## `v0.0.28`
 
 ### Features
