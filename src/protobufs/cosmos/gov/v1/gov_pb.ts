@@ -344,6 +344,15 @@ export class Proposal extends Message<Proposal> {
    */
   expedited = false;
 
+  /**
+   * failed_reason defines the reason why the proposal failed
+   *
+   * Since: cosmos-sdk 0.50
+   *
+   * @generated from field: string failed_reason = 15;
+   */
+  failedReason = "";
+
   constructor(data?: PartialMessage<Proposal>) {
     super();
     proto3.util.initPartial(data, this);
@@ -366,6 +375,7 @@ export class Proposal extends Message<Proposal> {
     { no: 12, name: "summary", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 13, name: "proposer", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 14, name: "expedited", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+    { no: 15, name: "failed_reason", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Proposal {

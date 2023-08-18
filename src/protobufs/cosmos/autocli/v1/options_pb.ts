@@ -88,6 +88,15 @@ export class ServiceCommandDescriptor extends Message<ServiceCommandDescriptor> 
    */
   subCommands: { [key: string]: ServiceCommandDescriptor } = {};
 
+  /**
+   * enhance_custom_commands specifies whether to skip the service when generating commands, if a custom command already exists,
+   * or enhance the existing command. If set to true, the custom command will be enhanced with the services from gRPC.
+   * otherwise when a custom command exists, no commands will be generated for the service.
+   *
+   * @generated from field: bool enhance_custom_command = 4;
+   */
+  enhanceCustomCommand = false;
+
   constructor(data?: PartialMessage<ServiceCommandDescriptor>) {
     super();
     proto3.util.initPartial(data, this);
@@ -99,6 +108,7 @@ export class ServiceCommandDescriptor extends Message<ServiceCommandDescriptor> 
     { no: 1, name: "service", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "rpc_command_options", kind: "message", T: RpcCommandOptions, repeated: true },
     { no: 3, name: "sub_commands", kind: "map", K: 9 /* ScalarType.STRING */, V: {kind: "message", T: ServiceCommandDescriptor} },
+    { no: 4, name: "enhance_custom_command", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ServiceCommandDescriptor {

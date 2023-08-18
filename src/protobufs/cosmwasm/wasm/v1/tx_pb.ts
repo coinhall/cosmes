@@ -1415,3 +1415,167 @@ export class MsgStoreAndInstantiateContractResponse extends Message<MsgStoreAndI
   }
 }
 
+/**
+ * MsgAddCodeUploadParamsAddresses is the
+ * MsgAddCodeUploadParamsAddresses request type.
+ *
+ * @generated from message cosmwasm.wasm.v1.MsgAddCodeUploadParamsAddresses
+ */
+export class MsgAddCodeUploadParamsAddresses extends Message<MsgAddCodeUploadParamsAddresses> {
+  /**
+   * Authority is the address of the governance account.
+   *
+   * @generated from field: string authority = 1;
+   */
+  authority = "";
+
+  /**
+   * @generated from field: repeated string addresses = 2;
+   */
+  addresses: string[] = [];
+
+  constructor(data?: PartialMessage<MsgAddCodeUploadParamsAddresses>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "cosmwasm.wasm.v1.MsgAddCodeUploadParamsAddresses";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "authority", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "addresses", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgAddCodeUploadParamsAddresses {
+    return new MsgAddCodeUploadParamsAddresses().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MsgAddCodeUploadParamsAddresses {
+    return new MsgAddCodeUploadParamsAddresses().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MsgAddCodeUploadParamsAddresses {
+    return new MsgAddCodeUploadParamsAddresses().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: MsgAddCodeUploadParamsAddresses | PlainMessage<MsgAddCodeUploadParamsAddresses> | undefined, b: MsgAddCodeUploadParamsAddresses | PlainMessage<MsgAddCodeUploadParamsAddresses> | undefined): boolean {
+    return proto3.util.equals(MsgAddCodeUploadParamsAddresses, a, b);
+  }
+}
+
+/**
+ * MsgAddCodeUploadParamsAddressesResponse defines the response
+ * structure for executing a MsgAddCodeUploadParamsAddresses message.
+ *
+ * @generated from message cosmwasm.wasm.v1.MsgAddCodeUploadParamsAddressesResponse
+ */
+export class MsgAddCodeUploadParamsAddressesResponse extends Message<MsgAddCodeUploadParamsAddressesResponse> {
+  constructor(data?: PartialMessage<MsgAddCodeUploadParamsAddressesResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "cosmwasm.wasm.v1.MsgAddCodeUploadParamsAddressesResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgAddCodeUploadParamsAddressesResponse {
+    return new MsgAddCodeUploadParamsAddressesResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MsgAddCodeUploadParamsAddressesResponse {
+    return new MsgAddCodeUploadParamsAddressesResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MsgAddCodeUploadParamsAddressesResponse {
+    return new MsgAddCodeUploadParamsAddressesResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: MsgAddCodeUploadParamsAddressesResponse | PlainMessage<MsgAddCodeUploadParamsAddressesResponse> | undefined, b: MsgAddCodeUploadParamsAddressesResponse | PlainMessage<MsgAddCodeUploadParamsAddressesResponse> | undefined): boolean {
+    return proto3.util.equals(MsgAddCodeUploadParamsAddressesResponse, a, b);
+  }
+}
+
+/**
+ * MsgRemoveCodeUploadParamsAddresses is the
+ * MsgRemoveCodeUploadParamsAddresses request type.
+ *
+ * @generated from message cosmwasm.wasm.v1.MsgRemoveCodeUploadParamsAddresses
+ */
+export class MsgRemoveCodeUploadParamsAddresses extends Message<MsgRemoveCodeUploadParamsAddresses> {
+  /**
+   * Authority is the address of the governance account.
+   *
+   * @generated from field: string authority = 1;
+   */
+  authority = "";
+
+  /**
+   * @generated from field: repeated string addresses = 2;
+   */
+  addresses: string[] = [];
+
+  constructor(data?: PartialMessage<MsgRemoveCodeUploadParamsAddresses>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "cosmwasm.wasm.v1.MsgRemoveCodeUploadParamsAddresses";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "authority", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "addresses", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgRemoveCodeUploadParamsAddresses {
+    return new MsgRemoveCodeUploadParamsAddresses().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MsgRemoveCodeUploadParamsAddresses {
+    return new MsgRemoveCodeUploadParamsAddresses().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MsgRemoveCodeUploadParamsAddresses {
+    return new MsgRemoveCodeUploadParamsAddresses().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: MsgRemoveCodeUploadParamsAddresses | PlainMessage<MsgRemoveCodeUploadParamsAddresses> | undefined, b: MsgRemoveCodeUploadParamsAddresses | PlainMessage<MsgRemoveCodeUploadParamsAddresses> | undefined): boolean {
+    return proto3.util.equals(MsgRemoveCodeUploadParamsAddresses, a, b);
+  }
+}
+
+/**
+ * MsgRemoveCodeUploadParamsAddressesResponse defines the response
+ * structure for executing a MsgRemoveCodeUploadParamsAddresses message.
+ *
+ * @generated from message cosmwasm.wasm.v1.MsgRemoveCodeUploadParamsAddressesResponse
+ */
+export class MsgRemoveCodeUploadParamsAddressesResponse extends Message<MsgRemoveCodeUploadParamsAddressesResponse> {
+  constructor(data?: PartialMessage<MsgRemoveCodeUploadParamsAddressesResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "cosmwasm.wasm.v1.MsgRemoveCodeUploadParamsAddressesResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgRemoveCodeUploadParamsAddressesResponse {
+    return new MsgRemoveCodeUploadParamsAddressesResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MsgRemoveCodeUploadParamsAddressesResponse {
+    return new MsgRemoveCodeUploadParamsAddressesResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MsgRemoveCodeUploadParamsAddressesResponse {
+    return new MsgRemoveCodeUploadParamsAddressesResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: MsgRemoveCodeUploadParamsAddressesResponse | PlainMessage<MsgRemoveCodeUploadParamsAddressesResponse> | undefined, b: MsgRemoveCodeUploadParamsAddressesResponse | PlainMessage<MsgRemoveCodeUploadParamsAddressesResponse> | undefined): boolean {
+    return proto3.util.equals(MsgRemoveCodeUploadParamsAddressesResponse, a, b);
+  }
+}
+

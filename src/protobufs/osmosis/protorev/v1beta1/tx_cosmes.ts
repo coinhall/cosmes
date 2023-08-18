@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { MsgSetBaseDenoms, MsgSetBaseDenomsResponse, MsgSetDeveloperAccount, MsgSetDeveloperAccountResponse, MsgSetHotRoutes, MsgSetHotRoutesResponse, MsgSetMaxPoolPointsPerBlock, MsgSetMaxPoolPointsPerBlockResponse, MsgSetMaxPoolPointsPerTx, MsgSetMaxPoolPointsPerTxResponse, MsgSetPoolWeights, MsgSetPoolWeightsResponse } from "./tx_pb.js";
+import { MsgSetBaseDenoms, MsgSetBaseDenomsResponse, MsgSetDeveloperAccount, MsgSetDeveloperAccountResponse, MsgSetHotRoutes, MsgSetHotRoutesResponse, MsgSetInfoByPoolType, MsgSetInfoByPoolTypeResponse, MsgSetMaxPoolPointsPerBlock, MsgSetMaxPoolPointsPerBlockResponse, MsgSetMaxPoolPointsPerTx, MsgSetMaxPoolPointsPerTxResponse } from "./tx_pb.js";
 
 const TYPE_NAME = "osmosis.protorev.v1beta1.Msg";
 
@@ -60,16 +60,16 @@ export const MsgSetMaxPoolPointsPerBlockService = {
 } as const;
 
 /**
- * SetPoolWeights sets the weights of each pool type in the store. Can only be
- * called by the admin account.
+ * SetInfoByPoolType sets the pool type information needed to make smart
+ * assumptions about swapping on different pool types
  *
- * @generated from rpc osmosis.protorev.v1beta1.Msg.SetPoolWeights
+ * @generated from rpc osmosis.protorev.v1beta1.Msg.SetInfoByPoolType
  */
-export const MsgSetPoolWeightsService = {
+export const MsgSetInfoByPoolTypeService = {
   typeName: TYPE_NAME,
-  method: "SetPoolWeights",
-  Request: MsgSetPoolWeights,
-  Response: MsgSetPoolWeightsResponse,
+  method: "SetInfoByPoolType",
+  Request: MsgSetInfoByPoolType,
+  Response: MsgSetInfoByPoolTypeResponse,
 } as const;
 
 /**

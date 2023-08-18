@@ -844,3 +844,116 @@ export class MsgAddToConcentratedLiquiditySuperfluidPositionResponse extends Mes
   }
 }
 
+/**
+ * ===================== MsgUnbondConvertAndStake
+ *
+ * @generated from message osmosis.superfluid.MsgUnbondConvertAndStake
+ */
+export class MsgUnbondConvertAndStake extends Message<MsgUnbondConvertAndStake> {
+  /**
+   * lock ID to convert and stake.
+   * lock id with 0 should be provided if converting liquid gamm shares to stake
+   *
+   * @generated from field: uint64 lock_id = 1;
+   */
+  lockId = protoInt64.zero;
+
+  /**
+   * @generated from field: string sender = 2;
+   */
+  sender = "";
+
+  /**
+   * validator address to delegate to.
+   * If provided empty string, we use the validators returned from
+   * valset-preference module.
+   *
+   * @generated from field: string val_addr = 3;
+   */
+  valAddr = "";
+
+  /**
+   * min_amt_to_stake indicates the minimum amount to stake after conversion
+   *
+   * @generated from field: string min_amt_to_stake = 4;
+   */
+  minAmtToStake = "";
+
+  /**
+   * shares_to_convert indicates shares wanted to stake.
+   * Note that this field is only used for liquid(unlocked) gamm shares.
+   * For all other cases, this field would be disregarded.
+   *
+   * @generated from field: cosmos.base.v1beta1.Coin shares_to_convert = 5;
+   */
+  sharesToConvert?: Coin;
+
+  constructor(data?: PartialMessage<MsgUnbondConvertAndStake>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "osmosis.superfluid.MsgUnbondConvertAndStake";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "lock_id", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+    { no: 2, name: "sender", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "val_addr", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 4, name: "min_amt_to_stake", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 5, name: "shares_to_convert", kind: "message", T: Coin },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgUnbondConvertAndStake {
+    return new MsgUnbondConvertAndStake().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MsgUnbondConvertAndStake {
+    return new MsgUnbondConvertAndStake().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MsgUnbondConvertAndStake {
+    return new MsgUnbondConvertAndStake().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: MsgUnbondConvertAndStake | PlainMessage<MsgUnbondConvertAndStake> | undefined, b: MsgUnbondConvertAndStake | PlainMessage<MsgUnbondConvertAndStake> | undefined): boolean {
+    return proto3.util.equals(MsgUnbondConvertAndStake, a, b);
+  }
+}
+
+/**
+ * @generated from message osmosis.superfluid.MsgUnbondConvertAndStakeResponse
+ */
+export class MsgUnbondConvertAndStakeResponse extends Message<MsgUnbondConvertAndStakeResponse> {
+  /**
+   * @generated from field: string total_amt_staked = 1;
+   */
+  totalAmtStaked = "";
+
+  constructor(data?: PartialMessage<MsgUnbondConvertAndStakeResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "osmosis.superfluid.MsgUnbondConvertAndStakeResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "total_amt_staked", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgUnbondConvertAndStakeResponse {
+    return new MsgUnbondConvertAndStakeResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MsgUnbondConvertAndStakeResponse {
+    return new MsgUnbondConvertAndStakeResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MsgUnbondConvertAndStakeResponse {
+    return new MsgUnbondConvertAndStakeResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: MsgUnbondConvertAndStakeResponse | PlainMessage<MsgUnbondConvertAndStakeResponse> | undefined, b: MsgUnbondConvertAndStakeResponse | PlainMessage<MsgUnbondConvertAndStakeResponse> | undefined): boolean {
+    return proto3.util.equals(MsgUnbondConvertAndStakeResponse, a, b);
+  }
+}
+

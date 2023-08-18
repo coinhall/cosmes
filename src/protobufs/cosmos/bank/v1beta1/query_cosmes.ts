@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { QueryAllBalancesRequest, QueryAllBalancesResponse, QueryBalanceRequest, QueryBalanceResponse, QueryDenomMetadataRequest, QueryDenomMetadataResponse, QueryDenomOwnersRequest, QueryDenomOwnersResponse, QueryDenomsMetadataRequest, QueryDenomsMetadataResponse, QueryParamsRequest, QueryParamsResponse, QuerySendEnabledRequest, QuerySendEnabledResponse, QuerySpendableBalanceByDenomRequest, QuerySpendableBalanceByDenomResponse, QuerySpendableBalancesRequest, QuerySpendableBalancesResponse, QuerySupplyOfRequest, QuerySupplyOfResponse, QueryTotalSupplyRequest, QueryTotalSupplyResponse } from "./query_pb.js";
+import { QueryAllBalancesRequest, QueryAllBalancesResponse, QueryBalanceRequest, QueryBalanceResponse, QueryDenomMetadataByQueryStringRequest, QueryDenomMetadataByQueryStringResponse, QueryDenomMetadataRequest, QueryDenomMetadataResponse, QueryDenomOwnersRequest, QueryDenomOwnersResponse, QueryDenomsMetadataRequest, QueryDenomsMetadataResponse, QueryParamsRequest, QueryParamsResponse, QuerySendEnabledRequest, QuerySendEnabledResponse, QuerySpendableBalanceByDenomRequest, QuerySpendableBalanceByDenomResponse, QuerySpendableBalancesRequest, QuerySpendableBalancesResponse, QuerySupplyOfRequest, QuerySupplyOfResponse, QueryTotalSupplyRequest, QueryTotalSupplyResponse } from "./query_pb.js";
 
 const TYPE_NAME = "cosmos.bank.v1beta1.Query";
 
@@ -122,6 +122,18 @@ export const QueryDenomMetadataService = {
   method: "DenomMetadata",
   Request: QueryDenomMetadataRequest,
   Response: QueryDenomMetadataResponse,
+} as const;
+
+/**
+ * DenomsMetadata queries the client metadata of a given coin denomination.
+ *
+ * @generated from rpc cosmos.bank.v1beta1.Query.DenomMetadataByQueryString
+ */
+export const QueryDenomMetadataByQueryStringService = {
+  typeName: TYPE_NAME,
+  method: "DenomMetadataByQueryString",
+  Request: QueryDenomMetadataByQueryStringRequest,
+  Response: QueryDenomMetadataByQueryStringResponse,
 } as const;
 
 /**

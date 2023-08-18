@@ -4,7 +4,7 @@
 // @ts-nocheck
 
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
-import { Message, proto3 } from "@bufbuild/protobuf";
+import { Message, proto3, protoInt64 } from "@bufbuild/protobuf";
 import { BalancerToConcentratedPoolLink } from "./shared_pb.js";
 
 /**
@@ -117,6 +117,183 @@ export class UpdateMigrationRecordsProposal extends Message<UpdateMigrationRecor
 
   static equals(a: UpdateMigrationRecordsProposal | PlainMessage<UpdateMigrationRecordsProposal> | undefined, b: UpdateMigrationRecordsProposal | PlainMessage<UpdateMigrationRecordsProposal> | undefined): boolean {
     return proto3.util.equals(UpdateMigrationRecordsProposal, a, b);
+  }
+}
+
+/**
+ * @generated from message osmosis.gamm.v1beta1.PoolRecordWithCFMMLink
+ */
+export class PoolRecordWithCFMMLink extends Message<PoolRecordWithCFMMLink> {
+  /**
+   * @generated from field: string denom0 = 1;
+   */
+  denom0 = "";
+
+  /**
+   * @generated from field: string denom1 = 2;
+   */
+  denom1 = "";
+
+  /**
+   * @generated from field: uint64 tick_spacing = 3;
+   */
+  tickSpacing = protoInt64.zero;
+
+  /**
+   * @generated from field: string exponent_at_price_one = 4;
+   */
+  exponentAtPriceOne = "";
+
+  /**
+   * @generated from field: string spread_factor = 5;
+   */
+  spreadFactor = "";
+
+  /**
+   * @generated from field: uint64 balancer_pool_id = 6;
+   */
+  balancerPoolId = protoInt64.zero;
+
+  constructor(data?: PartialMessage<PoolRecordWithCFMMLink>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "osmosis.gamm.v1beta1.PoolRecordWithCFMMLink";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "denom0", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "denom1", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "tick_spacing", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+    { no: 4, name: "exponent_at_price_one", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 5, name: "spread_factor", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 6, name: "balancer_pool_id", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PoolRecordWithCFMMLink {
+    return new PoolRecordWithCFMMLink().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): PoolRecordWithCFMMLink {
+    return new PoolRecordWithCFMMLink().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): PoolRecordWithCFMMLink {
+    return new PoolRecordWithCFMMLink().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: PoolRecordWithCFMMLink | PlainMessage<PoolRecordWithCFMMLink> | undefined, b: PoolRecordWithCFMMLink | PlainMessage<PoolRecordWithCFMMLink> | undefined): boolean {
+    return proto3.util.equals(PoolRecordWithCFMMLink, a, b);
+  }
+}
+
+/**
+ * CreateConcentratedLiquidityPoolsAndLinktoCFMMProposal is a gov Content type
+ * for creating concentrated liquidity pools and linking it to a CFMM pool.
+ *
+ * @generated from message osmosis.gamm.v1beta1.CreateConcentratedLiquidityPoolsAndLinktoCFMMProposal
+ */
+export class CreateConcentratedLiquidityPoolsAndLinktoCFMMProposal extends Message<CreateConcentratedLiquidityPoolsAndLinktoCFMMProposal> {
+  /**
+   * @generated from field: string title = 1;
+   */
+  title = "";
+
+  /**
+   * @generated from field: string description = 2;
+   */
+  description = "";
+
+  /**
+   * @generated from field: repeated osmosis.gamm.v1beta1.PoolRecordWithCFMMLink pool_records_with_cfmm_link = 3;
+   */
+  poolRecordsWithCfmmLink: PoolRecordWithCFMMLink[] = [];
+
+  constructor(data?: PartialMessage<CreateConcentratedLiquidityPoolsAndLinktoCFMMProposal>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "osmosis.gamm.v1beta1.CreateConcentratedLiquidityPoolsAndLinktoCFMMProposal";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "title", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "description", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "pool_records_with_cfmm_link", kind: "message", T: PoolRecordWithCFMMLink, repeated: true },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): CreateConcentratedLiquidityPoolsAndLinktoCFMMProposal {
+    return new CreateConcentratedLiquidityPoolsAndLinktoCFMMProposal().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): CreateConcentratedLiquidityPoolsAndLinktoCFMMProposal {
+    return new CreateConcentratedLiquidityPoolsAndLinktoCFMMProposal().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): CreateConcentratedLiquidityPoolsAndLinktoCFMMProposal {
+    return new CreateConcentratedLiquidityPoolsAndLinktoCFMMProposal().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: CreateConcentratedLiquidityPoolsAndLinktoCFMMProposal | PlainMessage<CreateConcentratedLiquidityPoolsAndLinktoCFMMProposal> | undefined, b: CreateConcentratedLiquidityPoolsAndLinktoCFMMProposal | PlainMessage<CreateConcentratedLiquidityPoolsAndLinktoCFMMProposal> | undefined): boolean {
+    return proto3.util.equals(CreateConcentratedLiquidityPoolsAndLinktoCFMMProposal, a, b);
+  }
+}
+
+/**
+ * SetScalingFactorControllerProposal is a gov Content type for updating the
+ * scaling factor controller address of a stableswap pool
+ *
+ * @generated from message osmosis.gamm.v1beta1.SetScalingFactorControllerProposal
+ */
+export class SetScalingFactorControllerProposal extends Message<SetScalingFactorControllerProposal> {
+  /**
+   * @generated from field: string title = 1;
+   */
+  title = "";
+
+  /**
+   * @generated from field: string description = 2;
+   */
+  description = "";
+
+  /**
+   * @generated from field: uint64 pool_id = 3;
+   */
+  poolId = protoInt64.zero;
+
+  /**
+   * @generated from field: string controller_address = 4;
+   */
+  controllerAddress = "";
+
+  constructor(data?: PartialMessage<SetScalingFactorControllerProposal>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "osmosis.gamm.v1beta1.SetScalingFactorControllerProposal";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "title", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "description", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "pool_id", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+    { no: 4, name: "controller_address", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): SetScalingFactorControllerProposal {
+    return new SetScalingFactorControllerProposal().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): SetScalingFactorControllerProposal {
+    return new SetScalingFactorControllerProposal().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): SetScalingFactorControllerProposal {
+    return new SetScalingFactorControllerProposal().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: SetScalingFactorControllerProposal | PlainMessage<SetScalingFactorControllerProposal> | undefined, b: SetScalingFactorControllerProposal | PlainMessage<SetScalingFactorControllerProposal> | undefined): boolean {
+    return proto3.util.equals(SetScalingFactorControllerProposal, a, b);
   }
 }
 

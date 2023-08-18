@@ -6,7 +6,7 @@
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
 import { Message, proto3, protoInt64 } from "@bufbuild/protobuf";
 import { Params } from "./params_pb.js";
-import { BaseDenom, PoolWeights, TokenPairArbRoutes } from "./protorev_pb.js";
+import { BaseDenom, InfoByPoolType, PoolWeights, TokenPairArbRoutes } from "./protorev_pb.js";
 import { Coin } from "../../../cosmos/base/v1beta1/coin_pb.js";
 
 /**
@@ -40,6 +40,9 @@ export class GenesisState extends Message<GenesisState> {
   /**
    * The pool weights that are being used to calculate the weight (compute cost)
    * of each route.
+   *
+   * DEPRECATED: This field is deprecated and will be removed in the next
+   * release. It is replaced by the `info_by_pool_type` field.
    *
    * @generated from field: osmosis.protorev.v1beta1.PoolWeights pool_weights = 4;
    */
@@ -103,6 +106,14 @@ export class GenesisState extends Message<GenesisState> {
    */
   profits: Coin[] = [];
 
+  /**
+   * Information that is used to estimate execution time / gas
+   * consumption of a swap on a given pool type.
+   *
+   * @generated from field: osmosis.protorev.v1beta1.InfoByPoolType info_by_pool_type = 13;
+   */
+  infoByPoolType?: InfoByPoolType;
+
   constructor(data?: PartialMessage<GenesisState>) {
     super();
     proto3.util.initPartial(data, this);
@@ -123,6 +134,7 @@ export class GenesisState extends Message<GenesisState> {
     { no: 10, name: "max_pool_points_per_tx", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
     { no: 11, name: "point_count_for_block", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
     { no: 12, name: "profits", kind: "message", T: Coin, repeated: true },
+    { no: 13, name: "info_by_pool_type", kind: "message", T: InfoByPoolType },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): GenesisState {
