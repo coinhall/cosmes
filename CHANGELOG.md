@@ -1,5 +1,11 @@
 # Changelog
 
+## `v0.0.31`
+
+### Miscellaneous
+
+- Added missing barrel export for `MsgIbcTransfer` model
+
 ## `v0.0.30`
 
 ### Features

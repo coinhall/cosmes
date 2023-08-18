@@ -27,6 +27,7 @@ export { simulateTx, type SimulateTxParams } from "./apis/simulateTx";
 export { RpcClient } from "./clients/RpcClient";
 export { type Adapter } from "./models/Adapter";
 export { MsgExecuteContract } from "./models/MsgExecuteContract";
+export { MsgIbcTransfer } from "./models/MsgIbcTransfer";
 export { MsgOsmosisSinglePoolSwap } from "./models/MsgOsmosisSinglePoolSwap";
 export { MsgSend } from "./models/MsgSend";
 export { MsgSwapExactAmountIn } from "./models/MsgSwapExactAmountIn";
