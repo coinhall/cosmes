@@ -1,12 +1,12 @@
 import { PlainMessage } from "@bufbuild/protobuf";
-import { IbcApplicationsTransferV1MsgTransfer as ProtoMsgTransfer } from "cosmes/protobufs";
+import { IbcApplicationsTransferV1MsgTransfer as ProtoMsgIbcTransfer } from "cosmes/protobufs";
 
 import { DeepPrettify } from "../../typeutils/prettify";
 import { Adapter } from "./Adapter";
 
-type Data = DeepPrettify<PlainMessage<ProtoMsgTransfer>>;
+type Data = DeepPrettify<PlainMessage<ProtoMsgIbcTransfer>>;
 
-export class MsgTransfer implements Adapter {
+export class MsgIbcTransfer implements Adapter {
   private readonly data: Data;
 
   constructor(data: Data) {
@@ -14,7 +14,7 @@ export class MsgTransfer implements Adapter {
   }
 
   public toProto() {
-    return new ProtoMsgTransfer(this.data);
+    return new ProtoMsgIbcTransfer(this.data);
   }
 
   public toAmino() {
