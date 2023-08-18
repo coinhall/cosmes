@@ -1,5 +1,11 @@
 # Changelog
 
+## `v0.0.32`
+
+### Fixes
+
+- Added missing `memo` field for `MsgIbcTransfer`
+
 ## `v0.0.31`
 
 ### Miscellaneous

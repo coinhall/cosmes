@@ -40,6 +40,7 @@ export class MsgIbcTransfer implements Adapter {
             }
           : {},
         timeout_timestamp: this.data.timeoutTimestamp.toString(),
+        memo: this.data.memo,
       },
     };
   }
