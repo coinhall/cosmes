@@ -1,5 +1,12 @@
 # Changelog
 
+## `v0.0.33`
+
+### Fixes
+
+- Allow memo and fee fields to be set by user for WalletConnect wallets
+- Fixed Cosmostation WalletConnect to use updated API changes
+
 ## `v0.0.32`
 
 ### Fixes
