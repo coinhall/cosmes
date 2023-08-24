@@ -19,17 +19,21 @@ type GetAccountResponse = {
   pubkey: string;
 };
 
-type SignAminoResponse =
-  | {
-      // Keplr
-      signature: {
-        signature: string;
-      };
-    }
-  | {
-      // Cosmostation
-      signature: string;
-    };
+type SignAminoResponse = {
+  signature: string;
+  signed: StdSignDoc;
+};
+
+/**
+ * The data returned by the `cosmos_signAmino` for keplr-like wallets. `signed` is
+ * optional because some wallets (like cosmostation) do not return it.
+ */
+type PartialSignAminoResponse = {
+  signature: {
+    signature: string;
+  };
+  signed?: StdSignDoc | undefined;
+};
 
 const Method = {
   GET_ACCOUNTS: "cosmos_getAccounts",
@@ -172,8 +176,8 @@ export class WalletConnectV2 {
     chainId: string,
     signerAddress: string,
     signDoc: StdSignDoc
-  ): Promise<string> {
-    const { signature } = await this.request<SignAminoResponse>(
+  ): Promise<SignAminoResponse> {
+    const { signature, signed } = await this.request<PartialSignAminoResponse>(
       chainId,
       Method.SIGN_AMINO,
       {
@@ -181,7 +185,10 @@ export class WalletConnectV2 {
         signDoc,
       }
     );
-    return typeof signature === "string" ? signature : signature.signature;
+    return {
+      signature: signature.signature,
+      signed: signed ?? signDoc, // simply return the original sign doc if `signed` is not returned
+    };
   }
 
   /**

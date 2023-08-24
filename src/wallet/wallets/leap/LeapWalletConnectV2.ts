@@ -3,6 +3,7 @@ import { Adapter, broadcastTx } from "cosmes/client";
 import { fromBase64ToUint8Array } from "cosmes/codec";
 import {
   CosmosBaseV1beta1Coin as Coin,
+  CosmosTxV1beta1Fee as Fee,
   CosmosTxSigningV1beta1SignMode as SignMode,
 } from "cosmes/protobufs";
 import { WalletName, WalletType } from "cosmes/wallet";
@@ -52,7 +53,7 @@ export class LeapWalletConnectV2 extends ConnectedWallet {
       opts
     );
     const { memo } = unsignedTx;
-    const signature = await this.wc.signAmino(
+    const { signature, signed } = await this.wc.signAmino(
       this.chainId,
       this.address,
       tx.toStdSignDoc({
@@ -65,12 +66,17 @@ export class LeapWalletConnectV2 extends ConnectedWallet {
     );
     // Since `sendTx` on WC isn't implemented yet, we have to broadcast manually
     return broadcastTx(this.rpc, {
-      sequence,
-      fee,
+      tx,
+      sequence: BigInt(signed.sequence),
+      fee: new Fee({
+        amount: signed.fee.amount as Coin[],
+        gasLimit: BigInt(signed.fee.gas),
+        payer: signed.fee.payer,
+        granter: signed.fee.granter,
+      }),
       signMode: SignMode.LEGACY_AMINO_JSON,
       signature: fromBase64ToUint8Array(signature),
-      tx,
-      memo,
+      memo: signed.memo,
     });
   }
 }
