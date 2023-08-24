@@ -1,5 +1,5 @@
 import { Secp256k1PubKey } from "cosmes/client";
-import { fromHexToUint8Array } from "cosmes/codec";
+import { fromBase64ToUint8Array } from "cosmes/codec";
 
 import { WalletName } from "../../constants/WalletName";
 import { WalletType } from "../../constants/WalletType";
@@ -36,9 +36,9 @@ export class CosmostationController extends WalletController {
     await this.wc.connect(chains.map(({ chainId }) => chainId));
     for (let i = 0; i < chains.length; i++) {
       const { chainId, rpc, gasPrice } = chains[i];
-      const { pubkey, algo } = await this.wc.getAccount(chainId);
+      const { pubkey, address } = await this.wc.getAccount(chainId);
       const key = new Secp256k1PubKey({
-        key: fromHexToUint8Array(pubkey),
+        key: fromBase64ToUint8Array(pubkey),
       });
       wallets.set(
         chainId,
@@ -46,7 +46,7 @@ export class CosmostationController extends WalletController {
           this.wc,
           chainId,
           key,
-          algo, // ! cosmostatation mixed up the `algo` and `address` keys...
+          address,
           rpc,
           gasPrice
         )
