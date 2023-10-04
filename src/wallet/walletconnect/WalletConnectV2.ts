@@ -243,7 +243,11 @@ export class WalletConnectV2 {
       throw new Error("Session not found for " + chainId);
     }
     const { topic } = JSON.parse(session) as StorageSession;
-    if (isMobile()) {
+    if (
+      isMobile() &&
+      // GET_ACCOUNTS does not require the user to authorise
+      method !== Method.GET_ACCOUNTS
+    ) {
       window.location.href = isAndroid()
         ? this.mobileAppDetails.android
         : this.mobileAppDetails.ios;

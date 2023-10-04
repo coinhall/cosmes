@@ -1,5 +1,11 @@
 # Changelog
 
+## `v0.0.34`
+
+### Fixes
+
+- Prevent redirecting users to the mobile app when querying for the user's account via WalletConnect (on first connect)
+
 ## `v0.0.33`
 
 ### Fixes
