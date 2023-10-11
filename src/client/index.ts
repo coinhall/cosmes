@@ -1,6 +1,5 @@
 export { broadcastTx, type BroadcastTxParams } from "./apis/broadcastTx";
 export { getAccount, type GetAccountParams } from "./apis/getAccount";
-export { getChainInfo, type CosmosChainWithAssets } from "./apis/getChainInfo";
 export {
   getCw20Balance,
   type GetCw20BalanceParams,
@@ -42,4 +41,3 @@ export {
 export { calculateFee } from "./utils/calculateFee";
 export { toAny } from "./utils/toAny";
 export { toBaseAccount } from "./utils/toBaseAccount";
-export { toKeplrChainInfo } from "./utils/toKeplrChainInfo";

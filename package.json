@@ -13,6 +13,7 @@
     "./client": "./dist/client/index.js",
     "./codec": "./dist/codec/index.js",
     "./protobufs": "./dist/protobufs/index.js",
+    "./registry": "./dist/registry/index.js",
     "./wallet": "./dist/wallet/index.js"
   },
   "scripts": {
@@ -20,6 +21,7 @@
     "build": "pnpm clean && tsc && tsc-alias",
     "dev": "concurrently \"tsc -w\" \"tsc-alias -w\"",
     "gen:protobufs": "node scripts/gen-protobufs.mjs",
+    "gen:registry": "node scripts/gen-registry.mjs",
     "lint": "eslint **/*.ts",
     "typecheck": "tsc --noEmit",
     "test": "vitest --run",
@@ -52,6 +54,7 @@
     "eslint": "^8.40.0",
     "eslint-config-prettier": "^8.8.0",
     "glob": "^10.2.3",
+    "json-schema-to-typescript": "^13.1.1",
     "lodash-es": "^4.17.21",
     "postcss": "^8.4.23",
     "prettier": "^2.8.8",
