@@ -1,7 +1,7 @@
 import { PlainMessage } from "@bufbuild/protobuf";
 import WalletConnect from "@walletconnect/legacy-client";
 import { Adapter } from "cosmes/client";
-import { fromStringToBase64 } from "cosmes/codec";
+import { base64, utf8 } from "cosmes/codec";
 import { CosmosBaseV1beta1Coin as Coin } from "cosmes/protobufs";
 
 import { WalletName } from "../../constants/WalletName";
@@ -42,7 +42,7 @@ export class StationWalletConnectV1 extends ConnectedWallet {
   public async signArbitrary(data: string): Promise<SignArbitraryResponse> {
     const res = await this.sendRequest<SignBytesResponse>(
       "signBytes",
-      fromStringToBase64(data)
+      base64.encode(utf8.decode(data))
     );
     return {
       data,
@@ -68,13 +68,15 @@ export class StationWalletConnectV1 extends ConnectedWallet {
     // https://github.com/terra-money/wallet-provider/blob/interchain-wallet-provider/packages/src/%40terra-money/wallet-controller/modules/walletconnect/connect.ts#L327-L352
     const id = Date.now();
     if (isMobile()) {
-      const payload = fromStringToBase64(
-        JSON.stringify({
-          id,
-          handshakeTopic: this.wc.handshakeTopic,
-          method,
-          params,
-        })
+      const payload = base64.encode(
+        utf8.decode(
+          JSON.stringify({
+            id,
+            handshakeTopic: this.wc.handshakeTopic,
+            method,
+            params,
+          })
+        )
       );
       window.location.href = `terrastation://walletconnect_confirm/?action=walletconnect_confirm&payload=${payload}`;
     }

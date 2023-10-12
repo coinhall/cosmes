@@ -1,5 +1,5 @@
 import { JsonValue } from "@bufbuild/protobuf";
-import { fromStringToUint8Array, fromUint8ArrayToString } from "cosmes/codec";
+import { utf8 } from "cosmes/codec";
 import { CosmwasmWasmV1QuerySmartContractStateService as QuerySmartContractStateService } from "cosmes/protobufs";
 
 import { RpcClient } from "../clients/RpcClient";
@@ -22,8 +22,8 @@ export async function queryContract<T extends JsonValue>(
     QuerySmartContractStateService,
     {
       address,
-      queryData: fromStringToUint8Array(JSON.stringify(query)),
+      queryData: utf8.decode(JSON.stringify(query)),
     }
   );
-  return JSON.parse(fromUint8ArrayToString(data));
+  return JSON.parse(utf8.encode(data));
 }

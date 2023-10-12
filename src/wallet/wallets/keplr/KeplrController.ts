@@ -1,5 +1,5 @@
 import { Secp256k1PubKey } from "cosmes/client";
-import { fromBase64ToUint8Array } from "cosmes/codec";
+import { base64 } from "cosmes/codec";
 
 import { WalletName } from "../../constants/WalletName";
 import { WalletType } from "../../constants/WalletType";
@@ -38,7 +38,7 @@ export class KeplrController extends WalletController {
       const { chainId, rpc, gasPrice } = chains[i];
       const { pubkey, address } = await this.wc.getAccount(chainId);
       const key = new Secp256k1PubKey({
-        key: fromBase64ToUint8Array(pubkey),
+        key: base64.decode(pubkey),
       });
       wallets.set(
         chainId,

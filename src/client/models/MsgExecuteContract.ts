@@ -1,5 +1,5 @@
 import { PlainMessage } from "@bufbuild/protobuf";
-import { fromStringToUint8Array } from "cosmes/codec";
+import { utf8 } from "cosmes/codec";
 import { CosmwasmWasmV1MsgExecuteContract as ProtoMsgExecuteContract } from "cosmes/protobufs";
 
 import { DeepPrettify, Prettify } from "../../typeutils/prettify";
@@ -21,7 +21,7 @@ export class MsgExecuteContract<T> implements Adapter {
   public toProto() {
     return new ProtoMsgExecuteContract({
       ...this.data,
-      msg: fromStringToUint8Array(JSON.stringify(this.data.msg)),
+      msg: utf8.decode(JSON.stringify(this.data.msg)),
     });
   }
 
