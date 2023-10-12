@@ -1,5 +1,17 @@
 # Changelog
 
+## `v0.0.35`
+
+### Features
+
+- Added the `cosmes/registry` package with the following additions:
+  - APIs to dynamically query for data in Chain Registry
+  - Util function to transform Chain Registry data to Keplr's chain info
+
+### Miscellaneous
+
+- The `toBaseAccount` utility can now handle all vesting account types
+
 ## `v0.0.34`
 
 ### Fixes

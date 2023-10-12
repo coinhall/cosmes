@@ -25,7 +25,7 @@ A tree-shakeable, framework agnostic, [pure ESM](https://gist.github.com/sindres
 
 - **Fully tree-shakeable**: import and bundle only the modules you need
 - **Framework agnostic**: integrate with any web framework (React, Vue, Svelte, etc.)
-- **Lightweight and  minimal**: 143 KB gzipped to connect a React app to Keplr via browser extension or WalletConnect (see [benchmarks](#benchmarks))
+- **Lightweight and  minimal**: 144 KB gzipped to connect a React app to Keplr via browser extension or WalletConnect (see [benchmarks](#benchmarks))
 - **Uses modern web APIs**: no dependencies on Node.js and minimal dependencies on third-party libraries where possible
 - **Supports modern bundlers**: works with Vite, SWC, Rollup, etc.
 - **Fully typed**: written in TypeScript and ships with type definitions
