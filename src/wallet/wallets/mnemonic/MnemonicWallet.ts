@@ -1,15 +1,10 @@
 import type { StdSignDoc } from "@keplr-wallet/types";
 import { Secp256k1PubKey } from "cosmes/client";
 import {
-  HDKey,
   base64,
-  bech32,
-  hmac,
-  mnemonicToSeedSync,
-  ripemd160,
-  secp256k1,
-  serialiseSignDoc,
-  sha256,
+  resolveBech32Address,
+  resolveKeyPair,
+  sign,
   utf8,
 } from "cosmes/codec";
 
@@ -29,6 +24,7 @@ export type ConnectMnemonicWalletOptions = Prettify<
     mnemonic: string;
     bech32Prefix: string;
     coinType?: number | undefined;
+    index?: number | undefined;
   } & ChainInfo<string>
 >;
 
@@ -40,35 +36,23 @@ export class MnemonicWallet extends ConnectedWallet {
     mnemonic,
     bech32Prefix,
     coinType,
+    index,
     chainId,
     gasPrice,
     rpc,
   }: ConnectMnemonicWalletOptions) {
-    // Polyfill some environments for secp256k1.
-    // See: https://github.com/paulmillr/noble-secp256k1?tab=readme-ov-file#usage
-    secp256k1.etc.hmacSha256Sync = (k, ...m) =>
-      hmac(sha256, k, secp256k1.etc.concatBytes(...m));
-
-    const seed = mnemonicToSeedSync(mnemonic);
-    const { publicKey, privateKey } = HDKey.fromMasterSeed(seed).derive(
-      `m/44'/${coinType ?? 118}'/0'/0/0`
-    );
-    if (!publicKey || !privateKey) {
-      throw new Error("invalid mnemonic");
-    }
-    const pubKey = new Secp256k1PubKey({ key: publicKey });
-    const address = bech32.encode(
-      bech32Prefix,
-      bech32.toWords(ripemd160(sha256(publicKey)))
-    );
-
+    const { publicKey, privateKey } = resolveKeyPair(mnemonic, {
+      coinType,
+      index,
+    });
+    const address = resolveBech32Address(publicKey, bech32Prefix);
     super(
       // We typecast here instead of adding "mnemonic" as actual names/types
       // to prevent confusing users who are likely never going to use this.
       "mnemonic" as WalletName,
       "mnemonic" as WalletType,
       chainId,
-      pubKey,
+      new Secp256k1PubKey({ key: publicKey }),
       address,
       rpc,
       gasPrice
@@ -80,7 +64,7 @@ export class MnemonicWallet extends ConnectedWallet {
   public async signArbitrary(data: string): Promise<SignArbitraryResponse> {
     // This sign doc follows ADR 036 specs.
     // See: https://github.com/cosmos/cosmos-sdk/blob/main/docs/architecture/adr-036-arbitrary-signature.md
-    const signDoc: StdSignDoc = {
+    const doc: StdSignDoc = {
       chain_id: "",
       account_number: "0",
       sequence: "0",
@@ -99,9 +83,7 @@ export class MnemonicWallet extends ConnectedWallet {
       ],
       memo: "",
     };
-    const signature = secp256k1
-      .sign(sha256(serialiseSignDoc(signDoc)), this.privateKey)
-      .toCompactRawBytes();
+    const signature = sign(doc, this.privateKey);
     return {
       data,
       pubKey: this.publicKey,

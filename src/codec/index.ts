@@ -1,13 +1,10 @@
-// Re-export @noble and @scure libs for ease of use
-export { hmac } from "@noble/hashes/hmac";
-export { ripemd160 } from "@noble/hashes/ripemd160";
-export { sha256 } from "@noble/hashes/sha256";
-export * as secp256k1 from "@noble/secp256k1";
+// Re-export @scure/base for their codecs
 export * from "@scure/base";
-export * from "@scure/bip32";
-export * from "@scure/bip39";
 
+export { resolveBech32Address } from "./address";
+export { resolveKeyPair } from "./key";
 export { serialiseSignDoc } from "./serialise";
+export { sign } from "./sign";
 
 /**
  * Converts a valid hex string to its `Uint8Array` representation.
