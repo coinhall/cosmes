@@ -9,7 +9,7 @@ import { serialiseSignDoc } from "./serialise";
  * Signs the given `stdSignDoc` with the given `privateKey` using secp256k1, and
  * returns the signature bytes.
  */
-export function sign(
+export function signAmino(
   stdSignDoc: StdSignDoc,
   privateKey: Uint8Array
 ): Uint8Array {

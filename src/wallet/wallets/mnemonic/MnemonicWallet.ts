@@ -1,12 +1,13 @@
 import type { StdSignDoc } from "@keplr-wallet/types";
-import { Secp256k1PubKey } from "cosmes/client";
+import { Secp256k1PubKey, broadcastTx } from "cosmes/client";
 import {
   base64,
   resolveBech32Address,
   resolveKeyPair,
-  sign,
+  signAmino,
   utf8,
 } from "cosmes/codec";
+import { CosmosTxSigningV1beta1SignMode as SignMode } from "cosmes/protobufs";
 
 import { Prettify } from "../../../typeutils/prettify";
 import { WalletName } from "../../constants/WalletName";
@@ -83,7 +84,7 @@ export class MnemonicWallet extends ConnectedWallet {
       ],
       memo: "",
     };
-    const signature = sign(doc, this.privateKey);
+    const signature = signAmino(doc, this.privateKey);
     return {
       data,
       pubKey: this.publicKey,
@@ -95,6 +96,27 @@ export class MnemonicWallet extends ConnectedWallet {
     unsignedTx: UnsignedTx,
     opts?: BroadcastTxOptions | undefined
   ): Promise<string> {
-    throw new Error("NOT IMPLEMENTED");
+    const { tx, sequence, accountNumber, fee } = await this.prepBroadcastTx(
+      unsignedTx,
+      opts
+    );
+    const { memo } = unsignedTx;
+    const doc = tx.toStdSignDoc({
+      chainId: this.chainId,
+      accountNumber,
+      sequence,
+      fee,
+      memo,
+    });
+    const signature = signAmino(doc, this.privateKey);
+    return broadcastTx(this.rpc, {
+      tx,
+      sequence,
+      fee,
+      // TODO: use SignMode.DIRECT
+      signMode: SignMode.LEGACY_AMINO_JSON,
+      signature,
+      memo,
+    });
   }
 }
