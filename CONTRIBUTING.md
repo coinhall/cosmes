@@ -46,6 +46,10 @@ pnpm add --save-peer [dependency_name]
 ### Building For Production
 
 ```sh
+# [OPTIONAL] To regenerate the code built using scripts
+pnpm gen:protobufs
+pnpm gen:registry
+
 # To build to the `dist` directory
 pnpm build
 ```

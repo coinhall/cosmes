@@ -15,6 +15,7 @@ A tree-shakeable, framework agnostic, [pure ESM](https://gist.github.com/sindres
   - [`cosmes/client`](#cosmesclient)
   - [`cosmes/codec`](#cosmescodec)
   - [`cosmes/protobufs`](#cosmesprotobufs)
+  - [`cosmes/registry`](#cosmesregistry)
   - [`cosmes/wallet`](#cosmeswallet)
 - [Benchmarks](#benchmarks)
   - [Results](#results)
@@ -107,6 +108,10 @@ This directory contains various encoding and decoding functions that relies sole
 ### `cosmes/protobufs`
 
 This directory contains the auto-generated code for various Cosmos SDK based protobufs. See `scripts/gen-protobufs.mjs` for the script that generates the code.
+
+### `cosmes/registry`
+
+This directory contains various APIs, data, and types needed for wallet interactions (ie. Keplr). Some types are auto-generated, see `scripts/gen-registry.mjs` for the script that generates the types.
 
 ### `cosmes/wallet`
 
