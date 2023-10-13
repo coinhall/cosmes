@@ -15,8 +15,8 @@ function escapeHtml(str: string): string {
     .replace(/&/g, "\\u0026");
 }
 
-function sortObjectByKey<T>(obj: T): T {
-  if (typeof obj !== "object" || obj === null) {
+export function sortObjectByKey<T>(obj: T): T {
+  if (typeof obj !== "object" || obj == null) {
     return obj;
   }
   if (Array.isArray(obj)) {

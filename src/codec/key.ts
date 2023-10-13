@@ -17,7 +17,7 @@ export function resolveKeyPair(
 } {
   const seed = mnemonicToSeedSync(mnemonic);
   const { publicKey, privateKey } = HDKey.fromMasterSeed(seed).derive(
-    `m/44'/${opts?.coinType ?? 118}'/${opts?.index ?? 0}'/0/0`
+    `m/44'/${opts?.coinType ?? 118}'/0'/0/${opts?.index ?? 0}`
   );
   if (!publicKey || !privateKey) {
     throw new Error("invalid mnemonic");
