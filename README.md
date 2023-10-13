@@ -5,6 +5,9 @@
 
 A tree-shakeable, framework agnostic, [pure ESM](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c) alternative of [CosmJS](https://github.com/cosmos/cosmjs) and [Cosmos Kit](https://cosmoskit.com).
 
+> [!WARNING]  
+> **This is still a work in progress**. Before `v1` is reached, the API is not guaranteed to be semver compatible - patch releases may break everything. See the [changelog](./CHANGELOG.md) for notable changes.
+
 - [Features](#features)
 - [Installing](#installing)
   - [Using with TypeScript](#using-with-typescript)
