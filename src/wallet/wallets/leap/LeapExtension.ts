@@ -1,14 +1,16 @@
 import { PlainMessage } from "@bufbuild/protobuf";
 import type { BroadcastMode } from "@keplr-wallet/types";
-import { Adapter } from "cosmes/client";
+import { Adapter, Tx } from "cosmes/client";
 import { base16 } from "cosmes/codec";
-import { CosmosBaseV1beta1Coin as Coin } from "cosmes/protobufs";
+import {
+  CosmosBaseV1beta1Coin as Coin,
+  CosmosTxV1beta1Fee as Fee,
+} from "cosmes/protobufs";
 
 import { WalletName } from "../../constants/WalletName";
 import { WalletType } from "../../constants/WalletType";
 import { toSignedTxRaw } from "../../utils/tx";
 import {
-  BroadcastTxOptions,
   ConnectedWallet,
   SignArbitraryResponse,
   UnsignedTx,
@@ -53,15 +55,16 @@ export class LeapExtension extends ConnectedWallet {
     };
   }
 
-  public async broadcastTx(
-    unsignedTx: UnsignedTx,
-    opts?: BroadcastTxOptions | undefined
+  protected async signAndBroadcastTx(
+    { msgs, memo }: UnsignedTx,
+    fee: Fee,
+    accountNumber: bigint,
+    sequence: bigint
   ): Promise<string> {
-    const { tx, sequence, accountNumber, fee } = await this.prepBroadcastTx(
-      unsignedTx,
-      opts
-    );
-    const { memo } = unsignedTx;
+    const tx = new Tx({
+      pubKey: this.pubKey,
+      msgs: msgs,
+    });
     const { signature, signed } = await this.ext.signAmino(
       this.chainId,
       this.address,

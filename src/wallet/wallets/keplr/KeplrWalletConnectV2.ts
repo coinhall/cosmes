@@ -1,5 +1,5 @@
 import { PlainMessage } from "@bufbuild/protobuf";
-import { Adapter, broadcastTx } from "cosmes/client";
+import { Adapter, Tx, broadcastTx } from "cosmes/client";
 import { base64 } from "cosmes/codec";
 import {
   CosmosBaseV1beta1Coin as Coin,
@@ -10,7 +10,6 @@ import { WalletName, WalletType } from "cosmes/wallet";
 
 import { WalletConnectV2 } from "../../walletconnect/WalletConnectV2";
 import {
-  BroadcastTxOptions,
   ConnectedWallet,
   SignArbitraryResponse,
   UnsignedTx,
@@ -45,15 +44,16 @@ export class KeplrWalletConnectV2 extends ConnectedWallet {
     throw new Error("Method not implemented.");
   }
 
-  public async broadcastTx(
-    unsignedTx: UnsignedTx,
-    opts?: BroadcastTxOptions | undefined
+  public async signAndBroadcastTx(
+    { msgs, memo }: UnsignedTx,
+    fee: Fee,
+    accountNumber: bigint,
+    sequence: bigint
   ): Promise<string> {
-    const { tx, sequence, accountNumber, fee } = await this.prepBroadcastTx(
-      unsignedTx,
-      opts
-    );
-    const { memo } = unsignedTx;
+    const tx = new Tx({
+      pubKey: this.pubKey,
+      msgs: msgs,
+    });
     const { signature, signed } = await this.wc.signAmino(
       this.chainId,
       this.address,
