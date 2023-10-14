@@ -1,4 +1,4 @@
-import { fromUint8ArrayToBase64 } from "cosmes/codec";
+import { base64 } from "cosmes/codec";
 
 import { Prettify } from "../../typeutils/prettify";
 import { RpcClient } from "../clients/RpcClient";
@@ -19,6 +19,6 @@ export async function broadcastTx(
 ) {
   return RpcClient.broadcastTx(
     endpoint,
-    fromUint8ArrayToBase64(tx.toTxRaw(toTxRawParams).toBinary())
+    base64.encode(tx.toTxRaw(toTxRawParams).toBinary())
   );
 }

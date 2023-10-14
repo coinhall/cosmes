@@ -1,7 +1,7 @@
 import { PlainMessage } from "@bufbuild/protobuf";
 import type { BroadcastMode } from "@keplr-wallet/types";
 import { Adapter } from "cosmes/client";
-import { fromUint8ArrayToHex } from "cosmes/codec";
+import { base16 } from "cosmes/codec";
 import { CosmosBaseV1beta1Coin as Coin } from "cosmes/protobufs";
 
 import { WalletName } from "../../constants/WalletName";
@@ -78,6 +78,6 @@ export class LeapExtension extends ConnectedWallet {
       toSignedTxRaw(tx, signature.signature, signed).toBinary(),
       "sync" as BroadcastMode
     );
-    return fromUint8ArrayToHex(txHash).toUpperCase();
+    return base16.encode(txHash).toUpperCase();
   }
 }

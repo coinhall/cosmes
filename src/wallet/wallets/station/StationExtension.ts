@@ -1,6 +1,6 @@
 import { PlainMessage } from "@bufbuild/protobuf";
 import { Adapter } from "cosmes/client";
-import { fromStringToBase64 } from "cosmes/codec";
+import { base64, utf8 } from "cosmes/codec";
 import { CosmosBaseV1beta1Coin as Coin } from "cosmes/protobufs";
 
 import { WalletName } from "../../constants/WalletName";
@@ -39,7 +39,7 @@ export class StationExtension extends ConnectedWallet {
 
   public async signArbitrary(data: string): Promise<SignArbitraryResponse> {
     const { public_key, signature } = await this.normaliseError(
-      this.ext.signBytes(fromStringToBase64(data), true)
+      this.ext.signBytes(base64.encode(utf8.decode(data)), true)
     );
     return {
       data,

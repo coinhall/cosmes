@@ -11,8 +11,17 @@ import type { ConnectedWallet } from "./ConnectedWallet";
  * Represents a chain that the wallet can connect to.
  */
 export type ChainInfo<T extends string> = {
+  /**
+   * The unique identifier for the chain (eg. `phoenix-1`).
+   */
   chainId: T;
+  /**
+   * A valid RPC endpoint that can be used to simulate and broadcast transactions.
+   */
   rpc: string;
+  /**
+   * The current gas price of the chain.
+   */
   gasPrice: PlainMessage<Coin>;
 };
 

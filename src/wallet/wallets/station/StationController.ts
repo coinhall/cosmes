@@ -1,5 +1,5 @@
 import { Secp256k1PubKey, getAccount, toBaseAccount } from "cosmes/client";
-import { fromBase64ToUint8Array } from "cosmes/codec";
+import { base64 } from "cosmes/codec";
 import { CosmosCryptoSecp256k1PubKey } from "cosmes/protobufs";
 
 import { WalletName } from "../../constants/WalletName";
@@ -86,7 +86,7 @@ export class StationController extends WalletController {
       }
       const coinType = TERRA_CHAINS.includes(chainId) ? "330" : "118";
       const key = pubkey
-        ? new Secp256k1PubKey({ key: fromBase64ToUint8Array(pubkey[coinType]) })
+        ? new Secp256k1PubKey({ key: base64.decode(pubkey[coinType]) })
         : // Legacy support for older versions of Station that don't return pubkey
           await this.getPubKey(rpc, address);
       wallets.set(

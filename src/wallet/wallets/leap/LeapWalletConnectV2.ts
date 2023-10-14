@@ -1,6 +1,6 @@
 import { PlainMessage } from "@bufbuild/protobuf";
 import { Adapter, broadcastTx } from "cosmes/client";
-import { fromBase64ToUint8Array } from "cosmes/codec";
+import { base64 } from "cosmes/codec";
 import {
   CosmosBaseV1beta1Coin as Coin,
   CosmosTxV1beta1Fee as Fee,
@@ -75,7 +75,7 @@ export class LeapWalletConnectV2 extends ConnectedWallet {
         granter: signed.fee.granter,
       }),
       signMode: SignMode.LEGACY_AMINO_JSON,
-      signature: fromBase64ToUint8Array(signature),
+      signature: base64.decode(signature),
       memo: signed.memo,
     });
   }

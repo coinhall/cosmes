@@ -1,7 +1,7 @@
 import { PlainMessage } from "@bufbuild/protobuf";
 import WalletConnect from "@walletconnect/legacy-client";
 import { Adapter, broadcastTx } from "cosmes/client";
-import { fromBase64ToUint8Array } from "cosmes/codec";
+import { base64 } from "cosmes/codec";
 import {
   CosmosBaseV1beta1Coin as Coin,
   CosmosTxSigningV1beta1SignMode as SignMode,
@@ -76,7 +76,7 @@ export class CosmostationWalletConnectV1 extends ConnectedWallet {
       sequence,
       fee,
       signMode: SignMode.LEGACY_AMINO_JSON,
-      signature: fromBase64ToUint8Array(signature.signature),
+      signature: base64.decode(signature.signature),
       tx,
       memo,
     });

@@ -1,6 +1,6 @@
 import type { Coin, StdSignDoc } from "@keplr-wallet/types";
 import { Tx } from "cosmes/client";
-import { fromBase64ToUint8Array } from "cosmes/codec";
+import { base64 } from "cosmes/codec";
 import {
   CosmosTxV1beta1Fee as Fee,
   CosmosTxSigningV1beta1SignMode as SignMode,
@@ -25,7 +25,7 @@ export function toSignedTxRaw(
       granter: fee.granter,
     }),
     signMode: SignMode.LEGACY_AMINO_JSON, // TODO: support other sign modes (?)
-    signature: fromBase64ToUint8Array(signature),
+    signature: base64.decode(signature),
     memo: memo,
   });
 }

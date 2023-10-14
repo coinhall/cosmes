@@ -1,6 +1,6 @@
 import { PlainMessage } from "@bufbuild/protobuf";
 import { Adapter } from "cosmes/client";
-import { fromUint8ArrayToBase64 } from "cosmes/codec";
+import { base64 } from "cosmes/codec";
 import { CosmosBaseV1beta1Coin as Coin } from "cosmes/protobufs";
 
 import { WalletName } from "../../constants/WalletName";
@@ -90,7 +90,7 @@ export class CosmostationExtension extends ConnectedWallet {
         method: CosmostationExtMethod.SEND_TX,
         params: {
           chainName: this.chainId,
-          txBytes: fromUint8ArrayToBase64(
+          txBytes: base64.encode(
             toSignedTxRaw(tx, signature, signed_doc).toBinary()
           ),
           mode: 2, // for SYNC mode

@@ -1,5 +1,5 @@
 import { Message, PartialMessage } from "@bufbuild/protobuf";
-import { fromBase64ToUint8Array, fromUint8ArrayToHex } from "cosmes/codec";
+import { base16, base64 } from "cosmes/codec";
 
 import { FetchClient } from "./FetchClient";
 
@@ -81,14 +81,14 @@ export class RpcClient {
       "abci_query",
       {
         path: `/${typeName}/${method}`,
-        data: fromUint8ArrayToHex(new Request(requestMsg).toBinary()),
+        data: base16.encode(new Request(requestMsg).toBinary()),
       }
     );
     const { log, value } = response;
     if (!value) {
       throw new Error(log);
     }
-    return Response.fromBinary(fromBase64ToUint8Array(value));
+    return Response.fromBinary(base64.decode(value));
   }
 
   /**
