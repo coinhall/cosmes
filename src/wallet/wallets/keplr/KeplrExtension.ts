@@ -80,6 +80,6 @@ export class KeplrExtension extends ConnectedWallet {
       toSignedTxRaw(tx, signature.signature, signed).toBinary(),
       "sync" as BroadcastMode
     );
-    return base16.encode(txHash).toUpperCase();
+    return base16.encode(txHash);
   }
 }

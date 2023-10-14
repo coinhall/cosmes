@@ -107,22 +107,50 @@ export abstract class ConnectedWallet {
     { msgs, memo }: UnsignedTx,
     feeMultiplier = 1.4
   ): Promise<Fee> {
-    const { sequence } = await this.getAuthInfo(true);
-    const { gasInfo } = await simulateTx(this.rpc, {
-      sequence,
-      memo,
-      tx: new Tx({ pubKey: this.pubKey, msgs: msgs }),
-    });
-    if (!gasInfo) {
-      throw new Error("Unable to estimate fee");
+    const estimate = async () => {
+      const { sequence } = await this.getAuthInfo(true);
+      const { gasInfo } = await simulateTx(this.rpc, {
+        sequence,
+        memo,
+        tx: new Tx({ pubKey: this.pubKey, msgs: msgs }),
+      });
+      if (!gasInfo) {
+        throw new Error("Unable to estimate fee");
+      }
+      return calculateFee(gasInfo, this.gasPrice, feeMultiplier);
+    };
+    // If we encounter an account sequence mismatch error, we retry exactly once
+    // by parsing the error for the correct sequence to use
+    try {
+      return await estimate();
+    } catch (err) {
+      if (
+        !(err instanceof Error) ||
+        !err.message.includes("account sequence mismatch")
+      ) {
+        // Rethrow if the error is not related to account sequence
+        throw err;
+      }
+      // Possible messages:
+      // "account sequence mismatch, expected 10, got 11: incorrect account sequence: invalid request"
+      // "rpc error: code = Unknown desc = account sequence mismatch, expected 10, got 11: ..."
+      const matches = err.message.match(/(\d+)/g);
+      if (!matches || matches.length < 2) {
+        throw new Error("Failed to parse account sequence");
+      }
+      // Set the cached sequence to the one from the error message
+      this.sequence = BigInt(matches[0]);
+      return estimate();
     }
-    return calculateFee(gasInfo, this.gasPrice, feeMultiplier);
   }
 
   /**
-   * Signs and broadcasts the given `unsignedTx` via the connected wallet and polls
-   * for the result of the tx. The `fee` parameter should be obtained from running
-   * `estimateFee` on the `unsignedTx`.
+   * Signs and broadcasts the given `unsignedTx` and returns the result of the tx.
+   *
+   * - The `fee` parameter can (and should) be obtained by running `estimateFee` on
+   *   the `unsignedTx` prior to calling this method
+   * - The tx result will be polled every `intervalSeconds` until it is included in
+   *   a block or when `maxAttempts` is reached (default: 2 seconds, 64 attempts)
    *
    * @throws if the tx fails to broadcast.
    * @throws if the tx does not have a response.
@@ -140,6 +168,8 @@ export abstract class ConnectedWallet {
       accountNumber,
       sequence
     );
+    // Greedily increment the sequence for the next tx. This may result in the wrong
+    // sequence, but if `estimateFee` was called prior to this, it will be corrected
     this.sequence = sequence + 1n;
     const { txResponse } = await pollTx(this.rpc, {
       hash,
@@ -150,10 +180,11 @@ export abstract class ConnectedWallet {
   }
 
   /**
-   * Executes both `estimateFee` and `broadcastTx` sequentially. Use this if there
-   * is no need to separate the estimation of fees and broadcasting of the tx.
+   * Executes `estimateFee` and `broadcastTx` sequentially, returning the result of
+   * the tx. Use this if there is no need to independently estimate fees and broadcast
+   * the tx.
    */
-  public async estimateFeeAndBroadcastTx(
+  public async broadcastTxWithFeeEstimation(
     unsignedTx: UnsignedTx,
     feeMultiplier = 1.4,
     pollOpts: PollTxOptions = {}

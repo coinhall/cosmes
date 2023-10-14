@@ -67,13 +67,9 @@ export type ConnectMnemonicWalletOptions = Prettify<
  * });
  * console.log("Address:", wallet.address); // prints the bech32 address
  *
- * // Broadcast a tx
- * const txHash = await wallet.broadcastTx({ ... }); // TODO
- * console.log("Tx hash:", txHash);
- *
- * // Poll for the tx result
- * const res = await wallet.pollTx(txHash);
- * console.log(res);
+ * // Sign and broadcast a tx
+ * const res = await wallet.broadcastTxWithFeeEstimation({ ... }); // TODO
+ * console.log("Tx result:", res);
  * ```
  */
 export class MnemonicWallet extends ConnectedWallet {
