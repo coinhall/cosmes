@@ -8,6 +8,7 @@ import ReactDOM from "react-dom/client";
 
 import { App } from "./App.tsx";
 
+import "@interchain-ui/react/styles";
 import "./index.css";
 
 const WC_PROJECT_ID = "2b7d5a2da89dd74fed821d184acabf95";
@@ -18,7 +19,6 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
       chains={chains} // supported chains
       assetLists={assets} // supported asset lists
       wallets={wallets} // supported wallets
-      wrappedWithChakra={true}
       walletConnectOptions={{
         signClient: {
           projectId: WC_PROJECT_ID,
