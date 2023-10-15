@@ -15,9 +15,9 @@ export type SimulateTxParams = Prettify<
  */
 export async function simulateTx(
   endpoint: string,
-  { tx, ...toUnsignedTxRawParams }: SimulateTxParams
+  { tx, ...params }: SimulateTxParams
 ) {
   return RpcClient.query(endpoint, SimulateService, {
-    txBytes: tx.toUnsignedProto(toUnsignedTxRawParams).toBinary(),
+    txBytes: tx.toUnsignedProto(params).toBinary(),
   });
 }

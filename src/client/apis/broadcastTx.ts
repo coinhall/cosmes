@@ -15,10 +15,10 @@ export type BroadcastTxParams = Prettify<
  */
 export async function broadcastTx(
   endpoint: string,
-  { tx, ...toTxRawParams }: BroadcastTxParams
+  { tx, ...params }: BroadcastTxParams
 ) {
   return RpcClient.broadcastTx(
     endpoint,
-    base64.encode(tx.toSignedProto(toTxRawParams).toBinary())
+    base64.encode(tx.toSignedProto(params).toBinary())
   );
 }
