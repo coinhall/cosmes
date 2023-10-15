@@ -133,7 +133,7 @@ This directory is a [Cosmos Kit](https://cosmoskit.com) alternative to manage va
 See the [`benchmarks`](./benchmarks) folder, where the JS bundle size of CosmES is compared against Cosmos Kit. The following are adhered to:
 
 - Apps should only contain the minimal functionality of connecting to Osmosis via Keplr using both the browser extension and WalletConnect wallets
-- Apps should be built using React v18 (as Cosmos Kit has a [hard dependency](https://docs.cosmoskit.com/get-started)) and Vite
+- Apps should be built using React 18 (as Cosmos Kit has a [hard dependency](https://docs.cosmoskit.com/get-started)) and Vite
 - Use the bundle size as reported by Vite after running the `vite build` command (including the size of all other dependencies like React)
 
 ### Results
@@ -141,8 +141,8 @@ See the [`benchmarks`](./benchmarks) folder, where the JS bundle size of CosmES 
 | Package       | Minified | Gzipped |
 |---------------|----------|---------|
 | CosmES        | 536 KB   | 145 KB  |
-| Cosmos Kit V1 | 6004 KB  | 1392 KB |
-| Cosmos Kit V2 | 6273 KB  | 1453 KB |
+| Cosmos Kit v1 | 6004 KB  | 1392 KB |
+| Cosmos Kit v2 | 6273 KB  | 1453 KB |
 
 ## Contributing
 
