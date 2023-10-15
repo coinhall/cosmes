@@ -1,4 +1,3 @@
-import type { Coin, StdSignDoc } from "@keplr-wallet/types";
 import { Tx } from "cosmes/client";
 import { base64 } from "cosmes/codec";
 import {
@@ -6,17 +5,18 @@ import {
   CosmosTxSigningV1beta1SignMode as SignMode,
   CosmosTxV1beta1TxRaw as TxRaw,
 } from "cosmes/protobufs";
+import type { Coin, StdSignDoc } from "cosmes/registry";
 
 /**
- * Returns a signed `TxRaw` by combining the given `tx`, `signature`, and `stdSignDoc`.
- * This function can be used across all Keplr-like wallets.
+ * Returns the signed, proto encoded tx by combining the given `tx`, `signature`,
+ * and `stdSignDoc`. This function can be used across all Keplr-like wallets.
  */
-export function toSignedTxRaw(
+export function stdSignDocToSignedProto(
   tx: Tx,
   signature: string,
   { sequence, fee, memo }: StdSignDoc
 ): TxRaw {
-  return tx.toTxRaw({
+  return tx.toSignedProto({
     sequence: BigInt(sequence),
     fee: new Fee({
       amount: fee.amount as Coin[],

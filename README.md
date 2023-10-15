@@ -3,10 +3,7 @@
 
 [![npm version](https://badge.fury.io/js/cosmes.svg)](https://www.npmjs.com/package/cosmes)
 
-A tree-shakeable, framework agnostic, [pure ESM](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c) alternative of [CosmJS](https://github.com/cosmos/cosmjs) and [Cosmos Kit](https://cosmoskit.com).
-
-> [!WARNING]  
-> **This is still a work in progress**. Before `v1` is reached, the API is not guaranteed to be semver compatible - patch releases may break everything. See the [changelog](./CHANGELOG.md) for notable changes.
+A tree-shakeable, framework agnostic, [pure ESM](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c) alternative of [CosmJS](https://github.com/cosmos/cosmjs) and [Cosmos Kit](https://cosmoskit.com). Generates bundles up to 10x smaller than Cosmos Kit.
 
 - [Features](#features)
 - [Installing](#installing)
@@ -26,9 +23,12 @@ A tree-shakeable, framework agnostic, [pure ESM](https://gist.github.com/sindres
 
 ## Features
 
+> [!WARNING]  
+> **This is still a work in progress**. Before `v1` is reached, the API is not guaranteed to be semver compatible - patch releases may break everything. See the [changelog](./CHANGELOG.md) for notable changes.
+
 - **Fully tree-shakeable**: import and bundle only the modules you need
-- **Framework agnostic**: integrate with any web framework (React, Vue, Svelte, etc.)
-- **Lightweight and  minimal**: 144 KB gzipped to connect a React app to Keplr via browser extension or WalletConnect (see [benchmarks](#benchmarks))
+- **Framework agnostic**: integrate with any web framework (React, Vue, Svelte, Solid, etc.)
+- **Lightweight and  minimal**: 145 KB gzipped to connect a React app to Keplr via browser extension or WalletConnect, 10x smaller than Cosmos Kit (see [benchmarks](#benchmarks))
 - **Uses modern web APIs**: no dependencies on Node.js and minimal dependencies on third-party libraries where possible
 - **Supports modern bundlers**: works with Vite, SWC, Rollup, etc.
 - **Fully typed**: written in TypeScript and ships with type definitions
@@ -38,7 +38,7 @@ A tree-shakeable, framework agnostic, [pure ESM](https://gist.github.com/sindres
 ```sh
 npm install cosmes
 
-pnpm i cosmes
+pnpm add cosmes
 
 yarn add cosmes
 ```
@@ -124,24 +124,25 @@ This directory is a [Cosmos Kit](https://cosmoskit.com) alternative to manage va
 
 - Supports Station, Keplr, Leap, and Cosmostation wallets
 - Supports both browser extension (desktop) and WalletConnect (mobile)
-- Unified interface for connecting, signing, and event handling
+- Unified interface for connecting, signing, broadcasting, and event handling
 - Signing of arbitrary messages (for wallets that support it)
 - Simultaneous connections to multiple WalletConnect wallets
 
 ## Benchmarks
 
-See the [`benchmarks`](./benchmarks) folder, where the JS bundle size of CosmES is compared against [Cosmos Kit](https://cosmoskit.com). The following points are adhered to:
+See the [`benchmarks`](./benchmarks) folder, where the JS bundle size of CosmES is compared against Cosmos Kit. The following are adhered to:
 
 - Apps should only contain the minimal functionality of connecting to Osmosis via Keplr using both the browser extension and WalletConnect wallets
-- Apps should be built using React (as Cosmos Kit has a [hard dependency](https://docs.cosmoskit.com/get-started)) and Vite
+- Apps should be built using React 18 (as Cosmos Kit has a [hard dependency](https://docs.cosmoskit.com/get-started)) and Vite
 - Use the bundle size as reported by Vite after running the `vite build` command (including the size of all other dependencies like React)
 
 ### Results
 
-| Package    | Minified | Gzipped |
-|------------|----------|---------|
-| CosmES     | 532 KB   | 144 KB  |
-| Cosmos Kit | 5770 KB  | 1356 KB |
+| Package       | Minified | Gzipped |
+|---------------|----------|---------|
+| CosmES        | 536 KB   | 145 KB  |
+| Cosmos Kit v1 | 6004 KB  | 1392 KB |
+| Cosmos Kit v2 | 6273 KB  | 1453 KB |
 
 ## Contributing
 

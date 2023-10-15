@@ -1,7 +1,7 @@
 import SignClient from "@walletconnect/sign-client";
 import { debounce } from "lodash-es";
 
-import { StdSignDoc } from "@keplr-wallet/types";
+import { StdSignDoc } from "cosmes/registry";
 import { isAndroid, isMobile } from "../utils/os";
 import { MobileAppDetails, QRCodeModal } from "./QRCodeModal";
 

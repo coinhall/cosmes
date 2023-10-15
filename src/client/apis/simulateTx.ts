@@ -2,10 +2,10 @@ import { CosmosTxV1beta1ServiceSimulateService as SimulateService } from "cosmes
 
 import { Prettify } from "../../typeutils/prettify";
 import { RpcClient } from "../clients/RpcClient";
-import { ToUnsignedTxRawParams, Tx } from "../models/Tx";
+import { ToUnsignedProtoParams, Tx } from "../models/Tx";
 
 export type SimulateTxParams = Prettify<
-  ToUnsignedTxRawParams & {
+  ToUnsignedProtoParams & {
     tx: Tx;
   }
 >;
@@ -15,9 +15,9 @@ export type SimulateTxParams = Prettify<
  */
 export async function simulateTx(
   endpoint: string,
-  { tx, ...toUnsignedTxRawParams }: SimulateTxParams
+  { tx, ...params }: SimulateTxParams
 ) {
   return RpcClient.query(endpoint, SimulateService, {
-    txBytes: tx.toUnsignedTxRaw(toUnsignedTxRawParams).toBinary(),
+    txBytes: tx.toUnsignedProto(params).toBinary(),
   });
 }

@@ -34,9 +34,9 @@ export { MsgSwapExactAmountIn } from "./models/MsgSwapExactAmountIn";
 export { Secp256k1PubKey } from "./models/Secp256k1PubKey";
 export {
   Tx,
+  type ToSignedProtoParams,
   type ToStdSignDocParams,
-  type ToTxRawParams,
-  type ToUnsignedTxRawParams,
+  type ToUnsignedProtoParams,
 } from "./models/Tx";
 export { calculateFee } from "./utils/calculateFee";
 export { toAny } from "./utils/toAny";

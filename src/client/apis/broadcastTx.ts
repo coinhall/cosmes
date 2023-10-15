@@ -2,10 +2,10 @@ import { base64 } from "cosmes/codec";
 
 import { Prettify } from "../../typeutils/prettify";
 import { RpcClient } from "../clients/RpcClient";
-import { ToTxRawParams, Tx } from "../models/Tx";
+import { ToSignedProtoParams, Tx } from "../models/Tx";
 
 export type BroadcastTxParams = Prettify<
-  ToTxRawParams & {
+  ToSignedProtoParams & {
     tx: Tx;
   }
 >;
@@ -15,10 +15,10 @@ export type BroadcastTxParams = Prettify<
  */
 export async function broadcastTx(
   endpoint: string,
-  { tx, ...toTxRawParams }: BroadcastTxParams
+  { tx, ...params }: BroadcastTxParams
 ) {
   return RpcClient.broadcastTx(
     endpoint,
-    base64.encode(tx.toTxRaw(toTxRawParams).toBinary())
+    base64.encode(tx.toSignedProto(params).toBinary())
   );
 }

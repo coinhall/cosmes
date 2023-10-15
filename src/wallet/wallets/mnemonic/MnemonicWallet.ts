@@ -1,5 +1,4 @@
-import type { StdSignDoc } from "@keplr-wallet/types";
-import { Secp256k1PubKey, broadcastTx } from "cosmes/client";
+import { Secp256k1PubKey, Tx, broadcastTx } from "cosmes/client";
 import {
   base64,
   resolveBech32Address,
@@ -7,13 +6,16 @@ import {
   signAmino,
   utf8,
 } from "cosmes/codec";
-import { CosmosTxSigningV1beta1SignMode as SignMode } from "cosmes/protobufs";
+import {
+  CosmosTxV1beta1Fee as Fee,
+  CosmosTxSigningV1beta1SignMode as SignMode,
+} from "cosmes/protobufs";
+import { StdSignDoc } from "cosmes/registry";
 
 import { Prettify } from "../../../typeutils/prettify";
 import { WalletName } from "../../constants/WalletName";
 import { WalletType } from "../../constants/WalletType";
 import {
-  BroadcastTxOptions,
   ConnectedWallet,
   SignArbitraryResponse,
   UnsignedTx,
@@ -65,13 +67,9 @@ export type ConnectMnemonicWalletOptions = Prettify<
  * });
  * console.log("Address:", wallet.address); // prints the bech32 address
  *
- * // Broadcast a tx
- * const txHash = await wallet.broadcastTx({ ... }); // TODO
- * console.log("Tx hash:", txHash);
- *
- * // Poll for the tx result
- * const res = await wallet.pollTx(txHash);
- * console.log(res);
+ * // Sign and broadcast a tx
+ * const res = await wallet.broadcastTxWithFeeEstimation({ ... }); // TODO
+ * console.log("Tx result:", res);
  * ```
  */
 export class MnemonicWallet extends ConnectedWallet {
@@ -138,15 +136,16 @@ export class MnemonicWallet extends ConnectedWallet {
     };
   }
 
-  public async broadcastTx(
-    unsignedTx: UnsignedTx,
-    opts?: BroadcastTxOptions | undefined
+  public async signAndBroadcastTx(
+    { msgs, memo }: UnsignedTx,
+    fee: Fee,
+    accountNumber: bigint,
+    sequence: bigint
   ): Promise<string> {
-    const { tx, sequence, accountNumber, fee } = await this.prepBroadcastTx(
-      unsignedTx,
-      opts
-    );
-    const { memo } = unsignedTx;
+    const tx = new Tx({
+      pubKey: this.pubKey,
+      msgs: msgs,
+    });
     const doc = tx.toStdSignDoc({
       chainId: this.chainId,
       accountNumber,

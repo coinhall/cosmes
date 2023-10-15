@@ -10,10 +10,9 @@ import {
   toBaseAccount,
 } from "cosmes/client";
 import {
-  CosmosAuthV1beta1BaseAccount as BaseAccount,
   CosmosBaseV1beta1Coin as Coin,
   CosmosTxV1beta1Fee as Fee,
-  CosmosTxV1beta1GetTxResponse as GetTxResponse,
+  CosmosBaseAbciV1beta1TxResponse as TxResponse,
 } from "cosmes/protobufs";
 
 import type { WalletName } from "../constants/WalletName";
@@ -29,17 +28,6 @@ export type PollTxOptions = Pick<
   "intervalSeconds" | "maxAttempts"
 >;
 
-export type EstimateFeeOptions = {
-  sequence: bigint;
-  feeMultiplier?: number | undefined;
-};
-
-export type BroadcastTxOptions = {
-  sequence: bigint;
-  accountNumber: bigint;
-  fee: Fee;
-};
-
 export type SignArbitraryResponse = {
   data: string;
   pubKey: string;
@@ -47,9 +35,8 @@ export type SignArbitraryResponse = {
 };
 
 /**
- * Represents a wallet that is connected via the browser extension
- * or via WalletConnect. This class should only be instantiated by
- * a `WalletController`.
+ * Represents a connected wallet that is ready to sign transactions.
+ * Use `WalletController` to create an instance of this class.
  */
 export abstract class ConnectedWallet {
   /** The identifier of this wallet. */
@@ -66,6 +53,8 @@ export abstract class ConnectedWallet {
   public readonly rpc: string;
   /** The gas price to use for transactions. */
   public readonly gasPrice: Coin;
+  private accountNumber: bigint | undefined;
+  private sequence: bigint | undefined;
 
   constructor(
     id: WalletName,
@@ -86,92 +75,139 @@ export abstract class ConnectedWallet {
   }
 
   /**
-   * Returns the base account for the connected address. This is commonly
-   * used to get the sequence and account numbers for constructing a tx.
+   * Returns the account number and sequence for the connected address. If `fromCache`
+   * is true, the cached values (if they are available) will be returned instead of
+   * querying the auth module.
+   *
+   * @throws if the account does not exist in the auth module.
    */
-  public async getAccount(): Promise<BaseAccount> {
-    const account = await getAccount(this.rpc, { address: this.address });
-    return toBaseAccount(account);
+  public async getAuthInfo(fromCache = false): Promise<{
+    accountNumber: bigint;
+    sequence: bigint;
+  }> {
+    if (!this.accountNumber || !this.sequence || !fromCache) {
+      const account = await getAccount(this.rpc, { address: this.address });
+      const { accountNumber, sequence } = toBaseAccount(account);
+      this.accountNumber = accountNumber;
+      this.sequence = sequence;
+    }
+    return {
+      accountNumber: this.accountNumber,
+      sequence: this.sequence,
+    };
   }
 
   /**
    * Simulates the tx and returns an estimate of the gas fees required.
+   *
+   * @throws if the tx fails to simulate.
    */
   public async estimateFee(
     { msgs, memo }: UnsignedTx,
-    opts?: EstimateFeeOptions | undefined
+    feeMultiplier = 1.4
   ): Promise<Fee> {
-    const { sequence } = await this.prepEstimateFee(opts);
-    const { gasInfo } = await simulateTx(this.rpc, {
-      sequence,
-      memo,
-      tx: new Tx({ pubKey: this.pubKey, msgs: msgs }),
-    });
-    if (!gasInfo) {
-      throw new Error("Unable to estimate fee");
+    const estimate = async () => {
+      const { sequence } = await this.getAuthInfo(true);
+      const { gasInfo } = await simulateTx(this.rpc, {
+        sequence,
+        memo,
+        tx: new Tx({ pubKey: this.pubKey, msgs: msgs }),
+      });
+      if (!gasInfo) {
+        throw new Error("Unable to estimate fee");
+      }
+      return calculateFee(gasInfo, this.gasPrice, feeMultiplier);
+    };
+    // If we encounter an account sequence mismatch error, we retry exactly once
+    // by parsing the error for the correct sequence to use
+    try {
+      return await estimate();
+    } catch (err) {
+      if (
+        !(err instanceof Error) ||
+        !err.message.includes("account sequence mismatch")
+      ) {
+        // Rethrow if the error is not related to account sequence
+        throw err;
+      }
+      // Possible messages:
+      // "account sequence mismatch, expected 10, got 11: incorrect account sequence: invalid request"
+      // "rpc error: code = Unknown desc = account sequence mismatch, expected 10, got 11: ..."
+      const matches = err.message.match(/(\d+)/g);
+      if (!matches || matches.length < 2) {
+        throw new Error("Failed to parse account sequence");
+      }
+      // Set the cached sequence to the one from the error message
+      this.sequence = BigInt(matches[0]);
+      return estimate();
     }
-    return calculateFee(gasInfo, this.gasPrice, opts?.feeMultiplier);
   }
 
   /**
-   * Polls for the tx matching the given `hash`, with a minimum interval of
-   * `intervalSeconds`. Throws if the tx is not found after the given number
-   * of `maxAttempts`.
+   * Signs and broadcasts the given `unsignedTx` and returns the result of the tx.
+   *
+   * - The `fee` parameter can (and should) be obtained by running `estimateFee` on
+   *   the `unsignedTx` prior to calling this method
+   * - The tx result will be polled every `intervalSeconds` until it is included in
+   *   a block or when `maxAttempts` is reached (default: 2 seconds, 64 attempts)
+   *
+   * @throws if the tx fails to broadcast.
+   * @throws if the tx does not have a response.
+   * @throws if the tx is not found after the given number of `maxAttempts`.
    */
-  public async pollTx(
-    txHash: string,
-    opts?: PollTxOptions | undefined
-  ): Promise<Required<GetTxResponse>> {
-    return pollTx(this.rpc, { hash: txHash, ...opts });
+  public async broadcastTx(
+    unsignedTx: UnsignedTx,
+    fee: Fee,
+    { maxAttempts, intervalSeconds }: PollTxOptions = {}
+  ): Promise<PlainMessage<TxResponse>> {
+    const { accountNumber, sequence } = await this.getAuthInfo(true);
+    const hash = await this.signAndBroadcastTx(
+      unsignedTx,
+      fee,
+      accountNumber,
+      sequence
+    );
+    // Greedily increment the sequence for the next tx. This may result in the wrong
+    // sequence, but if `estimateFee` was called prior to this, it will be corrected
+    this.sequence = sequence + 1n;
+    const { txResponse } = await pollTx(this.rpc, {
+      hash,
+      maxAttempts,
+      intervalSeconds,
+    });
+    return txResponse;
   }
 
   /**
-   * Signs the arbitrary `data` string and returns the {@link SignArbitraryResponse}.
-   * Note that some mobile wallets do not support this method.
+   * Executes `estimateFee` and `broadcastTx` sequentially, returning the result of
+   * the tx. Use this if there is no need independently execute the two methods.
+   */
+  public async broadcastTxWithFeeEstimation(
+    unsignedTx: UnsignedTx,
+    feeMultiplier = 1.4,
+    pollOpts: PollTxOptions = {}
+  ): Promise<PlainMessage<TxResponse>> {
+    const fee = await this.estimateFee(unsignedTx, feeMultiplier);
+    return this.broadcastTx(unsignedTx, fee, pollOpts);
+  }
+
+  /**
+   * Signs the UTF-8 encoded `data` string. Note that some mobile wallets do not
+   * support this method.
+   *
+   * @throws if the wallet does not support signing arbitrary data.
    */
   public abstract signArbitrary(data: string): Promise<SignArbitraryResponse>;
 
   /**
-   * Signs and broadcasts the given `unsignedTx` via the connected wallet and returns
-   * the tx hash if successful. Note that the returned tx hash does not guarantee that
-   * the tx was successfully included in a block.
+   * Signs the given `unsignedTx` and broadcasts the resulting signed tx, returning
+   * the hex encoded tx hash if successful. This abstract method should be implemented
+   * by the concrete child classes.
    */
-  public abstract broadcastTx(
+  protected abstract signAndBroadcastTx(
     unsignedTx: UnsignedTx,
-    opts?: BroadcastTxOptions | undefined
+    fee: Fee,
+    accountNumber: bigint,
+    sequence: bigint
   ): Promise<string>;
-
-  /**
-   * Returns the prerequisite data for broadcasting a tx, by resolving it with
-   * `opts` or by requesting it from the chain.
-   */
-  protected async prepBroadcastTx(
-    unsignedTx: UnsignedTx,
-    opts?: BroadcastTxOptions | undefined
-  ) {
-    const tx = new Tx({
-      pubKey: this.pubKey,
-      msgs: unsignedTx.msgs,
-    });
-    if (opts) {
-      return { tx, ...opts };
-    }
-    const { accountNumber, sequence } = await this.getAccount();
-    const fee = await this.estimateFee(unsignedTx, opts);
-    return { tx, accountNumber, sequence, fee };
-  }
-
-  /**
-   * Returns the prerequisite data for estimating a tx, by resolving it with
-   * `opts` or by requesting it from the chain.
-   */
-  private async prepEstimateFee(opts?: EstimateFeeOptions | undefined) {
-    if (opts) {
-      return opts;
-    }
-    const account = await this.getAccount();
-    return {
-      sequence: account.sequence,
-    };
-  }
 }

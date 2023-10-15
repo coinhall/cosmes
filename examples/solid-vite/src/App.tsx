@@ -101,7 +101,7 @@ function getDenom(chain: string): string {
 }
 
 const App: Component = () => {
-  const [chain, setChain] = createSignal<string>("neutron-1");
+  const [chain, setChain] = createSignal<string>("osmosis-1");
   const [wallet, setWallet] = createSignal<WalletName>(WalletName.KEPLR);
   const [wallets, setWallets] = createStore<Record<string, ConnectedWallet>>(
     {}
@@ -177,35 +177,33 @@ const App: Component = () => {
       return;
     }
     try {
-      const msgs = [
-        new MsgSend({
-          fromAddress: wallet.address,
-          toAddress: wallet.address,
-          amount: [
-            {
-              denom: getDenom(chain()),
-              amount: "1",
-            },
-          ],
-        }),
-      ];
-      const { sequence, accountNumber } = await wallet.getAccount();
-      const unsignedTx: UnsignedTx = {
-        msgs,
+      const tx: UnsignedTx = {
+        msgs: [
+          new MsgSend({
+            fromAddress: wallet.address,
+            toAddress: wallet.address,
+            amount: [
+              {
+                denom: getDenom(chain()),
+                amount: "1",
+              },
+            ],
+          }),
+        ],
         memo: TX_MEMO,
       };
-      const fee = await wallet.estimateFee(unsignedTx, {
-        sequence,
-        feeMultiplier: 1.4,
-      });
-      const txHash = await wallet.broadcastTx(unsignedTx, {
-        sequence,
-        accountNumber,
-        fee,
-      });
-      const res = await wallet.pollTx(txHash);
-      console.log(res);
-      alert("Broadcast success!\n\nTx hash: " + res.txResponse.txhash);
+
+      const fee = await wallet.estimateFee(tx);
+      console.log("Tx fee:", fee);
+
+      const res = await wallet.broadcastTx(tx, fee);
+      console.log("Tx result:", res);
+
+      alert(
+        "Broadcast success!\n\nTx hash: " +
+          res.txhash +
+          "\n\nCheck console logs for details."
+      );
     } catch (err) {
       console.error(err);
       alert((err as Error).message);

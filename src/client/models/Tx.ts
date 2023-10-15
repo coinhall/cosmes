@@ -1,4 +1,3 @@
-import { StdSignDoc } from "@keplr-wallet/types";
 import {
   CosmosTxV1beta1AuthInfo as ProtoAuthInfo,
   CosmosTxV1beta1Fee as ProtoFee,
@@ -6,6 +5,7 @@ import {
   CosmosTxV1beta1TxBody as ProtoTxBody,
   CosmosTxV1beta1TxRaw as ProtoTxRaw,
 } from "cosmes/protobufs";
+import { StdSignDoc } from "cosmes/registry";
 
 import { toAny } from "../utils/toAny";
 import { Adapter } from "./Adapter";
@@ -15,7 +15,7 @@ type Data = {
   msgs: Adapter[];
 };
 
-export type ToTxRawParams = {
+export type ToSignedProtoParams = {
   sequence: bigint;
   fee: ProtoFee;
   signMode: ProtoSignMode;
@@ -23,7 +23,10 @@ export type ToTxRawParams = {
   memo?: string | undefined;
 };
 
-export type ToUnsignedTxRawParams = Pick<ToTxRawParams, "sequence" | "memo">;
+export type ToUnsignedProtoParams = Pick<
+  ToSignedProtoParams,
+  "sequence" | "memo"
+>;
 
 export type ToStdSignDocParams = {
   chainId: string;
@@ -41,16 +44,16 @@ export class Tx {
   }
 
   /**
-   * Returns an instantiated `TxRaw` protobuf. To create an unsigned tx for the
-   * purpose of simulating and estimating gas fees, use {@link toUnsignedTxRaw}.
+   * Returns the signed, proto encoded tx ready to be broadcasted. To create an
+   * unsigned tx for the purpose of simulating it, use {@link toUnsignedProto}.
    */
-  public toTxRaw({
+  public toSignedProto({
     fee,
     sequence,
     signMode,
     signature,
     memo,
-  }: ToTxRawParams): ProtoTxRaw {
+  }: ToSignedProtoParams): ProtoTxRaw {
     return new ProtoTxRaw({
       authInfoBytes: new ProtoAuthInfo({
         fee: fee,
@@ -78,11 +81,11 @@ export class Tx {
   }
 
   /**
-   * Returns an instantiated `TxRaw` protobuf that can only be used to simulate
-   * and estimate gas fees. To create a signed tx, use {@link toTxRaw}.
+   * Returns the proto encoded tx with the sign mode set to UNSPECIFIED, useful
+   * for simulating the tx. To create a signed tx, use {@link toSignedProto}.
    */
-  public toUnsignedTxRaw(info: ToUnsignedTxRawParams): ProtoTxRaw {
-    return this.toTxRaw({
+  public toUnsignedProto(info: ToUnsignedProtoParams): ProtoTxRaw {
+    return this.toSignedProto({
       ...info,
       fee: new ProtoFee(),
       signMode: ProtoSignMode.UNSPECIFIED,

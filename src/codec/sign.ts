@@ -1,7 +1,7 @@
-import type { StdSignDoc } from "@keplr-wallet/types";
 import { hmac } from "@noble/hashes/hmac";
 import { sha256 } from "@noble/hashes/sha256";
 import * as secp256k1 from "@noble/secp256k1";
+import { StdSignDoc } from "cosmes/registry";
 
 import { serialiseSignDoc } from "./serialise";
 

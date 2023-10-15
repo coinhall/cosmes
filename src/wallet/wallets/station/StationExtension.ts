@@ -1,12 +1,14 @@
 import { PlainMessage } from "@bufbuild/protobuf";
 import { Adapter } from "cosmes/client";
 import { base64, utf8 } from "cosmes/codec";
-import { CosmosBaseV1beta1Coin as Coin } from "cosmes/protobufs";
+import {
+  CosmosBaseV1beta1Coin as Coin,
+  CosmosTxV1beta1Fee as Fee,
+} from "cosmes/protobufs";
 
 import { WalletName } from "../../constants/WalletName";
 import { WalletType } from "../../constants/WalletType";
 import {
-  BroadcastTxOptions,
   ConnectedWallet,
   SignArbitraryResponse,
   UnsignedTx,
@@ -48,11 +50,10 @@ export class StationExtension extends ConnectedWallet {
     };
   }
 
-  public async broadcastTx(
+  public async signAndBroadcastTx(
     unsignedTx: UnsignedTx,
-    opts?: BroadcastTxOptions | undefined
+    fee: Fee
   ): Promise<string> {
-    const { fee } = await this.prepBroadcastTx(unsignedTx, opts);
     const { msgs, memo } = unsignedTx;
     const { code, raw_log, txhash } = await this.normaliseError(
       this.ext.post(toStationTx(this.chainId, fee, msgs, memo), true)

@@ -1,4 +1,4 @@
-import { Keplr } from "@keplr-wallet/types";
+import { Keplr } from "cosmes/registry";
 
 // Type is similar to Keplr
 export type Leap = Keplr;
