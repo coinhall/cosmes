@@ -1,4 +1,3 @@
-import type { StdSignDoc } from "@keplr-wallet/types";
 import { Secp256k1PubKey, Tx, broadcastTx } from "cosmes/client";
 import {
   base64,
@@ -11,6 +10,7 @@ import {
   CosmosTxV1beta1Fee as Fee,
   CosmosTxSigningV1beta1SignMode as SignMode,
 } from "cosmes/protobufs";
+import { StdSignDoc } from "cosmes/registry";
 
 import { Prettify } from "../../../typeutils/prettify";
 import { WalletName } from "../../constants/WalletName";

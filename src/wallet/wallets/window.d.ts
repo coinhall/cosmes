@@ -1,4 +1,4 @@
-import { Window as KeplrWindow } from "@keplr-wallet/types";
+import { Window as KeplrWindow } from "cosmes/registry";
 
 import { Window as CosmostationWindow } from "./cosmostation/types";
 import { Window as LeapWindow } from "./leap/types";

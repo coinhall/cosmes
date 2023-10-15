@@ -1,5 +1,5 @@
-import type { StdSignDoc } from "@keplr-wallet/types";
 import { utf8 } from "@scure/base";
+import { StdSignDoc } from "cosmes/registry";
 
 /**
  * Escapes <,>,& in string.

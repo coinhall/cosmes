@@ -1,4 +1,3 @@
-import { StdSignDoc } from "@keplr-wallet/types";
 import {
   CosmosTxV1beta1AuthInfo as ProtoAuthInfo,
   CosmosTxV1beta1Fee as ProtoFee,
@@ -6,6 +5,7 @@ import {
   CosmosTxV1beta1TxBody as ProtoTxBody,
   CosmosTxV1beta1TxRaw as ProtoTxRaw,
 } from "cosmes/protobufs";
+import { StdSignDoc } from "cosmes/registry";
 
 import { toAny } from "../utils/toAny";
 import { Adapter } from "./Adapter";

@@ -1,4 +1,3 @@
-import type { Coin, StdSignDoc } from "@keplr-wallet/types";
 import { Tx } from "cosmes/client";
 import { base64 } from "cosmes/codec";
 import {
@@ -6,6 +5,7 @@ import {
   CosmosTxSigningV1beta1SignMode as SignMode,
   CosmosTxV1beta1TxRaw as TxRaw,
 } from "cosmes/protobufs";
+import type { Coin, StdSignDoc } from "cosmes/registry";
 
 /**
  * Returns a signed `TxRaw` by combining the given `tx`, `signature`, and `stdSignDoc`.

@@ -1,4 +1,4 @@
-import { StdSignDoc } from "@keplr-wallet/types";
+import { StdSignDoc } from "cosmes/registry";
 
 /**
  * Adapted from https://github.com/cosmostation/cosmostation-chrome-extension-client/blob/main/src/types/d.ts/window.d.ts

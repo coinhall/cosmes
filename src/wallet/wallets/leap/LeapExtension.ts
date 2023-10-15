@@ -1,11 +1,11 @@
 import { PlainMessage } from "@bufbuild/protobuf";
-import type { BroadcastMode } from "@keplr-wallet/types";
 import { Adapter, Tx } from "cosmes/client";
 import { base16 } from "cosmes/codec";
 import {
   CosmosBaseV1beta1Coin as Coin,
   CosmosTxV1beta1Fee as Fee,
 } from "cosmes/protobufs";
+import type { BroadcastMode } from "cosmes/registry";
 
 import { WalletName } from "../../constants/WalletName";
 import { WalletType } from "../../constants/WalletType";

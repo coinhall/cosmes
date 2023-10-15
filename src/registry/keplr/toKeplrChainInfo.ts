@@ -1,8 +1,11 @@
-import type { Currency, FeeCurrency } from "@keplr-wallet/types";
+import type {
+  Currency,
+  FeeCurrency,
+  ChainInfo as KeplrChainInfo,
+} from "@keplr-wallet/types";
 
 import { ChainRegistryAssetList } from "../types/ChainRegistryAssetList";
 import { ChainRegistryChainInfo } from "../types/ChainRegistryChainInfo";
-import { KeplrChainInfo } from "../types/KeplrChainInfo";
 
 const getRpcEndpoint = (chain: ChainRegistryChainInfo): string =>
   chain.apis?.rpc?.[0]?.address ?? "";
