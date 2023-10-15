@@ -9,7 +9,7 @@ import type { BroadcastMode } from "cosmes/registry";
 
 import { WalletName } from "../../constants/WalletName";
 import { WalletType } from "../../constants/WalletType";
-import { toSignedTxRaw } from "../../utils/tx";
+import { stdSignDocToSignedProto } from "../../utils/tx";
 import {
   ConnectedWallet,
   SignArbitraryResponse,
@@ -78,7 +78,7 @@ export class LeapExtension extends ConnectedWallet {
     );
     const txHash = await this.ext.sendTx(
       this.chainId,
-      toSignedTxRaw(tx, signature.signature, signed).toBinary(),
+      stdSignDocToSignedProto(tx, signature.signature, signed).toBinary(),
       "sync" as BroadcastMode
     );
     return base16.encode(txHash);

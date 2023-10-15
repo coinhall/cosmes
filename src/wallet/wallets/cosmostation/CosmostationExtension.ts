@@ -8,7 +8,7 @@ import {
 
 import { WalletName } from "../../constants/WalletName";
 import { WalletType } from "../../constants/WalletType";
-import { toSignedTxRaw } from "../../utils/tx";
+import { stdSignDocToSignedProto } from "../../utils/tx";
 import {
   ConnectedWallet,
   SignArbitraryResponse,
@@ -94,7 +94,7 @@ export class CosmostationExtension extends ConnectedWallet {
         params: {
           chainName: this.chainId,
           txBytes: base64.encode(
-            toSignedTxRaw(tx, signature, signed_doc).toBinary()
+            stdSignDocToSignedProto(tx, signature, signed_doc).toBinary()
           ),
           mode: 2, // for SYNC mode
         },

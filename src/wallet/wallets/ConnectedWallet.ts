@@ -35,9 +35,8 @@ export type SignArbitraryResponse = {
 };
 
 /**
- * Represents a wallet that is connected via the browser extension
- * or via WalletConnect. This class should only be instantiated by
- * a `WalletController`.
+ * Represents a connected wallet that is ready to sign transactions.
+ * Use `WalletController` to create an instance of this class.
  */
 export abstract class ConnectedWallet {
   /** The identifier of this wallet. */
@@ -181,8 +180,7 @@ export abstract class ConnectedWallet {
 
   /**
    * Executes `estimateFee` and `broadcastTx` sequentially, returning the result of
-   * the tx. Use this if there is no need to independently estimate fees and broadcast
-   * the tx.
+   * the tx. Use this if there is no need independently execute the two methods.
    */
   public async broadcastTxWithFeeEstimation(
     unsignedTx: UnsignedTx,
