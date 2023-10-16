@@ -1,6 +1,6 @@
 # Changelog
 
-## `v0.0.36` [breaking change]
+## `v0.0.37` [breaking change]
 
 ### Features
 

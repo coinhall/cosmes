@@ -12,7 +12,7 @@ import {
 import {
   CosmosBaseV1beta1Coin as Coin,
   CosmosTxV1beta1Fee as Fee,
-  CosmosBaseAbciV1beta1TxResponse as TxResponse,
+  CosmosTxV1beta1GetTxResponse as GetTxResponse,
 } from "cosmes/protobufs";
 
 import type { WalletName } from "../constants/WalletName";
@@ -159,7 +159,7 @@ export abstract class ConnectedWallet {
     unsignedTx: UnsignedTx,
     fee: Fee,
     { maxAttempts, intervalSeconds }: PollTxOptions = {}
-  ): Promise<PlainMessage<TxResponse>> {
+  ): Promise<Required<PlainMessage<GetTxResponse>>> {
     const { accountNumber, sequence } = await this.getAuthInfo(true);
     const hash = await this.signAndBroadcastTx(
       unsignedTx,
@@ -170,12 +170,11 @@ export abstract class ConnectedWallet {
     // Greedily increment the sequence for the next tx. This may result in the wrong
     // sequence, but if `estimateFee` was called prior to this, it will be corrected
     this.sequence = sequence + 1n;
-    const { txResponse } = await pollTx(this.rpc, {
+    return pollTx(this.rpc, {
       hash,
       maxAttempts,
       intervalSeconds,
     });
-    return txResponse;
   }
 
   /**
@@ -186,7 +185,7 @@ export abstract class ConnectedWallet {
     unsignedTx: UnsignedTx,
     feeMultiplier = 1.4,
     pollOpts: PollTxOptions = {}
-  ): Promise<PlainMessage<TxResponse>> {
+  ): Promise<Required<PlainMessage<GetTxResponse>>> {
     const fee = await this.estimateFee(unsignedTx, feeMultiplier);
     return this.broadcastTx(unsignedTx, fee, pollOpts);
   }

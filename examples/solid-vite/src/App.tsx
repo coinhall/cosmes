@@ -196,12 +196,12 @@ const App: Component = () => {
       const fee = await wallet.estimateFee(tx);
       console.log("Tx fee:", fee);
 
-      const res = await wallet.broadcastTx(tx, fee);
-      console.log("Tx result:", res);
+      const { txResponse } = await wallet.broadcastTx(tx, fee);
+      console.log("Tx result:", txResponse);
 
       alert(
         "Broadcast success!\n\nTx hash: " +
-          res.txhash +
+          txResponse.txhash +
           "\n\nCheck console logs for details."
       );
     } catch (err) {
