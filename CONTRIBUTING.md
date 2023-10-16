@@ -3,9 +3,11 @@
 
 - [Directory Structure](#directory-structure)
 - [Getting Started](#getting-started)
+  - [Installing](#installing)
   - [Adding Dependencies](#adding-dependencies)
-  - [Building For Production](#building-for-production)
   - [Developing](#developing)
+  - [Building](#building)
+  - [Publishing](#publishing)
   - [Testing \& CI](#testing--ci)
 - [Design Decisions](#design-decisions)
   - [Minimise Bundle Size](#minimise-bundle-size)
@@ -19,67 +21,90 @@
 
 This is a [pure ESM package](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c), written in TypeScript and managed by [pnpm](https://pnpm.io).
 
+- [`/benchmarks`](./benchmarks) - contains bundle size comparisons between `cosmes` and other packages like Cosmos Kit
 - [`/examples`](./examples) - contains example applications that consume from the `cosmes` package
 - [`/scripts`](./scripts) - contains internal scripts for use in this monorepo
 - [`/src`](./src) - contains the source code for the `cosmes` package
 
 ## Getting Started
 
+### Installing
+
+Firstly, install all dependencies by running:
+
 ```sh
-# To install all dependencies
-pnpm install
+pnpm i
 ```
 
 ### Adding Dependencies
 
 Dependencies that are not `devDependencies` should be added as `peerDependencies`. See ["No Bundling"](#no-bundling) for more information.
 
-```sh
-# To add a new dev dependency
-pnpm add -D [dependency_name]
+To add a new dev dependency, run:
 
-# To add a new dependency
-# This also automatically adds it as a dev dependency
-pnpm add --save-peer [dependency_name]
+```sh
+pnpm add -D [dependency_name]
 ```
 
-### Building For Production
+To add a new peer dependency (note that it is also automatically added as a dev dependency), run:
 
 ```sh
-# [OPTIONAL] To regenerate the code built using scripts
-pnpm gen:protobufs
-pnpm gen:registry
-
-# To build to the `dist` directory
-pnpm build
+pnpm add --save-peer [dependency_name]
 ```
 
 ### Developing
 
 All examples in the `/examples` directory are independent packages that contain a symlink to the root `cosmes` package. This allows us to develop the `cosmes` package and test it in the examples at the same time.
 
-To start developing with hot reload:
+Firstly, to watch the `cosmes` package and rebuild on changes, run the following in the root of the project:
 
 ```sh
-# First, watch the package and rebuild on changes
-pnpm build # If the root `dist` directory does not exist
+# Run `pnpm build` first if this is your first time running this command
 pnpm dev
+```
 
-# Then, in a separate terminal, start the example app
-cd examples/[app_name]
+Then, in a separate terminal, start the example app:
+
+```sh
+cd examples/solid-vite
 pnpm install # If necessary
 pnpm dev
 ```
 
-### Testing & CI
+### Building
 
-The full test suite includes building, linting, type checking, and unit tests.
+All generated files should be committed to the repository. The convention is to prefix the commands with `gen:`. If there is a need to regenerate the files, run:
 
 ```sh
-# To run tests
-pnpm test
+pnpm gen:protobufs
+pnpm gen:registry
+```
 
-# To run the full test suite, including linting and typechecking
+To build the package to the `dist` folder, run:
+
+```sh
+pnpm build
+```
+
+### Publishing
+
+To publish the package to NPM, run:
+
+```sh
+pnpm publish
+```
+
+### Testing & CI
+
+To run all unit tests, run:
+
+```sh
+pnpm test
+```
+
+To emulate the full test suite (linting, typechecking, unit tests) that is automatically run in CI, run:
+
+```sh
 pnpm test:suite
 ```
 

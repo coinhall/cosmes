@@ -3,7 +3,7 @@
 
 [![npm version](https://badge.fury.io/js/cosmes.svg)](https://www.npmjs.com/package/cosmes)
 
-A tree-shakeable, framework agnostic, [pure ESM](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c) alternative of [CosmJS](https://github.com/cosmos/cosmjs) and [Cosmos Kit](https://cosmoskit.com). Generates bundles up to 10x smaller than Cosmos Kit.
+A tree-shakeable, framework agnostic, [pure ESM](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c) alternative of [CosmJS](https://github.com/cosmos/cosmjs) and [Cosmos Kit](https://cosmoskit.com) (**generate bundles up to 10x smaller than Cosmos Kit**).
 
 - [Features](#features)
 - [Installing](#installing)
@@ -19,7 +19,7 @@ A tree-shakeable, framework agnostic, [pure ESM](https://gist.github.com/sindres
   - [`cosmes/wallet`](#cosmeswallet)
 - [Benchmarks](#benchmarks)
   - [Results](#results)
-- [Contributing](#contributing)
+- [See More](#see-more)
 
 ## Features
 
@@ -144,6 +144,7 @@ See the [`benchmarks`](./benchmarks) folder, where the JS bundle size of CosmES 
 | Cosmos Kit v1 | 6004 KB  | 1392 KB |
 | Cosmos Kit v2 | 6273 KB  | 1453 KB |
 
-## Contributing
+## See More
 
-See [`CONTRIBUTING.md`](./CONTRIBUTING.md).
+- [Changelog](./CHANGELOG.md) - for notable changes
+- [Contributing](./CONTRIBUTING.md) - if you want to contribute to this project
