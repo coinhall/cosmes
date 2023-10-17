@@ -144,22 +144,18 @@ export abstract class ConnectedWallet {
   }
 
   /**
-   * Signs and broadcasts the given `unsignedTx` and returns the result of the tx.
+   * Signs and broadcasts the given `unsignedTx`, returning the tx hash if successful.
+   * The `fee` parameter can (and should) be obtained by running `estimateFee` on
+   * the `unsignedTx` prior to calling this method.
    *
-   * - The `fee` parameter can (and should) be obtained by running `estimateFee` on
-   *   the `unsignedTx` prior to calling this method
-   * - The tx result will be polled every `intervalSeconds` until it is included in
-   *   a block or when `maxAttempts` is reached (default: 2 seconds, 64 attempts)
+   * **Important**: successful execution of this method does not guarantee that the
+   * tx was successfully included in a block. Use `pollTx` to poll for the result of
+   * the tx.
    *
+   * @throws if the user denies the signing of the tx.
    * @throws if the tx fails to broadcast.
-   * @throws if the tx does not have a response.
-   * @throws if the tx is not found after the given number of `maxAttempts`.
    */
-  public async broadcastTx(
-    unsignedTx: UnsignedTx,
-    fee: Fee,
-    { maxAttempts, intervalSeconds }: PollTxOptions = {}
-  ): Promise<Required<PlainMessage<GetTxResponse>>> {
+  public async broadcastTx(unsignedTx: UnsignedTx, fee: Fee): Promise<string> {
     const { accountNumber, sequence } = await this.getAuthInfo(true);
     const hash = await this.signAndBroadcastTx(
       unsignedTx,
@@ -170,30 +166,50 @@ export abstract class ConnectedWallet {
     // Greedily increment the sequence for the next tx. This may result in the wrong
     // sequence, but if `estimateFee` was called prior to this, it will be corrected
     this.sequence = sequence + 1n;
+    return hash;
+  }
+
+  /**
+   * Polls for the tx matching the given `txHash` every `intervalSeconds` until it is
+   * included in a block or when `maxAttempts` is reached (default: 2s, 64 attempts).
+   *
+   * @throws if the tx is not included in a block after the given `maxAttempts`.
+   */
+  public async pollTx(
+    txHash: string,
+    { maxAttempts, intervalSeconds }: PollTxOptions = {}
+  ): Promise<Required<PlainMessage<GetTxResponse>>> {
     return pollTx(this.rpc, {
-      hash,
+      hash: txHash,
       maxAttempts,
       intervalSeconds,
     });
   }
 
   /**
-   * Executes `estimateFee` and `broadcastTx` sequentially, returning the result of
-   * the tx. Use this if there is no need independently execute the two methods.
+   * Executes `broadcastTx` and `pollTx` sequentially, returning the result of the
+   * tx. If `feeOrFeeMultiplier` is `undefined` or a number, an additional call to
+   * `estimateFee` will be made. Use this if there is no need to independently
+   * execute the three methods.
    */
-  public async broadcastTxWithFeeEstimation(
+  public async broadcastTxSync(
     unsignedTx: UnsignedTx,
-    feeMultiplier = 1.4,
+    feeOrFeeMultiplier: Fee | number = 1.4,
     pollOpts: PollTxOptions = {}
   ): Promise<Required<PlainMessage<GetTxResponse>>> {
-    const fee = await this.estimateFee(unsignedTx, feeMultiplier);
-    return this.broadcastTx(unsignedTx, fee, pollOpts);
+    const fee =
+      typeof feeOrFeeMultiplier === "number"
+        ? await this.estimateFee(unsignedTx, feeOrFeeMultiplier)
+        : feeOrFeeMultiplier;
+    const txHash = await this.broadcastTx(unsignedTx, fee);
+    return this.pollTx(txHash, pollOpts);
   }
 
   /**
    * Signs the UTF-8 encoded `data` string. Note that some mobile wallets do not
    * support this method.
    *
+   * @throws if the user denies the signing of the data.
    * @throws if the wallet does not support signing arbitrary data.
    */
   public abstract signArbitrary(data: string): Promise<SignArbitraryResponse>;

@@ -23,7 +23,7 @@ async function main() {
   console.log("Signature:", signature);
 
   // Broadcast a transaction
-  // const res = await wallet.broadcastTxWithFeeEstimation({ ... });
+  // const res = await wallet.broadcastTxSync( ... );
   // console.log("Tx result:", res);
 }
 

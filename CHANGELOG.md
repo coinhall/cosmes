@@ -1,16 +1,15 @@
 # Changelog
 
-## `v0.0.37` [breaking change]
+## `v0.0.38` [breaking change]
 
 ### Features
 
 - Added `MnemonicWallet` to allow programmatic signing and broadcasting of txs without relying on a 3rd party wallet/signer (see examples directory)
 - Simplified wallet APIs **[breaking change]**
-  - `getAccount()`: reworked to `getAuthInfo()`, but consumers are no longer required to call this method to broadcast transactions
-  - `pollTx()`: removed and combined with `broadcastTx()`
-  - `estimateFee()`: second parameter now accepts the `feeMultiplier` directly (still optional)
-  - `broadcastTx()`: second parameter now accepts the `fee` from the result of `estimateFee()` (no longer optional)
-  - `broadcastTxWithFeeEstimation()`: newly added function that combines `estimateFee` and `broadcastTx`
+  - `getAccount()`: renamed and reworked to `getAuthInfo()`, but consumers are no longer required to call this method to broadcast transactions
+  - `estimateFee()`: second parameter now accepts the `feeMultiplier` directly (still optional) instead of the auth info
+  - `broadcastTx()`: second parameter now accepts the `fee` from the result of `estimateFee()` (no longer optional) instead of the auth info
+  - `broadcastTxSync()`: new function that executes `estimateFee`, `broadcastTx`, and `pollTx` sequentially
 - Handle account sequence mismatch errors directly in `ConnectedWallet.estimateFee()` by retrying once with the correct sequence
 
 ### Miscellaneous

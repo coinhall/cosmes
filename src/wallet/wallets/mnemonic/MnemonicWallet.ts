@@ -67,8 +67,12 @@ export type ConnectMnemonicWalletOptions = Prettify<
  * });
  * console.log("Address:", wallet.address); // prints the bech32 address
  *
+ * // Sign an arbitrary message
+ * const { signature } = await wallet.signArbitrary("Hello from CosmES!");
+ * console.log("Signature:", signature);
+ *
  * // Sign and broadcast a tx
- * const res = await wallet.broadcastTxWithFeeEstimation({ ... }); // TODO
+ * const res = await wallet.broadcastTxSync( ... ); // TODO
  * console.log("Tx result:", res);
  * ```
  */
