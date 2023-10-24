@@ -22,7 +22,7 @@ export class FetchClient {
    */
   public static async post<T>(
     endpoint: string,
-    body: Record<string, unknown>
+    body: Record<string, unknown> | Array<unknown>
   ): Promise<T> {
     const res = await fetch(endpoint, {
       method: "POST",

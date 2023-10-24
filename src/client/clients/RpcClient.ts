@@ -68,8 +68,8 @@ export class RpcClient {
   }
 
   /**
-   * Posts an `abci_query` request to the RPC `endpoint`. If successful,
-   * returns the response, otherwise throws an error.
+   * Posts an ABCI query to the RPC `endpoint`. If successful, returns the response,
+   * otherwise throws an error.
    */
   public static async query<T extends Message<T>, U extends Message<U>>(
     endpoint: string,
@@ -110,5 +110,78 @@ export class RpcClient {
       throw new Error(log);
     }
     return hash;
+  }
+
+  /**
+   * Creates a new ABCI batch query.
+   */
+  public static newBatchQuery(endpoint: string): BatchQuery {
+    return new BatchQuery(endpoint);
+  }
+}
+
+class BatchQuery {
+  private readonly endpoint: string;
+  private readonly queries: {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    queryService: QueryService<any, any>;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    requestMsg: PartialMessage<any>;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    handler: (response: any) => unknown;
+  }[] = [];
+
+  constructor(endpoint: string) {
+    this.endpoint = endpoint;
+  }
+
+  /**
+   * Adds an `abci_query` to this batch. The `handler` is a callback function that
+   * is called on the result of this query.
+   */
+  public add<T extends Message<T>, U extends Message<U>>(
+    queryService: QueryService<T, U>,
+    requestMsg: PartialMessage<T>,
+    handler: (response: U) => unknown
+  ) {
+    this.queries.push({ queryService, requestMsg, handler });
+    return this;
+  }
+
+  /**
+   * Executes the batched query.
+   */
+  public async send() {
+    if (this.queries.length === 0) {
+      return;
+    }
+    const payload = this.queries.map(({ queryService, requestMsg }, idx) => ({
+      id: idx,
+      jsonrpc: "2.0",
+      method: "abci_query",
+      params: {
+        path: `/${queryService.typeName}/${queryService.method}`,
+        data: base16.encode(new queryService.Request(requestMsg).toBinary()),
+      },
+    }));
+    const res = await FetchClient.post<
+      // Array is returned if and only if the payload has more than one query
+      Response<QueryResult>[] | Response<QueryResult>
+    >(this.endpoint, payload);
+    const results = Array.isArray(res) ? res : [res];
+    for (const { id, result, error } of results) {
+      if (error != null) {
+        throw new Error(error.data); // TODO: ignore instead (?)
+      }
+      const { log, value } = result.response;
+      if (!value) {
+        throw new Error(log); // TODO: ignore instead (?)
+      }
+      const { queryService, handler } = this.queries[id];
+      const responseMsg = queryService.Response.fromBinary(
+        base64.decode(value)
+      );
+      handler(responseMsg);
+    }
   }
 }
