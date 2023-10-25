@@ -1,5 +1,12 @@
 # Changelog
 
+## `v0.0.39`
+
+### Features
+
+- Added the optional `height` params to the `FetchClient` to execute queries at a custom block height
+- Added batching of queries to `FetchClient` (see `examples/batch-query`)
+
 ## `v0.0.38` [breaking change]
 
 ### Features

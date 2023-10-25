@@ -1,4 +1,4 @@
-import { Message, PartialMessage } from "@bufbuild/protobuf";
+import { JsonValue, Message, PartialMessage } from "@bufbuild/protobuf";
 import { base16, base64 } from "cosmes/codec";
 
 import { FetchClient } from "./FetchClient";
@@ -49,11 +49,20 @@ type BroadcastTxResult = {
   log: string;
 };
 
+type RequestMessage<T extends Message<T>> = PartialMessage<T> & {
+  /**
+   * The block height at which the query should be executed. Providing a height
+   * that is outside the range of the full node will result in an error. Leave
+   * this field empty to default to the latest block.
+   */
+  height?: number | undefined;
+};
+
 export class RpcClient {
   private static async doRequest<T>(
     endpoint: string,
     method: string,
-    params: Record<string, unknown>
+    params: JsonValue
   ) {
     const { result, error } = await FetchClient.post<Response<T>>(endpoint, {
       id: Date.now(),
@@ -68,13 +77,13 @@ export class RpcClient {
   }
 
   /**
-   * Posts an `abci_query` request to the RPC `endpoint`. If successful,
-   * returns the response, otherwise throws an error.
+   * Posts an ABCI query to the RPC `endpoint`. If successful, returns the response,
+   * otherwise throws an error.
    */
   public static async query<T extends Message<T>, U extends Message<U>>(
     endpoint: string,
     { typeName, method, Request, Response }: QueryService<T, U>,
-    requestMsg: PartialMessage<T>
+    requestMsg: RequestMessage<T>
   ): Promise<U> {
     const { response } = await this.doRequest<QueryResult>(
       endpoint,
@@ -82,6 +91,7 @@ export class RpcClient {
       {
         path: `/${typeName}/${method}`,
         data: base16.encode(new Request(requestMsg).toBinary()),
+        ...(requestMsg.height ? { height: requestMsg.height.toString() } : {}),
       }
     );
     const { log, value } = response;
@@ -110,5 +120,83 @@ export class RpcClient {
       throw new Error(log);
     }
     return hash;
+  }
+
+  /**
+   * Creates a new ABCI batch query.
+   */
+  public static newBatchQuery(endpoint: string): BatchQuery {
+    return new BatchQuery(endpoint);
+  }
+}
+
+class BatchQuery {
+  private readonly endpoint: string;
+  private readonly queries: {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    queryService: QueryService<any, any>;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    requestMsg: RequestMessage<any>;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    callback: (err: Error | null, response: any) => unknown;
+  }[] = [];
+
+  constructor(endpoint: string) {
+    this.endpoint = endpoint;
+  }
+
+  /**
+   * Adds an `abci_query` to this query batch.
+   *
+   * @param callback An error-first callback function for the response of the query.
+   * If `err` is not `null`, `response` will be `null` and should not be used.
+   */
+  public add<T extends Message<T>, U extends Message<U>>(
+    queryService: QueryService<T, U>,
+    requestMsg: RequestMessage<T>,
+    callback: (err: Error | null, response: U) => unknown
+  ) {
+    this.queries.push({ queryService, requestMsg, callback });
+    return this;
+  }
+
+  /**
+   * Executes the batched query.
+   */
+  public async send() {
+    if (this.queries.length === 0) {
+      return;
+    }
+    const payload = this.queries.map(({ queryService, requestMsg }, idx) => ({
+      id: idx,
+      jsonrpc: "2.0",
+      method: "abci_query",
+      params: {
+        path: `/${queryService.typeName}/${queryService.method}`,
+        data: base16.encode(new queryService.Request(requestMsg).toBinary()),
+        ...(requestMsg.height ? { height: requestMsg.height.toString() } : {}),
+      },
+    }));
+    const res = await FetchClient.post<
+      // Array is returned if and only if the payload has more than one query
+      Response<QueryResult>[] | Response<QueryResult>
+    >(this.endpoint, payload);
+    const results = Array.isArray(res) ? res : [res];
+    for (const { id, result, error } of results) {
+      const { queryService, callback: handler } = this.queries[id];
+      if (error != null) {
+        handler(new Error(error.data), null);
+        continue;
+      }
+      const { log, value } = result.response;
+      if (!value) {
+        handler(new Error(log), null);
+        continue;
+      }
+      const responseMsg = queryService.Response.fromBinary(
+        base64.decode(value)
+      );
+      handler(null, responseMsg);
+    }
   }
 }
