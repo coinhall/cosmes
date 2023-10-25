@@ -94,7 +94,12 @@ See [`examples/solid-vite`](./examples/solid-vite) for a working example.
 
 ## Examples
 
-Docs do not exist yet - see the [`examples`](./examples) folder for various working examples.
+Docs do not exist yet - see the [`examples`](./examples) folder for various working examples:
+
+1. [How do I connect to third party wallets via browser extension or WalletConnect? How do I create, sign, and broadcast transactions?](./examples/solid-vite)
+2. [How do I programmatically sign and broadcast transactions without relying on a third party wallet?](./examples/mnemonic-wallet)
+3. [How do I verify signatures signed using the `signArbitrary` function?](./examples/verify-signatures)
+4. [How do I batch queries to the blockchain?](./examples/batch-query)
 
 ## Modules
 
