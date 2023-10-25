@@ -1,3 +1,5 @@
+import { JsonValue } from "@bufbuild/protobuf";
+
 /**
  * A simple and minimal wrapper around the native `fetch` API.
  */
@@ -20,10 +22,7 @@ export class FetchClient {
    * Performs a POST request to the given `endpoint`, and returns the
    * JSON response.
    */
-  public static async post<T>(
-    endpoint: string,
-    body: Record<string, unknown> | Array<unknown>
-  ): Promise<T> {
+  public static async post<T>(endpoint: string, body: JsonValue): Promise<T> {
     const res = await fetch(endpoint, {
       method: "POST",
       headers: { "Content-Type": "application/json" },

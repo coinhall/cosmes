@@ -1,4 +1,4 @@
-import { Message, PartialMessage } from "@bufbuild/protobuf";
+import { JsonValue, Message, PartialMessage } from "@bufbuild/protobuf";
 import { base16, base64 } from "cosmes/codec";
 
 import { FetchClient } from "./FetchClient";
@@ -53,7 +53,7 @@ export class RpcClient {
   private static async doRequest<T>(
     endpoint: string,
     method: string,
-    params: Record<string, unknown>
+    params: JsonValue
   ) {
     const { result, error } = await FetchClient.post<Response<T>>(endpoint, {
       id: Date.now(),
@@ -128,7 +128,7 @@ class BatchQuery {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     requestMsg: PartialMessage<any>;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    handler: (response: any) => unknown;
+    callback: (err: Error | null, response: any) => unknown;
   }[] = [];
 
   constructor(endpoint: string) {
@@ -136,15 +136,17 @@ class BatchQuery {
   }
 
   /**
-   * Adds an `abci_query` to this batch. The `handler` is a callback function that
-   * is called on the result of this query.
+   * Adds an `abci_query` to this query batch.
+   *
+   * @param callback An error-first callback function for the response of the query.
+   * If `err` is not `null`, `response` will be `null` and should not be used.
    */
   public add<T extends Message<T>, U extends Message<U>>(
     queryService: QueryService<T, U>,
     requestMsg: PartialMessage<T>,
-    handler: (response: U) => unknown
+    callback: (err: Error | null, response: U) => unknown
   ) {
-    this.queries.push({ queryService, requestMsg, handler });
+    this.queries.push({ queryService, requestMsg, callback });
     return this;
   }
 
@@ -170,18 +172,20 @@ class BatchQuery {
     >(this.endpoint, payload);
     const results = Array.isArray(res) ? res : [res];
     for (const { id, result, error } of results) {
+      const { queryService, callback: handler } = this.queries[id];
       if (error != null) {
-        throw new Error(error.data); // TODO: ignore instead (?)
+        handler(new Error(error.data), null);
+        continue;
       }
       const { log, value } = result.response;
       if (!value) {
-        throw new Error(log); // TODO: ignore instead (?)
+        handler(new Error(log), null);
+        continue;
       }
-      const { queryService, handler } = this.queries[id];
       const responseMsg = queryService.Response.fromBinary(
         base64.decode(value)
       );
-      handler(responseMsg);
+      handler(null, responseMsg);
     }
   }
 }
