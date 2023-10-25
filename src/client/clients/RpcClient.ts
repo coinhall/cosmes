@@ -49,6 +49,15 @@ type BroadcastTxResult = {
   log: string;
 };
 
+type RequestMessage<T extends Message<T>> = PartialMessage<T> & {
+  /**
+   * The block height at which the query should be executed. Providing a height
+   * that is outside the range of the full node will result in an error. Leave
+   * this field empty to default to the latest block.
+   */
+  height?: number | undefined;
+};
+
 export class RpcClient {
   private static async doRequest<T>(
     endpoint: string,
@@ -74,7 +83,7 @@ export class RpcClient {
   public static async query<T extends Message<T>, U extends Message<U>>(
     endpoint: string,
     { typeName, method, Request, Response }: QueryService<T, U>,
-    requestMsg: PartialMessage<T>
+    requestMsg: RequestMessage<T>
   ): Promise<U> {
     const { response } = await this.doRequest<QueryResult>(
       endpoint,
@@ -82,6 +91,7 @@ export class RpcClient {
       {
         path: `/${typeName}/${method}`,
         data: base16.encode(new Request(requestMsg).toBinary()),
+        ...(requestMsg.height ? { height: requestMsg.height.toString() } : {}),
       }
     );
     const { log, value } = response;
@@ -126,7 +136,7 @@ class BatchQuery {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     queryService: QueryService<any, any>;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    requestMsg: PartialMessage<any>;
+    requestMsg: RequestMessage<any>;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     callback: (err: Error | null, response: any) => unknown;
   }[] = [];
@@ -143,7 +153,7 @@ class BatchQuery {
    */
   public add<T extends Message<T>, U extends Message<U>>(
     queryService: QueryService<T, U>,
-    requestMsg: PartialMessage<T>,
+    requestMsg: RequestMessage<T>,
     callback: (err: Error | null, response: U) => unknown
   ) {
     this.queries.push({ queryService, requestMsg, callback });
@@ -164,6 +174,7 @@ class BatchQuery {
       params: {
         path: `/${queryService.typeName}/${queryService.method}`,
         data: base16.encode(new queryService.Request(requestMsg).toBinary()),
+        ...(requestMsg.height ? { height: requestMsg.height.toString() } : {}),
       },
     }));
     const res = await FetchClient.post<
