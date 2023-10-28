@@ -66,7 +66,7 @@
     "glob": "^10.2.3",
     "json-schema-to-typescript": "^13.1.1",
     "lodash-es": "^4.17.21",
-    "postcss": "^8.4.23",
+    "postcss": "^8.4.31",
     "prettier": "^2.8.8",
     "prettier-plugin-tailwindcss": "^0.2.8",
     "rimraf": "^5.0.0",
