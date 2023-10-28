@@ -319,7 +319,7 @@ packages:
       bip39: 3.1.0
       bs58check: 2.1.2
       buffer: 6.0.3
-      crypto-js: 4.1.1
+      crypto-js: 4.2.0
       elliptic: 6.5.4
       sha.js: 2.4.11
     dev: false
@@ -543,8 +543,8 @@ packages:
       sha.js: 2.4.11
     dev: false
 
-  /crypto-js@4.1.1:
-    resolution: {integrity: sha512-o2JlM7ydqd3Qk9CA0L4NL6mTzU2sdx96a+oOfPu8Mkl/PK51vSyoi8/rQ8NknZtk44vq15lmhAj9CIAGwgeWKw==}
+  /crypto-js@4.2.0:
+    resolution: {integrity: sha512-KALDyEYgpY+Rlob/iriUtjV6d5Eq+Y191A5g4UqLAi8CyGP9N1+FdVbkc1SxKc2r4YAYqG8JzO2KGL+AizD70Q==}
     dev: false
 
   /delay@4.4.1:
