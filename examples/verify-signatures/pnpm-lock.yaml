@@ -306,7 +306,7 @@ packages:
       bech32: 1.1.4
       buffer: 6.0.3
       long: 4.0.0
-      protobufjs: 6.11.3
+      protobufjs: 6.11.4
     transitivePeerDependencies:
       - debug
     dev: false
@@ -328,7 +328,7 @@ packages:
     resolution: {integrity: sha512-WRZMs5T52Fh6cZsf/77mWbrbUzjE/TEpvwGnzdy6Y5RawfrzyqDqfCcokjCpYuDFFeQ/tPVH/IMvpDPWJVqbJA==}
     dependencies:
       long: 4.0.0
-      protobufjs: 6.11.3
+      protobufjs: 6.11.4
     dev: false
 
   /@keplr-wallet/types@0.11.63:
@@ -715,8 +715,8 @@ packages:
     hasBin: true
     dev: false
 
-  /protobufjs@6.11.3:
-    resolution: {integrity: sha512-xL96WDdCZYdU7Slin569tFX712BxsxslWwAfAhCYjQKGTq7dAU91Lomy6nLLhh/dyGhk/YH4TwTSRxTzhuHyZg==}
+  /protobufjs@6.11.4:
+    resolution: {integrity: sha512-5kQWPaJHi1WoCpjTGszzQ32PG2F4+wRY6BmAT4Vfw56Q2FZ4YZzK20xUYQH4YkfehY1e6QSICrJquM6xXZNcrw==}
     hasBin: true
     requiresBuild: true
     dependencies:
