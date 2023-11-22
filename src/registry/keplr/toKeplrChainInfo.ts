@@ -52,9 +52,9 @@ export function toKeplrChainInfo(
   const currencies: Currency[] = chainRegistryAssetList.assets.map((asset) => ({
     coinDenom: asset.symbol,
     coinMinimalDenom: asset.base,
-    coinDecimals: asset.denom_units.filter(
+    coinDecimals: asset.denom_units.find(
       (denomUnit: { denom: string }) => denomUnit.denom === asset.display
-    )[0]?.exponent,
+    )?.exponent ?? 6,
     coinGeckoId: asset.coingecko_id,
     coinImageUrl: asset.logo_URIs?.svg ?? asset.logo_URIs?.png,
   }));
