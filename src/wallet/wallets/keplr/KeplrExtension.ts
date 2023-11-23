@@ -54,7 +54,7 @@ export class KeplrExtension extends ConnectedWallet {
     };
   }
 
-  public async signAndBroadcastTx(
+  protected async signAndBroadcastTx(
     { msgs, memo }: UnsignedTx,
     fee: Fee,
     accountNumber: bigint,

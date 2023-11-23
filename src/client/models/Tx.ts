@@ -4,6 +4,7 @@ import {
   CosmosTxSigningV1beta1SignMode as ProtoSignMode,
   CosmosTxV1beta1TxBody as ProtoTxBody,
   CosmosTxV1beta1TxRaw as ProtoTxRaw,
+  CosmosTxV1beta1SignDoc as SignDoc,
 } from "cosmes/protobufs";
 import { StdSignDoc } from "cosmes/registry";
 
@@ -28,13 +29,15 @@ export type ToUnsignedProtoParams = Pick<
   "sequence" | "memo"
 >;
 
-export type ToStdSignDocParams = {
+export type ToSignDocParams = {
   chainId: string;
   accountNumber: bigint;
   sequence: bigint;
   fee: ProtoFee;
   memo?: string | undefined;
 };
+
+export type ToStdSignDocParams = ToSignDocParams;
 
 export class Tx {
   private readonly data: Data;
@@ -94,7 +97,44 @@ export class Tx {
   }
 
   /**
-   * Returns an amino encoded tx ready to be signed by a wallet.
+   * Returns the unsigned, proto encoded tx ready to be signed by a wallet.
+   */
+  public toSignDoc({
+    chainId,
+    accountNumber,
+    sequence,
+    fee,
+    memo,
+  }: ToSignDocParams): SignDoc {
+    return new SignDoc({
+      chainId: chainId,
+      accountNumber: accountNumber,
+      authInfoBytes: new ProtoAuthInfo({
+        fee: fee,
+        signerInfos: [
+          {
+            publicKey: toAny(this.data.pubKey.toProto()),
+            sequence: sequence,
+            modeInfo: {
+              sum: {
+                case: "single",
+                value: {
+                  mode: ProtoSignMode.DIRECT,
+                },
+              },
+            },
+          },
+        ],
+      }).toBinary(),
+      bodyBytes: new ProtoTxBody({
+        messages: this.data.msgs.map((m) => toAny(m.toProto())),
+        memo: memo,
+      }).toBinary(),
+    });
+  }
+
+  /**
+   * Returns the unsigned, amino encoded tx ready to be signed by a wallet.
    */
   public toStdSignDoc({
     chainId,
