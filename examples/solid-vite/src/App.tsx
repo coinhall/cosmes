@@ -26,6 +26,7 @@ const CHAINS: Record<string, string> = {
   "phoenix-1": "Terra",
   "columbus-5": "Terra Classic",
   "neutron-1": "Neutron",
+  "migaloo-1": "Migaloo",
 };
 const WALLETS: Record<WalletName, string> = {
   [WalletName.KEPLR]: "Keplr",
@@ -51,13 +52,15 @@ function getRpc(chain: string): string {
     case "juno-1":
       return "https://juno-rpc.polkachu.com";
     case "kaiyo-1":
-      return "https://rpc.kaiyo.kujira.setten.io";
+      return "https://kujira-rpc.polkachu.com";
     case "phoenix-1":
       return "https://terra-rpc.publicnode.com";
     case "columbus-5":
       return "https://terra-classic-rpc.publicnode.com";
     case "neutron-1":
       return "https://neutron-rpc.polkachu.com";
+    case "migaloo-1":
+      return "https://migaloo-rpc.polkachu.com";
     default:
       throw new Error("Unknown chain");
   }
@@ -77,6 +80,8 @@ function getGasPrice(chain: string): { amount: string; denom: string } {
       return { amount: "28.325", denom: getDenom(chain) };
     case "neutron-1":
       return { amount: "0.01", denom: getDenom(chain) };
+    case "migaloo-1":
+      return { amount: "0.25", denom: getDenom(chain) };
     default:
       throw new Error("Unknown chain");
   }
@@ -95,14 +100,16 @@ function getDenom(chain: string): string {
       return "uluna";
     case "neutron-1":
       return "untrn";
+    case "migaloo-1":
+      return "uwhale";
     default:
       throw new Error("Unknown chain");
   }
 }
 
 const App: Component = () => {
-  const [chain, setChain] = createSignal<string>("osmosis-1");
-  const [wallet, setWallet] = createSignal<WalletName>(WalletName.KEPLR);
+  const [chain, setChain] = createSignal<string>("migaloo-1");
+  const [wallet, setWallet] = createSignal<WalletName>(WalletName.STATION);
   const [wallets, setWallets] = createStore<Record<string, ConnectedWallet>>(
     {}
   );

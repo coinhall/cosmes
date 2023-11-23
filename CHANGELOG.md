@@ -1,5 +1,15 @@
 # Changelog
 
+## `v0.0.40`
+
+### Fixes
+
+- Use `JSON.stringify` on errors thrown by Station Extension to avoid `[object Object]` errors
+
+### Miscellaneous
+
+- Added `Tx.toSignDoc` method to form an unsigned, proto encoded tx ready to be signed by a wallet
+
 ## `v0.0.39`
 
 ### Features
