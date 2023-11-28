@@ -27,6 +27,7 @@ const CHAINS: Record<string, string> = {
   "columbus-5": "Terra Classic",
   "neutron-1": "Neutron",
   "migaloo-1": "Migaloo",
+  "injective-1": "Injective",
 };
 const WALLETS: Record<WalletName, string> = {
   [WalletName.KEPLR]: "Keplr",
@@ -61,6 +62,8 @@ function getRpc(chain: string): string {
       return "https://neutron-rpc.polkachu.com";
     case "migaloo-1":
       return "https://migaloo-rpc.polkachu.com";
+    case "injective-1":
+      return "https://injective-rpc.polkachu.com";
     default:
       throw new Error("Unknown chain");
   }
@@ -82,6 +85,8 @@ function getGasPrice(chain: string): { amount: string; denom: string } {
       return { amount: "0.01", denom: getDenom(chain) };
     case "migaloo-1":
       return { amount: "0.25", denom: getDenom(chain) };
+    case "injective-1":
+      return { amount: "500000000", denom: getDenom(chain) };
     default:
       throw new Error("Unknown chain");
   }
@@ -102,14 +107,16 @@ function getDenom(chain: string): string {
       return "untrn";
     case "migaloo-1":
       return "uwhale";
+    case "injective-1":
+      return "inj";
     default:
       throw new Error("Unknown chain");
   }
 }
 
 const App: Component = () => {
-  const [chain, setChain] = createSignal<string>("migaloo-1");
-  const [wallet, setWallet] = createSignal<WalletName>(WalletName.STATION);
+  const [chain, setChain] = createSignal<string>("injective-1");
+  const [wallet, setWallet] = createSignal<WalletName>(WalletName.KEPLR);
   const [wallets, setWallets] = createStore<Record<string, ConnectedWallet>>(
     {}
   );

@@ -2,6 +2,7 @@ import { PlainMessage } from "@bufbuild/protobuf";
 import {
   Adapter,
   PollTxParams,
+  Secp256k1PubKey,
   Tx,
   calculateFee,
   getAccount,
@@ -46,7 +47,7 @@ export abstract class ConnectedWallet {
   /** The chain ID this wallet is connected to. */
   public readonly chainId: string;
   /** The public key. */
-  public readonly pubKey: Adapter;
+  public readonly pubKey: Secp256k1PubKey;
   /** The bech32 address. */
   public readonly address: string;
   /** The RPC endpoint to use for interacting with the chain. */
@@ -60,7 +61,7 @@ export abstract class ConnectedWallet {
     id: WalletName,
     type: WalletType,
     chainId: string,
-    pubKey: Adapter,
+    pubKey: Secp256k1PubKey,
     address: string,
     rpc: string,
     gasPrice: PlainMessage<Coin>
@@ -111,7 +112,7 @@ export abstract class ConnectedWallet {
       const { gasInfo } = await simulateTx(this.rpc, {
         sequence,
         memo,
-        tx: new Tx({ pubKey: this.pubKey, msgs: msgs }),
+        tx: new Tx({ chainId: this.chainId, pubKey: this.pubKey, msgs: msgs }),
       });
       if (!gasInfo) {
         throw new Error("Unable to estimate fee");

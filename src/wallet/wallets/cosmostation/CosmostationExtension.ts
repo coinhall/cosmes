@@ -1,5 +1,5 @@
 import { PlainMessage } from "@bufbuild/protobuf";
-import { Adapter, Tx } from "cosmes/client";
+import { Secp256k1PubKey, Tx } from "cosmes/client";
 import { base64 } from "cosmes/codec";
 import {
   CosmosBaseV1beta1Coin as Coin,
@@ -28,7 +28,7 @@ export class CosmostationExtension extends ConnectedWallet {
   constructor(
     ext: Cosmostation,
     chainId: string,
-    pubKey: Adapter,
+    pubKey: Secp256k1PubKey,
     address: string,
     rpc: string,
     gasPrice: PlainMessage<Coin>
@@ -69,6 +69,7 @@ export class CosmostationExtension extends ConnectedWallet {
     sequence: bigint
   ): Promise<string> {
     const tx = new Tx({
+      chainId: this.chainId,
       pubKey: this.pubKey,
       msgs: msgs,
     });
@@ -79,7 +80,6 @@ export class CosmostationExtension extends ConnectedWallet {
         params: {
           chainName: this.chainId,
           doc: tx.toStdSignDoc({
-            chainId: this.chainId,
             accountNumber,
             sequence,
             fee,

@@ -10,9 +10,11 @@ import { StdSignDoc } from "cosmes/registry";
 
 import { toAny } from "../utils/toAny";
 import { Adapter } from "./Adapter";
+import { Secp256k1PubKey } from "./Secp256k1PubKey";
 
 type Data = {
-  pubKey: Adapter;
+  chainId: string;
+  pubKey: Secp256k1PubKey;
   msgs: Adapter[];
 };
 
@@ -30,7 +32,6 @@ export type ToUnsignedProtoParams = Pick<
 >;
 
 export type ToSignDocParams = {
-  chainId: string;
   accountNumber: bigint;
   sequence: bigint;
   fee: ProtoFee;
@@ -62,7 +63,7 @@ export class Tx {
         fee: fee,
         signerInfos: [
           {
-            publicKey: toAny(this.data.pubKey.toProto()),
+            publicKey: toAny(this.getProtoPubKey()),
             sequence: sequence,
             modeInfo: {
               sum: {
@@ -100,20 +101,19 @@ export class Tx {
    * Returns the unsigned, proto encoded tx ready to be signed by a wallet.
    */
   public toSignDoc({
-    chainId,
     accountNumber,
     sequence,
     fee,
     memo,
   }: ToSignDocParams): SignDoc {
     return new SignDoc({
-      chainId: chainId,
+      chainId: this.data.chainId,
       accountNumber: accountNumber,
       authInfoBytes: new ProtoAuthInfo({
         fee: fee,
         signerInfos: [
           {
-            publicKey: toAny(this.data.pubKey.toProto()),
+            publicKey: toAny(this.getProtoPubKey()),
             sequence: sequence,
             modeInfo: {
               sum: {
@@ -137,14 +137,13 @@ export class Tx {
    * Returns the unsigned, amino encoded tx ready to be signed by a wallet.
    */
   public toStdSignDoc({
-    chainId,
     accountNumber,
     sequence,
     fee,
     memo,
   }: ToStdSignDocParams): StdSignDoc {
     return {
-      chain_id: chainId,
+      chain_id: this.data.chainId,
       account_number: accountNumber.toString(),
       sequence: sequence.toString(),
       fee: {
@@ -154,5 +153,9 @@ export class Tx {
       msgs: this.data.msgs.map((m) => m.toAmino()),
       memo: memo ?? "",
     };
+  }
+
+  private getProtoPubKey() {
+    return this.data.pubKey.toProto(this.data.chainId === "injective-1");
   }
 }
