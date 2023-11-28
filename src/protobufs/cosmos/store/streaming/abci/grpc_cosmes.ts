@@ -8,7 +8,8 @@ import { ListenCommitRequest, ListenCommitResponse, ListenFinalizeBlockRequest, 
 const TYPE_NAME = "cosmos.store.streaming.abci.ABCIListenerService";
 
 /**
- * ListenFinalizeBlock is the corresponding endpoint for ABCIListener.ListenEndBlock
+ * ListenFinalizeBlock is the corresponding endpoint for
+ * ABCIListener.ListenEndBlock
  *
  * @generated from rpc cosmos.store.streaming.abci.ABCIListenerService.ListenFinalizeBlock
  */

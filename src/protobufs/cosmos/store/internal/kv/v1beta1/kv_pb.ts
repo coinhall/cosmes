@@ -9,7 +9,11 @@ import { Message, proto3 } from "@bufbuild/protobuf";
 /**
  * Pairs defines a repeated slice of Pair objects.
  *
+ * Deprecated: Store v1 is deprecated as of v0.50.x, please use Store v2 types
+ * instead.
+ *
  * @generated from message cosmos.store.internal.kv.v1beta1.Pairs
+ * @deprecated
  */
 export class Pairs extends Message<Pairs> {
   /**
@@ -48,7 +52,11 @@ export class Pairs extends Message<Pairs> {
 /**
  * Pair defines a key/value bytes tuple.
  *
+ * Deprecated: Store v1 is deprecated as of v0.50.x, please use Store v2 types
+ * instead.
+ *
  * @generated from message cosmos.store.internal.kv.v1beta1.Pair
+ * @deprecated
  */
 export class Pair extends Message<Pair> {
   /**

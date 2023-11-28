@@ -181,3 +181,81 @@ export class MsgRevokeAllowanceResponse extends Message<MsgRevokeAllowanceRespon
   }
 }
 
+/**
+ * MsgPruneAllowances prunes expired fee allowances.
+ *
+ * Since cosmos-sdk 0.50
+ *
+ * @generated from message cosmos.feegrant.v1beta1.MsgPruneAllowances
+ */
+export class MsgPruneAllowances extends Message<MsgPruneAllowances> {
+  /**
+   * pruner is the address of the user pruning expired allowances.
+   *
+   * @generated from field: string pruner = 1;
+   */
+  pruner = "";
+
+  constructor(data?: PartialMessage<MsgPruneAllowances>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "cosmos.feegrant.v1beta1.MsgPruneAllowances";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "pruner", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgPruneAllowances {
+    return new MsgPruneAllowances().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MsgPruneAllowances {
+    return new MsgPruneAllowances().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MsgPruneAllowances {
+    return new MsgPruneAllowances().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: MsgPruneAllowances | PlainMessage<MsgPruneAllowances> | undefined, b: MsgPruneAllowances | PlainMessage<MsgPruneAllowances> | undefined): boolean {
+    return proto3.util.equals(MsgPruneAllowances, a, b);
+  }
+}
+
+/**
+ * MsgPruneAllowancesResponse defines the Msg/PruneAllowancesResponse response type.
+ *
+ * Since cosmos-sdk 0.50
+ *
+ * @generated from message cosmos.feegrant.v1beta1.MsgPruneAllowancesResponse
+ */
+export class MsgPruneAllowancesResponse extends Message<MsgPruneAllowancesResponse> {
+  constructor(data?: PartialMessage<MsgPruneAllowancesResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "cosmos.feegrant.v1beta1.MsgPruneAllowancesResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgPruneAllowancesResponse {
+    return new MsgPruneAllowancesResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MsgPruneAllowancesResponse {
+    return new MsgPruneAllowancesResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MsgPruneAllowancesResponse {
+    return new MsgPruneAllowancesResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: MsgPruneAllowancesResponse | PlainMessage<MsgPruneAllowancesResponse> | undefined, b: MsgPruneAllowancesResponse | PlainMessage<MsgPruneAllowancesResponse> | undefined): boolean {
+    return proto3.util.equals(MsgPruneAllowancesResponse, a, b);
+  }
+}
+

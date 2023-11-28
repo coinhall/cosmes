@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { MsgCreateClient, MsgCreateClientResponse, MsgSubmitMisbehaviour, MsgSubmitMisbehaviourResponse, MsgUpdateClient, MsgUpdateClientResponse, MsgUpdateParams, MsgUpdateParamsResponse, MsgUpgradeClient, MsgUpgradeClientResponse } from "./tx_pb.js";
+import { MsgCreateClient, MsgCreateClientResponse, MsgIBCSoftwareUpgrade, MsgIBCSoftwareUpgradeResponse, MsgRecoverClient, MsgRecoverClientResponse, MsgSubmitMisbehaviour, MsgSubmitMisbehaviourResponse, MsgUpdateClient, MsgUpdateClientResponse, MsgUpdateParams, MsgUpdateParamsResponse, MsgUpgradeClient, MsgUpgradeClientResponse } from "./tx_pb.js";
 
 const TYPE_NAME = "ibc.core.client.v1.Msg";
 
@@ -53,6 +53,30 @@ export const MsgSubmitMisbehaviourService = {
   method: "SubmitMisbehaviour",
   Request: MsgSubmitMisbehaviour,
   Response: MsgSubmitMisbehaviourResponse,
+} as const;
+
+/**
+ * RecoverClient defines a rpc handler method for MsgRecoverClient.
+ *
+ * @generated from rpc ibc.core.client.v1.Msg.RecoverClient
+ */
+export const MsgRecoverClientService = {
+  typeName: TYPE_NAME,
+  method: "RecoverClient",
+  Request: MsgRecoverClient,
+  Response: MsgRecoverClientResponse,
+} as const;
+
+/**
+ * IBCSoftwareUpgrade defines a rpc handler method for MsgIBCSoftwareUpgrade.
+ *
+ * @generated from rpc ibc.core.client.v1.Msg.IBCSoftwareUpgrade
+ */
+export const MsgIBCSoftwareUpgradeService = {
+  typeName: TYPE_NAME,
+  method: "IBCSoftwareUpgrade",
+  Request: MsgIBCSoftwareUpgrade,
+  Response: MsgIBCSoftwareUpgradeResponse,
 } as const;
 
 /**

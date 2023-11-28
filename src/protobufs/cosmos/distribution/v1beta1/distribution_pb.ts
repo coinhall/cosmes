@@ -552,7 +552,10 @@ export class DelegationDelegatorReward extends Message<DelegationDelegatorReward
  * CommunityPoolSpendProposalWithDeposit defines a CommunityPoolSpendProposal
  * with a deposit
  *
+ * Deprecated: Do not use.
+ *
  * @generated from message cosmos.distribution.v1beta1.CommunityPoolSpendProposalWithDeposit
+ * @deprecated
  */
 export class CommunityPoolSpendProposalWithDeposit extends Message<CommunityPoolSpendProposalWithDeposit> {
   /**

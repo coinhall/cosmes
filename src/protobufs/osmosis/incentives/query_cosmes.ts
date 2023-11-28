@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { ActiveGaugesPerDenomRequest, ActiveGaugesPerDenomResponse, ActiveGaugesRequest, ActiveGaugesResponse, GaugeByIDRequest, GaugeByIDResponse, GaugesRequest, GaugesResponse, ModuleToDistributeCoinsRequest, ModuleToDistributeCoinsResponse, QueryLockableDurationsRequest, QueryLockableDurationsResponse, RewardsEstRequest, RewardsEstResponse, UpcomingGaugesPerDenomRequest, UpcomingGaugesPerDenomResponse, UpcomingGaugesRequest, UpcomingGaugesResponse } from "./query_pb.js";
+import { ActiveGaugesPerDenomRequest, ActiveGaugesPerDenomResponse, ActiveGaugesRequest, ActiveGaugesResponse, GaugeByIDRequest, GaugeByIDResponse, GaugesRequest, GaugesResponse, ModuleToDistributeCoinsRequest, ModuleToDistributeCoinsResponse, QueryAllGroupsGaugesRequest, QueryAllGroupsGaugesResponse, QueryAllGroupsRequest, QueryAllGroupsResponse, QueryAllGroupsWithGaugeRequest, QueryAllGroupsWithGaugeResponse, QueryCurrentWeightByGroupGaugeIDRequest, QueryCurrentWeightByGroupGaugeIDResponse, QueryGroupByGroupGaugeIDRequest, QueryGroupByGroupGaugeIDResponse, QueryLockableDurationsRequest, QueryLockableDurationsResponse, RewardsEstRequest, RewardsEstResponse, UpcomingGaugesPerDenomRequest, UpcomingGaugesPerDenomResponse, UpcomingGaugesRequest, UpcomingGaugesResponse } from "./query_pb.js";
 
 const TYPE_NAME = "osmosis.incentives.Query";
 
@@ -117,5 +117,66 @@ export const QueryLockableDurationsService = {
   method: "LockableDurations",
   Request: QueryLockableDurationsRequest,
   Response: QueryLockableDurationsResponse,
+} as const;
+
+/**
+ * AllGroups returns all groups
+ *
+ * @generated from rpc osmosis.incentives.Query.AllGroups
+ */
+export const QueryAllGroupsService = {
+  typeName: TYPE_NAME,
+  method: "AllGroups",
+  Request: QueryAllGroupsRequest,
+  Response: QueryAllGroupsResponse,
+} as const;
+
+/**
+ * AllGroupsGauges returns all group gauges
+ *
+ * @generated from rpc osmosis.incentives.Query.AllGroupsGauges
+ */
+export const QueryAllGroupsGaugesService = {
+  typeName: TYPE_NAME,
+  method: "AllGroupsGauges",
+  Request: QueryAllGroupsGaugesRequest,
+  Response: QueryAllGroupsGaugesResponse,
+} as const;
+
+/**
+ * AllGroupsWithGauge returns all groups with their group gauge
+ *
+ * @generated from rpc osmosis.incentives.Query.AllGroupsWithGauge
+ */
+export const QueryAllGroupsWithGaugeService = {
+  typeName: TYPE_NAME,
+  method: "AllGroupsWithGauge",
+  Request: QueryAllGroupsWithGaugeRequest,
+  Response: QueryAllGroupsWithGaugeResponse,
+} as const;
+
+/**
+ * GroupByGroupGaugeID returns a group given its group gauge ID
+ *
+ * @generated from rpc osmosis.incentives.Query.GroupByGroupGaugeID
+ */
+export const QueryGroupByGroupGaugeIDService = {
+  typeName: TYPE_NAME,
+  method: "GroupByGroupGaugeID",
+  Request: QueryGroupByGroupGaugeIDRequest,
+  Response: QueryGroupByGroupGaugeIDResponse,
+} as const;
+
+/**
+ * CurrentWeightByGroupGaugeID returns the current weight since the
+ * the last epoch given a group gauge ID
+ *
+ * @generated from rpc osmosis.incentives.Query.CurrentWeightByGroupGaugeID
+ */
+export const QueryCurrentWeightByGroupGaugeIDService = {
+  typeName: TYPE_NAME,
+  method: "CurrentWeightByGroupGaugeID",
+  Request: QueryCurrentWeightByGroupGaugeIDRequest,
+  Response: QueryCurrentWeightByGroupGaugeIDResponse,
 } as const;
 

@@ -90,6 +90,15 @@ export class Module extends Message<Module> {
    */
   prepareCheckStaters: string[] = [];
 
+  /**
+   * pre_blockers specifies the module names of pre blockers
+   * to call in the order in which they should be called. If this is left empty
+   * no pre blocker will be registered.
+   *
+   * @generated from field: repeated string pre_blockers = 10;
+   */
+  preBlockers: string[] = [];
+
   constructor(data?: PartialMessage<Module>) {
     super();
     proto3.util.initPartial(data, this);
@@ -107,6 +116,7 @@ export class Module extends Message<Module> {
     { no: 7, name: "order_migrations", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
     { no: 8, name: "precommiters", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
     { no: 9, name: "prepare_check_staters", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
+    { no: 10, name: "pre_blockers", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Module {

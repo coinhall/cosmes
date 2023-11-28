@@ -139,38 +139,41 @@ export {
   ABCIFinalizeBlockService as TendermintAbciABCIFinalizeBlockService,
 } from "./tendermint/abci/types_cosmes.js";
 export {
-  MsgSetValidatorSetPreference as OsmosisValsetPrefV1beta1MsgSetValidatorSetPreference,
-  MsgSetValidatorSetPreferenceResponse as OsmosisValsetPrefV1beta1MsgSetValidatorSetPreferenceResponse,
-  MsgDelegateToValidatorSet as OsmosisValsetPrefV1beta1MsgDelegateToValidatorSet,
-  MsgDelegateToValidatorSetResponse as OsmosisValsetPrefV1beta1MsgDelegateToValidatorSetResponse,
-  MsgUndelegateFromValidatorSet as OsmosisValsetPrefV1beta1MsgUndelegateFromValidatorSet,
-  MsgUndelegateFromValidatorSetResponse as OsmosisValsetPrefV1beta1MsgUndelegateFromValidatorSetResponse,
-  MsgRedelegateValidatorSet as OsmosisValsetPrefV1beta1MsgRedelegateValidatorSet,
-  MsgRedelegateValidatorSetResponse as OsmosisValsetPrefV1beta1MsgRedelegateValidatorSetResponse,
-  MsgWithdrawDelegationRewards as OsmosisValsetPrefV1beta1MsgWithdrawDelegationRewards,
-  MsgWithdrawDelegationRewardsResponse as OsmosisValsetPrefV1beta1MsgWithdrawDelegationRewardsResponse,
-  MsgDelegateBondedTokens as OsmosisValsetPrefV1beta1MsgDelegateBondedTokens,
-  MsgDelegateBondedTokensResponse as OsmosisValsetPrefV1beta1MsgDelegateBondedTokensResponse,
-} from "./osmosis/valset-pref/v1beta1/tx_pb.js";
+  MsgSetValidatorSetPreference as OsmosisValsetprefV1beta1MsgSetValidatorSetPreference,
+  MsgSetValidatorSetPreferenceResponse as OsmosisValsetprefV1beta1MsgSetValidatorSetPreferenceResponse,
+  MsgDelegateToValidatorSet as OsmosisValsetprefV1beta1MsgDelegateToValidatorSet,
+  MsgDelegateToValidatorSetResponse as OsmosisValsetprefV1beta1MsgDelegateToValidatorSetResponse,
+  MsgUndelegateFromValidatorSet as OsmosisValsetprefV1beta1MsgUndelegateFromValidatorSet,
+  MsgUndelegateFromValidatorSetResponse as OsmosisValsetprefV1beta1MsgUndelegateFromValidatorSetResponse,
+  MsgUndelegateFromRebalancedValidatorSet as OsmosisValsetprefV1beta1MsgUndelegateFromRebalancedValidatorSet,
+  MsgUndelegateFromRebalancedValidatorSetResponse as OsmosisValsetprefV1beta1MsgUndelegateFromRebalancedValidatorSetResponse,
+  MsgRedelegateValidatorSet as OsmosisValsetprefV1beta1MsgRedelegateValidatorSet,
+  MsgRedelegateValidatorSetResponse as OsmosisValsetprefV1beta1MsgRedelegateValidatorSetResponse,
+  MsgWithdrawDelegationRewards as OsmosisValsetprefV1beta1MsgWithdrawDelegationRewards,
+  MsgWithdrawDelegationRewardsResponse as OsmosisValsetprefV1beta1MsgWithdrawDelegationRewardsResponse,
+  MsgDelegateBondedTokens as OsmosisValsetprefV1beta1MsgDelegateBondedTokens,
+  MsgDelegateBondedTokensResponse as OsmosisValsetprefV1beta1MsgDelegateBondedTokensResponse,
+} from "./osmosis/valsetpref/v1beta1/tx_pb.js";
 export {
-  MsgSetValidatorSetPreferenceService as OsmosisValsetPrefV1beta1MsgSetValidatorSetPreferenceService,
-  MsgDelegateToValidatorSetService as OsmosisValsetPrefV1beta1MsgDelegateToValidatorSetService,
-  MsgUndelegateFromValidatorSetService as OsmosisValsetPrefV1beta1MsgUndelegateFromValidatorSetService,
-  MsgRedelegateValidatorSetService as OsmosisValsetPrefV1beta1MsgRedelegateValidatorSetService,
-  MsgWithdrawDelegationRewardsService as OsmosisValsetPrefV1beta1MsgWithdrawDelegationRewardsService,
-  MsgDelegateBondedTokensService as OsmosisValsetPrefV1beta1MsgDelegateBondedTokensService,
-} from "./osmosis/valset-pref/v1beta1/tx_cosmes.js";
+  MsgSetValidatorSetPreferenceService as OsmosisValsetprefV1beta1MsgSetValidatorSetPreferenceService,
+  MsgDelegateToValidatorSetService as OsmosisValsetprefV1beta1MsgDelegateToValidatorSetService,
+  MsgUndelegateFromValidatorSetService as OsmosisValsetprefV1beta1MsgUndelegateFromValidatorSetService,
+  MsgUndelegateFromRebalancedValidatorSetService as OsmosisValsetprefV1beta1MsgUndelegateFromRebalancedValidatorSetService,
+  MsgRedelegateValidatorSetService as OsmosisValsetprefV1beta1MsgRedelegateValidatorSetService,
+  MsgWithdrawDelegationRewardsService as OsmosisValsetprefV1beta1MsgWithdrawDelegationRewardsService,
+  MsgDelegateBondedTokensService as OsmosisValsetprefV1beta1MsgDelegateBondedTokensService,
+} from "./osmosis/valsetpref/v1beta1/tx_cosmes.js";
 export {
-  ValidatorPreference as OsmosisValsetPrefV1beta1ValidatorPreference,
-  ValidatorSetPreferences as OsmosisValsetPrefV1beta1ValidatorSetPreferences,
-} from "./osmosis/valset-pref/v1beta1/state_pb.js";
+  ValidatorPreference as OsmosisValsetprefV1beta1ValidatorPreference,
+  ValidatorSetPreferences as OsmosisValsetprefV1beta1ValidatorSetPreferences,
+} from "./osmosis/valsetpref/v1beta1/state_pb.js";
 export {
-  UserValidatorPreferencesRequest as OsmosisValsetPrefV1beta1UserValidatorPreferencesRequest,
-  UserValidatorPreferencesResponse as OsmosisValsetPrefV1beta1UserValidatorPreferencesResponse,
-} from "./osmosis/valset-pref/v1beta1/query_pb.js";
+  UserValidatorPreferencesRequest as OsmosisValsetprefV1beta1UserValidatorPreferencesRequest,
+  UserValidatorPreferencesResponse as OsmosisValsetprefV1beta1UserValidatorPreferencesResponse,
+} from "./osmosis/valsetpref/v1beta1/query_pb.js";
 export {
-  QueryUserValidatorPreferencesService as OsmosisValsetPrefV1beta1QueryUserValidatorPreferencesService,
-} from "./osmosis/valset-pref/v1beta1/query_cosmes.js";
+  QueryUserValidatorPreferencesService as OsmosisValsetprefV1beta1QueryUserValidatorPreferencesService,
+} from "./osmosis/valsetpref/v1beta1/query_cosmes.js";
 export {
   QueryFeeTokensRequest as OsmosisTxfeesV1beta1QueryFeeTokensRequest,
   QueryFeeTokensResponse as OsmosisTxfeesV1beta1QueryFeeTokensResponse,
@@ -180,18 +183,22 @@ export {
   QueryDenomPoolIdResponse as OsmosisTxfeesV1beta1QueryDenomPoolIdResponse,
   QueryBaseDenomRequest as OsmosisTxfeesV1beta1QueryBaseDenomRequest,
   QueryBaseDenomResponse as OsmosisTxfeesV1beta1QueryBaseDenomResponse,
+  QueryEipBaseFeeRequest as OsmosisTxfeesV1beta1QueryEipBaseFeeRequest,
+  QueryEipBaseFeeResponse as OsmosisTxfeesV1beta1QueryEipBaseFeeResponse,
 } from "./osmosis/txfees/v1beta1/query_pb.js";
 export {
   QueryFeeTokensService as OsmosisTxfeesV1beta1QueryFeeTokensService,
   QueryDenomSpotPriceService as OsmosisTxfeesV1beta1QueryDenomSpotPriceService,
   QueryDenomPoolIdService as OsmosisTxfeesV1beta1QueryDenomPoolIdService,
   QueryBaseDenomService as OsmosisTxfeesV1beta1QueryBaseDenomService,
+  QueryGetEipBaseFeeService as OsmosisTxfeesV1beta1QueryGetEipBaseFeeService,
 } from "./osmosis/txfees/v1beta1/query_cosmes.js";
 export {
   UpdateFeeTokenProposal as OsmosisTxfeesV1beta1UpdateFeeTokenProposal,
 } from "./osmosis/txfees/v1beta1/gov_pb.js";
 export {
   GenesisState as OsmosisTxfeesV1beta1GenesisState,
+  TxFeesTracker as OsmosisTxfeesV1beta1TxFeesTracker,
 } from "./osmosis/txfees/v1beta1/genesis_pb.js";
 export {
   FeeToken as OsmosisTxfeesV1beta1FeeToken,
@@ -354,6 +361,8 @@ export {
   UserConcentratedSuperfluidPositionsDelegatedResponse as OsmosisSuperfluidUserConcentratedSuperfluidPositionsDelegatedResponse,
   UserConcentratedSuperfluidPositionsUndelegatingRequest as OsmosisSuperfluidUserConcentratedSuperfluidPositionsUndelegatingRequest,
   UserConcentratedSuperfluidPositionsUndelegatingResponse as OsmosisSuperfluidUserConcentratedSuperfluidPositionsUndelegatingResponse,
+  QueryRestSupplyRequest as OsmosisSuperfluidQueryRestSupplyRequest,
+  QueryRestSupplyResponse as OsmosisSuperfluidQueryRestSupplyResponse,
 } from "./osmosis/superfluid/query_pb.js";
 export {
   QueryParamsService as OsmosisSuperfluidQueryParamsService,
@@ -373,6 +382,7 @@ export {
   QueryUnpoolWhitelistService as OsmosisSuperfluidQueryUnpoolWhitelistService,
   QueryUserConcentratedSuperfluidPositionsDelegatedService as OsmosisSuperfluidQueryUserConcentratedSuperfluidPositionsDelegatedService,
   QueryUserConcentratedSuperfluidPositionsUndelegatingService as OsmosisSuperfluidQueryUserConcentratedSuperfluidPositionsUndelegatingService,
+  QueryRestSupplyService as OsmosisSuperfluidQueryRestSupplyService,
 } from "./osmosis/superfluid/query_cosmes.js";
 export {
   Params as OsmosisSuperfluidParams,
@@ -386,10 +396,10 @@ export {
   UpdateUnpoolWhiteListProposal as OsmosisSuperfluidV1beta1UpdateUnpoolWhiteListProposal,
 } from "./osmosis/superfluid/v1beta1/gov_pb.js";
 export {
-  Node as OsmosisSumtreeV1beta1Node,
-  Child as OsmosisSumtreeV1beta1Child,
-  Leaf as OsmosisSumtreeV1beta1Leaf,
-} from "./osmosis/sumtree/v1beta1/tree_pb.js";
+  Node as OsmosisStoreV1beta1Node,
+  Child as OsmosisStoreV1beta1Child,
+  Leaf as OsmosisStoreV1beta1Leaf,
+} from "./osmosis/store/v1beta1/tree_pb.js";
 export {
   MsgSetHotRoutes as OsmosisProtorevV1beta1MsgSetHotRoutes,
   MsgSetHotRoutesResponse as OsmosisProtorevV1beta1MsgSetHotRoutesResponse,
@@ -443,6 +453,8 @@ export {
   QueryGetProtoRevEnabledResponse as OsmosisProtorevV1beta1QueryGetProtoRevEnabledResponse,
   QueryGetProtoRevPoolRequest as OsmosisProtorevV1beta1QueryGetProtoRevPoolRequest,
   QueryGetProtoRevPoolResponse as OsmosisProtorevV1beta1QueryGetProtoRevPoolResponse,
+  QueryGetAllProtocolRevenueRequest as OsmosisProtorevV1beta1QueryGetAllProtocolRevenueRequest,
+  QueryGetAllProtocolRevenueResponse as OsmosisProtorevV1beta1QueryGetAllProtocolRevenueResponse,
 } from "./osmosis/protorev/v1beta1/query_pb.js";
 export {
   QueryParamsService as OsmosisProtorevV1beta1QueryParamsService,
@@ -460,6 +472,7 @@ export {
   QueryGetProtoRevBaseDenomsService as OsmosisProtorevV1beta1QueryGetProtoRevBaseDenomsService,
   QueryGetProtoRevEnabledService as OsmosisProtorevV1beta1QueryGetProtoRevEnabledService,
   QueryGetProtoRevPoolService as OsmosisProtorevV1beta1QueryGetProtoRevPoolService,
+  QueryGetAllProtocolRevenueService as OsmosisProtorevV1beta1QueryGetAllProtocolRevenueService,
 } from "./osmosis/protorev/v1beta1/query_cosmes.js";
 export {
   TokenPairArbRoutes as OsmosisProtorevV1beta1TokenPairArbRoutes,
@@ -474,6 +487,8 @@ export {
   CosmwasmPoolInfo as OsmosisProtorevV1beta1CosmwasmPoolInfo,
   WeightMap as OsmosisProtorevV1beta1WeightMap,
   BaseDenom as OsmosisProtorevV1beta1BaseDenom,
+  AllProtocolRevenue as OsmosisProtorevV1beta1AllProtocolRevenue,
+  CyclicArbTracker as OsmosisProtorevV1beta1CyclicArbTracker,
 } from "./osmosis/protorev/v1beta1/protorev_pb.js";
 export {
   Params as OsmosisProtorevV1beta1Params,
@@ -486,6 +501,13 @@ export {
   GenesisState as OsmosisProtorevV1beta1GenesisState,
 } from "./osmosis/protorev/v1beta1/genesis_pb.js";
 export {
+  SpotPriceRequest as OsmosisPoolmanagerV2SpotPriceRequest,
+  SpotPriceResponse as OsmosisPoolmanagerV2SpotPriceResponse,
+} from "./osmosis/poolmanager/v2/query_pb.js";
+export {
+  QuerySpotPriceV2Service as OsmosisPoolmanagerV2QuerySpotPriceV2Service,
+} from "./osmosis/poolmanager/v2/query_cosmes.js";
+export {
   MsgSwapExactAmountIn as OsmosisPoolmanagerV1beta1MsgSwapExactAmountIn,
   MsgSwapExactAmountInResponse as OsmosisPoolmanagerV1beta1MsgSwapExactAmountInResponse,
   MsgSplitRouteSwapExactAmountIn as OsmosisPoolmanagerV1beta1MsgSplitRouteSwapExactAmountIn,
@@ -494,13 +516,20 @@ export {
   MsgSwapExactAmountOutResponse as OsmosisPoolmanagerV1beta1MsgSwapExactAmountOutResponse,
   MsgSplitRouteSwapExactAmountOut as OsmosisPoolmanagerV1beta1MsgSplitRouteSwapExactAmountOut,
   MsgSplitRouteSwapExactAmountOutResponse as OsmosisPoolmanagerV1beta1MsgSplitRouteSwapExactAmountOutResponse,
+  MsgSetDenomPairTakerFee as OsmosisPoolmanagerV1beta1MsgSetDenomPairTakerFee,
+  MsgSetDenomPairTakerFeeResponse as OsmosisPoolmanagerV1beta1MsgSetDenomPairTakerFeeResponse,
+  DenomPairTakerFee as OsmosisPoolmanagerV1beta1DenomPairTakerFee,
 } from "./osmosis/poolmanager/v1beta1/tx_pb.js";
 export {
   MsgSwapExactAmountInService as OsmosisPoolmanagerV1beta1MsgSwapExactAmountInService,
   MsgSwapExactAmountOutService as OsmosisPoolmanagerV1beta1MsgSwapExactAmountOutService,
   MsgSplitRouteSwapExactAmountInService as OsmosisPoolmanagerV1beta1MsgSplitRouteSwapExactAmountInService,
   MsgSplitRouteSwapExactAmountOutService as OsmosisPoolmanagerV1beta1MsgSplitRouteSwapExactAmountOutService,
+  MsgSetDenomPairTakerFeeService as OsmosisPoolmanagerV1beta1MsgSetDenomPairTakerFeeService,
 } from "./osmosis/poolmanager/v1beta1/tx_cosmes.js";
+export {
+  TrackedVolume as OsmosisPoolmanagerV1beta1TrackedVolume,
+} from "./osmosis/poolmanager/v1beta1/tracked_volume_pb.js";
 export {
   SwapAmountInRoute as OsmosisPoolmanagerV1beta1SwapAmountInRoute,
   SwapAmountOutRoute as OsmosisPoolmanagerV1beta1SwapAmountOutRoute,
@@ -524,12 +553,20 @@ export {
   PoolResponse as OsmosisPoolmanagerV1beta1PoolResponse,
   AllPoolsRequest as OsmosisPoolmanagerV1beta1AllPoolsRequest,
   AllPoolsResponse as OsmosisPoolmanagerV1beta1AllPoolsResponse,
+  ListPoolsByDenomRequest as OsmosisPoolmanagerV1beta1ListPoolsByDenomRequest,
+  ListPoolsByDenomResponse as OsmosisPoolmanagerV1beta1ListPoolsByDenomResponse,
   SpotPriceRequest as OsmosisPoolmanagerV1beta1SpotPriceRequest,
   SpotPriceResponse as OsmosisPoolmanagerV1beta1SpotPriceResponse,
   TotalPoolLiquidityRequest as OsmosisPoolmanagerV1beta1TotalPoolLiquidityRequest,
   TotalPoolLiquidityResponse as OsmosisPoolmanagerV1beta1TotalPoolLiquidityResponse,
   TotalLiquidityRequest as OsmosisPoolmanagerV1beta1TotalLiquidityRequest,
   TotalLiquidityResponse as OsmosisPoolmanagerV1beta1TotalLiquidityResponse,
+  TotalVolumeForPoolRequest as OsmosisPoolmanagerV1beta1TotalVolumeForPoolRequest,
+  TotalVolumeForPoolResponse as OsmosisPoolmanagerV1beta1TotalVolumeForPoolResponse,
+  TradingPairTakerFeeRequest as OsmosisPoolmanagerV1beta1TradingPairTakerFeeRequest,
+  TradingPairTakerFeeResponse as OsmosisPoolmanagerV1beta1TradingPairTakerFeeResponse,
+  EstimateTradeBasedOnPriceImpactRequest as OsmosisPoolmanagerV1beta1EstimateTradeBasedOnPriceImpactRequest,
+  EstimateTradeBasedOnPriceImpactResponse as OsmosisPoolmanagerV1beta1EstimateTradeBasedOnPriceImpactResponse,
 } from "./osmosis/poolmanager/v1beta1/query_pb.js";
 export {
   QueryParamsService as OsmosisPoolmanagerV1beta1QueryParamsService,
@@ -542,61 +579,72 @@ export {
   QueryNumPoolsService as OsmosisPoolmanagerV1beta1QueryNumPoolsService,
   QueryPoolService as OsmosisPoolmanagerV1beta1QueryPoolService,
   QueryAllPoolsService as OsmosisPoolmanagerV1beta1QueryAllPoolsService,
+  QueryListPoolsByDenomService as OsmosisPoolmanagerV1beta1QueryListPoolsByDenomService,
   QuerySpotPriceService as OsmosisPoolmanagerV1beta1QuerySpotPriceService,
   QueryTotalPoolLiquidityService as OsmosisPoolmanagerV1beta1QueryTotalPoolLiquidityService,
   QueryTotalLiquidityService as OsmosisPoolmanagerV1beta1QueryTotalLiquidityService,
+  QueryTotalVolumeForPoolService as OsmosisPoolmanagerV1beta1QueryTotalVolumeForPoolService,
+  QueryTradingPairTakerFeeService as OsmosisPoolmanagerV1beta1QueryTradingPairTakerFeeService,
+  QueryEstimateTradeBasedOnPriceImpactService as OsmosisPoolmanagerV1beta1QueryEstimateTradeBasedOnPriceImpactService,
 } from "./osmosis/poolmanager/v1beta1/query_cosmes.js";
 export {
   PoolType as OsmosisPoolmanagerV1beta1PoolType,
   ModuleRoute as OsmosisPoolmanagerV1beta1ModuleRoute,
 } from "./osmosis/poolmanager/v1beta1/module_route_pb.js";
 export {
+  DenomPairTakerFeeProposal as OsmosisPoolmanagerV1beta1DenomPairTakerFeeProposal,
+} from "./osmosis/poolmanager/v1beta1/gov_pb.js";
+export {
   Params as OsmosisPoolmanagerV1beta1Params,
   GenesisState as OsmosisPoolmanagerV1beta1GenesisState,
+  TakerFeeParams as OsmosisPoolmanagerV1beta1TakerFeeParams,
+  TakerFeeDistributionPercentage as OsmosisPoolmanagerV1beta1TakerFeeDistributionPercentage,
+  TakerFeesTracker as OsmosisPoolmanagerV1beta1TakerFeesTracker,
 } from "./osmosis/poolmanager/v1beta1/genesis_pb.js";
 export {
-  MigrationRecords as OsmosisPoolIncentivesV1beta1MigrationRecords,
-  BalancerToConcentratedPoolLink as OsmosisPoolIncentivesV1beta1BalancerToConcentratedPoolLink,
-} from "./osmosis/pool-incentives/v1beta1/shared_pb.js";
+  MigrationRecords as OsmosisPoolincentivesV1beta1MigrationRecords,
+  BalancerToConcentratedPoolLink as OsmosisPoolincentivesV1beta1BalancerToConcentratedPoolLink,
+} from "./osmosis/poolincentives/v1beta1/shared_pb.js";
 export {
-  QueryGaugeIdsRequest as OsmosisPoolIncentivesV1beta1QueryGaugeIdsRequest,
-  QueryGaugeIdsResponse as OsmosisPoolIncentivesV1beta1QueryGaugeIdsResponse,
-  QueryGaugeIdsResponse_GaugeIdWithDuration as OsmosisPoolIncentivesV1beta1QueryGaugeIdsResponse_GaugeIdWithDuration,
-  QueryDistrInfoRequest as OsmosisPoolIncentivesV1beta1QueryDistrInfoRequest,
-  QueryDistrInfoResponse as OsmosisPoolIncentivesV1beta1QueryDistrInfoResponse,
-  QueryParamsRequest as OsmosisPoolIncentivesV1beta1QueryParamsRequest,
-  QueryParamsResponse as OsmosisPoolIncentivesV1beta1QueryParamsResponse,
-  QueryLockableDurationsRequest as OsmosisPoolIncentivesV1beta1QueryLockableDurationsRequest,
-  QueryLockableDurationsResponse as OsmosisPoolIncentivesV1beta1QueryLockableDurationsResponse,
-  QueryIncentivizedPoolsRequest as OsmosisPoolIncentivesV1beta1QueryIncentivizedPoolsRequest,
-  IncentivizedPool as OsmosisPoolIncentivesV1beta1IncentivizedPool,
-  QueryIncentivizedPoolsResponse as OsmosisPoolIncentivesV1beta1QueryIncentivizedPoolsResponse,
-  QueryExternalIncentiveGaugesRequest as OsmosisPoolIncentivesV1beta1QueryExternalIncentiveGaugesRequest,
-  QueryExternalIncentiveGaugesResponse as OsmosisPoolIncentivesV1beta1QueryExternalIncentiveGaugesResponse,
-} from "./osmosis/pool-incentives/v1beta1/query_pb.js";
+  QueryGaugeIdsRequest as OsmosisPoolincentivesV1beta1QueryGaugeIdsRequest,
+  QueryGaugeIdsResponse as OsmosisPoolincentivesV1beta1QueryGaugeIdsResponse,
+  QueryGaugeIdsResponse_GaugeIdWithDuration as OsmosisPoolincentivesV1beta1QueryGaugeIdsResponse_GaugeIdWithDuration,
+  QueryDistrInfoRequest as OsmosisPoolincentivesV1beta1QueryDistrInfoRequest,
+  QueryDistrInfoResponse as OsmosisPoolincentivesV1beta1QueryDistrInfoResponse,
+  QueryParamsRequest as OsmosisPoolincentivesV1beta1QueryParamsRequest,
+  QueryParamsResponse as OsmosisPoolincentivesV1beta1QueryParamsResponse,
+  QueryLockableDurationsRequest as OsmosisPoolincentivesV1beta1QueryLockableDurationsRequest,
+  QueryLockableDurationsResponse as OsmosisPoolincentivesV1beta1QueryLockableDurationsResponse,
+  QueryIncentivizedPoolsRequest as OsmosisPoolincentivesV1beta1QueryIncentivizedPoolsRequest,
+  IncentivizedPool as OsmosisPoolincentivesV1beta1IncentivizedPool,
+  QueryIncentivizedPoolsResponse as OsmosisPoolincentivesV1beta1QueryIncentivizedPoolsResponse,
+  QueryExternalIncentiveGaugesRequest as OsmosisPoolincentivesV1beta1QueryExternalIncentiveGaugesRequest,
+  QueryExternalIncentiveGaugesResponse as OsmosisPoolincentivesV1beta1QueryExternalIncentiveGaugesResponse,
+} from "./osmosis/poolincentives/v1beta1/query_pb.js";
 export {
-  QueryGaugeIdsService as OsmosisPoolIncentivesV1beta1QueryGaugeIdsService,
-  QueryDistrInfoService as OsmosisPoolIncentivesV1beta1QueryDistrInfoService,
-  QueryParamsService as OsmosisPoolIncentivesV1beta1QueryParamsService,
-  QueryLockableDurationsService as OsmosisPoolIncentivesV1beta1QueryLockableDurationsService,
-  QueryIncentivizedPoolsService as OsmosisPoolIncentivesV1beta1QueryIncentivizedPoolsService,
-  QueryExternalIncentiveGaugesService as OsmosisPoolIncentivesV1beta1QueryExternalIncentiveGaugesService,
-} from "./osmosis/pool-incentives/v1beta1/query_cosmes.js";
+  QueryGaugeIdsService as OsmosisPoolincentivesV1beta1QueryGaugeIdsService,
+  QueryDistrInfoService as OsmosisPoolincentivesV1beta1QueryDistrInfoService,
+  QueryParamsService as OsmosisPoolincentivesV1beta1QueryParamsService,
+  QueryLockableDurationsService as OsmosisPoolincentivesV1beta1QueryLockableDurationsService,
+  QueryIncentivizedPoolsService as OsmosisPoolincentivesV1beta1QueryIncentivizedPoolsService,
+  QueryExternalIncentiveGaugesService as OsmosisPoolincentivesV1beta1QueryExternalIncentiveGaugesService,
+} from "./osmosis/poolincentives/v1beta1/query_cosmes.js";
 export {
-  Params as OsmosisPoolIncentivesV1beta1Params,
-  LockableDurationsInfo as OsmosisPoolIncentivesV1beta1LockableDurationsInfo,
-  DistrInfo as OsmosisPoolIncentivesV1beta1DistrInfo,
-  DistrRecord as OsmosisPoolIncentivesV1beta1DistrRecord,
-  PoolToGauge as OsmosisPoolIncentivesV1beta1PoolToGauge,
-  PoolToGauges as OsmosisPoolIncentivesV1beta1PoolToGauges,
-} from "./osmosis/pool-incentives/v1beta1/incentives_pb.js";
+  Params as OsmosisPoolincentivesV1beta1Params,
+  LockableDurationsInfo as OsmosisPoolincentivesV1beta1LockableDurationsInfo,
+  DistrInfo as OsmosisPoolincentivesV1beta1DistrInfo,
+  DistrRecord as OsmosisPoolincentivesV1beta1DistrRecord,
+  PoolToGauge as OsmosisPoolincentivesV1beta1PoolToGauge,
+  AnyPoolToInternalGauges as OsmosisPoolincentivesV1beta1AnyPoolToInternalGauges,
+  ConcentratedPoolToNoLockGauges as OsmosisPoolincentivesV1beta1ConcentratedPoolToNoLockGauges,
+} from "./osmosis/poolincentives/v1beta1/incentives_pb.js";
 export {
-  ReplacePoolIncentivesProposal as OsmosisPoolIncentivesV1beta1ReplacePoolIncentivesProposal,
-  UpdatePoolIncentivesProposal as OsmosisPoolIncentivesV1beta1UpdatePoolIncentivesProposal,
-} from "./osmosis/pool-incentives/v1beta1/gov_pb.js";
+  ReplacePoolIncentivesProposal as OsmosisPoolincentivesV1beta1ReplacePoolIncentivesProposal,
+  UpdatePoolIncentivesProposal as OsmosisPoolincentivesV1beta1UpdatePoolIncentivesProposal,
+} from "./osmosis/poolincentives/v1beta1/gov_pb.js";
 export {
-  GenesisState as OsmosisPoolIncentivesV1beta1GenesisState,
-} from "./osmosis/pool-incentives/v1beta1/genesis_pb.js";
+  GenesisState as OsmosisPoolincentivesV1beta1GenesisState,
+} from "./osmosis/poolincentives/v1beta1/genesis_pb.js";
 export {
   QueryParamsRequest as OsmosisMintV1beta1QueryParamsRequest,
   QueryParamsResponse as OsmosisMintV1beta1QueryParamsResponse,
@@ -719,10 +767,13 @@ export {
   MsgCreateGaugeResponse as OsmosisIncentivesMsgCreateGaugeResponse,
   MsgAddToGauge as OsmosisIncentivesMsgAddToGauge,
   MsgAddToGaugeResponse as OsmosisIncentivesMsgAddToGaugeResponse,
+  MsgCreateGroup as OsmosisIncentivesMsgCreateGroup,
+  MsgCreateGroupResponse as OsmosisIncentivesMsgCreateGroupResponse,
 } from "./osmosis/incentives/tx_pb.js";
 export {
   MsgCreateGaugeService as OsmosisIncentivesMsgCreateGaugeService,
   MsgAddToGaugeService as OsmosisIncentivesMsgAddToGaugeService,
+  MsgCreateGroupService as OsmosisIncentivesMsgCreateGroupService,
 } from "./osmosis/incentives/tx_cosmes.js";
 export {
   ModuleToDistributeCoinsRequest as OsmosisIncentivesModuleToDistributeCoinsRequest,
@@ -743,6 +794,17 @@ export {
   RewardsEstResponse as OsmosisIncentivesRewardsEstResponse,
   QueryLockableDurationsRequest as OsmosisIncentivesQueryLockableDurationsRequest,
   QueryLockableDurationsResponse as OsmosisIncentivesQueryLockableDurationsResponse,
+  QueryAllGroupsRequest as OsmosisIncentivesQueryAllGroupsRequest,
+  QueryAllGroupsResponse as OsmosisIncentivesQueryAllGroupsResponse,
+  QueryAllGroupsGaugesRequest as OsmosisIncentivesQueryAllGroupsGaugesRequest,
+  QueryAllGroupsGaugesResponse as OsmosisIncentivesQueryAllGroupsGaugesResponse,
+  QueryAllGroupsWithGaugeRequest as OsmosisIncentivesQueryAllGroupsWithGaugeRequest,
+  QueryAllGroupsWithGaugeResponse as OsmosisIncentivesQueryAllGroupsWithGaugeResponse,
+  QueryGroupByGroupGaugeIDRequest as OsmosisIncentivesQueryGroupByGroupGaugeIDRequest,
+  QueryGroupByGroupGaugeIDResponse as OsmosisIncentivesQueryGroupByGroupGaugeIDResponse,
+  QueryCurrentWeightByGroupGaugeIDRequest as OsmosisIncentivesQueryCurrentWeightByGroupGaugeIDRequest,
+  QueryCurrentWeightByGroupGaugeIDResponse as OsmosisIncentivesQueryCurrentWeightByGroupGaugeIDResponse,
+  GaugeWeight as OsmosisIncentivesGaugeWeight,
 } from "./osmosis/incentives/query_pb.js";
 export {
   QueryModuleToDistributeCoinsService as OsmosisIncentivesQueryModuleToDistributeCoinsService,
@@ -754,10 +816,26 @@ export {
   QueryUpcomingGaugesPerDenomService as OsmosisIncentivesQueryUpcomingGaugesPerDenomService,
   QueryRewardsEstService as OsmosisIncentivesQueryRewardsEstService,
   QueryLockableDurationsService as OsmosisIncentivesQueryLockableDurationsService,
+  QueryAllGroupsService as OsmosisIncentivesQueryAllGroupsService,
+  QueryAllGroupsGaugesService as OsmosisIncentivesQueryAllGroupsGaugesService,
+  QueryAllGroupsWithGaugeService as OsmosisIncentivesQueryAllGroupsWithGaugeService,
+  QueryGroupByGroupGaugeIDService as OsmosisIncentivesQueryGroupByGroupGaugeIDService,
+  QueryCurrentWeightByGroupGaugeIDService as OsmosisIncentivesQueryCurrentWeightByGroupGaugeIDService,
 } from "./osmosis/incentives/query_cosmes.js";
 export {
   Params as OsmosisIncentivesParams,
 } from "./osmosis/incentives/params_pb.js";
+export {
+  SplittingPolicy as OsmosisIncentivesSplittingPolicy,
+  InternalGaugeInfo as OsmosisIncentivesInternalGaugeInfo,
+  InternalGaugeRecord as OsmosisIncentivesInternalGaugeRecord,
+  Group as OsmosisIncentivesGroup,
+  CreateGroup as OsmosisIncentivesCreateGroup,
+  GroupsWithGauge as OsmosisIncentivesGroupsWithGauge,
+} from "./osmosis/incentives/group_pb.js";
+export {
+  CreateGroupsProposal as OsmosisIncentivesCreateGroupsProposal,
+} from "./osmosis/incentives/gov_pb.js";
 export {
   GenesisState as OsmosisIncentivesGenesisState,
 } from "./osmosis/incentives/genesis_pb.js";
@@ -766,31 +844,31 @@ export {
   LockableDurationsInfo as OsmosisIncentivesLockableDurationsInfo,
 } from "./osmosis/incentives/gauge_pb.js";
 export {
-  ParamsRequest as OsmosisIbcRateLimitV1beta1ParamsRequest,
-  ParamsResponse as OsmosisIbcRateLimitV1beta1ParamsResponse,
-} from "./osmosis/ibc-rate-limit/v1beta1/query_pb.js";
+  ParamsRequest as OsmosisIbcratelimitV1beta1ParamsRequest,
+  ParamsResponse as OsmosisIbcratelimitV1beta1ParamsResponse,
+} from "./osmosis/ibcratelimit/v1beta1/query_pb.js";
 export {
-  QueryParamsService as OsmosisIbcRateLimitV1beta1QueryParamsService,
-} from "./osmosis/ibc-rate-limit/v1beta1/query_cosmes.js";
+  QueryParamsService as OsmosisIbcratelimitV1beta1QueryParamsService,
+} from "./osmosis/ibcratelimit/v1beta1/query_cosmes.js";
 export {
-  Params as OsmosisIbcRateLimitV1beta1Params,
-} from "./osmosis/ibc-rate-limit/v1beta1/params_pb.js";
+  Params as OsmosisIbcratelimitV1beta1Params,
+} from "./osmosis/ibcratelimit/v1beta1/params_pb.js";
 export {
-  GenesisState as OsmosisIbcRateLimitV1beta1GenesisState,
-} from "./osmosis/ibc-rate-limit/v1beta1/genesis_pb.js";
+  GenesisState as OsmosisIbcratelimitV1beta1GenesisState,
+} from "./osmosis/ibcratelimit/v1beta1/genesis_pb.js";
 export {
-  MsgEmitIBCAck as OsmosisIbcHooksMsgEmitIBCAck,
-  MsgEmitIBCAckResponse as OsmosisIbcHooksMsgEmitIBCAckResponse,
-} from "./osmosis/ibc-hooks/tx_pb.js";
+  MsgEmitIBCAck as OsmosisIbchooksMsgEmitIBCAck,
+  MsgEmitIBCAckResponse as OsmosisIbchooksMsgEmitIBCAckResponse,
+} from "./osmosis/ibchooks/tx_pb.js";
 export {
-  MsgEmitIBCAckService as OsmosisIbcHooksMsgEmitIBCAckService,
-} from "./osmosis/ibc-hooks/tx_cosmes.js";
+  MsgEmitIBCAckService as OsmosisIbchooksMsgEmitIBCAckService,
+} from "./osmosis/ibchooks/tx_cosmes.js";
 export {
-  Params as OsmosisIbcHooksParams,
-} from "./osmosis/ibc-hooks/params_pb.js";
+  Params as OsmosisIbchooksParams,
+} from "./osmosis/ibchooks/params_pb.js";
 export {
-  GenesisState as OsmosisIbcHooksGenesisState,
-} from "./osmosis/ibc-hooks/genesis_pb.js";
+  GenesisState as OsmosisIbchooksGenesisState,
+} from "./osmosis/ibchooks/genesis_pb.js";
 export {
   QuerySpotPriceRequest as OsmosisGammV2QuerySpotPriceRequest,
   QuerySpotPriceResponse as OsmosisGammV2QuerySpotPriceResponse,
@@ -897,60 +975,60 @@ export {
   GenesisState as OsmosisGammV1beta1GenesisState,
 } from "./osmosis/gamm/v1beta1/genesis_pb.js";
 export {
-  MsgCreateStableswapPool as OsmosisGammPoolModelsStableswapMsgCreateStableswapPool,
-  MsgCreateStableswapPoolResponse as OsmosisGammPoolModelsStableswapMsgCreateStableswapPoolResponse,
-  MsgStableSwapAdjustScalingFactors as OsmosisGammPoolModelsStableswapMsgStableSwapAdjustScalingFactors,
-  MsgStableSwapAdjustScalingFactorsResponse as OsmosisGammPoolModelsStableswapMsgStableSwapAdjustScalingFactorsResponse,
-} from "./osmosis/gamm/pool-models/stableswap/tx_pb.js";
+  SmoothWeightChangeParams as OsmosisGammV1beta1SmoothWeightChangeParams,
+  PoolParams as OsmosisGammV1beta1PoolParams,
+  PoolAsset as OsmosisGammV1beta1PoolAsset,
+  Pool as OsmosisGammV1beta1Pool,
+} from "./osmosis/gamm/v1beta1/balancerPool_pb.js";
 export {
-  MsgCreateStableswapPoolService as OsmosisGammPoolModelsStableswapMsgCreateStableswapPoolService,
-  MsgStableSwapAdjustScalingFactorsService as OsmosisGammPoolModelsStableswapMsgStableSwapAdjustScalingFactorsService,
-} from "./osmosis/gamm/pool-models/stableswap/tx_cosmes.js";
+  MsgCreateStableswapPool as OsmosisGammPoolmodelsStableswapV1beta1MsgCreateStableswapPool,
+  MsgCreateStableswapPoolResponse as OsmosisGammPoolmodelsStableswapV1beta1MsgCreateStableswapPoolResponse,
+  MsgStableSwapAdjustScalingFactors as OsmosisGammPoolmodelsStableswapV1beta1MsgStableSwapAdjustScalingFactors,
+  MsgStableSwapAdjustScalingFactorsResponse as OsmosisGammPoolmodelsStableswapV1beta1MsgStableSwapAdjustScalingFactorsResponse,
+} from "./osmosis/gamm/poolmodels/stableswap/v1beta1/tx_pb.js";
 export {
-  PoolParams as OsmosisGammPoolModelsStableswapPoolParams,
-  Pool as OsmosisGammPoolModelsStableswapPool,
-} from "./osmosis/gamm/pool-models/stableswap/stableswap_pool_pb.js";
+  MsgCreateStableswapPoolService as OsmosisGammPoolmodelsStableswapV1beta1MsgCreateStableswapPoolService,
+  MsgStableSwapAdjustScalingFactorsService as OsmosisGammPoolmodelsStableswapV1beta1MsgStableSwapAdjustScalingFactorsService,
+} from "./osmosis/gamm/poolmodels/stableswap/v1beta1/tx_cosmes.js";
 export {
-  SmoothWeightChangeParams as OsmosisGammPoolModelsBalancerSmoothWeightChangeParams,
-  PoolParams as OsmosisGammPoolModelsBalancerPoolParams,
-  PoolAsset as OsmosisGammPoolModelsBalancerPoolAsset,
-  Pool as OsmosisGammPoolModelsBalancerPool,
-} from "./osmosis/gamm/pool-models/balancer/balancerPool_pb.js";
+  PoolParams as OsmosisGammPoolmodelsStableswapV1beta1PoolParams,
+  Pool as OsmosisGammPoolmodelsStableswapV1beta1Pool,
+} from "./osmosis/gamm/poolmodels/stableswap/v1beta1/stableswap_pool_pb.js";
 export {
-  MsgCreateBalancerPool as OsmosisGammPoolModelsBalancerTxMsgCreateBalancerPool,
-  MsgCreateBalancerPoolResponse as OsmosisGammPoolModelsBalancerTxMsgCreateBalancerPoolResponse,
-} from "./osmosis/gamm/pool-models/balancer/tx/tx_pb.js";
+  MsgCreateBalancerPool as OsmosisGammPoolmodelsBalancerV1beta1MsgCreateBalancerPool,
+  MsgCreateBalancerPoolResponse as OsmosisGammPoolmodelsBalancerV1beta1MsgCreateBalancerPoolResponse,
+} from "./osmosis/gamm/poolmodels/balancer/v1beta1/tx_pb.js";
 export {
-  MsgCreateBalancerPoolService as OsmosisGammPoolModelsBalancerTxMsgCreateBalancerPoolService,
-} from "./osmosis/gamm/pool-models/balancer/tx/tx_cosmes.js";
+  MsgCreateBalancerPoolService as OsmosisGammPoolmodelsBalancerV1beta1MsgCreateBalancerPoolService,
+} from "./osmosis/gamm/poolmodels/balancer/v1beta1/tx_cosmes.js";
 export {
-  QueryEpochsInfoRequest as OsmosisEpochsQueryEpochsInfoRequest,
-  QueryEpochsInfoResponse as OsmosisEpochsQueryEpochsInfoResponse,
-  QueryCurrentEpochRequest as OsmosisEpochsQueryCurrentEpochRequest,
-  QueryCurrentEpochResponse as OsmosisEpochsQueryCurrentEpochResponse,
-} from "./osmosis/epochs/query_pb.js";
+  QueryEpochsInfoRequest as OsmosisEpochsV1beta1QueryEpochsInfoRequest,
+  QueryEpochsInfoResponse as OsmosisEpochsV1beta1QueryEpochsInfoResponse,
+  QueryCurrentEpochRequest as OsmosisEpochsV1beta1QueryCurrentEpochRequest,
+  QueryCurrentEpochResponse as OsmosisEpochsV1beta1QueryCurrentEpochResponse,
+} from "./osmosis/epochs/v1beta1/query_pb.js";
 export {
-  QueryEpochInfosService as OsmosisEpochsQueryEpochInfosService,
-  QueryCurrentEpochService as OsmosisEpochsQueryCurrentEpochService,
-} from "./osmosis/epochs/query_cosmes.js";
+  QueryEpochInfosService as OsmosisEpochsV1beta1QueryEpochInfosService,
+  QueryCurrentEpochService as OsmosisEpochsV1beta1QueryCurrentEpochService,
+} from "./osmosis/epochs/v1beta1/query_cosmes.js";
 export {
-  EpochInfo as OsmosisEpochsEpochInfo,
-  GenesisState as OsmosisEpochsGenesisState,
-} from "./osmosis/epochs/genesis_pb.js";
+  EpochInfo as OsmosisEpochsV1beta1EpochInfo,
+  GenesisState as OsmosisEpochsV1beta1GenesisState,
+} from "./osmosis/epochs/v1beta1/genesis_pb.js";
 export {
-  RecoveredSinceDowntimeOfLengthRequest as OsmosisDowntimeDetectorV1beta1RecoveredSinceDowntimeOfLengthRequest,
-  RecoveredSinceDowntimeOfLengthResponse as OsmosisDowntimeDetectorV1beta1RecoveredSinceDowntimeOfLengthResponse,
-} from "./osmosis/downtime-detector/v1beta1/query_pb.js";
+  RecoveredSinceDowntimeOfLengthRequest as OsmosisDowntimedetectorV1beta1RecoveredSinceDowntimeOfLengthRequest,
+  RecoveredSinceDowntimeOfLengthResponse as OsmosisDowntimedetectorV1beta1RecoveredSinceDowntimeOfLengthResponse,
+} from "./osmosis/downtimedetector/v1beta1/query_pb.js";
 export {
-  QueryRecoveredSinceDowntimeOfLengthService as OsmosisDowntimeDetectorV1beta1QueryRecoveredSinceDowntimeOfLengthService,
-} from "./osmosis/downtime-detector/v1beta1/query_cosmes.js";
+  QueryRecoveredSinceDowntimeOfLengthService as OsmosisDowntimedetectorV1beta1QueryRecoveredSinceDowntimeOfLengthService,
+} from "./osmosis/downtimedetector/v1beta1/query_cosmes.js";
 export {
-  GenesisDowntimeEntry as OsmosisDowntimeDetectorV1beta1GenesisDowntimeEntry,
-  GenesisState as OsmosisDowntimeDetectorV1beta1GenesisState,
-} from "./osmosis/downtime-detector/v1beta1/genesis_pb.js";
+  GenesisDowntimeEntry as OsmosisDowntimedetectorV1beta1GenesisDowntimeEntry,
+  GenesisState as OsmosisDowntimedetectorV1beta1GenesisState,
+} from "./osmosis/downtimedetector/v1beta1/genesis_pb.js";
 export {
-  Downtime as OsmosisDowntimeDetectorV1beta1Downtime,
-} from "./osmosis/downtime-detector/v1beta1/downtime_duration_pb.js";
+  Downtime as OsmosisDowntimedetectorV1beta1Downtime,
+} from "./osmosis/downtimedetector/v1beta1/downtime_duration_pb.js";
 export {
 } from "./osmosis/cosmwasmpool/v1beta1/tx_cosmes.js";
 export {
@@ -1025,119 +1103,157 @@ export {
   InstantiateMsg as OsmosisCosmwasmpoolV1beta1ModelInstantiateMsg,
 } from "./osmosis/cosmwasmpool/v1beta1/model/instantiate_msg_pb.js";
 export {
-  MsgCreatePosition as OsmosisConcentratedLiquidityMsgCreatePosition,
-  MsgCreatePositionResponse as OsmosisConcentratedLiquidityMsgCreatePositionResponse,
-  MsgAddToPosition as OsmosisConcentratedLiquidityMsgAddToPosition,
-  MsgAddToPositionResponse as OsmosisConcentratedLiquidityMsgAddToPositionResponse,
-  MsgWithdrawPosition as OsmosisConcentratedLiquidityMsgWithdrawPosition,
-  MsgWithdrawPositionResponse as OsmosisConcentratedLiquidityMsgWithdrawPositionResponse,
-  MsgCollectSpreadRewards as OsmosisConcentratedLiquidityMsgCollectSpreadRewards,
-  MsgCollectSpreadRewardsResponse as OsmosisConcentratedLiquidityMsgCollectSpreadRewardsResponse,
-  MsgCollectIncentives as OsmosisConcentratedLiquidityMsgCollectIncentives,
-  MsgCollectIncentivesResponse as OsmosisConcentratedLiquidityMsgCollectIncentivesResponse,
-  MsgFungifyChargedPositions as OsmosisConcentratedLiquidityMsgFungifyChargedPositions,
-  MsgFungifyChargedPositionsResponse as OsmosisConcentratedLiquidityMsgFungifyChargedPositionsResponse,
-} from "./osmosis/concentrated-liquidity/tx_pb.js";
+  Params as OsmosisConcentratedliquidityParams,
+} from "./osmosis/concentratedliquidity/params_pb.js";
 export {
-  MsgCreatePositionService as OsmosisConcentratedLiquidityMsgCreatePositionService,
-  MsgWithdrawPositionService as OsmosisConcentratedLiquidityMsgWithdrawPositionService,
-  MsgAddToPositionService as OsmosisConcentratedLiquidityMsgAddToPositionService,
-  MsgCollectSpreadRewardsService as OsmosisConcentratedLiquidityMsgCollectSpreadRewardsService,
-  MsgCollectIncentivesService as OsmosisConcentratedLiquidityMsgCollectIncentivesService,
-} from "./osmosis/concentrated-liquidity/tx_cosmes.js";
+  MsgCreatePosition as OsmosisConcentratedliquidityV1beta1MsgCreatePosition,
+  MsgCreatePositionResponse as OsmosisConcentratedliquidityV1beta1MsgCreatePositionResponse,
+  MsgAddToPosition as OsmosisConcentratedliquidityV1beta1MsgAddToPosition,
+  MsgAddToPositionResponse as OsmosisConcentratedliquidityV1beta1MsgAddToPositionResponse,
+  MsgWithdrawPosition as OsmosisConcentratedliquidityV1beta1MsgWithdrawPosition,
+  MsgWithdrawPositionResponse as OsmosisConcentratedliquidityV1beta1MsgWithdrawPositionResponse,
+  MsgCollectSpreadRewards as OsmosisConcentratedliquidityV1beta1MsgCollectSpreadRewards,
+  MsgCollectSpreadRewardsResponse as OsmosisConcentratedliquidityV1beta1MsgCollectSpreadRewardsResponse,
+  MsgCollectIncentives as OsmosisConcentratedliquidityV1beta1MsgCollectIncentives,
+  MsgCollectIncentivesResponse as OsmosisConcentratedliquidityV1beta1MsgCollectIncentivesResponse,
+  MsgFungifyChargedPositions as OsmosisConcentratedliquidityV1beta1MsgFungifyChargedPositions,
+  MsgFungifyChargedPositionsResponse as OsmosisConcentratedliquidityV1beta1MsgFungifyChargedPositionsResponse,
+  MsgTransferPositions as OsmosisConcentratedliquidityV1beta1MsgTransferPositions,
+  MsgTransferPositionsResponse as OsmosisConcentratedliquidityV1beta1MsgTransferPositionsResponse,
+} from "./osmosis/concentratedliquidity/v1beta1/tx_pb.js";
 export {
-  TickInfo as OsmosisConcentratedLiquidityTickInfo,
-  UptimeTrackers as OsmosisConcentratedLiquidityUptimeTrackers,
-  UptimeTracker as OsmosisConcentratedLiquidityUptimeTracker,
-} from "./osmosis/concentrated-liquidity/tickInfo_pb.js";
+  MsgCreatePositionService as OsmosisConcentratedliquidityV1beta1MsgCreatePositionService,
+  MsgWithdrawPositionService as OsmosisConcentratedliquidityV1beta1MsgWithdrawPositionService,
+  MsgAddToPositionService as OsmosisConcentratedliquidityV1beta1MsgAddToPositionService,
+  MsgCollectSpreadRewardsService as OsmosisConcentratedliquidityV1beta1MsgCollectSpreadRewardsService,
+  MsgCollectIncentivesService as OsmosisConcentratedliquidityV1beta1MsgCollectIncentivesService,
+  MsgTransferPositionsService as OsmosisConcentratedliquidityV1beta1MsgTransferPositionsService,
+} from "./osmosis/concentratedliquidity/v1beta1/tx_cosmes.js";
 export {
-  UserPositionsRequest as OsmosisConcentratedLiquidityUserPositionsRequest,
-  UserPositionsResponse as OsmosisConcentratedLiquidityUserPositionsResponse,
-  PositionByIdRequest as OsmosisConcentratedLiquidityPositionByIdRequest,
-  PositionByIdResponse as OsmosisConcentratedLiquidityPositionByIdResponse,
-  PoolsRequest as OsmosisConcentratedLiquidityPoolsRequest,
-  PoolsResponse as OsmosisConcentratedLiquidityPoolsResponse,
-  ParamsRequest as OsmosisConcentratedLiquidityParamsRequest,
-  ParamsResponse as OsmosisConcentratedLiquidityParamsResponse,
-  TickLiquidityNet as OsmosisConcentratedLiquidityTickLiquidityNet,
-  LiquidityDepthWithRange as OsmosisConcentratedLiquidityLiquidityDepthWithRange,
-  LiquidityNetInDirectionRequest as OsmosisConcentratedLiquidityLiquidityNetInDirectionRequest,
-  LiquidityNetInDirectionResponse as OsmosisConcentratedLiquidityLiquidityNetInDirectionResponse,
-  LiquidityPerTickRangeRequest as OsmosisConcentratedLiquidityLiquidityPerTickRangeRequest,
-  LiquidityPerTickRangeResponse as OsmosisConcentratedLiquidityLiquidityPerTickRangeResponse,
-  ClaimableSpreadRewardsRequest as OsmosisConcentratedLiquidityClaimableSpreadRewardsRequest,
-  ClaimableSpreadRewardsResponse as OsmosisConcentratedLiquidityClaimableSpreadRewardsResponse,
-  ClaimableIncentivesRequest as OsmosisConcentratedLiquidityClaimableIncentivesRequest,
-  ClaimableIncentivesResponse as OsmosisConcentratedLiquidityClaimableIncentivesResponse,
-  PoolAccumulatorRewardsRequest as OsmosisConcentratedLiquidityPoolAccumulatorRewardsRequest,
-  PoolAccumulatorRewardsResponse as OsmosisConcentratedLiquidityPoolAccumulatorRewardsResponse,
-  TickAccumulatorTrackersRequest as OsmosisConcentratedLiquidityTickAccumulatorTrackersRequest,
-  TickAccumulatorTrackersResponse as OsmosisConcentratedLiquidityTickAccumulatorTrackersResponse,
-  IncentiveRecordsRequest as OsmosisConcentratedLiquidityIncentiveRecordsRequest,
-  IncentiveRecordsResponse as OsmosisConcentratedLiquidityIncentiveRecordsResponse,
-  CFMMPoolIdLinkFromConcentratedPoolIdRequest as OsmosisConcentratedLiquidityCFMMPoolIdLinkFromConcentratedPoolIdRequest,
-  CFMMPoolIdLinkFromConcentratedPoolIdResponse as OsmosisConcentratedLiquidityCFMMPoolIdLinkFromConcentratedPoolIdResponse,
-  UserUnbondingPositionsRequest as OsmosisConcentratedLiquidityUserUnbondingPositionsRequest,
-  UserUnbondingPositionsResponse as OsmosisConcentratedLiquidityUserUnbondingPositionsResponse,
-  GetTotalLiquidityRequest as OsmosisConcentratedLiquidityGetTotalLiquidityRequest,
-  GetTotalLiquidityResponse as OsmosisConcentratedLiquidityGetTotalLiquidityResponse,
-} from "./osmosis/concentrated-liquidity/query_pb.js";
+  TickInfo as OsmosisConcentratedliquidityV1beta1TickInfo,
+  UptimeTrackers as OsmosisConcentratedliquidityV1beta1UptimeTrackers,
+  UptimeTracker as OsmosisConcentratedliquidityV1beta1UptimeTracker,
+} from "./osmosis/concentratedliquidity/v1beta1/tickInfo_pb.js";
 export {
-  QueryPoolsService as OsmosisConcentratedLiquidityQueryPoolsService,
-  QueryParamsService as OsmosisConcentratedLiquidityQueryParamsService,
-  QueryUserPositionsService as OsmosisConcentratedLiquidityQueryUserPositionsService,
-  QueryLiquidityPerTickRangeService as OsmosisConcentratedLiquidityQueryLiquidityPerTickRangeService,
-  QueryLiquidityNetInDirectionService as OsmosisConcentratedLiquidityQueryLiquidityNetInDirectionService,
-  QueryClaimableSpreadRewardsService as OsmosisConcentratedLiquidityQueryClaimableSpreadRewardsService,
-  QueryClaimableIncentivesService as OsmosisConcentratedLiquidityQueryClaimableIncentivesService,
-  QueryPositionByIdService as OsmosisConcentratedLiquidityQueryPositionByIdService,
-  QueryPoolAccumulatorRewardsService as OsmosisConcentratedLiquidityQueryPoolAccumulatorRewardsService,
-  QueryIncentiveRecordsService as OsmosisConcentratedLiquidityQueryIncentiveRecordsService,
-  QueryTickAccumulatorTrackersService as OsmosisConcentratedLiquidityQueryTickAccumulatorTrackersService,
-  QueryCFMMPoolIdLinkFromConcentratedPoolIdService as OsmosisConcentratedLiquidityQueryCFMMPoolIdLinkFromConcentratedPoolIdService,
-  QueryUserUnbondingPositionsService as OsmosisConcentratedLiquidityQueryUserUnbondingPositionsService,
-  QueryGetTotalLiquidityService as OsmosisConcentratedLiquidityQueryGetTotalLiquidityService,
-} from "./osmosis/concentrated-liquidity/query_cosmes.js";
+  UserPositionsRequest as OsmosisConcentratedliquidityV1beta1UserPositionsRequest,
+  UserPositionsResponse as OsmosisConcentratedliquidityV1beta1UserPositionsResponse,
+  PositionByIdRequest as OsmosisConcentratedliquidityV1beta1PositionByIdRequest,
+  PositionByIdResponse as OsmosisConcentratedliquidityV1beta1PositionByIdResponse,
+  PoolsRequest as OsmosisConcentratedliquidityV1beta1PoolsRequest,
+  PoolsResponse as OsmosisConcentratedliquidityV1beta1PoolsResponse,
+  ParamsRequest as OsmosisConcentratedliquidityV1beta1ParamsRequest,
+  ParamsResponse as OsmosisConcentratedliquidityV1beta1ParamsResponse,
+  TickLiquidityNet as OsmosisConcentratedliquidityV1beta1TickLiquidityNet,
+  LiquidityDepthWithRange as OsmosisConcentratedliquidityV1beta1LiquidityDepthWithRange,
+  LiquidityNetInDirectionRequest as OsmosisConcentratedliquidityV1beta1LiquidityNetInDirectionRequest,
+  LiquidityNetInDirectionResponse as OsmosisConcentratedliquidityV1beta1LiquidityNetInDirectionResponse,
+  LiquidityPerTickRangeRequest as OsmosisConcentratedliquidityV1beta1LiquidityPerTickRangeRequest,
+  LiquidityPerTickRangeResponse as OsmosisConcentratedliquidityV1beta1LiquidityPerTickRangeResponse,
+  ClaimableSpreadRewardsRequest as OsmosisConcentratedliquidityV1beta1ClaimableSpreadRewardsRequest,
+  ClaimableSpreadRewardsResponse as OsmosisConcentratedliquidityV1beta1ClaimableSpreadRewardsResponse,
+  ClaimableIncentivesRequest as OsmosisConcentratedliquidityV1beta1ClaimableIncentivesRequest,
+  ClaimableIncentivesResponse as OsmosisConcentratedliquidityV1beta1ClaimableIncentivesResponse,
+  PoolAccumulatorRewardsRequest as OsmosisConcentratedliquidityV1beta1PoolAccumulatorRewardsRequest,
+  PoolAccumulatorRewardsResponse as OsmosisConcentratedliquidityV1beta1PoolAccumulatorRewardsResponse,
+  TickAccumulatorTrackersRequest as OsmosisConcentratedliquidityV1beta1TickAccumulatorTrackersRequest,
+  TickAccumulatorTrackersResponse as OsmosisConcentratedliquidityV1beta1TickAccumulatorTrackersResponse,
+  IncentiveRecordsRequest as OsmosisConcentratedliquidityV1beta1IncentiveRecordsRequest,
+  IncentiveRecordsResponse as OsmosisConcentratedliquidityV1beta1IncentiveRecordsResponse,
+  CFMMPoolIdLinkFromConcentratedPoolIdRequest as OsmosisConcentratedliquidityV1beta1CFMMPoolIdLinkFromConcentratedPoolIdRequest,
+  CFMMPoolIdLinkFromConcentratedPoolIdResponse as OsmosisConcentratedliquidityV1beta1CFMMPoolIdLinkFromConcentratedPoolIdResponse,
+  UserUnbondingPositionsRequest as OsmosisConcentratedliquidityV1beta1UserUnbondingPositionsRequest,
+  UserUnbondingPositionsResponse as OsmosisConcentratedliquidityV1beta1UserUnbondingPositionsResponse,
+  GetTotalLiquidityRequest as OsmosisConcentratedliquidityV1beta1GetTotalLiquidityRequest,
+  GetTotalLiquidityResponse as OsmosisConcentratedliquidityV1beta1GetTotalLiquidityResponse,
+  NumNextInitializedTicksRequest as OsmosisConcentratedliquidityV1beta1NumNextInitializedTicksRequest,
+  NumNextInitializedTicksResponse as OsmosisConcentratedliquidityV1beta1NumNextInitializedTicksResponse,
+} from "./osmosis/concentratedliquidity/v1beta1/query_pb.js";
 export {
-  Position as OsmosisConcentratedLiquidityPosition,
-  FullPositionBreakdown as OsmosisConcentratedLiquidityFullPositionBreakdown,
-  PositionWithPeriodLock as OsmosisConcentratedLiquidityPositionWithPeriodLock,
-} from "./osmosis/concentrated-liquidity/position_pb.js";
+  QueryPoolsService as OsmosisConcentratedliquidityV1beta1QueryPoolsService,
+  QueryParamsService as OsmosisConcentratedliquidityV1beta1QueryParamsService,
+  QueryUserPositionsService as OsmosisConcentratedliquidityV1beta1QueryUserPositionsService,
+  QueryLiquidityPerTickRangeService as OsmosisConcentratedliquidityV1beta1QueryLiquidityPerTickRangeService,
+  QueryLiquidityNetInDirectionService as OsmosisConcentratedliquidityV1beta1QueryLiquidityNetInDirectionService,
+  QueryClaimableSpreadRewardsService as OsmosisConcentratedliquidityV1beta1QueryClaimableSpreadRewardsService,
+  QueryClaimableIncentivesService as OsmosisConcentratedliquidityV1beta1QueryClaimableIncentivesService,
+  QueryPositionByIdService as OsmosisConcentratedliquidityV1beta1QueryPositionByIdService,
+  QueryPoolAccumulatorRewardsService as OsmosisConcentratedliquidityV1beta1QueryPoolAccumulatorRewardsService,
+  QueryIncentiveRecordsService as OsmosisConcentratedliquidityV1beta1QueryIncentiveRecordsService,
+  QueryTickAccumulatorTrackersService as OsmosisConcentratedliquidityV1beta1QueryTickAccumulatorTrackersService,
+  QueryCFMMPoolIdLinkFromConcentratedPoolIdService as OsmosisConcentratedliquidityV1beta1QueryCFMMPoolIdLinkFromConcentratedPoolIdService,
+  QueryUserUnbondingPositionsService as OsmosisConcentratedliquidityV1beta1QueryUserUnbondingPositionsService,
+  QueryGetTotalLiquidityService as OsmosisConcentratedliquidityV1beta1QueryGetTotalLiquidityService,
+  QueryNumNextInitializedTicksService as OsmosisConcentratedliquidityV1beta1QueryNumNextInitializedTicksService,
+} from "./osmosis/concentratedliquidity/v1beta1/query_cosmes.js";
 export {
-  Pool as OsmosisConcentratedLiquidityPool,
-} from "./osmosis/concentrated-liquidity/pool_pb.js";
+  Position as OsmosisConcentratedliquidityV1beta1Position,
+  FullPositionBreakdown as OsmosisConcentratedliquidityV1beta1FullPositionBreakdown,
+  PositionWithPeriodLock as OsmosisConcentratedliquidityV1beta1PositionWithPeriodLock,
+} from "./osmosis/concentratedliquidity/v1beta1/position_pb.js";
 export {
-  Params as OsmosisConcentratedLiquidityParams,
-} from "./osmosis/concentrated-liquidity/params_pb.js";
+  Pool as OsmosisConcentratedliquidityV1beta1Pool,
+} from "./osmosis/concentratedliquidity/v1beta1/pool_pb.js";
 export {
-  IncentiveRecord as OsmosisConcentratedLiquidityIncentiveRecord,
-  IncentiveRecordBody as OsmosisConcentratedLiquidityIncentiveRecordBody,
-} from "./osmosis/concentrated-liquidity/incentive_record_pb.js";
+  IncentiveRecord as OsmosisConcentratedliquidityV1beta1IncentiveRecord,
+  IncentiveRecordBody as OsmosisConcentratedliquidityV1beta1IncentiveRecordBody,
+} from "./osmosis/concentratedliquidity/v1beta1/incentive_record_pb.js";
 export {
-  CreateConcentratedLiquidityPoolsProposal as OsmosisConcentratedLiquidityCreateConcentratedLiquidityPoolsProposal,
-  TickSpacingDecreaseProposal as OsmosisConcentratedLiquidityTickSpacingDecreaseProposal,
-  PoolIdToTickSpacingRecord as OsmosisConcentratedLiquidityPoolIdToTickSpacingRecord,
-  PoolRecord as OsmosisConcentratedLiquidityPoolRecord,
-} from "./osmosis/concentrated-liquidity/gov_pb.js";
+  CreateConcentratedLiquidityPoolsProposal as OsmosisConcentratedliquidityV1beta1CreateConcentratedLiquidityPoolsProposal,
+  TickSpacingDecreaseProposal as OsmosisConcentratedliquidityV1beta1TickSpacingDecreaseProposal,
+  PoolIdToTickSpacingRecord as OsmosisConcentratedliquidityV1beta1PoolIdToTickSpacingRecord,
+  PoolRecord as OsmosisConcentratedliquidityV1beta1PoolRecord,
+} from "./osmosis/concentratedliquidity/v1beta1/gov_pb.js";
 export {
-  FullTick as OsmosisConcentratedLiquidityFullTick,
-  PoolData as OsmosisConcentratedLiquidityPoolData,
-  PositionData as OsmosisConcentratedLiquidityPositionData,
-  GenesisState as OsmosisConcentratedLiquidityGenesisState,
-  AccumObject as OsmosisConcentratedLiquidityAccumObject,
-} from "./osmosis/concentrated-liquidity/genesis_pb.js";
+  FullTick as OsmosisConcentratedliquidityV1beta1FullTick,
+  PoolData as OsmosisConcentratedliquidityV1beta1PoolData,
+  PositionData as OsmosisConcentratedliquidityV1beta1PositionData,
+  GenesisState as OsmosisConcentratedliquidityV1beta1GenesisState,
+  AccumObject as OsmosisConcentratedliquidityV1beta1AccumObject,
+} from "./osmosis/concentratedliquidity/v1beta1/genesis_pb.js";
 export {
-  MsgCreateConcentratedPool as OsmosisConcentratedLiquidityPoolModelConcentratedMsgCreateConcentratedPool,
-  MsgCreateConcentratedPoolResponse as OsmosisConcentratedLiquidityPoolModelConcentratedMsgCreateConcentratedPoolResponse,
-} from "./osmosis/concentrated-liquidity/pool-model/concentrated/tx_pb.js";
+  MsgCreateConcentratedPool as OsmosisConcentratedliquidityPoolmodelConcentratedV1beta1MsgCreateConcentratedPool,
+  MsgCreateConcentratedPoolResponse as OsmosisConcentratedliquidityPoolmodelConcentratedV1beta1MsgCreateConcentratedPoolResponse,
+} from "./osmosis/concentratedliquidity/poolmodel/concentrated/v1beta1/tx_pb.js";
 export {
-  MsgCreateConcentratedPoolService as OsmosisConcentratedLiquidityPoolModelConcentratedMsgCreateConcentratedPoolService,
-} from "./osmosis/concentrated-liquidity/pool-model/concentrated/tx_cosmes.js";
+  MsgCreateConcentratedPoolService as OsmosisConcentratedliquidityPoolmodelConcentratedV1beta1MsgCreateConcentratedPoolService,
+} from "./osmosis/concentratedliquidity/poolmodel/concentrated/v1beta1/tx_cosmes.js";
 export {
   AccumulatorContent as OsmosisAccumV1beta1AccumulatorContent,
   Options as OsmosisAccumV1beta1Options,
   Record as OsmosisAccumV1beta1Record,
 } from "./osmosis/accum/v1beta1/accum_pb.js";
+export {
+  ClientState as IbcLightclientsWasmV1ClientState,
+  ConsensusState as IbcLightclientsWasmV1ConsensusState,
+  ClientMessage as IbcLightclientsWasmV1ClientMessage,
+} from "./ibc/lightclients/wasm/v1/wasm_pb.js";
+export {
+  MsgStoreCode as IbcLightclientsWasmV1MsgStoreCode,
+  MsgStoreCodeResponse as IbcLightclientsWasmV1MsgStoreCodeResponse,
+  MsgRemoveChecksum as IbcLightclientsWasmV1MsgRemoveChecksum,
+  MsgRemoveChecksumResponse as IbcLightclientsWasmV1MsgRemoveChecksumResponse,
+  MsgMigrateContract as IbcLightclientsWasmV1MsgMigrateContract,
+  MsgMigrateContractResponse as IbcLightclientsWasmV1MsgMigrateContractResponse,
+} from "./ibc/lightclients/wasm/v1/tx_pb.js";
+export {
+  MsgStoreCodeService as IbcLightclientsWasmV1MsgStoreCodeService,
+  MsgRemoveChecksumService as IbcLightclientsWasmV1MsgRemoveChecksumService,
+  MsgMigrateContractService as IbcLightclientsWasmV1MsgMigrateContractService,
+} from "./ibc/lightclients/wasm/v1/tx_cosmes.js";
+export {
+  QueryChecksumsRequest as IbcLightclientsWasmV1QueryChecksumsRequest,
+  QueryChecksumsResponse as IbcLightclientsWasmV1QueryChecksumsResponse,
+  QueryCodeRequest as IbcLightclientsWasmV1QueryCodeRequest,
+  QueryCodeResponse as IbcLightclientsWasmV1QueryCodeResponse,
+} from "./ibc/lightclients/wasm/v1/query_pb.js";
+export {
+  QueryChecksumsService as IbcLightclientsWasmV1QueryChecksumsService,
+  QueryCodeService as IbcLightclientsWasmV1QueryCodeService,
+} from "./ibc/lightclients/wasm/v1/query_cosmes.js";
+export {
+  GenesisState as IbcLightclientsWasmV1GenesisState,
+  Contract as IbcLightclientsWasmV1Contract,
+} from "./ibc/lightclients/wasm/v1/genesis_pb.js";
 export {
   ClientState as IbcLightclientsTendermintV1ClientState,
   ConsensusState as IbcLightclientsTendermintV1ConsensusState,
@@ -1249,6 +1365,10 @@ export {
   MsgUpgradeClientResponse as IbcCoreClientV1MsgUpgradeClientResponse,
   MsgSubmitMisbehaviour as IbcCoreClientV1MsgSubmitMisbehaviour,
   MsgSubmitMisbehaviourResponse as IbcCoreClientV1MsgSubmitMisbehaviourResponse,
+  MsgRecoverClient as IbcCoreClientV1MsgRecoverClient,
+  MsgRecoverClientResponse as IbcCoreClientV1MsgRecoverClientResponse,
+  MsgIBCSoftwareUpgrade as IbcCoreClientV1MsgIBCSoftwareUpgrade,
+  MsgIBCSoftwareUpgradeResponse as IbcCoreClientV1MsgIBCSoftwareUpgradeResponse,
   MsgUpdateParams as IbcCoreClientV1MsgUpdateParams,
   MsgUpdateParamsResponse as IbcCoreClientV1MsgUpdateParamsResponse,
 } from "./ibc/core/client/v1/tx_pb.js";
@@ -1257,6 +1377,8 @@ export {
   MsgUpdateClientService as IbcCoreClientV1MsgUpdateClientService,
   MsgUpgradeClientService as IbcCoreClientV1MsgUpgradeClientService,
   MsgSubmitMisbehaviourService as IbcCoreClientV1MsgSubmitMisbehaviourService,
+  MsgRecoverClientService as IbcCoreClientV1MsgRecoverClientService,
+  MsgIBCSoftwareUpgradeService as IbcCoreClientV1MsgIBCSoftwareUpgradeService,
   MsgUpdateClientParamsService as IbcCoreClientV1MsgUpdateClientParamsService,
 } from "./ibc/core/client/v1/tx_cosmes.js";
 export {
@@ -1299,10 +1421,10 @@ export {
   IdentifiedClientState as IbcCoreClientV1IdentifiedClientState,
   ConsensusStateWithHeight as IbcCoreClientV1ConsensusStateWithHeight,
   ClientConsensusStates as IbcCoreClientV1ClientConsensusStates,
-  ClientUpdateProposal as IbcCoreClientV1ClientUpdateProposal,
-  UpgradeProposal as IbcCoreClientV1UpgradeProposal,
   Height as IbcCoreClientV1Height,
   Params as IbcCoreClientV1Params,
+  ClientUpdateProposal as IbcCoreClientV1ClientUpdateProposal,
+  UpgradeProposal as IbcCoreClientV1UpgradeProposal,
 } from "./ibc/core/client/v1/client_pb.js";
 export {
   ResponseResultType as IbcCoreChannelV1ResponseResultType,
@@ -1433,8 +1555,8 @@ export {
   QueryTotalEscrowForDenomResponse as IbcApplicationsTransferV1QueryTotalEscrowForDenomResponse,
 } from "./ibc/applications/transfer/v1/query_pb.js";
 export {
-  QueryDenomTraceService as IbcApplicationsTransferV1QueryDenomTraceService,
   QueryDenomTracesService as IbcApplicationsTransferV1QueryDenomTracesService,
+  QueryDenomTraceService as IbcApplicationsTransferV1QueryDenomTraceService,
   QueryParamsService as IbcApplicationsTransferV1QueryParamsService,
   QueryDenomHashService as IbcApplicationsTransferV1QueryDenomHashService,
   QueryEscrowAddressService as IbcApplicationsTransferV1QueryEscrowAddressService,
@@ -1620,6 +1742,10 @@ export {
   MsgAddCodeUploadParamsAddressesResponse as CosmwasmWasmV1MsgAddCodeUploadParamsAddressesResponse,
   MsgRemoveCodeUploadParamsAddresses as CosmwasmWasmV1MsgRemoveCodeUploadParamsAddresses,
   MsgRemoveCodeUploadParamsAddressesResponse as CosmwasmWasmV1MsgRemoveCodeUploadParamsAddressesResponse,
+  MsgStoreAndMigrateContract as CosmwasmWasmV1MsgStoreAndMigrateContract,
+  MsgStoreAndMigrateContractResponse as CosmwasmWasmV1MsgStoreAndMigrateContractResponse,
+  MsgUpdateContractLabel as CosmwasmWasmV1MsgUpdateContractLabel,
+  MsgUpdateContractLabelResponse as CosmwasmWasmV1MsgUpdateContractLabelResponse,
 } from "./cosmwasm/wasm/v1/tx_pb.js";
 export {
   MsgStoreCodeService as CosmwasmWasmV1MsgStoreCodeService,
@@ -1637,6 +1763,8 @@ export {
   MsgStoreAndInstantiateContractService as CosmwasmWasmV1MsgStoreAndInstantiateContractService,
   MsgRemoveCodeUploadParamsAddressesService as CosmwasmWasmV1MsgRemoveCodeUploadParamsAddressesService,
   MsgAddCodeUploadParamsAddressesService as CosmwasmWasmV1MsgAddCodeUploadParamsAddressesService,
+  MsgStoreAndMigrateContractService as CosmwasmWasmV1MsgStoreAndMigrateContractService,
+  MsgUpdateContractLabelService as CosmwasmWasmV1MsgUpdateContractLabelService,
 } from "./cosmwasm/wasm/v1/tx_cosmes.js";
 export {
   QueryContractInfoRequest as CosmwasmWasmV1QueryContractInfoRequest,
@@ -1690,7 +1818,7 @@ export {
   AccessConfigUpdate as CosmwasmWasmV1AccessConfigUpdate,
   UpdateInstantiateConfigProposal as CosmwasmWasmV1UpdateInstantiateConfigProposal,
   StoreAndInstantiateContractProposal as CosmwasmWasmV1StoreAndInstantiateContractProposal,
-} from "./cosmwasm/wasm/v1/proposal_pb.js";
+} from "./cosmwasm/wasm/v1/proposal_legacy_pb.js";
 export {
   MsgIBCSend as CosmwasmWasmV1MsgIBCSend,
   MsgIBCSendResponse as CosmwasmWasmV1MsgIBCSendResponse,
@@ -1703,8 +1831,10 @@ export {
   Sequence as CosmwasmWasmV1Sequence,
 } from "./cosmwasm/wasm/v1/genesis_pb.js";
 export {
+  StoreCodeAuthorization as CosmwasmWasmV1StoreCodeAuthorization,
   ContractExecutionAuthorization as CosmwasmWasmV1ContractExecutionAuthorization,
   ContractMigrationAuthorization as CosmwasmWasmV1ContractMigrationAuthorization,
+  CodeGrant as CosmwasmWasmV1CodeGrant,
   ContractGrant as CosmwasmWasmV1ContractGrant,
   MaxCallsLimit as CosmwasmWasmV1MaxCallsLimit,
   MaxFundsLimit as CosmwasmWasmV1MaxFundsLimit,
@@ -1881,6 +2011,8 @@ export {
   MsgCancelUnbondingDelegationResponse as CosmosStakingV1beta1MsgCancelUnbondingDelegationResponse,
   MsgUpdateParams as CosmosStakingV1beta1MsgUpdateParams,
   MsgUpdateParamsResponse as CosmosStakingV1beta1MsgUpdateParamsResponse,
+  MsgRotateConsPubKey as CosmosStakingV1beta1MsgRotateConsPubKey,
+  MsgRotateConsPubKeyResponse as CosmosStakingV1beta1MsgRotateConsPubKeyResponse,
 } from "./cosmos/staking/v1beta1/tx_pb.js";
 export {
   MsgCreateValidatorService as CosmosStakingV1beta1MsgCreateValidatorService,
@@ -1890,11 +2022,13 @@ export {
   MsgUndelegateService as CosmosStakingV1beta1MsgUndelegateService,
   MsgCancelUnbondingDelegationService as CosmosStakingV1beta1MsgCancelUnbondingDelegationService,
   MsgUpdateParamsService as CosmosStakingV1beta1MsgUpdateParamsService,
+  MsgRotateConsPubKeyService as CosmosStakingV1beta1MsgRotateConsPubKeyService,
 } from "./cosmos/staking/v1beta1/tx_cosmes.js";
 export {
   BondStatus as CosmosStakingV1beta1BondStatus,
   Infraction as CosmosStakingV1beta1Infraction,
   HistoricalInfo as CosmosStakingV1beta1HistoricalInfo,
+  HistoricalRecord as CosmosStakingV1beta1HistoricalRecord,
   CommissionRates as CosmosStakingV1beta1CommissionRates,
   Commission as CosmosStakingV1beta1Commission,
   Description as CosmosStakingV1beta1Description,
@@ -1915,6 +2049,8 @@ export {
   RedelegationResponse as CosmosStakingV1beta1RedelegationResponse,
   Pool as CosmosStakingV1beta1Pool,
   ValidatorUpdates as CosmosStakingV1beta1ValidatorUpdates,
+  ConsPubKeyRotationHistory as CosmosStakingV1beta1ConsPubKeyRotationHistory,
+  ValAddrsOfRotatedConsKeys as CosmosStakingV1beta1ValAddrsOfRotatedConsKeys,
 } from "./cosmos/staking/v1beta1/staking_pb.js";
 export {
   QueryValidatorsRequest as CosmosStakingV1beta1QueryValidatorsRequest,
@@ -2018,6 +2154,44 @@ export {
   ReflectionServiceFileDescriptorsService as CosmosReflectionV1ReflectionServiceFileDescriptorsService,
 } from "./cosmos/reflection/v1/reflection_cosmes.js";
 export {
+  Budget as CosmosProtocolpoolV1Budget,
+} from "./cosmos/protocolpool/v1/types_pb.js";
+export {
+  MsgFundCommunityPool as CosmosProtocolpoolV1MsgFundCommunityPool,
+  MsgFundCommunityPoolResponse as CosmosProtocolpoolV1MsgFundCommunityPoolResponse,
+  MsgCommunityPoolSpend as CosmosProtocolpoolV1MsgCommunityPoolSpend,
+  MsgCommunityPoolSpendResponse as CosmosProtocolpoolV1MsgCommunityPoolSpendResponse,
+  MsgSubmitBudgetProposal as CosmosProtocolpoolV1MsgSubmitBudgetProposal,
+  MsgSubmitBudgetProposalResponse as CosmosProtocolpoolV1MsgSubmitBudgetProposalResponse,
+  MsgClaimBudget as CosmosProtocolpoolV1MsgClaimBudget,
+  MsgClaimBudgetResponse as CosmosProtocolpoolV1MsgClaimBudgetResponse,
+  MsgCreateContinuousFund as CosmosProtocolpoolV1MsgCreateContinuousFund,
+  MsgCreateContinuousFundResponse as CosmosProtocolpoolV1MsgCreateContinuousFundResponse,
+  MsgCancelContinuousFund as CosmosProtocolpoolV1MsgCancelContinuousFund,
+  MsgCancelContinuousFundResponse as CosmosProtocolpoolV1MsgCancelContinuousFundResponse,
+} from "./cosmos/protocolpool/v1/tx_pb.js";
+export {
+  MsgFundCommunityPoolService as CosmosProtocolpoolV1MsgFundCommunityPoolService,
+  MsgCommunityPoolSpendService as CosmosProtocolpoolV1MsgCommunityPoolSpendService,
+  MsgSubmitBudgetProposalService as CosmosProtocolpoolV1MsgSubmitBudgetProposalService,
+  MsgClaimBudgetService as CosmosProtocolpoolV1MsgClaimBudgetService,
+  MsgCreateContinuousFundService as CosmosProtocolpoolV1MsgCreateContinuousFundService,
+  MsgCancelContinuousFundService as CosmosProtocolpoolV1MsgCancelContinuousFundService,
+} from "./cosmos/protocolpool/v1/tx_cosmes.js";
+export {
+  QueryCommunityPoolRequest as CosmosProtocolpoolV1QueryCommunityPoolRequest,
+  QueryCommunityPoolResponse as CosmosProtocolpoolV1QueryCommunityPoolResponse,
+  QueryUnclaimedBudgetRequest as CosmosProtocolpoolV1QueryUnclaimedBudgetRequest,
+  QueryUnclaimedBudgetResponse as CosmosProtocolpoolV1QueryUnclaimedBudgetResponse,
+} from "./cosmos/protocolpool/v1/query_pb.js";
+export {
+  QueryCommunityPoolService as CosmosProtocolpoolV1QueryCommunityPoolService,
+  QueryUnclaimedBudgetService as CosmosProtocolpoolV1QueryUnclaimedBudgetService,
+} from "./cosmos/protocolpool/v1/query_cosmes.js";
+export {
+  Module as CosmosProtocolpoolModuleV1Module,
+} from "./cosmos/protocolpool/module/v1/module_pb.js";
+export {
   QueryParamsRequest as CosmosParamsV1beta1QueryParamsRequest,
   QueryParamsResponse as CosmosParamsV1beta1QueryParamsResponse,
   QuerySubspacesRequest as CosmosParamsV1beta1QuerySubspacesRequest,
@@ -2071,27 +2245,42 @@ export {
 } from "./cosmos/nft/v1beta1/tx_cosmes.js";
 export {
   QueryBalanceRequest as CosmosNftV1beta1QueryBalanceRequest,
+  QueryBalanceByQueryStringRequest as CosmosNftV1beta1QueryBalanceByQueryStringRequest,
   QueryBalanceResponse as CosmosNftV1beta1QueryBalanceResponse,
+  QueryBalanceByQueryStringResponse as CosmosNftV1beta1QueryBalanceByQueryStringResponse,
   QueryOwnerRequest as CosmosNftV1beta1QueryOwnerRequest,
+  QueryOwnerByQueryStringRequest as CosmosNftV1beta1QueryOwnerByQueryStringRequest,
   QueryOwnerResponse as CosmosNftV1beta1QueryOwnerResponse,
+  QueryOwnerByQueryStringResponse as CosmosNftV1beta1QueryOwnerByQueryStringResponse,
   QuerySupplyRequest as CosmosNftV1beta1QuerySupplyRequest,
+  QuerySupplyByQueryStringRequest as CosmosNftV1beta1QuerySupplyByQueryStringRequest,
   QuerySupplyResponse as CosmosNftV1beta1QuerySupplyResponse,
+  QuerySupplyByQueryStringResponse as CosmosNftV1beta1QuerySupplyByQueryStringResponse,
   QueryNFTsRequest as CosmosNftV1beta1QueryNFTsRequest,
   QueryNFTsResponse as CosmosNftV1beta1QueryNFTsResponse,
   QueryNFTRequest as CosmosNftV1beta1QueryNFTRequest,
+  QueryNFTByQueryStringRequest as CosmosNftV1beta1QueryNFTByQueryStringRequest,
   QueryNFTResponse as CosmosNftV1beta1QueryNFTResponse,
+  QueryNFTByQueryStringResponse as CosmosNftV1beta1QueryNFTByQueryStringResponse,
   QueryClassRequest as CosmosNftV1beta1QueryClassRequest,
+  QueryClassByQueryStringRequest as CosmosNftV1beta1QueryClassByQueryStringRequest,
   QueryClassResponse as CosmosNftV1beta1QueryClassResponse,
+  QueryClassByQueryStringResponse as CosmosNftV1beta1QueryClassByQueryStringResponse,
   QueryClassesRequest as CosmosNftV1beta1QueryClassesRequest,
   QueryClassesResponse as CosmosNftV1beta1QueryClassesResponse,
 } from "./cosmos/nft/v1beta1/query_pb.js";
 export {
   QueryBalanceService as CosmosNftV1beta1QueryBalanceService,
+  QueryBalanceByQueryStringService as CosmosNftV1beta1QueryBalanceByQueryStringService,
   QueryOwnerService as CosmosNftV1beta1QueryOwnerService,
+  QueryOwnerByQueryStringService as CosmosNftV1beta1QueryOwnerByQueryStringService,
   QuerySupplyService as CosmosNftV1beta1QuerySupplyService,
+  QuerySupplyByQueryStringService as CosmosNftV1beta1QuerySupplyByQueryStringService,
   QueryNFTsService as CosmosNftV1beta1QueryNFTsService,
   QueryNFTService as CosmosNftV1beta1QueryNFTService,
+  QueryNFTByQueryStringService as CosmosNftV1beta1QueryNFTByQueryStringService,
   QueryClassService as CosmosNftV1beta1QueryClassService,
+  QueryClassByQueryStringService as CosmosNftV1beta1QueryClassByQueryStringService,
   QueryClassesService as CosmosNftV1beta1QueryClassesService,
 } from "./cosmos/nft/v1beta1/query_cosmes.js";
 export {
@@ -2430,10 +2619,13 @@ export {
   MsgGrantAllowanceResponse as CosmosFeegrantV1beta1MsgGrantAllowanceResponse,
   MsgRevokeAllowance as CosmosFeegrantV1beta1MsgRevokeAllowance,
   MsgRevokeAllowanceResponse as CosmosFeegrantV1beta1MsgRevokeAllowanceResponse,
+  MsgPruneAllowances as CosmosFeegrantV1beta1MsgPruneAllowances,
+  MsgPruneAllowancesResponse as CosmosFeegrantV1beta1MsgPruneAllowancesResponse,
 } from "./cosmos/feegrant/v1beta1/tx_pb.js";
 export {
   MsgGrantAllowanceService as CosmosFeegrantV1beta1MsgGrantAllowanceService,
   MsgRevokeAllowanceService as CosmosFeegrantV1beta1MsgRevokeAllowanceService,
+  MsgPruneAllowancesService as CosmosFeegrantV1beta1MsgPruneAllowancesService,
 } from "./cosmos/feegrant/v1beta1/tx_cosmes.js";
 export {
   QueryAllowanceRequest as CosmosFeegrantV1beta1QueryAllowanceRequest,
@@ -2618,6 +2810,23 @@ export {
   Module as CosmosCrisisModuleV1Module,
 } from "./cosmos/crisis/module/v1/module_pb.js";
 export {
+  MsgIncreaseCounter as CosmosCounterV1MsgIncreaseCounter,
+  MsgIncreaseCountResponse as CosmosCounterV1MsgIncreaseCountResponse,
+} from "./cosmos/counter/v1/tx_pb.js";
+export {
+  MsgIncreaseCountService as CosmosCounterV1MsgIncreaseCountService,
+} from "./cosmos/counter/v1/tx_cosmes.js";
+export {
+  QueryGetCountRequest as CosmosCounterV1QueryGetCountRequest,
+  QueryGetCountResponse as CosmosCounterV1QueryGetCountResponse,
+} from "./cosmos/counter/v1/query_pb.js";
+export {
+  QueryGetCountService as CosmosCounterV1QueryGetCountService,
+} from "./cosmos/counter/v1/query_cosmes.js";
+export {
+  Module as CosmosCounterModuleV1Module,
+} from "./cosmos/counter/module/v1/module_pb.js";
+export {
   MsgUpdateParams as CosmosConsensusV1MsgUpdateParams,
   MsgUpdateParamsResponse as CosmosConsensusV1MsgUpdateParamsResponse,
 } from "./cosmos/consensus/v1/tx_pb.js";
@@ -2789,10 +2998,13 @@ export {
   MsgUpdateParamsResponse as CosmosBankV1beta1MsgUpdateParamsResponse,
   MsgSetSendEnabled as CosmosBankV1beta1MsgSetSendEnabled,
   MsgSetSendEnabledResponse as CosmosBankV1beta1MsgSetSendEnabledResponse,
+  MsgBurn as CosmosBankV1beta1MsgBurn,
+  MsgBurnResponse as CosmosBankV1beta1MsgBurnResponse,
 } from "./cosmos/bank/v1beta1/tx_pb.js";
 export {
   MsgSendService as CosmosBankV1beta1MsgSendService,
   MsgMultiSendService as CosmosBankV1beta1MsgMultiSendService,
+  MsgBurnService as CosmosBankV1beta1MsgBurnService,
   MsgUpdateParamsService as CosmosBankV1beta1MsgUpdateParamsService,
   MsgSetSendEnabledService as CosmosBankV1beta1MsgSetSendEnabledService,
 } from "./cosmos/bank/v1beta1/tx_cosmes.js";
@@ -2987,6 +3199,69 @@ export {
   Module as CosmosAppRuntimeV1alpha1Module,
   StoreKeyConfig as CosmosAppRuntimeV1alpha1StoreKeyConfig,
 } from "./cosmos/app/runtime/v1alpha1/module_pb.js";
+export {
+  MsgInit as CosmosAccountsV1MsgInit,
+  MsgInitResponse as CosmosAccountsV1MsgInitResponse,
+  MsgExecute as CosmosAccountsV1MsgExecute,
+  MsgExecuteResponse as CosmosAccountsV1MsgExecuteResponse,
+  MsgExecuteBundle as CosmosAccountsV1MsgExecuteBundle,
+  MsgExecuteBundleResponse as CosmosAccountsV1MsgExecuteBundleResponse,
+} from "./cosmos/accounts/v1/tx_pb.js";
+export {
+  MsgInitService as CosmosAccountsV1MsgInitService,
+  MsgExecuteService as CosmosAccountsV1MsgExecuteService,
+  MsgExecuteBundleService as CosmosAccountsV1MsgExecuteBundleService,
+} from "./cosmos/accounts/v1/tx_cosmes.js";
+export {
+  AccountQueryRequest as CosmosAccountsV1AccountQueryRequest,
+  AccountQueryResponse as CosmosAccountsV1AccountQueryResponse,
+  SchemaRequest as CosmosAccountsV1SchemaRequest,
+  SchemaResponse as CosmosAccountsV1SchemaResponse,
+  SchemaResponse_Handler as CosmosAccountsV1SchemaResponse_Handler,
+  AccountTypeRequest as CosmosAccountsV1AccountTypeRequest,
+  AccountTypeResponse as CosmosAccountsV1AccountTypeResponse,
+} from "./cosmos/accounts/v1/query_pb.js";
+export {
+  QueryAccountQueryService as CosmosAccountsV1QueryAccountQueryService,
+  QuerySchemaService as CosmosAccountsV1QuerySchemaService,
+  QueryAccountTypeService as CosmosAccountsV1QueryAccountTypeService,
+} from "./cosmos/accounts/v1/query_cosmes.js";
+export {
+  GenesisState as CosmosAccountsV1GenesisState,
+  GenesisAccount as CosmosAccountsV1GenesisAccount,
+  KVPair as CosmosAccountsV1KVPair,
+} from "./cosmos/accounts/v1/genesis_pb.js";
+export {
+  UserOperation as CosmosAccountsV1UserOperation,
+  UserOperationResponse as CosmosAccountsV1UserOperationResponse,
+} from "./cosmos/accounts/v1/account_abstraction_pb.js";
+export {
+  MsgInit as CosmosAccountsTestingRotationV1MsgInit,
+  MsgInitResponse as CosmosAccountsTestingRotationV1MsgInitResponse,
+  MsgRotatePubKey as CosmosAccountsTestingRotationV1MsgRotatePubKey,
+  MsgRotatePubKeyResponse as CosmosAccountsTestingRotationV1MsgRotatePubKeyResponse,
+} from "./cosmos/accounts/testing/rotation/v1/partial_pb.js";
+export {
+  MsgInit as CosmosAccountsTestingCounterV1MsgInit,
+  MsgInitResponse as CosmosAccountsTestingCounterV1MsgInitResponse,
+  MsgIncreaseCounter as CosmosAccountsTestingCounterV1MsgIncreaseCounter,
+  MsgIncreaseCounterResponse as CosmosAccountsTestingCounterV1MsgIncreaseCounterResponse,
+  QueryCounterRequest as CosmosAccountsTestingCounterV1QueryCounterRequest,
+  QueryCounterResponse as CosmosAccountsTestingCounterV1QueryCounterResponse,
+} from "./cosmos/accounts/testing/counter/v1/counter_pb.js";
+export {
+  Module as CosmosAccountsModuleV1Module,
+} from "./cosmos/accounts/module/v1/module_pb.js";
+export {
+  MsgAuthenticate as CosmosAccountsInterfacesAccountAbstractionV1MsgAuthenticate,
+  MsgAuthenticateResponse as CosmosAccountsInterfacesAccountAbstractionV1MsgAuthenticateResponse,
+  MsgPayBundler as CosmosAccountsInterfacesAccountAbstractionV1MsgPayBundler,
+  MsgPayBundlerResponse as CosmosAccountsInterfacesAccountAbstractionV1MsgPayBundlerResponse,
+  MsgExecute as CosmosAccountsInterfacesAccountAbstractionV1MsgExecute,
+  MsgExecuteResponse as CosmosAccountsInterfacesAccountAbstractionV1MsgExecuteResponse,
+  QueryAuthenticationMethods as CosmosAccountsInterfacesAccountAbstractionV1QueryAuthenticationMethods,
+  QueryAuthenticationMethodsResponse as CosmosAccountsInterfacesAccountAbstractionV1QueryAuthenticationMethodsResponse,
+} from "./cosmos/accounts/interfaces/account_abstraction/v1/interface_pb.js";
 export {
   GenesisOwners as CapabilityV1GenesisOwners,
   GenesisState as CapabilityV1GenesisState,

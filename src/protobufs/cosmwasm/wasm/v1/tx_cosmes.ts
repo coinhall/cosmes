@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { MsgAddCodeUploadParamsAddresses, MsgAddCodeUploadParamsAddressesResponse, MsgClearAdmin, MsgClearAdminResponse, MsgExecuteContract, MsgExecuteContractResponse, MsgInstantiateContract, MsgInstantiateContract2, MsgInstantiateContract2Response, MsgInstantiateContractResponse, MsgMigrateContract, MsgMigrateContractResponse, MsgPinCodes, MsgPinCodesResponse, MsgRemoveCodeUploadParamsAddresses, MsgRemoveCodeUploadParamsAddressesResponse, MsgStoreAndInstantiateContract, MsgStoreAndInstantiateContractResponse, MsgStoreCode, MsgStoreCodeResponse, MsgSudoContract, MsgSudoContractResponse, MsgUnpinCodes, MsgUnpinCodesResponse, MsgUpdateAdmin, MsgUpdateAdminResponse, MsgUpdateInstantiateConfig, MsgUpdateInstantiateConfigResponse, MsgUpdateParams, MsgUpdateParamsResponse } from "./tx_pb.js";
+import { MsgAddCodeUploadParamsAddresses, MsgAddCodeUploadParamsAddressesResponse, MsgClearAdmin, MsgClearAdminResponse, MsgExecuteContract, MsgExecuteContractResponse, MsgInstantiateContract, MsgInstantiateContract2, MsgInstantiateContract2Response, MsgInstantiateContractResponse, MsgMigrateContract, MsgMigrateContractResponse, MsgPinCodes, MsgPinCodesResponse, MsgRemoveCodeUploadParamsAddresses, MsgRemoveCodeUploadParamsAddressesResponse, MsgStoreAndInstantiateContract, MsgStoreAndInstantiateContractResponse, MsgStoreAndMigrateContract, MsgStoreAndMigrateContractResponse, MsgStoreCode, MsgStoreCodeResponse, MsgSudoContract, MsgSudoContractResponse, MsgUnpinCodes, MsgUnpinCodesResponse, MsgUpdateAdmin, MsgUpdateAdminResponse, MsgUpdateContractLabel, MsgUpdateContractLabelResponse, MsgUpdateInstantiateConfig, MsgUpdateInstantiateConfigResponse, MsgUpdateParams, MsgUpdateParamsResponse } from "./tx_pb.js";
 
 const TYPE_NAME = "cosmwasm.wasm.v1.Msg";
 
@@ -70,7 +70,7 @@ export const MsgMigrateContractService = {
 } as const;
 
 /**
- * UpdateAdmin sets a new   admin for a smart contract
+ * UpdateAdmin sets a new admin for a smart contract
  *
  * @generated from rpc cosmwasm.wasm.v1.Msg.UpdateAdmin
  */
@@ -206,5 +206,34 @@ export const MsgAddCodeUploadParamsAddressesService = {
   method: "AddCodeUploadParamsAddresses",
   Request: MsgAddCodeUploadParamsAddresses,
   Response: MsgAddCodeUploadParamsAddressesResponse,
+} as const;
+
+/**
+ * StoreAndMigrateContract defines a governance operation for storing
+ * and migrating the contract. The authority is defined in the keeper.
+ *
+ * Since: 0.42
+ *
+ * @generated from rpc cosmwasm.wasm.v1.Msg.StoreAndMigrateContract
+ */
+export const MsgStoreAndMigrateContractService = {
+  typeName: TYPE_NAME,
+  method: "StoreAndMigrateContract",
+  Request: MsgStoreAndMigrateContract,
+  Response: MsgStoreAndMigrateContractResponse,
+} as const;
+
+/**
+ * UpdateContractLabel sets a new label for a smart contract
+ *
+ * Since: 0.43
+ *
+ * @generated from rpc cosmwasm.wasm.v1.Msg.UpdateContractLabel
+ */
+export const MsgUpdateContractLabelService = {
+  typeName: TYPE_NAME,
+  method: "UpdateContractLabel",
+  Request: MsgUpdateContractLabel,
+  Response: MsgUpdateContractLabelResponse,
 } as const;
 

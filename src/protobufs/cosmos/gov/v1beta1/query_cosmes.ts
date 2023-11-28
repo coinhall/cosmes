@@ -33,6 +33,7 @@ export const QueryProposalsService = {
 
 /**
  * Vote queries voted information based on proposalID, voterAddr.
+ * Due to how we handle state, this query would error for proposals that has already been finished.
  *
  * @generated from rpc cosmos.gov.v1beta1.Query.Vote
  */

@@ -7,6 +7,7 @@ import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialM
 import { Duration, Message, proto3, protoInt64 } from "@bufbuild/protobuf";
 import { Params } from "./params_pb.js";
 import { Gauge } from "./gauge_pb.js";
+import { Group } from "./group_pb.js";
 
 /**
  * GenesisState defines the incentives module's various parameters when first
@@ -23,7 +24,8 @@ export class GenesisState extends Message<GenesisState> {
   params?: Params;
 
   /**
-   * gauges are all gauges that should exist at genesis
+   * gauges are all gauges (not including group gauges) that should exist at
+   * genesis
    *
    * @generated from field: repeated osmosis.incentives.Gauge gauges = 2;
    */
@@ -45,6 +47,20 @@ export class GenesisState extends Message<GenesisState> {
    */
   lastGaugeId = protoInt64.zero;
 
+  /**
+   * gauges are all group gauges that should exist at genesis
+   *
+   * @generated from field: repeated osmosis.incentives.Gauge group_gauges = 5;
+   */
+  groupGauges: Gauge[] = [];
+
+  /**
+   * groups are all the groups that should exist at genesis
+   *
+   * @generated from field: repeated osmosis.incentives.Group groups = 6;
+   */
+  groups: Group[] = [];
+
   constructor(data?: PartialMessage<GenesisState>) {
     super();
     proto3.util.initPartial(data, this);
@@ -57,6 +73,8 @@ export class GenesisState extends Message<GenesisState> {
     { no: 2, name: "gauges", kind: "message", T: Gauge, repeated: true },
     { no: 3, name: "lockable_durations", kind: "message", T: Duration, repeated: true },
     { no: 4, name: "last_gauge_id", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+    { no: 5, name: "group_gauges", kind: "message", T: Gauge, repeated: true },
+    { no: 6, name: "groups", kind: "message", T: Group, repeated: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): GenesisState {

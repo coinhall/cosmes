@@ -6,7 +6,7 @@
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
 import { Message, proto3, protoInt64 } from "@bufbuild/protobuf";
 import { Params } from "./params_pb.js";
-import { BaseDenom, InfoByPoolType, PoolWeights, TokenPairArbRoutes } from "./protorev_pb.js";
+import { BaseDenom, CyclicArbTracker, InfoByPoolType, PoolWeights, TokenPairArbRoutes } from "./protorev_pb.js";
 import { Coin } from "../../../cosmos/base/v1beta1/coin_pb.js";
 
 /**
@@ -114,6 +114,11 @@ export class GenesisState extends Message<GenesisState> {
    */
   infoByPoolType?: InfoByPoolType;
 
+  /**
+   * @generated from field: osmosis.protorev.v1beta1.CyclicArbTracker cyclic_arb_tracker = 14;
+   */
+  cyclicArbTracker?: CyclicArbTracker;
+
   constructor(data?: PartialMessage<GenesisState>) {
     super();
     proto3.util.initPartial(data, this);
@@ -135,6 +140,7 @@ export class GenesisState extends Message<GenesisState> {
     { no: 11, name: "point_count_for_block", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
     { no: 12, name: "profits", kind: "message", T: Coin, repeated: true },
     { no: 13, name: "info_by_pool_type", kind: "message", T: InfoByPoolType },
+    { no: 14, name: "cyclic_arb_tracker", kind: "message", T: CyclicArbTracker },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): GenesisState {

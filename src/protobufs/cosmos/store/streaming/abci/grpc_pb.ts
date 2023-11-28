@@ -11,7 +11,11 @@ import { StoreKVPair } from "../../v1beta1/listening_pb.js";
 /**
  * ListenEndBlockRequest is the request type for the ListenEndBlock RPC method
  *
+ * Deprecated: Store v1 is deprecated as of v0.50.x, please use Store v2 types
+ * instead.
+ *
  * @generated from message cosmos.store.streaming.abci.ListenFinalizeBlockRequest
+ * @deprecated
  */
 export class ListenFinalizeBlockRequest extends Message<ListenFinalizeBlockRequest> {
   /**
@@ -56,7 +60,11 @@ export class ListenFinalizeBlockRequest extends Message<ListenFinalizeBlockReque
 /**
  * ListenEndBlockResponse is the response type for the ListenEndBlock RPC method
  *
+ * Deprecated: Store v1 is deprecated as of v0.50.x, please use Store v2 types
+ * instead.
+ *
  * @generated from message cosmos.store.streaming.abci.ListenFinalizeBlockResponse
+ * @deprecated
  */
 export class ListenFinalizeBlockResponse extends Message<ListenFinalizeBlockResponse> {
   constructor(data?: PartialMessage<ListenFinalizeBlockResponse>) {
@@ -89,11 +97,16 @@ export class ListenFinalizeBlockResponse extends Message<ListenFinalizeBlockResp
 /**
  * ListenCommitRequest is the request type for the ListenCommit RPC method
  *
+ * Deprecated: Store v1 is deprecated as of v0.50.x, please use Store v2 types
+ * instead.
+ *
  * @generated from message cosmos.store.streaming.abci.ListenCommitRequest
+ * @deprecated
  */
 export class ListenCommitRequest extends Message<ListenCommitRequest> {
   /**
-   * explicitly pass in block height as ResponseCommit does not contain this info
+   * explicitly pass in block height as ResponseCommit does not contain this
+   * info
    *
    * @generated from field: int64 block_height = 1;
    */
@@ -142,7 +155,11 @@ export class ListenCommitRequest extends Message<ListenCommitRequest> {
 /**
  * ListenCommitResponse is the response type for the ListenCommit RPC method
  *
+ * Deprecated: Store v1 is deprecated as of v0.50.x, please use Store v2 types
+ * instead.
+ *
  * @generated from message cosmos.store.streaming.abci.ListenCommitResponse
+ * @deprecated
  */
 export class ListenCommitResponse extends Message<ListenCommitResponse> {
   constructor(data?: PartialMessage<ListenCommitResponse>) {

@@ -384,3 +384,137 @@ export class MsgSplitRouteSwapExactAmountOutResponse extends Message<MsgSplitRou
   }
 }
 
+/**
+ * ===================== MsgSetDenomPairTakerFee
+ *
+ * @generated from message osmosis.poolmanager.v1beta1.MsgSetDenomPairTakerFee
+ */
+export class MsgSetDenomPairTakerFee extends Message<MsgSetDenomPairTakerFee> {
+  /**
+   * @generated from field: string sender = 1;
+   */
+  sender = "";
+
+  /**
+   * @generated from field: repeated osmosis.poolmanager.v1beta1.DenomPairTakerFee denom_pair_taker_fee = 2;
+   */
+  denomPairTakerFee: DenomPairTakerFee[] = [];
+
+  constructor(data?: PartialMessage<MsgSetDenomPairTakerFee>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "osmosis.poolmanager.v1beta1.MsgSetDenomPairTakerFee";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "sender", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "denom_pair_taker_fee", kind: "message", T: DenomPairTakerFee, repeated: true },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgSetDenomPairTakerFee {
+    return new MsgSetDenomPairTakerFee().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MsgSetDenomPairTakerFee {
+    return new MsgSetDenomPairTakerFee().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MsgSetDenomPairTakerFee {
+    return new MsgSetDenomPairTakerFee().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: MsgSetDenomPairTakerFee | PlainMessage<MsgSetDenomPairTakerFee> | undefined, b: MsgSetDenomPairTakerFee | PlainMessage<MsgSetDenomPairTakerFee> | undefined): boolean {
+    return proto3.util.equals(MsgSetDenomPairTakerFee, a, b);
+  }
+}
+
+/**
+ * @generated from message osmosis.poolmanager.v1beta1.MsgSetDenomPairTakerFeeResponse
+ */
+export class MsgSetDenomPairTakerFeeResponse extends Message<MsgSetDenomPairTakerFeeResponse> {
+  /**
+   * @generated from field: bool success = 1;
+   */
+  success = false;
+
+  constructor(data?: PartialMessage<MsgSetDenomPairTakerFeeResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "osmosis.poolmanager.v1beta1.MsgSetDenomPairTakerFeeResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "success", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgSetDenomPairTakerFeeResponse {
+    return new MsgSetDenomPairTakerFeeResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MsgSetDenomPairTakerFeeResponse {
+    return new MsgSetDenomPairTakerFeeResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MsgSetDenomPairTakerFeeResponse {
+    return new MsgSetDenomPairTakerFeeResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: MsgSetDenomPairTakerFeeResponse | PlainMessage<MsgSetDenomPairTakerFeeResponse> | undefined, b: MsgSetDenomPairTakerFeeResponse | PlainMessage<MsgSetDenomPairTakerFeeResponse> | undefined): boolean {
+    return proto3.util.equals(MsgSetDenomPairTakerFeeResponse, a, b);
+  }
+}
+
+/**
+ * @generated from message osmosis.poolmanager.v1beta1.DenomPairTakerFee
+ */
+export class DenomPairTakerFee extends Message<DenomPairTakerFee> {
+  /**
+   * denom0 and denom1 get automatically lexigographically sorted
+   * when being stored, so the order of input here does not matter.
+   *
+   * @generated from field: string denom0 = 1;
+   */
+  denom0 = "";
+
+  /**
+   * @generated from field: string denom1 = 2;
+   */
+  denom1 = "";
+
+  /**
+   * @generated from field: string taker_fee = 3;
+   */
+  takerFee = "";
+
+  constructor(data?: PartialMessage<DenomPairTakerFee>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "osmosis.poolmanager.v1beta1.DenomPairTakerFee";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "denom0", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "denom1", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "taker_fee", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): DenomPairTakerFee {
+    return new DenomPairTakerFee().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): DenomPairTakerFee {
+    return new DenomPairTakerFee().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): DenomPairTakerFee {
+    return new DenomPairTakerFee().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: DenomPairTakerFee | PlainMessage<DenomPairTakerFee> | undefined, b: DenomPairTakerFee | PlainMessage<DenomPairTakerFee> | undefined): boolean {
+    return proto3.util.equals(DenomPairTakerFee, a, b);
+  }
+}
+

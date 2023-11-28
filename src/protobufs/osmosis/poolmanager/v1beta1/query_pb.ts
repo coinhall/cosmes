@@ -86,7 +86,8 @@ export class ParamsResponse extends Message<ParamsResponse> {
  */
 export class EstimateSwapExactAmountInRequest extends Message<EstimateSwapExactAmountInRequest> {
   /**
-   * @generated from field: uint64 pool_id = 2;
+   * @generated from field: uint64 pool_id = 2 [deprecated = true];
+   * @deprecated
    */
   poolId = protoInt64.zero;
 
@@ -135,7 +136,8 @@ export class EstimateSwapExactAmountInRequest extends Message<EstimateSwapExactA
  */
 export class EstimateSwapExactAmountInWithPrimitiveTypesRequest extends Message<EstimateSwapExactAmountInWithPrimitiveTypesRequest> {
   /**
-   * @generated from field: uint64 pool_id = 1;
+   * @generated from field: uint64 pool_id = 1 [deprecated = true];
+   * @deprecated
    */
   poolId = protoInt64.zero;
 
@@ -278,7 +280,8 @@ export class EstimateSwapExactAmountInResponse extends Message<EstimateSwapExact
  */
 export class EstimateSwapExactAmountOutRequest extends Message<EstimateSwapExactAmountOutRequest> {
   /**
-   * @generated from field: uint64 pool_id = 2;
+   * @generated from field: uint64 pool_id = 2 [deprecated = true];
+   * @deprecated
    */
   poolId = protoInt64.zero;
 
@@ -327,7 +330,8 @@ export class EstimateSwapExactAmountOutRequest extends Message<EstimateSwapExact
  */
 export class EstimateSwapExactAmountOutWithPrimitiveTypesRequest extends Message<EstimateSwapExactAmountOutWithPrimitiveTypesRequest> {
   /**
-   * @generated from field: uint64 pool_id = 1;
+   * @generated from field: uint64 pool_id = 1 [deprecated = true];
+   * @deprecated
    */
   poolId = protoInt64.zero;
 
@@ -680,6 +684,84 @@ export class AllPoolsResponse extends Message<AllPoolsResponse> {
 }
 
 /**
+ * =======================================================
+ * ListPoolsByDenomRequest
+ *
+ * @generated from message osmosis.poolmanager.v1beta1.ListPoolsByDenomRequest
+ */
+export class ListPoolsByDenomRequest extends Message<ListPoolsByDenomRequest> {
+  /**
+   * @generated from field: string denom = 1;
+   */
+  denom = "";
+
+  constructor(data?: PartialMessage<ListPoolsByDenomRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "osmosis.poolmanager.v1beta1.ListPoolsByDenomRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "denom", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ListPoolsByDenomRequest {
+    return new ListPoolsByDenomRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ListPoolsByDenomRequest {
+    return new ListPoolsByDenomRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ListPoolsByDenomRequest {
+    return new ListPoolsByDenomRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: ListPoolsByDenomRequest | PlainMessage<ListPoolsByDenomRequest> | undefined, b: ListPoolsByDenomRequest | PlainMessage<ListPoolsByDenomRequest> | undefined): boolean {
+    return proto3.util.equals(ListPoolsByDenomRequest, a, b);
+  }
+}
+
+/**
+ * @generated from message osmosis.poolmanager.v1beta1.ListPoolsByDenomResponse
+ */
+export class ListPoolsByDenomResponse extends Message<ListPoolsByDenomResponse> {
+  /**
+   * @generated from field: repeated google.protobuf.Any pools = 1;
+   */
+  pools: Any[] = [];
+
+  constructor(data?: PartialMessage<ListPoolsByDenomResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "osmosis.poolmanager.v1beta1.ListPoolsByDenomResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "pools", kind: "message", T: Any, repeated: true },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ListPoolsByDenomResponse {
+    return new ListPoolsByDenomResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ListPoolsByDenomResponse {
+    return new ListPoolsByDenomResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ListPoolsByDenomResponse {
+    return new ListPoolsByDenomResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: ListPoolsByDenomResponse | PlainMessage<ListPoolsByDenomResponse> | undefined, b: ListPoolsByDenomResponse | PlainMessage<ListPoolsByDenomResponse> | undefined): boolean {
+    return proto3.util.equals(ListPoolsByDenomResponse, a, b);
+  }
+}
+
+/**
+ * ==========================================================
  * SpotPriceRequest defines the gRPC request structure for a SpotPrice
  * query.
  *
@@ -916,6 +998,298 @@ export class TotalLiquidityResponse extends Message<TotalLiquidityResponse> {
 
   static equals(a: TotalLiquidityResponse | PlainMessage<TotalLiquidityResponse> | undefined, b: TotalLiquidityResponse | PlainMessage<TotalLiquidityResponse> | undefined): boolean {
     return proto3.util.equals(TotalLiquidityResponse, a, b);
+  }
+}
+
+/**
+ * =============================== TotalVolumeForPool
+ *
+ * @generated from message osmosis.poolmanager.v1beta1.TotalVolumeForPoolRequest
+ */
+export class TotalVolumeForPoolRequest extends Message<TotalVolumeForPoolRequest> {
+  /**
+   * @generated from field: uint64 pool_id = 1;
+   */
+  poolId = protoInt64.zero;
+
+  constructor(data?: PartialMessage<TotalVolumeForPoolRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "osmosis.poolmanager.v1beta1.TotalVolumeForPoolRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "pool_id", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TotalVolumeForPoolRequest {
+    return new TotalVolumeForPoolRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TotalVolumeForPoolRequest {
+    return new TotalVolumeForPoolRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TotalVolumeForPoolRequest {
+    return new TotalVolumeForPoolRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: TotalVolumeForPoolRequest | PlainMessage<TotalVolumeForPoolRequest> | undefined, b: TotalVolumeForPoolRequest | PlainMessage<TotalVolumeForPoolRequest> | undefined): boolean {
+    return proto3.util.equals(TotalVolumeForPoolRequest, a, b);
+  }
+}
+
+/**
+ * @generated from message osmosis.poolmanager.v1beta1.TotalVolumeForPoolResponse
+ */
+export class TotalVolumeForPoolResponse extends Message<TotalVolumeForPoolResponse> {
+  /**
+   * @generated from field: repeated cosmos.base.v1beta1.Coin volume = 1;
+   */
+  volume: Coin[] = [];
+
+  constructor(data?: PartialMessage<TotalVolumeForPoolResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "osmosis.poolmanager.v1beta1.TotalVolumeForPoolResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "volume", kind: "message", T: Coin, repeated: true },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TotalVolumeForPoolResponse {
+    return new TotalVolumeForPoolResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TotalVolumeForPoolResponse {
+    return new TotalVolumeForPoolResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TotalVolumeForPoolResponse {
+    return new TotalVolumeForPoolResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: TotalVolumeForPoolResponse | PlainMessage<TotalVolumeForPoolResponse> | undefined, b: TotalVolumeForPoolResponse | PlainMessage<TotalVolumeForPoolResponse> | undefined): boolean {
+    return proto3.util.equals(TotalVolumeForPoolResponse, a, b);
+  }
+}
+
+/**
+ * =============================== TradingPairTakerFee
+ *
+ * @generated from message osmosis.poolmanager.v1beta1.TradingPairTakerFeeRequest
+ */
+export class TradingPairTakerFeeRequest extends Message<TradingPairTakerFeeRequest> {
+  /**
+   * @generated from field: string denom_0 = 1;
+   */
+  denom0 = "";
+
+  /**
+   * @generated from field: string denom_1 = 2;
+   */
+  denom1 = "";
+
+  constructor(data?: PartialMessage<TradingPairTakerFeeRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "osmosis.poolmanager.v1beta1.TradingPairTakerFeeRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "denom_0", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "denom_1", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TradingPairTakerFeeRequest {
+    return new TradingPairTakerFeeRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TradingPairTakerFeeRequest {
+    return new TradingPairTakerFeeRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TradingPairTakerFeeRequest {
+    return new TradingPairTakerFeeRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: TradingPairTakerFeeRequest | PlainMessage<TradingPairTakerFeeRequest> | undefined, b: TradingPairTakerFeeRequest | PlainMessage<TradingPairTakerFeeRequest> | undefined): boolean {
+    return proto3.util.equals(TradingPairTakerFeeRequest, a, b);
+  }
+}
+
+/**
+ * @generated from message osmosis.poolmanager.v1beta1.TradingPairTakerFeeResponse
+ */
+export class TradingPairTakerFeeResponse extends Message<TradingPairTakerFeeResponse> {
+  /**
+   * @generated from field: string taker_fee = 1;
+   */
+  takerFee = "";
+
+  constructor(data?: PartialMessage<TradingPairTakerFeeResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "osmosis.poolmanager.v1beta1.TradingPairTakerFeeResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "taker_fee", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TradingPairTakerFeeResponse {
+    return new TradingPairTakerFeeResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TradingPairTakerFeeResponse {
+    return new TradingPairTakerFeeResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TradingPairTakerFeeResponse {
+    return new TradingPairTakerFeeResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: TradingPairTakerFeeResponse | PlainMessage<TradingPairTakerFeeResponse> | undefined, b: TradingPairTakerFeeResponse | PlainMessage<TradingPairTakerFeeResponse> | undefined): boolean {
+    return proto3.util.equals(TradingPairTakerFeeResponse, a, b);
+  }
+}
+
+/**
+ * EstimateTradeBasedOnPriceImpactRequest represents a request to estimate a
+ * trade for Balancer/StableSwap/Concentrated liquidity pool types based on the
+ * given parameters.
+ *
+ * @generated from message osmosis.poolmanager.v1beta1.EstimateTradeBasedOnPriceImpactRequest
+ */
+export class EstimateTradeBasedOnPriceImpactRequest extends Message<EstimateTradeBasedOnPriceImpactRequest> {
+  /**
+   * from_coin is the total amount of tokens that the user wants to sell.
+   *
+   * @generated from field: cosmos.base.v1beta1.Coin from_coin = 1;
+   */
+  fromCoin?: Coin;
+
+  /**
+   * to_coin_denom is the denom identifier of the token that the user wants to
+   * buy.
+   *
+   * @generated from field: string to_coin_denom = 2;
+   */
+  toCoinDenom = "";
+
+  /**
+   * pool_id is the identifier of the liquidity pool that the trade will occur
+   * on.
+   *
+   * @generated from field: uint64 pool_id = 3;
+   */
+  poolId = protoInt64.zero;
+
+  /**
+   * max_price_impact is the maximum percentage that the user is willing
+   * to affect the price of the liquidity pool.
+   *
+   * @generated from field: string max_price_impact = 4;
+   */
+  maxPriceImpact = "";
+
+  /**
+   * external_price is an optional external price that the user can enter.
+   * It adjusts the MaxPriceImpact as the SpotPrice of a pool can be changed at
+   * any time.
+   *
+   * @generated from field: string external_price = 5;
+   */
+  externalPrice = "";
+
+  constructor(data?: PartialMessage<EstimateTradeBasedOnPriceImpactRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "osmosis.poolmanager.v1beta1.EstimateTradeBasedOnPriceImpactRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "from_coin", kind: "message", T: Coin },
+    { no: 2, name: "to_coin_denom", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "pool_id", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+    { no: 4, name: "max_price_impact", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 5, name: "external_price", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): EstimateTradeBasedOnPriceImpactRequest {
+    return new EstimateTradeBasedOnPriceImpactRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): EstimateTradeBasedOnPriceImpactRequest {
+    return new EstimateTradeBasedOnPriceImpactRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): EstimateTradeBasedOnPriceImpactRequest {
+    return new EstimateTradeBasedOnPriceImpactRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: EstimateTradeBasedOnPriceImpactRequest | PlainMessage<EstimateTradeBasedOnPriceImpactRequest> | undefined, b: EstimateTradeBasedOnPriceImpactRequest | PlainMessage<EstimateTradeBasedOnPriceImpactRequest> | undefined): boolean {
+    return proto3.util.equals(EstimateTradeBasedOnPriceImpactRequest, a, b);
+  }
+}
+
+/**
+ * EstimateTradeBasedOnPriceImpactResponse represents the response data
+ * for an estimated trade based on price impact. If a trade fails to be
+ * estimated the response would be 0,0 for input_coin and output_coin and will
+ * not error.
+ *
+ * @generated from message osmosis.poolmanager.v1beta1.EstimateTradeBasedOnPriceImpactResponse
+ */
+export class EstimateTradeBasedOnPriceImpactResponse extends Message<EstimateTradeBasedOnPriceImpactResponse> {
+  /**
+   * input_coin is the actual input amount that would be tradeable
+   * under the specified price impact.
+   *
+   * @generated from field: cosmos.base.v1beta1.Coin input_coin = 1;
+   */
+  inputCoin?: Coin;
+
+  /**
+   * output_coin is the amount of tokens of the ToCoinDenom type
+   * that will be received for the actual InputCoin trade.
+   *
+   * @generated from field: cosmos.base.v1beta1.Coin output_coin = 2;
+   */
+  outputCoin?: Coin;
+
+  constructor(data?: PartialMessage<EstimateTradeBasedOnPriceImpactResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "osmosis.poolmanager.v1beta1.EstimateTradeBasedOnPriceImpactResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "input_coin", kind: "message", T: Coin },
+    { no: 2, name: "output_coin", kind: "message", T: Coin },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): EstimateTradeBasedOnPriceImpactResponse {
+    return new EstimateTradeBasedOnPriceImpactResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): EstimateTradeBasedOnPriceImpactResponse {
+    return new EstimateTradeBasedOnPriceImpactResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): EstimateTradeBasedOnPriceImpactResponse {
+    return new EstimateTradeBasedOnPriceImpactResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: EstimateTradeBasedOnPriceImpactResponse | PlainMessage<EstimateTradeBasedOnPriceImpactResponse> | undefined, b: EstimateTradeBasedOnPriceImpactResponse | PlainMessage<EstimateTradeBasedOnPriceImpactResponse> | undefined): boolean {
+    return proto3.util.equals(EstimateTradeBasedOnPriceImpactResponse, a, b);
   }
 }
 

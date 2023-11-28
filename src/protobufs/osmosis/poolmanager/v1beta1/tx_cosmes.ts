@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { MsgSplitRouteSwapExactAmountIn, MsgSplitRouteSwapExactAmountInResponse, MsgSplitRouteSwapExactAmountOut, MsgSplitRouteSwapExactAmountOutResponse, MsgSwapExactAmountIn, MsgSwapExactAmountInResponse, MsgSwapExactAmountOut, MsgSwapExactAmountOutResponse } from "./tx_pb.js";
+import { MsgSetDenomPairTakerFee, MsgSetDenomPairTakerFeeResponse, MsgSplitRouteSwapExactAmountIn, MsgSplitRouteSwapExactAmountInResponse, MsgSplitRouteSwapExactAmountOut, MsgSplitRouteSwapExactAmountOutResponse, MsgSwapExactAmountIn, MsgSwapExactAmountInResponse, MsgSwapExactAmountOut, MsgSwapExactAmountOutResponse } from "./tx_pb.js";
 
 const TYPE_NAME = "osmosis.poolmanager.v1beta1.Msg";
 
@@ -45,5 +45,15 @@ export const MsgSplitRouteSwapExactAmountOutService = {
   method: "SplitRouteSwapExactAmountOut",
   Request: MsgSplitRouteSwapExactAmountOut,
   Response: MsgSplitRouteSwapExactAmountOutResponse,
+} as const;
+
+/**
+ * @generated from rpc osmosis.poolmanager.v1beta1.Msg.SetDenomPairTakerFee
+ */
+export const MsgSetDenomPairTakerFeeService = {
+  typeName: TYPE_NAME,
+  method: "SetDenomPairTakerFee",
+  Request: MsgSetDenomPairTakerFee,
+  Response: MsgSetDenomPairTakerFeeResponse,
 } as const;
 

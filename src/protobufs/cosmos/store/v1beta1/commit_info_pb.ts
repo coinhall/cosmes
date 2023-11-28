@@ -10,7 +10,11 @@ import { Message, proto3, protoInt64, Timestamp } from "@bufbuild/protobuf";
  * CommitInfo defines commit information used by the multi-store when committing
  * a version/height.
  *
+ * Deprecated: Store v1 is deprecated as of v0.50.x, please use Store v2 types
+ * instead.
+ *
  * @generated from message cosmos.store.v1beta1.CommitInfo
+ * @deprecated
  */
 export class CommitInfo extends Message<CommitInfo> {
   /**
@@ -62,7 +66,11 @@ export class CommitInfo extends Message<CommitInfo> {
  * StoreInfo defines store-specific commit information. It contains a reference
  * between a store name and the commit ID.
  *
+ * Deprecated: Store v1 is deprecated as of v0.50.x, please use Store v2 types
+ * instead.
+ *
  * @generated from message cosmos.store.v1beta1.StoreInfo
+ * @deprecated
  */
 export class StoreInfo extends Message<StoreInfo> {
   /**
@@ -108,7 +116,11 @@ export class StoreInfo extends Message<StoreInfo> {
  * CommitID defines the commitment information when a specific store is
  * committed.
  *
+ * Deprecated: Store v1 is deprecated as of v0.50.x, please use Store v2 types
+ * instead.
+ *
  * @generated from message cosmos.store.v1beta1.CommitID
+ * @deprecated
  */
 export class CommitID extends Message<CommitID> {
   /**

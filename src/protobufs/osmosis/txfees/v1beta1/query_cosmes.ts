@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { QueryBaseDenomRequest, QueryBaseDenomResponse, QueryDenomPoolIdRequest, QueryDenomPoolIdResponse, QueryDenomSpotPriceRequest, QueryDenomSpotPriceResponse, QueryFeeTokensRequest, QueryFeeTokensResponse } from "./query_pb.js";
+import { QueryBaseDenomRequest, QueryBaseDenomResponse, QueryDenomPoolIdRequest, QueryDenomPoolIdResponse, QueryDenomSpotPriceRequest, QueryDenomSpotPriceResponse, QueryEipBaseFeeRequest, QueryEipBaseFeeResponse, QueryFeeTokensRequest, QueryFeeTokensResponse } from "./query_pb.js";
 
 const TYPE_NAME = "osmosis.txfees.v1beta1.Query";
 
@@ -55,5 +55,17 @@ export const QueryBaseDenomService = {
   method: "BaseDenom",
   Request: QueryBaseDenomRequest,
   Response: QueryBaseDenomResponse,
+} as const;
+
+/**
+ * Returns a list of all base denom tokens and their corresponding pools.
+ *
+ * @generated from rpc osmosis.txfees.v1beta1.Query.GetEipBaseFee
+ */
+export const QueryGetEipBaseFeeService = {
+  typeName: TYPE_NAME,
+  method: "GetEipBaseFee",
+  Request: QueryEipBaseFeeRequest,
+  Response: QueryEipBaseFeeResponse,
 } as const;
 

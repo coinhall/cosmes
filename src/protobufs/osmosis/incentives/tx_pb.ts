@@ -228,3 +228,108 @@ export class MsgAddToGaugeResponse extends Message<MsgAddToGaugeResponse> {
   }
 }
 
+/**
+ * MsgCreateGroup creates a group to distribute rewards to a group of pools
+ *
+ * @generated from message osmosis.incentives.MsgCreateGroup
+ */
+export class MsgCreateGroup extends Message<MsgCreateGroup> {
+  /**
+   * coins are the provided coins that the group will distribute
+   *
+   * @generated from field: repeated cosmos.base.v1beta1.Coin coins = 1;
+   */
+  coins: Coin[] = [];
+
+  /**
+   * num_epochs_paid_over is the number of epochs distribution will be completed
+   * in. 0 means it's perpetual
+   *
+   * @generated from field: uint64 num_epochs_paid_over = 2;
+   */
+  numEpochsPaidOver = protoInt64.zero;
+
+  /**
+   * owner is the group owner's address
+   *
+   * @generated from field: string owner = 3;
+   */
+  owner = "";
+
+  /**
+   * pool_ids are the IDs of pools that the group is comprised of
+   *
+   * @generated from field: repeated uint64 pool_ids = 4;
+   */
+  poolIds: bigint[] = [];
+
+  constructor(data?: PartialMessage<MsgCreateGroup>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "osmosis.incentives.MsgCreateGroup";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "coins", kind: "message", T: Coin, repeated: true },
+    { no: 2, name: "num_epochs_paid_over", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+    { no: 3, name: "owner", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 4, name: "pool_ids", kind: "scalar", T: 4 /* ScalarType.UINT64 */, repeated: true },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgCreateGroup {
+    return new MsgCreateGroup().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MsgCreateGroup {
+    return new MsgCreateGroup().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MsgCreateGroup {
+    return new MsgCreateGroup().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: MsgCreateGroup | PlainMessage<MsgCreateGroup> | undefined, b: MsgCreateGroup | PlainMessage<MsgCreateGroup> | undefined): boolean {
+    return proto3.util.equals(MsgCreateGroup, a, b);
+  }
+}
+
+/**
+ * @generated from message osmosis.incentives.MsgCreateGroupResponse
+ */
+export class MsgCreateGroupResponse extends Message<MsgCreateGroupResponse> {
+  /**
+   * group_id is the ID of the group that is created from this msg
+   *
+   * @generated from field: uint64 group_id = 1;
+   */
+  groupId = protoInt64.zero;
+
+  constructor(data?: PartialMessage<MsgCreateGroupResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "osmosis.incentives.MsgCreateGroupResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "group_id", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgCreateGroupResponse {
+    return new MsgCreateGroupResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MsgCreateGroupResponse {
+    return new MsgCreateGroupResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MsgCreateGroupResponse {
+    return new MsgCreateGroupResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: MsgCreateGroupResponse | PlainMessage<MsgCreateGroupResponse> | undefined, b: MsgCreateGroupResponse | PlainMessage<MsgCreateGroupResponse> | undefined): boolean {
+    return proto3.util.equals(MsgCreateGroupResponse, a, b);
+  }
+}
+

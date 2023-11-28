@@ -28,12 +28,18 @@ export enum LockQueryType {
    * @generated from enum value: NoLock = 2;
    */
   NoLock = 2,
+
+  /**
+   * @generated from enum value: ByGroup = 3;
+   */
+  ByGroup = 3,
 }
 // Retrieve enum metadata with: proto3.getEnumType(LockQueryType)
 proto3.util.setEnumType(LockQueryType, "osmosis.lockup.LockQueryType", [
   { no: 0, name: "ByDuration" },
   { no: 1, name: "ByTime" },
   { no: 2, name: "NoLock" },
+  { no: 3, name: "ByGroup" },
 ]);
 
 /**

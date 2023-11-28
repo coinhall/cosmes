@@ -61,7 +61,7 @@ export enum BroadcastMode {
   UNSPECIFIED = 0,
 
   /**
-   * DEPRECATED: use BROADCAST_MODE_SYNC instead,
+   * Deprecated: use BROADCAST_MODE_SYNC instead,
    * BROADCAST_MODE_BLOCK is not supported by the SDK from v0.47.x onwards.
    *
    * @generated from enum value: BROADCAST_MODE_BLOCK = 1 [deprecated = true];
@@ -102,7 +102,7 @@ proto3.util.setEnumType(BroadcastMode, "cosmos.tx.v1beta1.BroadcastMode", [
 export class GetTxsEventRequest extends Message<GetTxsEventRequest> {
   /**
    * events is the list of transaction event type.
-   * Deprecated post v0.47.x: use query instead, which should contain a valid
+   * Deprecated: post v0.47.x use query instead, which should contain a valid
    * events query.
    *
    * @generated from field: repeated string events = 1 [deprecated = true];
@@ -112,7 +112,7 @@ export class GetTxsEventRequest extends Message<GetTxsEventRequest> {
 
   /**
    * pagination defines a pagination for the request.
-   * Deprecated post v0.46.x: use page and limit instead.
+   * Deprecated: post v0.46.x use page and limit instead.
    *
    * @generated from field: cosmos.base.query.v1beta1.PageRequest pagination = 2 [deprecated = true];
    * @deprecated
@@ -206,7 +206,7 @@ export class GetTxsEventResponse extends Message<GetTxsEventResponse> {
 
   /**
    * pagination defines a pagination for the response.
-   * Deprecated post v0.46.x: use total instead.
+   * Deprecated: post v0.46.x use total instead.
    *
    * @generated from field: cosmos.base.query.v1beta1.PageResponse pagination = 3 [deprecated = true];
    * @deprecated

@@ -89,9 +89,9 @@ export class ServiceCommandDescriptor extends Message<ServiceCommandDescriptor> 
   subCommands: { [key: string]: ServiceCommandDescriptor } = {};
 
   /**
-   * enhance_custom_commands specifies whether to skip the service when generating commands, if a custom command already exists,
-   * or enhance the existing command. If set to true, the custom command will be enhanced with the services from gRPC.
-   * otherwise when a custom command exists, no commands will be generated for the service.
+   * enhance_custom_commands specifies whether to skip the service when generating commands, if a custom command already
+   * exists, or enhance the existing command. If set to true, the custom command will be enhanced with the services from
+   * gRPC. otherwise when a custom command exists, no commands will be generated for the service.
    *
    * @generated from field: bool enhance_custom_command = 4;
    */
@@ -230,6 +230,18 @@ export class RpcCommandOptions extends Message<RpcCommandOptions> {
    */
   skip = false;
 
+  /**
+   * gov_proposal specifies whether autocli should generate a gov proposal transaction for this rpc method.
+   * Normally autocli generates a transaction containing the message and broadcast it.
+   * However, when true, autocli generates a proposal transaction containing the message and broadcast it.
+   * This option is ineffective for query commands.
+   *
+   * Since: client/v2 v2.0.0-beta.2
+   *
+   * @generated from field: bool gov_proposal = 13;
+   */
+  govProposal = false;
+
   constructor(data?: PartialMessage<RpcCommandOptions>) {
     super();
     proto3.util.initPartial(data, this);
@@ -250,6 +262,7 @@ export class RpcCommandOptions extends Message<RpcCommandOptions> {
     { no: 10, name: "flag_options", kind: "map", K: 9 /* ScalarType.STRING */, V: {kind: "message", T: FlagOptions} },
     { no: 11, name: "positional_args", kind: "message", T: PositionalArgDescriptor, repeated: true },
     { no: 12, name: "skip", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+    { no: 13, name: "gov_proposal", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): RpcCommandOptions {
@@ -385,7 +398,7 @@ export class PositionalArgDescriptor extends Message<PositionalArgDescriptor> {
   varargs = false;
 
   /**
-   * optional makes the last positional parameter optional. 
+   * optional makes the last positional parameter optional.
    * Note: It is mutually exclusive with varargs.
    *
    * @generated from field: bool optional = 3;

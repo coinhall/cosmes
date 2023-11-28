@@ -6,6 +6,7 @@
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
 import { Message, proto3, protoInt64 } from "@bufbuild/protobuf";
 import { PeriodLock, SyntheticLock } from "./lock_pb.js";
+import { Params } from "./params_pb.js";
 
 /**
  * GenesisState defines the lockup module's genesis state.
@@ -28,6 +29,11 @@ export class GenesisState extends Message<GenesisState> {
    */
   syntheticLocks: SyntheticLock[] = [];
 
+  /**
+   * @generated from field: osmosis.lockup.Params params = 4;
+   */
+  params?: Params;
+
   constructor(data?: PartialMessage<GenesisState>) {
     super();
     proto3.util.initPartial(data, this);
@@ -39,6 +45,7 @@ export class GenesisState extends Message<GenesisState> {
     { no: 1, name: "last_lock_id", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
     { no: 2, name: "locks", kind: "message", T: PeriodLock, repeated: true },
     { no: 3, name: "synthetic_locks", kind: "message", T: SyntheticLock, repeated: true },
+    { no: 4, name: "params", kind: "message", T: Params },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): GenesisState {

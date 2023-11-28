@@ -8,13 +8,17 @@ import { Message, proto3 } from "@bufbuild/protobuf";
 import { RequestFinalizeBlock, ResponseCommit, ResponseFinalizeBlock } from "../../../tendermint/abci/types_pb.js";
 
 /**
- * StoreKVPair is a KVStore KVPair used for listening to state changes (Sets and Deletes)
- * It optionally includes the StoreKey for the originating KVStore and a Boolean flag to distinguish between Sets and
- * Deletes
+ * StoreKVPair is a KVStore KVPair used for listening to state changes (Sets and
+ * Deletes) It optionally includes the StoreKey for the originating KVStore and
+ * a Boolean flag to distinguish between Sets and Deletes
  *
  * Since: cosmos-sdk 0.43
  *
+ * Deprecated: Store v1 is deprecated as of v0.50.x, please use Store v2 types
+ * instead.
+ *
  * @generated from message cosmos.store.v1beta1.StoreKVPair
+ * @deprecated
  */
 export class StoreKVPair extends Message<StoreKVPair> {
   /**
@@ -76,7 +80,11 @@ export class StoreKVPair extends Message<StoreKVPair> {
  * BlockMetadata contains all the abci event data of a block
  * the file streamer dump them into files together with the state changes.
  *
+ * Deprecated: Store v1 is deprecated as of v0.50.x, please use Store v2 types
+ * instead.
+ *
  * @generated from message cosmos.store.v1beta1.BlockMetadata
+ * @deprecated
  */
 export class BlockMetadata extends Message<BlockMetadata> {
   /**

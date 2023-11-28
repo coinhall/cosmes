@@ -8,18 +8,6 @@ import { QueryDenomHashRequest, QueryDenomHashResponse, QueryDenomTraceRequest, 
 const TYPE_NAME = "ibc.applications.transfer.v1.Query";
 
 /**
- * DenomTrace queries a denomination trace information.
- *
- * @generated from rpc ibc.applications.transfer.v1.Query.DenomTrace
- */
-export const QueryDenomTraceService = {
-  typeName: TYPE_NAME,
-  method: "DenomTrace",
-  Request: QueryDenomTraceRequest,
-  Response: QueryDenomTraceResponse,
-} as const;
-
-/**
  * DenomTraces queries all denomination traces.
  *
  * @generated from rpc ibc.applications.transfer.v1.Query.DenomTraces
@@ -29,6 +17,18 @@ export const QueryDenomTracesService = {
   method: "DenomTraces",
   Request: QueryDenomTracesRequest,
   Response: QueryDenomTracesResponse,
+} as const;
+
+/**
+ * DenomTrace queries a denomination trace information.
+ *
+ * @generated from rpc ibc.applications.transfer.v1.Query.DenomTrace
+ */
+export const QueryDenomTraceService = {
+  typeName: TYPE_NAME,
+  method: "DenomTrace",
+  Request: QueryDenomTraceRequest,
+  Response: QueryDenomTraceResponse,
 } as const;
 
 /**

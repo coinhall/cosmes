@@ -883,7 +883,7 @@ export class RequestProcessProposal extends Message<RequestProcessProposal> {
  */
 export class RequestExtendVote extends Message<RequestExtendVote> {
   /**
-   * the hash of the block  that this vote may be referring to
+   * the hash of the block that this vote may be referring to
    *
    * @generated from field: bytes hash = 1;
    */
@@ -896,6 +896,40 @@ export class RequestExtendVote extends Message<RequestExtendVote> {
    */
   height = protoInt64.zero;
 
+  /**
+   * info of the block that this vote may be referring to
+   *
+   * @generated from field: google.protobuf.Timestamp time = 3;
+   */
+  time?: Timestamp;
+
+  /**
+   * @generated from field: repeated bytes txs = 4;
+   */
+  txs: Uint8Array[] = [];
+
+  /**
+   * @generated from field: tendermint.abci.CommitInfo proposed_last_commit = 5;
+   */
+  proposedLastCommit?: CommitInfo;
+
+  /**
+   * @generated from field: repeated tendermint.abci.Misbehavior misbehavior = 6;
+   */
+  misbehavior: Misbehavior[] = [];
+
+  /**
+   * @generated from field: bytes next_validators_hash = 7;
+   */
+  nextValidatorsHash = new Uint8Array(0);
+
+  /**
+   * address of the public key of the original proposer of the block.
+   *
+   * @generated from field: bytes proposer_address = 8;
+   */
+  proposerAddress = new Uint8Array(0);
+
   constructor(data?: PartialMessage<RequestExtendVote>) {
     super();
     proto3.util.initPartial(data, this);
@@ -906,6 +940,12 @@ export class RequestExtendVote extends Message<RequestExtendVote> {
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "hash", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
     { no: 2, name: "height", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
+    { no: 3, name: "time", kind: "message", T: Timestamp },
+    { no: 4, name: "txs", kind: "scalar", T: 12 /* ScalarType.BYTES */, repeated: true },
+    { no: 5, name: "proposed_last_commit", kind: "message", T: CommitInfo },
+    { no: 6, name: "misbehavior", kind: "message", T: Misbehavior, repeated: true },
+    { no: 7, name: "next_validators_hash", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
+    { no: 8, name: "proposer_address", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): RequestExtendVote {
@@ -2168,7 +2208,8 @@ export class ResponseFinalizeBlock extends Message<ResponseFinalizeBlock> {
   consensusParamUpdates?: ConsensusParams;
 
   /**
-   * app_hash is the hash of the applications' state which is used to confirm that execution of the transactions was deterministic. It is up to the application to decide which algorithm to use.
+   * app_hash is the hash of the applications' state which is used to confirm that execution of the transactions was
+   * deterministic. It is up to the application to decide which algorithm to use.
    *
    * @generated from field: bytes app_hash = 5;
    */
@@ -2434,12 +2475,12 @@ export class ExecTxResult extends Message<ExecTxResult> {
   info = "";
 
   /**
-   * @generated from field: int64 gas_wanted = 5;
+   * @generated from field: int64 gas_wanted = 5 [json_name = "gas_wanted"];
    */
   gasWanted = protoInt64.zero;
 
   /**
-   * @generated from field: int64 gas_used = 6;
+   * @generated from field: int64 gas_used = 6 [json_name = "gas_used"];
    */
   gasUsed = protoInt64.zero;
 
@@ -2467,8 +2508,8 @@ export class ExecTxResult extends Message<ExecTxResult> {
     { no: 2, name: "data", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
     { no: 3, name: "log", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 4, name: "info", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 5, name: "gas_wanted", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
-    { no: 6, name: "gas_used", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
+    { no: 5, name: "gas_wanted", jsonName: "gas_wanted", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
+    { no: 6, name: "gas_used", jsonName: "gas_used", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
     { no: 7, name: "events", kind: "message", T: Event, repeated: true },
     { no: 8, name: "codespace", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);

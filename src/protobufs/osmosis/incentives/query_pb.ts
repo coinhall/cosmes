@@ -8,6 +8,7 @@ import { Duration, Message, proto3, protoInt64 } from "@bufbuild/protobuf";
 import { Coin } from "../../cosmos/base/v1beta1/coin_pb.js";
 import { Gauge } from "./gauge_pb.js";
 import { PageRequest, PageResponse } from "../../cosmos/base/query/v1beta1/pagination_pb.js";
+import { Group, GroupsWithGauge } from "./group_pb.js";
 
 /**
  * @generated from message osmosis.incentives.ModuleToDistributeCoinsRequest
@@ -766,6 +767,401 @@ export class QueryLockableDurationsResponse extends Message<QueryLockableDuratio
 
   static equals(a: QueryLockableDurationsResponse | PlainMessage<QueryLockableDurationsResponse> | undefined, b: QueryLockableDurationsResponse | PlainMessage<QueryLockableDurationsResponse> | undefined): boolean {
     return proto3.util.equals(QueryLockableDurationsResponse, a, b);
+  }
+}
+
+/**
+ * @generated from message osmosis.incentives.QueryAllGroupsRequest
+ */
+export class QueryAllGroupsRequest extends Message<QueryAllGroupsRequest> {
+  constructor(data?: PartialMessage<QueryAllGroupsRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "osmosis.incentives.QueryAllGroupsRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): QueryAllGroupsRequest {
+    return new QueryAllGroupsRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): QueryAllGroupsRequest {
+    return new QueryAllGroupsRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): QueryAllGroupsRequest {
+    return new QueryAllGroupsRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: QueryAllGroupsRequest | PlainMessage<QueryAllGroupsRequest> | undefined, b: QueryAllGroupsRequest | PlainMessage<QueryAllGroupsRequest> | undefined): boolean {
+    return proto3.util.equals(QueryAllGroupsRequest, a, b);
+  }
+}
+
+/**
+ * @generated from message osmosis.incentives.QueryAllGroupsResponse
+ */
+export class QueryAllGroupsResponse extends Message<QueryAllGroupsResponse> {
+  /**
+   * @generated from field: repeated osmosis.incentives.Group groups = 1;
+   */
+  groups: Group[] = [];
+
+  constructor(data?: PartialMessage<QueryAllGroupsResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "osmosis.incentives.QueryAllGroupsResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "groups", kind: "message", T: Group, repeated: true },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): QueryAllGroupsResponse {
+    return new QueryAllGroupsResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): QueryAllGroupsResponse {
+    return new QueryAllGroupsResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): QueryAllGroupsResponse {
+    return new QueryAllGroupsResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: QueryAllGroupsResponse | PlainMessage<QueryAllGroupsResponse> | undefined, b: QueryAllGroupsResponse | PlainMessage<QueryAllGroupsResponse> | undefined): boolean {
+    return proto3.util.equals(QueryAllGroupsResponse, a, b);
+  }
+}
+
+/**
+ * @generated from message osmosis.incentives.QueryAllGroupsGaugesRequest
+ */
+export class QueryAllGroupsGaugesRequest extends Message<QueryAllGroupsGaugesRequest> {
+  constructor(data?: PartialMessage<QueryAllGroupsGaugesRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "osmosis.incentives.QueryAllGroupsGaugesRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): QueryAllGroupsGaugesRequest {
+    return new QueryAllGroupsGaugesRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): QueryAllGroupsGaugesRequest {
+    return new QueryAllGroupsGaugesRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): QueryAllGroupsGaugesRequest {
+    return new QueryAllGroupsGaugesRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: QueryAllGroupsGaugesRequest | PlainMessage<QueryAllGroupsGaugesRequest> | undefined, b: QueryAllGroupsGaugesRequest | PlainMessage<QueryAllGroupsGaugesRequest> | undefined): boolean {
+    return proto3.util.equals(QueryAllGroupsGaugesRequest, a, b);
+  }
+}
+
+/**
+ * @generated from message osmosis.incentives.QueryAllGroupsGaugesResponse
+ */
+export class QueryAllGroupsGaugesResponse extends Message<QueryAllGroupsGaugesResponse> {
+  /**
+   * @generated from field: repeated osmosis.incentives.Gauge gauges = 1;
+   */
+  gauges: Gauge[] = [];
+
+  constructor(data?: PartialMessage<QueryAllGroupsGaugesResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "osmosis.incentives.QueryAllGroupsGaugesResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "gauges", kind: "message", T: Gauge, repeated: true },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): QueryAllGroupsGaugesResponse {
+    return new QueryAllGroupsGaugesResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): QueryAllGroupsGaugesResponse {
+    return new QueryAllGroupsGaugesResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): QueryAllGroupsGaugesResponse {
+    return new QueryAllGroupsGaugesResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: QueryAllGroupsGaugesResponse | PlainMessage<QueryAllGroupsGaugesResponse> | undefined, b: QueryAllGroupsGaugesResponse | PlainMessage<QueryAllGroupsGaugesResponse> | undefined): boolean {
+    return proto3.util.equals(QueryAllGroupsGaugesResponse, a, b);
+  }
+}
+
+/**
+ * @generated from message osmosis.incentives.QueryAllGroupsWithGaugeRequest
+ */
+export class QueryAllGroupsWithGaugeRequest extends Message<QueryAllGroupsWithGaugeRequest> {
+  constructor(data?: PartialMessage<QueryAllGroupsWithGaugeRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "osmosis.incentives.QueryAllGroupsWithGaugeRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): QueryAllGroupsWithGaugeRequest {
+    return new QueryAllGroupsWithGaugeRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): QueryAllGroupsWithGaugeRequest {
+    return new QueryAllGroupsWithGaugeRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): QueryAllGroupsWithGaugeRequest {
+    return new QueryAllGroupsWithGaugeRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: QueryAllGroupsWithGaugeRequest | PlainMessage<QueryAllGroupsWithGaugeRequest> | undefined, b: QueryAllGroupsWithGaugeRequest | PlainMessage<QueryAllGroupsWithGaugeRequest> | undefined): boolean {
+    return proto3.util.equals(QueryAllGroupsWithGaugeRequest, a, b);
+  }
+}
+
+/**
+ * @generated from message osmosis.incentives.QueryAllGroupsWithGaugeResponse
+ */
+export class QueryAllGroupsWithGaugeResponse extends Message<QueryAllGroupsWithGaugeResponse> {
+  /**
+   * @generated from field: repeated osmosis.incentives.GroupsWithGauge groups_with_gauge = 1;
+   */
+  groupsWithGauge: GroupsWithGauge[] = [];
+
+  constructor(data?: PartialMessage<QueryAllGroupsWithGaugeResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "osmosis.incentives.QueryAllGroupsWithGaugeResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "groups_with_gauge", kind: "message", T: GroupsWithGauge, repeated: true },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): QueryAllGroupsWithGaugeResponse {
+    return new QueryAllGroupsWithGaugeResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): QueryAllGroupsWithGaugeResponse {
+    return new QueryAllGroupsWithGaugeResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): QueryAllGroupsWithGaugeResponse {
+    return new QueryAllGroupsWithGaugeResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: QueryAllGroupsWithGaugeResponse | PlainMessage<QueryAllGroupsWithGaugeResponse> | undefined, b: QueryAllGroupsWithGaugeResponse | PlainMessage<QueryAllGroupsWithGaugeResponse> | undefined): boolean {
+    return proto3.util.equals(QueryAllGroupsWithGaugeResponse, a, b);
+  }
+}
+
+/**
+ * @generated from message osmosis.incentives.QueryGroupByGroupGaugeIDRequest
+ */
+export class QueryGroupByGroupGaugeIDRequest extends Message<QueryGroupByGroupGaugeIDRequest> {
+  /**
+   * @generated from field: uint64 id = 1;
+   */
+  id = protoInt64.zero;
+
+  constructor(data?: PartialMessage<QueryGroupByGroupGaugeIDRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "osmosis.incentives.QueryGroupByGroupGaugeIDRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "id", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): QueryGroupByGroupGaugeIDRequest {
+    return new QueryGroupByGroupGaugeIDRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): QueryGroupByGroupGaugeIDRequest {
+    return new QueryGroupByGroupGaugeIDRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): QueryGroupByGroupGaugeIDRequest {
+    return new QueryGroupByGroupGaugeIDRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: QueryGroupByGroupGaugeIDRequest | PlainMessage<QueryGroupByGroupGaugeIDRequest> | undefined, b: QueryGroupByGroupGaugeIDRequest | PlainMessage<QueryGroupByGroupGaugeIDRequest> | undefined): boolean {
+    return proto3.util.equals(QueryGroupByGroupGaugeIDRequest, a, b);
+  }
+}
+
+/**
+ * @generated from message osmosis.incentives.QueryGroupByGroupGaugeIDResponse
+ */
+export class QueryGroupByGroupGaugeIDResponse extends Message<QueryGroupByGroupGaugeIDResponse> {
+  /**
+   * @generated from field: osmosis.incentives.Group group = 1;
+   */
+  group?: Group;
+
+  constructor(data?: PartialMessage<QueryGroupByGroupGaugeIDResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "osmosis.incentives.QueryGroupByGroupGaugeIDResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "group", kind: "message", T: Group },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): QueryGroupByGroupGaugeIDResponse {
+    return new QueryGroupByGroupGaugeIDResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): QueryGroupByGroupGaugeIDResponse {
+    return new QueryGroupByGroupGaugeIDResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): QueryGroupByGroupGaugeIDResponse {
+    return new QueryGroupByGroupGaugeIDResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: QueryGroupByGroupGaugeIDResponse | PlainMessage<QueryGroupByGroupGaugeIDResponse> | undefined, b: QueryGroupByGroupGaugeIDResponse | PlainMessage<QueryGroupByGroupGaugeIDResponse> | undefined): boolean {
+    return proto3.util.equals(QueryGroupByGroupGaugeIDResponse, a, b);
+  }
+}
+
+/**
+ * @generated from message osmosis.incentives.QueryCurrentWeightByGroupGaugeIDRequest
+ */
+export class QueryCurrentWeightByGroupGaugeIDRequest extends Message<QueryCurrentWeightByGroupGaugeIDRequest> {
+  /**
+   * @generated from field: uint64 group_gauge_id = 1;
+   */
+  groupGaugeId = protoInt64.zero;
+
+  constructor(data?: PartialMessage<QueryCurrentWeightByGroupGaugeIDRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "osmosis.incentives.QueryCurrentWeightByGroupGaugeIDRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "group_gauge_id", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): QueryCurrentWeightByGroupGaugeIDRequest {
+    return new QueryCurrentWeightByGroupGaugeIDRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): QueryCurrentWeightByGroupGaugeIDRequest {
+    return new QueryCurrentWeightByGroupGaugeIDRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): QueryCurrentWeightByGroupGaugeIDRequest {
+    return new QueryCurrentWeightByGroupGaugeIDRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: QueryCurrentWeightByGroupGaugeIDRequest | PlainMessage<QueryCurrentWeightByGroupGaugeIDRequest> | undefined, b: QueryCurrentWeightByGroupGaugeIDRequest | PlainMessage<QueryCurrentWeightByGroupGaugeIDRequest> | undefined): boolean {
+    return proto3.util.equals(QueryCurrentWeightByGroupGaugeIDRequest, a, b);
+  }
+}
+
+/**
+ * @generated from message osmosis.incentives.QueryCurrentWeightByGroupGaugeIDResponse
+ */
+export class QueryCurrentWeightByGroupGaugeIDResponse extends Message<QueryCurrentWeightByGroupGaugeIDResponse> {
+  /**
+   * @generated from field: repeated osmosis.incentives.GaugeWeight gauge_weight = 1;
+   */
+  gaugeWeight: GaugeWeight[] = [];
+
+  constructor(data?: PartialMessage<QueryCurrentWeightByGroupGaugeIDResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "osmosis.incentives.QueryCurrentWeightByGroupGaugeIDResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "gauge_weight", kind: "message", T: GaugeWeight, repeated: true },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): QueryCurrentWeightByGroupGaugeIDResponse {
+    return new QueryCurrentWeightByGroupGaugeIDResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): QueryCurrentWeightByGroupGaugeIDResponse {
+    return new QueryCurrentWeightByGroupGaugeIDResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): QueryCurrentWeightByGroupGaugeIDResponse {
+    return new QueryCurrentWeightByGroupGaugeIDResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: QueryCurrentWeightByGroupGaugeIDResponse | PlainMessage<QueryCurrentWeightByGroupGaugeIDResponse> | undefined, b: QueryCurrentWeightByGroupGaugeIDResponse | PlainMessage<QueryCurrentWeightByGroupGaugeIDResponse> | undefined): boolean {
+    return proto3.util.equals(QueryCurrentWeightByGroupGaugeIDResponse, a, b);
+  }
+}
+
+/**
+ * @generated from message osmosis.incentives.GaugeWeight
+ */
+export class GaugeWeight extends Message<GaugeWeight> {
+  /**
+   * @generated from field: uint64 gauge_id = 1;
+   */
+  gaugeId = protoInt64.zero;
+
+  /**
+   * @generated from field: string weight_ratio = 2;
+   */
+  weightRatio = "";
+
+  constructor(data?: PartialMessage<GaugeWeight>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "osmosis.incentives.GaugeWeight";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "gauge_id", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+    { no: 2, name: "weight_ratio", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): GaugeWeight {
+    return new GaugeWeight().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): GaugeWeight {
+    return new GaugeWeight().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): GaugeWeight {
+    return new GaugeWeight().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: GaugeWeight | PlainMessage<GaugeWeight> | undefined, b: GaugeWeight | PlainMessage<GaugeWeight> | undefined): boolean {
+    return proto3.util.equals(GaugeWeight, a, b);
   }
 }
 

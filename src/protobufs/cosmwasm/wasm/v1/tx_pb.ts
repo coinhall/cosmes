@@ -1579,3 +1579,229 @@ export class MsgRemoveCodeUploadParamsAddressesResponse extends Message<MsgRemov
   }
 }
 
+/**
+ * MsgStoreAndMigrateContract is the MsgStoreAndMigrateContract
+ * request type.
+ *
+ * Since: 0.42
+ *
+ * @generated from message cosmwasm.wasm.v1.MsgStoreAndMigrateContract
+ */
+export class MsgStoreAndMigrateContract extends Message<MsgStoreAndMigrateContract> {
+  /**
+   * Authority is the address of the governance account.
+   *
+   * @generated from field: string authority = 1;
+   */
+  authority = "";
+
+  /**
+   * WASMByteCode can be raw or gzip compressed
+   *
+   * @generated from field: bytes wasm_byte_code = 2;
+   */
+  wasmByteCode = new Uint8Array(0);
+
+  /**
+   * InstantiatePermission to apply on contract creation, optional
+   *
+   * @generated from field: cosmwasm.wasm.v1.AccessConfig instantiate_permission = 3;
+   */
+  instantiatePermission?: AccessConfig;
+
+  /**
+   * Contract is the address of the smart contract
+   *
+   * @generated from field: string contract = 4;
+   */
+  contract = "";
+
+  /**
+   * Msg json encoded message to be passed to the contract on migration
+   *
+   * @generated from field: bytes msg = 5;
+   */
+  msg = new Uint8Array(0);
+
+  constructor(data?: PartialMessage<MsgStoreAndMigrateContract>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "cosmwasm.wasm.v1.MsgStoreAndMigrateContract";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "authority", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "wasm_byte_code", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
+    { no: 3, name: "instantiate_permission", kind: "message", T: AccessConfig },
+    { no: 4, name: "contract", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 5, name: "msg", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgStoreAndMigrateContract {
+    return new MsgStoreAndMigrateContract().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MsgStoreAndMigrateContract {
+    return new MsgStoreAndMigrateContract().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MsgStoreAndMigrateContract {
+    return new MsgStoreAndMigrateContract().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: MsgStoreAndMigrateContract | PlainMessage<MsgStoreAndMigrateContract> | undefined, b: MsgStoreAndMigrateContract | PlainMessage<MsgStoreAndMigrateContract> | undefined): boolean {
+    return proto3.util.equals(MsgStoreAndMigrateContract, a, b);
+  }
+}
+
+/**
+ * MsgStoreAndMigrateContractResponse defines the response structure
+ * for executing a MsgStoreAndMigrateContract message.
+ *
+ * Since: 0.42
+ *
+ * @generated from message cosmwasm.wasm.v1.MsgStoreAndMigrateContractResponse
+ */
+export class MsgStoreAndMigrateContractResponse extends Message<MsgStoreAndMigrateContractResponse> {
+  /**
+   * CodeID is the reference to the stored WASM code
+   *
+   * @generated from field: uint64 code_id = 1;
+   */
+  codeId = protoInt64.zero;
+
+  /**
+   * Checksum is the sha256 hash of the stored code
+   *
+   * @generated from field: bytes checksum = 2;
+   */
+  checksum = new Uint8Array(0);
+
+  /**
+   * Data contains bytes to returned from the contract
+   *
+   * @generated from field: bytes data = 3;
+   */
+  data = new Uint8Array(0);
+
+  constructor(data?: PartialMessage<MsgStoreAndMigrateContractResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "cosmwasm.wasm.v1.MsgStoreAndMigrateContractResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "code_id", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+    { no: 2, name: "checksum", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
+    { no: 3, name: "data", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgStoreAndMigrateContractResponse {
+    return new MsgStoreAndMigrateContractResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MsgStoreAndMigrateContractResponse {
+    return new MsgStoreAndMigrateContractResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MsgStoreAndMigrateContractResponse {
+    return new MsgStoreAndMigrateContractResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: MsgStoreAndMigrateContractResponse | PlainMessage<MsgStoreAndMigrateContractResponse> | undefined, b: MsgStoreAndMigrateContractResponse | PlainMessage<MsgStoreAndMigrateContractResponse> | undefined): boolean {
+    return proto3.util.equals(MsgStoreAndMigrateContractResponse, a, b);
+  }
+}
+
+/**
+ * MsgUpdateContractLabel sets a new label for a smart contract
+ *
+ * @generated from message cosmwasm.wasm.v1.MsgUpdateContractLabel
+ */
+export class MsgUpdateContractLabel extends Message<MsgUpdateContractLabel> {
+  /**
+   * Sender is the that actor that signed the messages
+   *
+   * @generated from field: string sender = 1;
+   */
+  sender = "";
+
+  /**
+   * NewLabel string to be set
+   *
+   * @generated from field: string new_label = 2;
+   */
+  newLabel = "";
+
+  /**
+   * Contract is the address of the smart contract
+   *
+   * @generated from field: string contract = 3;
+   */
+  contract = "";
+
+  constructor(data?: PartialMessage<MsgUpdateContractLabel>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "cosmwasm.wasm.v1.MsgUpdateContractLabel";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "sender", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "new_label", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "contract", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgUpdateContractLabel {
+    return new MsgUpdateContractLabel().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MsgUpdateContractLabel {
+    return new MsgUpdateContractLabel().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MsgUpdateContractLabel {
+    return new MsgUpdateContractLabel().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: MsgUpdateContractLabel | PlainMessage<MsgUpdateContractLabel> | undefined, b: MsgUpdateContractLabel | PlainMessage<MsgUpdateContractLabel> | undefined): boolean {
+    return proto3.util.equals(MsgUpdateContractLabel, a, b);
+  }
+}
+
+/**
+ * MsgUpdateContractLabelResponse returns empty data
+ *
+ * @generated from message cosmwasm.wasm.v1.MsgUpdateContractLabelResponse
+ */
+export class MsgUpdateContractLabelResponse extends Message<MsgUpdateContractLabelResponse> {
+  constructor(data?: PartialMessage<MsgUpdateContractLabelResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "cosmwasm.wasm.v1.MsgUpdateContractLabelResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgUpdateContractLabelResponse {
+    return new MsgUpdateContractLabelResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MsgUpdateContractLabelResponse {
+    return new MsgUpdateContractLabelResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MsgUpdateContractLabelResponse {
+    return new MsgUpdateContractLabelResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: MsgUpdateContractLabelResponse | PlainMessage<MsgUpdateContractLabelResponse> | undefined, b: MsgUpdateContractLabelResponse | PlainMessage<MsgUpdateContractLabelResponse> | undefined): boolean {
+    return proto3.util.equals(MsgUpdateContractLabelResponse, a, b);
+  }
+}
+

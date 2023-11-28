@@ -158,140 +158,6 @@ export class ClientConsensusStates extends Message<ClientConsensusStates> {
 }
 
 /**
- * ClientUpdateProposal is a governance proposal. If it passes, the substitute
- * client's latest consensus state is copied over to the subject client. The proposal
- * handler may fail if the subject and the substitute do not match in client and
- * chain parameters (with exception to latest height, frozen height, and chain-id).
- *
- * @generated from message ibc.core.client.v1.ClientUpdateProposal
- */
-export class ClientUpdateProposal extends Message<ClientUpdateProposal> {
-  /**
-   * the title of the update proposal
-   *
-   * @generated from field: string title = 1;
-   */
-  title = "";
-
-  /**
-   * the description of the proposal
-   *
-   * @generated from field: string description = 2;
-   */
-  description = "";
-
-  /**
-   * the client identifier for the client to be updated if the proposal passes
-   *
-   * @generated from field: string subject_client_id = 3;
-   */
-  subjectClientId = "";
-
-  /**
-   * the substitute client identifier for the client standing in for the subject
-   * client
-   *
-   * @generated from field: string substitute_client_id = 4;
-   */
-  substituteClientId = "";
-
-  constructor(data?: PartialMessage<ClientUpdateProposal>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
-
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "ibc.core.client.v1.ClientUpdateProposal";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "title", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "description", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 3, name: "subject_client_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 4, name: "substitute_client_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-  ]);
-
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClientUpdateProposal {
-    return new ClientUpdateProposal().fromBinary(bytes, options);
-  }
-
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ClientUpdateProposal {
-    return new ClientUpdateProposal().fromJson(jsonValue, options);
-  }
-
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ClientUpdateProposal {
-    return new ClientUpdateProposal().fromJsonString(jsonString, options);
-  }
-
-  static equals(a: ClientUpdateProposal | PlainMessage<ClientUpdateProposal> | undefined, b: ClientUpdateProposal | PlainMessage<ClientUpdateProposal> | undefined): boolean {
-    return proto3.util.equals(ClientUpdateProposal, a, b);
-  }
-}
-
-/**
- * UpgradeProposal is a gov Content type for initiating an IBC breaking
- * upgrade.
- *
- * @generated from message ibc.core.client.v1.UpgradeProposal
- */
-export class UpgradeProposal extends Message<UpgradeProposal> {
-  /**
-   * @generated from field: string title = 1;
-   */
-  title = "";
-
-  /**
-   * @generated from field: string description = 2;
-   */
-  description = "";
-
-  /**
-   * @generated from field: cosmos.upgrade.v1beta1.Plan plan = 3;
-   */
-  plan?: Plan;
-
-  /**
-   * An UpgradedClientState must be provided to perform an IBC breaking upgrade.
-   * This will make the chain commit to the correct upgraded (self) client state
-   * before the upgrade occurs, so that connecting chains can verify that the
-   * new upgraded client is valid by verifying a proof on the previous version
-   * of the chain. This will allow IBC connections to persist smoothly across
-   * planned chain upgrades
-   *
-   * @generated from field: google.protobuf.Any upgraded_client_state = 4;
-   */
-  upgradedClientState?: Any;
-
-  constructor(data?: PartialMessage<UpgradeProposal>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
-
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "ibc.core.client.v1.UpgradeProposal";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "title", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "description", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 3, name: "plan", kind: "message", T: Plan },
-    { no: 4, name: "upgraded_client_state", kind: "message", T: Any },
-  ]);
-
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): UpgradeProposal {
-    return new UpgradeProposal().fromBinary(bytes, options);
-  }
-
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): UpgradeProposal {
-    return new UpgradeProposal().fromJson(jsonValue, options);
-  }
-
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): UpgradeProposal {
-    return new UpgradeProposal().fromJsonString(jsonString, options);
-  }
-
-  static equals(a: UpgradeProposal | PlainMessage<UpgradeProposal> | undefined, b: UpgradeProposal | PlainMessage<UpgradeProposal> | undefined): boolean {
-    return proto3.util.equals(UpgradeProposal, a, b);
-  }
-}
-
-/**
  * Height is a monotonically increasing data type
  * that can be compared against another Height for the purposes of updating and
  * freezing clients
@@ -389,6 +255,146 @@ export class Params extends Message<Params> {
 
   static equals(a: Params | PlainMessage<Params> | undefined, b: Params | PlainMessage<Params> | undefined): boolean {
     return proto3.util.equals(Params, a, b);
+  }
+}
+
+/**
+ * ClientUpdateProposal is a legacy governance proposal. If it passes, the substitute
+ * client's latest consensus state is copied over to the subject client. The proposal
+ * handler may fail if the subject and the substitute do not match in client and
+ * chain parameters (with exception to latest height, frozen height, and chain-id).
+ *
+ * Deprecated: Please use MsgRecoverClient in favour of this message type.
+ *
+ * @generated from message ibc.core.client.v1.ClientUpdateProposal
+ * @deprecated
+ */
+export class ClientUpdateProposal extends Message<ClientUpdateProposal> {
+  /**
+   * the title of the update proposal
+   *
+   * @generated from field: string title = 1;
+   */
+  title = "";
+
+  /**
+   * the description of the proposal
+   *
+   * @generated from field: string description = 2;
+   */
+  description = "";
+
+  /**
+   * the client identifier for the client to be updated if the proposal passes
+   *
+   * @generated from field: string subject_client_id = 3;
+   */
+  subjectClientId = "";
+
+  /**
+   * the substitute client identifier for the client standing in for the subject
+   * client
+   *
+   * @generated from field: string substitute_client_id = 4;
+   */
+  substituteClientId = "";
+
+  constructor(data?: PartialMessage<ClientUpdateProposal>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "ibc.core.client.v1.ClientUpdateProposal";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "title", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "description", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "subject_client_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 4, name: "substitute_client_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClientUpdateProposal {
+    return new ClientUpdateProposal().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ClientUpdateProposal {
+    return new ClientUpdateProposal().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ClientUpdateProposal {
+    return new ClientUpdateProposal().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: ClientUpdateProposal | PlainMessage<ClientUpdateProposal> | undefined, b: ClientUpdateProposal | PlainMessage<ClientUpdateProposal> | undefined): boolean {
+    return proto3.util.equals(ClientUpdateProposal, a, b);
+  }
+}
+
+/**
+ * UpgradeProposal is a gov Content type for initiating an IBC breaking
+ * upgrade.
+ *
+ * Deprecated: Please use MsgIBCSoftwareUpgrade in favour of this message type.
+ *
+ * @generated from message ibc.core.client.v1.UpgradeProposal
+ * @deprecated
+ */
+export class UpgradeProposal extends Message<UpgradeProposal> {
+  /**
+   * @generated from field: string title = 1;
+   */
+  title = "";
+
+  /**
+   * @generated from field: string description = 2;
+   */
+  description = "";
+
+  /**
+   * @generated from field: cosmos.upgrade.v1beta1.Plan plan = 3;
+   */
+  plan?: Plan;
+
+  /**
+   * An UpgradedClientState must be provided to perform an IBC breaking upgrade.
+   * This will make the chain commit to the correct upgraded (self) client state
+   * before the upgrade occurs, so that connecting chains can verify that the
+   * new upgraded client is valid by verifying a proof on the previous version
+   * of the chain. This will allow IBC connections to persist smoothly across
+   * planned chain upgrades
+   *
+   * @generated from field: google.protobuf.Any upgraded_client_state = 4;
+   */
+  upgradedClientState?: Any;
+
+  constructor(data?: PartialMessage<UpgradeProposal>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "ibc.core.client.v1.UpgradeProposal";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "title", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "description", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "plan", kind: "message", T: Plan },
+    { no: 4, name: "upgraded_client_state", kind: "message", T: Any },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): UpgradeProposal {
+    return new UpgradeProposal().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): UpgradeProposal {
+    return new UpgradeProposal().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): UpgradeProposal {
+    return new UpgradeProposal().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: UpgradeProposal | PlainMessage<UpgradeProposal> | undefined, b: UpgradeProposal | PlainMessage<UpgradeProposal> | undefined): boolean {
+    return proto3.util.equals(UpgradeProposal, a, b);
   }
 }
 

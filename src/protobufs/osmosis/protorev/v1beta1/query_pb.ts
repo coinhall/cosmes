@@ -7,7 +7,7 @@ import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialM
 import { Message, proto3, protoInt64 } from "@bufbuild/protobuf";
 import { Params } from "./params_pb.js";
 import { Coin } from "../../../cosmos/base/v1beta1/coin_pb.js";
-import { BaseDenom, InfoByPoolType, RouteStatistics, TokenPairArbRoutes } from "./protorev_pb.js";
+import { AllProtocolRevenue, BaseDenom, InfoByPoolType, RouteStatistics, TokenPairArbRoutes } from "./protorev_pb.js";
 
 /**
  * QueryParamsRequest is request type for the Query/Params RPC method.
@@ -1183,6 +1183,74 @@ export class QueryGetProtoRevPoolResponse extends Message<QueryGetProtoRevPoolRe
 
   static equals(a: QueryGetProtoRevPoolResponse | PlainMessage<QueryGetProtoRevPoolResponse> | undefined, b: QueryGetProtoRevPoolResponse | PlainMessage<QueryGetProtoRevPoolResponse> | undefined): boolean {
     return proto3.util.equals(QueryGetProtoRevPoolResponse, a, b);
+  }
+}
+
+/**
+ * @generated from message osmosis.protorev.v1beta1.QueryGetAllProtocolRevenueRequest
+ */
+export class QueryGetAllProtocolRevenueRequest extends Message<QueryGetAllProtocolRevenueRequest> {
+  constructor(data?: PartialMessage<QueryGetAllProtocolRevenueRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "osmosis.protorev.v1beta1.QueryGetAllProtocolRevenueRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): QueryGetAllProtocolRevenueRequest {
+    return new QueryGetAllProtocolRevenueRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): QueryGetAllProtocolRevenueRequest {
+    return new QueryGetAllProtocolRevenueRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): QueryGetAllProtocolRevenueRequest {
+    return new QueryGetAllProtocolRevenueRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: QueryGetAllProtocolRevenueRequest | PlainMessage<QueryGetAllProtocolRevenueRequest> | undefined, b: QueryGetAllProtocolRevenueRequest | PlainMessage<QueryGetAllProtocolRevenueRequest> | undefined): boolean {
+    return proto3.util.equals(QueryGetAllProtocolRevenueRequest, a, b);
+  }
+}
+
+/**
+ * @generated from message osmosis.protorev.v1beta1.QueryGetAllProtocolRevenueResponse
+ */
+export class QueryGetAllProtocolRevenueResponse extends Message<QueryGetAllProtocolRevenueResponse> {
+  /**
+   * @generated from field: osmosis.protorev.v1beta1.AllProtocolRevenue all_protocol_revenue = 1;
+   */
+  allProtocolRevenue?: AllProtocolRevenue;
+
+  constructor(data?: PartialMessage<QueryGetAllProtocolRevenueResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "osmosis.protorev.v1beta1.QueryGetAllProtocolRevenueResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "all_protocol_revenue", kind: "message", T: AllProtocolRevenue },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): QueryGetAllProtocolRevenueResponse {
+    return new QueryGetAllProtocolRevenueResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): QueryGetAllProtocolRevenueResponse {
+    return new QueryGetAllProtocolRevenueResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): QueryGetAllProtocolRevenueResponse {
+    return new QueryGetAllProtocolRevenueResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: QueryGetAllProtocolRevenueResponse | PlainMessage<QueryGetAllProtocolRevenueResponse> | undefined, b: QueryGetAllProtocolRevenueResponse | PlainMessage<QueryGetAllProtocolRevenueResponse> | undefined): boolean {
+    return proto3.util.equals(QueryGetAllProtocolRevenueResponse, a, b);
   }
 }
 

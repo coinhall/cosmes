@@ -262,7 +262,11 @@ export class MsgWithdrawValidatorCommissionResponse extends Message<MsgWithdrawV
  * MsgFundCommunityPool allows an account to directly
  * fund the community pool.
  *
+ * Deprecated: Use x/protocolpool module's MsgFundCommunityPool instead.
+ * Since: cosmos-sdk 0.50
+ *
  * @generated from message cosmos.distribution.v1beta1.MsgFundCommunityPool
+ * @deprecated
  */
 export class MsgFundCommunityPool extends Message<MsgFundCommunityPool> {
   /**
@@ -307,7 +311,11 @@ export class MsgFundCommunityPool extends Message<MsgFundCommunityPool> {
 /**
  * MsgFundCommunityPoolResponse defines the Msg/FundCommunityPool response type.
  *
+ * Deprecated
+ * Since: cosmos-sdk 0.50
+ *
  * @generated from message cosmos.distribution.v1beta1.MsgFundCommunityPoolResponse
+ * @deprecated
  */
 export class MsgFundCommunityPoolResponse extends Message<MsgFundCommunityPoolResponse> {
   constructor(data?: PartialMessage<MsgFundCommunityPoolResponse>) {
@@ -427,13 +435,11 @@ export class MsgUpdateParamsResponse extends Message<MsgUpdateParamsResponse> {
 }
 
 /**
- * MsgCommunityPoolSpend defines a message for sending tokens from the community
- * pool to another account. This message is typically executed via a governance
- * proposal with the governance module being the executing authority.
- *
- * Since: cosmos-sdk 0.47
+ * Deprecated: Use x/protocolpool module's MsgCommunityPoolSpend instead
+ * Since: cosmos-sdk 0.50
  *
  * @generated from message cosmos.distribution.v1beta1.MsgCommunityPoolSpend
+ * @deprecated
  */
 export class MsgCommunityPoolSpend extends Message<MsgCommunityPoolSpend> {
   /**
@@ -487,9 +493,11 @@ export class MsgCommunityPoolSpend extends Message<MsgCommunityPoolSpend> {
  * MsgCommunityPoolSpendResponse defines the response to executing a
  * MsgCommunityPoolSpend message.
  *
- * Since: cosmos-sdk 0.47
+ * Deprecated
+ * Since: cosmos-sdk 0.50
  *
  * @generated from message cosmos.distribution.v1beta1.MsgCommunityPoolSpendResponse
+ * @deprecated
  */
 export class MsgCommunityPoolSpendResponse extends Message<MsgCommunityPoolSpendResponse> {
   constructor(data?: PartialMessage<MsgCommunityPoolSpendResponse>) {

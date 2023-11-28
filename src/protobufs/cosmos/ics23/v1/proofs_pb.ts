@@ -48,6 +48,21 @@ export enum HashOp {
    * @generated from enum value: SHA512_256 = 6;
    */
   SHA512_256 = 6,
+
+  /**
+   * @generated from enum value: BLAKE2B_512 = 7;
+   */
+  BLAKE2B_512 = 7,
+
+  /**
+   * @generated from enum value: BLAKE2S_256 = 8;
+   */
+  BLAKE2S_256 = 8,
+
+  /**
+   * @generated from enum value: BLAKE3 = 9;
+   */
+  BLAKE3 = 9,
 }
 // Retrieve enum metadata with: proto3.getEnumType(HashOp)
 proto3.util.setEnumType(HashOp, "cosmos.ics23.v1.HashOp", [
@@ -58,6 +73,9 @@ proto3.util.setEnumType(HashOp, "cosmos.ics23.v1.HashOp", [
   { no: 4, name: "RIPEMD160" },
   { no: 5, name: "BITCOIN" },
   { no: 6, name: "SHA512_256" },
+  { no: 7, name: "BLAKE2B_512" },
+  { no: 8, name: "BLAKE2S_256" },
+  { no: 9, name: "BLAKE3" },
 ]);
 
 /**

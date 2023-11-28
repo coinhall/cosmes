@@ -303,3 +303,71 @@ export class QueryBaseDenomResponse extends Message<QueryBaseDenomResponse> {
   }
 }
 
+/**
+ * @generated from message osmosis.txfees.v1beta1.QueryEipBaseFeeRequest
+ */
+export class QueryEipBaseFeeRequest extends Message<QueryEipBaseFeeRequest> {
+  constructor(data?: PartialMessage<QueryEipBaseFeeRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "osmosis.txfees.v1beta1.QueryEipBaseFeeRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): QueryEipBaseFeeRequest {
+    return new QueryEipBaseFeeRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): QueryEipBaseFeeRequest {
+    return new QueryEipBaseFeeRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): QueryEipBaseFeeRequest {
+    return new QueryEipBaseFeeRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: QueryEipBaseFeeRequest | PlainMessage<QueryEipBaseFeeRequest> | undefined, b: QueryEipBaseFeeRequest | PlainMessage<QueryEipBaseFeeRequest> | undefined): boolean {
+    return proto3.util.equals(QueryEipBaseFeeRequest, a, b);
+  }
+}
+
+/**
+ * @generated from message osmosis.txfees.v1beta1.QueryEipBaseFeeResponse
+ */
+export class QueryEipBaseFeeResponse extends Message<QueryEipBaseFeeResponse> {
+  /**
+   * @generated from field: string base_fee = 1;
+   */
+  baseFee = "";
+
+  constructor(data?: PartialMessage<QueryEipBaseFeeResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "osmosis.txfees.v1beta1.QueryEipBaseFeeResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "base_fee", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): QueryEipBaseFeeResponse {
+    return new QueryEipBaseFeeResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): QueryEipBaseFeeResponse {
+    return new QueryEipBaseFeeResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): QueryEipBaseFeeResponse {
+    return new QueryEipBaseFeeResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: QueryEipBaseFeeResponse | PlainMessage<QueryEipBaseFeeResponse> | undefined, b: QueryEipBaseFeeResponse | PlainMessage<QueryEipBaseFeeResponse> | undefined): boolean {
+    return proto3.util.equals(QueryEipBaseFeeResponse, a, b);
+  }
+}
+

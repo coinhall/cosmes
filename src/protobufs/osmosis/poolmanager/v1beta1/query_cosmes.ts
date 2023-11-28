@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { AllPoolsRequest, AllPoolsResponse, EstimateSinglePoolSwapExactAmountInRequest, EstimateSinglePoolSwapExactAmountOutRequest, EstimateSwapExactAmountInRequest, EstimateSwapExactAmountInResponse, EstimateSwapExactAmountInWithPrimitiveTypesRequest, EstimateSwapExactAmountOutRequest, EstimateSwapExactAmountOutResponse, EstimateSwapExactAmountOutWithPrimitiveTypesRequest, NumPoolsRequest, NumPoolsResponse, ParamsRequest, ParamsResponse, PoolRequest, PoolResponse, SpotPriceRequest, SpotPriceResponse, TotalLiquidityRequest, TotalLiquidityResponse, TotalPoolLiquidityRequest, TotalPoolLiquidityResponse } from "./query_pb.js";
+import { AllPoolsRequest, AllPoolsResponse, EstimateSinglePoolSwapExactAmountInRequest, EstimateSinglePoolSwapExactAmountOutRequest, EstimateSwapExactAmountInRequest, EstimateSwapExactAmountInResponse, EstimateSwapExactAmountInWithPrimitiveTypesRequest, EstimateSwapExactAmountOutRequest, EstimateSwapExactAmountOutResponse, EstimateSwapExactAmountOutWithPrimitiveTypesRequest, EstimateTradeBasedOnPriceImpactRequest, EstimateTradeBasedOnPriceImpactResponse, ListPoolsByDenomRequest, ListPoolsByDenomResponse, NumPoolsRequest, NumPoolsResponse, ParamsRequest, ParamsResponse, PoolRequest, PoolResponse, SpotPriceRequest, SpotPriceResponse, TotalLiquidityRequest, TotalLiquidityResponse, TotalPoolLiquidityRequest, TotalPoolLiquidityResponse, TotalVolumeForPoolRequest, TotalVolumeForPoolResponse, TradingPairTakerFeeRequest, TradingPairTakerFeeResponse } from "./query_pb.js";
 
 const TYPE_NAME = "osmosis.poolmanager.v1beta1.Query";
 
@@ -131,6 +131,18 @@ export const QueryAllPoolsService = {
 } as const;
 
 /**
+ * ListPoolsByDenom return all pools by denom
+ *
+ * @generated from rpc osmosis.poolmanager.v1beta1.Query.ListPoolsByDenom
+ */
+export const QueryListPoolsByDenomService = {
+  typeName: TYPE_NAME,
+  method: "ListPoolsByDenom",
+  Request: ListPoolsByDenomRequest,
+  Response: ListPoolsByDenomResponse,
+} as const;
+
+/**
  * SpotPrice defines a gRPC query handler that returns the spot price given
  * a base denomination and a quote denomination.
  *
@@ -165,5 +177,43 @@ export const QueryTotalLiquidityService = {
   method: "TotalLiquidity",
   Request: TotalLiquidityRequest,
   Response: TotalLiquidityResponse,
+} as const;
+
+/**
+ * TotalVolumeForPool returns the total volume of the specified pool.
+ *
+ * @generated from rpc osmosis.poolmanager.v1beta1.Query.TotalVolumeForPool
+ */
+export const QueryTotalVolumeForPoolService = {
+  typeName: TYPE_NAME,
+  method: "TotalVolumeForPool",
+  Request: TotalVolumeForPoolRequest,
+  Response: TotalVolumeForPoolResponse,
+} as const;
+
+/**
+ * TradingPairTakerFee returns the taker fee for a given set of denoms
+ *
+ * @generated from rpc osmosis.poolmanager.v1beta1.Query.TradingPairTakerFee
+ */
+export const QueryTradingPairTakerFeeService = {
+  typeName: TYPE_NAME,
+  method: "TradingPairTakerFee",
+  Request: TradingPairTakerFeeRequest,
+  Response: TradingPairTakerFeeResponse,
+} as const;
+
+/**
+ * EstimateTradeBasedOnPriceImpact returns an estimated trade based on price
+ * impact, if a trade cannot be estimated a 0 input and 0 output would be
+ * returned.
+ *
+ * @generated from rpc osmosis.poolmanager.v1beta1.Query.EstimateTradeBasedOnPriceImpact
+ */
+export const QueryEstimateTradeBasedOnPriceImpactService = {
+  typeName: TYPE_NAME,
+  method: "EstimateTradeBasedOnPriceImpact",
+  Request: EstimateTradeBasedOnPriceImpactRequest,
+  Response: EstimateTradeBasedOnPriceImpactResponse,
 } as const;
 

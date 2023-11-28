@@ -1430,3 +1430,81 @@ export class UserConcentratedSuperfluidPositionsUndelegatingResponse extends Mes
   }
 }
 
+/**
+ * THIS QUERY IS TEMPORARY
+ *
+ * @generated from message osmosis.superfluid.QueryRestSupplyRequest
+ */
+export class QueryRestSupplyRequest extends Message<QueryRestSupplyRequest> {
+  /**
+   * @generated from field: string denom = 1;
+   */
+  denom = "";
+
+  constructor(data?: PartialMessage<QueryRestSupplyRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "osmosis.superfluid.QueryRestSupplyRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "denom", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): QueryRestSupplyRequest {
+    return new QueryRestSupplyRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): QueryRestSupplyRequest {
+    return new QueryRestSupplyRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): QueryRestSupplyRequest {
+    return new QueryRestSupplyRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: QueryRestSupplyRequest | PlainMessage<QueryRestSupplyRequest> | undefined, b: QueryRestSupplyRequest | PlainMessage<QueryRestSupplyRequest> | undefined): boolean {
+    return proto3.util.equals(QueryRestSupplyRequest, a, b);
+  }
+}
+
+/**
+ * @generated from message osmosis.superfluid.QueryRestSupplyResponse
+ */
+export class QueryRestSupplyResponse extends Message<QueryRestSupplyResponse> {
+  /**
+   * amount is the supply of the coin.
+   *
+   * @generated from field: cosmos.base.v1beta1.Coin amount = 1;
+   */
+  amount?: Coin;
+
+  constructor(data?: PartialMessage<QueryRestSupplyResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "osmosis.superfluid.QueryRestSupplyResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "amount", kind: "message", T: Coin },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): QueryRestSupplyResponse {
+    return new QueryRestSupplyResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): QueryRestSupplyResponse {
+    return new QueryRestSupplyResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): QueryRestSupplyResponse {
+    return new QueryRestSupplyResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: QueryRestSupplyResponse | PlainMessage<QueryRestSupplyResponse> | undefined, b: QueryRestSupplyResponse | PlainMessage<QueryRestSupplyResponse> | undefined): boolean {
+    return proto3.util.equals(QueryRestSupplyResponse, a, b);
+  }
+}
+

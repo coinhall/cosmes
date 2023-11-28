@@ -5,7 +5,50 @@
 
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
 import { Any, Message, proto3, protoInt64 } from "@bufbuild/protobuf";
+import { AccessConfig } from "./types_pb.js";
 import { Coin } from "../../../cosmos/base/v1beta1/coin_pb.js";
+
+/**
+ * StoreCodeAuthorization defines authorization for wasm code upload.
+ * Since: wasmd 0.42
+ *
+ * @generated from message cosmwasm.wasm.v1.StoreCodeAuthorization
+ */
+export class StoreCodeAuthorization extends Message<StoreCodeAuthorization> {
+  /**
+   * Grants for code upload
+   *
+   * @generated from field: repeated cosmwasm.wasm.v1.CodeGrant grants = 1;
+   */
+  grants: CodeGrant[] = [];
+
+  constructor(data?: PartialMessage<StoreCodeAuthorization>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "cosmwasm.wasm.v1.StoreCodeAuthorization";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "grants", kind: "message", T: CodeGrant, repeated: true },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): StoreCodeAuthorization {
+    return new StoreCodeAuthorization().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): StoreCodeAuthorization {
+    return new StoreCodeAuthorization().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): StoreCodeAuthorization {
+    return new StoreCodeAuthorization().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: StoreCodeAuthorization | PlainMessage<StoreCodeAuthorization> | undefined, b: StoreCodeAuthorization | PlainMessage<StoreCodeAuthorization> | undefined): boolean {
+    return proto3.util.equals(StoreCodeAuthorization, a, b);
+  }
+}
 
 /**
  * ContractExecutionAuthorization defines authorization for wasm execute.
@@ -88,6 +131,58 @@ export class ContractMigrationAuthorization extends Message<ContractMigrationAut
 
   static equals(a: ContractMigrationAuthorization | PlainMessage<ContractMigrationAuthorization> | undefined, b: ContractMigrationAuthorization | PlainMessage<ContractMigrationAuthorization> | undefined): boolean {
     return proto3.util.equals(ContractMigrationAuthorization, a, b);
+  }
+}
+
+/**
+ * CodeGrant a granted permission for a single code
+ *
+ * @generated from message cosmwasm.wasm.v1.CodeGrant
+ */
+export class CodeGrant extends Message<CodeGrant> {
+  /**
+   * CodeHash is the unique identifier created by wasmvm
+   * Wildcard "*" is used to specify any kind of grant.
+   *
+   * @generated from field: bytes code_hash = 1;
+   */
+  codeHash = new Uint8Array(0);
+
+  /**
+   * InstantiatePermission is the superset access control to apply
+   * on contract creation.
+   * Optional
+   *
+   * @generated from field: cosmwasm.wasm.v1.AccessConfig instantiate_permission = 2;
+   */
+  instantiatePermission?: AccessConfig;
+
+  constructor(data?: PartialMessage<CodeGrant>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "cosmwasm.wasm.v1.CodeGrant";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "code_hash", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
+    { no: 2, name: "instantiate_permission", kind: "message", T: AccessConfig },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): CodeGrant {
+    return new CodeGrant().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): CodeGrant {
+    return new CodeGrant().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): CodeGrant {
+    return new CodeGrant().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: CodeGrant | PlainMessage<CodeGrant> | undefined, b: CodeGrant | PlainMessage<CodeGrant> | undefined): boolean {
+    return proto3.util.equals(CodeGrant, a, b);
   }
 }
 

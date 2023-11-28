@@ -14,11 +14,11 @@ import { Params } from "./host_pb.js";
  */
 export class MsgUpdateParams extends Message<MsgUpdateParams> {
   /**
-   * authority is the address that controls the module (defaults to x/gov unless overwritten).
+   * signer address
    *
-   * @generated from field: string authority = 1;
+   * @generated from field: string signer = 1;
    */
-  authority = "";
+  signer = "";
 
   /**
    * params defines the 27-interchain-accounts/host parameters to update.
@@ -37,7 +37,7 @@ export class MsgUpdateParams extends Message<MsgUpdateParams> {
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "ibc.applications.interchain_accounts.host.v1.MsgUpdateParams";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "authority", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 1, name: "signer", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "params", kind: "message", T: Params },
   ]);
 

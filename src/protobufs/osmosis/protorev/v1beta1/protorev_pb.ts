@@ -6,6 +6,8 @@
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
 import { Message, proto3, protoInt64 } from "@bufbuild/protobuf";
 import { Coin } from "../../../cosmos/base/v1beta1/coin_pb.js";
+import { TakerFeesTracker } from "../../poolmanager/v1beta1/genesis_pb.js";
+import { TxFeesTracker } from "../../txfees/v1beta1/genesis_pb.js";
 
 /**
  * TokenPairArbRoutes tracks all of the hot routes for a given pair of tokens
@@ -643,6 +645,98 @@ export class BaseDenom extends Message<BaseDenom> {
 
   static equals(a: BaseDenom | PlainMessage<BaseDenom> | undefined, b: BaseDenom | PlainMessage<BaseDenom> | undefined): boolean {
     return proto3.util.equals(BaseDenom, a, b);
+  }
+}
+
+/**
+ * @generated from message osmosis.protorev.v1beta1.AllProtocolRevenue
+ */
+export class AllProtocolRevenue extends Message<AllProtocolRevenue> {
+  /**
+   * @generated from field: osmosis.poolmanager.v1beta1.TakerFeesTracker taker_fees_tracker = 1;
+   */
+  takerFeesTracker?: TakerFeesTracker;
+
+  /**
+   * @generated from field: osmosis.txfees.v1beta1.TxFeesTracker tx_fees_tracker = 2;
+   */
+  txFeesTracker?: TxFeesTracker;
+
+  /**
+   * @generated from field: osmosis.protorev.v1beta1.CyclicArbTracker cyclic_arb_tracker = 3;
+   */
+  cyclicArbTracker?: CyclicArbTracker;
+
+  constructor(data?: PartialMessage<AllProtocolRevenue>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "osmosis.protorev.v1beta1.AllProtocolRevenue";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "taker_fees_tracker", kind: "message", T: TakerFeesTracker },
+    { no: 2, name: "tx_fees_tracker", kind: "message", T: TxFeesTracker },
+    { no: 3, name: "cyclic_arb_tracker", kind: "message", T: CyclicArbTracker },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): AllProtocolRevenue {
+    return new AllProtocolRevenue().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): AllProtocolRevenue {
+    return new AllProtocolRevenue().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): AllProtocolRevenue {
+    return new AllProtocolRevenue().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: AllProtocolRevenue | PlainMessage<AllProtocolRevenue> | undefined, b: AllProtocolRevenue | PlainMessage<AllProtocolRevenue> | undefined): boolean {
+    return proto3.util.equals(AllProtocolRevenue, a, b);
+  }
+}
+
+/**
+ * @generated from message osmosis.protorev.v1beta1.CyclicArbTracker
+ */
+export class CyclicArbTracker extends Message<CyclicArbTracker> {
+  /**
+   * @generated from field: repeated cosmos.base.v1beta1.Coin cyclic_arb = 1;
+   */
+  cyclicArb: Coin[] = [];
+
+  /**
+   * @generated from field: int64 height_accounting_starts_from = 2;
+   */
+  heightAccountingStartsFrom = protoInt64.zero;
+
+  constructor(data?: PartialMessage<CyclicArbTracker>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "osmosis.protorev.v1beta1.CyclicArbTracker";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "cyclic_arb", kind: "message", T: Coin, repeated: true },
+    { no: 2, name: "height_accounting_starts_from", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): CyclicArbTracker {
+    return new CyclicArbTracker().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): CyclicArbTracker {
+    return new CyclicArbTracker().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): CyclicArbTracker {
+    return new CyclicArbTracker().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: CyclicArbTracker | PlainMessage<CyclicArbTracker> | undefined, b: CyclicArbTracker | PlainMessage<CyclicArbTracker> | undefined): boolean {
+    return proto3.util.equals(CyclicArbTracker, a, b);
   }
 }
 

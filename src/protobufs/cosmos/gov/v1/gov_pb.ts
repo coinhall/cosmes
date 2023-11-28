@@ -302,7 +302,8 @@ export class Proposal extends Message<Proposal> {
 
   /**
    * metadata is any arbitrary metadata attached to the proposal.
-   * the recommended format of the metadata is to be found here: https://docs.cosmos.network/v0.47/modules/gov#proposal-3
+   * the recommended format of the metadata is to be found here:
+   * https://docs.cosmos.network/v0.47/modules/gov#proposal-3
    *
    * @generated from field: string metadata = 10;
    */
@@ -805,6 +806,17 @@ export class Params extends Message<Params> {
    */
   burnVoteVeto = false;
 
+  /**
+   * The ratio representing the proportion of the deposit value minimum that must be met when making a deposit.
+   * Default value: 0.01. Meaning that for a chain with a min_deposit of 100stake, a deposit of 1stake would be
+   * required.
+   *
+   * Since: cosmos-sdk 0.50
+   *
+   * @generated from field: string min_deposit_ratio = 16;
+   */
+  minDepositRatio = "";
+
   constructor(data?: PartialMessage<Params>) {
     super();
     proto3.util.initPartial(data, this);
@@ -828,6 +840,7 @@ export class Params extends Message<Params> {
     { no: 13, name: "burn_vote_quorum", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
     { no: 14, name: "burn_proposal_deposit_prevote", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
     { no: 15, name: "burn_vote_veto", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+    { no: 16, name: "min_deposit_ratio", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Params {
