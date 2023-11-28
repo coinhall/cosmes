@@ -1,5 +1,11 @@
 # Changelog
 
+## `v0.0.41`
+
+### Features
+
+- Added support for Injective
+
 ## `v0.0.40`
 
 ### Fixes
