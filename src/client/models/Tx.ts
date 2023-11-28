@@ -155,7 +155,14 @@ export class Tx {
     };
   }
 
+  /**
+   * Returns the proto encoded public key. The chain ID is used to determine if
+   * it should be encoded using Injective's custom protobuf instead.
+   *
+   * **Warning**: Injective's chain ID might change, causing potential issues here.
+   */
   private getProtoPubKey() {
+    // TODO: Injective's chain ID might change in the future
     return this.data.pubKey.toProto(this.data.chainId === "injective-1");
   }
 }
