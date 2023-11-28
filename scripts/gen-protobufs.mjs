@@ -46,6 +46,10 @@ const REPOS = [
     repo: "osmosis-labs/osmosis#main",
     paths: ["proto"],
   },
+  {
+    repo: "InjectiveLabs/sdk-go#master",
+    paths: ["proto"],
+  },
 ];
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
