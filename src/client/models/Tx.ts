@@ -1,7 +1,9 @@
+import { PlainMessage } from "@bufbuild/protobuf";
 import {
   CosmosTxV1beta1AuthInfo as ProtoAuthInfo,
   CosmosTxV1beta1Fee as ProtoFee,
   CosmosTxSigningV1beta1SignMode as ProtoSignMode,
+  CosmosTxV1beta1SignerInfo as ProtoSignerInfo,
   CosmosTxV1beta1TxBody as ProtoTxBody,
   CosmosTxV1beta1TxRaw as ProtoTxRaw,
   CosmosTxV1beta1SignDoc as SignDoc,
@@ -61,20 +63,7 @@ export class Tx {
     return new ProtoTxRaw({
       authInfoBytes: new ProtoAuthInfo({
         fee: fee,
-        signerInfos: [
-          {
-            publicKey: toAny(this.getProtoPubKey()),
-            sequence: sequence,
-            modeInfo: {
-              sum: {
-                case: "single",
-                value: {
-                  mode: signMode,
-                },
-              },
-            },
-          },
-        ],
+        signerInfos: [this.getSignerInfo(sequence, signMode)],
       }).toBinary(),
       bodyBytes: new ProtoTxBody({
         messages: this.data.msgs.map((m) => toAny(m.toProto())),
@@ -111,20 +100,7 @@ export class Tx {
       accountNumber: accountNumber,
       authInfoBytes: new ProtoAuthInfo({
         fee: fee,
-        signerInfos: [
-          {
-            publicKey: toAny(this.getProtoPubKey()),
-            sequence: sequence,
-            modeInfo: {
-              sum: {
-                case: "single",
-                value: {
-                  mode: ProtoSignMode.DIRECT,
-                },
-              },
-            },
-          },
-        ],
+        signerInfos: [this.getSignerInfo(sequence, ProtoSignMode.DIRECT)],
       }).toBinary(),
       bodyBytes: new ProtoTxBody({
         messages: this.data.msgs.map((m) => toAny(m.toProto())),
@@ -156,13 +132,29 @@ export class Tx {
   }
 
   /**
-   * Returns the proto encoded public key. The chain ID is used to determine if
-   * it should be encoded using Injective's custom protobuf instead.
+   * Returns the signer info. The chain ID is used to determine if the public key
+   * should be encoded using Injective's custom protobuf.
    *
    * **Warning**: Injective's chain ID might change, causing potential issues here.
    */
-  private getProtoPubKey() {
-    // TODO: Injective's chain ID might change in the future
-    return this.data.pubKey.toProto(this.data.chainId === "injective-1");
+  private getSignerInfo(
+    sequence: bigint,
+    mode: ProtoSignMode
+  ): PlainMessage<ProtoSignerInfo> {
+    return {
+      publicKey: toAny(
+        // TODO: Injective's chain ID might change in the future
+        this.data.pubKey.toProto(this.data.chainId === "injective-1")
+      ),
+      sequence: sequence,
+      modeInfo: {
+        sum: {
+          case: "single",
+          value: {
+            mode: mode,
+          },
+        },
+      },
+    };
   }
 }
