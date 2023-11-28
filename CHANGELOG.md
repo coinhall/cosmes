@@ -1,6 +1,6 @@
 # Changelog
 
-## `v0.0.41`
+## `v0.0.42`
 
 ### Features
 
