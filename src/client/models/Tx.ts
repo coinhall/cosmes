@@ -144,7 +144,7 @@ export class Tx {
     return {
       publicKey: toAny(
         // TODO: Injective's chain ID might change in the future
-        this.data.pubKey.toProto(this.data.chainId === "injective-1")
+        this.data.pubKey.toProto(this.data.chainId.startsWith("injective-"))
       ),
       sequence: sequence,
       modeInfo: {
