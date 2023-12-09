@@ -1,6 +1,6 @@
 import { PlainMessage } from "@bufbuild/protobuf";
 import WalletConnect from "@walletconnect/legacy-client";
-import { Adapter } from "cosmes/client";
+import { Secp256k1PubKey } from "cosmes/client";
 import { base64, utf8 } from "cosmes/codec";
 import {
   CosmosBaseV1beta1Coin as Coin,
@@ -24,7 +24,7 @@ export class StationWalletConnectV1 extends ConnectedWallet {
   constructor(
     wc: WalletConnect,
     chainId: string,
-    pubKey: Adapter,
+    pubKey: Secp256k1PubKey,
     address: string,
     rpc: string,
     gasPrice: PlainMessage<Coin>

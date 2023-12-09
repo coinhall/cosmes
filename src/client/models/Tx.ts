@@ -1,7 +1,9 @@
+import { PlainMessage } from "@bufbuild/protobuf";
 import {
   CosmosTxV1beta1AuthInfo as ProtoAuthInfo,
   CosmosTxV1beta1Fee as ProtoFee,
   CosmosTxSigningV1beta1SignMode as ProtoSignMode,
+  CosmosTxV1beta1SignerInfo as ProtoSignerInfo,
   CosmosTxV1beta1TxBody as ProtoTxBody,
   CosmosTxV1beta1TxRaw as ProtoTxRaw,
   CosmosTxV1beta1SignDoc as SignDoc,
@@ -10,9 +12,11 @@ import { StdSignDoc } from "cosmes/registry";
 
 import { toAny } from "../utils/toAny";
 import { Adapter } from "./Adapter";
+import { Secp256k1PubKey } from "./Secp256k1PubKey";
 
 type Data = {
-  pubKey: Adapter;
+  chainId: string;
+  pubKey: Secp256k1PubKey;
   msgs: Adapter[];
 };
 
@@ -30,7 +34,6 @@ export type ToUnsignedProtoParams = Pick<
 >;
 
 export type ToSignDocParams = {
-  chainId: string;
   accountNumber: bigint;
   sequence: bigint;
   fee: ProtoFee;
@@ -60,20 +63,7 @@ export class Tx {
     return new ProtoTxRaw({
       authInfoBytes: new ProtoAuthInfo({
         fee: fee,
-        signerInfos: [
-          {
-            publicKey: toAny(this.data.pubKey.toProto()),
-            sequence: sequence,
-            modeInfo: {
-              sum: {
-                case: "single",
-                value: {
-                  mode: signMode,
-                },
-              },
-            },
-          },
-        ],
+        signerInfos: [this.getSignerInfo(sequence, signMode)],
       }).toBinary(),
       bodyBytes: new ProtoTxBody({
         messages: this.data.msgs.map((m) => toAny(m.toProto())),
@@ -100,31 +90,17 @@ export class Tx {
    * Returns the unsigned, proto encoded tx ready to be signed by a wallet.
    */
   public toSignDoc({
-    chainId,
     accountNumber,
     sequence,
     fee,
     memo,
   }: ToSignDocParams): SignDoc {
     return new SignDoc({
-      chainId: chainId,
+      chainId: this.data.chainId,
       accountNumber: accountNumber,
       authInfoBytes: new ProtoAuthInfo({
         fee: fee,
-        signerInfos: [
-          {
-            publicKey: toAny(this.data.pubKey.toProto()),
-            sequence: sequence,
-            modeInfo: {
-              sum: {
-                case: "single",
-                value: {
-                  mode: ProtoSignMode.DIRECT,
-                },
-              },
-            },
-          },
-        ],
+        signerInfos: [this.getSignerInfo(sequence, ProtoSignMode.DIRECT)],
       }).toBinary(),
       bodyBytes: new ProtoTxBody({
         messages: this.data.msgs.map((m) => toAny(m.toProto())),
@@ -137,14 +113,13 @@ export class Tx {
    * Returns the unsigned, amino encoded tx ready to be signed by a wallet.
    */
   public toStdSignDoc({
-    chainId,
     accountNumber,
     sequence,
     fee,
     memo,
   }: ToStdSignDocParams): StdSignDoc {
     return {
-      chain_id: chainId,
+      chain_id: this.data.chainId,
       account_number: accountNumber.toString(),
       sequence: sequence.toString(),
       fee: {
@@ -153,6 +128,33 @@ export class Tx {
       },
       msgs: this.data.msgs.map((m) => m.toAmino()),
       memo: memo ?? "",
+    };
+  }
+
+  /**
+   * Returns the signer info. The chain ID is used to determine if the public key
+   * should be encoded using Injective's custom protobuf.
+   *
+   * **Warning**: Injective's chain ID might change, causing potential issues here.
+   */
+  private getSignerInfo(
+    sequence: bigint,
+    mode: ProtoSignMode
+  ): PlainMessage<ProtoSignerInfo> {
+    return {
+      publicKey: toAny(
+        // TODO: Injective's chain ID might change in the future
+        this.data.pubKey.toProto(this.data.chainId.startsWith("injective-"))
+      ),
+      sequence: sequence,
+      modeInfo: {
+        sum: {
+          case: "single",
+          value: {
+            mode: mode,
+          },
+        },
+      },
     };
   }
 }

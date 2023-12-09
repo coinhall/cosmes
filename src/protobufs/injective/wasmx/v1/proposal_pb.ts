@@ -5,7 +5,7 @@
 
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
 import { Message, proto3, protoInt64 } from "@bufbuild/protobuf";
-import { StoreCodeProposal } from "../../../cosmwasm/wasm/v1/proposal_pb.js";
+import { StoreCodeProposal } from "../../../cosmwasm/wasm/v1/proposal_legacy_pb.js";
 
 /**
  * @generated from enum injective.wasmx.v1.FundingMode

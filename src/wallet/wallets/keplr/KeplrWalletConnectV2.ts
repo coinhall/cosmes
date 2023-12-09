@@ -1,5 +1,5 @@
 import { PlainMessage } from "@bufbuild/protobuf";
-import { Adapter, Tx, broadcastTx } from "cosmes/client";
+import { Secp256k1PubKey, Tx, broadcastTx } from "cosmes/client";
 import { base64 } from "cosmes/codec";
 import {
   CosmosBaseV1beta1Coin as Coin,
@@ -21,7 +21,7 @@ export class KeplrWalletConnectV2 extends ConnectedWallet {
   constructor(
     wc: WalletConnectV2,
     chainId: string,
-    pubKey: Adapter,
+    pubKey: Secp256k1PubKey,
     address: string,
     rpc: string,
     gasPrice: PlainMessage<Coin>
@@ -51,6 +51,7 @@ export class KeplrWalletConnectV2 extends ConnectedWallet {
     sequence: bigint
   ): Promise<string> {
     const tx = new Tx({
+      chainId: this.chainId,
       pubKey: this.pubKey,
       msgs: msgs,
     });
@@ -58,7 +59,6 @@ export class KeplrWalletConnectV2 extends ConnectedWallet {
       this.chainId,
       this.address,
       tx.toStdSignDoc({
-        chainId: this.chainId,
         accountNumber,
         sequence,
         fee,

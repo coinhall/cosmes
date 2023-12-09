@@ -1,6 +1,9 @@
 import { PlainMessage } from "@bufbuild/protobuf";
 import { base64 } from "cosmes/codec";
-import { CosmosCryptoSecp256k1PubKey as ProtoSecp256k1PubKey } from "cosmes/protobufs";
+import {
+  InjectiveCryptoV1beta1Ethsecp256k1PubKey as ProtoInjectiveSecp256k1PubKey,
+  CosmosCryptoSecp256k1PubKey as ProtoSecp256k1PubKey,
+} from "cosmes/protobufs";
 
 import { DeepPrettify } from "../../typeutils/prettify";
 import { Adapter } from "./Adapter";
@@ -14,8 +17,10 @@ export class Secp256k1PubKey implements Adapter {
     this.data = data;
   }
 
-  public toProto() {
-    return new ProtoSecp256k1PubKey(this.data);
+  public toProto(isInjective = false) {
+    return isInjective
+      ? new ProtoInjectiveSecp256k1PubKey(this.data)
+      : new ProtoSecp256k1PubKey(this.data);
   }
 
   public toAmino() {

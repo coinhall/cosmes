@@ -147,11 +147,11 @@ export class MnemonicWallet extends ConnectedWallet {
     sequence: bigint
   ): Promise<string> {
     const tx = new Tx({
+      chainId: this.chainId,
       pubKey: this.pubKey,
       msgs: msgs,
     });
     const doc = tx.toStdSignDoc({
-      chainId: this.chainId,
       accountNumber,
       sequence,
       fee,
