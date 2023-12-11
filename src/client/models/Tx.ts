@@ -26,11 +26,12 @@ export type ToSignedProtoParams = {
   signMode: ProtoSignMode;
   signature: Uint8Array;
   memo?: string | undefined;
+  timeoutHeight?: bigint | undefined;
 };
 
 export type ToUnsignedProtoParams = Pick<
   ToSignedProtoParams,
-  "sequence" | "memo"
+  "sequence" | "memo" | "timeoutHeight"
 >;
 
 export type ToSignDocParams = {
@@ -38,6 +39,7 @@ export type ToSignDocParams = {
   sequence: bigint;
   fee: ProtoFee;
   memo?: string | undefined;
+  timeoutHeight?: bigint | undefined;
 };
 
 export type ToStdSignDocParams = ToSignDocParams;
@@ -59,6 +61,7 @@ export class Tx {
     signMode,
     signature,
     memo,
+    timeoutHeight,
   }: ToSignedProtoParams): ProtoTxRaw {
     return new ProtoTxRaw({
       authInfoBytes: new ProtoAuthInfo({
@@ -68,6 +71,7 @@ export class Tx {
       bodyBytes: new ProtoTxBody({
         messages: this.data.msgs.map((m) => toAny(m.toProto())),
         memo: memo,
+        timeoutHeight: timeoutHeight,
       }).toBinary(),
       signatures: [signature],
     });
@@ -94,6 +98,7 @@ export class Tx {
     sequence,
     fee,
     memo,
+    timeoutHeight,
   }: ToSignDocParams): SignDoc {
     return new SignDoc({
       chainId: this.data.chainId,
@@ -105,6 +110,7 @@ export class Tx {
       bodyBytes: new ProtoTxBody({
         messages: this.data.msgs.map((m) => toAny(m.toProto())),
         memo: memo,
+        timeoutHeight: timeoutHeight,
       }).toBinary(),
     });
   }
@@ -117,6 +123,7 @@ export class Tx {
     sequence,
     fee,
     memo,
+    timeoutHeight,
   }: ToStdSignDocParams): StdSignDoc {
     return {
       chain_id: this.data.chainId,
@@ -128,6 +135,7 @@ export class Tx {
       },
       msgs: this.data.msgs.map((m) => m.toAmino()),
       memo: memo ?? "",
+      timeout_height: timeoutHeight?.toString(),
     };
   }
 
