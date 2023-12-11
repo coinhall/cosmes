@@ -4,4 +4,4 @@ export * from "@scure/base";
 export { resolveBech32Address } from "./address";
 export { resolveKeyPair } from "./key";
 export { serialiseSignDoc } from "./serialise";
-export { signAmino } from "./sign";
+export { signAmino, signDirect } from "./sign";

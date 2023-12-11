@@ -4,6 +4,7 @@ import {
   resolveBech32Address,
   resolveKeyPair,
   signAmino,
+  signDirect,
   utf8,
 } from "cosmes/codec";
 import {
@@ -77,8 +78,8 @@ export type ConnectMnemonicWalletOptions = Prettify<
  * ```
  */
 export class MnemonicWallet extends ConnectedWallet {
-  private readonly publicKey: string;
-  private readonly privateKey: Uint8Array;
+  public readonly publicKey: string;
+  public readonly privateKey: Uint8Array;
 
   constructor({
     mnemonic,
@@ -141,7 +142,7 @@ export class MnemonicWallet extends ConnectedWallet {
   }
 
   public async signAndBroadcastTx(
-    { msgs, memo }: UnsignedTx,
+    { msgs, memo, timeoutHeight }: UnsignedTx,
     fee: Fee,
     accountNumber: bigint,
     sequence: bigint
@@ -151,21 +152,22 @@ export class MnemonicWallet extends ConnectedWallet {
       pubKey: this.pubKey,
       msgs: msgs,
     });
-    const doc = tx.toStdSignDoc({
+    const doc = tx.toSignDoc({
       accountNumber,
       sequence,
       fee,
       memo,
+      timeoutHeight,
     });
-    const signature = signAmino(doc, this.privateKey);
+    const signature = signDirect(doc, this.privateKey);
     return broadcastTx(this.rpc, {
       tx,
       sequence,
       fee,
-      // TODO: use SignMode.DIRECT
-      signMode: SignMode.LEGACY_AMINO_JSON,
+      signMode: SignMode.DIRECT,
       signature,
       memo,
+      timeoutHeight,
     });
   }
 }

@@ -22,6 +22,7 @@ import type { WalletType } from "../constants/WalletType";
 export type UnsignedTx = {
   msgs: Adapter[];
   memo?: string | undefined;
+  timeoutHeight?: bigint | undefined;
 };
 
 export type PollTxOptions = Pick<
