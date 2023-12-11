@@ -1,5 +1,6 @@
 import { JsonValue, Message, PartialMessage } from "@bufbuild/protobuf";
 import { base16, base64 } from "cosmes/codec";
+import { CosmosTxV1beta1TxRaw as TxRaw } from "cosmes/protobufs";
 
 import { FetchClient } from "./FetchClient";
 
@@ -107,13 +108,13 @@ export class RpcClient {
    */
   public static async broadcastTx(
     endpoint: string,
-    base64EncodedTx: string
+    txRaw: TxRaw
   ): Promise<string> {
     const { code, log, hash } = await this.doRequest<BroadcastTxResult>(
       endpoint,
       "broadcast_tx_sync",
       {
-        tx: base64EncodedTx,
+        tx: base64.encode(txRaw.toBinary()),
       }
     );
     if (code !== 0) {

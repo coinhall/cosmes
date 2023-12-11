@@ -1,5 +1,10 @@
 import { PlainMessage } from "@bufbuild/protobuf";
-import { Secp256k1PubKey, Tx } from "cosmes/client";
+import {
+  Secp256k1PubKey,
+  ToSignDocParams,
+  ToStdSignDocParams,
+  Tx,
+} from "cosmes/client";
 import { base16 } from "cosmes/codec";
 import {
   CosmosBaseV1beta1Coin as Coin,
@@ -59,7 +64,7 @@ export class KeplrExtension extends ConnectedWallet {
   }
 
   protected async signAndBroadcastTx(
-    { msgs, memo }: UnsignedTx,
+    { msgs, memo, timeoutHeight }: UnsignedTx,
     fee: Fee,
     accountNumber: bigint,
     sequence: bigint
@@ -70,17 +75,19 @@ export class KeplrExtension extends ConnectedWallet {
       msgs: msgs,
     });
 
+    const params: ToStdSignDocParams | ToSignDocParams = {
+      accountNumber,
+      sequence,
+      fee,
+      memo,
+      timeoutHeight,
+    };
     let signedTx: Uint8Array;
     if (this.isLedger) {
       const { signature, signed } = await this.ext.signAmino(
         this.chainId,
         this.address,
-        tx.toStdSignDoc({
-          accountNumber,
-          sequence,
-          fee,
-          memo,
-        })
+        tx.toStdSignDoc(params)
       );
       signedTx = stdSignDocToSignedProto(
         tx,
@@ -91,7 +98,7 @@ export class KeplrExtension extends ConnectedWallet {
       const { signature, signed } = await this.ext.signDirect(
         this.chainId,
         this.address,
-        tx.toSignDoc({ accountNumber, sequence, fee, memo })
+        tx.toSignDoc(params)
       );
       signedTx = signDocToSignedProto(signature.signature, signed).toBinary();
     }

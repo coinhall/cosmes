@@ -14,7 +14,7 @@ import type { Coin, SignDoc, StdSignDoc } from "cosmes/registry";
 export function stdSignDocToSignedProto(
   tx: Tx,
   signature: string,
-  { sequence, fee, memo }: StdSignDoc
+  { sequence, fee, memo, timeout_height }: StdSignDoc
 ): TxRaw {
   return tx.toSignedProto({
     sequence: BigInt(sequence),
@@ -27,6 +27,7 @@ export function stdSignDocToSignedProto(
     signMode: SignMode.LEGACY_AMINO_JSON,
     signature: base64.decode(signature),
     memo: memo,
+    timeoutHeight: timeout_height ? BigInt(timeout_height) : undefined,
   });
 }
 

@@ -34,6 +34,7 @@ export { MsgSwapExactAmountIn } from "./models/MsgSwapExactAmountIn";
 export { Secp256k1PubKey } from "./models/Secp256k1PubKey";
 export {
   Tx,
+  type ToSignDocParams,
   type ToSignedProtoParams,
   type ToStdSignDocParams,
   type ToUnsignedProtoParams,
