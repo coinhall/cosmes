@@ -9,7 +9,7 @@ import type { BroadcastMode, Keplr } from "cosmes/registry";
 
 import { WalletName } from "../../constants/WalletName";
 import { WalletType } from "../../constants/WalletType";
-import { stdSignDocToSignedProto } from "../../utils/tx";
+import { signDocToSignedProto, stdSignDocToSignedProto } from "../../utils/tx";
 import {
   ConnectedWallet,
   SignArbitraryResponse,
@@ -18,17 +18,20 @@ import {
 
 export class KeplrExtension extends ConnectedWallet {
   private readonly ext: Keplr;
+  private readonly isLedger: boolean;
 
   constructor(
+    walletName: WalletName,
     ext: Keplr,
     chainId: string,
     pubKey: Secp256k1PubKey,
     address: string,
     rpc: string,
-    gasPrice: PlainMessage<Coin>
+    gasPrice: PlainMessage<Coin>,
+    isLedger: boolean
   ) {
     super(
-      WalletName.KEPLR,
+      walletName,
       WalletType.EXTENSION,
       chainId,
       pubKey,
@@ -43,6 +46,7 @@ export class KeplrExtension extends ConnectedWallet {
         preferNoSetMemo: true,
       },
     };
+    this.isLedger = isLedger;
   }
 
   public async signArbitrary(data: string): Promise<SignArbitraryResponse> {
@@ -65,19 +69,36 @@ export class KeplrExtension extends ConnectedWallet {
       pubKey: this.pubKey,
       msgs: msgs,
     });
-    const { signature, signed } = await this.ext.signAmino(
-      this.chainId,
-      this.address,
-      tx.toStdSignDoc({
-        accountNumber,
-        sequence,
-        fee,
-        memo,
-      })
-    );
+
+    let signedTx: Uint8Array;
+    if (this.isLedger) {
+      const { signature, signed } = await this.ext.signAmino(
+        this.chainId,
+        this.address,
+        tx.toStdSignDoc({
+          accountNumber,
+          sequence,
+          fee,
+          memo,
+        })
+      );
+      signedTx = stdSignDocToSignedProto(
+        tx,
+        signature.signature,
+        signed
+      ).toBinary();
+    } else {
+      const { signature, signed } = await this.ext.signDirect(
+        this.chainId,
+        this.address,
+        tx.toSignDoc({ accountNumber, sequence, fee, memo })
+      );
+      signedTx = signDocToSignedProto(signature.signature, signed).toBinary();
+    }
+
     const txHash = await this.ext.sendTx(
       this.chainId,
-      stdSignDocToSignedProto(tx, signature.signature, signed).toBinary(),
+      signedTx,
       "sync" as BroadcastMode
     );
     return base16.encode(txHash);

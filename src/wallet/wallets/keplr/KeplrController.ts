@@ -9,7 +9,6 @@ import { ConnectedWallet } from "../ConnectedWallet";
 import { ChainInfo, WalletController } from "../WalletController";
 import { KeplrExtension } from "./KeplrExtension";
 import { KeplrWalletConnectV2 } from "./KeplrWalletConnectV2";
-import { KeplrWcV2Uri } from "./constants";
 
 export class KeplrController extends WalletController {
   private readonly wc: WalletConnectV2;
@@ -19,8 +18,9 @@ export class KeplrController extends WalletController {
     this.wc = new WalletConnectV2(wcProjectId, {
       // https://github.com/chainapsis/keplr-wallet/blob/master/packages/wc-qrcode-modal/src/modal.tsx#L61-L75
       name: "Keplr",
-      android: KeplrWcV2Uri.ANDROID,
-      ios: KeplrWcV2Uri.IOS,
+      android:
+        "intent://wcV2#Intent;package=com.chainapsis.keplr;scheme=keplrwallet;end;",
+      ios: "keplrwallet://wcV2",
     });
     this.registerAccountChangeHandlers();
   }
@@ -56,13 +56,22 @@ export class KeplrController extends WalletController {
     }
     await ext.enable(chains.map(({ chainId }) => chainId));
     for (const { chainId, rpc, gasPrice } of Object.values(chains)) {
-      const { bech32Address, pubKey } = await ext.getKey(chainId);
+      const { bech32Address, pubKey, isNanoLedger } = await ext.getKey(chainId);
       const key = new Secp256k1PubKey({
         key: pubKey,
       });
       wallets.set(
         chainId,
-        new KeplrExtension(ext, chainId, key, bech32Address, rpc, gasPrice)
+        new KeplrExtension(
+          this.id,
+          ext,
+          chainId,
+          key,
+          bech32Address,
+          rpc,
+          gasPrice,
+          isNanoLedger
+        )
       );
     }
     return wallets;

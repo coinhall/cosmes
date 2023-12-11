@@ -9,7 +9,6 @@ import { ConnectedWallet } from "../ConnectedWallet";
 import { ChainInfo, WalletController } from "../WalletController";
 import { CosmostationExtension } from "./CosmostationExtension";
 import { CosmostationWalletConnectV2 } from "./CosmostationWalletConnectV2";
-import { CosmostationExtMethod, CosmostationWcUri } from "./constants";
 
 export class CosmostationController extends WalletController {
   private readonly wc: WalletConnectV2;
@@ -19,8 +18,9 @@ export class CosmostationController extends WalletController {
     this.wc = new WalletConnectV2(wcProjectId, {
       // https://github.com/cosmostation/cosmostation-wc-modal/blob/main/src/modal.tsx#L22-L34
       name: "Cosmostation",
-      android: CosmostationWcUri.ANDROID,
-      ios: CosmostationWcUri.IOS,
+      android:
+        "intent://wc#Intent;package=wannabit.io.cosmostaion;scheme=cosmostation;end;",
+      ios: "cosmostation://wc",
     });
     this.registerAccountChangeHandlers();
   }
@@ -57,22 +57,28 @@ export class CosmostationController extends WalletController {
 
   protected async connectExtension<T extends string>(chains: ChainInfo<T>[]) {
     const wallets = new Map<T, ConnectedWallet>();
-    const ext = window.cosmostation;
+    const ext = window.cosmostation.providers.keplr;
     if (!ext) {
       throw new Error("Cosmostation extension is not installed");
     }
+    await ext.enable(chains.map(({ chainId }) => chainId));
     for (const { chainId, rpc, gasPrice } of Object.values(chains)) {
-      // https://docs.cosmostation.io/integration-extension/cosmos/accounts#vanilla-code-1
-      const res = await window.cosmostation.cosmos.request({
-        method: CosmostationExtMethod.REQUEST_ACCOUNT,
-        params: { chainName: chainId },
-      });
+      const { bech32Address, pubKey, isNanoLedger } = await ext.getKey(chainId);
       const key = new Secp256k1PubKey({
-        key: res.publicKey,
+        key: pubKey,
       });
       wallets.set(
         chainId,
-        new CosmostationExtension(ext, chainId, key, res.address, rpc, gasPrice)
+        new CosmostationExtension(
+          this.id,
+          ext,
+          chainId,
+          key,
+          bech32Address,
+          rpc,
+          gasPrice,
+          isNanoLedger
+        )
       );
     }
     return wallets;
