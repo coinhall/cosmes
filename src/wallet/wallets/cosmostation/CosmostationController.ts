@@ -43,12 +43,14 @@ export class CosmostationController extends WalletController {
       wallets.set(
         chainId,
         new CosmostationWalletConnectV2(
+          this.id,
           this.wc,
           chainId,
           key,
           address,
           rpc,
-          gasPrice
+          gasPrice,
+          true // TODO: use sign mode direct when supported
         )
       );
     }

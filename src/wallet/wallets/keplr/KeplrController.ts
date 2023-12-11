@@ -42,7 +42,16 @@ export class KeplrController extends WalletController {
       });
       wallets.set(
         chainId,
-        new KeplrWalletConnectV2(this.wc, chainId, key, address, rpc, gasPrice)
+        new KeplrWalletConnectV2(
+          this.id,
+          this.wc,
+          chainId,
+          key,
+          address,
+          rpc,
+          gasPrice,
+          true // TODO: use sign mode direct when supported
+        )
       );
     }
     return { wallets, wc: this.wc };

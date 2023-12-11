@@ -41,7 +41,16 @@ export class LeapController extends WalletController {
       });
       wallets.set(
         chainId,
-        new LeapWalletConnectV2(this.wc, chainId, key, address, rpc, gasPrice)
+        new LeapWalletConnectV2(
+          this.id,
+          this.wc,
+          chainId,
+          key,
+          address,
+          rpc,
+          gasPrice,
+          true // TODO: use sign mode direct when supported
+        )
       );
     }
     return { wallets, wc: this.wc };

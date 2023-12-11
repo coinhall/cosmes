@@ -23,7 +23,7 @@ import {
 
 export class KeplrExtension extends ConnectedWallet {
   private readonly ext: Keplr;
-  private readonly isLedger: boolean;
+  private readonly useAmino: boolean;
 
   constructor(
     walletName: WalletName,
@@ -33,7 +33,7 @@ export class KeplrExtension extends ConnectedWallet {
     address: string,
     rpc: string,
     gasPrice: PlainMessage<Coin>,
-    isLedger: boolean
+    useAmino: boolean
   ) {
     super(
       walletName,
@@ -51,7 +51,7 @@ export class KeplrExtension extends ConnectedWallet {
         preferNoSetMemo: true,
       },
     };
-    this.isLedger = isLedger;
+    this.useAmino = useAmino;
   }
 
   public async signArbitrary(data: string): Promise<SignArbitraryResponse> {
@@ -83,7 +83,7 @@ export class KeplrExtension extends ConnectedWallet {
       timeoutHeight,
     };
     let txRaw: TxRaw;
-    if (this.isLedger) {
+    if (this.useAmino) {
       const { signed, signature } = await this.ext.signAmino(
         this.chainId,
         this.address,

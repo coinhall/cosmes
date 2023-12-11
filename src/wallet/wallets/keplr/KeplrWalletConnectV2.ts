@@ -1,10 +1,15 @@
 import { PlainMessage } from "@bufbuild/protobuf";
-import { Secp256k1PubKey, Tx, broadcastTx } from "cosmes/client";
-import { base64 } from "cosmes/codec";
+import {
+  RpcClient,
+  Secp256k1PubKey,
+  ToSignDocParams,
+  ToStdSignDocParams,
+  Tx,
+} from "cosmes/client";
 import {
   CosmosBaseV1beta1Coin as Coin,
   CosmosTxV1beta1Fee as Fee,
-  CosmosTxSigningV1beta1SignMode as SignMode,
+  CosmosTxV1beta1TxRaw as TxRaw,
 } from "cosmes/protobufs";
 import { WalletName, WalletType } from "cosmes/wallet";
 
@@ -17,17 +22,20 @@ import {
 
 export class KeplrWalletConnectV2 extends ConnectedWallet {
   private readonly wc: WalletConnectV2;
+  private readonly useAmino: boolean;
 
   constructor(
+    walletName: WalletName,
     wc: WalletConnectV2,
     chainId: string,
     pubKey: Secp256k1PubKey,
     address: string,
     rpc: string,
-    gasPrice: PlainMessage<Coin>
+    gasPrice: PlainMessage<Coin>,
+    useAmino: boolean
   ) {
     super(
-      WalletName.KEPLR,
+      walletName,
       WalletType.WALLETCONNECT,
       chainId,
       pubKey,
@@ -36,6 +44,7 @@ export class KeplrWalletConnectV2 extends ConnectedWallet {
       gasPrice
     );
     this.wc = wc;
+    this.useAmino = useAmino;
   }
 
   public async signArbitrary(_data: string): Promise<SignArbitraryResponse> {
@@ -45,7 +54,7 @@ export class KeplrWalletConnectV2 extends ConnectedWallet {
   }
 
   public async signAndBroadcastTx(
-    { msgs, memo }: UnsignedTx,
+    { msgs, memo, timeoutHeight }: UnsignedTx,
     fee: Fee,
     accountNumber: bigint,
     sequence: bigint
@@ -55,29 +64,32 @@ export class KeplrWalletConnectV2 extends ConnectedWallet {
       pubKey: this.pubKey,
       msgs: msgs,
     });
-    const { signature, signed } = await this.wc.signAmino(
-      this.chainId,
-      this.address,
-      tx.toStdSignDoc({
-        accountNumber,
-        sequence,
-        fee,
-        memo,
-      })
-    );
+
+    const params: ToStdSignDocParams | ToSignDocParams = {
+      accountNumber,
+      sequence,
+      fee,
+      memo,
+      timeoutHeight,
+    };
+    let txRaw: TxRaw;
+    if (this.useAmino) {
+      const { signed, signature } = await this.wc.signAmino(
+        this.chainId,
+        this.address,
+        tx.toStdSignDoc(params)
+      );
+      txRaw = tx.toSignedAmino(signed, signature.signature);
+    } else {
+      const { signed, signature } = await this.wc.signDirect(
+        this.chainId,
+        this.address,
+        tx.toSignDoc(params)
+      );
+      txRaw = tx.toSignedDirect(signed, signature.signature);
+    }
+
     // Since `sendTx` on WC isn't implemented yet, we have to broadcast manually
-    return broadcastTx(this.rpc, {
-      tx,
-      sequence: BigInt(signed.sequence),
-      fee: new Fee({
-        amount: signed.fee.amount as Coin[],
-        gasLimit: BigInt(signed.fee.gas),
-        payer: signed.fee.payer,
-        granter: signed.fee.granter,
-      }),
-      signMode: SignMode.LEGACY_AMINO_JSON,
-      signature: base64.decode(signature),
-      memo: signed.memo,
-    });
+    return RpcClient.broadcastTx(this.rpc, txRaw);
   }
 }
