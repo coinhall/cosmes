@@ -94,10 +94,12 @@ export class Tx {
   /**
    * Combines the given `StdSignDoc` and `signature` and returns the proto-encoded
    * tx with sign mode set to `LEGACY_AMINO_JSON`, ready to be broadcasted.
+   *
+   * @param signature Must be a base64 encoded string or an `Uint8Array`
    */
   public toSignedAmino(
     { sequence, fee, memo, timeout_height }: StdSignDoc,
-    signature: string
+    signature: string | Uint8Array
   ): ProtoTxRaw {
     return this.toSignedProto({
       sequence: BigInt(sequence),
@@ -108,7 +110,8 @@ export class Tx {
         granter: fee.granter,
       }),
       signMode: ProtoSignMode.LEGACY_AMINO_JSON,
-      signature: base64.decode(signature),
+      signature:
+        typeof signature === "string" ? base64.decode(signature) : signature,
       memo: memo,
       timeoutHeight: timeout_height ? BigInt(timeout_height) : undefined,
     });
@@ -117,15 +120,19 @@ export class Tx {
   /**
    * Combines the given `SignDoc` and `signature` and returns the proto-encoded tx,
    * ready to be broadcasted.
+   *
+   * @param signature Must be a base64 encoded string or an `Uint8Array`
    */
   public toSignedDirect(
     { bodyBytes, authInfoBytes }: SignDoc,
-    signature: string
+    signature: string | Uint8Array
   ): ProtoTxRaw {
     return new ProtoTxRaw({
       authInfoBytes,
       bodyBytes,
-      signatures: [base64.decode(signature)],
+      signatures: [
+        typeof signature === "string" ? base64.decode(signature) : signature,
+      ],
     });
   }
 

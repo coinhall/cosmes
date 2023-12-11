@@ -1,4 +1,4 @@
-import { Secp256k1PubKey, Tx, broadcastTx } from "cosmes/client";
+import { RpcClient, Secp256k1PubKey, Tx } from "cosmes/client";
 import {
   base64,
   resolveBech32Address,
@@ -7,10 +7,7 @@ import {
   signDirect,
   utf8,
 } from "cosmes/codec";
-import {
-  CosmosTxV1beta1Fee as Fee,
-  CosmosTxSigningV1beta1SignMode as SignMode,
-} from "cosmes/protobufs";
+import { CosmosTxV1beta1Fee as Fee } from "cosmes/protobufs";
 import { StdSignDoc } from "cosmes/registry";
 
 import { Prettify } from "../../../typeutils/prettify";
@@ -160,14 +157,6 @@ export class MnemonicWallet extends ConnectedWallet {
       timeoutHeight,
     });
     const signature = signDirect(doc, this.privateKey);
-    return broadcastTx(this.rpc, {
-      tx,
-      sequence,
-      fee,
-      signMode: SignMode.DIRECT,
-      signature,
-      memo,
-      timeoutHeight,
-    });
+    return RpcClient.broadcastTx(this.rpc, tx.toSignedDirect(doc, signature));
   }
 }
