@@ -9,12 +9,12 @@ import { base16 } from "cosmes/codec";
 import {
   CosmosBaseV1beta1Coin as Coin,
   CosmosTxV1beta1Fee as Fee,
+  CosmosTxV1beta1TxRaw as TxRaw,
 } from "cosmes/protobufs";
 import type { BroadcastMode, Keplr } from "cosmes/registry";
 
 import { WalletName } from "../../constants/WalletName";
 import { WalletType } from "../../constants/WalletType";
-import { signDocToSignedProto, stdSignDocToSignedProto } from "../../utils/tx";
 import {
   ConnectedWallet,
   SignArbitraryResponse,
@@ -82,30 +82,26 @@ export class KeplrExtension extends ConnectedWallet {
       memo,
       timeoutHeight,
     };
-    let signedTx: Uint8Array;
+    let txRaw: TxRaw;
     if (this.isLedger) {
-      const { signature, signed } = await this.ext.signAmino(
+      const { signed, signature } = await this.ext.signAmino(
         this.chainId,
         this.address,
         tx.toStdSignDoc(params)
       );
-      signedTx = stdSignDocToSignedProto(
-        tx,
-        signature.signature,
-        signed
-      ).toBinary();
+      txRaw = tx.toSignedAmino(signed, signature.signature);
     } else {
-      const { signature, signed } = await this.ext.signDirect(
+      const { signed, signature } = await this.ext.signDirect(
         this.chainId,
         this.address,
         tx.toSignDoc(params)
       );
-      signedTx = signDocToSignedProto(signature.signature, signed).toBinary();
+      txRaw = tx.toSignedDirect(signed, signature.signature);
     }
 
     const txHash = await this.ext.sendTx(
       this.chainId,
-      signedTx,
+      txRaw.toBinary(),
       "sync" as BroadcastMode
     );
     return base16.encode(txHash);

@@ -1,14 +1,15 @@
 import { PlainMessage } from "@bufbuild/protobuf";
+import { base64 } from "@scure/base";
 import {
   CosmosTxV1beta1AuthInfo as ProtoAuthInfo,
   CosmosTxV1beta1Fee as ProtoFee,
+  CosmosTxV1beta1SignDoc as ProtoSignDoc,
   CosmosTxSigningV1beta1SignMode as ProtoSignMode,
   CosmosTxV1beta1SignerInfo as ProtoSignerInfo,
   CosmosTxV1beta1TxBody as ProtoTxBody,
   CosmosTxV1beta1TxRaw as ProtoTxRaw,
-  CosmosTxV1beta1SignDoc as SignDoc,
 } from "cosmes/protobufs";
-import { StdSignDoc } from "cosmes/registry";
+import { SignDoc, StdSignDoc } from "cosmes/registry";
 
 import { toAny } from "../utils/toAny";
 import { Adapter } from "./Adapter";
@@ -52,7 +53,7 @@ export class Tx {
   }
 
   /**
-   * Returns the signed, proto encoded tx ready to be broadcasted. To create an
+   * Returns the signed, proto-encoded tx, ready to be broadcasted. To create an
    * unsigned tx for the purpose of simulating it, use {@link toUnsignedProto}.
    */
   public toSignedProto({
@@ -78,7 +79,7 @@ export class Tx {
   }
 
   /**
-   * Returns the proto encoded tx with the sign mode set to UNSPECIFIED, useful
+   * Returns the proto-encoded tx with the sign mode set to `UNSPECIFIED`, useful
    * for simulating the tx. To create a signed tx, use {@link toSignedProto}.
    */
   public toUnsignedProto(info: ToUnsignedProtoParams): ProtoTxRaw {
@@ -91,7 +92,45 @@ export class Tx {
   }
 
   /**
-   * Returns the unsigned, proto encoded tx ready to be signed by a wallet.
+   * Combines the given `StdSignDoc` and `signature` and returns the proto-encoded
+   * tx with sign mode set to `LEGACY_AMINO_JSON`, ready to be broadcasted.
+   */
+  public toSignedAmino(
+    { sequence, fee, memo, timeout_height }: StdSignDoc,
+    signature: string
+  ): ProtoTxRaw {
+    return this.toSignedProto({
+      sequence: BigInt(sequence),
+      fee: new ProtoFee({
+        amount: fee.amount.slice(),
+        gasLimit: BigInt(fee.gas),
+        payer: fee.payer,
+        granter: fee.granter,
+      }),
+      signMode: ProtoSignMode.LEGACY_AMINO_JSON,
+      signature: base64.decode(signature),
+      memo: memo,
+      timeoutHeight: timeout_height ? BigInt(timeout_height) : undefined,
+    });
+  }
+
+  /**
+   * Combines the given `SignDoc` and `signature` and returns the proto-encoded tx,
+   * ready to be broadcasted.
+   */
+  public toSignedDirect(
+    { bodyBytes, authInfoBytes }: SignDoc,
+    signature: string
+  ): ProtoTxRaw {
+    return new ProtoTxRaw({
+      authInfoBytes,
+      bodyBytes,
+      signatures: [base64.decode(signature)],
+    });
+  }
+
+  /**
+   * Returns the unsigned, proto-encoded tx ready to be signed by a wallet.
    */
   public toSignDoc({
     accountNumber,
@@ -99,8 +138,8 @@ export class Tx {
     fee,
     memo,
     timeoutHeight,
-  }: ToSignDocParams): SignDoc {
-    return new SignDoc({
+  }: ToSignDocParams): ProtoSignDoc {
+    return new ProtoSignDoc({
       chainId: this.data.chainId,
       accountNumber: accountNumber,
       authInfoBytes: new ProtoAuthInfo({
@@ -116,7 +155,7 @@ export class Tx {
   }
 
   /**
-   * Returns the unsigned, amino encoded tx ready to be signed by a wallet.
+   * Returns the unsigned, amino-encoded tx ready to be signed by a wallet.
    */
   public toStdSignDoc({
     accountNumber,
