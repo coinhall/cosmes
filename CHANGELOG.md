@@ -1,10 +1,19 @@
 # Changelog
 
+## `v0.0.43`
+
+### Improvements
+
+- Added `timeout_height` parameter when simulating or broadcasting txs
+- Use sign mode direct (instead of legacy amino) for non-ledger extension wallets and `MnemonicWallet`
+- Added support for sign mode direct for `WalletConnectV2` (although no mobile wallets support it currently)
+- Reduced bundle size by combining Keplr-like wallets into the same interface (`examples/solid-vite` reduced from 509kb to 487kb minified)
+
 ## `v0.0.42`
 
 ### Features
 
-- Added support for Injective
+- Added support for Injective chain (both mainnet and testnet)
 
 ## `v0.0.40`
 
