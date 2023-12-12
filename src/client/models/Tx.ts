@@ -1,14 +1,15 @@
 import { PlainMessage } from "@bufbuild/protobuf";
+import { base64 } from "@scure/base";
 import {
   CosmosTxV1beta1AuthInfo as ProtoAuthInfo,
   CosmosTxV1beta1Fee as ProtoFee,
+  CosmosTxV1beta1SignDoc as ProtoSignDoc,
   CosmosTxSigningV1beta1SignMode as ProtoSignMode,
   CosmosTxV1beta1SignerInfo as ProtoSignerInfo,
   CosmosTxV1beta1TxBody as ProtoTxBody,
   CosmosTxV1beta1TxRaw as ProtoTxRaw,
-  CosmosTxV1beta1SignDoc as SignDoc,
 } from "cosmes/protobufs";
-import { StdSignDoc } from "cosmes/registry";
+import { SignDoc, StdSignDoc } from "cosmes/registry";
 
 import { toAny } from "../utils/toAny";
 import { Adapter } from "./Adapter";
@@ -26,11 +27,12 @@ export type ToSignedProtoParams = {
   signMode: ProtoSignMode;
   signature: Uint8Array;
   memo?: string | undefined;
+  timeoutHeight?: bigint | undefined;
 };
 
 export type ToUnsignedProtoParams = Pick<
   ToSignedProtoParams,
-  "sequence" | "memo"
+  "sequence" | "memo" | "timeoutHeight"
 >;
 
 export type ToSignDocParams = {
@@ -38,6 +40,7 @@ export type ToSignDocParams = {
   sequence: bigint;
   fee: ProtoFee;
   memo?: string | undefined;
+  timeoutHeight?: bigint | undefined;
 };
 
 export type ToStdSignDocParams = ToSignDocParams;
@@ -50,7 +53,7 @@ export class Tx {
   }
 
   /**
-   * Returns the signed, proto encoded tx ready to be broadcasted. To create an
+   * Returns the signed, proto-encoded tx, ready to be broadcasted. To create an
    * unsigned tx for the purpose of simulating it, use {@link toUnsignedProto}.
    */
   public toSignedProto({
@@ -59,6 +62,7 @@ export class Tx {
     signMode,
     signature,
     memo,
+    timeoutHeight,
   }: ToSignedProtoParams): ProtoTxRaw {
     return new ProtoTxRaw({
       authInfoBytes: new ProtoAuthInfo({
@@ -68,13 +72,14 @@ export class Tx {
       bodyBytes: new ProtoTxBody({
         messages: this.data.msgs.map((m) => toAny(m.toProto())),
         memo: memo,
+        timeoutHeight: timeoutHeight,
       }).toBinary(),
       signatures: [signature],
     });
   }
 
   /**
-   * Returns the proto encoded tx with the sign mode set to UNSPECIFIED, useful
+   * Returns the proto-encoded tx with the sign mode set to `UNSPECIFIED`, useful
    * for simulating the tx. To create a signed tx, use {@link toSignedProto}.
    */
   public toUnsignedProto(info: ToUnsignedProtoParams): ProtoTxRaw {
@@ -87,15 +92,61 @@ export class Tx {
   }
 
   /**
-   * Returns the unsigned, proto encoded tx ready to be signed by a wallet.
+   * Combines the given `StdSignDoc` and `signature` and returns the proto-encoded
+   * tx with sign mode set to `LEGACY_AMINO_JSON`, ready to be broadcasted.
+   *
+   * @param signature Must be a base64 encoded string or an `Uint8Array`
+   */
+  public toSignedAmino(
+    { sequence, fee, memo, timeout_height }: StdSignDoc,
+    signature: string | Uint8Array
+  ): ProtoTxRaw {
+    return this.toSignedProto({
+      sequence: BigInt(sequence),
+      fee: new ProtoFee({
+        amount: fee.amount.slice(),
+        gasLimit: BigInt(fee.gas),
+        payer: fee.payer,
+        granter: fee.granter,
+      }),
+      signMode: ProtoSignMode.LEGACY_AMINO_JSON,
+      signature:
+        typeof signature === "string" ? base64.decode(signature) : signature,
+      memo: memo,
+      timeoutHeight: timeout_height ? BigInt(timeout_height) : undefined,
+    });
+  }
+
+  /**
+   * Combines the given `SignDoc` and `signature` and returns the proto-encoded tx,
+   * ready to be broadcasted.
+   *
+   * @param signature Must be a base64 encoded string or an `Uint8Array`
+   */
+  public toSignedDirect(
+    { bodyBytes, authInfoBytes }: SignDoc,
+    signature: string | Uint8Array
+  ): ProtoTxRaw {
+    return new ProtoTxRaw({
+      authInfoBytes,
+      bodyBytes,
+      signatures: [
+        typeof signature === "string" ? base64.decode(signature) : signature,
+      ],
+    });
+  }
+
+  /**
+   * Returns the unsigned, proto-encoded tx ready to be signed by a wallet.
    */
   public toSignDoc({
     accountNumber,
     sequence,
     fee,
     memo,
-  }: ToSignDocParams): SignDoc {
-    return new SignDoc({
+    timeoutHeight,
+  }: ToSignDocParams): ProtoSignDoc {
+    return new ProtoSignDoc({
       chainId: this.data.chainId,
       accountNumber: accountNumber,
       authInfoBytes: new ProtoAuthInfo({
@@ -105,18 +156,20 @@ export class Tx {
       bodyBytes: new ProtoTxBody({
         messages: this.data.msgs.map((m) => toAny(m.toProto())),
         memo: memo,
+        timeoutHeight: timeoutHeight,
       }).toBinary(),
     });
   }
 
   /**
-   * Returns the unsigned, amino encoded tx ready to be signed by a wallet.
+   * Returns the unsigned, amino-encoded tx ready to be signed by a wallet.
    */
   public toStdSignDoc({
     accountNumber,
     sequence,
     fee,
     memo,
+    timeoutHeight,
   }: ToStdSignDocParams): StdSignDoc {
     return {
       chain_id: this.data.chainId,
@@ -128,6 +181,7 @@ export class Tx {
       },
       msgs: this.data.msgs.map((m) => m.toAmino()),
       memo: memo ?? "",
+      timeout_height: timeoutHeight?.toString(),
     };
   }
 

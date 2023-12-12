@@ -1,7 +1,7 @@
 import SignClient from "@walletconnect/sign-client";
+import { SignDoc, StdSignDoc } from "cosmes/registry";
 import { debounce } from "lodash-es";
 
-import { StdSignDoc } from "cosmes/registry";
 import { isAndroid, isMobile } from "../utils/os";
 import { MobileAppDetails, QRCodeModal } from "./QRCodeModal";
 
@@ -19,21 +19,29 @@ type GetAccountResponse = {
   pubkey: string;
 };
 
-type SignAminoResponse = {
-  signature: string;
-  signed: StdSignDoc;
-};
-
 /**
- * The data returned by the `cosmos_signAmino` for keplr-like wallets. `signed` is
- * optional because some wallets (like cosmostation) do not return it.
+ * The data returned by the `cosmos_signAmino` method. `signed` is optional
+ * because some wallets (like Cosmostation) may not return it.
  */
-type PartialSignAminoResponse = {
+type WcSignAminoResponse = {
   signature: {
     signature: string;
   };
   signed?: StdSignDoc | undefined;
 };
+type SignAminoResponse = Required<WcSignAminoResponse>;
+
+/**
+ * The data returned by the `cosmos_signDirect` method. `signed` is optional
+ * because some wallets (like Cosmostation) may not return it.
+ */
+type WcSignDirectResponse = {
+  signature: {
+    signature: string;
+  };
+  signed?: SignDoc | undefined;
+};
+type SignDirectResponse = Required<WcSignDirectResponse>;
 
 const Method = {
   GET_ACCOUNTS: "cosmos_getAccounts",
@@ -175,18 +183,37 @@ export class WalletConnectV2 {
   public async signAmino(
     chainId: string,
     signerAddress: string,
-    signDoc: StdSignDoc
+    stdSignDoc: StdSignDoc
   ): Promise<SignAminoResponse> {
-    const { signature, signed } = await this.request<PartialSignAminoResponse>(
+    const { signature, signed } = await this.request<WcSignAminoResponse>(
       chainId,
       Method.SIGN_AMINO,
+      {
+        signerAddress,
+        signDoc: stdSignDoc,
+      }
+    );
+    return {
+      signature: signature,
+      signed: signed ?? stdSignDoc, // simply return the original sign doc if `signed` is not returned
+    };
+  }
+
+  public async signDirect(
+    chainId: string,
+    signerAddress: string,
+    signDoc: SignDoc
+  ): Promise<SignDirectResponse> {
+    const { signature, signed } = await this.request<WcSignDirectResponse>(
+      chainId,
+      Method.SIGN_DIRECT,
       {
         signerAddress,
         signDoc,
       }
     );
     return {
-      signature: signature.signature,
+      signature: signature,
       signed: signed ?? signDoc, // simply return the original sign doc if `signed` is not returned
     };
   }

@@ -1,15 +1,20 @@
 import { PlainMessage } from "@bufbuild/protobuf";
-import { Secp256k1PubKey, Tx } from "cosmes/client";
+import {
+  Secp256k1PubKey,
+  ToSignDocParams,
+  ToStdSignDocParams,
+  Tx,
+} from "cosmes/client";
 import { base16 } from "cosmes/codec";
 import {
   CosmosBaseV1beta1Coin as Coin,
   CosmosTxV1beta1Fee as Fee,
+  CosmosTxV1beta1TxRaw as TxRaw,
 } from "cosmes/protobufs";
 import type { BroadcastMode, Keplr } from "cosmes/registry";
 
 import { WalletName } from "../../constants/WalletName";
 import { WalletType } from "../../constants/WalletType";
-import { stdSignDocToSignedProto } from "../../utils/tx";
 import {
   ConnectedWallet,
   SignArbitraryResponse,
@@ -18,17 +23,20 @@ import {
 
 export class KeplrExtension extends ConnectedWallet {
   private readonly ext: Keplr;
+  private readonly useAmino: boolean;
 
   constructor(
+    walletName: WalletName,
     ext: Keplr,
     chainId: string,
     pubKey: Secp256k1PubKey,
     address: string,
     rpc: string,
-    gasPrice: PlainMessage<Coin>
+    gasPrice: PlainMessage<Coin>,
+    useAmino: boolean
   ) {
     super(
-      WalletName.KEPLR,
+      walletName,
       WalletType.EXTENSION,
       chainId,
       pubKey,
@@ -43,6 +51,7 @@ export class KeplrExtension extends ConnectedWallet {
         preferNoSetMemo: true,
       },
     };
+    this.useAmino = useAmino;
   }
 
   public async signArbitrary(data: string): Promise<SignArbitraryResponse> {
@@ -55,7 +64,7 @@ export class KeplrExtension extends ConnectedWallet {
   }
 
   protected async signAndBroadcastTx(
-    { msgs, memo }: UnsignedTx,
+    { msgs, memo, timeoutHeight }: UnsignedTx,
     fee: Fee,
     accountNumber: bigint,
     sequence: bigint
@@ -65,19 +74,34 @@ export class KeplrExtension extends ConnectedWallet {
       pubKey: this.pubKey,
       msgs: msgs,
     });
-    const { signature, signed } = await this.ext.signAmino(
-      this.chainId,
-      this.address,
-      tx.toStdSignDoc({
-        accountNumber,
-        sequence,
-        fee,
-        memo,
-      })
-    );
+
+    const params: ToStdSignDocParams | ToSignDocParams = {
+      accountNumber,
+      sequence,
+      fee,
+      memo,
+      timeoutHeight,
+    };
+    let txRaw: TxRaw;
+    if (this.useAmino) {
+      const { signed, signature } = await this.ext.signAmino(
+        this.chainId,
+        this.address,
+        tx.toStdSignDoc(params)
+      );
+      txRaw = tx.toSignedAmino(signed, signature.signature);
+    } else {
+      const { signed, signature } = await this.ext.signDirect(
+        this.chainId,
+        this.address,
+        tx.toSignDoc(params)
+      );
+      txRaw = tx.toSignedDirect(signed, signature.signature);
+    }
+
     const txHash = await this.ext.sendTx(
       this.chainId,
-      stdSignDocToSignedProto(tx, signature.signature, signed).toBinary(),
+      txRaw.toBinary(),
       "sync" as BroadcastMode
     );
     return base16.encode(txHash);

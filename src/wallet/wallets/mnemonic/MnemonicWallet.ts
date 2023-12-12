@@ -1,15 +1,13 @@
-import { Secp256k1PubKey, Tx, broadcastTx } from "cosmes/client";
+import { RpcClient, Secp256k1PubKey, Tx } from "cosmes/client";
 import {
   base64,
   resolveBech32Address,
   resolveKeyPair,
   signAmino,
+  signDirect,
   utf8,
 } from "cosmes/codec";
-import {
-  CosmosTxV1beta1Fee as Fee,
-  CosmosTxSigningV1beta1SignMode as SignMode,
-} from "cosmes/protobufs";
+import { CosmosTxV1beta1Fee as Fee } from "cosmes/protobufs";
 import { StdSignDoc } from "cosmes/registry";
 
 import { Prettify } from "../../../typeutils/prettify";
@@ -77,8 +75,8 @@ export type ConnectMnemonicWalletOptions = Prettify<
  * ```
  */
 export class MnemonicWallet extends ConnectedWallet {
-  private readonly publicKey: string;
-  private readonly privateKey: Uint8Array;
+  public readonly publicKey: string;
+  public readonly privateKey: Uint8Array;
 
   constructor({
     mnemonic,
@@ -141,7 +139,7 @@ export class MnemonicWallet extends ConnectedWallet {
   }
 
   public async signAndBroadcastTx(
-    { msgs, memo }: UnsignedTx,
+    { msgs, memo, timeoutHeight }: UnsignedTx,
     fee: Fee,
     accountNumber: bigint,
     sequence: bigint
@@ -151,21 +149,14 @@ export class MnemonicWallet extends ConnectedWallet {
       pubKey: this.pubKey,
       msgs: msgs,
     });
-    const doc = tx.toStdSignDoc({
+    const doc = tx.toSignDoc({
       accountNumber,
       sequence,
       fee,
       memo,
+      timeoutHeight,
     });
-    const signature = signAmino(doc, this.privateKey);
-    return broadcastTx(this.rpc, {
-      tx,
-      sequence,
-      fee,
-      // TODO: use SignMode.DIRECT
-      signMode: SignMode.LEGACY_AMINO_JSON,
-      signature,
-      memo,
-    });
+    const signature = signDirect(doc, this.privateKey);
+    return RpcClient.broadcastTx(this.rpc, tx.toSignedDirect(doc, signature));
   }
 }

@@ -28,7 +28,7 @@ A tree-shakeable, framework agnostic, [pure ESM](https://gist.github.com/sindres
 
 - **Fully tree-shakeable**: import and bundle only the modules you need
 - **Framework agnostic**: integrate with any web framework (React, Vue, Svelte, Solid, etc.)
-- **Lightweight and  minimal**: 145 KB gzipped to connect a React app to Keplr via browser extension or WalletConnect, 10x smaller than Cosmos Kit (see [benchmarks](#benchmarks))
+- **Lightweight and  minimal**: 146 KB gzipped to connect a React app to Keplr via browser extension or WalletConnect, 10x smaller than Cosmos Kit (see [benchmarks](#benchmarks))
 - **Uses modern web APIs**: no dependencies on Node.js and minimal dependencies on third-party libraries where possible
 - **Supports modern bundlers**: works with Vite, SWC, Rollup, etc.
 - **Fully typed**: written in TypeScript and ships with type definitions
@@ -145,7 +145,7 @@ See the [`benchmarks`](./benchmarks) folder, where the JS bundle size of CosmES 
 
 | Package       | Minified | Gzipped |
 |---------------|----------|---------|
-| CosmES        | 536 KB   | 145 KB  |
+| CosmES        | 540 KB   | 146 KB  |
 | Cosmos Kit v1 | 6004 KB  | 1392 KB |
 | Cosmos Kit v2 | 6273 KB  | 1453 KB |
 

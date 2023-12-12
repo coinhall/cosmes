@@ -9,7 +9,6 @@ import { ConnectedWallet } from "../ConnectedWallet";
 import { ChainInfo, WalletController } from "../WalletController";
 import { LeapExtension } from "./LeapExtension";
 import { LeapWalletConnectV2 } from "./LeapWalletConnectV2";
-import { LeapWcUri } from "./constants";
 
 export class LeapController extends WalletController {
   private readonly wc: WalletConnectV2;
@@ -18,8 +17,9 @@ export class LeapController extends WalletController {
     super(WalletName.LEAP);
     this.wc = new WalletConnectV2(wcProjectId, {
       name: "Leap",
-      android: LeapWcUri.ANDROID,
-      ios: LeapWcUri.IOS,
+      android:
+        "intent://wcV2#Intent;package=io.leapwallet.cosmos;scheme=leapwallet;end;",
+      ios: "leapcosmos://wcV2",
     });
     this.registerAccountChangeHandlers();
   }
@@ -41,7 +41,16 @@ export class LeapController extends WalletController {
       });
       wallets.set(
         chainId,
-        new LeapWalletConnectV2(this.wc, chainId, key, address, rpc, gasPrice)
+        new LeapWalletConnectV2(
+          this.id,
+          this.wc,
+          chainId,
+          key,
+          address,
+          rpc,
+          gasPrice,
+          true // TODO: use sign mode direct when supported
+        )
       );
     }
     return { wallets, wc: this.wc };
@@ -55,13 +64,22 @@ export class LeapController extends WalletController {
     }
     await ext.enable(chains.map(({ chainId }) => chainId));
     for (const { chainId, rpc, gasPrice } of Object.values(chains)) {
-      const { bech32Address, pubKey } = await ext.getKey(chainId);
+      const { bech32Address, pubKey, isNanoLedger } = await ext.getKey(chainId);
       const key = new Secp256k1PubKey({
         key: pubKey,
       });
       wallets.set(
         chainId,
-        new LeapExtension(ext, chainId, key, bech32Address, rpc, gasPrice)
+        new LeapExtension(
+          this.id,
+          ext,
+          chainId,
+          key,
+          bech32Address,
+          rpc,
+          gasPrice,
+          isNanoLedger
+        )
       );
     }
     return wallets;
