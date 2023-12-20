@@ -18,7 +18,7 @@ export class LeapController extends WalletController {
     this.wc = new WalletConnectV2(wcProjectId, {
       name: "Leap",
       android:
-        "intent://wcV2#Intent;package=io.leapwallet.cosmos;scheme=leapwallet;end;",
+        "leapcosmos://wcV2#Intent;package=io.leapwallet.cosmos;scheme=leapwallet;end;",
       ios: "leapcosmos://wcV2",
     });
     this.registerAccountChangeHandlers();
