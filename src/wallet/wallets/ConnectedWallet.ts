@@ -18,6 +18,7 @@ import {
 
 import type { WalletName } from "../constants/WalletName";
 import type { WalletType } from "../constants/WalletType";
+import { extractExpectedAccountSequence } from "../utils/sequence";
 
 export type UnsignedTx = {
   msgs: Adapter[];
@@ -125,22 +126,17 @@ export abstract class ConnectedWallet {
     try {
       return await estimate();
     } catch (err) {
-      if (
-        !(err instanceof Error) ||
-        !err.message.includes("account sequence mismatch")
-      ) {
-        // Rethrow if the error is not related to account sequence
+      if (!(err instanceof Error)) {
+        // Rethrow non-errors
         throw err;
       }
-      // Possible messages:
-      // "account sequence mismatch, expected 10, got 11: incorrect account sequence: invalid request"
-      // "rpc error: code = Unknown desc = account sequence mismatch, expected 10, got 11: ..."
-      const matches = err.message.match(/(\d+)/g);
-      if (!matches || matches.length < 2) {
-        throw new Error("Failed to parse account sequence");
+      const expectedSequence = extractExpectedAccountSequence(err);
+      if (!expectedSequence) {
+        // Rethrow errors not related to account sequence mismatch
+        throw err;
       }
       // Set the cached sequence to the one from the error message
-      this.sequence = BigInt(matches[0]);
+      this.sequence = expectedSequence;
       return estimate();
     }
   }

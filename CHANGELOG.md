@@ -1,5 +1,11 @@
 # Changelog
 
+## `v0.0.46`
+
+### Fixes
+
+- Fixed `ConnectedWallet.estimateFee` to properly extract account sequences from errors thrown by Injective RPCs
+
 ## `v0.0.45`
 
 ### Improvements
