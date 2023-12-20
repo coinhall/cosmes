@@ -1,5 +1,11 @@
 # Changelog
 
+## `v0.0.45`
+
+### Improvements
+
+- Included `isCW20` option for `simulateAstroportSinglePoolSwap` function to handle swapping from CW20 assets
+
 ## `v0.0.44`
 
 ### Fixes
