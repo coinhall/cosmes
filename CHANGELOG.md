@@ -1,5 +1,12 @@
 # Changelog
 
+## `v0.0.44`
+
+### Fixes
+
+- Fixed Leap wallet android deep link to ensure redirect happens correctly
+- Fixed `toKeplrChainInfo` to return `undefined` for coingecko ID if it is absent
+
 ## `v0.0.43`
 
 ### Improvements
