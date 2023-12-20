@@ -55,7 +55,7 @@ export function toKeplrChainInfo(
     coinDecimals: asset.denom_units.find(
       (denomUnit: { denom: string }) => denomUnit.denom === asset.display
     )?.exponent ?? 6,
-    coinGeckoId: asset.coingecko_id,
+    coinGeckoId: asset.coingecko_id === "" ? undefined : asset.coingecko_id,
     coinImageUrl: asset.logo_URIs?.svg ?? asset.logo_URIs?.png,
   }));
 
