@@ -15,5 +15,6 @@ export {
 export { CosmostationController } from "./wallets/cosmostation/CosmostationController";
 export { KeplrController } from "./wallets/keplr/KeplrController";
 export { LeapController } from "./wallets/leap/LeapController";
+export { MetamaskInjectiveController } from "./wallets/metamask-injective/MetamaskInjectiveController";
 export { MnemonicWallet } from "./wallets/mnemonic/MnemonicWallet";
 export { StationController } from "./wallets/station/StationController";
