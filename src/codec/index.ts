@@ -1,7 +1,8 @@
 // Re-export @scure/base for their codecs
 export * from "@scure/base";
 
-export { resolveBech32Address } from "./address";
+export { resolveBech32Address, translateEthToBech32Address } from "./address";
+export { ethhex } from "./ethhex";
 export { resolveKeyPair } from "./key";
 export { serialiseSignDoc } from "./serialise";
-export { signAmino, signDirect } from "./sign";
+export { recoverPubKeyFromEthSignature, signAmino, signDirect } from "./sign";

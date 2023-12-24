@@ -3,7 +3,9 @@ import { sha256 } from "@noble/hashes/sha256";
 import * as secp256k1 from "@noble/secp256k1";
 import { CosmosTxV1beta1SignDoc as SignDoc } from "cosmes/protobufs";
 import { StdSignDoc } from "cosmes/registry";
+import { SigningKey } from "ethers";
 
+import { ethhex } from "./ethhex";
 import { serialiseSignDoc } from "./serialise";
 
 function sign(bytes: Uint8Array, privateKey: Uint8Array): Uint8Array {
@@ -35,4 +37,16 @@ export function signDirect(
   privateKey: Uint8Array
 ): Uint8Array {
   return sign(signDoc.toBinary(), privateKey);
+}
+
+export function recoverPubKeyFromEthSignature(
+  digest: Uint8Array,
+  signature: Uint8Array
+): Uint8Array {
+  const sigHex = ethhex.encode(signature);
+  // TODO: rewrite recoverPublicKey from ethers to optimise for bundle size
+  const fullPubKey = SigningKey.recoverPublicKey(digest, sigHex);
+  return secp256k1.ProjectivePoint.fromHex(
+    ethhex.decode(fullPubKey)
+  ).toRawBytes(true);
 }
