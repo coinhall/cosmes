@@ -1,4 +1,3 @@
-import { keccak_256 } from "@noble/hashes/sha3";
 import { utf8 } from "@scure/base";
 import { StdSignDoc } from "cosmes/registry";
 
@@ -36,17 +35,4 @@ export function sortObjectByKey<T>(obj: T): T {
  */
 export function serialiseSignDoc(doc: StdSignDoc): Uint8Array {
   return utf8.decode(escapeHtml(JSON.stringify(sortObjectByKey(doc))));
-}
-
-/**
- * Returns the EIP191 digest of the given `message` bytes.
- */
-export function hashEthArbitraryMessage(message: Uint8Array): Uint8Array {
-  return keccak_256(
-    Uint8Array.from([
-      ...utf8.decode("\x19Ethereum Signed Message:\n"),
-      ...utf8.decode(message.length.toString()),
-      ...message,
-    ])
-  );
 }
