@@ -32,8 +32,8 @@ export class MetamaskInjectiveController extends WalletController {
     wallets: Map<T, ConnectedWallet>;
     wc: WalletConnectV1 | WalletConnectV2;
   }> {
-    // TODO
-    throw new Error("Not implemented");
+    // TODO: check if walletconnect can be supported
+    throw new Error("WalletConnect not supported");
   }
 
   protected async connectExtension<T extends string>(chains: ChainInfo<T>[]) {

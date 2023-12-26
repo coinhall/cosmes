@@ -1,5 +1,11 @@
 # Changelog
 
+## `v0.0.47`
+
+### Features
+
+- Added `MetamaskInjective` wallet to execute txs via MetaMask on Injective network
+
 ## `v0.0.46`
 
 ### Fixes
