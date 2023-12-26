@@ -123,11 +123,18 @@ This directory contains various APIs, data, and types needed for wallet interact
 
 ### `cosmes/wallet`
 
-This directory is a [Cosmos Kit](https://cosmoskit.com) alternative to manage various wallets (Keplr, Station, Cosmostation, Leap, etc.) across various different Cosmos SDK based blockchains. See [`examples/solid-vite`](./examples/solid-vite) for a working example.
+This directory is a [Cosmos Kit](https://cosmoskit.com) alternative to interact with wallets across all Cosmos SDK based blockchains. See [`examples/solid-vite`](./examples/solid-vite) for a working example.
+
+**Wallets supported**:
+
+- [Station](https://docs.terra.money/learn/station/)
+- [Keplr](https://www.keplr.app/)
+- [Leap](https://www.leapwallet.io/)
+- [Cosmostation](https://wallet.cosmostation.io/)
+- [MetaMask](https://metamask.io/) (for Injective only)
 
 **Features**:
 
-- Supports Station, Keplr, Leap, and Cosmostation wallets
 - Supports both browser extension (desktop) and WalletConnect (mobile)
 - Unified interface for connecting, signing, broadcasting, and event handling
 - Signing of arbitrary messages (for wallets that support it)
