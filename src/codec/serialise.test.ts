@@ -1,6 +1,9 @@
+import { utf8 } from "@scure/base";
+import { hashMessage } from "ethers";
 import { describe, expect, it } from "vitest";
 
-import { sortObjectByKey } from "./serialise";
+import { ethhex } from "./ethhex";
+import { hashEthArbitraryMessage, sortObjectByKey } from "./serialise";
 
 describe("sortObjectByKey", () => {
   it("should sort keys correctly", () => {
@@ -34,5 +37,14 @@ describe("sortObjectByKey", () => {
     expect(JSON.stringify(obj)).not.toBe(JSON.stringify(expected));
     // After sorting, the stringified versions of the objects should be equal
     expect(JSON.stringify(sortObjectByKey(obj))).toBe(JSON.stringify(expected));
+  });
+});
+
+describe("hashEthArbitraryMessage", () => {
+  it("should hash correctly", () => {
+    const msg = utf8.decode("Hello World!");
+    const expected = hashEthArbitraryMessage(msg);
+    const actual = ethhex.decode(hashMessage(msg));
+    expect(actual).toStrictEqual(expected);
   });
 });
