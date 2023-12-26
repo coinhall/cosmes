@@ -1,14 +1,10 @@
-import { PlainMessage } from "@bufbuild/protobuf";
 import { InjectiveWasmxV1MsgExecuteContractCompat as ProtoMsgExecuteContractCompat } from "cosmes/protobufs";
 
-import { DeepPrettify, Prettify } from "../../typeutils/prettify";
 import { Adapter } from "./Adapter";
+import type { MsgExecuteContract } from "./MsgExecuteContract";
 
-type Data<T> = Prettify<
-  DeepPrettify<Omit<PlainMessage<ProtoMsgExecuteContractCompat>, "msg">> & {
-    msg: T;
-  }
->;
+// Take in the same type as `MsgExecuteContract` to simplify consumer code
+type Data<T> = ConstructorParameters<typeof MsgExecuteContract<T>>[0];
 
 /**
  * **NOTE**: this message is only used on Injective when broadcasting txs via
@@ -25,6 +21,9 @@ export class MsgExecuteContractInjective<T> implements Adapter {
     return new ProtoMsgExecuteContractCompat({
       ...this.data,
       msg: JSON.stringify(this.data.msg),
+      funds: this.data.funds
+        .map(({ amount, denom }) => `${amount}${denom}`)
+        .join(","),
     });
   }
 
