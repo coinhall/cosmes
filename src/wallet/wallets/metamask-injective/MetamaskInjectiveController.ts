@@ -1,5 +1,10 @@
 import { Secp256k1PubKey, getAccount, toBaseAccount } from "cosmes/client";
-import { translateEthToBech32Address } from "cosmes/codec";
+import {
+  ethhex,
+  recoverPubKeyFromEthSignature,
+  translateEthToBech32Address,
+  utf8,
+} from "cosmes/codec";
 import { CosmosCryptoSecp256k1PubKey } from "cosmes/protobufs";
 
 import { WalletName } from "../../constants/WalletName";
@@ -9,6 +14,7 @@ import { WalletConnectV2 } from "../../walletconnect/WalletConnectV2";
 import { ConnectedWallet } from "../ConnectedWallet";
 import { ChainInfo, WalletController } from "../WalletController";
 import { MetamaskInjectiveExtension } from "./MetamaskInjectiveExtension";
+import { Ethereum } from "./types";
 
 export class MetamaskInjectiveController extends WalletController {
   constructor() {
@@ -17,7 +23,7 @@ export class MetamaskInjectiveController extends WalletController {
   }
 
   public async isInstalled(type: WalletType) {
-    return type === WalletType.EXTENSION ? "ethereum" in window : true;
+    return type === WalletType.EXTENSION ? "ethereum" in window : false;
   }
 
   protected async connectWalletConnect<T extends string>(
@@ -42,17 +48,17 @@ export class MetamaskInjectiveController extends WalletController {
       throw new Error("Metamask extension is not installed");
     }
 
-    const ethAddresses = await window.ethereum.request<string[]>({
+    const ethAddresses = await ext.request<string[]>({
       method: "eth_requestAccounts",
     });
     const ethAddress = ethAddresses?.[0];
     if (!ethAddress) {
       throw new Error("Failed to connect to Metamask");
     }
-    const bech32Address = translateEthToBech32Address(ethAddress, "inj");
+    const injAddress = translateEthToBech32Address(ethAddress, "inj");
 
     const [chain] = chains;
-    const pubKey = await this.getPubKey(chain.rpc, bech32Address);
+    const pubKey = await this.getPubKey(ext, chain.rpc, ethAddress, injAddress);
     const wallets = new Map<T, ConnectedWallet>();
     wallets.set(
       chain.chainId,
@@ -62,7 +68,7 @@ export class MetamaskInjectiveController extends WalletController {
         chain.chainId,
         pubKey,
         ethAddress,
-        bech32Address,
+        injAddress,
         chain.rpc,
         chain.gasPrice
       )
@@ -79,18 +85,38 @@ export class MetamaskInjectiveController extends WalletController {
   }
 
   private async getPubKey(
+    ext: Ethereum,
     rpc: string,
-    address: string
+    ethAddress: string,
+    injAddress: string
   ): Promise<Secp256k1PubKey> {
-    const account = await getAccount(rpc, { address });
-    const { pubKey } = toBaseAccount(account);
-    if (!pubKey) {
-      throw new Error(
-        `Failed to connect as ${address} does not have any funds`
-      );
+    // Try to get public key from RPC, but ignore any errors that occur
+    const account = await getAccount(rpc, { address: injAddress }).catch(
+      console.error
+    );
+    if (account) {
+      const { pubKey } = toBaseAccount(account);
+      if (pubKey) {
+        return new Secp256k1PubKey({
+          key: CosmosCryptoSecp256k1PubKey.fromBinary(pubKey.value).key,
+        });
+      }
+    }
+
+    // Fallback to recovering pub key from a `personal_sign` signature
+    // TODO: This may not be desirable behaviour as querying RPC will always
+    // TODO: fail if the user's account has not been initialised, thereby making
+    // TODO: the user sign this message every time they reconnect to the wallet
+    const message = utf8.decode("Sign to allow retrieval of your public key");
+    const signature = await ext.request<string>({
+      method: "personal_sign",
+      params: [ethhex.encode(message), ethAddress],
+    });
+    if (!signature) {
+      throw new Error("Failed to retrieve pubic key");
     }
     return new Secp256k1PubKey({
-      key: CosmosCryptoSecp256k1PubKey.fromBinary(pubKey.value).key,
+      key: recoverPubKeyFromEthSignature(message, ethhex.decode(signature)),
     });
   }
 }
