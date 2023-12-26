@@ -92,7 +92,7 @@ export class MetamaskInjectiveController extends WalletController {
   ): Promise<Secp256k1PubKey> {
     // Try to get public key from RPC, but ignore any errors that occur
     const account = await getAccount(rpc, { address: injAddress }).catch(
-      console.error
+      console.warn
     );
     if (account) {
       const { pubKey } = toBaseAccount(account);

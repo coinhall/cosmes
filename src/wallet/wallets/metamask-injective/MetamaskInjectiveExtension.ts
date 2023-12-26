@@ -1,13 +1,10 @@
 import { PlainMessage } from "@bufbuild/protobuf";
-import { RpcClient, Secp256k1PubKey, Tx, toAny } from "cosmes/client";
+import { RpcClient, Secp256k1PubKey, Tx } from "cosmes/client";
 import { base16, base64, ethhex, utf8 } from "cosmes/codec";
 import {
-  CosmosTxV1beta1AuthInfo as AuthInfo,
   CosmosBaseV1beta1Coin as Coin,
   CosmosTxV1beta1Fee as Fee,
   CosmosTxSigningV1beta1SignMode as SignMode,
-  CosmosTxV1beta1TxBody as TxBody,
-  CosmosTxV1beta1TxRaw as TxRaw,
   InjectiveTypesV1beta1ExtensionOptionsWeb3Tx as Web3Tx,
 } from "cosmes/protobufs";
 import type { StdSignDoc } from "cosmes/registry";
@@ -92,36 +89,15 @@ export class MetamaskInjectiveExtension extends ConnectedWallet {
       throw new Error("Failed to sign transaction");
     }
 
-    const web3Extension = new Web3Tx({
-      typedDataChainID: 1n,
+    const txRaw = tx.toSignedProto({
+      fee,
+      sequence,
+      signMode: SignMode.LEGACY_AMINO_JSON,
+      signature: ethhex.decode(signature),
+      memo,
+      timeoutHeight,
+      extensionOptions: [new Web3Tx({ typedDataChainID: 1n })],
     });
-    const txRaw = new TxRaw({
-      authInfoBytes: new AuthInfo({
-        fee: fee,
-        signerInfos: [
-          {
-            publicKey: toAny(this.pubKey.toProto(true)),
-            sequence: sequence,
-            modeInfo: {
-              sum: {
-                case: "single",
-                value: {
-                  mode: SignMode.LEGACY_AMINO_JSON,
-                },
-              },
-            },
-          },
-        ],
-      }).toBinary(),
-      bodyBytes: new TxBody({
-        messages: msgs.map((m) => toAny(m.toProto())),
-        memo: memo,
-        timeoutHeight: timeoutHeight,
-        extensionOptions: [toAny(web3Extension)],
-      }).toBinary(),
-      signatures: [ethhex.decode(signature)],
-    });
-
     return RpcClient.broadcastTx(this.rpc, txRaw);
   }
 
