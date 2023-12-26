@@ -1,3 +1,4 @@
+import { PlainMessage } from "@bufbuild/protobuf";
 import { InjectiveWasmxV1MsgExecuteContractCompat as ProtoMsgExecuteContractCompat } from "cosmes/protobufs";
 
 import { Adapter } from "./Adapter";
@@ -11,20 +12,20 @@ type Data<T> = ConstructorParameters<typeof MsgExecuteContract<T>>[0];
  * Metamask or EVM wallets. Otherwise, use `MsgExecuteContract` instead!
  */
 export class MsgExecuteContractInjective<T> implements Adapter {
-  private readonly data: Data<T>;
+  private readonly data: PlainMessage<ProtoMsgExecuteContractCompat>;
 
   constructor(data: Data<T>) {
-    this.data = data;
+    this.data = {
+      ...data,
+      msg: JSON.stringify(data.msg),
+      funds: data.funds
+        .map(({ amount, denom }) => `${amount}${denom}`)
+        .join(","),
+    };
   }
 
   public toProto() {
-    return new ProtoMsgExecuteContractCompat({
-      ...this.data,
-      msg: JSON.stringify(this.data.msg),
-      funds: this.data.funds
-        .map(({ amount, denom }) => `${amount}${denom}`)
-        .join(","),
-    });
+    return new ProtoMsgExecuteContractCompat(this.data);
   }
 
   public toAmino() {
