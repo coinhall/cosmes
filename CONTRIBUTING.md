@@ -88,6 +88,16 @@ pnpm build
 
 ### Publishing
 
+To bump the package version prior to publishing, run:
+
+```sh
+# To bump the patch number (most publishes should use this)
+pnpm version patch --no-git-tag-version
+
+# To bump the prerelease number (if and only if a RC version is required)
+pnpm version prerelease --no-git-tag-version --preid=rc
+```
+
 To publish the package to NPM, run:
 
 ```sh

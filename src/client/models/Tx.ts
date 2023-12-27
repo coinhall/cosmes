@@ -1,4 +1,4 @@
-import { PlainMessage } from "@bufbuild/protobuf";
+import { Message, PlainMessage } from "@bufbuild/protobuf";
 import { base64 } from "@scure/base";
 import {
   CosmosTxV1beta1AuthInfo as ProtoAuthInfo,
@@ -28,6 +28,7 @@ export type ToSignedProtoParams = {
   signature: Uint8Array;
   memo?: string | undefined;
   timeoutHeight?: bigint | undefined;
+  extensionOptions?: Message[] | undefined;
 };
 
 export type ToUnsignedProtoParams = Pick<
@@ -63,6 +64,7 @@ export class Tx {
     signature,
     memo,
     timeoutHeight,
+    extensionOptions,
   }: ToSignedProtoParams): ProtoTxRaw {
     return new ProtoTxRaw({
       authInfoBytes: new ProtoAuthInfo({
@@ -73,6 +75,7 @@ export class Tx {
         messages: this.data.msgs.map((m) => toAny(m.toProto())),
         memo: memo,
         timeoutHeight: timeoutHeight,
+        extensionOptions: extensionOptions?.map(toAny),
       }).toBinary(),
       signatures: [signature],
     });

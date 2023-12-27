@@ -1,5 +1,15 @@
 # Changelog
 
+## `v0.0.47`
+
+### Features
+
+- Added `MetamaskInjective` wallet to execute txs via MetaMask extension on Injective network (*does not support wallet connect yet*)
+
+### Improvements
+
+- Added `extensionOptions` to `Tx.toSignedProto`
+
 ## `v0.0.46`
 
 ### Fixes

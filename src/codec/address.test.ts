@@ -1,9 +1,11 @@
 import { describe, expect, it } from "vitest";
 
-import { resolveBech32Address } from "./address";
+import { resolveBech32Address, translateEthToBech32Address } from "./address";
 
-const PUB_KEY_1 = "A6Y9fcWSn5Av/HLHBwthTaVE/vdyRKvsTzi5U7j9bFj5"; // random pub pub key
+const PUB_KEY_1 = "A6Y9fcWSn5Av/HLHBwthTaVE/vdyRKvsTzi5U7j9bFj5"; // random pub key
 const PUB_KEY_2 = "Ag/a1BOl3cdwh67Z8iCbGmAu4WWmBwtuQlQMbDaN385V"; // coinhall.org val pubkey
+
+const ETH_ADDRESS_1 = "0xd6E80d86483C0cF463E03cC95246bDc0FeF6cfbD"; // random eth address
 
 describe("resolveBech32Address", () => {
   it("should resolve stars address correctly", () => {
@@ -26,5 +28,12 @@ describe("resolveBech32Address", () => {
     expect(translated).toBe(
       "terravaloper1ge3vqn6cjkk2xkfwpg5ussjwxvahs2f6at87yp"
     );
+  });
+});
+
+describe("translateEthToBech32Address", () => {
+  it("should translate eth address correctly", () => {
+    const translated = translateEthToBech32Address(ETH_ADDRESS_1, "inj");
+    expect(translated).toBe("inj16m5qmpjg8sx0gclq8ny4y34acrl0dnaantdev0");
   });
 });

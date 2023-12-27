@@ -6,5 +6,6 @@ export const WalletName = {
   KEPLR: "keplr",
   LEAP: "leap",
   COSMOSTATION: "cosmostation",
+  METAMASK_INJECTIVE: "metamask-injective",
 } as const;
 export type WalletName = (typeof WalletName)[keyof typeof WalletName];

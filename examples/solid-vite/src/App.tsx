@@ -7,6 +7,7 @@ import {
   CosmostationController,
   KeplrController,
   LeapController,
+  MetamaskInjectiveController,
   StationController,
   UnsignedTx,
   WalletController,
@@ -34,6 +35,7 @@ const WALLETS: Record<WalletName, string> = {
   [WalletName.COSMOSTATION]: "Cosmostation",
   [WalletName.STATION]: "Terra Station",
   [WalletName.LEAP]: "Leap",
+  [WalletName.METAMASK_INJECTIVE]: "MetaMask",
 };
 const TYPES: Record<WalletType, string> = {
   [WalletType.EXTENSION]: "Extension",
@@ -44,6 +46,7 @@ const CONTROLLERS: Record<string, WalletController> = {
   [WalletName.KEPLR]: new KeplrController(WC_PROJECT_ID),
   [WalletName.LEAP]: new LeapController(WC_PROJECT_ID),
   [WalletName.COSMOSTATION]: new CosmostationController(WC_PROJECT_ID),
+  [WalletName.METAMASK_INJECTIVE]: new MetamaskInjectiveController(),
 };
 
 function getRpc(chain: string): string {
@@ -116,7 +119,9 @@ function getDenom(chain: string): string {
 
 const App: Component = () => {
   const [chain, setChain] = createSignal<string>("injective-1");
-  const [wallet, setWallet] = createSignal<WalletName>(WalletName.KEPLR);
+  const [wallet, setWallet] = createSignal<WalletName>(
+    WalletName.METAMASK_INJECTIVE
+  );
   const [wallets, setWallets] = createStore<Record<string, ConnectedWallet>>(
     {}
   );
