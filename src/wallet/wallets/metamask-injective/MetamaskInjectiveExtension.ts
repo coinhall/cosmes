@@ -102,7 +102,7 @@ export class MetamaskInjectiveExtension extends ConnectedWallet {
   }
 
   /**
-   * Returns the TypedData to be signed by Metamask's `eth_signTypedData_v4` method.
+   * Returns the TypedData to be signed by MetaMask's `eth_signTypedData_v4` method.
    *
    * @see https://github.com/InjectiveLabs/injective-ts/blob/cd1e67f7fd039c93dd4c5134d2d8dbfe5d009d79/packages/sdk-ts/src/core/modules/tx/eip712/eip712.ts#L14
    */

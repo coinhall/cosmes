@@ -9,7 +9,7 @@ type Data<T> = ConstructorParameters<typeof MsgExecuteContract<T>>[0];
 
 /**
  * **NOTE**: this message is only used on Injective when broadcasting txs via
- * Metamask or EVM wallets. Otherwise, use `MsgExecuteContract` instead!
+ * MetaMask or EVM wallets. Otherwise, use `MsgExecuteContract` instead!
  */
 export class MsgExecuteContractInjective<T> implements Adapter {
   private readonly data: PlainMessage<ProtoMsgExecuteContractCompat>;

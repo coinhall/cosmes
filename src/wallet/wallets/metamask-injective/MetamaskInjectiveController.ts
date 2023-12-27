@@ -45,7 +45,7 @@ export class MetamaskInjectiveController extends WalletController {
 
     const ext = window.ethereum;
     if (!ext) {
-      throw new Error("Metamask extension is not installed");
+      throw new Error("MetaMask extension is not installed");
     }
 
     const ethAddresses = await ext.request<string[]>({
@@ -53,7 +53,7 @@ export class MetamaskInjectiveController extends WalletController {
     });
     const ethAddress = ethAddresses?.[0];
     if (!ethAddress) {
-      throw new Error("Failed to connect to Metamask");
+      throw new Error("Failed to connect to MetaMask");
     }
     const injAddress = translateEthToBech32Address(ethAddress, "inj");
 

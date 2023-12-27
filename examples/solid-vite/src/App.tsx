@@ -35,7 +35,7 @@ const WALLETS: Record<WalletName, string> = {
   [WalletName.COSMOSTATION]: "Cosmostation",
   [WalletName.STATION]: "Terra Station",
   [WalletName.LEAP]: "Leap",
-  [WalletName.METAMASK_INJECTIVE]: "Metamask",
+  [WalletName.METAMASK_INJECTIVE]: "MetaMask",
 };
 const TYPES: Record<WalletType, string> = {
   [WalletType.EXTENSION]: "Extension",
