@@ -116,6 +116,10 @@ export abstract class WalletController {
    * `onAccountChange` event.
    */
   protected changeAccount(walletType: WalletType) {
+    // Ignore if controller does not have any connected wallets
+    if (this.connectedWallets.size === 0) {
+      return;
+    }
     // Find all wallets that were connected via the given `walletType`
     const wallets = [...this.connectedWallets.values()].filter(
       (wallet) => wallet.type === walletType

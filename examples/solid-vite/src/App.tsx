@@ -3,6 +3,7 @@ import { createStore } from "solid-js/store";
 
 import { MsgSend } from "cosmes/client";
 import {
+  CompassController,
   ConnectedWallet,
   CosmostationController,
   KeplrController,
@@ -17,7 +18,7 @@ import {
 
 const WC_PROJECT_ID = "2b7d5a2da89dd74fed821d184acabf95";
 const SIGN_ARBITRARY_MSG =
-  "Hi from Coinhall! This is a test message just to prove that the wallet is working.";
+  "Hi from CosmeES! This is a test message just to prove that the wallet is working.";
 const TX_MEMO = "signed via cosmes";
 
 const CHAINS: Record<string, string> = {
@@ -29,12 +30,14 @@ const CHAINS: Record<string, string> = {
   "neutron-1": "Neutron",
   "migaloo-1": "Migaloo",
   "injective-1": "Injective",
+  "pacific-1": "Sei",
 };
 const WALLETS: Record<WalletName, string> = {
   [WalletName.KEPLR]: "Keplr",
   [WalletName.COSMOSTATION]: "Cosmostation",
   [WalletName.STATION]: "Terra Station",
   [WalletName.LEAP]: "Leap",
+  [WalletName.COMPASS]: "Compass",
   [WalletName.METAMASK_INJECTIVE]: "MetaMask",
 };
 const TYPES: Record<WalletType, string> = {
@@ -45,6 +48,7 @@ const CONTROLLERS: Record<string, WalletController> = {
   [WalletName.STATION]: new StationController(),
   [WalletName.KEPLR]: new KeplrController(WC_PROJECT_ID),
   [WalletName.LEAP]: new LeapController(WC_PROJECT_ID),
+  [WalletName.COMPASS]: new CompassController(),
   [WalletName.COSMOSTATION]: new CosmostationController(WC_PROJECT_ID),
   [WalletName.METAMASK_INJECTIVE]: new MetamaskInjectiveController(),
 };
@@ -67,6 +71,8 @@ function getRpc(chain: string): string {
       return "https://migaloo-rpc.polkachu.com";
     case "injective-1":
       return "https://injective-rpc.polkachu.com";
+    case "pacific-1":
+      return "https://rpc-sei-ia.cosmosia.notional.ventures";
     default:
       throw new Error("Unknown chain");
   }
@@ -90,6 +96,8 @@ function getGasPrice(chain: string): { amount: string; denom: string } {
       return { amount: "0.25", denom: getDenom(chain) };
     case "injective-1":
       return { amount: "500000000", denom: getDenom(chain) };
+    case "pacific-1":
+      return { amount: "0.1", denom: getDenom(chain) };
     default:
       throw new Error("Unknown chain");
   }
@@ -112,16 +120,16 @@ function getDenom(chain: string): string {
       return "uwhale";
     case "injective-1":
       return "inj";
+    case "pacific-1":
+      return "usei";
     default:
       throw new Error("Unknown chain");
   }
 }
 
 const App: Component = () => {
-  const [chain, setChain] = createSignal<string>("injective-1");
-  const [wallet, setWallet] = createSignal<WalletName>(
-    WalletName.METAMASK_INJECTIVE
-  );
+  const [chain, setChain] = createSignal<string>("pacific-1");
+  const [wallet, setWallet] = createSignal<WalletName>(WalletName.COMPASS);
   const [wallets, setWallets] = createStore<Record<string, ConnectedWallet>>(
     {}
   );
