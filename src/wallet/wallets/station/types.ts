@@ -1,5 +1,5 @@
 export type Window = {
-  station: Station;
+  station?: Station | undefined;
 };
 
 /**

@@ -4,5 +4,5 @@ import { Keplr } from "cosmes/registry";
 export type Leap = Keplr;
 
 export type Window = {
-  leap: Leap;
+  leap?: Leap | undefined;
 };

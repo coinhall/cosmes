@@ -59,7 +59,7 @@ export class CosmostationController extends WalletController {
 
   protected async connectExtension<T extends string>(chains: ChainInfo<T>[]) {
     const wallets = new Map<T, ConnectedWallet>();
-    const ext = window.cosmostation.providers.keplr;
+    const ext = window.cosmostation?.providers.keplr;
     if (!ext) {
       throw new Error("Cosmostation extension is not installed");
     }
