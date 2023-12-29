@@ -19,3 +19,4 @@ export { LeapController } from "./wallets/leap/LeapController";
 export { MetamaskInjectiveController } from "./wallets/metamask-injective/MetamaskInjectiveController";
 export { MnemonicWallet } from "./wallets/mnemonic/MnemonicWallet";
 export { StationController } from "./wallets/station/StationController";
+export { GalaxyStationController } from "./wallets/galaxystation/GalaxyStationController";
