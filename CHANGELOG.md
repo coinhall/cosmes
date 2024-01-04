@@ -1,5 +1,15 @@
 # Changelog
 
+## `v0.0.49`
+
+### Features
+
+- Added the `verifyArbitrary` helper function (exported by `cosmes/wallet`) to verify signatures signed using `ConnectedWallet.signArbitrary`
+
+### Fixes
+
+- Fixed the `recoverPubKeyFromEthSignature` helper function to calculate and use the correct recovery bit when generating the `secp256k1` model
+
 ## `v0.0.48`
 
 ### Features

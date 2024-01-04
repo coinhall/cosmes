@@ -63,9 +63,14 @@ export function recoverPubKeyFromEthSignature(
   if (signature.length !== 65) {
     throw new Error("Invalid signature");
   }
-  const digest = hashEthArbitraryMessage(message);
+  const r = signature.slice(0, 32);
+  const s = signature.slice(32, 64);
+  const v = signature[64];
+  // Adapted from https://github.com/ethers-io/ethers.js/blob/6017d3d39a4d428793bddae33d82fd814cacd878/src.ts/crypto/signature.ts#L255-L265
+  const yParity = v <= 1 ? v : (v + 1) % 2;
   const secpSignature = secp256k1.Signature.fromCompact(
-    Uint8Array.from([...signature.slice(0, 32), ...signature.slice(32, 64)])
-  ).addRecoveryBit(1);
+    Uint8Array.from([...r, ...s])
+  ).addRecoveryBit(yParity);
+  const digest = hashEthArbitraryMessage(message);
   return secpSignature.recoverPublicKey(digest).toRawBytes(true);
 }

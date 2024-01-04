@@ -11,3 +11,4 @@ export {
   signAmino,
   signDirect,
 } from "./sign";
+export { verifyADR36, verifyECDSA, verifyEIP191 } from "./verify";

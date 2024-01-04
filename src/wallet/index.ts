@@ -1,6 +1,7 @@
 export { WalletName } from "./constants/WalletName";
 export { WalletType } from "./constants/WalletType";
 export { isAndroid, isIOS, isMobile } from "./utils/os";
+export { verifyArbitrary } from "./utils/verify";
 export {
   ConnectedWallet,
   type PollTxOptions,
