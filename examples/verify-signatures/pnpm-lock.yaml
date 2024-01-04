@@ -1,9 +1,16 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 dependencies:
   '@keplr-wallet/cosmos':
     specifier: ^0.11.63
     version: 0.11.63
+  cosmes:
+    specifier: link:../..
+    version: link:../..
   secp256k1:
     specifier: ^5.0.0
     version: 5.0.0
