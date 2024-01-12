@@ -1,6 +1,6 @@
 {
   "name": "cosmes",
-  "version": "0.0.49",
+  "version": "0.0.50-rc.0",
   "private": false,
   "packageManager": "pnpm@8.3.0",
   "sideEffects": false,

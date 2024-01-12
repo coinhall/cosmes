@@ -43,7 +43,7 @@ export function verifyArbitrary({
     pubKey: base64.decode(pubKey),
     bech32Prefix,
     data: utf8.decode(data),
-    signature: utf8.decode(signature),
+    signature: base64.decode(signature),
   };
   try {
     switch (wallet) {
