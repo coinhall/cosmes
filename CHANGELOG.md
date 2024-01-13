@@ -1,5 +1,11 @@
 # Changelog
 
+## `v0.0.50`
+
+### Fixes
+
+- Fixed the `verifyArbitrary` function to work correctly for all chains, including Injective which uses a different key algorithm
+
 ## `v0.0.49`
 
 ### Features

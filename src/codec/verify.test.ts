@@ -74,6 +74,21 @@ describe("verifyADR36", () => {
     });
     expect(res3).toBe(false);
   });
+
+  it("should verify ethsecp256k1 type signatures correctly", () => {
+    // Signed using Keplr wallet on Injective
+    const signature = base64.decode(
+      "+7PNZm4XxKtpvZA+HqxpMKJgZcqA2w3WVSheLGvzrrIBJZGOTdcpBT7wLUhluY46EokTeRRWUaBDSv2vVoEdfw=="
+    );
+    const res1 = verifyADR36({
+      bech32Prefix: "inj",
+      pubKey: VALID_PUBKEY_3,
+      data: DATA,
+      signature,
+      type: "ethsecp256k1",
+    });
+    expect(res1).toBe(true);
+  });
 });
 
 describe("verifyEIP191", () => {

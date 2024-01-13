@@ -1,4 +1,5 @@
 import { sha256 } from "@noble/hashes/sha256";
+import { keccak_256 } from "@noble/hashes/sha3";
 import * as secp256k1 from "@noble/secp256k1";
 import { base64 } from "@scure/base";
 
@@ -15,14 +16,21 @@ type VerifyArbitraryParams = {
   data: Uint8Array;
   /** The signature bytes */
   signature: Uint8Array;
+  /** The type of the signature */
+  type?: "secp256k1" | "ethsecp256k1";
 };
 
 export function verifyECDSA({
   pubKey,
   data,
   signature,
+  type,
 }: Omit<VerifyArbitraryParams, "bech32Prefix">): boolean {
-  return secp256k1.verify(signature, sha256(data), pubKey);
+  return secp256k1.verify(
+    signature,
+    type === "ethsecp256k1" ? keccak_256(data) : sha256(data),
+    pubKey
+  );
 }
 
 export function verifyADR36({
@@ -30,6 +38,7 @@ export function verifyADR36({
   bech32Prefix,
   data,
   signature,
+  type,
 }: VerifyArbitraryParams): boolean {
   const msg = serialiseSignDoc({
     chain_id: "",
@@ -43,7 +52,7 @@ export function verifyADR36({
       {
         type: "sign/MsgSignData",
         value: {
-          signer: resolveBech32Address(pubKey, bech32Prefix),
+          signer: resolveBech32Address(pubKey, bech32Prefix, type),
           data: base64.encode(data),
         },
       },
@@ -54,6 +63,7 @@ export function verifyADR36({
     pubKey,
     data: msg,
     signature,
+    type,
   });
 }
 
