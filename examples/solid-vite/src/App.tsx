@@ -10,6 +10,7 @@ import {
   LeapController,
   MetamaskInjectiveController,
   StationController,
+  GalaxyStationController,
   UnsignedTx,
   WalletController,
   WalletName,
@@ -36,6 +37,7 @@ const WALLETS: Record<WalletName, string> = {
   [WalletName.KEPLR]: "Keplr",
   [WalletName.COSMOSTATION]: "Cosmostation",
   [WalletName.STATION]: "Terra Station",
+  [WalletName.GALAXYSTATION]: "Galaxy Station",
   [WalletName.LEAP]: "Leap",
   [WalletName.COMPASS]: "Compass",
   [WalletName.METAMASK_INJECTIVE]: "MetaMask",
@@ -46,6 +48,7 @@ const TYPES: Record<WalletType, string> = {
 };
 const CONTROLLERS: Record<string, WalletController> = {
   [WalletName.STATION]: new StationController(),
+  [WalletName.GALAXYSTATION]: new GalaxyStationController(),
   [WalletName.KEPLR]: new KeplrController(WC_PROJECT_ID),
   [WalletName.LEAP]: new LeapController(WC_PROJECT_ID),
   [WalletName.COMPASS]: new CompassController(),
