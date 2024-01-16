@@ -58,6 +58,7 @@ export function verifyArbitrary({
       case WalletName.COSMOSTATION:
       case WalletName.KEPLR:
       case WalletName.LEAP:
+      case WalletName.NINJI:
         return verifyADR36(params);
       case WalletName.METAMASK_INJECTIVE:
         return verifyEIP191(params);
