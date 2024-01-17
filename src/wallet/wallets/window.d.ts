@@ -5,6 +5,7 @@ import { Window as CosmostationWindow } from "./cosmostation/types";
 import { Window as LeapWindow } from "./leap/types";
 import { Window as EthereumWindow } from "./metamask-injective/types";
 import { Window as StationWindow } from "./station/types";
+import { Window as NinjiWindow } from "./ninji/types";
 
 declare global {
   interface Window
@@ -13,5 +14,6 @@ declare global {
       StationWindow,
       LeapWindow,
       CompassWindow,
-      EthereumWindow {}
+      EthereumWindow,
+      NinjiWindow {}
 }

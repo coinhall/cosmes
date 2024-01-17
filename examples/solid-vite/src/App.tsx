@@ -10,6 +10,7 @@ import {
   LeapController,
   MetamaskInjectiveController,
   StationController,
+  NinjiController,
   UnsignedTx,
   WalletController,
   WalletName,
@@ -39,6 +40,7 @@ const WALLETS: Record<WalletName, string> = {
   [WalletName.LEAP]: "Leap",
   [WalletName.COMPASS]: "Compass",
   [WalletName.METAMASK_INJECTIVE]: "MetaMask",
+  [WalletName.NINJI]: "Ninji",
 };
 const TYPES: Record<WalletType, string> = {
   [WalletType.EXTENSION]: "Extension",
@@ -51,6 +53,7 @@ const CONTROLLERS: Record<string, WalletController> = {
   [WalletName.COMPASS]: new CompassController(),
   [WalletName.COSMOSTATION]: new CosmostationController(WC_PROJECT_ID),
   [WalletName.METAMASK_INJECTIVE]: new MetamaskInjectiveController(),
+  [WalletName.NINJI]: new NinjiController(),
 };
 
 function getRpc(chain: string): string {
