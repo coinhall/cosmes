@@ -1,5 +1,11 @@
 # Changelog
 
+## `v0.0.51`
+
+### Fixes
+
+- Fixed MetaMask on Injective to work correctly with `MsgExecuteContractCompat` when `funds` are empty
+
 ## `v0.0.50`
 
 ### Fixes
