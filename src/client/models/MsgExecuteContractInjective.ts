@@ -1,4 +1,4 @@
-import { PlainMessage } from "@bufbuild/protobuf";
+import { PartialMessage } from "@bufbuild/protobuf";
 import { InjectiveWasmxV1MsgExecuteContractCompat as ProtoMsgExecuteContractCompat } from "cosmes/protobufs";
 
 import { Adapter } from "./Adapter";
@@ -12,16 +12,20 @@ type Data<T> = ConstructorParameters<typeof MsgExecuteContract<T>>[0];
  * MetaMask or EVM wallets. Otherwise, use `MsgExecuteContract` instead!
  */
 export class MsgExecuteContractInjective<T> implements Adapter {
-  private readonly data: PlainMessage<ProtoMsgExecuteContractCompat>;
+  private readonly data: PartialMessage<ProtoMsgExecuteContractCompat>;
 
   constructor(data: Data<T>) {
     this.data = {
-      ...data,
+      sender: data.sender,
+      contract: data.contract,
       msg: JSON.stringify(data.msg),
-      funds: data.funds
-        .map(({ amount, denom }) => `${amount}${denom}`)
-        .join(","),
     };
+    // Bug in Injective where `funds` must be removed if it is "empty"
+    if (data.funds.length > 0) {
+      this.data.funds = data.funds
+        .map(({ amount, denom }) => `${amount}${denom}`)
+        .join(",");
+    }
   }
 
   public toProto() {

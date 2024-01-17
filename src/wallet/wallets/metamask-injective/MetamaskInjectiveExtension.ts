@@ -151,8 +151,8 @@ export class MetamaskInjectiveExtension extends ConnectedWallet {
     // Only adding types for the first message likely means txs with different
     // messages cannot be executed, but this is similar to Injective's behaviour.
     // See: https://github.com/InjectiveLabs/injective-ts/blob/cd1e67f7fd039c93dd4c5134d2d8dbfe5d009d79/packages/sdk-ts/src/core/modules/tx/eip712/eip712.ts#L27
-    const aminoType = stdSignDoc.msgs[0].type;
-    switch (aminoType) {
+    const { type, value } = stdSignDoc.msgs[0];
+    switch (type) {
       case "cosmos-sdk/MsgSend":
         types.MsgValue = [
           { name: "from_address", type: "string" },
@@ -169,8 +169,11 @@ export class MetamaskInjectiveExtension extends ConnectedWallet {
           { name: "sender", type: "string" },
           { name: "contract", type: "string" },
           { name: "msg", type: "string" },
-          { name: "funds", type: "string" },
         ];
+        // Bug in Injective where `funds` must be removed if it is "empty"
+        if ("funds" in value) {
+          types.MsgValue.push({ name: "funds", type: "string" });
+        }
         break;
       default:
         // TODO: support other amino types
