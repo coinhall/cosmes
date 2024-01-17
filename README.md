@@ -133,6 +133,7 @@ This directory is a [Cosmos Kit](https://cosmoskit.com) alternative to interact 
 - [Cosmostation](https://wallet.cosmostation.io/)
 - [Compass](https://compasswallet.io/) (for Sei only)
 - [MetaMask](https://metamask.io/) (for Injective only)
+- [Ninji](https://ninji.xyz/) (for Injective only)
 
 **Features**:
 

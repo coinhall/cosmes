@@ -1,5 +1,11 @@
 # Changelog
 
+## `v0.0.52`
+
+### Features
+
+- Added Ninji wallet support to execute txs via Ninji extension on Injective network (*does not support wallet connect yet*)
+
 ## `v0.0.51`
 
 ### Fixes
