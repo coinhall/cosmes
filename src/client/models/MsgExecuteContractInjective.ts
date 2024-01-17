@@ -20,7 +20,7 @@ export class MsgExecuteContractInjective<T> implements Adapter {
       contract: data.contract,
       msg: JSON.stringify(data.msg),
     };
-    // Bug in Injective where `funds` can only exist if it is present
+    // Bug in Injective where `funds` must be removed if it is "empty"
     if (data.funds.length > 0) {
       this.data.funds = data.funds
         .map(({ amount, denom }) => `${amount}${denom}`)

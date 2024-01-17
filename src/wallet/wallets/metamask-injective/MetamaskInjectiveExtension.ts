@@ -170,7 +170,7 @@ export class MetamaskInjectiveExtension extends ConnectedWallet {
           { name: "contract", type: "string" },
           { name: "msg", type: "string" },
         ];
-        // Bug in Injective where `funds` can only exist if it is present
+        // Bug in Injective where `funds` must be removed if it is "empty"
         if ("funds" in value) {
           types.MsgValue.push({ name: "funds", type: "string" });
         }
