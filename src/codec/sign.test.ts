@@ -1,8 +1,50 @@
-import { base16, utf8 } from "@scure/base";
+import { StdSignDoc } from "@keplr-wallet/types";
+import { base16, base64, utf8 } from "@scure/base";
 import { describe, expect, it } from "vitest";
 
 import { ethhex } from "./ethhex";
-import { hashEthArbitraryMessage, recoverPubKeyFromEthSignature } from "./sign";
+import {
+  hashEthArbitraryMessage,
+  recoverPubKeyFromEthSignature,
+  signAmino,
+} from "./sign";
+
+describe("signAmino", () => {
+  it("should sign Injective txs correctly", () => {
+    const stdSignDoc: StdSignDoc = {
+      chain_id: "",
+      account_number: "0",
+      sequence: "0",
+      fee: {
+        gas: "0",
+        amount: [],
+      },
+      msgs: [
+        {
+          type: "sign/MsgSignData",
+          value: {
+            signer: "inj1l8w4vvmhcku28ryntpeazm37umshetzzl2gc33",
+            data: base64.encode(
+              utf8.decode(
+                "Hi from CosmeES! This is a test message just to prove that the wallet is working."
+              )
+            ),
+          },
+        },
+      ],
+      memo: "",
+    };
+    const privKey = base64.decode(
+      "o5di+2p2NdLgRYLtBIhJl9gsB9FWll8wKBaep3CmbI0="
+    );
+    const expected = // Signature taken from keplr signArbitrary
+      "qrkZpuo1jpfXgbF3TtBtdR7DynE1nV3xd//bsGXm2FkS08waXeiJJ+FAvdtt9hvStyP/wGae07hxnyYPHEw+Uw==";
+    const actual = base64.encode(
+      signAmino(stdSignDoc, privKey, "ethsecp256k1")
+    );
+    expect(actual).toStrictEqual(expected);
+  });
+});
 
 describe("hashEthArbitraryMessage", () => {
   it("should hash correctly", () => {

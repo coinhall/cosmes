@@ -1,10 +1,16 @@
 # Changelog
 
+## `v0.0.54`
+
+### Fixes
+
+- Fixed `MnemonicWallet` to generate Injective signatures correctly
+
 ## `v0.0.53`
 
 ### Fixes
 
-- Fixed `MnemonicWallet` to work with Injective
+- Fixed `MnemonicWallet` to resolve Injective address correctly
 
 ## `v0.0.52`
 

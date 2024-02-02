@@ -77,6 +77,7 @@ export type ConnectMnemonicWalletOptions = Prettify<
 export class MnemonicWallet extends ConnectedWallet {
   public readonly publicKey: string;
   public readonly privateKey: Uint8Array;
+  public readonly keyType: "secp256k1" | "ethsecp256k1";
 
   constructor({
     mnemonic,
@@ -91,11 +92,10 @@ export class MnemonicWallet extends ConnectedWallet {
       coinType,
       index,
     });
-    const address = resolveBech32Address(
-      publicKey,
-      bech32Prefix,
-      chainId.startsWith("injective-") ? "ethsecp256k1" : "secp256k1"
-    );
+    const keyType = chainId.startsWith("injective-")
+      ? "ethsecp256k1"
+      : "secp256k1";
+    const address = resolveBech32Address(publicKey, bech32Prefix, keyType);
     super(
       // We typecast here instead of adding "mnemonic" to `WalletName` and
       // `WalletType` as this wallet is considered a special wallet that is
@@ -110,6 +110,7 @@ export class MnemonicWallet extends ConnectedWallet {
     );
     this.publicKey = base64.encode(publicKey);
     this.privateKey = privateKey;
+    this.keyType = keyType;
   }
 
   public async signArbitrary(data: string): Promise<SignArbitraryResponse> {
@@ -134,7 +135,7 @@ export class MnemonicWallet extends ConnectedWallet {
       ],
       memo: "",
     };
-    const signature = signAmino(doc, this.privateKey);
+    const signature = signAmino(doc, this.privateKey, this.keyType);
     return {
       data,
       pubKey: this.publicKey,
@@ -160,7 +161,7 @@ export class MnemonicWallet extends ConnectedWallet {
       memo,
       timeoutHeight,
     });
-    const signature = signDirect(doc, this.privateKey);
+    const signature = signDirect(doc, this.privateKey, this.keyType);
     return RpcClient.broadcastTx(this.rpc, tx.toSignedDirect(doc, signature));
   }
 }

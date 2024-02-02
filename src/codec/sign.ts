@@ -8,35 +8,43 @@ import { StdSignDoc } from "cosmes/registry";
 
 import { serialiseSignDoc } from "./serialise";
 
-function sign(bytes: Uint8Array, privateKey: Uint8Array): Uint8Array {
+function sign(
+  bytes: Uint8Array,
+  privateKey: Uint8Array,
+  type: "secp256k1" | "ethsecp256k1"
+): Uint8Array {
   // Required polyfills for secp256k1 that must be called before any sign ops.
   // See: https://github.com/paulmillr/noble-secp256k1?tab=readme-ov-file#usage
   secp256k1.etc.hmacSha256Sync = (k, ...m) =>
     hmac(sha256, k, secp256k1.etc.concatBytes(...m));
-
-  return secp256k1.sign(sha256(bytes), privateKey).toCompactRawBytes();
+  const hash = type === "secp256k1" ? sha256(bytes) : keccak_256(bytes);
+  return secp256k1.sign(hash, privateKey).toCompactRawBytes();
 }
 
 /**
  * Signs the given amino-encoded `stdSignDoc` with the given `privateKey` using
- * secp256k1, and returns the signature bytes.
+ * secp256k1, and returns the signature bytes. For Injective, the `type` param
+ * must be set to `ethsecp256k1`.
  */
 export function signAmino(
   stdSignDoc: StdSignDoc,
-  privateKey: Uint8Array
+  privateKey: Uint8Array,
+  type: "secp256k1" | "ethsecp256k1" = "secp256k1"
 ): Uint8Array {
-  return sign(serialiseSignDoc(stdSignDoc), privateKey);
+  return sign(serialiseSignDoc(stdSignDoc), privateKey, type);
 }
 
 /**
  * Signs the given proto-encoded `signDoc` with the given `privateKey` using
- * secp256k1, and returns the signature bytes.
+ * secp256k1, and returns the signature bytes. For Injective, the `type` param
+ * must be set to `ethsecp256k1`.
  */
 export function signDirect(
   signDoc: SignDoc,
-  privateKey: Uint8Array
+  privateKey: Uint8Array,
+  type: "secp256k1" | "ethsecp256k1" = "secp256k1"
 ): Uint8Array {
-  return sign(signDoc.toBinary(), privateKey);
+  return sign(signDoc.toBinary(), privateKey, type);
 }
 
 /**
