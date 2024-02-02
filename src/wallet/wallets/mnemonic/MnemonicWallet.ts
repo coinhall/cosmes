@@ -91,7 +91,11 @@ export class MnemonicWallet extends ConnectedWallet {
       coinType,
       index,
     });
-    const address = resolveBech32Address(publicKey, bech32Prefix);
+    const address = resolveBech32Address(
+      publicKey,
+      bech32Prefix,
+      chainId.startsWith("injective-") ? "ethsecp256k1" : "secp256k1"
+    );
     super(
       // We typecast here instead of adding "mnemonic" to `WalletName` and
       // `WalletType` as this wallet is considered a special wallet that is

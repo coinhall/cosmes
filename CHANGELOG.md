@@ -1,5 +1,11 @@
 # Changelog
 
+## `v0.0.53`
+
+### Fixes
+
+- Fixed `MnemonicWallet` to work with Injective
+
 ## `v0.0.52`
 
 ### Features
