@@ -17,8 +17,8 @@ export class BitgetController extends WalletController {
     super(WalletName.BITGET);
     this.wc = new WalletConnectV2(wcProjectId, {
       name: "Bitget",
-      android: "https://bkcode.vip?",
-      ios: "bitkeep://bkconnect?",
+      android: "https://bkcode.vip",
+      ios: "bitkeep://bkconnect",
     });
     this.registerAccountChangeHandlers();
   }
