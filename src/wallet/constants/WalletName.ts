@@ -2,6 +2,7 @@
  * The unique identifier of the wallet.
  */
 export const WalletName = {
+  BITGET: "bitget",
   STATION: "station",
   KEPLR: "keplr",
   LEAP: "leap",

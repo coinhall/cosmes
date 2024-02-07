@@ -13,6 +13,7 @@ export {
   type ChainInfo,
   type EventCallback,
 } from "./wallets/WalletController";
+export { BitgetController } from "./wallets/bitget/BitgetController";
 export { CompassController } from "./wallets/compass/CompassController";
 export { CosmostationController } from "./wallets/cosmostation/CosmostationController";
 export { KeplrController } from "./wallets/keplr/KeplrController";
