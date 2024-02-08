@@ -7,7 +7,6 @@ import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialM
 import { Message, proto3, protoInt64 } from "@bufbuild/protobuf";
 import { Coin } from "../../../cosmos/base/v1beta1/coin_pb.js";
 import { TakerFeesTracker } from "../../poolmanager/v1beta1/genesis_pb.js";
-import { TxFeesTracker } from "../../txfees/v1beta1/genesis_pb.js";
 
 /**
  * TokenPairArbRoutes tracks all of the hot routes for a given pair of tokens
@@ -73,7 +72,8 @@ export class TokenPairArbRoutes extends Message<TokenPairArbRoutes> {
  */
 export class Route extends Message<Route> {
   /**
-   * The pool IDs that are travered in the directed cyclic graph (traversed left
+   * The pool IDs that are traversed in the directed cyclic graph (traversed
+   * left
    * -> right)
    *
    * @generated from field: repeated osmosis.protorev.v1beta1.Trade trades = 1;
@@ -658,11 +658,6 @@ export class AllProtocolRevenue extends Message<AllProtocolRevenue> {
   takerFeesTracker?: TakerFeesTracker;
 
   /**
-   * @generated from field: osmosis.txfees.v1beta1.TxFeesTracker tx_fees_tracker = 2;
-   */
-  txFeesTracker?: TxFeesTracker;
-
-  /**
    * @generated from field: osmosis.protorev.v1beta1.CyclicArbTracker cyclic_arb_tracker = 3;
    */
   cyclicArbTracker?: CyclicArbTracker;
@@ -676,7 +671,6 @@ export class AllProtocolRevenue extends Message<AllProtocolRevenue> {
   static readonly typeName = "osmosis.protorev.v1beta1.AllProtocolRevenue";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "taker_fees_tracker", kind: "message", T: TakerFeesTracker },
-    { no: 2, name: "tx_fees_tracker", kind: "message", T: TxFeesTracker },
     { no: 3, name: "cyclic_arb_tracker", kind: "message", T: CyclicArbTracker },
   ]);
 

@@ -45,7 +45,7 @@ export class GenesisState extends Message<GenesisState> {
 
   /**
    * Deprecated: Prefer to use `params` instead.
-   * deposit_params defines all the paramaters of related to deposit.
+   * deposit_params defines all the parameters of related to deposit.
    *
    * @generated from field: cosmos.gov.v1.DepositParams deposit_params = 5 [deprecated = true];
    * @deprecated
@@ -54,7 +54,7 @@ export class GenesisState extends Message<GenesisState> {
 
   /**
    * Deprecated: Prefer to use `params` instead.
-   * voting_params defines all the paramaters of related to voting.
+   * voting_params defines all the parameters of related to voting.
    *
    * @generated from field: cosmos.gov.v1.VotingParams voting_params = 6 [deprecated = true];
    * @deprecated
@@ -63,7 +63,7 @@ export class GenesisState extends Message<GenesisState> {
 
   /**
    * Deprecated: Prefer to use `params` instead.
-   * tally_params defines all the paramaters of related to tally.
+   * tally_params defines all the parameters of related to tally.
    *
    * @generated from field: cosmos.gov.v1.TallyParams tally_params = 7 [deprecated = true];
    * @deprecated
@@ -71,7 +71,7 @@ export class GenesisState extends Message<GenesisState> {
   tallyParams?: TallyParams;
 
   /**
-   * params defines all the paramaters of x/gov module.
+   * params defines all the parameters of x/gov module.
    *
    * Since: cosmos-sdk 0.47
    *

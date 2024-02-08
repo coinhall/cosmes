@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { QueryAllBalancesRequest, QueryAllBalancesResponse, QueryBalanceRequest, QueryBalanceResponse, QueryDenomMetadataByQueryStringRequest, QueryDenomMetadataByQueryStringResponse, QueryDenomMetadataRequest, QueryDenomMetadataResponse, QueryDenomOwnersRequest, QueryDenomOwnersResponse, QueryDenomsMetadataRequest, QueryDenomsMetadataResponse, QueryParamsRequest, QueryParamsResponse, QuerySendEnabledRequest, QuerySendEnabledResponse, QuerySpendableBalanceByDenomRequest, QuerySpendableBalanceByDenomResponse, QuerySpendableBalancesRequest, QuerySpendableBalancesResponse, QuerySupplyOfRequest, QuerySupplyOfResponse, QueryTotalSupplyRequest, QueryTotalSupplyResponse } from "./query_pb.js";
+import { QueryAllBalancesRequest, QueryAllBalancesResponse, QueryBalanceRequest, QueryBalanceResponse, QueryDenomMetadataByQueryStringRequest, QueryDenomMetadataByQueryStringResponse, QueryDenomMetadataRequest, QueryDenomMetadataResponse, QueryDenomOwnersByQueryRequest, QueryDenomOwnersByQueryResponse, QueryDenomOwnersRequest, QueryDenomOwnersResponse, QueryDenomsMetadataRequest, QueryDenomsMetadataResponse, QueryParamsRequest, QueryParamsResponse, QuerySendEnabledRequest, QuerySendEnabledResponse, QuerySpendableBalanceByDenomRequest, QuerySpendableBalanceByDenomResponse, QuerySpendableBalancesRequest, QuerySpendableBalancesResponse, QuerySupplyOfRequest, QuerySupplyOfResponse, QueryTotalSupplyRequest, QueryTotalSupplyResponse } from "./query_pb.js";
 
 const TYPE_NAME = "cosmos.bank.v1beta1.Query";
 
@@ -113,7 +113,7 @@ export const QueryParamsService = {
 } as const;
 
 /**
- * DenomsMetadata queries the client metadata of a given coin denomination.
+ * DenomMetadata queries the client metadata of a given coin denomination.
  *
  * @generated from rpc cosmos.bank.v1beta1.Query.DenomMetadata
  */
@@ -125,7 +125,7 @@ export const QueryDenomMetadataService = {
 } as const;
 
 /**
- * DenomsMetadata queries the client metadata of a given coin denomination.
+ * DenomMetadataByQueryString queries the client metadata of a given coin denomination.
  *
  * @generated from rpc cosmos.bank.v1beta1.Query.DenomMetadataByQueryString
  */
@@ -165,6 +165,21 @@ export const QueryDenomOwnersService = {
   method: "DenomOwners",
   Request: QueryDenomOwnersRequest,
   Response: QueryDenomOwnersResponse,
+} as const;
+
+/**
+ * DenomOwnersByQuery queries for all account addresses that own a particular token
+ * denomination.
+ *
+ * Since: cosmos-sdk 0.50.3
+ *
+ * @generated from rpc cosmos.bank.v1beta1.Query.DenomOwnersByQuery
+ */
+export const QueryDenomOwnersByQueryService = {
+  typeName: TYPE_NAME,
+  method: "DenomOwnersByQuery",
+  Request: QueryDenomOwnersByQueryRequest,
+  Response: QueryDenomOwnersByQueryResponse,
 } as const;
 
 /**

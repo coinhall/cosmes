@@ -1072,6 +1072,108 @@ export class QueryDenomOwnersResponse extends Message<QueryDenomOwnersResponse> 
 }
 
 /**
+ * QueryDenomOwnersByQueryRequest defines the request type for the DenomOwnersByQuery RPC query,
+ * which queries for a paginated set of all account holders of a particular
+ * denomination.
+ *
+ * Since: cosmos-sdk 0.50.3
+ *
+ * @generated from message cosmos.bank.v1beta1.QueryDenomOwnersByQueryRequest
+ */
+export class QueryDenomOwnersByQueryRequest extends Message<QueryDenomOwnersByQueryRequest> {
+  /**
+   * denom defines the coin denomination to query all account holders for.
+   *
+   * @generated from field: string denom = 1;
+   */
+  denom = "";
+
+  /**
+   * pagination defines an optional pagination for the request.
+   *
+   * @generated from field: cosmos.base.query.v1beta1.PageRequest pagination = 2;
+   */
+  pagination?: PageRequest;
+
+  constructor(data?: PartialMessage<QueryDenomOwnersByQueryRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "cosmos.bank.v1beta1.QueryDenomOwnersByQueryRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "denom", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "pagination", kind: "message", T: PageRequest },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): QueryDenomOwnersByQueryRequest {
+    return new QueryDenomOwnersByQueryRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): QueryDenomOwnersByQueryRequest {
+    return new QueryDenomOwnersByQueryRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): QueryDenomOwnersByQueryRequest {
+    return new QueryDenomOwnersByQueryRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: QueryDenomOwnersByQueryRequest | PlainMessage<QueryDenomOwnersByQueryRequest> | undefined, b: QueryDenomOwnersByQueryRequest | PlainMessage<QueryDenomOwnersByQueryRequest> | undefined): boolean {
+    return proto3.util.equals(QueryDenomOwnersByQueryRequest, a, b);
+  }
+}
+
+/**
+ * QueryDenomOwnersByQueryResponse defines the RPC response of a DenomOwnersByQuery RPC query.
+ *
+ * Since: cosmos-sdk 0.50.3
+ *
+ * @generated from message cosmos.bank.v1beta1.QueryDenomOwnersByQueryResponse
+ */
+export class QueryDenomOwnersByQueryResponse extends Message<QueryDenomOwnersByQueryResponse> {
+  /**
+   * @generated from field: repeated cosmos.bank.v1beta1.DenomOwner denom_owners = 1;
+   */
+  denomOwners: DenomOwner[] = [];
+
+  /**
+   * pagination defines the pagination in the response.
+   *
+   * @generated from field: cosmos.base.query.v1beta1.PageResponse pagination = 2;
+   */
+  pagination?: PageResponse;
+
+  constructor(data?: PartialMessage<QueryDenomOwnersByQueryResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "cosmos.bank.v1beta1.QueryDenomOwnersByQueryResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "denom_owners", kind: "message", T: DenomOwner, repeated: true },
+    { no: 2, name: "pagination", kind: "message", T: PageResponse },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): QueryDenomOwnersByQueryResponse {
+    return new QueryDenomOwnersByQueryResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): QueryDenomOwnersByQueryResponse {
+    return new QueryDenomOwnersByQueryResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): QueryDenomOwnersByQueryResponse {
+    return new QueryDenomOwnersByQueryResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: QueryDenomOwnersByQueryResponse | PlainMessage<QueryDenomOwnersByQueryResponse> | undefined, b: QueryDenomOwnersByQueryResponse | PlainMessage<QueryDenomOwnersByQueryResponse> | undefined): boolean {
+    return proto3.util.equals(QueryDenomOwnersByQueryResponse, a, b);
+  }
+}
+
+/**
  * QuerySendEnabledRequest defines the RPC request for looking up SendEnabled entries.
  *
  * Since: cosmos-sdk 0.47

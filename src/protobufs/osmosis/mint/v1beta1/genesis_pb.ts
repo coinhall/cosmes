@@ -21,7 +21,7 @@ export class GenesisState extends Message<GenesisState> {
   minter?: Minter;
 
   /**
-   * params defines all the paramaters of the mint module.
+   * params defines all the parameters of the mint module.
    *
    * @generated from field: osmosis.mint.v1beta1.Params params = 2;
    */

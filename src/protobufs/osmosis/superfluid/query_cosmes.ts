@@ -119,7 +119,7 @@ export const QuerySuperfluidDelegationAmountService = {
 } as const;
 
 /**
- * Returns all the delegated superfluid poistions for a specific delegator.
+ * Returns all the delegated superfluid positions for a specific delegator.
  *
  * @generated from rpc osmosis.superfluid.Query.SuperfluidDelegationsByDelegator
  */
@@ -131,7 +131,7 @@ export const QuerySuperfluidDelegationsByDelegatorService = {
 } as const;
 
 /**
- * Returns all the undelegating superfluid poistions for a specific delegator.
+ * Returns all the undelegating superfluid positions for a specific delegator.
  *
  * @generated from rpc osmosis.superfluid.Query.SuperfluidUndelegationsByDelegator
  */

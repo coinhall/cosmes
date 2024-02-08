@@ -73,6 +73,16 @@ export class GenesisDenom extends Message<GenesisDenom> {
    */
   authorityMetadata?: DenomAuthorityMetadata;
 
+  /**
+   * @generated from field: string name = 3;
+   */
+  name = "";
+
+  /**
+   * @generated from field: string symbol = 4;
+   */
+  symbol = "";
+
   constructor(data?: PartialMessage<GenesisDenom>) {
     super();
     proto3.util.initPartial(data, this);
@@ -83,6 +93,8 @@ export class GenesisDenom extends Message<GenesisDenom> {
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "denom", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "authority_metadata", kind: "message", T: DenomAuthorityMetadata },
+    { no: 3, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 4, name: "symbol", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): GenesisDenom {

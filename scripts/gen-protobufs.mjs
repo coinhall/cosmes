@@ -50,6 +50,10 @@ const REPOS = [
     repo: "InjectiveLabs/sdk-go#master",
     paths: ["proto"],
   },
+  {
+    repo: "evmos/ethermint#main",
+    paths: ["proto"],
+  },
 ];
 
 const __dirname = dirname(fileURLToPath(import.meta.url));

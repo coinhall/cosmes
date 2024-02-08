@@ -458,6 +458,11 @@ export class Params extends Message<Params> {
    */
   isInstantDerivativeMarketLaunchEnabled = false;
 
+  /**
+   * @generated from field: int64 post_only_mode_height_threshold = 25;
+   */
+  postOnlyModeHeightThreshold = protoInt64.zero;
+
   constructor(data?: PartialMessage<Params>) {
     super();
     proto3.util.initPartial(data, this);
@@ -490,6 +495,7 @@ export class Params extends Message<Params> {
     { no: 22, name: "binary_options_atomic_market_order_fee_multiplier", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 23, name: "minimal_protocol_fee_rate", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 24, name: "is_instant_derivative_market_launch_enabled", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+    { no: 25, name: "post_only_mode_height_threshold", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Params {
@@ -1462,6 +1468,11 @@ export class OrderInfo extends Message<OrderInfo> {
    */
   quantity = "";
 
+  /**
+   * @generated from field: string cid = 5;
+   */
+  cid = "";
+
   constructor(data?: PartialMessage<OrderInfo>) {
     super();
     proto3.util.initPartial(data, this);
@@ -1474,6 +1485,7 @@ export class OrderInfo extends Message<OrderInfo> {
     { no: 2, name: "fee_recipient", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "price", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 4, name: "quantity", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 5, name: "cid", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): OrderInfo {
@@ -2232,6 +2244,11 @@ export class TradeLog extends Message<TradeLog> {
    */
   feeRecipientAddress = new Uint8Array(0);
 
+  /**
+   * @generated from field: string cid = 7;
+   */
+  cid = "";
+
   constructor(data?: PartialMessage<TradeLog>) {
     super();
     proto3.util.initPartial(data, this);
@@ -2246,6 +2263,7 @@ export class TradeLog extends Message<TradeLog> {
     { no: 4, name: "fee", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 5, name: "order_hash", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
     { no: 6, name: "fee_recipient_address", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
+    { no: 7, name: "cid", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TradeLog {
@@ -2354,6 +2372,11 @@ export class DerivativeTradeLog extends Message<DerivativeTradeLog> {
    */
   feeRecipientAddress = new Uint8Array(0);
 
+  /**
+   * @generated from field: string cid = 7;
+   */
+  cid = "";
+
   constructor(data?: PartialMessage<DerivativeTradeLog>) {
     super();
     proto3.util.initPartial(data, this);
@@ -2368,6 +2391,7 @@ export class DerivativeTradeLog extends Message<DerivativeTradeLog> {
     { no: 4, name: "fee", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 5, name: "order_hash", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
     { no: 6, name: "fee_recipient_address", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
+    { no: 7, name: "cid", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): DerivativeTradeLog {

@@ -14,7 +14,7 @@ import { Coin } from "../../../../cosmos/base/v1beta1/coin_pb.js";
  */
 export class GetSwapFeeQueryMsg extends Message<GetSwapFeeQueryMsg> {
   /**
-   * get_swap_fee is the query strcuture to get swap fee.
+   * get_swap_fee is the query structure to get swap fee.
    *
    * @generated from field: osmosis.cosmwasmpool.v1beta1.EmptyStruct get_swap_fee = 1;
    */

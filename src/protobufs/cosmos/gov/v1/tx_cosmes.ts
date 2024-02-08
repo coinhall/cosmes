@@ -5,7 +5,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { MsgCancelProposal, MsgCancelProposalResponse, MsgDeposit, MsgDepositResponse, MsgExecLegacyContent, MsgExecLegacyContentResponse, MsgSubmitProposal, MsgSubmitProposalResponse, MsgUpdateParams, MsgUpdateParamsResponse, MsgVote, MsgVoteResponse, MsgVoteWeighted, MsgVoteWeightedResponse } from "./tx_pb.js";
+import { MsgCancelProposal, MsgCancelProposalResponse, MsgDeposit, MsgDepositResponse, MsgExecLegacyContent, MsgExecLegacyContentResponse, MsgSubmitMultipleChoiceProposal, MsgSubmitMultipleChoiceProposalResponse, MsgSubmitProposal, MsgSubmitProposalResponse, MsgSudoExec, MsgSudoExecResponse, MsgUpdateMessageParams, MsgUpdateMessageParamsResponse, MsgUpdateParams, MsgUpdateParamsResponse, MsgVote, MsgVoteResponse, MsgVoteWeighted, MsgVoteWeightedResponse } from "./tx_pb.js";
 
 const TYPE_NAME = "cosmos.gov.v1.Msg";
 
@@ -97,5 +97,48 @@ export const MsgCancelProposalService = {
   method: "CancelProposal",
   Request: MsgCancelProposal,
   Response: MsgCancelProposalResponse,
+} as const;
+
+/**
+ * SubmitMultipleChoiceProposal defines a method to create new multiple choice proposal.
+ *
+ * Since: x/gov 1.0.0
+ *
+ * @generated from rpc cosmos.gov.v1.Msg.SubmitMultipleChoiceProposal
+ */
+export const MsgSubmitMultipleChoiceProposalService = {
+  typeName: TYPE_NAME,
+  method: "SubmitMultipleChoiceProposal",
+  Request: MsgSubmitMultipleChoiceProposal,
+  Response: MsgSubmitMultipleChoiceProposalResponse,
+} as const;
+
+/**
+ * UpdateMessageParams defines a method to create or update message params when used in a governance proposal.
+ *
+ * Since: x/gov 1.0.0
+ *
+ * @generated from rpc cosmos.gov.v1.Msg.UpdateMessageParams
+ */
+export const MsgUpdateMessageParamsService = {
+  typeName: TYPE_NAME,
+  method: "UpdateMessageParams",
+  Request: MsgUpdateMessageParams,
+  Response: MsgUpdateMessageParamsResponse,
+} as const;
+
+/**
+ * SudoExec defines a method to execute an inner message as the governance module.
+ * It permits to execute any message from a proposal, even if they weren't meant to be governance proposals.
+ *
+ * Since: x/gov 1.0.0
+ *
+ * @generated from rpc cosmos.gov.v1.Msg.SudoExec
+ */
+export const MsgSudoExecService = {
+  typeName: TYPE_NAME,
+  method: "SudoExec",
+  Request: MsgSudoExec,
+  Response: MsgSudoExecResponse,
 } as const;
 

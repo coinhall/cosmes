@@ -95,9 +95,9 @@ export class EventMintTFDenom extends Message<EventMintTFDenom> {
 }
 
 /**
- * @generated from message injective.tokenfactory.v1beta1.EventBurnTFDenom
+ * @generated from message injective.tokenfactory.v1beta1.EventBurnDenom
  */
-export class EventBurnTFDenom extends Message<EventBurnTFDenom> {
+export class EventBurnDenom extends Message<EventBurnDenom> {
   /**
    * @generated from field: string burner_address = 1;
    */
@@ -108,32 +108,32 @@ export class EventBurnTFDenom extends Message<EventBurnTFDenom> {
    */
   amount?: Coin;
 
-  constructor(data?: PartialMessage<EventBurnTFDenom>) {
+  constructor(data?: PartialMessage<EventBurnDenom>) {
     super();
     proto3.util.initPartial(data, this);
   }
 
   static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "injective.tokenfactory.v1beta1.EventBurnTFDenom";
+  static readonly typeName = "injective.tokenfactory.v1beta1.EventBurnDenom";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "burner_address", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "amount", kind: "message", T: Coin },
   ]);
 
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): EventBurnTFDenom {
-    return new EventBurnTFDenom().fromBinary(bytes, options);
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): EventBurnDenom {
+    return new EventBurnDenom().fromBinary(bytes, options);
   }
 
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): EventBurnTFDenom {
-    return new EventBurnTFDenom().fromJson(jsonValue, options);
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): EventBurnDenom {
+    return new EventBurnDenom().fromJson(jsonValue, options);
   }
 
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): EventBurnTFDenom {
-    return new EventBurnTFDenom().fromJsonString(jsonString, options);
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): EventBurnDenom {
+    return new EventBurnDenom().fromJsonString(jsonString, options);
   }
 
-  static equals(a: EventBurnTFDenom | PlainMessage<EventBurnTFDenom> | undefined, b: EventBurnTFDenom | PlainMessage<EventBurnTFDenom> | undefined): boolean {
-    return proto3.util.equals(EventBurnTFDenom, a, b);
+  static equals(a: EventBurnDenom | PlainMessage<EventBurnDenom> | undefined, b: EventBurnDenom | PlainMessage<EventBurnDenom> | undefined): boolean {
+    return proto3.util.equals(EventBurnDenom, a, b);
   }
 }
 

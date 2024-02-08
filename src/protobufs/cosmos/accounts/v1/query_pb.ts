@@ -4,7 +4,8 @@
 // @ts-nocheck
 
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
-import { Message, proto3 } from "@bufbuild/protobuf";
+import { Any, Message, proto3, protoInt64 } from "@bufbuild/protobuf";
+import { UserOperation, UserOperationResponse } from "./account_abstraction_pb.js";
 
 /**
  * AccountQueryRequest is the request type for the Query/AccountQuery RPC
@@ -22,9 +23,9 @@ export class AccountQueryRequest extends Message<AccountQueryRequest> {
   /**
    * request defines the query message being sent to the account.
    *
-   * @generated from field: bytes request = 2;
+   * @generated from field: google.protobuf.Any request = 2;
    */
-  request = new Uint8Array(0);
+  request?: Any;
 
   constructor(data?: PartialMessage<AccountQueryRequest>) {
     super();
@@ -35,7 +36,7 @@ export class AccountQueryRequest extends Message<AccountQueryRequest> {
   static readonly typeName = "cosmos.accounts.v1.AccountQueryRequest";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "target", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "request", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
+    { no: 2, name: "request", kind: "message", T: Any },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): AccountQueryRequest {
@@ -64,9 +65,9 @@ export class AccountQueryResponse extends Message<AccountQueryResponse> {
   /**
    * response defines the query response of the account.
    *
-   * @generated from field: bytes response = 1;
+   * @generated from field: google.protobuf.Any response = 1;
    */
-  response = new Uint8Array(0);
+  response?: Any;
 
   constructor(data?: PartialMessage<AccountQueryResponse>) {
     super();
@@ -76,7 +77,7 @@ export class AccountQueryResponse extends Message<AccountQueryResponse> {
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "cosmos.accounts.v1.AccountQueryResponse";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "response", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
+    { no: 1, name: "response", kind: "message", T: Any },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): AccountQueryResponse {
@@ -324,6 +325,182 @@ export class AccountTypeResponse extends Message<AccountTypeResponse> {
 
   static equals(a: AccountTypeResponse | PlainMessage<AccountTypeResponse> | undefined, b: AccountTypeResponse | PlainMessage<AccountTypeResponse> | undefined): boolean {
     return proto3.util.equals(AccountTypeResponse, a, b);
+  }
+}
+
+/**
+ * AccountNumberRequest returns the account number given the address.
+ *
+ * @generated from message cosmos.accounts.v1.AccountNumberRequest
+ */
+export class AccountNumberRequest extends Message<AccountNumberRequest> {
+  /**
+   * address is the address of the account we want to know the number of.
+   *
+   * @generated from field: string address = 1;
+   */
+  address = "";
+
+  constructor(data?: PartialMessage<AccountNumberRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "cosmos.accounts.v1.AccountNumberRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "address", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): AccountNumberRequest {
+    return new AccountNumberRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): AccountNumberRequest {
+    return new AccountNumberRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): AccountNumberRequest {
+    return new AccountNumberRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: AccountNumberRequest | PlainMessage<AccountNumberRequest> | undefined, b: AccountNumberRequest | PlainMessage<AccountNumberRequest> | undefined): boolean {
+    return proto3.util.equals(AccountNumberRequest, a, b);
+  }
+}
+
+/**
+ * AccountNumberResponse is the response returned when querying the
+ * account number by address.
+ *
+ * @generated from message cosmos.accounts.v1.AccountNumberResponse
+ */
+export class AccountNumberResponse extends Message<AccountNumberResponse> {
+  /**
+   * number is the account number of the provided address.
+   *
+   * @generated from field: uint64 number = 1;
+   */
+  number = protoInt64.zero;
+
+  constructor(data?: PartialMessage<AccountNumberResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "cosmos.accounts.v1.AccountNumberResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "number", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): AccountNumberResponse {
+    return new AccountNumberResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): AccountNumberResponse {
+    return new AccountNumberResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): AccountNumberResponse {
+    return new AccountNumberResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: AccountNumberResponse | PlainMessage<AccountNumberResponse> | undefined, b: AccountNumberResponse | PlainMessage<AccountNumberResponse> | undefined): boolean {
+    return proto3.util.equals(AccountNumberResponse, a, b);
+  }
+}
+
+/**
+ * SimulateUserOperationRequest is the query request used to simulate a
+ * UserOperation.
+ *
+ * @generated from message cosmos.accounts.v1.SimulateUserOperationRequest
+ */
+export class SimulateUserOperationRequest extends Message<SimulateUserOperationRequest> {
+  /**
+   * bundler can be filled to simulate the address of the bundler.
+   *
+   * @generated from field: string bundler = 1;
+   */
+  bundler = "";
+
+  /**
+   * user_operation defines the user operation that we want to simulate.
+   * Gas limit fields are ignored.
+   *
+   * @generated from field: cosmos.accounts.v1.UserOperation user_operation = 2;
+   */
+  userOperation?: UserOperation;
+
+  constructor(data?: PartialMessage<SimulateUserOperationRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "cosmos.accounts.v1.SimulateUserOperationRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "bundler", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "user_operation", kind: "message", T: UserOperation },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): SimulateUserOperationRequest {
+    return new SimulateUserOperationRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): SimulateUserOperationRequest {
+    return new SimulateUserOperationRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): SimulateUserOperationRequest {
+    return new SimulateUserOperationRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: SimulateUserOperationRequest | PlainMessage<SimulateUserOperationRequest> | undefined, b: SimulateUserOperationRequest | PlainMessage<SimulateUserOperationRequest> | undefined): boolean {
+    return proto3.util.equals(SimulateUserOperationRequest, a, b);
+  }
+}
+
+/**
+ * SimulateUserOperationResponse is the query response returned by the simulation.
+ * It will populate the gas limits fields.
+ *
+ * @generated from message cosmos.accounts.v1.SimulateUserOperationResponse
+ */
+export class SimulateUserOperationResponse extends Message<SimulateUserOperationResponse> {
+  /**
+   * UserOperationResponse is the response of the simulation.
+   *
+   * @generated from field: cosmos.accounts.v1.UserOperationResponse user_operation_response = 1;
+   */
+  userOperationResponse?: UserOperationResponse;
+
+  constructor(data?: PartialMessage<SimulateUserOperationResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "cosmos.accounts.v1.SimulateUserOperationResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "user_operation_response", kind: "message", T: UserOperationResponse },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): SimulateUserOperationResponse {
+    return new SimulateUserOperationResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): SimulateUserOperationResponse {
+    return new SimulateUserOperationResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): SimulateUserOperationResponse {
+    return new SimulateUserOperationResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: SimulateUserOperationResponse | PlainMessage<SimulateUserOperationResponse> | undefined, b: SimulateUserOperationResponse | PlainMessage<SimulateUserOperationResponse> | undefined): boolean {
+    return proto3.util.equals(SimulateUserOperationResponse, a, b);
   }
 }
 

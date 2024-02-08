@@ -231,7 +231,7 @@ export class QueryConsensusStateRequest extends Message<QueryConsensusStateReque
   revisionHeight = protoInt64.zero;
 
   /**
-   * latest_height overrrides the height field and queries the latest stored
+   * latest_height overrides the height field and queries the latest stored
    * ConsensusState
    *
    * @generated from field: bool latest_height = 4;

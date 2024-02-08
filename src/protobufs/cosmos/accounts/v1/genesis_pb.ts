@@ -76,9 +76,16 @@ export class GenesisAccount extends Message<GenesisAccount> {
   accountType = "";
 
   /**
+   * account_number is the account number of the account.
+   *
+   * @generated from field: uint64 account_number = 3;
+   */
+  accountNumber = protoInt64.zero;
+
+  /**
    * state is the account state represented as a slice of raw key value byte pairs.
    *
-   * @generated from field: repeated cosmos.accounts.v1.KVPair state = 3;
+   * @generated from field: repeated cosmos.accounts.v1.KVPair state = 4;
    */
   state: KVPair[] = [];
 
@@ -92,7 +99,8 @@ export class GenesisAccount extends Message<GenesisAccount> {
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "address", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "account_type", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 3, name: "state", kind: "message", T: KVPair, repeated: true },
+    { no: 3, name: "account_number", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+    { no: 4, name: "state", kind: "message", T: KVPair, repeated: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): GenesisAccount {

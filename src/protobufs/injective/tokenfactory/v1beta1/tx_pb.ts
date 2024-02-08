@@ -35,6 +35,16 @@ export class MsgCreateDenom extends Message<MsgCreateDenom> {
    */
   subdenom = "";
 
+  /**
+   * @generated from field: string name = 3;
+   */
+  name = "";
+
+  /**
+   * @generated from field: string symbol = 4;
+   */
+  symbol = "";
+
   constructor(data?: PartialMessage<MsgCreateDenom>) {
     super();
     proto3.util.initPartial(data, this);
@@ -45,6 +55,8 @@ export class MsgCreateDenom extends Message<MsgCreateDenom> {
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "sender", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "subdenom", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 4, name: "symbol", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgCreateDenom {

@@ -164,6 +164,104 @@ export class MsgIncreaseCounterResponse extends Message<MsgIncreaseCounterRespon
 }
 
 /**
+ * MsgTestDependencies is used to test the dependencies.
+ *
+ * @generated from message cosmos.accounts.testing.counter.v1.MsgTestDependencies
+ */
+export class MsgTestDependencies extends Message<MsgTestDependencies> {
+  constructor(data?: PartialMessage<MsgTestDependencies>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "cosmos.accounts.testing.counter.v1.MsgTestDependencies";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgTestDependencies {
+    return new MsgTestDependencies().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MsgTestDependencies {
+    return new MsgTestDependencies().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MsgTestDependencies {
+    return new MsgTestDependencies().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: MsgTestDependencies | PlainMessage<MsgTestDependencies> | undefined, b: MsgTestDependencies | PlainMessage<MsgTestDependencies> | undefined): boolean {
+    return proto3.util.equals(MsgTestDependencies, a, b);
+  }
+}
+
+/**
+ * MsgTestDependenciesResponse is used to test the dependencies.
+ *
+ * @generated from message cosmos.accounts.testing.counter.v1.MsgTestDependenciesResponse
+ */
+export class MsgTestDependenciesResponse extends Message<MsgTestDependenciesResponse> {
+  /**
+   * chain_id is used to test that the header service correctly works.
+   *
+   * @generated from field: string chain_id = 1;
+   */
+  chainId = "";
+
+  /**
+   * address is used to test address codec.
+   *
+   * @generated from field: string address = 2;
+   */
+  address = "";
+
+  /**
+   * before_gas is used to test the gas meter reporting.
+   *
+   * @generated from field: uint64 before_gas = 3;
+   */
+  beforeGas = protoInt64.zero;
+
+  /**
+   * after_gas is used to test gas meter increasing.
+   *
+   * @generated from field: uint64 after_gas = 4;
+   */
+  afterGas = protoInt64.zero;
+
+  constructor(data?: PartialMessage<MsgTestDependenciesResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "cosmos.accounts.testing.counter.v1.MsgTestDependenciesResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "chain_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "address", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "before_gas", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+    { no: 4, name: "after_gas", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgTestDependenciesResponse {
+    return new MsgTestDependenciesResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MsgTestDependenciesResponse {
+    return new MsgTestDependenciesResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MsgTestDependenciesResponse {
+    return new MsgTestDependenciesResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: MsgTestDependenciesResponse | PlainMessage<MsgTestDependenciesResponse> | undefined, b: MsgTestDependenciesResponse | PlainMessage<MsgTestDependenciesResponse> | undefined): boolean {
+    return proto3.util.equals(MsgTestDependenciesResponse, a, b);
+  }
+}
+
+/**
  * QueryCounterRequest is used to query the counter value.
  *
  * @generated from message cosmos.accounts.testing.counter.v1.QueryCounterRequest

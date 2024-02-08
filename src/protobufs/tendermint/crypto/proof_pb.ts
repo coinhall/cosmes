@@ -159,7 +159,7 @@ export class DominoOp extends Message<DominoOp> {
 
 /**
  * ProofOp defines an operation used for calculating Merkle root
- * The data could be arbitrary format, providing nessecary data
+ * The data could be arbitrary format, providing necessary data
  * for example neighbouring node hash
  *
  * @generated from message tendermint.crypto.ProofOp

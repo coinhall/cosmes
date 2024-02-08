@@ -68,7 +68,7 @@ export const QueryActiveGaugesPerDenomService = {
 } as const;
 
 /**
- * Returns scheduled gauges that have not yet occured
+ * Returns scheduled gauges that have not yet occurred
  *
  * @generated from rpc osmosis.incentives.Query.UpcomingGauges
  */
@@ -80,7 +80,7 @@ export const QueryUpcomingGaugesService = {
 } as const;
 
 /**
- * UpcomingGaugesPerDenom returns scheduled gauges that have not yet occured
+ * UpcomingGaugesPerDenom returns scheduled gauges that have not yet occurred
  * by denom
  *
  * @generated from rpc osmosis.incentives.Query.UpcomingGaugesPerDenom

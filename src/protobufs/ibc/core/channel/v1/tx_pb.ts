@@ -5,8 +5,9 @@
 
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
 import { Message, proto3, protoInt64 } from "@bufbuild/protobuf";
-import { Channel, Packet } from "./channel_pb.js";
+import { Channel, Packet, Params, State } from "./channel_pb.js";
 import { Height } from "../../client/v1/client_pb.js";
+import { ErrorReceipt, Upgrade, UpgradeFields } from "./upgrade_pb.js";
 
 /**
  * ResponseResultType defines the possible outcomes of the execution of a message
@@ -34,12 +35,20 @@ export enum ResponseResultType {
    * @generated from enum value: RESPONSE_RESULT_TYPE_SUCCESS = 2;
    */
   SUCCESS = 2,
+
+  /**
+   * The message was executed unsuccessfully
+   *
+   * @generated from enum value: RESPONSE_RESULT_TYPE_FAILURE = 3;
+   */
+  FAILURE = 3,
 }
 // Retrieve enum metadata with: proto3.getEnumType(ResponseResultType)
 proto3.util.setEnumType(ResponseResultType, "ibc.core.channel.v1.ResponseResultType", [
   { no: 0, name: "RESPONSE_RESULT_TYPE_UNSPECIFIED" },
   { no: 1, name: "RESPONSE_RESULT_TYPE_NOOP" },
   { no: 2, name: "RESPONSE_RESULT_TYPE_SUCCESS" },
+  { no: 3, name: "RESPONSE_RESULT_TYPE_FAILURE" },
 ]);
 
 /**
@@ -269,6 +278,9 @@ export class MsgChannelOpenTryResponse extends Message<MsgChannelOpenTryResponse
 /**
  * MsgChannelOpenAck defines a msg sent by a Relayer to Chain A to acknowledge
  * the change of channel state to TRYOPEN on Chain B.
+ * WARNING: a channel upgrade MUST NOT initialize an upgrade for this channel
+ * in the same block as executing this message otherwise the counterparty will
+ * be incapable of opening.
  *
  * @generated from message ibc.core.channel.v1.MsgChannelOpenAck
  */
@@ -590,6 +602,11 @@ export class MsgChannelCloseConfirm extends Message<MsgChannelCloseConfirm> {
    */
   signer = "";
 
+  /**
+   * @generated from field: uint64 counterparty_upgrade_sequence = 6;
+   */
+  counterpartyUpgradeSequence = protoInt64.zero;
+
   constructor(data?: PartialMessage<MsgChannelCloseConfirm>) {
     super();
     proto3.util.initPartial(data, this);
@@ -603,6 +620,7 @@ export class MsgChannelCloseConfirm extends Message<MsgChannelCloseConfirm> {
     { no: 3, name: "proof_init", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
     { no: 4, name: "proof_height", kind: "message", T: Height },
     { no: 5, name: "signer", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 6, name: "counterparty_upgrade_sequence", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgChannelCloseConfirm {
@@ -890,6 +908,11 @@ export class MsgTimeoutOnClose extends Message<MsgTimeoutOnClose> {
    */
   signer = "";
 
+  /**
+   * @generated from field: uint64 counterparty_upgrade_sequence = 7;
+   */
+  counterpartyUpgradeSequence = protoInt64.zero;
+
   constructor(data?: PartialMessage<MsgTimeoutOnClose>) {
     super();
     proto3.util.initPartial(data, this);
@@ -904,6 +927,7 @@ export class MsgTimeoutOnClose extends Message<MsgTimeoutOnClose> {
     { no: 4, name: "proof_height", kind: "message", T: Height },
     { no: 5, name: "next_sequence_recv", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
     { no: 6, name: "signer", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 7, name: "counterparty_upgrade_sequence", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgTimeoutOnClose {
@@ -1061,6 +1085,984 @@ export class MsgAcknowledgementResponse extends Message<MsgAcknowledgementRespon
 
   static equals(a: MsgAcknowledgementResponse | PlainMessage<MsgAcknowledgementResponse> | undefined, b: MsgAcknowledgementResponse | PlainMessage<MsgAcknowledgementResponse> | undefined): boolean {
     return proto3.util.equals(MsgAcknowledgementResponse, a, b);
+  }
+}
+
+/**
+ * MsgChannelUpgradeInit defines the request type for the ChannelUpgradeInit rpc
+ * WARNING: Initializing a channel upgrade in the same block as opening the channel
+ * may result in the counterparty being incapable of opening.
+ *
+ * @generated from message ibc.core.channel.v1.MsgChannelUpgradeInit
+ */
+export class MsgChannelUpgradeInit extends Message<MsgChannelUpgradeInit> {
+  /**
+   * @generated from field: string port_id = 1;
+   */
+  portId = "";
+
+  /**
+   * @generated from field: string channel_id = 2;
+   */
+  channelId = "";
+
+  /**
+   * @generated from field: ibc.core.channel.v1.UpgradeFields fields = 3;
+   */
+  fields?: UpgradeFields;
+
+  /**
+   * @generated from field: string signer = 4;
+   */
+  signer = "";
+
+  constructor(data?: PartialMessage<MsgChannelUpgradeInit>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "ibc.core.channel.v1.MsgChannelUpgradeInit";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "port_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "channel_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "fields", kind: "message", T: UpgradeFields },
+    { no: 4, name: "signer", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgChannelUpgradeInit {
+    return new MsgChannelUpgradeInit().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MsgChannelUpgradeInit {
+    return new MsgChannelUpgradeInit().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MsgChannelUpgradeInit {
+    return new MsgChannelUpgradeInit().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: MsgChannelUpgradeInit | PlainMessage<MsgChannelUpgradeInit> | undefined, b: MsgChannelUpgradeInit | PlainMessage<MsgChannelUpgradeInit> | undefined): boolean {
+    return proto3.util.equals(MsgChannelUpgradeInit, a, b);
+  }
+}
+
+/**
+ * MsgChannelUpgradeInitResponse defines the MsgChannelUpgradeInit response type
+ *
+ * @generated from message ibc.core.channel.v1.MsgChannelUpgradeInitResponse
+ */
+export class MsgChannelUpgradeInitResponse extends Message<MsgChannelUpgradeInitResponse> {
+  /**
+   * @generated from field: ibc.core.channel.v1.Upgrade upgrade = 1;
+   */
+  upgrade?: Upgrade;
+
+  /**
+   * @generated from field: uint64 upgrade_sequence = 2;
+   */
+  upgradeSequence = protoInt64.zero;
+
+  constructor(data?: PartialMessage<MsgChannelUpgradeInitResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "ibc.core.channel.v1.MsgChannelUpgradeInitResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "upgrade", kind: "message", T: Upgrade },
+    { no: 2, name: "upgrade_sequence", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgChannelUpgradeInitResponse {
+    return new MsgChannelUpgradeInitResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MsgChannelUpgradeInitResponse {
+    return new MsgChannelUpgradeInitResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MsgChannelUpgradeInitResponse {
+    return new MsgChannelUpgradeInitResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: MsgChannelUpgradeInitResponse | PlainMessage<MsgChannelUpgradeInitResponse> | undefined, b: MsgChannelUpgradeInitResponse | PlainMessage<MsgChannelUpgradeInitResponse> | undefined): boolean {
+    return proto3.util.equals(MsgChannelUpgradeInitResponse, a, b);
+  }
+}
+
+/**
+ * MsgChannelUpgradeTry defines the request type for the ChannelUpgradeTry rpc
+ *
+ * @generated from message ibc.core.channel.v1.MsgChannelUpgradeTry
+ */
+export class MsgChannelUpgradeTry extends Message<MsgChannelUpgradeTry> {
+  /**
+   * @generated from field: string port_id = 1;
+   */
+  portId = "";
+
+  /**
+   * @generated from field: string channel_id = 2;
+   */
+  channelId = "";
+
+  /**
+   * @generated from field: repeated string proposed_upgrade_connection_hops = 3;
+   */
+  proposedUpgradeConnectionHops: string[] = [];
+
+  /**
+   * @generated from field: ibc.core.channel.v1.UpgradeFields counterparty_upgrade_fields = 4;
+   */
+  counterpartyUpgradeFields?: UpgradeFields;
+
+  /**
+   * @generated from field: uint64 counterparty_upgrade_sequence = 5;
+   */
+  counterpartyUpgradeSequence = protoInt64.zero;
+
+  /**
+   * @generated from field: bytes proof_channel = 6;
+   */
+  proofChannel = new Uint8Array(0);
+
+  /**
+   * @generated from field: bytes proof_upgrade = 7;
+   */
+  proofUpgrade = new Uint8Array(0);
+
+  /**
+   * @generated from field: ibc.core.client.v1.Height proof_height = 8;
+   */
+  proofHeight?: Height;
+
+  /**
+   * @generated from field: string signer = 9;
+   */
+  signer = "";
+
+  constructor(data?: PartialMessage<MsgChannelUpgradeTry>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "ibc.core.channel.v1.MsgChannelUpgradeTry";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "port_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "channel_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "proposed_upgrade_connection_hops", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
+    { no: 4, name: "counterparty_upgrade_fields", kind: "message", T: UpgradeFields },
+    { no: 5, name: "counterparty_upgrade_sequence", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+    { no: 6, name: "proof_channel", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
+    { no: 7, name: "proof_upgrade", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
+    { no: 8, name: "proof_height", kind: "message", T: Height },
+    { no: 9, name: "signer", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgChannelUpgradeTry {
+    return new MsgChannelUpgradeTry().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MsgChannelUpgradeTry {
+    return new MsgChannelUpgradeTry().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MsgChannelUpgradeTry {
+    return new MsgChannelUpgradeTry().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: MsgChannelUpgradeTry | PlainMessage<MsgChannelUpgradeTry> | undefined, b: MsgChannelUpgradeTry | PlainMessage<MsgChannelUpgradeTry> | undefined): boolean {
+    return proto3.util.equals(MsgChannelUpgradeTry, a, b);
+  }
+}
+
+/**
+ * MsgChannelUpgradeTryResponse defines the MsgChannelUpgradeTry response type
+ *
+ * @generated from message ibc.core.channel.v1.MsgChannelUpgradeTryResponse
+ */
+export class MsgChannelUpgradeTryResponse extends Message<MsgChannelUpgradeTryResponse> {
+  /**
+   * @generated from field: ibc.core.channel.v1.Upgrade upgrade = 1;
+   */
+  upgrade?: Upgrade;
+
+  /**
+   * @generated from field: uint64 upgrade_sequence = 2;
+   */
+  upgradeSequence = protoInt64.zero;
+
+  /**
+   * @generated from field: ibc.core.channel.v1.ResponseResultType result = 3;
+   */
+  result = ResponseResultType.UNSPECIFIED;
+
+  constructor(data?: PartialMessage<MsgChannelUpgradeTryResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "ibc.core.channel.v1.MsgChannelUpgradeTryResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "upgrade", kind: "message", T: Upgrade },
+    { no: 2, name: "upgrade_sequence", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+    { no: 3, name: "result", kind: "enum", T: proto3.getEnumType(ResponseResultType) },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgChannelUpgradeTryResponse {
+    return new MsgChannelUpgradeTryResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MsgChannelUpgradeTryResponse {
+    return new MsgChannelUpgradeTryResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MsgChannelUpgradeTryResponse {
+    return new MsgChannelUpgradeTryResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: MsgChannelUpgradeTryResponse | PlainMessage<MsgChannelUpgradeTryResponse> | undefined, b: MsgChannelUpgradeTryResponse | PlainMessage<MsgChannelUpgradeTryResponse> | undefined): boolean {
+    return proto3.util.equals(MsgChannelUpgradeTryResponse, a, b);
+  }
+}
+
+/**
+ * MsgChannelUpgradeAck defines the request type for the ChannelUpgradeAck rpc
+ *
+ * @generated from message ibc.core.channel.v1.MsgChannelUpgradeAck
+ */
+export class MsgChannelUpgradeAck extends Message<MsgChannelUpgradeAck> {
+  /**
+   * @generated from field: string port_id = 1;
+   */
+  portId = "";
+
+  /**
+   * @generated from field: string channel_id = 2;
+   */
+  channelId = "";
+
+  /**
+   * @generated from field: ibc.core.channel.v1.Upgrade counterparty_upgrade = 3;
+   */
+  counterpartyUpgrade?: Upgrade;
+
+  /**
+   * @generated from field: bytes proof_channel = 4;
+   */
+  proofChannel = new Uint8Array(0);
+
+  /**
+   * @generated from field: bytes proof_upgrade = 5;
+   */
+  proofUpgrade = new Uint8Array(0);
+
+  /**
+   * @generated from field: ibc.core.client.v1.Height proof_height = 6;
+   */
+  proofHeight?: Height;
+
+  /**
+   * @generated from field: string signer = 7;
+   */
+  signer = "";
+
+  constructor(data?: PartialMessage<MsgChannelUpgradeAck>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "ibc.core.channel.v1.MsgChannelUpgradeAck";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "port_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "channel_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "counterparty_upgrade", kind: "message", T: Upgrade },
+    { no: 4, name: "proof_channel", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
+    { no: 5, name: "proof_upgrade", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
+    { no: 6, name: "proof_height", kind: "message", T: Height },
+    { no: 7, name: "signer", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgChannelUpgradeAck {
+    return new MsgChannelUpgradeAck().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MsgChannelUpgradeAck {
+    return new MsgChannelUpgradeAck().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MsgChannelUpgradeAck {
+    return new MsgChannelUpgradeAck().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: MsgChannelUpgradeAck | PlainMessage<MsgChannelUpgradeAck> | undefined, b: MsgChannelUpgradeAck | PlainMessage<MsgChannelUpgradeAck> | undefined): boolean {
+    return proto3.util.equals(MsgChannelUpgradeAck, a, b);
+  }
+}
+
+/**
+ * MsgChannelUpgradeAckResponse defines MsgChannelUpgradeAck response type
+ *
+ * @generated from message ibc.core.channel.v1.MsgChannelUpgradeAckResponse
+ */
+export class MsgChannelUpgradeAckResponse extends Message<MsgChannelUpgradeAckResponse> {
+  /**
+   * @generated from field: ibc.core.channel.v1.ResponseResultType result = 1;
+   */
+  result = ResponseResultType.UNSPECIFIED;
+
+  constructor(data?: PartialMessage<MsgChannelUpgradeAckResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "ibc.core.channel.v1.MsgChannelUpgradeAckResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "result", kind: "enum", T: proto3.getEnumType(ResponseResultType) },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgChannelUpgradeAckResponse {
+    return new MsgChannelUpgradeAckResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MsgChannelUpgradeAckResponse {
+    return new MsgChannelUpgradeAckResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MsgChannelUpgradeAckResponse {
+    return new MsgChannelUpgradeAckResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: MsgChannelUpgradeAckResponse | PlainMessage<MsgChannelUpgradeAckResponse> | undefined, b: MsgChannelUpgradeAckResponse | PlainMessage<MsgChannelUpgradeAckResponse> | undefined): boolean {
+    return proto3.util.equals(MsgChannelUpgradeAckResponse, a, b);
+  }
+}
+
+/**
+ * MsgChannelUpgradeConfirm defines the request type for the ChannelUpgradeConfirm rpc
+ *
+ * @generated from message ibc.core.channel.v1.MsgChannelUpgradeConfirm
+ */
+export class MsgChannelUpgradeConfirm extends Message<MsgChannelUpgradeConfirm> {
+  /**
+   * @generated from field: string port_id = 1;
+   */
+  portId = "";
+
+  /**
+   * @generated from field: string channel_id = 2;
+   */
+  channelId = "";
+
+  /**
+   * @generated from field: ibc.core.channel.v1.State counterparty_channel_state = 3;
+   */
+  counterpartyChannelState = State.UNINITIALIZED_UNSPECIFIED;
+
+  /**
+   * @generated from field: ibc.core.channel.v1.Upgrade counterparty_upgrade = 4;
+   */
+  counterpartyUpgrade?: Upgrade;
+
+  /**
+   * @generated from field: bytes proof_channel = 5;
+   */
+  proofChannel = new Uint8Array(0);
+
+  /**
+   * @generated from field: bytes proof_upgrade = 6;
+   */
+  proofUpgrade = new Uint8Array(0);
+
+  /**
+   * @generated from field: ibc.core.client.v1.Height proof_height = 7;
+   */
+  proofHeight?: Height;
+
+  /**
+   * @generated from field: string signer = 8;
+   */
+  signer = "";
+
+  constructor(data?: PartialMessage<MsgChannelUpgradeConfirm>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "ibc.core.channel.v1.MsgChannelUpgradeConfirm";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "port_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "channel_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "counterparty_channel_state", kind: "enum", T: proto3.getEnumType(State) },
+    { no: 4, name: "counterparty_upgrade", kind: "message", T: Upgrade },
+    { no: 5, name: "proof_channel", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
+    { no: 6, name: "proof_upgrade", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
+    { no: 7, name: "proof_height", kind: "message", T: Height },
+    { no: 8, name: "signer", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgChannelUpgradeConfirm {
+    return new MsgChannelUpgradeConfirm().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MsgChannelUpgradeConfirm {
+    return new MsgChannelUpgradeConfirm().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MsgChannelUpgradeConfirm {
+    return new MsgChannelUpgradeConfirm().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: MsgChannelUpgradeConfirm | PlainMessage<MsgChannelUpgradeConfirm> | undefined, b: MsgChannelUpgradeConfirm | PlainMessage<MsgChannelUpgradeConfirm> | undefined): boolean {
+    return proto3.util.equals(MsgChannelUpgradeConfirm, a, b);
+  }
+}
+
+/**
+ * MsgChannelUpgradeConfirmResponse defines MsgChannelUpgradeConfirm response type
+ *
+ * @generated from message ibc.core.channel.v1.MsgChannelUpgradeConfirmResponse
+ */
+export class MsgChannelUpgradeConfirmResponse extends Message<MsgChannelUpgradeConfirmResponse> {
+  /**
+   * @generated from field: ibc.core.channel.v1.ResponseResultType result = 1;
+   */
+  result = ResponseResultType.UNSPECIFIED;
+
+  constructor(data?: PartialMessage<MsgChannelUpgradeConfirmResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "ibc.core.channel.v1.MsgChannelUpgradeConfirmResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "result", kind: "enum", T: proto3.getEnumType(ResponseResultType) },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgChannelUpgradeConfirmResponse {
+    return new MsgChannelUpgradeConfirmResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MsgChannelUpgradeConfirmResponse {
+    return new MsgChannelUpgradeConfirmResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MsgChannelUpgradeConfirmResponse {
+    return new MsgChannelUpgradeConfirmResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: MsgChannelUpgradeConfirmResponse | PlainMessage<MsgChannelUpgradeConfirmResponse> | undefined, b: MsgChannelUpgradeConfirmResponse | PlainMessage<MsgChannelUpgradeConfirmResponse> | undefined): boolean {
+    return proto3.util.equals(MsgChannelUpgradeConfirmResponse, a, b);
+  }
+}
+
+/**
+ * MsgChannelUpgradeOpen defines the request type for the ChannelUpgradeOpen rpc
+ *
+ * @generated from message ibc.core.channel.v1.MsgChannelUpgradeOpen
+ */
+export class MsgChannelUpgradeOpen extends Message<MsgChannelUpgradeOpen> {
+  /**
+   * @generated from field: string port_id = 1;
+   */
+  portId = "";
+
+  /**
+   * @generated from field: string channel_id = 2;
+   */
+  channelId = "";
+
+  /**
+   * @generated from field: ibc.core.channel.v1.State counterparty_channel_state = 3;
+   */
+  counterpartyChannelState = State.UNINITIALIZED_UNSPECIFIED;
+
+  /**
+   * @generated from field: uint64 counterparty_upgrade_sequence = 4;
+   */
+  counterpartyUpgradeSequence = protoInt64.zero;
+
+  /**
+   * @generated from field: bytes proof_channel = 5;
+   */
+  proofChannel = new Uint8Array(0);
+
+  /**
+   * @generated from field: ibc.core.client.v1.Height proof_height = 6;
+   */
+  proofHeight?: Height;
+
+  /**
+   * @generated from field: string signer = 7;
+   */
+  signer = "";
+
+  constructor(data?: PartialMessage<MsgChannelUpgradeOpen>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "ibc.core.channel.v1.MsgChannelUpgradeOpen";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "port_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "channel_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "counterparty_channel_state", kind: "enum", T: proto3.getEnumType(State) },
+    { no: 4, name: "counterparty_upgrade_sequence", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+    { no: 5, name: "proof_channel", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
+    { no: 6, name: "proof_height", kind: "message", T: Height },
+    { no: 7, name: "signer", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgChannelUpgradeOpen {
+    return new MsgChannelUpgradeOpen().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MsgChannelUpgradeOpen {
+    return new MsgChannelUpgradeOpen().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MsgChannelUpgradeOpen {
+    return new MsgChannelUpgradeOpen().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: MsgChannelUpgradeOpen | PlainMessage<MsgChannelUpgradeOpen> | undefined, b: MsgChannelUpgradeOpen | PlainMessage<MsgChannelUpgradeOpen> | undefined): boolean {
+    return proto3.util.equals(MsgChannelUpgradeOpen, a, b);
+  }
+}
+
+/**
+ * MsgChannelUpgradeOpenResponse defines the MsgChannelUpgradeOpen response type
+ *
+ * @generated from message ibc.core.channel.v1.MsgChannelUpgradeOpenResponse
+ */
+export class MsgChannelUpgradeOpenResponse extends Message<MsgChannelUpgradeOpenResponse> {
+  constructor(data?: PartialMessage<MsgChannelUpgradeOpenResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "ibc.core.channel.v1.MsgChannelUpgradeOpenResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgChannelUpgradeOpenResponse {
+    return new MsgChannelUpgradeOpenResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MsgChannelUpgradeOpenResponse {
+    return new MsgChannelUpgradeOpenResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MsgChannelUpgradeOpenResponse {
+    return new MsgChannelUpgradeOpenResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: MsgChannelUpgradeOpenResponse | PlainMessage<MsgChannelUpgradeOpenResponse> | undefined, b: MsgChannelUpgradeOpenResponse | PlainMessage<MsgChannelUpgradeOpenResponse> | undefined): boolean {
+    return proto3.util.equals(MsgChannelUpgradeOpenResponse, a, b);
+  }
+}
+
+/**
+ * MsgChannelUpgradeTimeout defines the request type for the ChannelUpgradeTimeout rpc
+ *
+ * @generated from message ibc.core.channel.v1.MsgChannelUpgradeTimeout
+ */
+export class MsgChannelUpgradeTimeout extends Message<MsgChannelUpgradeTimeout> {
+  /**
+   * @generated from field: string port_id = 1;
+   */
+  portId = "";
+
+  /**
+   * @generated from field: string channel_id = 2;
+   */
+  channelId = "";
+
+  /**
+   * @generated from field: ibc.core.channel.v1.Channel counterparty_channel = 3;
+   */
+  counterpartyChannel?: Channel;
+
+  /**
+   * @generated from field: bytes proof_channel = 4;
+   */
+  proofChannel = new Uint8Array(0);
+
+  /**
+   * @generated from field: ibc.core.client.v1.Height proof_height = 5;
+   */
+  proofHeight?: Height;
+
+  /**
+   * @generated from field: string signer = 6;
+   */
+  signer = "";
+
+  constructor(data?: PartialMessage<MsgChannelUpgradeTimeout>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "ibc.core.channel.v1.MsgChannelUpgradeTimeout";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "port_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "channel_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "counterparty_channel", kind: "message", T: Channel },
+    { no: 4, name: "proof_channel", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
+    { no: 5, name: "proof_height", kind: "message", T: Height },
+    { no: 6, name: "signer", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgChannelUpgradeTimeout {
+    return new MsgChannelUpgradeTimeout().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MsgChannelUpgradeTimeout {
+    return new MsgChannelUpgradeTimeout().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MsgChannelUpgradeTimeout {
+    return new MsgChannelUpgradeTimeout().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: MsgChannelUpgradeTimeout | PlainMessage<MsgChannelUpgradeTimeout> | undefined, b: MsgChannelUpgradeTimeout | PlainMessage<MsgChannelUpgradeTimeout> | undefined): boolean {
+    return proto3.util.equals(MsgChannelUpgradeTimeout, a, b);
+  }
+}
+
+/**
+ * MsgChannelUpgradeTimeoutRepsonse defines the MsgChannelUpgradeTimeout response type
+ *
+ * @generated from message ibc.core.channel.v1.MsgChannelUpgradeTimeoutResponse
+ */
+export class MsgChannelUpgradeTimeoutResponse extends Message<MsgChannelUpgradeTimeoutResponse> {
+  constructor(data?: PartialMessage<MsgChannelUpgradeTimeoutResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "ibc.core.channel.v1.MsgChannelUpgradeTimeoutResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgChannelUpgradeTimeoutResponse {
+    return new MsgChannelUpgradeTimeoutResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MsgChannelUpgradeTimeoutResponse {
+    return new MsgChannelUpgradeTimeoutResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MsgChannelUpgradeTimeoutResponse {
+    return new MsgChannelUpgradeTimeoutResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: MsgChannelUpgradeTimeoutResponse | PlainMessage<MsgChannelUpgradeTimeoutResponse> | undefined, b: MsgChannelUpgradeTimeoutResponse | PlainMessage<MsgChannelUpgradeTimeoutResponse> | undefined): boolean {
+    return proto3.util.equals(MsgChannelUpgradeTimeoutResponse, a, b);
+  }
+}
+
+/**
+ * MsgChannelUpgradeCancel defines the request type for the ChannelUpgradeCancel rpc
+ *
+ * @generated from message ibc.core.channel.v1.MsgChannelUpgradeCancel
+ */
+export class MsgChannelUpgradeCancel extends Message<MsgChannelUpgradeCancel> {
+  /**
+   * @generated from field: string port_id = 1;
+   */
+  portId = "";
+
+  /**
+   * @generated from field: string channel_id = 2;
+   */
+  channelId = "";
+
+  /**
+   * @generated from field: ibc.core.channel.v1.ErrorReceipt error_receipt = 3;
+   */
+  errorReceipt?: ErrorReceipt;
+
+  /**
+   * @generated from field: bytes proof_error_receipt = 4;
+   */
+  proofErrorReceipt = new Uint8Array(0);
+
+  /**
+   * @generated from field: ibc.core.client.v1.Height proof_height = 5;
+   */
+  proofHeight?: Height;
+
+  /**
+   * @generated from field: string signer = 6;
+   */
+  signer = "";
+
+  constructor(data?: PartialMessage<MsgChannelUpgradeCancel>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "ibc.core.channel.v1.MsgChannelUpgradeCancel";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "port_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "channel_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "error_receipt", kind: "message", T: ErrorReceipt },
+    { no: 4, name: "proof_error_receipt", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
+    { no: 5, name: "proof_height", kind: "message", T: Height },
+    { no: 6, name: "signer", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgChannelUpgradeCancel {
+    return new MsgChannelUpgradeCancel().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MsgChannelUpgradeCancel {
+    return new MsgChannelUpgradeCancel().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MsgChannelUpgradeCancel {
+    return new MsgChannelUpgradeCancel().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: MsgChannelUpgradeCancel | PlainMessage<MsgChannelUpgradeCancel> | undefined, b: MsgChannelUpgradeCancel | PlainMessage<MsgChannelUpgradeCancel> | undefined): boolean {
+    return proto3.util.equals(MsgChannelUpgradeCancel, a, b);
+  }
+}
+
+/**
+ * MsgChannelUpgradeCancelResponse defines the MsgChannelUpgradeCancel response type
+ *
+ * @generated from message ibc.core.channel.v1.MsgChannelUpgradeCancelResponse
+ */
+export class MsgChannelUpgradeCancelResponse extends Message<MsgChannelUpgradeCancelResponse> {
+  constructor(data?: PartialMessage<MsgChannelUpgradeCancelResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "ibc.core.channel.v1.MsgChannelUpgradeCancelResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgChannelUpgradeCancelResponse {
+    return new MsgChannelUpgradeCancelResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MsgChannelUpgradeCancelResponse {
+    return new MsgChannelUpgradeCancelResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MsgChannelUpgradeCancelResponse {
+    return new MsgChannelUpgradeCancelResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: MsgChannelUpgradeCancelResponse | PlainMessage<MsgChannelUpgradeCancelResponse> | undefined, b: MsgChannelUpgradeCancelResponse | PlainMessage<MsgChannelUpgradeCancelResponse> | undefined): boolean {
+    return proto3.util.equals(MsgChannelUpgradeCancelResponse, a, b);
+  }
+}
+
+/**
+ * MsgUpdateParams is the MsgUpdateParams request type.
+ *
+ * @generated from message ibc.core.channel.v1.MsgUpdateParams
+ */
+export class MsgUpdateParams extends Message<MsgUpdateParams> {
+  /**
+   * authority is the address that controls the module (defaults to x/gov unless overwritten).
+   *
+   * @generated from field: string authority = 1;
+   */
+  authority = "";
+
+  /**
+   * params defines the channel parameters to update.
+   *
+   * NOTE: All parameters must be supplied.
+   *
+   * @generated from field: ibc.core.channel.v1.Params params = 2;
+   */
+  params?: Params;
+
+  constructor(data?: PartialMessage<MsgUpdateParams>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "ibc.core.channel.v1.MsgUpdateParams";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "authority", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "params", kind: "message", T: Params },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgUpdateParams {
+    return new MsgUpdateParams().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MsgUpdateParams {
+    return new MsgUpdateParams().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MsgUpdateParams {
+    return new MsgUpdateParams().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: MsgUpdateParams | PlainMessage<MsgUpdateParams> | undefined, b: MsgUpdateParams | PlainMessage<MsgUpdateParams> | undefined): boolean {
+    return proto3.util.equals(MsgUpdateParams, a, b);
+  }
+}
+
+/**
+ * MsgUpdateParamsResponse defines the MsgUpdateParams response type.
+ *
+ * @generated from message ibc.core.channel.v1.MsgUpdateParamsResponse
+ */
+export class MsgUpdateParamsResponse extends Message<MsgUpdateParamsResponse> {
+  constructor(data?: PartialMessage<MsgUpdateParamsResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "ibc.core.channel.v1.MsgUpdateParamsResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgUpdateParamsResponse {
+    return new MsgUpdateParamsResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MsgUpdateParamsResponse {
+    return new MsgUpdateParamsResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MsgUpdateParamsResponse {
+    return new MsgUpdateParamsResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: MsgUpdateParamsResponse | PlainMessage<MsgUpdateParamsResponse> | undefined, b: MsgUpdateParamsResponse | PlainMessage<MsgUpdateParamsResponse> | undefined): boolean {
+    return proto3.util.equals(MsgUpdateParamsResponse, a, b);
+  }
+}
+
+/**
+ * MsgPruneAcknowledgements defines the request type for the PruneAcknowledgements rpc.
+ *
+ * @generated from message ibc.core.channel.v1.MsgPruneAcknowledgements
+ */
+export class MsgPruneAcknowledgements extends Message<MsgPruneAcknowledgements> {
+  /**
+   * @generated from field: string port_id = 1;
+   */
+  portId = "";
+
+  /**
+   * @generated from field: string channel_id = 2;
+   */
+  channelId = "";
+
+  /**
+   * @generated from field: uint64 limit = 3;
+   */
+  limit = protoInt64.zero;
+
+  /**
+   * @generated from field: string signer = 4;
+   */
+  signer = "";
+
+  constructor(data?: PartialMessage<MsgPruneAcknowledgements>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "ibc.core.channel.v1.MsgPruneAcknowledgements";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "port_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "channel_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "limit", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+    { no: 4, name: "signer", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgPruneAcknowledgements {
+    return new MsgPruneAcknowledgements().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MsgPruneAcknowledgements {
+    return new MsgPruneAcknowledgements().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MsgPruneAcknowledgements {
+    return new MsgPruneAcknowledgements().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: MsgPruneAcknowledgements | PlainMessage<MsgPruneAcknowledgements> | undefined, b: MsgPruneAcknowledgements | PlainMessage<MsgPruneAcknowledgements> | undefined): boolean {
+    return proto3.util.equals(MsgPruneAcknowledgements, a, b);
+  }
+}
+
+/**
+ * MsgPruneAcknowledgementsResponse defines the response type for the PruneAcknowledgements rpc.
+ *
+ * @generated from message ibc.core.channel.v1.MsgPruneAcknowledgementsResponse
+ */
+export class MsgPruneAcknowledgementsResponse extends Message<MsgPruneAcknowledgementsResponse> {
+  /**
+   * Number of sequences pruned (includes both packet acknowledgements and packet receipts where appropriate).
+   *
+   * @generated from field: uint64 total_pruned_sequences = 1;
+   */
+  totalPrunedSequences = protoInt64.zero;
+
+  /**
+   * Number of sequences left after pruning.
+   *
+   * @generated from field: uint64 total_remaining_sequences = 2;
+   */
+  totalRemainingSequences = protoInt64.zero;
+
+  constructor(data?: PartialMessage<MsgPruneAcknowledgementsResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "ibc.core.channel.v1.MsgPruneAcknowledgementsResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "total_pruned_sequences", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+    { no: 2, name: "total_remaining_sequences", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgPruneAcknowledgementsResponse {
+    return new MsgPruneAcknowledgementsResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MsgPruneAcknowledgementsResponse {
+    return new MsgPruneAcknowledgementsResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MsgPruneAcknowledgementsResponse {
+    return new MsgPruneAcknowledgementsResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: MsgPruneAcknowledgementsResponse | PlainMessage<MsgPruneAcknowledgementsResponse> | undefined, b: MsgPruneAcknowledgementsResponse | PlainMessage<MsgPruneAcknowledgementsResponse> | undefined): boolean {
+    return proto3.util.equals(MsgPruneAcknowledgementsResponse, a, b);
   }
 }
 

@@ -59,7 +59,7 @@ export class QuerySpotPriceRequest extends Message<QuerySpotPriceRequest> {
 }
 
 /**
- * Depreacted: please use alternate in x/poolmanager
+ * Deprecated: please use alternate in x/poolmanager
  *
  * @generated from message osmosis.gamm.v2.QuerySpotPriceResponse
  * @deprecated

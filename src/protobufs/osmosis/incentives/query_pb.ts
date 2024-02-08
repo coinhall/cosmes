@@ -665,7 +665,7 @@ export class RewardsEstRequest extends Message<RewardsEstRequest> {
  */
 export class RewardsEstResponse extends Message<RewardsEstResponse> {
   /**
-   * Estimated coin rewards that will be recieved at provided address
+   * Estimated coin rewards that will be received at provided address
    * from specified locks between current time and end epoch
    *
    * @generated from field: repeated cosmos.base.v1beta1.Coin coins = 1;
@@ -736,7 +736,7 @@ export class QueryLockableDurationsRequest extends Message<QueryLockableDuration
  */
 export class QueryLockableDurationsResponse extends Message<QueryLockableDurationsResponse> {
   /**
-   * Time durations that users can lock coins for in order to recieve rewards
+   * Time durations that users can lock coins for in order to receive rewards
    *
    * @generated from field: repeated google.protobuf.Duration lockable_durations = 1;
    */

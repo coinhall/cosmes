@@ -4,7 +4,7 @@
 // @ts-nocheck
 
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
-import { Message, proto3 } from "@bufbuild/protobuf";
+import { Duration, Message, proto3 } from "@bufbuild/protobuf";
 import { Coin } from "../../cosmos/base/v1beta1/coin_pb.js";
 
 /**
@@ -44,6 +44,18 @@ export class Params extends Message<Params> {
    */
   unrestrictedCreatorWhitelist: string[] = [];
 
+  /**
+   * internal_uptime is the uptime used for internal incentives on pools that
+   * use NoLock gauges (currently only Concentrated Liquidity pools).
+   *
+   * Since Group gauges route through internal gauges, this parameter affects
+   * the uptime of those incentives as well (i.e. distributions through volume
+   * splitting incentives will use this uptime).
+   *
+   * @generated from field: google.protobuf.Duration internal_uptime = 4;
+   */
+  internalUptime?: Duration;
+
   constructor(data?: PartialMessage<Params>) {
     super();
     proto3.util.initPartial(data, this);
@@ -55,6 +67,7 @@ export class Params extends Message<Params> {
     { no: 1, name: "distr_epoch_identifier", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "group_creation_fee", kind: "message", T: Coin, repeated: true },
     { no: 3, name: "unrestricted_creator_whitelist", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
+    { no: 4, name: "internal_uptime", kind: "message", T: Duration },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Params {

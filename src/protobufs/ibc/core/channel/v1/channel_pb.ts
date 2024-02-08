@@ -9,7 +9,7 @@ import { Height } from "../../client/v1/client_pb.js";
 
 /**
  * State defines if a channel is in one of the following states:
- * CLOSED, INIT, TRYOPEN, OPEN or UNINITIALIZED.
+ * CLOSED, INIT, TRYOPEN, OPEN, FLUSHING, FLUSHCOMPLETE or UNINITIALIZED.
  *
  * @generated from enum ibc.core.channel.v1.State
  */
@@ -50,6 +50,20 @@ export enum State {
    * @generated from enum value: STATE_CLOSED = 4;
    */
   CLOSED = 4,
+
+  /**
+   * A channel has just accepted the upgrade handshake attempt and is flushing in-flight packets.
+   *
+   * @generated from enum value: STATE_FLUSHING = 5;
+   */
+  FLUSHING = 5,
+
+  /**
+   * A channel has just completed flushing any in-flight packets.
+   *
+   * @generated from enum value: STATE_FLUSHCOMPLETE = 6;
+   */
+  FLUSHCOMPLETE = 6,
 }
 // Retrieve enum metadata with: proto3.getEnumType(State)
 proto3.util.setEnumType(State, "ibc.core.channel.v1.State", [
@@ -58,6 +72,8 @@ proto3.util.setEnumType(State, "ibc.core.channel.v1.State", [
   { no: 2, name: "STATE_TRYOPEN" },
   { no: 3, name: "STATE_OPEN" },
   { no: 4, name: "STATE_CLOSED" },
+  { no: 5, name: "STATE_FLUSHING" },
+  { no: 6, name: "STATE_FLUSHCOMPLETE" },
 ]);
 
 /**
@@ -139,6 +155,14 @@ export class Channel extends Message<Channel> {
    */
   version = "";
 
+  /**
+   * upgrade sequence indicates the latest upgrade attempt performed by this channel
+   * the value of 0 indicates the channel has never been upgraded
+   *
+   * @generated from field: uint64 upgrade_sequence = 6;
+   */
+  upgradeSequence = protoInt64.zero;
+
   constructor(data?: PartialMessage<Channel>) {
     super();
     proto3.util.initPartial(data, this);
@@ -152,6 +176,7 @@ export class Channel extends Message<Channel> {
     { no: 3, name: "counterparty", kind: "message", T: Counterparty },
     { no: 4, name: "connection_hops", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
     { no: 5, name: "version", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 6, name: "upgrade_sequence", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Channel {
@@ -228,6 +253,14 @@ export class IdentifiedChannel extends Message<IdentifiedChannel> {
    */
   channelId = "";
 
+  /**
+   * upgrade sequence indicates the latest upgrade attempt performed by this channel
+   * the value of 0 indicates the channel has never been upgraded
+   *
+   * @generated from field: uint64 upgrade_sequence = 8;
+   */
+  upgradeSequence = protoInt64.zero;
+
   constructor(data?: PartialMessage<IdentifiedChannel>) {
     super();
     proto3.util.initPartial(data, this);
@@ -243,6 +276,7 @@ export class IdentifiedChannel extends Message<IdentifiedChannel> {
     { no: 5, name: "version", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 6, name: "port_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 7, name: "channel_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 8, name: "upgrade_sequence", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): IdentifiedChannel {
@@ -479,7 +513,7 @@ export class PacketState extends Message<PacketState> {
 }
 
 /**
- * PacketId is an identifer for a unique Packet
+ * PacketId is an identifier for a unique Packet
  * Source chains refer to packets by source port/channel
  * Destination chains refer to packets by destination port/channel
  *
@@ -645,6 +679,47 @@ export class Timeout extends Message<Timeout> {
 
   static equals(a: Timeout | PlainMessage<Timeout> | undefined, b: Timeout | PlainMessage<Timeout> | undefined): boolean {
     return proto3.util.equals(Timeout, a, b);
+  }
+}
+
+/**
+ * Params defines the set of IBC channel parameters.
+ *
+ * @generated from message ibc.core.channel.v1.Params
+ */
+export class Params extends Message<Params> {
+  /**
+   * the relative timeout after which channel upgrades will time out.
+   *
+   * @generated from field: ibc.core.channel.v1.Timeout upgrade_timeout = 1;
+   */
+  upgradeTimeout?: Timeout;
+
+  constructor(data?: PartialMessage<Params>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "ibc.core.channel.v1.Params";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "upgrade_timeout", kind: "message", T: Timeout },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Params {
+    return new Params().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): Params {
+    return new Params().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): Params {
+    return new Params().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: Params | PlainMessage<Params> | undefined, b: Params | PlainMessage<Params> | undefined): boolean {
+    return proto3.util.equals(Params, a, b);
   }
 }
 

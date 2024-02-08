@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { AccountQueryRequest, AccountQueryResponse, AccountTypeRequest, AccountTypeResponse, SchemaRequest, SchemaResponse } from "./query_pb.js";
+import { AccountNumberRequest, AccountNumberResponse, AccountQueryRequest, AccountQueryResponse, AccountTypeRequest, AccountTypeResponse, SchemaRequest, SchemaResponse, SimulateUserOperationRequest, SimulateUserOperationResponse } from "./query_pb.js";
 
 const TYPE_NAME = "cosmos.accounts.v1.Query";
 
@@ -41,5 +41,29 @@ export const QueryAccountTypeService = {
   method: "AccountType",
   Request: AccountTypeRequest,
   Response: AccountTypeResponse,
+} as const;
+
+/**
+ * AccountNumber returns the account number given the account address.
+ *
+ * @generated from rpc cosmos.accounts.v1.Query.AccountNumber
+ */
+export const QueryAccountNumberService = {
+  typeName: TYPE_NAME,
+  method: "AccountNumber",
+  Request: AccountNumberRequest,
+  Response: AccountNumberResponse,
+} as const;
+
+/**
+ * SimulateUserOperation simulates a user operation.
+ *
+ * @generated from rpc cosmos.accounts.v1.Query.SimulateUserOperation
+ */
+export const QuerySimulateUserOperationService = {
+  typeName: TYPE_NAME,
+  method: "SimulateUserOperation",
+  Request: SimulateUserOperationRequest,
+  Response: SimulateUserOperationResponse,
 } as const;
 

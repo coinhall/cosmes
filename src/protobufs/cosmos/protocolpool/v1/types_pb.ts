@@ -107,3 +107,60 @@ export class Budget extends Message<Budget> {
   }
 }
 
+/**
+ * ContinuousFund defines the fields of continuous fund proposal.
+ *
+ * @generated from message cosmos.protocolpool.v1.ContinuousFund
+ */
+export class ContinuousFund extends Message<ContinuousFund> {
+  /**
+   * Recipient address of the account receiving funds.
+   *
+   * @generated from field: string recipient = 1;
+   */
+  recipient = "";
+
+  /**
+   * Percentage is the percentage of funds to be allocated from Community pool.
+   *
+   * @generated from field: string percentage = 2;
+   */
+  percentage = "";
+
+  /**
+   * Optional, if expiry is set, removes the state object when expired.
+   *
+   * @generated from field: google.protobuf.Timestamp expiry = 3;
+   */
+  expiry?: Timestamp;
+
+  constructor(data?: PartialMessage<ContinuousFund>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "cosmos.protocolpool.v1.ContinuousFund";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "recipient", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "percentage", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "expiry", kind: "message", T: Timestamp },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ContinuousFund {
+    return new ContinuousFund().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ContinuousFund {
+    return new ContinuousFund().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ContinuousFund {
+    return new ContinuousFund().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: ContinuousFund | PlainMessage<ContinuousFund> | undefined, b: ContinuousFund | PlainMessage<ContinuousFund> | undefined): boolean {
+    return proto3.util.equals(ContinuousFund, a, b);
+  }
+}
+

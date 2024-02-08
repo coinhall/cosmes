@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { MsgAcknowledgement, MsgAcknowledgementResponse, MsgChannelCloseConfirm, MsgChannelCloseConfirmResponse, MsgChannelCloseInit, MsgChannelCloseInitResponse, MsgChannelOpenAck, MsgChannelOpenAckResponse, MsgChannelOpenConfirm, MsgChannelOpenConfirmResponse, MsgChannelOpenInit, MsgChannelOpenInitResponse, MsgChannelOpenTry, MsgChannelOpenTryResponse, MsgRecvPacket, MsgRecvPacketResponse, MsgTimeout, MsgTimeoutOnClose, MsgTimeoutOnCloseResponse, MsgTimeoutResponse } from "./tx_pb.js";
+import { MsgAcknowledgement, MsgAcknowledgementResponse, MsgChannelCloseConfirm, MsgChannelCloseConfirmResponse, MsgChannelCloseInit, MsgChannelCloseInitResponse, MsgChannelOpenAck, MsgChannelOpenAckResponse, MsgChannelOpenConfirm, MsgChannelOpenConfirmResponse, MsgChannelOpenInit, MsgChannelOpenInitResponse, MsgChannelOpenTry, MsgChannelOpenTryResponse, MsgChannelUpgradeAck, MsgChannelUpgradeAckResponse, MsgChannelUpgradeCancel, MsgChannelUpgradeCancelResponse, MsgChannelUpgradeConfirm, MsgChannelUpgradeConfirmResponse, MsgChannelUpgradeInit, MsgChannelUpgradeInitResponse, MsgChannelUpgradeOpen, MsgChannelUpgradeOpenResponse, MsgChannelUpgradeTimeout, MsgChannelUpgradeTimeoutResponse, MsgChannelUpgradeTry, MsgChannelUpgradeTryResponse, MsgPruneAcknowledgements, MsgPruneAcknowledgementsResponse, MsgRecvPacket, MsgRecvPacketResponse, MsgTimeout, MsgTimeoutOnClose, MsgTimeoutOnCloseResponse, MsgTimeoutResponse, MsgUpdateParams, MsgUpdateParamsResponse } from "./tx_pb.js";
 
 const TYPE_NAME = "ibc.core.channel.v1.Msg";
 
@@ -126,5 +126,113 @@ export const MsgAcknowledgementService = {
   method: "Acknowledgement",
   Request: MsgAcknowledgement,
   Response: MsgAcknowledgementResponse,
+} as const;
+
+/**
+ * ChannelUpgradeInit defines a rpc handler method for MsgChannelUpgradeInit.
+ *
+ * @generated from rpc ibc.core.channel.v1.Msg.ChannelUpgradeInit
+ */
+export const MsgChannelUpgradeInitService = {
+  typeName: TYPE_NAME,
+  method: "ChannelUpgradeInit",
+  Request: MsgChannelUpgradeInit,
+  Response: MsgChannelUpgradeInitResponse,
+} as const;
+
+/**
+ * ChannelUpgradeTry defines a rpc handler method for MsgChannelUpgradeTry.
+ *
+ * @generated from rpc ibc.core.channel.v1.Msg.ChannelUpgradeTry
+ */
+export const MsgChannelUpgradeTryService = {
+  typeName: TYPE_NAME,
+  method: "ChannelUpgradeTry",
+  Request: MsgChannelUpgradeTry,
+  Response: MsgChannelUpgradeTryResponse,
+} as const;
+
+/**
+ * ChannelUpgradeAck defines a rpc handler method for MsgChannelUpgradeAck.
+ *
+ * @generated from rpc ibc.core.channel.v1.Msg.ChannelUpgradeAck
+ */
+export const MsgChannelUpgradeAckService = {
+  typeName: TYPE_NAME,
+  method: "ChannelUpgradeAck",
+  Request: MsgChannelUpgradeAck,
+  Response: MsgChannelUpgradeAckResponse,
+} as const;
+
+/**
+ * ChannelUpgradeConfirm defines a rpc handler method for MsgChannelUpgradeConfirm.
+ *
+ * @generated from rpc ibc.core.channel.v1.Msg.ChannelUpgradeConfirm
+ */
+export const MsgChannelUpgradeConfirmService = {
+  typeName: TYPE_NAME,
+  method: "ChannelUpgradeConfirm",
+  Request: MsgChannelUpgradeConfirm,
+  Response: MsgChannelUpgradeConfirmResponse,
+} as const;
+
+/**
+ * ChannelUpgradeOpen defines a rpc handler method for MsgChannelUpgradeOpen.
+ *
+ * @generated from rpc ibc.core.channel.v1.Msg.ChannelUpgradeOpen
+ */
+export const MsgChannelUpgradeOpenService = {
+  typeName: TYPE_NAME,
+  method: "ChannelUpgradeOpen",
+  Request: MsgChannelUpgradeOpen,
+  Response: MsgChannelUpgradeOpenResponse,
+} as const;
+
+/**
+ * ChannelUpgradeTimeout defines a rpc handler method for MsgChannelUpgradeTimeout.
+ *
+ * @generated from rpc ibc.core.channel.v1.Msg.ChannelUpgradeTimeout
+ */
+export const MsgChannelUpgradeTimeoutService = {
+  typeName: TYPE_NAME,
+  method: "ChannelUpgradeTimeout",
+  Request: MsgChannelUpgradeTimeout,
+  Response: MsgChannelUpgradeTimeoutResponse,
+} as const;
+
+/**
+ * ChannelUpgradeCancel defines a rpc handler method for MsgChannelUpgradeCancel.
+ *
+ * @generated from rpc ibc.core.channel.v1.Msg.ChannelUpgradeCancel
+ */
+export const MsgChannelUpgradeCancelService = {
+  typeName: TYPE_NAME,
+  method: "ChannelUpgradeCancel",
+  Request: MsgChannelUpgradeCancel,
+  Response: MsgChannelUpgradeCancelResponse,
+} as const;
+
+/**
+ * UpdateChannelParams defines a rpc handler method for MsgUpdateParams.
+ *
+ * @generated from rpc ibc.core.channel.v1.Msg.UpdateChannelParams
+ */
+export const MsgUpdateChannelParamsService = {
+  typeName: TYPE_NAME,
+  method: "UpdateChannelParams",
+  Request: MsgUpdateParams,
+  Response: MsgUpdateParamsResponse,
+} as const;
+
+/**
+ * PruneAcknowledgements defines a rpc handler method for MsgPruneAcknowledgements.
+ *
+ * @generated from rpc ibc.core.channel.v1.Msg.PruneAcknowledgements
+ */
+export const MsgPruneAcknowledgementsService = {
+  typeName: TYPE_NAME,
+  method: "PruneAcknowledgements",
+  Request: MsgPruneAcknowledgements,
+  Response: MsgPruneAcknowledgementsResponse,
 } as const;
 

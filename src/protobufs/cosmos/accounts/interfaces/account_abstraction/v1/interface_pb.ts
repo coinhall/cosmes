@@ -4,7 +4,7 @@
 // @ts-nocheck
 
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
-import { Any, Message, proto3, protoInt64 } from "@bufbuild/protobuf";
+import { Any, Message, proto3 } from "@bufbuild/protobuf";
 import { UserOperation } from "../../../v1/account_abstraction_pb.js";
 
 /**
@@ -15,26 +15,21 @@ import { UserOperation } from "../../../v1/account_abstraction_pb.js";
  */
 export class MsgAuthenticate extends Message<MsgAuthenticate> {
   /**
+   * bundler defines the address of the bundler that sent the operation.
+   * NOTE: in case the operation was sent directly by the user, this field will reflect
+   * the user address.
+   *
+   * @generated from field: string bundler = 1;
+   */
+  bundler = "";
+
+  /**
    * user_operation is the operation that the user is trying to perform.
    * it also contains authentication information.
    *
-   * @generated from field: cosmos.accounts.v1.UserOperation user_operation = 1;
+   * @generated from field: cosmos.accounts.v1.UserOperation user_operation = 2;
    */
   userOperation?: UserOperation;
-
-  /**
-   * chain_id defines the network identifier.
-   *
-   * @generated from field: string chain_id = 2;
-   */
-  chainId = "";
-
-  /**
-   * account_number is the account number of the user_operation.
-   *
-   * @generated from field: uint64 account_number = 3;
-   */
-  accountNumber = protoInt64.zero;
 
   constructor(data?: PartialMessage<MsgAuthenticate>) {
     super();
@@ -44,9 +39,8 @@ export class MsgAuthenticate extends Message<MsgAuthenticate> {
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "cosmos.accounts.interfaces.account_abstraction.v1.MsgAuthenticate";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "user_operation", kind: "message", T: UserOperation },
-    { no: 2, name: "chain_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 3, name: "account_number", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+    { no: 1, name: "bundler", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "user_operation", kind: "message", T: UserOperation },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgAuthenticate {
@@ -111,10 +105,19 @@ export class MsgAuthenticateResponse extends Message<MsgAuthenticateResponse> {
  */
 export class MsgPayBundler extends Message<MsgPayBundler> {
   /**
+   * bundler is the address of the bundler.
+   * NOTE: in case the operation was sent directly by the user, this field will
+   * reflect the user address.
+   *
+   * @generated from field: string bundler = 1;
+   */
+  bundler = "";
+
+  /**
    * bundler_payment_messages are the messages that the operation sender will execute.
    * The account can modify the messages as it sees fit.
    *
-   * @generated from field: repeated google.protobuf.Any bundler_payment_messages = 1;
+   * @generated from field: repeated google.protobuf.Any bundler_payment_messages = 2;
    */
   bundlerPaymentMessages: Any[] = [];
 
@@ -126,7 +129,8 @@ export class MsgPayBundler extends Message<MsgPayBundler> {
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "cosmos.accounts.interfaces.account_abstraction.v1.MsgPayBundler";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "bundler_payment_messages", kind: "message", T: Any, repeated: true },
+    { no: 1, name: "bundler", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "bundler_payment_messages", kind: "message", T: Any, repeated: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgPayBundler {
@@ -198,10 +202,19 @@ export class MsgPayBundlerResponse extends Message<MsgPayBundlerResponse> {
  */
 export class MsgExecute extends Message<MsgExecute> {
   /**
+   * bundler is the address of the bundler.
+   * NOTE: in case the operation was sent directly by the user, this field will
+   * reflect the user address.
+   *
+   * @generated from field: string bundler = 1;
+   */
+  bundler = "";
+
+  /**
    * execution_messages are the messages that the operation sender will execute.
    * The account can modify the messages as it sees fit.
    *
-   * @generated from field: repeated google.protobuf.Any execution_messages = 1;
+   * @generated from field: repeated google.protobuf.Any execution_messages = 2;
    */
   executionMessages: Any[] = [];
 
@@ -213,7 +226,8 @@ export class MsgExecute extends Message<MsgExecute> {
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "cosmos.accounts.interfaces.account_abstraction.v1.MsgExecute";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "execution_messages", kind: "message", T: Any, repeated: true },
+    { no: 1, name: "bundler", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "execution_messages", kind: "message", T: Any, repeated: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgExecute {

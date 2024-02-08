@@ -7,7 +7,7 @@
 
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
 import { Message, proto3, protoInt64 } from "@bufbuild/protobuf";
-import { Deposit, DepositParams, Params, Proposal, ProposalStatus, TallyParams, TallyResult, Vote, VotingParams } from "./gov_pb.js";
+import { Deposit, DepositParams, MessageBasedParams, Params, Proposal, ProposalStatus, ProposalVoteOptions, TallyParams, TallyResult, Vote, VotingParams } from "./gov_pb.js";
 import { PageRequest, PageResponse } from "../../base/query/v1beta1/pagination_pb.js";
 
 /**
@@ -476,8 +476,10 @@ export class QueryParamsRequest extends Message<QueryParamsRequest> {
   /**
    * params_type defines which parameters to query for, can be one of "voting",
    * "tallying" or "deposit".
+   * Deprecated: all params are stored in Params.
    *
-   * @generated from field: string params_type = 1;
+   * @generated from field: string params_type = 1 [deprecated = true];
+   * @deprecated
    */
   paramsType = "";
 
@@ -543,7 +545,7 @@ export class QueryParamsResponse extends Message<QueryParamsResponse> {
   tallyParams?: TallyParams;
 
   /**
-   * params defines all the paramaters of x/gov module.
+   * params defines all the parameters of x/gov module.
    *
    * Since: cosmos-sdk 0.47
    *
@@ -849,6 +851,170 @@ export class QueryTallyResultResponse extends Message<QueryTallyResultResponse> 
 
   static equals(a: QueryTallyResultResponse | PlainMessage<QueryTallyResultResponse> | undefined, b: QueryTallyResultResponse | PlainMessage<QueryTallyResultResponse> | undefined): boolean {
     return proto3.util.equals(QueryTallyResultResponse, a, b);
+  }
+}
+
+/**
+ * QueryProposalVoteOptionsRequest is the request type for the Query/ProposalVoteOptions RPC method.
+ *
+ * @generated from message cosmos.gov.v1.QueryProposalVoteOptionsRequest
+ */
+export class QueryProposalVoteOptionsRequest extends Message<QueryProposalVoteOptionsRequest> {
+  /**
+   * proposal_id defines the unique id of the proposal.
+   *
+   * @generated from field: uint64 proposal_id = 1;
+   */
+  proposalId = protoInt64.zero;
+
+  constructor(data?: PartialMessage<QueryProposalVoteOptionsRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "cosmos.gov.v1.QueryProposalVoteOptionsRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "proposal_id", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): QueryProposalVoteOptionsRequest {
+    return new QueryProposalVoteOptionsRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): QueryProposalVoteOptionsRequest {
+    return new QueryProposalVoteOptionsRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): QueryProposalVoteOptionsRequest {
+    return new QueryProposalVoteOptionsRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: QueryProposalVoteOptionsRequest | PlainMessage<QueryProposalVoteOptionsRequest> | undefined, b: QueryProposalVoteOptionsRequest | PlainMessage<QueryProposalVoteOptionsRequest> | undefined): boolean {
+    return proto3.util.equals(QueryProposalVoteOptionsRequest, a, b);
+  }
+}
+
+/**
+ * QueryProposalVoteOptionsResponse is the response type for the Query/ProposalVoteOptions RPC method.
+ *
+ * @generated from message cosmos.gov.v1.QueryProposalVoteOptionsResponse
+ */
+export class QueryProposalVoteOptionsResponse extends Message<QueryProposalVoteOptionsResponse> {
+  /**
+   * vote_options defines the valid voting options for a proposal.
+   *
+   * @generated from field: cosmos.gov.v1.ProposalVoteOptions vote_options = 1;
+   */
+  voteOptions?: ProposalVoteOptions;
+
+  constructor(data?: PartialMessage<QueryProposalVoteOptionsResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "cosmos.gov.v1.QueryProposalVoteOptionsResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "vote_options", kind: "message", T: ProposalVoteOptions },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): QueryProposalVoteOptionsResponse {
+    return new QueryProposalVoteOptionsResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): QueryProposalVoteOptionsResponse {
+    return new QueryProposalVoteOptionsResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): QueryProposalVoteOptionsResponse {
+    return new QueryProposalVoteOptionsResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: QueryProposalVoteOptionsResponse | PlainMessage<QueryProposalVoteOptionsResponse> | undefined, b: QueryProposalVoteOptionsResponse | PlainMessage<QueryProposalVoteOptionsResponse> | undefined): boolean {
+    return proto3.util.equals(QueryProposalVoteOptionsResponse, a, b);
+  }
+}
+
+/**
+ * QueryMessageBasedParamsRequest is the request type for the Query/MessageBasedParams RPC method.
+ *
+ * Since: x/gov 1.0.0
+ *
+ * @generated from message cosmos.gov.v1.QueryMessageBasedParamsRequest
+ */
+export class QueryMessageBasedParamsRequest extends Message<QueryMessageBasedParamsRequest> {
+  /**
+   * @generated from field: string msg_url = 1;
+   */
+  msgUrl = "";
+
+  constructor(data?: PartialMessage<QueryMessageBasedParamsRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "cosmos.gov.v1.QueryMessageBasedParamsRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "msg_url", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): QueryMessageBasedParamsRequest {
+    return new QueryMessageBasedParamsRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): QueryMessageBasedParamsRequest {
+    return new QueryMessageBasedParamsRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): QueryMessageBasedParamsRequest {
+    return new QueryMessageBasedParamsRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: QueryMessageBasedParamsRequest | PlainMessage<QueryMessageBasedParamsRequest> | undefined, b: QueryMessageBasedParamsRequest | PlainMessage<QueryMessageBasedParamsRequest> | undefined): boolean {
+    return proto3.util.equals(QueryMessageBasedParamsRequest, a, b);
+  }
+}
+
+/**
+ * QueryMessageBasedParamsResponse is the response for the Query/MessageBasedParams RPC method.
+ *
+ * Since: x/gov 1.0.0
+ *
+ * @generated from message cosmos.gov.v1.QueryMessageBasedParamsResponse
+ */
+export class QueryMessageBasedParamsResponse extends Message<QueryMessageBasedParamsResponse> {
+  /**
+   * @generated from field: cosmos.gov.v1.MessageBasedParams params = 1;
+   */
+  params?: MessageBasedParams;
+
+  constructor(data?: PartialMessage<QueryMessageBasedParamsResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "cosmos.gov.v1.QueryMessageBasedParamsResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "params", kind: "message", T: MessageBasedParams },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): QueryMessageBasedParamsResponse {
+    return new QueryMessageBasedParamsResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): QueryMessageBasedParamsResponse {
+    return new QueryMessageBasedParamsResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): QueryMessageBasedParamsResponse {
+    return new QueryMessageBasedParamsResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: QueryMessageBasedParamsResponse | PlainMessage<QueryMessageBasedParamsResponse> | undefined, b: QueryMessageBasedParamsResponse | PlainMessage<QueryMessageBasedParamsResponse> | undefined): boolean {
+    return proto3.util.equals(QueryMessageBasedParamsResponse, a, b);
   }
 }
 

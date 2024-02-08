@@ -874,7 +874,7 @@ export class QuerySpotPriceRequest extends Message<QuerySpotPriceRequest> {
  */
 export class QueryPoolsWithFilterRequest extends Message<QueryPoolsWithFilterRequest> {
   /**
-   * String of the coins in single string seperated by comma. Ex)
+   * String of the coins in single string separated by comma. Ex)
    * 10uatom,100uosmo
    *
    * @generated from field: string min_liquidity = 1;

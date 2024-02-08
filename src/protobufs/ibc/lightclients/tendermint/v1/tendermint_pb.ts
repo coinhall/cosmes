@@ -29,7 +29,7 @@ export class ClientState extends Message<ClientState> {
   trustLevel?: Fraction;
 
   /**
-   * duration of the period since the LastestTimestamp during which the
+   * duration of the period since the LatestTimestamp during which the
    * submitted headers are valid for upgrade
    *
    * @generated from field: google.protobuf.Duration trusting_period = 3;

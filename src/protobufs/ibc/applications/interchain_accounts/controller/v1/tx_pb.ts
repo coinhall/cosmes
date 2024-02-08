@@ -5,6 +5,7 @@
 
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
 import { Message, proto3, protoInt64 } from "@bufbuild/protobuf";
+import { Order } from "../../../../core/channel/v1/channel_pb.js";
 import { InterchainAccountPacketData } from "../../v1/packet_pb.js";
 import { Params } from "./controller_pb.js";
 
@@ -29,6 +30,11 @@ export class MsgRegisterInterchainAccount extends Message<MsgRegisterInterchainA
    */
   version = "";
 
+  /**
+   * @generated from field: ibc.core.channel.v1.Order ordering = 4;
+   */
+  ordering = Order.NONE_UNSPECIFIED;
+
   constructor(data?: PartialMessage<MsgRegisterInterchainAccount>) {
     super();
     proto3.util.initPartial(data, this);
@@ -40,6 +46,7 @@ export class MsgRegisterInterchainAccount extends Message<MsgRegisterInterchainA
     { no: 1, name: "owner", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "connection_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "version", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 4, name: "ordering", kind: "enum", T: proto3.getEnumType(Order) },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgRegisterInterchainAccount {

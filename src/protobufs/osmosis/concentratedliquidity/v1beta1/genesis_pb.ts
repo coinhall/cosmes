@@ -208,7 +208,7 @@ export class GenesisState extends Message<GenesisState> {
   params?: Params;
 
   /**
-   * pool data containining serialized pool struct and ticks.
+   * pool data containing serialized pool struct and ticks.
    *
    * @generated from field: repeated osmosis.concentratedliquidity.v1beta1.PoolData pool_data = 2;
    */

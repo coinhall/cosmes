@@ -28,9 +28,9 @@ export enum HashOp {
   SHA512 = 2,
 
   /**
-   * @generated from enum value: KECCAK = 3;
+   * @generated from enum value: KECCAK256 = 3;
    */
-  KECCAK = 3,
+  KECCAK256 = 3,
 
   /**
    * @generated from enum value: RIPEMD160 = 4;
@@ -69,7 +69,7 @@ proto3.util.setEnumType(HashOp, "cosmos.ics23.v1.HashOp", [
   { no: 0, name: "NO_HASH" },
   { no: 1, name: "SHA256" },
   { no: 2, name: "SHA512" },
-  { no: 3, name: "KECCAK" },
+  { no: 3, name: "KECCAK256" },
   { no: 4, name: "RIPEMD160" },
   { no: 5, name: "BITCOIN" },
   { no: 6, name: "SHA512_256" },

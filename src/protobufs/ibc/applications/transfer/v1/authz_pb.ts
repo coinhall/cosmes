@@ -41,6 +41,14 @@ export class Allocation extends Message<Allocation> {
    */
   allowList: string[] = [];
 
+  /**
+   * allow list of packet data keys, an empty list prohibits all packet data keys;
+   * a list only with "*" permits any packet data key
+   *
+   * @generated from field: repeated string allowed_packet_data = 5;
+   */
+  allowedPacketData: string[] = [];
+
   constructor(data?: PartialMessage<Allocation>) {
     super();
     proto3.util.initPartial(data, this);
@@ -53,6 +61,7 @@ export class Allocation extends Message<Allocation> {
     { no: 2, name: "source_channel", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "spend_limit", kind: "message", T: Coin, repeated: true },
     { no: 4, name: "allow_list", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
+    { no: 5, name: "allowed_packet_data", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Allocation {

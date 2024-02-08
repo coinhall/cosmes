@@ -259,7 +259,7 @@ export class ForwardRelayerAddress extends Message<ForwardRelayerAddress> {
   address = "";
 
   /**
-   * unique packet identifer comprised of the channel ID, port ID and sequence
+   * unique packet identifier comprised of the channel ID, port ID and sequence
    *
    * @generated from field: ibc.core.channel.v1.PacketId packet_id = 2;
    */

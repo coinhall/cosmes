@@ -4,7 +4,7 @@
 // @ts-nocheck
 
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
-import { Message, proto3 } from "@bufbuild/protobuf";
+import { Any, Message, proto3 } from "@bufbuild/protobuf";
 import { UserOperation, UserOperationResponse } from "./account_abstraction_pb.js";
 
 /**
@@ -28,13 +28,11 @@ export class MsgInit extends Message<MsgInit> {
   accountType = "";
 
   /**
-   * message is the message to be sent to the account, it's up to the account
-   * implementation to decide what encoding format should be used to interpret
-   * this message.
+   * message is the message to be sent to the account.
    *
-   * @generated from field: bytes message = 3;
+   * @generated from field: google.protobuf.Any message = 3;
    */
-  message = new Uint8Array(0);
+  message?: Any;
 
   constructor(data?: PartialMessage<MsgInit>) {
     super();
@@ -46,7 +44,7 @@ export class MsgInit extends Message<MsgInit> {
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "sender", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "account_type", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 3, name: "message", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
+    { no: 3, name: "message", kind: "message", T: Any },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgInit {
@@ -82,9 +80,9 @@ export class MsgInitResponse extends Message<MsgInitResponse> {
   /**
    * response is the response returned by the account implementation.
    *
-   * @generated from field: bytes response = 2;
+   * @generated from field: google.protobuf.Any response = 2;
    */
-  response = new Uint8Array(0);
+  response?: Any;
 
   constructor(data?: PartialMessage<MsgInitResponse>) {
     super();
@@ -95,7 +93,7 @@ export class MsgInitResponse extends Message<MsgInitResponse> {
   static readonly typeName = "cosmos.accounts.v1.MsgInitResponse";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "account_address", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "response", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
+    { no: 2, name: "response", kind: "message", T: Any },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgInitResponse {
@@ -136,11 +134,11 @@ export class MsgExecute extends Message<MsgExecute> {
   target = "";
 
   /**
-   * message is the message to be sent to the account, it's up to the account
+   * message is the message to be sent to the account.
    *
-   * @generated from field: bytes message = 3;
+   * @generated from field: google.protobuf.Any message = 3;
    */
-  message = new Uint8Array(0);
+  message?: Any;
 
   constructor(data?: PartialMessage<MsgExecute>) {
     super();
@@ -152,7 +150,7 @@ export class MsgExecute extends Message<MsgExecute> {
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "sender", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "target", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 3, name: "message", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
+    { no: 3, name: "message", kind: "message", T: Any },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgExecute {
@@ -181,9 +179,9 @@ export class MsgExecuteResponse extends Message<MsgExecuteResponse> {
   /**
    * response is the response returned by the account implementation.
    *
-   * @generated from field: bytes response = 1;
+   * @generated from field: google.protobuf.Any response = 1;
    */
-  response = new Uint8Array(0);
+  response?: Any;
 
   constructor(data?: PartialMessage<MsgExecuteResponse>) {
     super();
@@ -193,7 +191,7 @@ export class MsgExecuteResponse extends Message<MsgExecuteResponse> {
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "cosmos.accounts.v1.MsgExecuteResponse";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "response", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
+    { no: 1, name: "response", kind: "message", T: Any },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgExecuteResponse {

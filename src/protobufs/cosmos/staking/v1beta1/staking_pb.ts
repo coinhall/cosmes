@@ -468,7 +468,7 @@ export class Validator extends Message<Validator> {
   unbondingOnHoldRefCount = protoInt64.zero;
 
   /**
-   * list of unbonding ids, each uniquely identifing an unbonding of this validator
+   * list of unbonding ids, each uniquely identifying an unbonding of this validator
    *
    * @generated from field: repeated uint64 unbonding_ids = 13;
    */
@@ -1425,7 +1425,7 @@ export class ConsPubKeyRotationHistory extends Message<ConsPubKeyRotationHistory
   newConsPubkey?: Any;
 
   /**
-   * height defines the block height at which the rotation event occured.
+   * height defines the block height at which the rotation event occurred.
    *
    * @generated from field: uint64 height = 4;
    */

@@ -51,8 +51,6 @@ export class ConfigResponse extends Message<ConfigResponse> {
   minimumGasPrice = "";
 
   /**
-   * pruning settings
-   *
    * @generated from field: string pruning_keep_recent = 2;
    */
   pruningKeepRecent = "";
@@ -61,6 +59,11 @@ export class ConfigResponse extends Message<ConfigResponse> {
    * @generated from field: string pruning_interval = 3;
    */
   pruningInterval = "";
+
+  /**
+   * @generated from field: uint64 halt_height = 4;
+   */
+  haltHeight = protoInt64.zero;
 
   constructor(data?: PartialMessage<ConfigResponse>) {
     super();
@@ -73,6 +76,7 @@ export class ConfigResponse extends Message<ConfigResponse> {
     { no: 1, name: "minimum_gas_price", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "pruning_keep_recent", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "pruning_interval", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 4, name: "halt_height", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ConfigResponse {

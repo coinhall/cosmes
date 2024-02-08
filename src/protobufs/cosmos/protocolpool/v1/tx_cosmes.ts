@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { MsgCancelContinuousFund, MsgCancelContinuousFundResponse, MsgClaimBudget, MsgClaimBudgetResponse, MsgCommunityPoolSpend, MsgCommunityPoolSpendResponse, MsgCreateContinuousFund, MsgCreateContinuousFundResponse, MsgFundCommunityPool, MsgFundCommunityPoolResponse, MsgSubmitBudgetProposal, MsgSubmitBudgetProposalResponse } from "./tx_pb.js";
+import { MsgCancelContinuousFund, MsgCancelContinuousFundResponse, MsgClaimBudget, MsgClaimBudgetResponse, MsgCommunityPoolSpend, MsgCommunityPoolSpendResponse, MsgCreateContinuousFund, MsgCreateContinuousFundResponse, MsgFundCommunityPool, MsgFundCommunityPoolResponse, MsgSubmitBudgetProposal, MsgSubmitBudgetProposalResponse, MsgWithdrawContinuousFund, MsgWithdrawContinuousFundResponse } from "./tx_pb.js";
 
 const TYPE_NAME = "cosmos.protocolpool.v1.Msg";
 
@@ -69,6 +69,18 @@ export const MsgCreateContinuousFundService = {
   method: "CreateContinuousFund",
   Request: MsgCreateContinuousFund,
   Response: MsgCreateContinuousFundResponse,
+} as const;
+
+/**
+ * WithdrawContinuousFund defines a method to withdraw continuous fund allocated.
+ *
+ * @generated from rpc cosmos.protocolpool.v1.Msg.WithdrawContinuousFund
+ */
+export const MsgWithdrawContinuousFundService = {
+  typeName: TYPE_NAME,
+  method: "WithdrawContinuousFund",
+  Request: MsgWithdrawContinuousFund,
+  Response: MsgWithdrawContinuousFundResponse,
 } as const;
 
 /**

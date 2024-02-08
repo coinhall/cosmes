@@ -2178,7 +2178,7 @@ proto3.util.setEnumType(ResponseVerifyVoteExtension_VerifyStatus, "tendermint.ab
  */
 export class ResponseFinalizeBlock extends Message<ResponseFinalizeBlock> {
   /**
-   * set of block events emmitted as part of executing the block
+   * set of block events emitted as part of executing the block
    *
    * @generated from field: repeated tendermint.abci.Event events = 1;
    */

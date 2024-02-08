@@ -599,7 +599,8 @@ export const QueryMitoVaultInfosService = {
 } as const;
 
 /**
- * QueryMarketIDFromVault returns the market ID for a given vault subaccount ID
+ * QueryMarketIDFromVault returns the market ID for a given vault subaccount
+ * ID
  *
  * @generated from rpc injective.exchange.v1beta1.Query.QueryMarketIDFromVault
  */

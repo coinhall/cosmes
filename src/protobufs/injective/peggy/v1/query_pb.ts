@@ -1477,7 +1477,8 @@ export class QueryModuleStateRequest extends Message<QueryModuleStateRequest> {
 }
 
 /**
- * QueryModuleStateResponse is the response type for the Query/PeggyModuleState RPC method.
+ * QueryModuleStateResponse is the response type for the Query/PeggyModuleState
+ * RPC method.
  *
  * @generated from message injective.peggy.v1.QueryModuleStateResponse
  */

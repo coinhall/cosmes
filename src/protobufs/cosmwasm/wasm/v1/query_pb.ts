@@ -1073,3 +1073,112 @@ export class QueryContractsByCreatorResponse extends Message<QueryContractsByCre
   }
 }
 
+/**
+ * QueryBuildAddressRequest is the request type for the Query/BuildAddress RPC
+ * method.
+ *
+ * @generated from message cosmwasm.wasm.v1.QueryBuildAddressRequest
+ */
+export class QueryBuildAddressRequest extends Message<QueryBuildAddressRequest> {
+  /**
+   * CodeHash is the hash of the code
+   *
+   * @generated from field: string code_hash = 1;
+   */
+  codeHash = "";
+
+  /**
+   * CreatorAddress is the address of the contract instantiator
+   *
+   * @generated from field: string creator_address = 2;
+   */
+  creatorAddress = "";
+
+  /**
+   * Salt is a hex encoded salt
+   *
+   * @generated from field: string salt = 3;
+   */
+  salt = "";
+
+  /**
+   * InitArgs are optional json encoded init args to be used in contract address
+   * building if provided
+   *
+   * @generated from field: bytes init_args = 4;
+   */
+  initArgs = new Uint8Array(0);
+
+  constructor(data?: PartialMessage<QueryBuildAddressRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "cosmwasm.wasm.v1.QueryBuildAddressRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "code_hash", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "creator_address", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "salt", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 4, name: "init_args", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): QueryBuildAddressRequest {
+    return new QueryBuildAddressRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): QueryBuildAddressRequest {
+    return new QueryBuildAddressRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): QueryBuildAddressRequest {
+    return new QueryBuildAddressRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: QueryBuildAddressRequest | PlainMessage<QueryBuildAddressRequest> | undefined, b: QueryBuildAddressRequest | PlainMessage<QueryBuildAddressRequest> | undefined): boolean {
+    return proto3.util.equals(QueryBuildAddressRequest, a, b);
+  }
+}
+
+/**
+ * QueryBuildAddressResponse is the response type for the Query/BuildAddress RPC
+ * method.
+ *
+ * @generated from message cosmwasm.wasm.v1.QueryBuildAddressResponse
+ */
+export class QueryBuildAddressResponse extends Message<QueryBuildAddressResponse> {
+  /**
+   * Address is the contract address
+   *
+   * @generated from field: string address = 1;
+   */
+  address = "";
+
+  constructor(data?: PartialMessage<QueryBuildAddressResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "cosmwasm.wasm.v1.QueryBuildAddressResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "address", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): QueryBuildAddressResponse {
+    return new QueryBuildAddressResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): QueryBuildAddressResponse {
+    return new QueryBuildAddressResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): QueryBuildAddressResponse {
+    return new QueryBuildAddressResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: QueryBuildAddressResponse | PlainMessage<QueryBuildAddressResponse> | undefined, b: QueryBuildAddressResponse | PlainMessage<QueryBuildAddressResponse> | undefined): boolean {
+    return proto3.util.equals(QueryBuildAddressResponse, a, b);
+  }
+}
+

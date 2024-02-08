@@ -15,7 +15,7 @@ import { DenomAuthorityMetadata } from "./authorityMetadata_pb.js";
  */
 export class GenesisState extends Message<GenesisState> {
   /**
-   * params defines the paramaters of the module.
+   * params defines the parameters of the module.
    *
    * @generated from field: osmosis.tokenfactory.v1beta1.Params params = 1;
    */

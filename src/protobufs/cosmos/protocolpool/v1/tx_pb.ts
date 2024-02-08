@@ -379,59 +379,30 @@ export class MsgClaimBudgetResponse extends Message<MsgClaimBudgetResponse> {
  */
 export class MsgCreateContinuousFund extends Message<MsgCreateContinuousFund> {
   /**
-   * Title is the title of the funds.
-   *
-   * @generated from field: string title = 1;
-   */
-  title = "";
-
-  /**
-   * Description of the funds.
-   *
-   * @generated from field: string description = 2;
-   */
-  description = "";
-
-  /**
    * Authority is the address that controls the module (defaults to x/gov unless overwritten).
    *
-   * @generated from field: string authority = 3;
+   * @generated from field: string authority = 1;
    */
   authority = "";
 
   /**
    * Recipient address of the account receiving funds.
    *
-   * @generated from field: string recipient = 4;
+   * @generated from field: string recipient = 2;
    */
   recipient = "";
 
   /**
-   * Metadata is any arbitrary metadata attached.
+   * Percentage is the percentage of funds to be allocated from Community pool.
    *
-   * @generated from field: string metadata = 5;
-   */
-  metadata = "";
-
-  /**
-   * Percentage is the percentage of funds to be allocated from Community pool share on block by block,
-   * till the `cap` is reached or expired.
-   *
-   * @generated from field: string percentage = 6;
+   * @generated from field: string percentage = 3;
    */
   percentage = "";
 
   /**
-   * Cap is the capital amount, which when its met funds are no longer distributed.
-   *
-   * @generated from field: repeated cosmos.base.v1beta1.Coin cap = 7;
-   */
-  cap: Coin[] = [];
-
-  /**
    * Optional, if expiry is set, removes the state object when expired.
    *
-   * @generated from field: google.protobuf.Timestamp expiry = 8;
+   * @generated from field: google.protobuf.Timestamp expiry = 4;
    */
   expiry?: Timestamp;
 
@@ -443,14 +414,10 @@ export class MsgCreateContinuousFund extends Message<MsgCreateContinuousFund> {
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "cosmos.protocolpool.v1.MsgCreateContinuousFund";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "title", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "description", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 3, name: "authority", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 4, name: "recipient", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 5, name: "metadata", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 6, name: "percentage", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 7, name: "cap", kind: "message", T: Coin, repeated: true },
-    { no: 8, name: "expiry", kind: "message", T: Timestamp },
+    { no: 1, name: "authority", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "recipient", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "percentage", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 4, name: "expiry", kind: "message", T: Timestamp },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgCreateContinuousFund {
@@ -581,6 +548,15 @@ export class MsgCancelContinuousFundResponse extends Message<MsgCancelContinuous
    */
   recipientAddress = "";
 
+  /**
+   * withdrawnAllocatedFund represents the fund allocated to this recipient (if any) that have not been withdrawn yet,
+   * before a cancellation request has been initiated.
+   * It involves first withdrawing the funds and then canceling the request.
+   *
+   * @generated from field: cosmos.base.v1beta1.Coin withdrawn_allocated_fund = 4;
+   */
+  withdrawnAllocatedFund?: Coin;
+
   constructor(data?: PartialMessage<MsgCancelContinuousFundResponse>) {
     super();
     proto3.util.initPartial(data, this);
@@ -592,6 +568,7 @@ export class MsgCancelContinuousFundResponse extends Message<MsgCancelContinuous
     { no: 1, name: "canceled_time", kind: "message", T: Timestamp },
     { no: 2, name: "canceled_height", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
     { no: 3, name: "recipient_address", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 4, name: "withdrawn_allocated_fund", kind: "message", T: Coin },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgCancelContinuousFundResponse {
@@ -608,6 +585,85 @@ export class MsgCancelContinuousFundResponse extends Message<MsgCancelContinuous
 
   static equals(a: MsgCancelContinuousFundResponse | PlainMessage<MsgCancelContinuousFundResponse> | undefined, b: MsgCancelContinuousFundResponse | PlainMessage<MsgCancelContinuousFundResponse> | undefined): boolean {
     return proto3.util.equals(MsgCancelContinuousFundResponse, a, b);
+  }
+}
+
+/**
+ * MsgWithdrawContinuousFund defines a message for withdrawing the continuous fund allocated to it.
+ *
+ * @generated from message cosmos.protocolpool.v1.MsgWithdrawContinuousFund
+ */
+export class MsgWithdrawContinuousFund extends Message<MsgWithdrawContinuousFund> {
+  /**
+   * @generated from field: string recipient_address = 1;
+   */
+  recipientAddress = "";
+
+  constructor(data?: PartialMessage<MsgWithdrawContinuousFund>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "cosmos.protocolpool.v1.MsgWithdrawContinuousFund";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "recipient_address", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgWithdrawContinuousFund {
+    return new MsgWithdrawContinuousFund().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MsgWithdrawContinuousFund {
+    return new MsgWithdrawContinuousFund().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MsgWithdrawContinuousFund {
+    return new MsgWithdrawContinuousFund().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: MsgWithdrawContinuousFund | PlainMessage<MsgWithdrawContinuousFund> | undefined, b: MsgWithdrawContinuousFund | PlainMessage<MsgWithdrawContinuousFund> | undefined): boolean {
+    return proto3.util.equals(MsgWithdrawContinuousFund, a, b);
+  }
+}
+
+/**
+ * MsgWithdrawContinuousFundResponse defines the response to executing a
+ * MsgWithdrawContinuousFund message.
+ *
+ * @generated from message cosmos.protocolpool.v1.MsgWithdrawContinuousFundResponse
+ */
+export class MsgWithdrawContinuousFundResponse extends Message<MsgWithdrawContinuousFundResponse> {
+  /**
+   * @generated from field: cosmos.base.v1beta1.Coin amount = 1;
+   */
+  amount?: Coin;
+
+  constructor(data?: PartialMessage<MsgWithdrawContinuousFundResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "cosmos.protocolpool.v1.MsgWithdrawContinuousFundResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "amount", kind: "message", T: Coin },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgWithdrawContinuousFundResponse {
+    return new MsgWithdrawContinuousFundResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MsgWithdrawContinuousFundResponse {
+    return new MsgWithdrawContinuousFundResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MsgWithdrawContinuousFundResponse {
+    return new MsgWithdrawContinuousFundResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: MsgWithdrawContinuousFundResponse | PlainMessage<MsgWithdrawContinuousFundResponse> | undefined, b: MsgWithdrawContinuousFundResponse | PlainMessage<MsgWithdrawContinuousFundResponse> | undefined): boolean {
+    return proto3.util.equals(MsgWithdrawContinuousFundResponse, a, b);
   }
 }
 

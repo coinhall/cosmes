@@ -7,6 +7,7 @@ import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialM
 import { Message, proto3, protoInt64 } from "@bufbuild/protobuf";
 import { Coin } from "../../../cosmos/base/v1beta1/coin_pb.js";
 import { ModuleRoute } from "./module_route_pb.js";
+import { DenomPairTakerFee } from "./tx_pb.js";
 
 /**
  * Params holds parameters for the poolmanager module
@@ -29,7 +30,7 @@ export class Params extends Message<Params> {
   /**
    * authorized_quote_denoms is a list of quote denoms that can be used as
    * token1 when creating a concentrated pool. We limit the quote assets to a
-   * small set for the purposes of having convinient price increments stemming
+   * small set for the purposes of having convenient price increments stemming
    * from tick to price conversion. These increments are in a human readable
    * magnitude only for token1 as a quote. For limit orders in the future, this
    * will be a desirable property in terms of UX as to allow users to set limit
@@ -104,6 +105,16 @@ export class GenesisState extends Message<GenesisState> {
    */
   takerFeesTracker?: TakerFeesTracker;
 
+  /**
+   * @generated from field: repeated osmosis.poolmanager.v1beta1.PoolVolume pool_volumes = 5;
+   */
+  poolVolumes: PoolVolume[] = [];
+
+  /**
+   * @generated from field: repeated osmosis.poolmanager.v1beta1.DenomPairTakerFee denom_pair_taker_fee_store = 6;
+   */
+  denomPairTakerFeeStore: DenomPairTakerFee[] = [];
+
   constructor(data?: PartialMessage<GenesisState>) {
     super();
     proto3.util.initPartial(data, this);
@@ -116,6 +127,8 @@ export class GenesisState extends Message<GenesisState> {
     { no: 2, name: "params", kind: "message", T: Params },
     { no: 3, name: "pool_routes", kind: "message", T: ModuleRoute, repeated: true },
     { no: 4, name: "taker_fees_tracker", kind: "message", T: TakerFeesTracker },
+    { no: 5, name: "pool_volumes", kind: "message", T: PoolVolume, repeated: true },
+    { no: 6, name: "denom_pair_taker_fee_store", kind: "message", T: DenomPairTakerFee, repeated: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): GenesisState {
@@ -151,7 +164,7 @@ export class TakerFeeParams extends Message<TakerFeeParams> {
 
   /**
    * osmo_taker_fee_distribution defines the distribution of taker fees
-   * generated in OSMO. As of this writing, it has two catagories:
+   * generated in OSMO. As of this writing, it has two categories:
    * - staking_rewards: the percent of the taker fee that gets distributed to
    *   stakers.
    * - community_pool: the percent of the taker fee that gets sent to the
@@ -165,7 +178,7 @@ export class TakerFeeParams extends Message<TakerFeeParams> {
    * non_osmo_taker_fee_distribution defines the distribution of taker fees
    * generated in non-OSMO. As of this writing, it has two categories:
    * - staking_rewards: the percent of the taker fee that gets swapped to OSMO
-   *   and then distirbuted to stakers.
+   *   and then distributed to stakers.
    * - community_pool: the percent of the taker fee that gets sent to the
    *   community pool. Note: If the non-OSMO asset is an authorized_quote_denom,
    *   that denom is sent directly to the community pool. Otherwise, it is
@@ -333,6 +346,56 @@ export class TakerFeesTracker extends Message<TakerFeesTracker> {
 
   static equals(a: TakerFeesTracker | PlainMessage<TakerFeesTracker> | undefined, b: TakerFeesTracker | PlainMessage<TakerFeesTracker> | undefined): boolean {
     return proto3.util.equals(TakerFeesTracker, a, b);
+  }
+}
+
+/**
+ * PoolVolume stores the KVStore entries for each pool's volume, which
+ * is used in export/import genesis.
+ *
+ * @generated from message osmosis.poolmanager.v1beta1.PoolVolume
+ */
+export class PoolVolume extends Message<PoolVolume> {
+  /**
+   * pool_id is the id of the pool.
+   *
+   * @generated from field: uint64 pool_id = 1;
+   */
+  poolId = protoInt64.zero;
+
+  /**
+   * pool_volume is the cumulative volume of the pool.
+   *
+   * @generated from field: repeated cosmos.base.v1beta1.Coin pool_volume = 2;
+   */
+  poolVolume: Coin[] = [];
+
+  constructor(data?: PartialMessage<PoolVolume>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "osmosis.poolmanager.v1beta1.PoolVolume";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "pool_id", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+    { no: 2, name: "pool_volume", kind: "message", T: Coin, repeated: true },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PoolVolume {
+    return new PoolVolume().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): PoolVolume {
+    return new PoolVolume().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): PoolVolume {
+    return new PoolVolume().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: PoolVolume | PlainMessage<PoolVolume> | undefined, b: PoolVolume | PlainMessage<PoolVolume> | undefined): boolean {
+    return proto3.util.equals(PoolVolume, a, b);
   }
 }
 

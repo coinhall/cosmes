@@ -142,3 +142,46 @@ export class ClientMessage extends Message<ClientMessage> {
   }
 }
 
+/**
+ * Checksums defines a list of all checksums that are stored
+ *
+ * Deprecated: This message is deprecated in favor of storing the checksums
+ * using a Collections.KeySet.
+ *
+ * @generated from message ibc.lightclients.wasm.v1.Checksums
+ * @deprecated
+ */
+export class Checksums extends Message<Checksums> {
+  /**
+   * @generated from field: repeated bytes checksums = 1;
+   */
+  checksums: Uint8Array[] = [];
+
+  constructor(data?: PartialMessage<Checksums>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "ibc.lightclients.wasm.v1.Checksums";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "checksums", kind: "scalar", T: 12 /* ScalarType.BYTES */, repeated: true },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Checksums {
+    return new Checksums().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): Checksums {
+    return new Checksums().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): Checksums {
+    return new Checksums().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: Checksums | PlainMessage<Checksums> | undefined, b: Checksums | PlainMessage<Checksums> | undefined): boolean {
+    return proto3.util.equals(Checksums, a, b);
+  }
+}
+

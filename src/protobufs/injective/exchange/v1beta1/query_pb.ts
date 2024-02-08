@@ -5044,7 +5044,8 @@ export class MitoVaultInfosResponse extends Message<MitoVaultInfosResponse> {
 }
 
 /**
- * QueryMarketIDFromVaultRequest is the request type for the Query/QueryMarketIDFromVault RPC method.
+ * QueryMarketIDFromVaultRequest is the request type for the
+ * Query/QueryMarketIDFromVault RPC method.
  *
  * @generated from message injective.exchange.v1beta1.QueryMarketIDFromVaultRequest
  */
@@ -5211,8 +5212,9 @@ export class TradeHistoryOptions extends Message<TradeHistoryOptions> {
   tradeGroupingSec = protoInt64.zero;
 
   /**
-   * MaxAge restricts the trade records oldest age in seconds from the current block time to consider.
-   * A value of 0 means use all the records present on the chain.
+   * MaxAge restricts the trade records oldest age in seconds from the current
+   * block time to consider. A value of 0 means use all the records present on
+   * the chain.
    *
    * @generated from field: uint64 max_age = 2;
    */

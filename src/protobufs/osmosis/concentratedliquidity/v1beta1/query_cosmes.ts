@@ -32,7 +32,7 @@ export const QueryParamsService = {
 } as const;
 
 /**
- * UserPositions returns all concentrated postitions of some address.
+ * UserPositions returns all concentrated positions of some address.
  *
  * @generated from rpc osmosis.concentratedliquidity.v1beta1.Query.UserPositions
  */

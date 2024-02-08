@@ -5,7 +5,7 @@
 
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
 import { Message, proto3, protoInt64 } from "@bufbuild/protobuf";
-import { IdentifiedChannel, PacketState } from "./channel_pb.js";
+import { IdentifiedChannel, PacketState, Params } from "./channel_pb.js";
 
 /**
  * GenesisState defines the ibc channel submodule's genesis state.
@@ -55,6 +55,11 @@ export class GenesisState extends Message<GenesisState> {
    */
   nextChannelSequence = protoInt64.zero;
 
+  /**
+   * @generated from field: ibc.core.channel.v1.Params params = 9;
+   */
+  params?: Params;
+
   constructor(data?: PartialMessage<GenesisState>) {
     super();
     proto3.util.initPartial(data, this);
@@ -71,6 +76,7 @@ export class GenesisState extends Message<GenesisState> {
     { no: 6, name: "recv_sequences", kind: "message", T: PacketSequence, repeated: true },
     { no: 7, name: "ack_sequences", kind: "message", T: PacketSequence, repeated: true },
     { no: 8, name: "next_channel_sequence", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+    { no: 9, name: "params", kind: "message", T: Params },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): GenesisState {

@@ -152,7 +152,7 @@ export class MsgConnectionOpenTry extends Message<MsgConnectionOpenTry> {
   proofHeight?: Height;
 
   /**
-   * proof of the initialization the connection on Chain A: `UNITIALIZED ->
+   * proof of the initialization the connection on Chain A: `UNINITIALIZED ->
    * INIT`
    *
    * @generated from field: bytes proof_init = 8;
@@ -296,7 +296,7 @@ export class MsgConnectionOpenAck extends Message<MsgConnectionOpenAck> {
   proofHeight?: Height;
 
   /**
-   * proof of the initialization the connection on Chain B: `UNITIALIZED ->
+   * proof of the initialization the connection on Chain B: `UNINITIALIZED ->
    * TRYOPEN`
    *
    * @generated from field: bytes proof_try = 6;

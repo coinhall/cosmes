@@ -5,9 +5,10 @@
 
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
 import { Any, Message, proto3, protoInt64 } from "@bufbuild/protobuf";
-import { Channel, IdentifiedChannel, PacketState } from "./channel_pb.js";
+import { Channel, IdentifiedChannel, PacketState, Params } from "./channel_pb.js";
 import { Height, IdentifiedClientState } from "../../client/v1/client_pb.js";
 import { PageRequest, PageResponse } from "../../../../cosmos/base/query/v1beta1/pagination_pb.js";
+import { ErrorReceipt, Upgrade } from "./upgrade_pb.js";
 
 /**
  * QueryChannelRequest is the request type for the Query/Channel RPC method
@@ -1417,7 +1418,7 @@ export class QueryNextSequenceReceiveRequest extends Message<QueryNextSequenceRe
 }
 
 /**
- * QuerySequenceResponse is the request type for the
+ * QuerySequenceResponse is the response type for the
  * Query/QueryNextSequenceReceiveResponse RPC method
  *
  * @generated from message ibc.core.channel.v1.QueryNextSequenceReceiveResponse
@@ -1579,6 +1580,280 @@ export class QueryNextSequenceSendResponse extends Message<QueryNextSequenceSend
 
   static equals(a: QueryNextSequenceSendResponse | PlainMessage<QueryNextSequenceSendResponse> | undefined, b: QueryNextSequenceSendResponse | PlainMessage<QueryNextSequenceSendResponse> | undefined): boolean {
     return proto3.util.equals(QueryNextSequenceSendResponse, a, b);
+  }
+}
+
+/**
+ * QueryUpgradeErrorRequest is the request type for the Query/QueryUpgradeError RPC method
+ *
+ * @generated from message ibc.core.channel.v1.QueryUpgradeErrorRequest
+ */
+export class QueryUpgradeErrorRequest extends Message<QueryUpgradeErrorRequest> {
+  /**
+   * @generated from field: string port_id = 1;
+   */
+  portId = "";
+
+  /**
+   * @generated from field: string channel_id = 2;
+   */
+  channelId = "";
+
+  constructor(data?: PartialMessage<QueryUpgradeErrorRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "ibc.core.channel.v1.QueryUpgradeErrorRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "port_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "channel_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): QueryUpgradeErrorRequest {
+    return new QueryUpgradeErrorRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): QueryUpgradeErrorRequest {
+    return new QueryUpgradeErrorRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): QueryUpgradeErrorRequest {
+    return new QueryUpgradeErrorRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: QueryUpgradeErrorRequest | PlainMessage<QueryUpgradeErrorRequest> | undefined, b: QueryUpgradeErrorRequest | PlainMessage<QueryUpgradeErrorRequest> | undefined): boolean {
+    return proto3.util.equals(QueryUpgradeErrorRequest, a, b);
+  }
+}
+
+/**
+ * QueryUpgradeErrorResponse is the response type for the Query/QueryUpgradeError RPC method
+ *
+ * @generated from message ibc.core.channel.v1.QueryUpgradeErrorResponse
+ */
+export class QueryUpgradeErrorResponse extends Message<QueryUpgradeErrorResponse> {
+  /**
+   * @generated from field: ibc.core.channel.v1.ErrorReceipt error_receipt = 1;
+   */
+  errorReceipt?: ErrorReceipt;
+
+  /**
+   * merkle proof of existence
+   *
+   * @generated from field: bytes proof = 2;
+   */
+  proof = new Uint8Array(0);
+
+  /**
+   * height at which the proof was retrieved
+   *
+   * @generated from field: ibc.core.client.v1.Height proof_height = 3;
+   */
+  proofHeight?: Height;
+
+  constructor(data?: PartialMessage<QueryUpgradeErrorResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "ibc.core.channel.v1.QueryUpgradeErrorResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "error_receipt", kind: "message", T: ErrorReceipt },
+    { no: 2, name: "proof", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
+    { no: 3, name: "proof_height", kind: "message", T: Height },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): QueryUpgradeErrorResponse {
+    return new QueryUpgradeErrorResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): QueryUpgradeErrorResponse {
+    return new QueryUpgradeErrorResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): QueryUpgradeErrorResponse {
+    return new QueryUpgradeErrorResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: QueryUpgradeErrorResponse | PlainMessage<QueryUpgradeErrorResponse> | undefined, b: QueryUpgradeErrorResponse | PlainMessage<QueryUpgradeErrorResponse> | undefined): boolean {
+    return proto3.util.equals(QueryUpgradeErrorResponse, a, b);
+  }
+}
+
+/**
+ * QueryUpgradeRequest is the request type for the QueryUpgradeRequest RPC method
+ *
+ * @generated from message ibc.core.channel.v1.QueryUpgradeRequest
+ */
+export class QueryUpgradeRequest extends Message<QueryUpgradeRequest> {
+  /**
+   * @generated from field: string port_id = 1;
+   */
+  portId = "";
+
+  /**
+   * @generated from field: string channel_id = 2;
+   */
+  channelId = "";
+
+  constructor(data?: PartialMessage<QueryUpgradeRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "ibc.core.channel.v1.QueryUpgradeRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "port_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "channel_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): QueryUpgradeRequest {
+    return new QueryUpgradeRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): QueryUpgradeRequest {
+    return new QueryUpgradeRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): QueryUpgradeRequest {
+    return new QueryUpgradeRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: QueryUpgradeRequest | PlainMessage<QueryUpgradeRequest> | undefined, b: QueryUpgradeRequest | PlainMessage<QueryUpgradeRequest> | undefined): boolean {
+    return proto3.util.equals(QueryUpgradeRequest, a, b);
+  }
+}
+
+/**
+ * QueryUpgradeResponse is the response type for the QueryUpgradeResponse RPC method
+ *
+ * @generated from message ibc.core.channel.v1.QueryUpgradeResponse
+ */
+export class QueryUpgradeResponse extends Message<QueryUpgradeResponse> {
+  /**
+   * @generated from field: ibc.core.channel.v1.Upgrade upgrade = 1;
+   */
+  upgrade?: Upgrade;
+
+  /**
+   * merkle proof of existence
+   *
+   * @generated from field: bytes proof = 2;
+   */
+  proof = new Uint8Array(0);
+
+  /**
+   * height at which the proof was retrieved
+   *
+   * @generated from field: ibc.core.client.v1.Height proof_height = 3;
+   */
+  proofHeight?: Height;
+
+  constructor(data?: PartialMessage<QueryUpgradeResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "ibc.core.channel.v1.QueryUpgradeResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "upgrade", kind: "message", T: Upgrade },
+    { no: 2, name: "proof", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
+    { no: 3, name: "proof_height", kind: "message", T: Height },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): QueryUpgradeResponse {
+    return new QueryUpgradeResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): QueryUpgradeResponse {
+    return new QueryUpgradeResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): QueryUpgradeResponse {
+    return new QueryUpgradeResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: QueryUpgradeResponse | PlainMessage<QueryUpgradeResponse> | undefined, b: QueryUpgradeResponse | PlainMessage<QueryUpgradeResponse> | undefined): boolean {
+    return proto3.util.equals(QueryUpgradeResponse, a, b);
+  }
+}
+
+/**
+ * QueryChannelParamsRequest is the request type for the Query/ChannelParams RPC method.
+ *
+ * @generated from message ibc.core.channel.v1.QueryChannelParamsRequest
+ */
+export class QueryChannelParamsRequest extends Message<QueryChannelParamsRequest> {
+  constructor(data?: PartialMessage<QueryChannelParamsRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "ibc.core.channel.v1.QueryChannelParamsRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): QueryChannelParamsRequest {
+    return new QueryChannelParamsRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): QueryChannelParamsRequest {
+    return new QueryChannelParamsRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): QueryChannelParamsRequest {
+    return new QueryChannelParamsRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: QueryChannelParamsRequest | PlainMessage<QueryChannelParamsRequest> | undefined, b: QueryChannelParamsRequest | PlainMessage<QueryChannelParamsRequest> | undefined): boolean {
+    return proto3.util.equals(QueryChannelParamsRequest, a, b);
+  }
+}
+
+/**
+ * QueryChannelParamsResponse is the response type for the Query/ChannelParams RPC method.
+ *
+ * @generated from message ibc.core.channel.v1.QueryChannelParamsResponse
+ */
+export class QueryChannelParamsResponse extends Message<QueryChannelParamsResponse> {
+  /**
+   * params defines the parameters of the module.
+   *
+   * @generated from field: ibc.core.channel.v1.Params params = 1;
+   */
+  params?: Params;
+
+  constructor(data?: PartialMessage<QueryChannelParamsResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "ibc.core.channel.v1.QueryChannelParamsResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "params", kind: "message", T: Params },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): QueryChannelParamsResponse {
+    return new QueryChannelParamsResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): QueryChannelParamsResponse {
+    return new QueryChannelParamsResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): QueryChannelParamsResponse {
+    return new QueryChannelParamsResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: QueryChannelParamsResponse | PlainMessage<QueryChannelParamsResponse> | undefined, b: QueryChannelParamsResponse | PlainMessage<QueryChannelParamsResponse> | undefined): boolean {
+    return proto3.util.equals(QueryChannelParamsResponse, a, b);
   }
 }
 

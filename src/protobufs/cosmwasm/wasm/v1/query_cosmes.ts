@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { QueryAllContractStateRequest, QueryAllContractStateResponse, QueryCodeRequest, QueryCodeResponse, QueryCodesRequest, QueryCodesResponse, QueryContractHistoryRequest, QueryContractHistoryResponse, QueryContractInfoRequest, QueryContractInfoResponse, QueryContractsByCodeRequest, QueryContractsByCodeResponse, QueryContractsByCreatorRequest, QueryContractsByCreatorResponse, QueryParamsRequest, QueryParamsResponse, QueryPinnedCodesRequest, QueryPinnedCodesResponse, QueryRawContractStateRequest, QueryRawContractStateResponse, QuerySmartContractStateRequest, QuerySmartContractStateResponse } from "./query_pb.js";
+import { QueryAllContractStateRequest, QueryAllContractStateResponse, QueryBuildAddressRequest, QueryBuildAddressResponse, QueryCodeRequest, QueryCodeResponse, QueryCodesRequest, QueryCodesResponse, QueryContractHistoryRequest, QueryContractHistoryResponse, QueryContractInfoRequest, QueryContractInfoResponse, QueryContractsByCodeRequest, QueryContractsByCodeResponse, QueryContractsByCreatorRequest, QueryContractsByCreatorResponse, QueryParamsRequest, QueryParamsResponse, QueryPinnedCodesRequest, QueryPinnedCodesResponse, QueryRawContractStateRequest, QueryRawContractStateResponse, QuerySmartContractStateRequest, QuerySmartContractStateResponse } from "./query_pb.js";
 
 const TYPE_NAME = "cosmwasm.wasm.v1.Query";
 
@@ -137,5 +137,17 @@ export const QueryContractsByCreatorService = {
   method: "ContractsByCreator",
   Request: QueryContractsByCreatorRequest,
   Response: QueryContractsByCreatorResponse,
+} as const;
+
+/**
+ * BuildAddress builds a contract address
+ *
+ * @generated from rpc cosmwasm.wasm.v1.Query.BuildAddress
+ */
+export const QueryBuildAddressService = {
+  typeName: TYPE_NAME,
+  method: "BuildAddress",
+  Request: QueryBuildAddressRequest,
+  Response: QueryBuildAddressResponse,
 } as const;
 
