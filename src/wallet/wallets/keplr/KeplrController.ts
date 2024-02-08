@@ -39,6 +39,7 @@ export class KeplrController extends WalletController {
       const { pubkey, address } = await this.wc.getAccount(chainId);
       const key = new Secp256k1PubKey({
         key: base64.decode(pubkey),
+        chainId,
       });
       wallets.set(
         chainId,
@@ -68,6 +69,7 @@ export class KeplrController extends WalletController {
       const { bech32Address, pubKey, isNanoLedger } = await ext.getKey(chainId);
       const key = new Secp256k1PubKey({
         key: pubKey,
+        chainId,
       });
       wallets.set(
         chainId,

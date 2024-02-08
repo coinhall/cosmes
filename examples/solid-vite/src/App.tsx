@@ -9,8 +9,8 @@ import {
   KeplrController,
   LeapController,
   MetamaskInjectiveController,
-  StationController,
   NinjiController,
+  StationController,
   UnsignedTx,
   WalletController,
   WalletName,
@@ -32,6 +32,7 @@ const CHAINS: Record<string, string> = {
   "migaloo-1": "Migaloo",
   "injective-1": "Injective",
   "pacific-1": "Sei",
+  "dymension_1100-1": "Dymension",
 };
 const WALLETS: Record<WalletName, string> = {
   [WalletName.KEPLR]: "Keplr",
@@ -76,6 +77,8 @@ function getRpc(chain: string): string {
       return "https://injective-rpc.polkachu.com";
     case "pacific-1":
       return "https://rpc-sei-ia.cosmosia.notional.ventures";
+    case "dymension_1100-1":
+      return "https://rpc.dymension.nodestake.org";
     default:
       throw new Error("Unknown chain");
   }
@@ -101,6 +104,8 @@ function getGasPrice(chain: string): { amount: string; denom: string } {
       return { amount: "500000000", denom: getDenom(chain) };
     case "pacific-1":
       return { amount: "0.1", denom: getDenom(chain) };
+    case "dymension_1100-1":
+      return { amount: "20000000000", denom: getDenom(chain) };
     default:
       throw new Error("Unknown chain");
   }
@@ -125,6 +130,8 @@ function getDenom(chain: string): string {
       return "inj";
     case "pacific-1":
       return "usei";
+    case "dymension_1100-1":
+      return "adym";
     default:
       throw new Error("Unknown chain");
   }

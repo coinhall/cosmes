@@ -58,7 +58,13 @@ export class MetamaskInjectiveController extends WalletController {
     const injAddress = translateEthToBech32Address(ethAddress, "inj");
 
     const [chain] = chains;
-    const pubKey = await this.getPubKey(ext, chain.rpc, ethAddress, injAddress);
+    const pubKey = await this.getPubKey(
+      ext,
+      chain.chainId,
+      chain.rpc,
+      ethAddress,
+      injAddress
+    );
     const wallets = new Map<T, ConnectedWallet>();
     wallets.set(
       chain.chainId,
@@ -86,6 +92,7 @@ export class MetamaskInjectiveController extends WalletController {
 
   private async getPubKey(
     ext: Ethereum,
+    chainId: string,
     rpc: string,
     ethAddress: string,
     injAddress: string
@@ -98,6 +105,7 @@ export class MetamaskInjectiveController extends WalletController {
       const { pubKey } = toBaseAccount(account);
       if (pubKey) {
         return new Secp256k1PubKey({
+          chainId,
           key: CosmosCryptoSecp256k1PubKey.fromBinary(pubKey.value).key,
         });
       }
@@ -116,6 +124,7 @@ export class MetamaskInjectiveController extends WalletController {
       throw new Error("Failed to retrieve pubic key");
     }
     return new Secp256k1PubKey({
+      chainId,
       key: recoverPubKeyFromEthSignature(message, ethhex.decode(signature)),
     });
   }

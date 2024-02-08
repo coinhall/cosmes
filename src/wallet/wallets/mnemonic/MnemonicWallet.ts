@@ -92,9 +92,10 @@ export class MnemonicWallet extends ConnectedWallet {
       coinType,
       index,
     });
-    const keyType = chainId.startsWith("injective-")
-      ? "ethsecp256k1"
-      : "secp256k1";
+    const keyType =
+      chainId.startsWith("injective") || chainId.startsWith("dymension")
+        ? "ethsecp256k1"
+        : "secp256k1";
     const address = resolveBech32Address(publicKey, bech32Prefix, keyType);
     super(
       // We typecast here instead of adding "mnemonic" to `WalletName` and
@@ -103,7 +104,10 @@ export class MnemonicWallet extends ConnectedWallet {
       "mnemonic" as WalletName,
       "mnemonic" as WalletType,
       chainId,
-      new Secp256k1PubKey({ key: publicKey }),
+      new Secp256k1PubKey({
+        chainId,
+        key: publicKey,
+      }),
       address,
       rpc,
       gasPrice

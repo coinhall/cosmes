@@ -38,6 +38,7 @@ export class CosmostationController extends WalletController {
       const { chainId, rpc, gasPrice } = chains[i];
       const { pubkey, address } = await this.wc.getAccount(chainId);
       const key = new Secp256k1PubKey({
+        chainId,
         key: base64.decode(pubkey),
       });
       wallets.set(
@@ -67,6 +68,7 @@ export class CosmostationController extends WalletController {
     for (const { chainId, rpc, gasPrice } of Object.values(chains)) {
       const { bech32Address, pubKey, isNanoLedger } = await ext.getKey(chainId);
       const key = new Secp256k1PubKey({
+        chainId,
         key: pubKey,
       });
       wallets.set(

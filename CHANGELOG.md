@@ -1,5 +1,11 @@
 # Changelog
 
+## `v0.0.55`
+
+### Features
+
+- Added tx signing support for Dymension chain
+
 ## `v0.0.54`
 
 ### Fixes

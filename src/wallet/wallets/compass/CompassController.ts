@@ -39,6 +39,7 @@ export class CompassController extends WalletController {
     for (const { chainId, rpc, gasPrice } of Object.values(chains)) {
       const { bech32Address, pubKey, isNanoLedger } = await ext.getKey(chainId);
       const key = new Secp256k1PubKey({
+        chainId,
         key: pubKey,
       });
       wallets.set(

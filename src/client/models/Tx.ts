@@ -199,10 +199,7 @@ export class Tx {
     mode: ProtoSignMode
   ): PlainMessage<ProtoSignerInfo> {
     return {
-      publicKey: toAny(
-        // TODO: Injective's chain ID might change in the future
-        this.data.pubKey.toProto(this.data.chainId.startsWith("injective-"))
-      ),
+      publicKey: toAny(this.data.pubKey.toProto()),
       sequence: sequence,
       modeInfo: {
         sum: {
