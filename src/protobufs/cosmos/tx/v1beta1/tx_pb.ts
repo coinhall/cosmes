@@ -251,10 +251,14 @@ export class SignDocDirectAux extends Message<SignDocDirectAux> {
   sequence = protoInt64.zero;
 
   /**
-   * tips have been deprecated and should not be used
+   * Tip is the optional tip used for transactions fees paid in another denom.
+   * It should be left empty if the signer is not the tipper for this
+   * transaction.
    *
-   * @generated from field: cosmos.tx.v1beta1.Tip tip = 6 [deprecated = true];
-   * @deprecated
+   * This field is ignored if the chain didn't enable tips, i.e. didn't add the
+   * `TipDecorator` in its posthandler.
+   *
+   * @generated from field: cosmos.tx.v1beta1.Tip tip = 6;
    */
   tip?: Tip;
 
@@ -313,39 +317,19 @@ export class TxBody extends Message<TxBody> {
   /**
    * memo is any arbitrary note/comment to be added to the transaction.
    * WARNING: in clients, any publicly exposed text should not be called memo,
-   * but should be called `note` instead (see
-   * https://github.com/cosmos/cosmos-sdk/issues/9122).
+   * but should be called `note` instead (see https://github.com/cosmos/cosmos-sdk/issues/9122).
    *
    * @generated from field: string memo = 2;
    */
   memo = "";
 
   /**
-   * timeout_height is the block height after which this transaction will not
-   * be processed by the chain.
-   *
-   * Note, if unordered=true this value MUST be set
-   * and will act as a short-lived TTL in which the transaction is deemed valid
-   * and kept in memory to prevent duplicates.
+   * timeout is the block height after which this transaction will not
+   * be processed by the chain
    *
    * @generated from field: uint64 timeout_height = 3;
    */
   timeoutHeight = protoInt64.zero;
-
-  /**
-   * unordered, when set to true, indicates that the transaction signer(s)
-   * intend for the transaction to be evaluated and executed in an un-ordered
-   * fashion. Specifically, the account's nonce will NOT be checked or
-   * incremented, which allows for fire-and-forget as well as concurrent
-   * transaction execution.
-   *
-   * Note, when set to true, the existing 'timeout_height' value must be set and
-   * will be used to correspond to a height in which the transaction is deemed
-   * valid.
-   *
-   * @generated from field: bool unordered = 4;
-   */
-  unordered = false;
 
   /**
    * extension_options are arbitrary options that can be added by chains
@@ -376,7 +360,6 @@ export class TxBody extends Message<TxBody> {
     { no: 1, name: "messages", kind: "message", T: Any, repeated: true },
     { no: 2, name: "memo", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "timeout_height", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
-    { no: 4, name: "unordered", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
     { no: 1023, name: "extension_options", kind: "message", T: Any, repeated: true },
     { no: 2047, name: "non_critical_extension_options", kind: "message", T: Any, repeated: true },
   ]);
@@ -433,8 +416,7 @@ export class AuthInfo extends Message<AuthInfo> {
    *
    * Since: cosmos-sdk 0.46
    *
-   * @generated from field: cosmos.tx.v1beta1.Tip tip = 3 [deprecated = true];
-   * @deprecated
+   * @generated from field: cosmos.tx.v1beta1.Tip tip = 3;
    */
   tip?: Tip;
 
@@ -707,20 +689,18 @@ export class Fee extends Message<Fee> {
   gasLimit = protoInt64.zero;
 
   /**
-   * if unset, the first signer is responsible for paying the fees. If set, the
-   * specified account must pay the fees. the payer must be a tx signer (and
-   * thus have signed this field in AuthInfo). setting this field does *not*
-   * change the ordering of required signers for the transaction.
+   * if unset, the first signer is responsible for paying the fees. If set, the specified account must pay the fees.
+   * the payer must be a tx signer (and thus have signed this field in AuthInfo).
+   * setting this field does *not* change the ordering of required signers for the transaction.
    *
    * @generated from field: string payer = 3;
    */
   payer = "";
 
   /**
-   * if set, the fee payer (either the first signer or the value of the payer
-   * field) requests that a fee grant be used to pay fees instead of the fee
-   * payer's own balance. If an appropriate fee grant does not exist or the
-   * chain does not support fee grants, this will fail
+   * if set, the fee payer (either the first signer or the value of the payer field) requests that a fee grant be used
+   * to pay fees instead of the fee payer's own balance. If an appropriate fee grant does not exist or the chain does
+   * not support fee grants, this will fail
    *
    * @generated from field: string granter = 4;
    */
@@ -763,7 +743,6 @@ export class Fee extends Message<Fee> {
  * Since: cosmos-sdk 0.46
  *
  * @generated from message cosmos.tx.v1beta1.Tip
- * @deprecated
  */
 export class Tip extends Message<Tip> {
   /**

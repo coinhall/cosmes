@@ -52,7 +52,7 @@ proto3.util.setEnumType(BondStatus, "cosmos.staking.v1beta1.BondStatus", [
 ]);
 
 /**
- * Infraction indicates the infraction a validator committed.
+ * Infraction indicates the infraction a validator commited.
  *
  * @generated from enum cosmos.staking.v1beta1.Infraction
  */
@@ -92,7 +92,6 @@ proto3.util.setEnumType(Infraction, "cosmos.staking.v1beta1.Infraction", [
  * (`n` is set by the staking module's `historical_entries` parameter).
  *
  * @generated from message cosmos.staking.v1beta1.HistoricalInfo
- * @deprecated
  */
 export class HistoricalInfo extends Message<HistoricalInfo> {
   /**
@@ -131,60 +130,6 @@ export class HistoricalInfo extends Message<HistoricalInfo> {
 
   static equals(a: HistoricalInfo | PlainMessage<HistoricalInfo> | undefined, b: HistoricalInfo | PlainMessage<HistoricalInfo> | undefined): boolean {
     return proto3.util.equals(HistoricalInfo, a, b);
-  }
-}
-
-/**
- * Historical contains a set of minimum values needed for evaluating historical validator sets and blocks.
- * It is stored as part of staking module's state, which persists the `n` most
- * recent HistoricalInfo
- * (`n` is set by the staking module's `historical_entries` parameter).
- *
- * @generated from message cosmos.staking.v1beta1.HistoricalRecord
- */
-export class HistoricalRecord extends Message<HistoricalRecord> {
-  /**
-   * @generated from field: bytes apphash = 1;
-   */
-  apphash = new Uint8Array(0);
-
-  /**
-   * @generated from field: google.protobuf.Timestamp time = 2;
-   */
-  time?: Timestamp;
-
-  /**
-   * @generated from field: bytes validators_hash = 3;
-   */
-  validatorsHash = new Uint8Array(0);
-
-  constructor(data?: PartialMessage<HistoricalRecord>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
-
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "cosmos.staking.v1beta1.HistoricalRecord";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "apphash", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
-    { no: 2, name: "time", kind: "message", T: Timestamp },
-    { no: 3, name: "validators_hash", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
-  ]);
-
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): HistoricalRecord {
-    return new HistoricalRecord().fromBinary(bytes, options);
-  }
-
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): HistoricalRecord {
-    return new HistoricalRecord().fromJson(jsonValue, options);
-  }
-
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): HistoricalRecord {
-    return new HistoricalRecord().fromJsonString(jsonString, options);
-  }
-
-  static equals(a: HistoricalRecord | PlainMessage<HistoricalRecord> | undefined, b: HistoricalRecord | PlainMessage<HistoricalRecord> | undefined): boolean {
-    return proto3.util.equals(HistoricalRecord, a, b);
   }
 }
 
@@ -468,7 +413,7 @@ export class Validator extends Message<Validator> {
   unbondingOnHoldRefCount = protoInt64.zero;
 
   /**
-   * list of unbonding ids, each uniquely identifying an unbonding of this validator
+   * list of unbonding ids, each uniquely identifing an unbonding of this validator
    *
    * @generated from field: repeated uint64 unbonding_ids = 13;
    */
@@ -741,14 +686,14 @@ export class DVVTriplets extends Message<DVVTriplets> {
  */
 export class Delegation extends Message<Delegation> {
   /**
-   * delegator_address is the encoded address of the delegator.
+   * delegator_address is the bech32-encoded address of the delegator.
    *
    * @generated from field: string delegator_address = 1;
    */
   delegatorAddress = "";
 
   /**
-   * validator_address is the encoded address of the validator.
+   * validator_address is the bech32-encoded address of the validator.
    *
    * @generated from field: string validator_address = 2;
    */
@@ -799,14 +744,14 @@ export class Delegation extends Message<Delegation> {
  */
 export class UnbondingDelegation extends Message<UnbondingDelegation> {
   /**
-   * delegator_address is the encoded address of the delegator.
+   * delegator_address is the bech32-encoded address of the delegator.
    *
    * @generated from field: string delegator_address = 1;
    */
   delegatorAddress = "";
 
   /**
-   * validator_address is the encoded address of the validator.
+   * validator_address is the bech32-encoded address of the validator.
    *
    * @generated from field: string validator_address = 2;
    */
@@ -1129,14 +1074,6 @@ export class Params extends Message<Params> {
    */
   minCommissionRate = "";
 
-  /**
-   * key_rotation_fee is fee to be spent when rotating validator's key
-   * (either consensus pubkey or operator key)
-   *
-   * @generated from field: cosmos.base.v1beta1.Coin key_rotation_fee = 7;
-   */
-  keyRotationFee?: Coin;
-
   constructor(data?: PartialMessage<Params>) {
     super();
     proto3.util.initPartial(data, this);
@@ -1151,7 +1088,6 @@ export class Params extends Message<Params> {
     { no: 4, name: "historical_entries", kind: "scalar", T: 13 /* ScalarType.UINT32 */ },
     { no: 5, name: "bond_denom", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 6, name: "min_commission_rate", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 7, name: "key_rotation_fee", kind: "message", T: Coin },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Params {
@@ -1394,119 +1330,6 @@ export class ValidatorUpdates extends Message<ValidatorUpdates> {
 
   static equals(a: ValidatorUpdates | PlainMessage<ValidatorUpdates> | undefined, b: ValidatorUpdates | PlainMessage<ValidatorUpdates> | undefined): boolean {
     return proto3.util.equals(ValidatorUpdates, a, b);
-  }
-}
-
-/**
- * ConsPubKeyRotationHistory contains a validator's consensus public key rotation history.
- *
- * @generated from message cosmos.staking.v1beta1.ConsPubKeyRotationHistory
- */
-export class ConsPubKeyRotationHistory extends Message<ConsPubKeyRotationHistory> {
-  /**
-   * operator_address defines the address of the validator's operator; bech encoded in JSON.
-   *
-   * @generated from field: bytes operator_address = 1;
-   */
-  operatorAddress = new Uint8Array(0);
-
-  /**
-   * old_cons_pubkey is the old consensus public key of the validator, as a Protobuf Any.
-   *
-   * @generated from field: google.protobuf.Any old_cons_pubkey = 2;
-   */
-  oldConsPubkey?: Any;
-
-  /**
-   * new_cons_pubkey is the new consensus public key of the validator, as a Protobuf Any.
-   *
-   * @generated from field: google.protobuf.Any new_cons_pubkey = 3;
-   */
-  newConsPubkey?: Any;
-
-  /**
-   * height defines the block height at which the rotation event occurred.
-   *
-   * @generated from field: uint64 height = 4;
-   */
-  height = protoInt64.zero;
-
-  /**
-   * fee holds the amount of fee deduced for the rotation.
-   *
-   * @generated from field: cosmos.base.v1beta1.Coin fee = 5;
-   */
-  fee?: Coin;
-
-  constructor(data?: PartialMessage<ConsPubKeyRotationHistory>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
-
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "cosmos.staking.v1beta1.ConsPubKeyRotationHistory";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "operator_address", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
-    { no: 2, name: "old_cons_pubkey", kind: "message", T: Any },
-    { no: 3, name: "new_cons_pubkey", kind: "message", T: Any },
-    { no: 4, name: "height", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
-    { no: 5, name: "fee", kind: "message", T: Coin },
-  ]);
-
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ConsPubKeyRotationHistory {
-    return new ConsPubKeyRotationHistory().fromBinary(bytes, options);
-  }
-
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ConsPubKeyRotationHistory {
-    return new ConsPubKeyRotationHistory().fromJson(jsonValue, options);
-  }
-
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ConsPubKeyRotationHistory {
-    return new ConsPubKeyRotationHistory().fromJsonString(jsonString, options);
-  }
-
-  static equals(a: ConsPubKeyRotationHistory | PlainMessage<ConsPubKeyRotationHistory> | undefined, b: ConsPubKeyRotationHistory | PlainMessage<ConsPubKeyRotationHistory> | undefined): boolean {
-    return proto3.util.equals(ConsPubKeyRotationHistory, a, b);
-  }
-}
-
-/**
- * ValAddrsOfRotatedConsKeys contains the array of validator addresses which rotated their keys
- * This is to block the validator's next rotation till unbonding period.
- *
- * @generated from message cosmos.staking.v1beta1.ValAddrsOfRotatedConsKeys
- */
-export class ValAddrsOfRotatedConsKeys extends Message<ValAddrsOfRotatedConsKeys> {
-  /**
-   * @generated from field: repeated bytes addresses = 1;
-   */
-  addresses: Uint8Array[] = [];
-
-  constructor(data?: PartialMessage<ValAddrsOfRotatedConsKeys>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
-
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "cosmos.staking.v1beta1.ValAddrsOfRotatedConsKeys";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "addresses", kind: "scalar", T: 12 /* ScalarType.BYTES */, repeated: true },
-  ]);
-
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ValAddrsOfRotatedConsKeys {
-    return new ValAddrsOfRotatedConsKeys().fromBinary(bytes, options);
-  }
-
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ValAddrsOfRotatedConsKeys {
-    return new ValAddrsOfRotatedConsKeys().fromJson(jsonValue, options);
-  }
-
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ValAddrsOfRotatedConsKeys {
-    return new ValAddrsOfRotatedConsKeys().fromJsonString(jsonString, options);
-  }
-
-  static equals(a: ValAddrsOfRotatedConsKeys | PlainMessage<ValAddrsOfRotatedConsKeys> | undefined, b: ValAddrsOfRotatedConsKeys | PlainMessage<ValAddrsOfRotatedConsKeys> | undefined): boolean {
-    return proto3.util.equals(ValAddrsOfRotatedConsKeys, a, b);
   }
 }
 

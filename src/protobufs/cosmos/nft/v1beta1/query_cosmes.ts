@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { QueryBalanceByQueryStringRequest, QueryBalanceByQueryStringResponse, QueryBalanceRequest, QueryBalanceResponse, QueryClassByQueryStringRequest, QueryClassByQueryStringResponse, QueryClassesRequest, QueryClassesResponse, QueryClassRequest, QueryClassResponse, QueryNFTByQueryStringRequest, QueryNFTByQueryStringResponse, QueryNFTRequest, QueryNFTResponse, QueryNFTsRequest, QueryNFTsResponse, QueryOwnerByQueryStringRequest, QueryOwnerByQueryStringResponse, QueryOwnerRequest, QueryOwnerResponse, QuerySupplyByQueryStringRequest, QuerySupplyByQueryStringResponse, QuerySupplyRequest, QuerySupplyResponse } from "./query_pb.js";
+import { QueryBalanceRequest, QueryBalanceResponse, QueryClassesRequest, QueryClassesResponse, QueryClassRequest, QueryClassResponse, QueryNFTRequest, QueryNFTResponse, QueryNFTsRequest, QueryNFTsResponse, QueryOwnerRequest, QueryOwnerResponse, QuerySupplyRequest, QuerySupplyResponse } from "./query_pb.js";
 
 const TYPE_NAME = "cosmos.nft.v1beta1.Query";
 
@@ -20,20 +20,6 @@ export const QueryBalanceService = {
 } as const;
 
 /**
- * BalancebyQueryString queries the number of NFTs of a given class owned by the owner, same as balanceOf in ERC721
- *
- * Since: nft v0.1.1
- *
- * @generated from rpc cosmos.nft.v1beta1.Query.BalanceByQueryString
- */
-export const QueryBalanceByQueryStringService = {
-  typeName: TYPE_NAME,
-  method: "BalanceByQueryString",
-  Request: QueryBalanceByQueryStringRequest,
-  Response: QueryBalanceByQueryStringResponse,
-} as const;
-
-/**
  * Owner queries the owner of the NFT based on its class and id, same as ownerOf in ERC721
  *
  * @generated from rpc cosmos.nft.v1beta1.Query.Owner
@@ -46,20 +32,6 @@ export const QueryOwnerService = {
 } as const;
 
 /**
- * OwnerByQueryString queries the owner of the NFT based on its class and id, same as ownerOf in ERC721
- *
- * Since: nft v0.1.1
- *
- * @generated from rpc cosmos.nft.v1beta1.Query.OwnerByQueryString
- */
-export const QueryOwnerByQueryStringService = {
-  typeName: TYPE_NAME,
-  method: "OwnerByQueryString",
-  Request: QueryOwnerByQueryStringRequest,
-  Response: QueryOwnerByQueryStringResponse,
-} as const;
-
-/**
  * Supply queries the number of NFTs from the given class, same as totalSupply of ERC721.
  *
  * @generated from rpc cosmos.nft.v1beta1.Query.Supply
@@ -69,20 +41,6 @@ export const QuerySupplyService = {
   method: "Supply",
   Request: QuerySupplyRequest,
   Response: QuerySupplyResponse,
-} as const;
-
-/**
- * SupplyByQueryString queries the number of NFTs from the given class, same as totalSupply of ERC721.
- *
- * Since: nft v0.1.1
- *
- * @generated from rpc cosmos.nft.v1beta1.Query.SupplyByQueryString
- */
-export const QuerySupplyByQueryStringService = {
-  typeName: TYPE_NAME,
-  method: "SupplyByQueryString",
-  Request: QuerySupplyByQueryStringRequest,
-  Response: QuerySupplyByQueryStringResponse,
 } as const;
 
 /**
@@ -111,20 +69,6 @@ export const QueryNFTService = {
 } as const;
 
 /**
- * NFTByQueryString queries an NFT based on its class and id.
- *
- * Since: nft v0.1.1
- *
- * @generated from rpc cosmos.nft.v1beta1.Query.NFTByQueryString
- */
-export const QueryNFTByQueryStringService = {
-  typeName: TYPE_NAME,
-  method: "NFTByQueryString",
-  Request: QueryNFTByQueryStringRequest,
-  Response: QueryNFTByQueryStringResponse,
-} as const;
-
-/**
  * Class queries an NFT class based on its id
  *
  * @generated from rpc cosmos.nft.v1beta1.Query.Class
@@ -134,20 +78,6 @@ export const QueryClassService = {
   method: "Class",
   Request: QueryClassRequest,
   Response: QueryClassResponse,
-} as const;
-
-/**
- * Class queries an NFT class based on its id
- *
- * Since: nft v0.1.1
- *
- * @generated from rpc cosmos.nft.v1beta1.Query.ClassByQueryString
- */
-export const QueryClassByQueryStringService = {
-  typeName: TYPE_NAME,
-  method: "ClassByQueryString",
-  Request: QueryClassByQueryStringRequest,
-  Response: QueryClassByQueryStringResponse,
 } as const;
 
 /**

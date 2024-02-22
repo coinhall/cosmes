@@ -42,21 +42,21 @@ export class GenesisState extends Message<GenesisState> {
   proposals: Proposal[] = [];
 
   /**
-   * deposit_params defines all the parameters related to deposit.
+   * params defines all the parameters of related to deposit.
    *
    * @generated from field: cosmos.gov.v1beta1.DepositParams deposit_params = 5;
    */
   depositParams?: DepositParams;
 
   /**
-   * voting_params defines all the parameters related to voting.
+   * params defines all the parameters of related to voting.
    *
    * @generated from field: cosmos.gov.v1beta1.VotingParams voting_params = 6;
    */
   votingParams?: VotingParams;
 
   /**
-   * tally_params defines all the parameters related to tally.
+   * params defines all the parameters of related to tally.
    *
    * @generated from field: cosmos.gov.v1beta1.TallyParams tally_params = 7;
    */

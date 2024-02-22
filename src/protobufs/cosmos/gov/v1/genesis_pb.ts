@@ -45,7 +45,7 @@ export class GenesisState extends Message<GenesisState> {
 
   /**
    * Deprecated: Prefer to use `params` instead.
-   * deposit_params defines all the parameters of related to deposit.
+   * deposit_params defines all the paramaters of related to deposit.
    *
    * @generated from field: cosmos.gov.v1.DepositParams deposit_params = 5 [deprecated = true];
    * @deprecated
@@ -54,7 +54,7 @@ export class GenesisState extends Message<GenesisState> {
 
   /**
    * Deprecated: Prefer to use `params` instead.
-   * voting_params defines all the parameters of related to voting.
+   * voting_params defines all the paramaters of related to voting.
    *
    * @generated from field: cosmos.gov.v1.VotingParams voting_params = 6 [deprecated = true];
    * @deprecated
@@ -63,7 +63,7 @@ export class GenesisState extends Message<GenesisState> {
 
   /**
    * Deprecated: Prefer to use `params` instead.
-   * tally_params defines all the parameters of related to tally.
+   * tally_params defines all the paramaters of related to tally.
    *
    * @generated from field: cosmos.gov.v1.TallyParams tally_params = 7 [deprecated = true];
    * @deprecated
@@ -71,25 +71,13 @@ export class GenesisState extends Message<GenesisState> {
   tallyParams?: TallyParams;
 
   /**
-   * params defines all the parameters of x/gov module.
+   * params defines all the paramaters of x/gov module.
    *
    * Since: cosmos-sdk 0.47
    *
    * @generated from field: cosmos.gov.v1.Params params = 8;
    */
   params?: Params;
-
-  /**
-   * The constitution allows builders to lay a foundation and define purpose.
-   * This is an immutable string set in genesis.
-   * There are no amendments, to go outside of scope, just fork.
-   * constitution is an immutable string in genesis for a chain builder to lay out their vision, ideas and ideals.
-   *
-   * Since: cosmos-sdk 0.50
-   *
-   * @generated from field: string constitution = 9;
-   */
-  constitution = "";
 
   constructor(data?: PartialMessage<GenesisState>) {
     super();
@@ -107,7 +95,6 @@ export class GenesisState extends Message<GenesisState> {
     { no: 6, name: "voting_params", kind: "message", T: VotingParams },
     { no: 7, name: "tally_params", kind: "message", T: TallyParams },
     { no: 8, name: "params", kind: "message", T: Params },
-    { no: 9, name: "constitution", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): GenesisState {

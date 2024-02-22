@@ -3,8 +3,8 @@ version: v1
 plugins:
   - plugin: es
     opt: target=ts
-    out: src/protobufs
+    out: .
   - plugin: cosmes
     path: ./scripts/protoc-gen-cosmes.mjs
     opt: target=ts
-    out: src/protobufs
+    out: .

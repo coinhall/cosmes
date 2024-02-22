@@ -10,57 +10,6 @@ import { Any, Duration, Message, proto3, protoInt64, Timestamp } from "@bufbuild
 import { Coin } from "../../base/v1beta1/coin_pb.js";
 
 /**
- * ProposalType enumerates the valid proposal types.
- * All proposal types are v1.Proposal which have different voting periods or tallying logic.
- *
- * @generated from enum cosmos.gov.v1.ProposalType
- */
-export enum ProposalType {
-  /**
-   * PROPOSAL_TYPE_UNSPECIFIED defines no proposal type, which fallback to PROPOSAL_TYPE_STANDARD.
-   *
-   * @generated from enum value: PROPOSAL_TYPE_UNSPECIFIED = 0;
-   */
-  UNSPECIFIED = 0,
-
-  /**
-   * PROPOSAL_TYPE_STANDARD defines the type for a standard proposal.
-   *
-   * @generated from enum value: PROPOSAL_TYPE_STANDARD = 1;
-   */
-  STANDARD = 1,
-
-  /**
-   * PROPOSAL_TYPE_MULTIPLE_CHOICE defines the type for a multiple choice proposal.
-   *
-   * @generated from enum value: PROPOSAL_TYPE_MULTIPLE_CHOICE = 2;
-   */
-  MULTIPLE_CHOICE = 2,
-
-  /**
-   * PROPOSAL_TYPE_OPTIMISTIC defines the type for an optimistic proposal.
-   *
-   * @generated from enum value: PROPOSAL_TYPE_OPTIMISTIC = 3;
-   */
-  OPTIMISTIC = 3,
-
-  /**
-   * PROPOSAL_TYPE_EXPEDITED defines the type for an expedited proposal.
-   *
-   * @generated from enum value: PROPOSAL_TYPE_EXPEDITED = 4;
-   */
-  EXPEDITED = 4,
-}
-// Retrieve enum metadata with: proto3.getEnumType(ProposalType)
-proto3.util.setEnumType(ProposalType, "cosmos.gov.v1.ProposalType", [
-  { no: 0, name: "PROPOSAL_TYPE_UNSPECIFIED" },
-  { no: 1, name: "PROPOSAL_TYPE_STANDARD" },
-  { no: 2, name: "PROPOSAL_TYPE_MULTIPLE_CHOICE" },
-  { no: 3, name: "PROPOSAL_TYPE_OPTIMISTIC" },
-  { no: 4, name: "PROPOSAL_TYPE_EXPEDITED" },
-]);
-
-/**
  * VoteOption enumerates the valid vote options for a given governance proposal.
  *
  * @generated from enum cosmos.gov.v1.VoteOption
@@ -74,80 +23,40 @@ export enum VoteOption {
   UNSPECIFIED = 0,
 
   /**
-   * VOTE_OPTION_ONE defines the first proposal vote option.
-   *
-   * @generated from enum value: VOTE_OPTION_ONE = 1;
-   */
-  ONE = 1,
-
-  /**
-   * VOTE_OPTION_YES defines the yes proposal vote option.
+   * VOTE_OPTION_YES defines a yes vote option.
    *
    * @generated from enum value: VOTE_OPTION_YES = 1;
    */
   YES = 1,
 
   /**
-   * VOTE_OPTION_TWO defines the second proposal vote option.
-   *
-   * @generated from enum value: VOTE_OPTION_TWO = 2;
-   */
-  TWO = 2,
-
-  /**
-   * VOTE_OPTION_ABSTAIN defines the abstain proposal vote option.
+   * VOTE_OPTION_ABSTAIN defines an abstain vote option.
    *
    * @generated from enum value: VOTE_OPTION_ABSTAIN = 2;
    */
   ABSTAIN = 2,
 
   /**
-   * VOTE_OPTION_THREE defines the third proposal vote option.
-   *
-   * @generated from enum value: VOTE_OPTION_THREE = 3;
-   */
-  THREE = 3,
-
-  /**
-   * VOTE_OPTION_NO defines the no proposal vote option.
+   * VOTE_OPTION_NO defines a no vote option.
    *
    * @generated from enum value: VOTE_OPTION_NO = 3;
    */
   NO = 3,
 
   /**
-   * VOTE_OPTION_FOUR defines the fourth proposal vote option.
-   *
-   * @generated from enum value: VOTE_OPTION_FOUR = 4;
-   */
-  FOUR = 4,
-
-  /**
-   * VOTE_OPTION_NO_WITH_VETO defines the no with veto proposal vote option.
+   * VOTE_OPTION_NO_WITH_VETO defines a no with veto vote option.
    *
    * @generated from enum value: VOTE_OPTION_NO_WITH_VETO = 4;
    */
   NO_WITH_VETO = 4,
-
-  /**
-   * VOTE_OPTION_SPAM defines the spam proposal vote option.
-   *
-   * @generated from enum value: VOTE_OPTION_SPAM = 5;
-   */
-  SPAM = 5,
 }
 // Retrieve enum metadata with: proto3.getEnumType(VoteOption)
 proto3.util.setEnumType(VoteOption, "cosmos.gov.v1.VoteOption", [
   { no: 0, name: "VOTE_OPTION_UNSPECIFIED" },
-  { no: 1, name: "VOTE_OPTION_ONE" },
   { no: 1, name: "VOTE_OPTION_YES" },
-  { no: 2, name: "VOTE_OPTION_TWO" },
   { no: 2, name: "VOTE_OPTION_ABSTAIN" },
-  { no: 3, name: "VOTE_OPTION_THREE" },
   { no: 3, name: "VOTE_OPTION_NO" },
-  { no: 4, name: "VOTE_OPTION_FOUR" },
   { no: 4, name: "VOTE_OPTION_NO_WITH_VETO" },
-  { no: 5, name: "VOTE_OPTION_SPAM" },
 ]);
 
 /**
@@ -393,8 +302,6 @@ export class Proposal extends Message<Proposal> {
 
   /**
    * metadata is any arbitrary metadata attached to the proposal.
-   * the recommended format of the metadata is to be found here:
-   * https://docs.cosmos.network/v0.47/modules/gov#proposal-3
    *
    * @generated from field: string metadata = 10;
    */
@@ -419,42 +326,13 @@ export class Proposal extends Message<Proposal> {
   summary = "";
 
   /**
-   * proposer is the address of the proposal sumbitter
+   * Proposer is the address of the proposal sumbitter
    *
    * Since: cosmos-sdk 0.47
    *
    * @generated from field: string proposer = 13;
    */
   proposer = "";
-
-  /**
-   * expedited defines if the proposal is expedited
-   *
-   * Since: cosmos-sdk 0.50
-   * Deprecated: Use ProposalType instead.
-   *
-   * @generated from field: bool expedited = 14 [deprecated = true];
-   * @deprecated
-   */
-  expedited = false;
-
-  /**
-   * failed_reason defines the reason why the proposal failed
-   *
-   * Since: cosmos-sdk 0.50
-   *
-   * @generated from field: string failed_reason = 15;
-   */
-  failedReason = "";
-
-  /**
-   * proposal_type defines the type of the proposal
-   *
-   * Since: x/gov v1.0.0
-   *
-   * @generated from field: cosmos.gov.v1.ProposalType proposal_type = 16;
-   */
-  proposalType = ProposalType.UNSPECIFIED;
 
   constructor(data?: PartialMessage<Proposal>) {
     super();
@@ -477,9 +355,6 @@ export class Proposal extends Message<Proposal> {
     { no: 11, name: "title", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 12, name: "summary", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 13, name: "proposer", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 14, name: "expedited", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
-    { no: 15, name: "failed_reason", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 16, name: "proposal_type", kind: "enum", T: proto3.getEnumType(ProposalType) },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Proposal {
@@ -500,82 +375,6 @@ export class Proposal extends Message<Proposal> {
 }
 
 /**
- * ProposalVoteOptions defines the stringified vote options for proposals.
- * This allows to support multiple choice options for a given proposal.
- *
- * Since: x/gov v1.0.0
- *
- * @generated from message cosmos.gov.v1.ProposalVoteOptions
- */
-export class ProposalVoteOptions extends Message<ProposalVoteOptions> {
-  /**
-   * option_one is the first option of the proposal
-   *
-   * @generated from field: string option_one = 1;
-   */
-  optionOne = "";
-
-  /**
-   * option_two is the second option of the proposal
-   *
-   * @generated from field: string option_two = 2;
-   */
-  optionTwo = "";
-
-  /**
-   * option_three is the third option of the proposal
-   *
-   * @generated from field: string option_three = 3;
-   */
-  optionThree = "";
-
-  /**
-   * option_four is the fourth option of the proposal
-   *
-   * @generated from field: string option_four = 4;
-   */
-  optionFour = "";
-
-  /**
-   * option_spam is always present for all proposals.
-   *
-   * @generated from field: string option_spam = 5;
-   */
-  optionSpam = "";
-
-  constructor(data?: PartialMessage<ProposalVoteOptions>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
-
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "cosmos.gov.v1.ProposalVoteOptions";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "option_one", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "option_two", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 3, name: "option_three", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 4, name: "option_four", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 5, name: "option_spam", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-  ]);
-
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ProposalVoteOptions {
-    return new ProposalVoteOptions().fromBinary(bytes, options);
-  }
-
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ProposalVoteOptions {
-    return new ProposalVoteOptions().fromJson(jsonValue, options);
-  }
-
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ProposalVoteOptions {
-    return new ProposalVoteOptions().fromJsonString(jsonString, options);
-  }
-
-  static equals(a: ProposalVoteOptions | PlainMessage<ProposalVoteOptions> | undefined, b: ProposalVoteOptions | PlainMessage<ProposalVoteOptions> | undefined): boolean {
-    return proto3.util.equals(ProposalVoteOptions, a, b);
-  }
-}
-
-/**
  * TallyResult defines a standard tally for a governance proposal.
  *
  * @generated from message cosmos.gov.v1.TallyResult
@@ -584,16 +383,12 @@ export class TallyResult extends Message<TallyResult> {
   /**
    * yes_count is the number of yes votes on a proposal.
    *
-   * option 1
-   *
    * @generated from field: string yes_count = 1;
    */
   yesCount = "";
 
   /**
    * abstain_count is the number of abstain votes on a proposal.
-   *
-   * option 2
    *
    * @generated from field: string abstain_count = 2;
    */
@@ -602,8 +397,6 @@ export class TallyResult extends Message<TallyResult> {
   /**
    * no_count is the number of no votes on a proposal.
    *
-   * option 3
-   *
    * @generated from field: string no_count = 3;
    */
   noCount = "";
@@ -611,18 +404,9 @@ export class TallyResult extends Message<TallyResult> {
   /**
    * no_with_veto_count is the number of no with veto votes on a proposal.
    *
-   * option 4
-   *
    * @generated from field: string no_with_veto_count = 4;
    */
   noWithVetoCount = "";
-
-  /**
-   * spam_count is the number of spam votes on a proposal.
-   *
-   * @generated from field: string spam_count = 5;
-   */
-  spamCount = "";
 
   constructor(data?: PartialMessage<TallyResult>) {
     super();
@@ -636,7 +420,6 @@ export class TallyResult extends Message<TallyResult> {
     { no: 2, name: "abstain_count", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "no_count", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 4, name: "no_with_veto_count", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 5, name: "spam_count", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TallyResult {
@@ -685,8 +468,7 @@ export class Vote extends Message<Vote> {
   options: WeightedVoteOption[] = [];
 
   /**
-   * metadata is any arbitrary metadata attached to the vote.
-   * the recommended format of the metadata is to be found here: https://docs.cosmos.network/v0.47/modules/gov#vote-5
+   * metadata is any  arbitrary metadata to attached to the vote.
    *
    * @generated from field: string metadata = 5;
    */
@@ -727,7 +509,6 @@ export class Vote extends Message<Vote> {
  * DepositParams defines the params for deposits on governance proposals.
  *
  * @generated from message cosmos.gov.v1.DepositParams
- * @deprecated
  */
 export class DepositParams extends Message<DepositParams> {
   /**
@@ -778,7 +559,6 @@ export class DepositParams extends Message<DepositParams> {
  * VotingParams defines the params for voting on governance proposals.
  *
  * @generated from message cosmos.gov.v1.VotingParams
- * @deprecated
  */
 export class VotingParams extends Message<VotingParams> {
   /**
@@ -820,7 +600,6 @@ export class VotingParams extends Message<VotingParams> {
  * TallyParams defines the params for tallying votes on governance proposals.
  *
  * @generated from message cosmos.gov.v1.TallyParams
- * @deprecated
  */
 export class TallyParams extends Message<TallyParams> {
   /**
@@ -892,7 +671,7 @@ export class Params extends Message<Params> {
   minDeposit: Coin[] = [];
 
   /**
-   * Maximum period for stake holders to deposit on a proposal. Initial value: 2
+   * Maximum period for Atom holders to deposit on a proposal. Initial value: 2
    * months.
    *
    * @generated from field: google.protobuf.Duration max_deposit_period = 2;
@@ -937,53 +716,7 @@ export class Params extends Message<Params> {
   minInitialDepositRatio = "";
 
   /**
-   * The cancel ratio which will not be returned back to the depositors when a proposal is cancelled.
-   *
-   * Since: cosmos-sdk 0.50
-   *
-   * @generated from field: string proposal_cancel_ratio = 8;
-   */
-  proposalCancelRatio = "";
-
-  /**
-   * The address which will receive (proposal_cancel_ratio * deposit) proposal deposits.
-   * If empty, the (proposal_cancel_ratio * deposit) proposal deposits will be burned.
-   *
-   * Since: cosmos-sdk 0.50
-   *
-   * @generated from field: string proposal_cancel_dest = 9;
-   */
-  proposalCancelDest = "";
-
-  /**
-   * Duration of the voting period of an expedited proposal.
-   *
-   * Since: cosmos-sdk 0.50
-   *
-   * @generated from field: google.protobuf.Duration expedited_voting_period = 10;
-   */
-  expeditedVotingPeriod?: Duration;
-
-  /**
-   * Minimum proportion of Yes votes for proposal to pass. Default value: 0.67.
-   *
-   * Since: cosmos-sdk 0.50
-   *
-   * @generated from field: string expedited_threshold = 11;
-   */
-  expeditedThreshold = "";
-
-  /**
-   *  Minimum expedited deposit for a proposal to enter voting period.
-   *
-   * @generated from field: repeated cosmos.base.v1beta1.Coin expedited_min_deposit = 12;
-   */
-  expeditedMinDeposit: Coin[] = [];
-
-  /**
    * burn deposits if a proposal does not meet quorum
-   *
-   * Since: cosmos-sdk 0.47
    *
    * @generated from field: bool burn_vote_quorum = 13;
    */
@@ -992,8 +725,6 @@ export class Params extends Message<Params> {
   /**
    * burn deposits if the proposal does not enter voting period
    *
-   * Since: cosmos-sdk 0.47
-   *
    * @generated from field: bool burn_proposal_deposit_prevote = 14;
    */
   burnProposalDepositPrevote = false;
@@ -1001,64 +732,9 @@ export class Params extends Message<Params> {
   /**
    * burn deposits if quorum with vote type no_veto is met
    *
-   * Since: cosmos-sdk 0.47
-   *
    * @generated from field: bool burn_vote_veto = 15;
    */
   burnVoteVeto = false;
-
-  /**
-   * The ratio representing the proportion of the deposit value minimum that must be met when making a deposit.
-   * Default value: 0.01. Meaning that for a chain with a min_deposit of 100stake, a deposit of 1stake would be
-   * required.
-   *
-   * Since: cosmos-sdk 0.50
-   *
-   * @generated from field: string min_deposit_ratio = 16;
-   */
-  minDepositRatio = "";
-
-  /**
-   * proposal_cancel_max_period defines how far in the voting period a proposer can cancel a proposal.
-   * If the proposal is cancelled before the max cancel period, the deposit will be returned/burn to the
-   * depositors, according to the proposal_cancel_ratio and proposal_cancel_dest parameters.
-   * After the max cancel period, the proposal cannot be cancelled anymore.
-   *
-   * Since: x/gov v1.0.0
-   *
-   * @generated from field: string proposal_cancel_max_period = 17;
-   */
-  proposalCancelMaxPeriod = "";
-
-  /**
-   * optimistic_authorized_addresses is an optional governance parameter that limits the authorized accounts than can
-   * submit optimistic proposals
-   *
-   * Since: x/gov v1.0.0
-   *
-   * @generated from field: repeated string optimistic_authorized_addresses = 18;
-   */
-  optimisticAuthorizedAddresses: string[] = [];
-
-  /**
-   * optimistic rejected threshold defines at which percentage of NO votes, the optimistic proposal should fail and be
-   * converted to a standard proposal. The threshold is expressed as a percentage of the total bonded tokens.
-   *
-   * Since: x/gov v1.0.0
-   *
-   * @generated from field: string optimistic_rejected_threshold = 19;
-   */
-  optimisticRejectedThreshold = "";
-
-  /**
-   * yes_quorum defines the minimum percentage of Yes votes in quorum for proposal to pass.
-   * Default value: 0 (disabled).
-   *
-   * Since: x/gov v1.0.0
-   *
-   * @generated from field: string yes_quorum = 20;
-   */
-  yesQuorum = "";
 
   constructor(data?: PartialMessage<Params>) {
     super();
@@ -1075,19 +751,9 @@ export class Params extends Message<Params> {
     { no: 5, name: "threshold", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 6, name: "veto_threshold", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 7, name: "min_initial_deposit_ratio", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 8, name: "proposal_cancel_ratio", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 9, name: "proposal_cancel_dest", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 10, name: "expedited_voting_period", kind: "message", T: Duration },
-    { no: 11, name: "expedited_threshold", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 12, name: "expedited_min_deposit", kind: "message", T: Coin, repeated: true },
     { no: 13, name: "burn_vote_quorum", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
     { no: 14, name: "burn_proposal_deposit_prevote", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
     { no: 15, name: "burn_vote_veto", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
-    { no: 16, name: "min_deposit_ratio", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 17, name: "proposal_cancel_max_period", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 18, name: "optimistic_authorized_addresses", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
-    { no: 19, name: "optimistic_rejected_threshold", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 20, name: "yes_quorum", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Params {
@@ -1104,84 +770,6 @@ export class Params extends Message<Params> {
 
   static equals(a: Params | PlainMessage<Params> | undefined, b: Params | PlainMessage<Params> | undefined): boolean {
     return proto3.util.equals(Params, a, b);
-  }
-}
-
-/**
- * MessageBasedParams defines the parameters of specific messages in a proposal.
- * It is used to define the parameters of a proposal that is based on a specific message.
- * Once a message has message based params, it only supports a standard proposal type.
- *
- * Since: x/gov v1.0.0
- *
- * @generated from message cosmos.gov.v1.MessageBasedParams
- */
-export class MessageBasedParams extends Message<MessageBasedParams> {
-  /**
-   * Duration of the voting period.
-   *
-   * @generated from field: google.protobuf.Duration voting_period = 1;
-   */
-  votingPeriod?: Duration;
-
-  /**
-   * Minimum percentage of total stake needed to vote for a result to be considered valid.
-   *
-   * @generated from field: string quorum = 2;
-   */
-  quorum = "";
-
-  /**
-   * yes_quorum defines the minimum percentage of Yes votes in quorum for proposal to pass.
-   * If zero then the yes_quorum is disabled.
-   *
-   * @generated from field: string yes_quorum = 20;
-   */
-  yesQuorum = "";
-
-  /**
-   * Minimum proportion of Yes votes for proposal to pass.
-   *
-   * @generated from field: string threshold = 3;
-   */
-  threshold = "";
-
-  /**
-   * Minimum value of Veto votes to Total votes ratio for proposal to be vetoed.
-   *
-   * @generated from field: string veto_threshold = 4;
-   */
-  vetoThreshold = "";
-
-  constructor(data?: PartialMessage<MessageBasedParams>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
-
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "cosmos.gov.v1.MessageBasedParams";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "voting_period", kind: "message", T: Duration },
-    { no: 2, name: "quorum", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 20, name: "yes_quorum", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 3, name: "threshold", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 4, name: "veto_threshold", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-  ]);
-
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MessageBasedParams {
-    return new MessageBasedParams().fromBinary(bytes, options);
-  }
-
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MessageBasedParams {
-    return new MessageBasedParams().fromJson(jsonValue, options);
-  }
-
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MessageBasedParams {
-    return new MessageBasedParams().fromJsonString(jsonString, options);
-  }
-
-  static equals(a: MessageBasedParams | PlainMessage<MessageBasedParams> | undefined, b: MessageBasedParams | PlainMessage<MessageBasedParams> | undefined): boolean {
-    return proto3.util.equals(MessageBasedParams, a, b);
   }
 }
 

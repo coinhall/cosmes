@@ -8,7 +8,15 @@
 
 import { spawnSync } from "child_process";
 import degit from "degit";
-import { mkdirSync, readFileSync, rmSync, writeFileSync } from "fs";
+import {
+  mkdirSync,
+  readFileSync,
+  readdirSync,
+  renameSync,
+  rmSync,
+  statSync,
+  writeFileSync,
+} from "fs";
 import { globSync } from "glob";
 import { capitalize } from "lodash-es";
 import { dirname, join } from "path";
@@ -27,7 +35,7 @@ import { fileURLToPath } from "url";
  */
 const REPOS = [
   {
-    repo: "cosmos/cosmos-sdk#main",
+    repo: "cosmos/cosmos-sdk#v0.47.9",
     paths: ["proto"],
   },
   {
@@ -52,6 +60,10 @@ const REPOS = [
   },
   {
     repo: "evmos/ethermint#main",
+    paths: ["proto"],
+  },
+  {
+    repo: "dymensionxyz/osmosis#main-dym",
     paths: ["proto"],
   },
 ];
@@ -81,13 +93,49 @@ console.log("Generating TS files from proto files...");
 {
   for (const { repo, paths } of REPOS) {
     for (const path of paths) {
-      spawnSync("pnpm", ["buf", "generate", join(TMP_DIR, id(repo), path)], {
-        cwd: process.cwd(),
-        stdio: "inherit",
-      });
+      spawnSync(
+        "pnpm",
+        [
+          "buf",
+          "generate",
+          join(TMP_DIR, id(repo), path),
+          "--output",
+          join(
+            PROTOBUFS_DIR,
+            repo.startsWith("dymensionxyz") ? "dymension" : ""
+          ),
+        ],
+        {
+          cwd: process.cwd(),
+          stdio: "inherit",
+        }
+      );
     }
     console.log(`✔️ [${repo}]`);
   }
+}
+
+console.log("Flattening dymension protobufs...");
+{
+  // Move all dirs in protobufs/dymension/osmosis out into protobufs/dymension
+  const dymensionDir = join(PROTOBUFS_DIR, "dymension");
+  const dymensionOsmosisDir = join(dymensionDir, "osmosis");
+  // Move all subdirs up one level
+  readdirSync(dymensionOsmosisDir).forEach((file) => {
+    const currentFile = join(dymensionOsmosisDir, file);
+    const stats = statSync(currentFile);
+    if (stats.isDirectory()) {
+      renameSync(currentFile, join(dymensionDir, file));
+    }
+  });
+  // Remove all empty dirs
+  readdirSync(dymensionDir).forEach((file) => {
+    const currentFile = join(dymensionDir, file);
+    const stats = statSync(currentFile);
+    if (stats.isDirectory() && stats.size === 0) {
+      rmSync(currentFile, { recursive: true, force: true });
+    }
+  });
 }
 
 console.log("Generating src/index.ts file and renaming exports...");

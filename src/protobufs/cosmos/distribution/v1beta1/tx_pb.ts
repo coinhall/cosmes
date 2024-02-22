@@ -262,11 +262,7 @@ export class MsgWithdrawValidatorCommissionResponse extends Message<MsgWithdrawV
  * MsgFundCommunityPool allows an account to directly
  * fund the community pool.
  *
- * Deprecated: Use x/protocolpool module's MsgFundCommunityPool instead.
- * Since: cosmos-sdk 0.50
- *
  * @generated from message cosmos.distribution.v1beta1.MsgFundCommunityPool
- * @deprecated
  */
 export class MsgFundCommunityPool extends Message<MsgFundCommunityPool> {
   /**
@@ -311,11 +307,7 @@ export class MsgFundCommunityPool extends Message<MsgFundCommunityPool> {
 /**
  * MsgFundCommunityPoolResponse defines the Msg/FundCommunityPool response type.
  *
- * Deprecated
- * Since: cosmos-sdk 0.50
- *
  * @generated from message cosmos.distribution.v1beta1.MsgFundCommunityPoolResponse
- * @deprecated
  */
 export class MsgFundCommunityPoolResponse extends Message<MsgFundCommunityPoolResponse> {
   constructor(data?: PartialMessage<MsgFundCommunityPoolResponse>) {
@@ -435,11 +427,13 @@ export class MsgUpdateParamsResponse extends Message<MsgUpdateParamsResponse> {
 }
 
 /**
- * Deprecated: Use x/protocolpool module's MsgCommunityPoolSpend instead
- * Since: cosmos-sdk 0.50
+ * MsgCommunityPoolSpend defines a message for sending tokens from the community
+ * pool to another account. This message is typically executed via a governance
+ * proposal with the governance module being the executing authority.
+ *
+ * Since: cosmos-sdk 0.47
  *
  * @generated from message cosmos.distribution.v1beta1.MsgCommunityPoolSpend
- * @deprecated
  */
 export class MsgCommunityPoolSpend extends Message<MsgCommunityPoolSpend> {
   /**
@@ -493,11 +487,9 @@ export class MsgCommunityPoolSpend extends Message<MsgCommunityPoolSpend> {
  * MsgCommunityPoolSpendResponse defines the response to executing a
  * MsgCommunityPoolSpend message.
  *
- * Deprecated
- * Since: cosmos-sdk 0.50
+ * Since: cosmos-sdk 0.47
  *
  * @generated from message cosmos.distribution.v1beta1.MsgCommunityPoolSpendResponse
- * @deprecated
  */
 export class MsgCommunityPoolSpendResponse extends Message<MsgCommunityPoolSpendResponse> {
   constructor(data?: PartialMessage<MsgCommunityPoolSpendResponse>) {
@@ -524,96 +516,6 @@ export class MsgCommunityPoolSpendResponse extends Message<MsgCommunityPoolSpend
 
   static equals(a: MsgCommunityPoolSpendResponse | PlainMessage<MsgCommunityPoolSpendResponse> | undefined, b: MsgCommunityPoolSpendResponse | PlainMessage<MsgCommunityPoolSpendResponse> | undefined): boolean {
     return proto3.util.equals(MsgCommunityPoolSpendResponse, a, b);
-  }
-}
-
-/**
- * DepositValidatorRewardsPool defines the request structure to provide
- * additional rewards to delegators from a specific validator.
- *
- * Since: cosmos-sdk 0.50
- *
- * @generated from message cosmos.distribution.v1beta1.MsgDepositValidatorRewardsPool
- */
-export class MsgDepositValidatorRewardsPool extends Message<MsgDepositValidatorRewardsPool> {
-  /**
-   * @generated from field: string depositor = 1;
-   */
-  depositor = "";
-
-  /**
-   * @generated from field: string validator_address = 2;
-   */
-  validatorAddress = "";
-
-  /**
-   * @generated from field: repeated cosmos.base.v1beta1.Coin amount = 3;
-   */
-  amount: Coin[] = [];
-
-  constructor(data?: PartialMessage<MsgDepositValidatorRewardsPool>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
-
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "cosmos.distribution.v1beta1.MsgDepositValidatorRewardsPool";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "depositor", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "validator_address", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 3, name: "amount", kind: "message", T: Coin, repeated: true },
-  ]);
-
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgDepositValidatorRewardsPool {
-    return new MsgDepositValidatorRewardsPool().fromBinary(bytes, options);
-  }
-
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MsgDepositValidatorRewardsPool {
-    return new MsgDepositValidatorRewardsPool().fromJson(jsonValue, options);
-  }
-
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MsgDepositValidatorRewardsPool {
-    return new MsgDepositValidatorRewardsPool().fromJsonString(jsonString, options);
-  }
-
-  static equals(a: MsgDepositValidatorRewardsPool | PlainMessage<MsgDepositValidatorRewardsPool> | undefined, b: MsgDepositValidatorRewardsPool | PlainMessage<MsgDepositValidatorRewardsPool> | undefined): boolean {
-    return proto3.util.equals(MsgDepositValidatorRewardsPool, a, b);
-  }
-}
-
-/**
- * MsgDepositValidatorRewardsPoolResponse defines the response to executing a
- * MsgDepositValidatorRewardsPool message.
- *
- * Since: cosmos-sdk 0.50
- *
- * @generated from message cosmos.distribution.v1beta1.MsgDepositValidatorRewardsPoolResponse
- */
-export class MsgDepositValidatorRewardsPoolResponse extends Message<MsgDepositValidatorRewardsPoolResponse> {
-  constructor(data?: PartialMessage<MsgDepositValidatorRewardsPoolResponse>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
-
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "cosmos.distribution.v1beta1.MsgDepositValidatorRewardsPoolResponse";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-  ]);
-
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgDepositValidatorRewardsPoolResponse {
-    return new MsgDepositValidatorRewardsPoolResponse().fromBinary(bytes, options);
-  }
-
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MsgDepositValidatorRewardsPoolResponse {
-    return new MsgDepositValidatorRewardsPoolResponse().fromJson(jsonValue, options);
-  }
-
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MsgDepositValidatorRewardsPoolResponse {
-    return new MsgDepositValidatorRewardsPoolResponse().fromJsonString(jsonString, options);
-  }
-
-  static equals(a: MsgDepositValidatorRewardsPoolResponse | PlainMessage<MsgDepositValidatorRewardsPoolResponse> | undefined, b: MsgDepositValidatorRewardsPoolResponse | PlainMessage<MsgDepositValidatorRewardsPoolResponse> | undefined): boolean {
-    return proto3.util.equals(MsgDepositValidatorRewardsPoolResponse, a, b);
   }
 }
 

@@ -5,7 +5,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { MsgExec, MsgExecResponse, MsgGrant, MsgGrantResponse, MsgPruneExpiredGrants, MsgPruneExpiredGrantsResponse, MsgRevoke, MsgRevokeResponse } from "./tx_pb.js";
+import { MsgExec, MsgExecResponse, MsgGrant, MsgGrantResponse, MsgRevoke, MsgRevokeResponse } from "./tx_pb.js";
 
 const TYPE_NAME = "cosmos.authz.v1beta1.Msg";
 
@@ -49,19 +49,5 @@ export const MsgRevokeService = {
   method: "Revoke",
   Request: MsgRevoke,
   Response: MsgRevokeResponse,
-} as const;
-
-/**
- * PruneExpiredGrants prunes the expired grants. Currently up to 75 at a time.
- *
- * Since cosmos-sdk 0.51
- *
- * @generated from rpc cosmos.authz.v1beta1.Msg.PruneExpiredGrants
- */
-export const MsgPruneExpiredGrantsService = {
-  typeName: TYPE_NAME,
-  method: "PruneExpiredGrants",
-  Request: MsgPruneExpiredGrants,
-  Response: MsgPruneExpiredGrantsResponse,
 } as const;
 

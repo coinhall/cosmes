@@ -6,7 +6,7 @@
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
 import { Message, proto3, protoInt64 } from "@bufbuild/protobuf";
 import { PageRequest, PageResponse } from "../../base/query/v1beta1/pagination_pb.js";
-import { DelegationResponse, HistoricalInfo, HistoricalRecord, Params, Pool, RedelegationResponse, UnbondingDelegation, Validator } from "./staking_pb.js";
+import { DelegationResponse, HistoricalInfo, Params, Pool, RedelegationResponse, UnbondingDelegation, Validator } from "./staking_pb.js";
 
 /**
  * QueryValidatorsRequest is request type for Query/Validators RPC method.
@@ -1122,15 +1122,9 @@ export class QueryHistoricalInfoResponse extends Message<QueryHistoricalInfoResp
   /**
    * hist defines the historical info at the given height.
    *
-   * @generated from field: cosmos.staking.v1beta1.HistoricalInfo hist = 1 [deprecated = true];
-   * @deprecated
+   * @generated from field: cosmos.staking.v1beta1.HistoricalInfo hist = 1;
    */
   hist?: HistoricalInfo;
-
-  /**
-   * @generated from field: cosmos.staking.v1beta1.HistoricalRecord historical_record = 2;
-   */
-  historicalRecord?: HistoricalRecord;
 
   constructor(data?: PartialMessage<QueryHistoricalInfoResponse>) {
     super();
@@ -1141,7 +1135,6 @@ export class QueryHistoricalInfoResponse extends Message<QueryHistoricalInfoResp
   static readonly typeName = "cosmos.staking.v1beta1.QueryHistoricalInfoResponse";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "hist", kind: "message", T: HistoricalInfo },
-    { no: 2, name: "historical_record", kind: "message", T: HistoricalRecord },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): QueryHistoricalInfoResponse {

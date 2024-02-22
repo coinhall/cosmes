@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { MsgBeginRedelegate, MsgBeginRedelegateResponse, MsgCancelUnbondingDelegation, MsgCancelUnbondingDelegationResponse, MsgCreateValidator, MsgCreateValidatorResponse, MsgDelegate, MsgDelegateResponse, MsgEditValidator, MsgEditValidatorResponse, MsgRotateConsPubKey, MsgRotateConsPubKeyResponse, MsgUndelegate, MsgUndelegateResponse, MsgUpdateParams, MsgUpdateParamsResponse } from "./tx_pb.js";
+import { MsgBeginRedelegate, MsgBeginRedelegateResponse, MsgCancelUnbondingDelegation, MsgCancelUnbondingDelegationResponse, MsgCreateValidator, MsgCreateValidatorResponse, MsgDelegate, MsgDelegateResponse, MsgEditValidator, MsgEditValidatorResponse, MsgUndelegate, MsgUndelegateResponse, MsgUpdateParams, MsgUpdateParamsResponse } from "./tx_pb.js";
 
 const TYPE_NAME = "cosmos.staking.v1beta1.Msg";
 
@@ -97,19 +97,5 @@ export const MsgUpdateParamsService = {
   method: "UpdateParams",
   Request: MsgUpdateParams,
   Response: MsgUpdateParamsResponse,
-} as const;
-
-/**
- * RotateConsPubKey defines an operation for rotating the consensus keys
- * of a validator.
- * Since: cosmos-sdk 0.51
- *
- * @generated from rpc cosmos.staking.v1beta1.Msg.RotateConsPubKey
- */
-export const MsgRotateConsPubKeyService = {
-  typeName: TYPE_NAME,
-  method: "RotateConsPubKey",
-  Request: MsgRotateConsPubKey,
-  Response: MsgRotateConsPubKeyResponse,
 } as const;
 

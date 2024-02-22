@@ -102,3 +102,81 @@ export class DecCoin extends Message<DecCoin> {
   }
 }
 
+/**
+ * IntProto defines a Protobuf wrapper around an Int object.
+ *
+ * @generated from message cosmos.base.v1beta1.IntProto
+ */
+export class IntProto extends Message<IntProto> {
+  /**
+   * @generated from field: string int = 1;
+   */
+  int = "";
+
+  constructor(data?: PartialMessage<IntProto>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "cosmos.base.v1beta1.IntProto";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "int", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): IntProto {
+    return new IntProto().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): IntProto {
+    return new IntProto().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): IntProto {
+    return new IntProto().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: IntProto | PlainMessage<IntProto> | undefined, b: IntProto | PlainMessage<IntProto> | undefined): boolean {
+    return proto3.util.equals(IntProto, a, b);
+  }
+}
+
+/**
+ * DecProto defines a Protobuf wrapper around a Dec object.
+ *
+ * @generated from message cosmos.base.v1beta1.DecProto
+ */
+export class DecProto extends Message<DecProto> {
+  /**
+   * @generated from field: string dec = 1;
+   */
+  dec = "";
+
+  constructor(data?: PartialMessage<DecProto>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "cosmos.base.v1beta1.DecProto";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "dec", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): DecProto {
+    return new DecProto().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): DecProto {
+    return new DecProto().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): DecProto {
+    return new DecProto().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: DecProto | PlainMessage<DecProto> | undefined, b: DecProto | PlainMessage<DecProto> | undefined): boolean {
+    return proto3.util.equals(DecProto, a, b);
+  }
+}
+

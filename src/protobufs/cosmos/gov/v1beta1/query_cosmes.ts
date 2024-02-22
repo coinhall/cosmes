@@ -33,7 +33,6 @@ export const QueryProposalsService = {
 
 /**
  * Vote queries voted information based on proposalID, voterAddr.
- * Due to how we handle state, this query would error for proposals that has already been finished.
  *
  * @generated from rpc cosmos.gov.v1beta1.Query.Vote
  */
@@ -69,7 +68,7 @@ export const QueryParamsService = {
 } as const;
 
 /**
- * Deposit queries single deposit information based on proposalID, depositor address.
+ * Deposit queries single deposit information based proposalID, depositAddr.
  *
  * @generated from rpc cosmos.gov.v1beta1.Query.Deposit
  */

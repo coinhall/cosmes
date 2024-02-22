@@ -80,7 +80,7 @@ export const QueryDelegationRewardsService = {
 } as const;
 
 /**
- * DelegationTotalRewards queries the total rewards accrued by each
+ * DelegationTotalRewards queries the total rewards accrued by a each
  * validator.
  *
  * @generated from rpc cosmos.distribution.v1beta1.Query.DelegationTotalRewards
@@ -119,11 +119,7 @@ export const QueryDelegatorWithdrawAddressService = {
 /**
  * CommunityPool queries the community pool coins.
  *
- * Deprecated: Prefer to use x/protocolpool module's CommunityPool rpc method.
- * Since: cosmos-sdk 0.50
- *
  * @generated from rpc cosmos.distribution.v1beta1.Query.CommunityPool
- * @deprecated
  */
 export const QueryCommunityPoolService = {
   typeName: TYPE_NAME,

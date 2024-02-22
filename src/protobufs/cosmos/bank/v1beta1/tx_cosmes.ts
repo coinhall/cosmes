@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { MsgBurn, MsgBurnResponse, MsgMultiSend, MsgMultiSendResponse, MsgSend, MsgSendResponse, MsgSetSendEnabled, MsgSetSendEnabledResponse, MsgUpdateParams, MsgUpdateParamsResponse } from "./tx_pb.js";
+import { MsgMultiSend, MsgMultiSendResponse, MsgSend, MsgSendResponse, MsgSetSendEnabled, MsgSetSendEnabledResponse, MsgUpdateParams, MsgUpdateParamsResponse } from "./tx_pb.js";
 
 const TYPE_NAME = "cosmos.bank.v1beta1.Msg";
 
@@ -29,20 +29,6 @@ export const MsgMultiSendService = {
   method: "MultiSend",
   Request: MsgMultiSend,
   Response: MsgMultiSendResponse,
-} as const;
-
-/**
- * Burn defines a method for burning coins by an account.
- *
- * Since: cosmos-sdk 0.51
- *
- * @generated from rpc cosmos.bank.v1beta1.Msg.Burn
- */
-export const MsgBurnService = {
-  typeName: TYPE_NAME,
-  method: "Burn",
-  Request: MsgBurn,
-  Response: MsgBurnResponse,
 } as const;
 
 /**

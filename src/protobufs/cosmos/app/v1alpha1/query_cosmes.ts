@@ -11,7 +11,6 @@ const TYPE_NAME = "cosmos.app.v1alpha1.Query";
  * Config returns the current app config.
  *
  * @generated from rpc cosmos.app.v1alpha1.Query.Config
- * @deprecated
  */
 export const QueryConfigService = {
   typeName: TYPE_NAME,

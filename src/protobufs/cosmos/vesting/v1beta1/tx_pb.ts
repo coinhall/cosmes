@@ -42,15 +42,6 @@ export class MsgCreateVestingAccount extends Message<MsgCreateVestingAccount> {
    */
   delayed = false;
 
-  /**
-   * start of vesting as unix time (in seconds).
-   *
-   * Since 0.51.x
-   *
-   * @generated from field: int64 start_time = 6;
-   */
-  startTime = protoInt64.zero;
-
   constructor(data?: PartialMessage<MsgCreateVestingAccount>) {
     super();
     proto3.util.initPartial(data, this);
@@ -64,7 +55,6 @@ export class MsgCreateVestingAccount extends Message<MsgCreateVestingAccount> {
     { no: 3, name: "amount", kind: "message", T: Coin, repeated: true },
     { no: 4, name: "end_time", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
     { no: 5, name: "delayed", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
-    { no: 6, name: "start_time", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgCreateVestingAccount {

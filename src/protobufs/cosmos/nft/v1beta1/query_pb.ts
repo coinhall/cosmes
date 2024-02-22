@@ -58,57 +58,6 @@ export class QueryBalanceRequest extends Message<QueryBalanceRequest> {
 }
 
 /**
- * QueryBalanceByQueryStringRequest is the request type for the Query/Balance RPC method
- *
- * Since: nft v0.1.1
- *
- * @generated from message cosmos.nft.v1beta1.QueryBalanceByQueryStringRequest
- */
-export class QueryBalanceByQueryStringRequest extends Message<QueryBalanceByQueryStringRequest> {
-  /**
-   * class_id associated with the nft
-   *
-   * @generated from field: string class_id = 1;
-   */
-  classId = "";
-
-  /**
-   * owner is the owner address of the nft
-   *
-   * @generated from field: string owner = 2;
-   */
-  owner = "";
-
-  constructor(data?: PartialMessage<QueryBalanceByQueryStringRequest>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
-
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "cosmos.nft.v1beta1.QueryBalanceByQueryStringRequest";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "class_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "owner", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-  ]);
-
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): QueryBalanceByQueryStringRequest {
-    return new QueryBalanceByQueryStringRequest().fromBinary(bytes, options);
-  }
-
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): QueryBalanceByQueryStringRequest {
-    return new QueryBalanceByQueryStringRequest().fromJson(jsonValue, options);
-  }
-
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): QueryBalanceByQueryStringRequest {
-    return new QueryBalanceByQueryStringRequest().fromJsonString(jsonString, options);
-  }
-
-  static equals(a: QueryBalanceByQueryStringRequest | PlainMessage<QueryBalanceByQueryStringRequest> | undefined, b: QueryBalanceByQueryStringRequest | PlainMessage<QueryBalanceByQueryStringRequest> | undefined): boolean {
-    return proto3.util.equals(QueryBalanceByQueryStringRequest, a, b);
-  }
-}
-
-/**
  * QueryBalanceResponse is the response type for the Query/Balance RPC method
  *
  * @generated from message cosmos.nft.v1beta1.QueryBalanceResponse
@@ -146,49 +95,6 @@ export class QueryBalanceResponse extends Message<QueryBalanceResponse> {
 
   static equals(a: QueryBalanceResponse | PlainMessage<QueryBalanceResponse> | undefined, b: QueryBalanceResponse | PlainMessage<QueryBalanceResponse> | undefined): boolean {
     return proto3.util.equals(QueryBalanceResponse, a, b);
-  }
-}
-
-/**
- * QueryBalanceByQueryStringResponse is the response type for the Query/Balance RPC method
- *
- * Since: nft v0.1.1
- *
- * @generated from message cosmos.nft.v1beta1.QueryBalanceByQueryStringResponse
- */
-export class QueryBalanceByQueryStringResponse extends Message<QueryBalanceByQueryStringResponse> {
-  /**
-   * amount is the number of all NFTs of a given class owned by the owner
-   *
-   * @generated from field: uint64 amount = 1;
-   */
-  amount = protoInt64.zero;
-
-  constructor(data?: PartialMessage<QueryBalanceByQueryStringResponse>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
-
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "cosmos.nft.v1beta1.QueryBalanceByQueryStringResponse";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "amount", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
-  ]);
-
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): QueryBalanceByQueryStringResponse {
-    return new QueryBalanceByQueryStringResponse().fromBinary(bytes, options);
-  }
-
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): QueryBalanceByQueryStringResponse {
-    return new QueryBalanceByQueryStringResponse().fromJson(jsonValue, options);
-  }
-
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): QueryBalanceByQueryStringResponse {
-    return new QueryBalanceByQueryStringResponse().fromJsonString(jsonString, options);
-  }
-
-  static equals(a: QueryBalanceByQueryStringResponse | PlainMessage<QueryBalanceByQueryStringResponse> | undefined, b: QueryBalanceByQueryStringResponse | PlainMessage<QueryBalanceByQueryStringResponse> | undefined): boolean {
-    return proto3.util.equals(QueryBalanceByQueryStringResponse, a, b);
   }
 }
 
@@ -242,57 +148,6 @@ export class QueryOwnerRequest extends Message<QueryOwnerRequest> {
 }
 
 /**
- * QueryOwnerByQueryStringRequest is the request type for the Query/Owner RPC method
- *
- * Since: nft v0.1.1
- *
- * @generated from message cosmos.nft.v1beta1.QueryOwnerByQueryStringRequest
- */
-export class QueryOwnerByQueryStringRequest extends Message<QueryOwnerByQueryStringRequest> {
-  /**
-   * class_id associated with the nft
-   *
-   * @generated from field: string class_id = 1;
-   */
-  classId = "";
-
-  /**
-   * id is a unique identifier of the NFT
-   *
-   * @generated from field: string id = 2;
-   */
-  id = "";
-
-  constructor(data?: PartialMessage<QueryOwnerByQueryStringRequest>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
-
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "cosmos.nft.v1beta1.QueryOwnerByQueryStringRequest";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "class_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-  ]);
-
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): QueryOwnerByQueryStringRequest {
-    return new QueryOwnerByQueryStringRequest().fromBinary(bytes, options);
-  }
-
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): QueryOwnerByQueryStringRequest {
-    return new QueryOwnerByQueryStringRequest().fromJson(jsonValue, options);
-  }
-
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): QueryOwnerByQueryStringRequest {
-    return new QueryOwnerByQueryStringRequest().fromJsonString(jsonString, options);
-  }
-
-  static equals(a: QueryOwnerByQueryStringRequest | PlainMessage<QueryOwnerByQueryStringRequest> | undefined, b: QueryOwnerByQueryStringRequest | PlainMessage<QueryOwnerByQueryStringRequest> | undefined): boolean {
-    return proto3.util.equals(QueryOwnerByQueryStringRequest, a, b);
-  }
-}
-
-/**
  * QueryOwnerResponse is the response type for the Query/Owner RPC method
  *
  * @generated from message cosmos.nft.v1beta1.QueryOwnerResponse
@@ -330,49 +185,6 @@ export class QueryOwnerResponse extends Message<QueryOwnerResponse> {
 
   static equals(a: QueryOwnerResponse | PlainMessage<QueryOwnerResponse> | undefined, b: QueryOwnerResponse | PlainMessage<QueryOwnerResponse> | undefined): boolean {
     return proto3.util.equals(QueryOwnerResponse, a, b);
-  }
-}
-
-/**
- * QueryOwnerByQueryStringResponse is the response type for the Query/Owner RPC method
- *
- * Since: nft v0.1.1
- *
- * @generated from message cosmos.nft.v1beta1.QueryOwnerByQueryStringResponse
- */
-export class QueryOwnerByQueryStringResponse extends Message<QueryOwnerByQueryStringResponse> {
-  /**
-   * owner is the owner address of the nft
-   *
-   * @generated from field: string owner = 1;
-   */
-  owner = "";
-
-  constructor(data?: PartialMessage<QueryOwnerByQueryStringResponse>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
-
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "cosmos.nft.v1beta1.QueryOwnerByQueryStringResponse";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "owner", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-  ]);
-
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): QueryOwnerByQueryStringResponse {
-    return new QueryOwnerByQueryStringResponse().fromBinary(bytes, options);
-  }
-
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): QueryOwnerByQueryStringResponse {
-    return new QueryOwnerByQueryStringResponse().fromJson(jsonValue, options);
-  }
-
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): QueryOwnerByQueryStringResponse {
-    return new QueryOwnerByQueryStringResponse().fromJsonString(jsonString, options);
-  }
-
-  static equals(a: QueryOwnerByQueryStringResponse | PlainMessage<QueryOwnerByQueryStringResponse> | undefined, b: QueryOwnerByQueryStringResponse | PlainMessage<QueryOwnerByQueryStringResponse> | undefined): boolean {
-    return proto3.util.equals(QueryOwnerByQueryStringResponse, a, b);
   }
 }
 
@@ -418,49 +230,6 @@ export class QuerySupplyRequest extends Message<QuerySupplyRequest> {
 }
 
 /**
- * QuerySupplyByQueryStringRequest is the request type for the Query/Supply RPC method
- *
- * Since: nft v0.1.1
- *
- * @generated from message cosmos.nft.v1beta1.QuerySupplyByQueryStringRequest
- */
-export class QuerySupplyByQueryStringRequest extends Message<QuerySupplyByQueryStringRequest> {
-  /**
-   * class_id associated with the nft
-   *
-   * @generated from field: string class_id = 1;
-   */
-  classId = "";
-
-  constructor(data?: PartialMessage<QuerySupplyByQueryStringRequest>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
-
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "cosmos.nft.v1beta1.QuerySupplyByQueryStringRequest";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "class_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-  ]);
-
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): QuerySupplyByQueryStringRequest {
-    return new QuerySupplyByQueryStringRequest().fromBinary(bytes, options);
-  }
-
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): QuerySupplyByQueryStringRequest {
-    return new QuerySupplyByQueryStringRequest().fromJson(jsonValue, options);
-  }
-
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): QuerySupplyByQueryStringRequest {
-    return new QuerySupplyByQueryStringRequest().fromJsonString(jsonString, options);
-  }
-
-  static equals(a: QuerySupplyByQueryStringRequest | PlainMessage<QuerySupplyByQueryStringRequest> | undefined, b: QuerySupplyByQueryStringRequest | PlainMessage<QuerySupplyByQueryStringRequest> | undefined): boolean {
-    return proto3.util.equals(QuerySupplyByQueryStringRequest, a, b);
-  }
-}
-
-/**
  * QuerySupplyResponse is the response type for the Query/Supply RPC method
  *
  * @generated from message cosmos.nft.v1beta1.QuerySupplyResponse
@@ -498,49 +267,6 @@ export class QuerySupplyResponse extends Message<QuerySupplyResponse> {
 
   static equals(a: QuerySupplyResponse | PlainMessage<QuerySupplyResponse> | undefined, b: QuerySupplyResponse | PlainMessage<QuerySupplyResponse> | undefined): boolean {
     return proto3.util.equals(QuerySupplyResponse, a, b);
-  }
-}
-
-/**
- * QuerySupplyByQueryStringResponse is the response type for the Query/Supply RPC method
- *
- * Since: nft v0.1.1
- *
- * @generated from message cosmos.nft.v1beta1.QuerySupplyByQueryStringResponse
- */
-export class QuerySupplyByQueryStringResponse extends Message<QuerySupplyByQueryStringResponse> {
-  /**
-   * amount is the number of all NFTs from the given class
-   *
-   * @generated from field: uint64 amount = 1;
-   */
-  amount = protoInt64.zero;
-
-  constructor(data?: PartialMessage<QuerySupplyByQueryStringResponse>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
-
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "cosmos.nft.v1beta1.QuerySupplyByQueryStringResponse";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "amount", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
-  ]);
-
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): QuerySupplyByQueryStringResponse {
-    return new QuerySupplyByQueryStringResponse().fromBinary(bytes, options);
-  }
-
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): QuerySupplyByQueryStringResponse {
-    return new QuerySupplyByQueryStringResponse().fromJson(jsonValue, options);
-  }
-
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): QuerySupplyByQueryStringResponse {
-    return new QuerySupplyByQueryStringResponse().fromJsonString(jsonString, options);
-  }
-
-  static equals(a: QuerySupplyByQueryStringResponse | PlainMessage<QuerySupplyByQueryStringResponse> | undefined, b: QuerySupplyByQueryStringResponse | PlainMessage<QuerySupplyByQueryStringResponse> | undefined): boolean {
-    return proto3.util.equals(QuerySupplyByQueryStringResponse, a, b);
   }
 }
 
@@ -700,57 +426,6 @@ export class QueryNFTRequest extends Message<QueryNFTRequest> {
 }
 
 /**
- * QueryNFTByQueryStringRequest is the request type for the Query/NFT RPC method
- *
- * Since: nft v0.1.1
- *
- * @generated from message cosmos.nft.v1beta1.QueryNFTByQueryStringRequest
- */
-export class QueryNFTByQueryStringRequest extends Message<QueryNFTByQueryStringRequest> {
-  /**
-   * class_id associated with the nft
-   *
-   * @generated from field: string class_id = 1;
-   */
-  classId = "";
-
-  /**
-   * id is a unique identifier of the NFT
-   *
-   * @generated from field: string id = 2;
-   */
-  id = "";
-
-  constructor(data?: PartialMessage<QueryNFTByQueryStringRequest>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
-
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "cosmos.nft.v1beta1.QueryNFTByQueryStringRequest";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "class_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-  ]);
-
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): QueryNFTByQueryStringRequest {
-    return new QueryNFTByQueryStringRequest().fromBinary(bytes, options);
-  }
-
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): QueryNFTByQueryStringRequest {
-    return new QueryNFTByQueryStringRequest().fromJson(jsonValue, options);
-  }
-
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): QueryNFTByQueryStringRequest {
-    return new QueryNFTByQueryStringRequest().fromJsonString(jsonString, options);
-  }
-
-  static equals(a: QueryNFTByQueryStringRequest | PlainMessage<QueryNFTByQueryStringRequest> | undefined, b: QueryNFTByQueryStringRequest | PlainMessage<QueryNFTByQueryStringRequest> | undefined): boolean {
-    return proto3.util.equals(QueryNFTByQueryStringRequest, a, b);
-  }
-}
-
-/**
  * QueryNFTResponse is the response type for the Query/NFT RPC method
  *
  * @generated from message cosmos.nft.v1beta1.QueryNFTResponse
@@ -788,49 +463,6 @@ export class QueryNFTResponse extends Message<QueryNFTResponse> {
 
   static equals(a: QueryNFTResponse | PlainMessage<QueryNFTResponse> | undefined, b: QueryNFTResponse | PlainMessage<QueryNFTResponse> | undefined): boolean {
     return proto3.util.equals(QueryNFTResponse, a, b);
-  }
-}
-
-/**
- * QueryNFTByQueryStringResponse is the response type for the Query/NFT RPC method
- *
- * Since: nft v0.1.1
- *
- * @generated from message cosmos.nft.v1beta1.QueryNFTByQueryStringResponse
- */
-export class QueryNFTByQueryStringResponse extends Message<QueryNFTByQueryStringResponse> {
-  /**
-   * owner is the owner address of the nft
-   *
-   * @generated from field: cosmos.nft.v1beta1.NFT nft = 1;
-   */
-  nft?: NFT;
-
-  constructor(data?: PartialMessage<QueryNFTByQueryStringResponse>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
-
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "cosmos.nft.v1beta1.QueryNFTByQueryStringResponse";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "nft", kind: "message", T: NFT },
-  ]);
-
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): QueryNFTByQueryStringResponse {
-    return new QueryNFTByQueryStringResponse().fromBinary(bytes, options);
-  }
-
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): QueryNFTByQueryStringResponse {
-    return new QueryNFTByQueryStringResponse().fromJson(jsonValue, options);
-  }
-
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): QueryNFTByQueryStringResponse {
-    return new QueryNFTByQueryStringResponse().fromJsonString(jsonString, options);
-  }
-
-  static equals(a: QueryNFTByQueryStringResponse | PlainMessage<QueryNFTByQueryStringResponse> | undefined, b: QueryNFTByQueryStringResponse | PlainMessage<QueryNFTByQueryStringResponse> | undefined): boolean {
-    return proto3.util.equals(QueryNFTByQueryStringResponse, a, b);
   }
 }
 
@@ -876,49 +508,6 @@ export class QueryClassRequest extends Message<QueryClassRequest> {
 }
 
 /**
- * QueryClassByQueryStringRequest is the request type for the Query/Class RPC method
- *
- * Since: nft v0.1.1
- *
- * @generated from message cosmos.nft.v1beta1.QueryClassByQueryStringRequest
- */
-export class QueryClassByQueryStringRequest extends Message<QueryClassByQueryStringRequest> {
-  /**
-   * class_id associated with the nft
-   *
-   * @generated from field: string class_id = 1;
-   */
-  classId = "";
-
-  constructor(data?: PartialMessage<QueryClassByQueryStringRequest>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
-
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "cosmos.nft.v1beta1.QueryClassByQueryStringRequest";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "class_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-  ]);
-
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): QueryClassByQueryStringRequest {
-    return new QueryClassByQueryStringRequest().fromBinary(bytes, options);
-  }
-
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): QueryClassByQueryStringRequest {
-    return new QueryClassByQueryStringRequest().fromJson(jsonValue, options);
-  }
-
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): QueryClassByQueryStringRequest {
-    return new QueryClassByQueryStringRequest().fromJsonString(jsonString, options);
-  }
-
-  static equals(a: QueryClassByQueryStringRequest | PlainMessage<QueryClassByQueryStringRequest> | undefined, b: QueryClassByQueryStringRequest | PlainMessage<QueryClassByQueryStringRequest> | undefined): boolean {
-    return proto3.util.equals(QueryClassByQueryStringRequest, a, b);
-  }
-}
-
-/**
  * QueryClassResponse is the response type for the Query/Class RPC method
  *
  * @generated from message cosmos.nft.v1beta1.QueryClassResponse
@@ -956,49 +545,6 @@ export class QueryClassResponse extends Message<QueryClassResponse> {
 
   static equals(a: QueryClassResponse | PlainMessage<QueryClassResponse> | undefined, b: QueryClassResponse | PlainMessage<QueryClassResponse> | undefined): boolean {
     return proto3.util.equals(QueryClassResponse, a, b);
-  }
-}
-
-/**
- * QueryClassByQueryStringResponse is the response type for the Query/Class RPC method
- *
- * Since: nft v0.1.1
- *
- * @generated from message cosmos.nft.v1beta1.QueryClassByQueryStringResponse
- */
-export class QueryClassByQueryStringResponse extends Message<QueryClassByQueryStringResponse> {
-  /**
-   * class defines the class of the nft type.
-   *
-   * @generated from field: cosmos.nft.v1beta1.Class class = 1;
-   */
-  class?: Class;
-
-  constructor(data?: PartialMessage<QueryClassByQueryStringResponse>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
-
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "cosmos.nft.v1beta1.QueryClassByQueryStringResponse";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "class", kind: "message", T: Class },
-  ]);
-
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): QueryClassByQueryStringResponse {
-    return new QueryClassByQueryStringResponse().fromBinary(bytes, options);
-  }
-
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): QueryClassByQueryStringResponse {
-    return new QueryClassByQueryStringResponse().fromJson(jsonValue, options);
-  }
-
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): QueryClassByQueryStringResponse {
-    return new QueryClassByQueryStringResponse().fromJsonString(jsonString, options);
-  }
-
-  static equals(a: QueryClassByQueryStringResponse | PlainMessage<QueryClassByQueryStringResponse> | undefined, b: QueryClassByQueryStringResponse | PlainMessage<QueryClassByQueryStringResponse> | undefined): boolean {
-    return proto3.util.equals(QueryClassByQueryStringResponse, a, b);
   }
 }
 

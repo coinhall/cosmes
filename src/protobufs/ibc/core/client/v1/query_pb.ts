@@ -7,6 +7,7 @@ import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialM
 import { Any, Message, proto3, protoInt64 } from "@bufbuild/protobuf";
 import { ConsensusStateWithHeight, Height, IdentifiedClientState, Params } from "./client_pb.js";
 import { PageRequest, PageResponse } from "../../../../cosmos/base/query/v1beta1/pagination_pb.js";
+import { MerklePath } from "../../commitment/v1/commitment_pb.js";
 
 /**
  * QueryClientStateRequest is the request type for the Query/ClientState RPC
@@ -834,6 +835,136 @@ export class QueryUpgradedConsensusStateResponse extends Message<QueryUpgradedCo
 
   static equals(a: QueryUpgradedConsensusStateResponse | PlainMessage<QueryUpgradedConsensusStateResponse> | undefined, b: QueryUpgradedConsensusStateResponse | PlainMessage<QueryUpgradedConsensusStateResponse> | undefined): boolean {
     return proto3.util.equals(QueryUpgradedConsensusStateResponse, a, b);
+  }
+}
+
+/**
+ * QueryVerifyMembershipRequest is the request type for the Query/VerifyMembership RPC method
+ *
+ * @generated from message ibc.core.client.v1.QueryVerifyMembershipRequest
+ */
+export class QueryVerifyMembershipRequest extends Message<QueryVerifyMembershipRequest> {
+  /**
+   * client unique identifier.
+   *
+   * @generated from field: string client_id = 1;
+   */
+  clientId = "";
+
+  /**
+   * the proof to be verified by the client.
+   *
+   * @generated from field: bytes proof = 2;
+   */
+  proof = new Uint8Array(0);
+
+  /**
+   * the height of the commitment root at which the proof is verified.
+   *
+   * @generated from field: ibc.core.client.v1.Height proof_height = 3;
+   */
+  proofHeight?: Height;
+
+  /**
+   * the commitment key path.
+   *
+   * @generated from field: ibc.core.commitment.v1.MerklePath merkle_path = 4;
+   */
+  merklePath?: MerklePath;
+
+  /**
+   * the value which is proven.
+   *
+   * @generated from field: bytes value = 5;
+   */
+  value = new Uint8Array(0);
+
+  /**
+   * optional time delay
+   *
+   * @generated from field: uint64 time_delay = 6;
+   */
+  timeDelay = protoInt64.zero;
+
+  /**
+   * optional block delay
+   *
+   * @generated from field: uint64 block_delay = 7;
+   */
+  blockDelay = protoInt64.zero;
+
+  constructor(data?: PartialMessage<QueryVerifyMembershipRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "ibc.core.client.v1.QueryVerifyMembershipRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "client_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "proof", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
+    { no: 3, name: "proof_height", kind: "message", T: Height },
+    { no: 4, name: "merkle_path", kind: "message", T: MerklePath },
+    { no: 5, name: "value", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
+    { no: 6, name: "time_delay", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+    { no: 7, name: "block_delay", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): QueryVerifyMembershipRequest {
+    return new QueryVerifyMembershipRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): QueryVerifyMembershipRequest {
+    return new QueryVerifyMembershipRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): QueryVerifyMembershipRequest {
+    return new QueryVerifyMembershipRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: QueryVerifyMembershipRequest | PlainMessage<QueryVerifyMembershipRequest> | undefined, b: QueryVerifyMembershipRequest | PlainMessage<QueryVerifyMembershipRequest> | undefined): boolean {
+    return proto3.util.equals(QueryVerifyMembershipRequest, a, b);
+  }
+}
+
+/**
+ * QueryVerifyMembershipResponse is the response type for the Query/VerifyMembership RPC method
+ *
+ * @generated from message ibc.core.client.v1.QueryVerifyMembershipResponse
+ */
+export class QueryVerifyMembershipResponse extends Message<QueryVerifyMembershipResponse> {
+  /**
+   * boolean indicating success or failure of proof verification.
+   *
+   * @generated from field: bool success = 1;
+   */
+  success = false;
+
+  constructor(data?: PartialMessage<QueryVerifyMembershipResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "ibc.core.client.v1.QueryVerifyMembershipResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "success", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): QueryVerifyMembershipResponse {
+    return new QueryVerifyMembershipResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): QueryVerifyMembershipResponse {
+    return new QueryVerifyMembershipResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): QueryVerifyMembershipResponse {
+    return new QueryVerifyMembershipResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: QueryVerifyMembershipResponse | PlainMessage<QueryVerifyMembershipResponse> | undefined, b: QueryVerifyMembershipResponse | PlainMessage<QueryVerifyMembershipResponse> | undefined): boolean {
+    return proto3.util.equals(QueryVerifyMembershipResponse, a, b);
   }
 }
 

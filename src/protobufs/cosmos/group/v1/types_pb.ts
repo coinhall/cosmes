@@ -480,7 +480,6 @@ export class GroupInfo extends Message<GroupInfo> {
 
   /**
    * metadata is any arbitrary metadata to attached to the group.
-   * the recommended format of the metadata is to be found here: https://docs.cosmos.network/v0.47/modules/group#group-1
    *
    * @generated from field: string metadata = 3;
    */
@@ -915,7 +914,7 @@ export class TallyResult extends Message<TallyResult> {
 }
 
 /**
- * Vote represents a vote for a proposal.string metadata
+ * Vote represents a vote for a proposal.
  *
  * @generated from message cosmos.group.v1.Vote
  */
@@ -943,7 +942,6 @@ export class Vote extends Message<Vote> {
 
   /**
    * metadata is any arbitrary metadata attached to the vote.
-   * the recommended format of the metadata is to be found here: https://docs.cosmos.network/v0.47/modules/group#vote-2
    *
    * @generated from field: string metadata = 4;
    */

@@ -21,34 +21,12 @@ export class Module extends Message<Module> {
   maxExecutionPeriod?: Duration;
 
   /**
-   * MaxMetadataLen defines the max chars allowed in all
-   * messages that allows creating or updating a group
-   * with a metadata field
+   * max_metadata_len defines the max length of the metadata bytes field for various entities within the group module.
    * Defaults to 255 if not explicitly set.
    *
    * @generated from field: uint64 max_metadata_len = 2;
    */
   maxMetadataLen = protoInt64.zero;
-
-  /**
-   * MaxProposalTitleLen defines the max chars allowed
-   * in string for the MsgSubmitProposal and Proposal
-   * summary field
-   * Defaults to 255 if not explicitly set.
-   *
-   * @generated from field: uint64 max_proposal_title_len = 3;
-   */
-  maxProposalTitleLen = protoInt64.zero;
-
-  /**
-   * MaxProposalSummaryLen defines the max chars allowed
-   * in string for the MsgSubmitProposal and Proposal
-   * summary field
-   * Defaults to 10200 if not explicitly set.
-   *
-   * @generated from field: uint64 max_proposal_summary_len = 4;
-   */
-  maxProposalSummaryLen = protoInt64.zero;
 
   constructor(data?: PartialMessage<Module>) {
     super();
@@ -60,8 +38,6 @@ export class Module extends Message<Module> {
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "max_execution_period", kind: "message", T: Duration },
     { no: 2, name: "max_metadata_len", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
-    { no: 3, name: "max_proposal_title_len", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
-    { no: 4, name: "max_proposal_summary_len", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Module {

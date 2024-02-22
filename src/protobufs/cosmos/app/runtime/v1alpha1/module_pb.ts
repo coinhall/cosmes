@@ -63,42 +63,6 @@ export class Module extends Message<Module> {
    */
   overrideStoreKeys: StoreKeyConfig[] = [];
 
-  /**
-   * order_migrations defines the order in which module migrations are performed.
-   * If this is left empty, it uses the default migration order.
-   * https://pkg.go.dev/github.com/cosmos/cosmos-sdk@v0.47.0-alpha2/types/module#DefaultMigrationsOrder
-   *
-   * @generated from field: repeated string order_migrations = 7;
-   */
-  orderMigrations: string[] = [];
-
-  /**
-   * precommiters specifies the module names of the precommiters
-   * to call in the order in which they should be called. If this is left empty
-   * no precommit function will be registered.
-   *
-   * @generated from field: repeated string precommiters = 8;
-   */
-  precommiters: string[] = [];
-
-  /**
-   * prepare_check_staters specifies the module names of the prepare_check_staters
-   * to call in the order in which they should be called. If this is left empty
-   * no preparecheckstate function will be registered.
-   *
-   * @generated from field: repeated string prepare_check_staters = 9;
-   */
-  prepareCheckStaters: string[] = [];
-
-  /**
-   * pre_blockers specifies the module names of pre blockers
-   * to call in the order in which they should be called. If this is left empty
-   * no pre blocker will be registered.
-   *
-   * @generated from field: repeated string pre_blockers = 10;
-   */
-  preBlockers: string[] = [];
-
   constructor(data?: PartialMessage<Module>) {
     super();
     proto3.util.initPartial(data, this);
@@ -113,10 +77,6 @@ export class Module extends Message<Module> {
     { no: 4, name: "init_genesis", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
     { no: 5, name: "export_genesis", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
     { no: 6, name: "override_store_keys", kind: "message", T: StoreKeyConfig, repeated: true },
-    { no: 7, name: "order_migrations", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
-    { no: 8, name: "precommiters", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
-    { no: 9, name: "prepare_check_staters", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
-    { no: 10, name: "pre_blockers", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Module {

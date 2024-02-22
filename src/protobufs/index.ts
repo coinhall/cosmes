@@ -5,12 +5,12 @@ export {
   Consensus as TendermintVersionConsensus,
 } from "./tendermint/version/types_pb.js";
 export {
-  BlockIDFlag as TendermintTypesBlockIDFlag,
   ValidatorSet as TendermintTypesValidatorSet,
   Validator as TendermintTypesValidator,
   SimpleValidator as TendermintTypesSimpleValidator,
 } from "./tendermint/types/validator_pb.js";
 export {
+  BlockIDFlag as TendermintTypesBlockIDFlag,
   SignedMsgType as TendermintTypesSignedMsgType,
   PartSetHeader as TendermintTypesPartSetHeader,
   Part as TendermintTypesPart,
@@ -20,8 +20,6 @@ export {
   Vote as TendermintTypesVote,
   Commit as TendermintTypesCommit,
   CommitSig as TendermintTypesCommitSig,
-  ExtendedCommit as TendermintTypesExtendedCommit,
-  ExtendedCommitSig as TendermintTypesExtendedCommitSig,
   Proposal as TendermintTypesProposal,
   SignedHeader as TendermintTypesSignedHeader,
   LightBlock as TendermintTypesLightBlock,
@@ -35,7 +33,6 @@ export {
   ValidatorParams as TendermintTypesValidatorParams,
   VersionParams as TendermintTypesVersionParams,
   HashedParams as TendermintTypesHashedParams,
-  ABCIParams as TendermintTypesABCIParams,
 } from "./tendermint/types/params_pb.js";
 export {
   Evidence as TendermintTypesEvidence,
@@ -74,7 +71,10 @@ export {
   RequestInfo as TendermintAbciRequestInfo,
   RequestInitChain as TendermintAbciRequestInitChain,
   RequestQuery as TendermintAbciRequestQuery,
+  RequestBeginBlock as TendermintAbciRequestBeginBlock,
   RequestCheckTx as TendermintAbciRequestCheckTx,
+  RequestDeliverTx as TendermintAbciRequestDeliverTx,
+  RequestEndBlock as TendermintAbciRequestEndBlock,
   RequestCommit as TendermintAbciRequestCommit,
   RequestListSnapshots as TendermintAbciRequestListSnapshots,
   RequestOfferSnapshot as TendermintAbciRequestOfferSnapshot,
@@ -82,9 +82,6 @@ export {
   RequestApplySnapshotChunk as TendermintAbciRequestApplySnapshotChunk,
   RequestPrepareProposal as TendermintAbciRequestPrepareProposal,
   RequestProcessProposal as TendermintAbciRequestProcessProposal,
-  RequestExtendVote as TendermintAbciRequestExtendVote,
-  RequestVerifyVoteExtension as TendermintAbciRequestVerifyVoteExtension,
-  RequestFinalizeBlock as TendermintAbciRequestFinalizeBlock,
   Response as TendermintAbciResponse,
   ResponseException as TendermintAbciResponseException,
   ResponseEcho as TendermintAbciResponseEcho,
@@ -92,7 +89,10 @@ export {
   ResponseInfo as TendermintAbciResponseInfo,
   ResponseInitChain as TendermintAbciResponseInitChain,
   ResponseQuery as TendermintAbciResponseQuery,
+  ResponseBeginBlock as TendermintAbciResponseBeginBlock,
   ResponseCheckTx as TendermintAbciResponseCheckTx,
+  ResponseDeliverTx as TendermintAbciResponseDeliverTx,
+  ResponseEndBlock as TendermintAbciResponseEndBlock,
   ResponseCommit as TendermintAbciResponseCommit,
   ResponseListSnapshots as TendermintAbciResponseListSnapshots,
   ResponseOfferSnapshot as TendermintAbciResponseOfferSnapshot,
@@ -103,15 +103,10 @@ export {
   ResponsePrepareProposal as TendermintAbciResponsePrepareProposal,
   ResponseProcessProposal as TendermintAbciResponseProcessProposal,
   ResponseProcessProposal_ProposalStatus as TendermintAbciResponseProcessProposal_ProposalStatus,
-  ResponseExtendVote as TendermintAbciResponseExtendVote,
-  ResponseVerifyVoteExtension as TendermintAbciResponseVerifyVoteExtension,
-  ResponseVerifyVoteExtension_VerifyStatus as TendermintAbciResponseVerifyVoteExtension_VerifyStatus,
-  ResponseFinalizeBlock as TendermintAbciResponseFinalizeBlock,
   CommitInfo as TendermintAbciCommitInfo,
   ExtendedCommitInfo as TendermintAbciExtendedCommitInfo,
   Event as TendermintAbciEvent,
   EventAttribute as TendermintAbciEventAttribute,
-  ExecTxResult as TendermintAbciExecTxResult,
   TxResult as TendermintAbciTxResult,
   Validator as TendermintAbciValidator,
   ValidatorUpdate as TendermintAbciValidatorUpdate,
@@ -121,22 +116,22 @@ export {
   Snapshot as TendermintAbciSnapshot,
 } from "./tendermint/abci/types_pb.js";
 export {
-  ABCIEchoService as TendermintAbciABCIEchoService,
-  ABCIFlushService as TendermintAbciABCIFlushService,
-  ABCIInfoService as TendermintAbciABCIInfoService,
-  ABCICheckTxService as TendermintAbciABCICheckTxService,
-  ABCIQueryService as TendermintAbciABCIQueryService,
-  ABCICommitService as TendermintAbciABCICommitService,
-  ABCIInitChainService as TendermintAbciABCIInitChainService,
-  ABCIListSnapshotsService as TendermintAbciABCIListSnapshotsService,
-  ABCIOfferSnapshotService as TendermintAbciABCIOfferSnapshotService,
-  ABCILoadSnapshotChunkService as TendermintAbciABCILoadSnapshotChunkService,
-  ABCIApplySnapshotChunkService as TendermintAbciABCIApplySnapshotChunkService,
-  ABCIPrepareProposalService as TendermintAbciABCIPrepareProposalService,
-  ABCIProcessProposalService as TendermintAbciABCIProcessProposalService,
-  ABCIExtendVoteService as TendermintAbciABCIExtendVoteService,
-  ABCIVerifyVoteExtensionService as TendermintAbciABCIVerifyVoteExtensionService,
-  ABCIFinalizeBlockService as TendermintAbciABCIFinalizeBlockService,
+  ABCIApplicationEchoService as TendermintAbciABCIApplicationEchoService,
+  ABCIApplicationFlushService as TendermintAbciABCIApplicationFlushService,
+  ABCIApplicationInfoService as TendermintAbciABCIApplicationInfoService,
+  ABCIApplicationDeliverTxService as TendermintAbciABCIApplicationDeliverTxService,
+  ABCIApplicationCheckTxService as TendermintAbciABCIApplicationCheckTxService,
+  ABCIApplicationQueryService as TendermintAbciABCIApplicationQueryService,
+  ABCIApplicationCommitService as TendermintAbciABCIApplicationCommitService,
+  ABCIApplicationInitChainService as TendermintAbciABCIApplicationInitChainService,
+  ABCIApplicationBeginBlockService as TendermintAbciABCIApplicationBeginBlockService,
+  ABCIApplicationEndBlockService as TendermintAbciABCIApplicationEndBlockService,
+  ABCIApplicationListSnapshotsService as TendermintAbciABCIApplicationListSnapshotsService,
+  ABCIApplicationOfferSnapshotService as TendermintAbciABCIApplicationOfferSnapshotService,
+  ABCIApplicationLoadSnapshotChunkService as TendermintAbciABCIApplicationLoadSnapshotChunkService,
+  ABCIApplicationApplySnapshotChunkService as TendermintAbciABCIApplicationApplySnapshotChunkService,
+  ABCIApplicationPrepareProposalService as TendermintAbciABCIApplicationPrepareProposalService,
+  ABCIApplicationProcessProposalService as TendermintAbciABCIApplicationProcessProposalService,
 } from "./tendermint/abci/types_cosmes.js";
 export {
   MsgSetValidatorSetPreference as OsmosisValsetprefV1beta1MsgSetValidatorSetPreference,
@@ -204,6 +199,7 @@ export {
 } from "./osmosis/txfees/v1beta1/feetoken_pb.js";
 export {
   TwapRecord as OsmosisTwapV1beta1TwapRecord,
+  PruningState as OsmosisTwapV1beta1PruningState,
 } from "./osmosis/twap/v1beta1/twap_record_pb.js";
 export {
   ArithmeticTwapRequest as OsmosisTwapV1beta1ArithmeticTwapRequest,
@@ -486,6 +482,7 @@ export {
   CosmwasmPoolInfo as OsmosisProtorevV1beta1CosmwasmPoolInfo,
   WeightMap as OsmosisProtorevV1beta1WeightMap,
   BaseDenom as OsmosisProtorevV1beta1BaseDenom,
+  BaseDenoms as OsmosisProtorevV1beta1BaseDenoms,
   AllProtocolRevenue as OsmosisProtorevV1beta1AllProtocolRevenue,
   CyclicArbTracker as OsmosisProtorevV1beta1CyclicArbTracker,
 } from "./osmosis/protorev/v1beta1/protorev_pb.js";
@@ -1139,6 +1136,8 @@ export {
   UserPositionsResponse as OsmosisConcentratedliquidityV1beta1UserPositionsResponse,
   PositionByIdRequest as OsmosisConcentratedliquidityV1beta1PositionByIdRequest,
   PositionByIdResponse as OsmosisConcentratedliquidityV1beta1PositionByIdResponse,
+  NumPoolPositionsRequest as OsmosisConcentratedliquidityV1beta1NumPoolPositionsRequest,
+  NumPoolPositionsResponse as OsmosisConcentratedliquidityV1beta1NumPoolPositionsResponse,
   PoolsRequest as OsmosisConcentratedliquidityV1beta1PoolsRequest,
   PoolsResponse as OsmosisConcentratedliquidityV1beta1PoolsResponse,
   ParamsRequest as OsmosisConcentratedliquidityV1beta1ParamsRequest,
@@ -2511,6 +2510,8 @@ export {
   QueryUpgradedClientStateResponse as IbcCoreClientV1QueryUpgradedClientStateResponse,
   QueryUpgradedConsensusStateRequest as IbcCoreClientV1QueryUpgradedConsensusStateRequest,
   QueryUpgradedConsensusStateResponse as IbcCoreClientV1QueryUpgradedConsensusStateResponse,
+  QueryVerifyMembershipRequest as IbcCoreClientV1QueryVerifyMembershipRequest,
+  QueryVerifyMembershipResponse as IbcCoreClientV1QueryVerifyMembershipResponse,
 } from "./ibc/core/client/v1/query_pb.js";
 export {
   QueryClientStateService as IbcCoreClientV1QueryClientStateService,
@@ -2522,6 +2523,7 @@ export {
   QueryClientParamsService as IbcCoreClientV1QueryClientParamsService,
   QueryUpgradedClientStateService as IbcCoreClientV1QueryUpgradedClientStateService,
   QueryUpgradedConsensusStateService as IbcCoreClientV1QueryUpgradedConsensusStateService,
+  QueryVerifyMembershipService as IbcCoreClientV1QueryVerifyMembershipService,
 } from "./ibc/core/client/v1/query_cosmes.js";
 export {
   GenesisState as IbcCoreClientV1GenesisState,
@@ -2973,6 +2975,297 @@ export {
   PrivKey as EthermintCryptoV1Ethsecp256k1PrivKey,
 } from "./ethermint/crypto/v1/ethsecp256k1/keys_pb.js";
 export {
+  QueryParamsRequest as DymensionTxfeesV1beta1QueryParamsRequest,
+  QueryParamsResponse as DymensionTxfeesV1beta1QueryParamsResponse,
+  QueryFeeTokensRequest as DymensionTxfeesV1beta1QueryFeeTokensRequest,
+  QueryFeeTokensResponse as DymensionTxfeesV1beta1QueryFeeTokensResponse,
+  QueryDenomSpotPriceRequest as DymensionTxfeesV1beta1QueryDenomSpotPriceRequest,
+  QueryDenomSpotPriceResponse as DymensionTxfeesV1beta1QueryDenomSpotPriceResponse,
+  QueryDenomPoolIdRequest as DymensionTxfeesV1beta1QueryDenomPoolIdRequest,
+  QueryDenomPoolIdResponse as DymensionTxfeesV1beta1QueryDenomPoolIdResponse,
+  QueryBaseDenomRequest as DymensionTxfeesV1beta1QueryBaseDenomRequest,
+  QueryBaseDenomResponse as DymensionTxfeesV1beta1QueryBaseDenomResponse,
+} from "./dymension/txfees/v1beta1/query_pb.js";
+export {
+  QueryParamsService as DymensionTxfeesV1beta1QueryParamsService,
+  QueryFeeTokensService as DymensionTxfeesV1beta1QueryFeeTokensService,
+  QueryDenomSpotPriceService as DymensionTxfeesV1beta1QueryDenomSpotPriceService,
+  QueryDenomPoolIdService as DymensionTxfeesV1beta1QueryDenomPoolIdService,
+  QueryBaseDenomService as DymensionTxfeesV1beta1QueryBaseDenomService,
+} from "./dymension/txfees/v1beta1/query_cosmes.js";
+export {
+  GenesisState as DymensionTxfeesV1beta1GenesisState,
+  Params as DymensionTxfeesV1beta1Params,
+} from "./dymension/txfees/v1beta1/genesis_pb.js";
+export {
+  FeeToken as DymensionTxfeesV1beta1FeeToken,
+} from "./dymension/txfees/v1beta1/feetoken_pb.js";
+export {
+  SwapAmountInRoute as DymensionPoolmanagerV1beta1SwapAmountInRoute,
+  SwapAmountOutRoute as DymensionPoolmanagerV1beta1SwapAmountOutRoute,
+} from "./dymension/poolmanager/v1beta1/swap_route_pb.js";
+export {
+  PoolType as DymensionPoolmanagerV1beta1PoolType,
+  ModuleRoute as DymensionPoolmanagerV1beta1ModuleRoute,
+} from "./dymension/poolmanager/v1beta1/module_route_pb.js";
+export {
+  GenesisState as DymensionPoolmanagerV1beta1GenesisState,
+} from "./dymension/poolmanager/v1beta1/genesis_pb.js";
+export {
+  MsgLockTokens as DymensionLockupMsgLockTokens,
+  MsgLockTokensResponse as DymensionLockupMsgLockTokensResponse,
+  MsgBeginUnlockingAll as DymensionLockupMsgBeginUnlockingAll,
+  MsgBeginUnlockingAllResponse as DymensionLockupMsgBeginUnlockingAllResponse,
+  MsgBeginUnlocking as DymensionLockupMsgBeginUnlocking,
+  MsgBeginUnlockingResponse as DymensionLockupMsgBeginUnlockingResponse,
+  MsgExtendLockup as DymensionLockupMsgExtendLockup,
+  MsgExtendLockupResponse as DymensionLockupMsgExtendLockupResponse,
+  MsgForceUnlock as DymensionLockupMsgForceUnlock,
+  MsgForceUnlockResponse as DymensionLockupMsgForceUnlockResponse,
+} from "./dymension/lockup/tx_pb.js";
+export {
+  MsgLockTokensService as DymensionLockupMsgLockTokensService,
+  MsgBeginUnlockingAllService as DymensionLockupMsgBeginUnlockingAllService,
+  MsgBeginUnlockingService as DymensionLockupMsgBeginUnlockingService,
+  MsgExtendLockupService as DymensionLockupMsgExtendLockupService,
+  MsgForceUnlockService as DymensionLockupMsgForceUnlockService,
+} from "./dymension/lockup/tx_cosmes.js";
+export {
+  ModuleBalanceRequest as DymensionLockupModuleBalanceRequest,
+  ModuleBalanceResponse as DymensionLockupModuleBalanceResponse,
+  ModuleLockedAmountRequest as DymensionLockupModuleLockedAmountRequest,
+  ModuleLockedAmountResponse as DymensionLockupModuleLockedAmountResponse,
+  AccountUnlockableCoinsRequest as DymensionLockupAccountUnlockableCoinsRequest,
+  AccountUnlockableCoinsResponse as DymensionLockupAccountUnlockableCoinsResponse,
+  AccountUnlockingCoinsRequest as DymensionLockupAccountUnlockingCoinsRequest,
+  AccountUnlockingCoinsResponse as DymensionLockupAccountUnlockingCoinsResponse,
+  AccountLockedCoinsRequest as DymensionLockupAccountLockedCoinsRequest,
+  AccountLockedCoinsResponse as DymensionLockupAccountLockedCoinsResponse,
+  AccountLockedPastTimeRequest as DymensionLockupAccountLockedPastTimeRequest,
+  AccountLockedPastTimeResponse as DymensionLockupAccountLockedPastTimeResponse,
+  AccountLockedPastTimeNotUnlockingOnlyRequest as DymensionLockupAccountLockedPastTimeNotUnlockingOnlyRequest,
+  AccountLockedPastTimeNotUnlockingOnlyResponse as DymensionLockupAccountLockedPastTimeNotUnlockingOnlyResponse,
+  AccountUnlockedBeforeTimeRequest as DymensionLockupAccountUnlockedBeforeTimeRequest,
+  AccountUnlockedBeforeTimeResponse as DymensionLockupAccountUnlockedBeforeTimeResponse,
+  AccountLockedPastTimeDenomRequest as DymensionLockupAccountLockedPastTimeDenomRequest,
+  AccountLockedPastTimeDenomResponse as DymensionLockupAccountLockedPastTimeDenomResponse,
+  LockedDenomRequest as DymensionLockupLockedDenomRequest,
+  LockedDenomResponse as DymensionLockupLockedDenomResponse,
+  LockedRequest as DymensionLockupLockedRequest,
+  LockedResponse as DymensionLockupLockedResponse,
+  NextLockIDRequest as DymensionLockupNextLockIDRequest,
+  NextLockIDResponse as DymensionLockupNextLockIDResponse,
+  AccountLockedLongerDurationRequest as DymensionLockupAccountLockedLongerDurationRequest,
+  AccountLockedLongerDurationResponse as DymensionLockupAccountLockedLongerDurationResponse,
+  AccountLockedDurationRequest as DymensionLockupAccountLockedDurationRequest,
+  AccountLockedDurationResponse as DymensionLockupAccountLockedDurationResponse,
+  AccountLockedLongerDurationNotUnlockingOnlyRequest as DymensionLockupAccountLockedLongerDurationNotUnlockingOnlyRequest,
+  AccountLockedLongerDurationNotUnlockingOnlyResponse as DymensionLockupAccountLockedLongerDurationNotUnlockingOnlyResponse,
+  AccountLockedLongerDurationDenomRequest as DymensionLockupAccountLockedLongerDurationDenomRequest,
+  AccountLockedLongerDurationDenomResponse as DymensionLockupAccountLockedLongerDurationDenomResponse,
+  QueryParamsRequest as DymensionLockupQueryParamsRequest,
+  QueryParamsResponse as DymensionLockupQueryParamsResponse,
+} from "./dymension/lockup/query_pb.js";
+export {
+  QueryModuleBalanceService as DymensionLockupQueryModuleBalanceService,
+  QueryModuleLockedAmountService as DymensionLockupQueryModuleLockedAmountService,
+  QueryAccountUnlockableCoinsService as DymensionLockupQueryAccountUnlockableCoinsService,
+  QueryAccountUnlockingCoinsService as DymensionLockupQueryAccountUnlockingCoinsService,
+  QueryAccountLockedCoinsService as DymensionLockupQueryAccountLockedCoinsService,
+  QueryAccountLockedPastTimeService as DymensionLockupQueryAccountLockedPastTimeService,
+  QueryAccountLockedPastTimeNotUnlockingOnlyService as DymensionLockupQueryAccountLockedPastTimeNotUnlockingOnlyService,
+  QueryAccountUnlockedBeforeTimeService as DymensionLockupQueryAccountUnlockedBeforeTimeService,
+  QueryAccountLockedPastTimeDenomService as DymensionLockupQueryAccountLockedPastTimeDenomService,
+  QueryLockedDenomService as DymensionLockupQueryLockedDenomService,
+  QueryLockedByIDService as DymensionLockupQueryLockedByIDService,
+  QueryNextLockIDService as DymensionLockupQueryNextLockIDService,
+  QueryAccountLockedLongerDurationService as DymensionLockupQueryAccountLockedLongerDurationService,
+  QueryAccountLockedDurationService as DymensionLockupQueryAccountLockedDurationService,
+  QueryAccountLockedLongerDurationNotUnlockingOnlyService as DymensionLockupQueryAccountLockedLongerDurationNotUnlockingOnlyService,
+  QueryAccountLockedLongerDurationDenomService as DymensionLockupQueryAccountLockedLongerDurationDenomService,
+  QueryParamsService as DymensionLockupQueryParamsService,
+} from "./dymension/lockup/query_cosmes.js";
+export {
+  Params as DymensionLockupParams,
+} from "./dymension/lockup/params_pb.js";
+export {
+  LockQueryType as DymensionLockupLockQueryType,
+  PeriodLock as DymensionLockupPeriodLock,
+  QueryCondition as DymensionLockupQueryCondition,
+} from "./dymension/lockup/lock_pb.js";
+export {
+  GenesisState as DymensionLockupGenesisState,
+} from "./dymension/lockup/genesis_pb.js";
+export {
+  MsgCreateGauge as DymensionIncentivesMsgCreateGauge,
+  MsgCreateGaugeResponse as DymensionIncentivesMsgCreateGaugeResponse,
+  MsgAddToGauge as DymensionIncentivesMsgAddToGauge,
+  MsgAddToGaugeResponse as DymensionIncentivesMsgAddToGaugeResponse,
+} from "./dymension/incentives/tx_pb.js";
+export {
+  MsgCreateGaugeService as DymensionIncentivesMsgCreateGaugeService,
+  MsgAddToGaugeService as DymensionIncentivesMsgAddToGaugeService,
+} from "./dymension/incentives/tx_cosmes.js";
+export {
+  ModuleToDistributeCoinsRequest as DymensionIncentivesModuleToDistributeCoinsRequest,
+  ModuleToDistributeCoinsResponse as DymensionIncentivesModuleToDistributeCoinsResponse,
+  GaugeByIDRequest as DymensionIncentivesGaugeByIDRequest,
+  GaugeByIDResponse as DymensionIncentivesGaugeByIDResponse,
+  GaugesRequest as DymensionIncentivesGaugesRequest,
+  GaugesResponse as DymensionIncentivesGaugesResponse,
+  ActiveGaugesRequest as DymensionIncentivesActiveGaugesRequest,
+  ActiveGaugesResponse as DymensionIncentivesActiveGaugesResponse,
+  ActiveGaugesPerDenomRequest as DymensionIncentivesActiveGaugesPerDenomRequest,
+  ActiveGaugesPerDenomResponse as DymensionIncentivesActiveGaugesPerDenomResponse,
+  UpcomingGaugesRequest as DymensionIncentivesUpcomingGaugesRequest,
+  UpcomingGaugesResponse as DymensionIncentivesUpcomingGaugesResponse,
+  UpcomingGaugesPerDenomRequest as DymensionIncentivesUpcomingGaugesPerDenomRequest,
+  UpcomingGaugesPerDenomResponse as DymensionIncentivesUpcomingGaugesPerDenomResponse,
+  RewardsEstRequest as DymensionIncentivesRewardsEstRequest,
+  RewardsEstResponse as DymensionIncentivesRewardsEstResponse,
+  QueryLockableDurationsRequest as DymensionIncentivesQueryLockableDurationsRequest,
+  QueryLockableDurationsResponse as DymensionIncentivesQueryLockableDurationsResponse,
+} from "./dymension/incentives/query_pb.js";
+export {
+  QueryModuleToDistributeCoinsService as DymensionIncentivesQueryModuleToDistributeCoinsService,
+  QueryGaugeByIDService as DymensionIncentivesQueryGaugeByIDService,
+  QueryGaugesService as DymensionIncentivesQueryGaugesService,
+  QueryActiveGaugesService as DymensionIncentivesQueryActiveGaugesService,
+  QueryActiveGaugesPerDenomService as DymensionIncentivesQueryActiveGaugesPerDenomService,
+  QueryUpcomingGaugesService as DymensionIncentivesQueryUpcomingGaugesService,
+  QueryUpcomingGaugesPerDenomService as DymensionIncentivesQueryUpcomingGaugesPerDenomService,
+  QueryRewardsEstService as DymensionIncentivesQueryRewardsEstService,
+  QueryLockableDurationsService as DymensionIncentivesQueryLockableDurationsService,
+} from "./dymension/incentives/query_cosmes.js";
+export {
+  Params as DymensionIncentivesParams,
+} from "./dymension/incentives/params_pb.js";
+export {
+  GenesisState as DymensionIncentivesGenesisState,
+} from "./dymension/incentives/genesis_pb.js";
+export {
+  Gauge as DymensionIncentivesGauge,
+  LockableDurationsInfo as DymensionIncentivesLockableDurationsInfo,
+} from "./dymension/incentives/gauge_pb.js";
+export {
+  QuerySpotPriceRequest as DymensionGammV2QuerySpotPriceRequest,
+  QuerySpotPriceResponse as DymensionGammV2QuerySpotPriceResponse,
+} from "./dymension/gamm/v2/query_pb.js";
+export {
+  QuerySpotPriceService as DymensionGammV2QuerySpotPriceService,
+} from "./dymension/gamm/v2/query_cosmes.js";
+export {
+  MsgSwapExactAmountIn as DymensionGammV1beta1MsgSwapExactAmountIn,
+  MsgSwapExactAmountInResponse as DymensionGammV1beta1MsgSwapExactAmountInResponse,
+  MsgSwapExactAmountOut as DymensionGammV1beta1MsgSwapExactAmountOut,
+  MsgSwapExactAmountOutResponse as DymensionGammV1beta1MsgSwapExactAmountOutResponse,
+} from "./dymension/gamm/v1beta1/tx_swap_pb.js";
+export {
+  MsgJoinPool as DymensionGammV1beta1MsgJoinPool,
+  MsgJoinPoolResponse as DymensionGammV1beta1MsgJoinPoolResponse,
+  MsgExitPool as DymensionGammV1beta1MsgExitPool,
+  MsgExitPoolResponse as DymensionGammV1beta1MsgExitPoolResponse,
+  MsgJoinSwapExternAmountIn as DymensionGammV1beta1MsgJoinSwapExternAmountIn,
+  MsgJoinSwapExternAmountInResponse as DymensionGammV1beta1MsgJoinSwapExternAmountInResponse,
+  MsgJoinSwapShareAmountOut as DymensionGammV1beta1MsgJoinSwapShareAmountOut,
+  MsgJoinSwapShareAmountOutResponse as DymensionGammV1beta1MsgJoinSwapShareAmountOutResponse,
+  MsgExitSwapShareAmountIn as DymensionGammV1beta1MsgExitSwapShareAmountIn,
+  MsgExitSwapShareAmountInResponse as DymensionGammV1beta1MsgExitSwapShareAmountInResponse,
+  MsgExitSwapExternAmountOut as DymensionGammV1beta1MsgExitSwapExternAmountOut,
+  MsgExitSwapExternAmountOutResponse as DymensionGammV1beta1MsgExitSwapExternAmountOutResponse,
+} from "./dymension/gamm/v1beta1/tx_liquidity_pb.js";
+export {
+  MsgJoinPoolService as DymensionGammV1beta1MsgJoinPoolService,
+  MsgJoinSwapExternAmountInService as DymensionGammV1beta1MsgJoinSwapExternAmountInService,
+  MsgJoinSwapShareAmountOutService as DymensionGammV1beta1MsgJoinSwapShareAmountOutService,
+  MsgExitPoolService as DymensionGammV1beta1MsgExitPoolService,
+  MsgExitSwapExternAmountOutService as DymensionGammV1beta1MsgExitSwapExternAmountOutService,
+  MsgExitSwapShareAmountInService as DymensionGammV1beta1MsgExitSwapShareAmountInService,
+  MsgSwapExactAmountInService as DymensionGammV1beta1MsgSwapExactAmountInService,
+  MsgSwapExactAmountOutService as DymensionGammV1beta1MsgSwapExactAmountOutService,
+} from "./dymension/gamm/v1beta1/tx_cosmes.js";
+export {
+  QueryParamsRequest as DymensionGammV1beta1QueryParamsRequest,
+  QueryParamsResponse as DymensionGammV1beta1QueryParamsResponse,
+  QueryPoolRequest as DymensionGammV1beta1QueryPoolRequest,
+  QueryPoolResponse as DymensionGammV1beta1QueryPoolResponse,
+  QueryPoolsRequest as DymensionGammV1beta1QueryPoolsRequest,
+  QueryPoolsResponse as DymensionGammV1beta1QueryPoolsResponse,
+  QueryNumPoolsRequest as DymensionGammV1beta1QueryNumPoolsRequest,
+  QueryNumPoolsResponse as DymensionGammV1beta1QueryNumPoolsResponse,
+  QueryCalcJoinPoolSharesRequest as DymensionGammV1beta1QueryCalcJoinPoolSharesRequest,
+  QueryCalcJoinPoolSharesResponse as DymensionGammV1beta1QueryCalcJoinPoolSharesResponse,
+  QueryCalcExitPoolCoinsFromSharesRequest as DymensionGammV1beta1QueryCalcExitPoolCoinsFromSharesRequest,
+  QueryCalcExitPoolCoinsFromSharesResponse as DymensionGammV1beta1QueryCalcExitPoolCoinsFromSharesResponse,
+  QueryPoolParamsRequest as DymensionGammV1beta1QueryPoolParamsRequest,
+  QueryPoolParamsResponse as DymensionGammV1beta1QueryPoolParamsResponse,
+  QueryTotalPoolLiquidityRequest as DymensionGammV1beta1QueryTotalPoolLiquidityRequest,
+  QueryTotalPoolLiquidityResponse as DymensionGammV1beta1QueryTotalPoolLiquidityResponse,
+  QueryTotalSharesRequest as DymensionGammV1beta1QueryTotalSharesRequest,
+  QueryTotalSharesResponse as DymensionGammV1beta1QueryTotalSharesResponse,
+  QueryCalcJoinPoolNoSwapSharesRequest as DymensionGammV1beta1QueryCalcJoinPoolNoSwapSharesRequest,
+  QueryCalcJoinPoolNoSwapSharesResponse as DymensionGammV1beta1QueryCalcJoinPoolNoSwapSharesResponse,
+  QuerySpotPriceRequest as DymensionGammV1beta1QuerySpotPriceRequest,
+  QueryPoolsWithFilterRequest as DymensionGammV1beta1QueryPoolsWithFilterRequest,
+  QueryPoolsWithFilterResponse as DymensionGammV1beta1QueryPoolsWithFilterResponse,
+  QuerySpotPriceResponse as DymensionGammV1beta1QuerySpotPriceResponse,
+  QuerySwapExactAmountInRequest as DymensionGammV1beta1QuerySwapExactAmountInRequest,
+  QuerySwapExactAmountInResponse as DymensionGammV1beta1QuerySwapExactAmountInResponse,
+  QuerySwapExactAmountOutRequest as DymensionGammV1beta1QuerySwapExactAmountOutRequest,
+  QuerySwapExactAmountOutResponse as DymensionGammV1beta1QuerySwapExactAmountOutResponse,
+  QueryTotalLiquidityRequest as DymensionGammV1beta1QueryTotalLiquidityRequest,
+  QueryTotalLiquidityResponse as DymensionGammV1beta1QueryTotalLiquidityResponse,
+} from "./dymension/gamm/v1beta1/query_pb.js";
+export {
+  QueryParamsService as DymensionGammV1beta1QueryParamsService,
+  QueryPoolsService as DymensionGammV1beta1QueryPoolsService,
+  QueryNumPoolsService as DymensionGammV1beta1QueryNumPoolsService,
+  QueryTotalLiquidityService as DymensionGammV1beta1QueryTotalLiquidityService,
+  QueryPoolsWithFilterService as DymensionGammV1beta1QueryPoolsWithFilterService,
+  QueryPoolService as DymensionGammV1beta1QueryPoolService,
+  QueryCalcJoinPoolNoSwapSharesService as DymensionGammV1beta1QueryCalcJoinPoolNoSwapSharesService,
+  QueryCalcJoinPoolSharesService as DymensionGammV1beta1QueryCalcJoinPoolSharesService,
+  QueryCalcExitPoolCoinsFromSharesService as DymensionGammV1beta1QueryCalcExitPoolCoinsFromSharesService,
+  QueryPoolParamsService as DymensionGammV1beta1QueryPoolParamsService,
+  QueryTotalPoolLiquidityService as DymensionGammV1beta1QueryTotalPoolLiquidityService,
+  QueryTotalSharesService as DymensionGammV1beta1QueryTotalSharesService,
+  QuerySpotPriceService as DymensionGammV1beta1QuerySpotPriceService,
+  QueryEstimateSwapExactAmountInService as DymensionGammV1beta1QueryEstimateSwapExactAmountInService,
+  QueryEstimateSwapExactAmountOutService as DymensionGammV1beta1QueryEstimateSwapExactAmountOutService,
+} from "./dymension/gamm/v1beta1/query_cosmes.js";
+export {
+  GenesisState as DymensionGammV1beta1GenesisState,
+  Params as DymensionGammV1beta1Params,
+  GlobalFees as DymensionGammV1beta1GlobalFees,
+} from "./dymension/gamm/v1beta1/genesis_pb.js";
+export {
+  MsgCreateBalancerPool as DymensionGammPoolModelsBalancerMsgCreateBalancerPool,
+  MsgCreateBalancerPoolResponse as DymensionGammPoolModelsBalancerMsgCreateBalancerPoolResponse,
+} from "./dymension/gamm/pool-models/balancer/tx_pb.js";
+export {
+  MsgCreateBalancerPoolService as DymensionGammPoolModelsBalancerMsgCreateBalancerPoolService,
+} from "./dymension/gamm/pool-models/balancer/tx_cosmes.js";
+export {
+  SmoothWeightChangeParams as DymensionGammPoolModelsBalancerSmoothWeightChangeParams,
+  PoolParams as DymensionGammPoolModelsBalancerPoolParams,
+  PoolAsset as DymensionGammPoolModelsBalancerPoolAsset,
+  Pool as DymensionGammPoolModelsBalancerPool,
+} from "./dymension/gamm/pool-models/balancer/balancerPool_pb.js";
+export {
+  QueryEpochsInfoRequest as DymensionEpochsQueryEpochsInfoRequest,
+  QueryEpochsInfoResponse as DymensionEpochsQueryEpochsInfoResponse,
+  QueryCurrentEpochRequest as DymensionEpochsQueryCurrentEpochRequest,
+  QueryCurrentEpochResponse as DymensionEpochsQueryCurrentEpochResponse,
+} from "./dymension/epochs/query_pb.js";
+export {
+  QueryEpochInfosService as DymensionEpochsQueryEpochInfosService,
+  QueryCurrentEpochService as DymensionEpochsQueryCurrentEpochService,
+} from "./dymension/epochs/query_cosmes.js";
+export {
+  EpochInfo as DymensionEpochsEpochInfo,
+  GenesisState as DymensionEpochsGenesisState,
+} from "./dymension/epochs/genesis_pb.js";
+export {
   AccessType as CosmwasmWasmV1AccessType,
   ContractCodeHistoryOperationType as CosmwasmWasmV1ContractCodeHistoryOperationType,
   AccessTypeParam as CosmwasmWasmV1AccessTypeParam,
@@ -3241,38 +3534,6 @@ export {
   Config as CosmosTxConfigV1Config,
 } from "./cosmos/tx/config/v1/config_pb.js";
 export {
-  StoreKVPair as CosmosStoreV1beta1StoreKVPair,
-  BlockMetadata as CosmosStoreV1beta1BlockMetadata,
-} from "./cosmos/store/v1beta1/listening_pb.js";
-export {
-  CommitInfo as CosmosStoreV1beta1CommitInfo,
-  StoreInfo as CosmosStoreV1beta1StoreInfo,
-  CommitID as CosmosStoreV1beta1CommitID,
-} from "./cosmos/store/v1beta1/commit_info_pb.js";
-export {
-  ListenFinalizeBlockRequest as CosmosStoreStreamingAbciListenFinalizeBlockRequest,
-  ListenFinalizeBlockResponse as CosmosStoreStreamingAbciListenFinalizeBlockResponse,
-  ListenCommitRequest as CosmosStoreStreamingAbciListenCommitRequest,
-  ListenCommitResponse as CosmosStoreStreamingAbciListenCommitResponse,
-} from "./cosmos/store/streaming/abci/grpc_pb.js";
-export {
-  ABCIListenerServiceListenFinalizeBlockService as CosmosStoreStreamingAbciABCIListenerServiceListenFinalizeBlockService,
-  ABCIListenerServiceListenCommitService as CosmosStoreStreamingAbciABCIListenerServiceListenCommitService,
-} from "./cosmos/store/streaming/abci/grpc_cosmes.js";
-export {
-  Snapshot as CosmosStoreSnapshotsV1Snapshot,
-  Metadata as CosmosStoreSnapshotsV1Metadata,
-  SnapshotItem as CosmosStoreSnapshotsV1SnapshotItem,
-  SnapshotStoreItem as CosmosStoreSnapshotsV1SnapshotStoreItem,
-  SnapshotIAVLItem as CosmosStoreSnapshotsV1SnapshotIAVLItem,
-  SnapshotExtensionMeta as CosmosStoreSnapshotsV1SnapshotExtensionMeta,
-  SnapshotExtensionPayload as CosmosStoreSnapshotsV1SnapshotExtensionPayload,
-} from "./cosmos/store/snapshots/v1/snapshot_pb.js";
-export {
-  Pairs as CosmosStoreInternalKvV1beta1Pairs,
-  Pair as CosmosStoreInternalKvV1beta1Pair,
-} from "./cosmos/store/internal/kv/v1beta1/kv_pb.js";
-export {
   MsgCreateValidator as CosmosStakingV1beta1MsgCreateValidator,
   MsgCreateValidatorResponse as CosmosStakingV1beta1MsgCreateValidatorResponse,
   MsgEditValidator as CosmosStakingV1beta1MsgEditValidator,
@@ -3287,8 +3548,6 @@ export {
   MsgCancelUnbondingDelegationResponse as CosmosStakingV1beta1MsgCancelUnbondingDelegationResponse,
   MsgUpdateParams as CosmosStakingV1beta1MsgUpdateParams,
   MsgUpdateParamsResponse as CosmosStakingV1beta1MsgUpdateParamsResponse,
-  MsgRotateConsPubKey as CosmosStakingV1beta1MsgRotateConsPubKey,
-  MsgRotateConsPubKeyResponse as CosmosStakingV1beta1MsgRotateConsPubKeyResponse,
 } from "./cosmos/staking/v1beta1/tx_pb.js";
 export {
   MsgCreateValidatorService as CosmosStakingV1beta1MsgCreateValidatorService,
@@ -3298,13 +3557,11 @@ export {
   MsgUndelegateService as CosmosStakingV1beta1MsgUndelegateService,
   MsgCancelUnbondingDelegationService as CosmosStakingV1beta1MsgCancelUnbondingDelegationService,
   MsgUpdateParamsService as CosmosStakingV1beta1MsgUpdateParamsService,
-  MsgRotateConsPubKeyService as CosmosStakingV1beta1MsgRotateConsPubKeyService,
 } from "./cosmos/staking/v1beta1/tx_cosmes.js";
 export {
   BondStatus as CosmosStakingV1beta1BondStatus,
   Infraction as CosmosStakingV1beta1Infraction,
   HistoricalInfo as CosmosStakingV1beta1HistoricalInfo,
-  HistoricalRecord as CosmosStakingV1beta1HistoricalRecord,
   CommissionRates as CosmosStakingV1beta1CommissionRates,
   Commission as CosmosStakingV1beta1Commission,
   Description as CosmosStakingV1beta1Description,
@@ -3325,8 +3582,6 @@ export {
   RedelegationResponse as CosmosStakingV1beta1RedelegationResponse,
   Pool as CosmosStakingV1beta1Pool,
   ValidatorUpdates as CosmosStakingV1beta1ValidatorUpdates,
-  ConsPubKeyRotationHistory as CosmosStakingV1beta1ConsPubKeyRotationHistory,
-  ValAddrsOfRotatedConsKeys as CosmosStakingV1beta1ValAddrsOfRotatedConsKeys,
 } from "./cosmos/staking/v1beta1/staking_pb.js";
 export {
   QueryValidatorsRequest as CosmosStakingV1beta1QueryValidatorsRequest,
@@ -3430,51 +3685,6 @@ export {
   ReflectionServiceFileDescriptorsService as CosmosReflectionV1ReflectionServiceFileDescriptorsService,
 } from "./cosmos/reflection/v1/reflection_cosmes.js";
 export {
-  Budget as CosmosProtocolpoolV1Budget,
-  ContinuousFund as CosmosProtocolpoolV1ContinuousFund,
-} from "./cosmos/protocolpool/v1/types_pb.js";
-export {
-  MsgFundCommunityPool as CosmosProtocolpoolV1MsgFundCommunityPool,
-  MsgFundCommunityPoolResponse as CosmosProtocolpoolV1MsgFundCommunityPoolResponse,
-  MsgCommunityPoolSpend as CosmosProtocolpoolV1MsgCommunityPoolSpend,
-  MsgCommunityPoolSpendResponse as CosmosProtocolpoolV1MsgCommunityPoolSpendResponse,
-  MsgSubmitBudgetProposal as CosmosProtocolpoolV1MsgSubmitBudgetProposal,
-  MsgSubmitBudgetProposalResponse as CosmosProtocolpoolV1MsgSubmitBudgetProposalResponse,
-  MsgClaimBudget as CosmosProtocolpoolV1MsgClaimBudget,
-  MsgClaimBudgetResponse as CosmosProtocolpoolV1MsgClaimBudgetResponse,
-  MsgCreateContinuousFund as CosmosProtocolpoolV1MsgCreateContinuousFund,
-  MsgCreateContinuousFundResponse as CosmosProtocolpoolV1MsgCreateContinuousFundResponse,
-  MsgCancelContinuousFund as CosmosProtocolpoolV1MsgCancelContinuousFund,
-  MsgCancelContinuousFundResponse as CosmosProtocolpoolV1MsgCancelContinuousFundResponse,
-  MsgWithdrawContinuousFund as CosmosProtocolpoolV1MsgWithdrawContinuousFund,
-  MsgWithdrawContinuousFundResponse as CosmosProtocolpoolV1MsgWithdrawContinuousFundResponse,
-} from "./cosmos/protocolpool/v1/tx_pb.js";
-export {
-  MsgFundCommunityPoolService as CosmosProtocolpoolV1MsgFundCommunityPoolService,
-  MsgCommunityPoolSpendService as CosmosProtocolpoolV1MsgCommunityPoolSpendService,
-  MsgSubmitBudgetProposalService as CosmosProtocolpoolV1MsgSubmitBudgetProposalService,
-  MsgClaimBudgetService as CosmosProtocolpoolV1MsgClaimBudgetService,
-  MsgCreateContinuousFundService as CosmosProtocolpoolV1MsgCreateContinuousFundService,
-  MsgWithdrawContinuousFundService as CosmosProtocolpoolV1MsgWithdrawContinuousFundService,
-  MsgCancelContinuousFundService as CosmosProtocolpoolV1MsgCancelContinuousFundService,
-} from "./cosmos/protocolpool/v1/tx_cosmes.js";
-export {
-  QueryCommunityPoolRequest as CosmosProtocolpoolV1QueryCommunityPoolRequest,
-  QueryCommunityPoolResponse as CosmosProtocolpoolV1QueryCommunityPoolResponse,
-  QueryUnclaimedBudgetRequest as CosmosProtocolpoolV1QueryUnclaimedBudgetRequest,
-  QueryUnclaimedBudgetResponse as CosmosProtocolpoolV1QueryUnclaimedBudgetResponse,
-} from "./cosmos/protocolpool/v1/query_pb.js";
-export {
-  QueryCommunityPoolService as CosmosProtocolpoolV1QueryCommunityPoolService,
-  QueryUnclaimedBudgetService as CosmosProtocolpoolV1QueryUnclaimedBudgetService,
-} from "./cosmos/protocolpool/v1/query_cosmes.js";
-export {
-  GenesisState as CosmosProtocolpoolV1GenesisState,
-} from "./cosmos/protocolpool/v1/genesis_pb.js";
-export {
-  Module as CosmosProtocolpoolModuleV1Module,
-} from "./cosmos/protocolpool/module/v1/module_pb.js";
-export {
   QueryParamsRequest as CosmosParamsV1beta1QueryParamsRequest,
   QueryParamsResponse as CosmosParamsV1beta1QueryParamsResponse,
   QuerySubspacesRequest as CosmosParamsV1beta1QuerySubspacesRequest,
@@ -3528,42 +3738,27 @@ export {
 } from "./cosmos/nft/v1beta1/tx_cosmes.js";
 export {
   QueryBalanceRequest as CosmosNftV1beta1QueryBalanceRequest,
-  QueryBalanceByQueryStringRequest as CosmosNftV1beta1QueryBalanceByQueryStringRequest,
   QueryBalanceResponse as CosmosNftV1beta1QueryBalanceResponse,
-  QueryBalanceByQueryStringResponse as CosmosNftV1beta1QueryBalanceByQueryStringResponse,
   QueryOwnerRequest as CosmosNftV1beta1QueryOwnerRequest,
-  QueryOwnerByQueryStringRequest as CosmosNftV1beta1QueryOwnerByQueryStringRequest,
   QueryOwnerResponse as CosmosNftV1beta1QueryOwnerResponse,
-  QueryOwnerByQueryStringResponse as CosmosNftV1beta1QueryOwnerByQueryStringResponse,
   QuerySupplyRequest as CosmosNftV1beta1QuerySupplyRequest,
-  QuerySupplyByQueryStringRequest as CosmosNftV1beta1QuerySupplyByQueryStringRequest,
   QuerySupplyResponse as CosmosNftV1beta1QuerySupplyResponse,
-  QuerySupplyByQueryStringResponse as CosmosNftV1beta1QuerySupplyByQueryStringResponse,
   QueryNFTsRequest as CosmosNftV1beta1QueryNFTsRequest,
   QueryNFTsResponse as CosmosNftV1beta1QueryNFTsResponse,
   QueryNFTRequest as CosmosNftV1beta1QueryNFTRequest,
-  QueryNFTByQueryStringRequest as CosmosNftV1beta1QueryNFTByQueryStringRequest,
   QueryNFTResponse as CosmosNftV1beta1QueryNFTResponse,
-  QueryNFTByQueryStringResponse as CosmosNftV1beta1QueryNFTByQueryStringResponse,
   QueryClassRequest as CosmosNftV1beta1QueryClassRequest,
-  QueryClassByQueryStringRequest as CosmosNftV1beta1QueryClassByQueryStringRequest,
   QueryClassResponse as CosmosNftV1beta1QueryClassResponse,
-  QueryClassByQueryStringResponse as CosmosNftV1beta1QueryClassByQueryStringResponse,
   QueryClassesRequest as CosmosNftV1beta1QueryClassesRequest,
   QueryClassesResponse as CosmosNftV1beta1QueryClassesResponse,
 } from "./cosmos/nft/v1beta1/query_pb.js";
 export {
   QueryBalanceService as CosmosNftV1beta1QueryBalanceService,
-  QueryBalanceByQueryStringService as CosmosNftV1beta1QueryBalanceByQueryStringService,
   QueryOwnerService as CosmosNftV1beta1QueryOwnerService,
-  QueryOwnerByQueryStringService as CosmosNftV1beta1QueryOwnerByQueryStringService,
   QuerySupplyService as CosmosNftV1beta1QuerySupplyService,
-  QuerySupplyByQueryStringService as CosmosNftV1beta1QuerySupplyByQueryStringService,
   QueryNFTsService as CosmosNftV1beta1QueryNFTsService,
   QueryNFTService as CosmosNftV1beta1QueryNFTService,
-  QueryNFTByQueryStringService as CosmosNftV1beta1QueryNFTByQueryStringService,
   QueryClassService as CosmosNftV1beta1QueryClassService,
-  QueryClassByQueryStringService as CosmosNftV1beta1QueryClassByQueryStringService,
   QueryClassesService as CosmosNftV1beta1QueryClassesService,
 } from "./cosmos/nft/v1beta1/query_cosmes.js";
 export {
@@ -3829,14 +4024,6 @@ export {
   MsgDepositResponse as CosmosGovV1MsgDepositResponse,
   MsgUpdateParams as CosmosGovV1MsgUpdateParams,
   MsgUpdateParamsResponse as CosmosGovV1MsgUpdateParamsResponse,
-  MsgCancelProposal as CosmosGovV1MsgCancelProposal,
-  MsgCancelProposalResponse as CosmosGovV1MsgCancelProposalResponse,
-  MsgSubmitMultipleChoiceProposal as CosmosGovV1MsgSubmitMultipleChoiceProposal,
-  MsgSubmitMultipleChoiceProposalResponse as CosmosGovV1MsgSubmitMultipleChoiceProposalResponse,
-  MsgUpdateMessageParams as CosmosGovV1MsgUpdateMessageParams,
-  MsgUpdateMessageParamsResponse as CosmosGovV1MsgUpdateMessageParamsResponse,
-  MsgSudoExec as CosmosGovV1MsgSudoExec,
-  MsgSudoExecResponse as CosmosGovV1MsgSudoExecResponse,
 } from "./cosmos/gov/v1/tx_pb.js";
 export {
   MsgSubmitProposalService as CosmosGovV1MsgSubmitProposalService,
@@ -3845,14 +4032,8 @@ export {
   MsgVoteWeightedService as CosmosGovV1MsgVoteWeightedService,
   MsgDepositService as CosmosGovV1MsgDepositService,
   MsgUpdateParamsService as CosmosGovV1MsgUpdateParamsService,
-  MsgCancelProposalService as CosmosGovV1MsgCancelProposalService,
-  MsgSubmitMultipleChoiceProposalService as CosmosGovV1MsgSubmitMultipleChoiceProposalService,
-  MsgUpdateMessageParamsService as CosmosGovV1MsgUpdateMessageParamsService,
-  MsgSudoExecService as CosmosGovV1MsgSudoExecService,
 } from "./cosmos/gov/v1/tx_cosmes.js";
 export {
-  QueryConstitutionRequest as CosmosGovV1QueryConstitutionRequest,
-  QueryConstitutionResponse as CosmosGovV1QueryConstitutionResponse,
   QueryProposalRequest as CosmosGovV1QueryProposalRequest,
   QueryProposalResponse as CosmosGovV1QueryProposalResponse,
   QueryProposalsRequest as CosmosGovV1QueryProposalsRequest,
@@ -3869,13 +4050,8 @@ export {
   QueryDepositsResponse as CosmosGovV1QueryDepositsResponse,
   QueryTallyResultRequest as CosmosGovV1QueryTallyResultRequest,
   QueryTallyResultResponse as CosmosGovV1QueryTallyResultResponse,
-  QueryProposalVoteOptionsRequest as CosmosGovV1QueryProposalVoteOptionsRequest,
-  QueryProposalVoteOptionsResponse as CosmosGovV1QueryProposalVoteOptionsResponse,
-  QueryMessageBasedParamsRequest as CosmosGovV1QueryMessageBasedParamsRequest,
-  QueryMessageBasedParamsResponse as CosmosGovV1QueryMessageBasedParamsResponse,
 } from "./cosmos/gov/v1/query_pb.js";
 export {
-  QueryConstitutionService as CosmosGovV1QueryConstitutionService,
   QueryProposalService as CosmosGovV1QueryProposalService,
   QueryProposalsService as CosmosGovV1QueryProposalsService,
   QueryVoteService as CosmosGovV1QueryVoteService,
@@ -3884,24 +4060,19 @@ export {
   QueryDepositService as CosmosGovV1QueryDepositService,
   QueryDepositsService as CosmosGovV1QueryDepositsService,
   QueryTallyResultService as CosmosGovV1QueryTallyResultService,
-  QueryProposalVoteOptionsService as CosmosGovV1QueryProposalVoteOptionsService,
-  QueryMessageBasedParamsService as CosmosGovV1QueryMessageBasedParamsService,
 } from "./cosmos/gov/v1/query_cosmes.js";
 export {
-  ProposalType as CosmosGovV1ProposalType,
   VoteOption as CosmosGovV1VoteOption,
   ProposalStatus as CosmosGovV1ProposalStatus,
   WeightedVoteOption as CosmosGovV1WeightedVoteOption,
   Deposit as CosmosGovV1Deposit,
   Proposal as CosmosGovV1Proposal,
-  ProposalVoteOptions as CosmosGovV1ProposalVoteOptions,
   TallyResult as CosmosGovV1TallyResult,
   Vote as CosmosGovV1Vote,
   DepositParams as CosmosGovV1DepositParams,
   VotingParams as CosmosGovV1VotingParams,
   TallyParams as CosmosGovV1TallyParams,
   Params as CosmosGovV1Params,
-  MessageBasedParams as CosmosGovV1MessageBasedParams,
 } from "./cosmos/gov/v1/gov_pb.js";
 export {
   GenesisState as CosmosGovV1GenesisState,
@@ -3920,13 +4091,10 @@ export {
   MsgGrantAllowanceResponse as CosmosFeegrantV1beta1MsgGrantAllowanceResponse,
   MsgRevokeAllowance as CosmosFeegrantV1beta1MsgRevokeAllowance,
   MsgRevokeAllowanceResponse as CosmosFeegrantV1beta1MsgRevokeAllowanceResponse,
-  MsgPruneAllowances as CosmosFeegrantV1beta1MsgPruneAllowances,
-  MsgPruneAllowancesResponse as CosmosFeegrantV1beta1MsgPruneAllowancesResponse,
 } from "./cosmos/feegrant/v1beta1/tx_pb.js";
 export {
   MsgGrantAllowanceService as CosmosFeegrantV1beta1MsgGrantAllowanceService,
   MsgRevokeAllowanceService as CosmosFeegrantV1beta1MsgRevokeAllowanceService,
-  MsgPruneAllowancesService as CosmosFeegrantV1beta1MsgPruneAllowancesService,
 } from "./cosmos/feegrant/v1beta1/tx_cosmes.js";
 export {
   QueryAllowanceRequest as CosmosFeegrantV1beta1QueryAllowanceRequest,
@@ -3992,8 +4160,6 @@ export {
   MsgUpdateParamsResponse as CosmosDistributionV1beta1MsgUpdateParamsResponse,
   MsgCommunityPoolSpend as CosmosDistributionV1beta1MsgCommunityPoolSpend,
   MsgCommunityPoolSpendResponse as CosmosDistributionV1beta1MsgCommunityPoolSpendResponse,
-  MsgDepositValidatorRewardsPool as CosmosDistributionV1beta1MsgDepositValidatorRewardsPool,
-  MsgDepositValidatorRewardsPoolResponse as CosmosDistributionV1beta1MsgDepositValidatorRewardsPoolResponse,
 } from "./cosmos/distribution/v1beta1/tx_pb.js";
 export {
   MsgSetWithdrawAddressService as CosmosDistributionV1beta1MsgSetWithdrawAddressService,
@@ -4002,7 +4168,6 @@ export {
   MsgFundCommunityPoolService as CosmosDistributionV1beta1MsgFundCommunityPoolService,
   MsgUpdateParamsService as CosmosDistributionV1beta1MsgUpdateParamsService,
   MsgCommunityPoolSpendService as CosmosDistributionV1beta1MsgCommunityPoolSpendService,
-  MsgDepositValidatorRewardsPoolService as CosmosDistributionV1beta1MsgDepositValidatorRewardsPoolService,
 } from "./cosmos/distribution/v1beta1/tx_cosmes.js";
 export {
   QueryParamsRequest as CosmosDistributionV1beta1QueryParamsRequest,
@@ -4111,23 +4276,6 @@ export {
   Module as CosmosCrisisModuleV1Module,
 } from "./cosmos/crisis/module/v1/module_pb.js";
 export {
-  MsgIncreaseCounter as CosmosCounterV1MsgIncreaseCounter,
-  MsgIncreaseCountResponse as CosmosCounterV1MsgIncreaseCountResponse,
-} from "./cosmos/counter/v1/tx_pb.js";
-export {
-  MsgIncreaseCountService as CosmosCounterV1MsgIncreaseCountService,
-} from "./cosmos/counter/v1/tx_cosmes.js";
-export {
-  QueryGetCountRequest as CosmosCounterV1QueryGetCountRequest,
-  QueryGetCountResponse as CosmosCounterV1QueryGetCountResponse,
-} from "./cosmos/counter/v1/query_pb.js";
-export {
-  QueryGetCountService as CosmosCounterV1QueryGetCountService,
-} from "./cosmos/counter/v1/query_cosmes.js";
-export {
-  Module as CosmosCounterModuleV1Module,
-} from "./cosmos/counter/module/v1/module_pb.js";
-export {
   MsgUpdateParams as CosmosConsensusV1MsgUpdateParams,
   MsgUpdateParamsResponse as CosmosConsensusV1MsgUpdateParamsResponse,
 } from "./cosmos/consensus/v1/tx_pb.js";
@@ -4145,43 +4293,22 @@ export {
   Module as CosmosConsensusModuleV1Module,
 } from "./cosmos/consensus/module/v1/module_pb.js";
 export {
-  Permissions as CosmosCircuitV1Permissions,
-  Permissions_Level as CosmosCircuitV1Permissions_Level,
-  GenesisAccountPermissions as CosmosCircuitV1GenesisAccountPermissions,
-  GenesisState as CosmosCircuitV1GenesisState,
-} from "./cosmos/circuit/v1/types_pb.js";
+  GenesisOwners as CosmosCapabilityV1beta1GenesisOwners,
+  GenesisState as CosmosCapabilityV1beta1GenesisState,
+} from "./cosmos/capability/v1beta1/genesis_pb.js";
 export {
-  MsgAuthorizeCircuitBreaker as CosmosCircuitV1MsgAuthorizeCircuitBreaker,
-  MsgAuthorizeCircuitBreakerResponse as CosmosCircuitV1MsgAuthorizeCircuitBreakerResponse,
-  MsgTripCircuitBreaker as CosmosCircuitV1MsgTripCircuitBreaker,
-  MsgTripCircuitBreakerResponse as CosmosCircuitV1MsgTripCircuitBreakerResponse,
-  MsgResetCircuitBreaker as CosmosCircuitV1MsgResetCircuitBreaker,
-  MsgResetCircuitBreakerResponse as CosmosCircuitV1MsgResetCircuitBreakerResponse,
-} from "./cosmos/circuit/v1/tx_pb.js";
+  Capability as CosmosCapabilityV1beta1Capability,
+  Owner as CosmosCapabilityV1beta1Owner,
+  CapabilityOwners as CosmosCapabilityV1beta1CapabilityOwners,
+} from "./cosmos/capability/v1beta1/capability_pb.js";
 export {
-  MsgAuthorizeCircuitBreakerService as CosmosCircuitV1MsgAuthorizeCircuitBreakerService,
-  MsgTripCircuitBreakerService as CosmosCircuitV1MsgTripCircuitBreakerService,
-  MsgResetCircuitBreakerService as CosmosCircuitV1MsgResetCircuitBreakerService,
-} from "./cosmos/circuit/v1/tx_cosmes.js";
-export {
-  QueryAccountRequest as CosmosCircuitV1QueryAccountRequest,
-  AccountResponse as CosmosCircuitV1AccountResponse,
-  QueryAccountsRequest as CosmosCircuitV1QueryAccountsRequest,
-  AccountsResponse as CosmosCircuitV1AccountsResponse,
-  QueryDisabledListRequest as CosmosCircuitV1QueryDisabledListRequest,
-  DisabledListResponse as CosmosCircuitV1DisabledListResponse,
-} from "./cosmos/circuit/v1/query_pb.js";
-export {
-  QueryAccountService as CosmosCircuitV1QueryAccountService,
-  QueryAccountsService as CosmosCircuitV1QueryAccountsService,
-  QueryDisabledListService as CosmosCircuitV1QueryDisabledListService,
-} from "./cosmos/circuit/v1/query_cosmes.js";
-export {
-  Module as CosmosCircuitModuleV1Module,
-} from "./cosmos/circuit/module/v1/module_pb.js";
+  Module as CosmosCapabilityModuleV1Module,
+} from "./cosmos/capability/module/v1/module_pb.js";
 export {
   Coin as CosmosBaseV1beta1Coin,
   DecCoin as CosmosBaseV1beta1DecCoin,
+  IntProto as CosmosBaseV1beta1IntProto,
+  DecProto as CosmosBaseV1beta1DecProto,
 } from "./cosmos/base/v1beta1/coin_pb.js";
 export {
   Block as CosmosBaseTendermintV1beta1Block,
@@ -4217,6 +4344,27 @@ export {
   ServiceGetValidatorSetByHeightService as CosmosBaseTendermintV1beta1ServiceGetValidatorSetByHeightService,
   ServiceABCIQueryService as CosmosBaseTendermintV1beta1ServiceABCIQueryService,
 } from "./cosmos/base/tendermint/v1beta1/query_cosmes.js";
+export {
+  StoreKVPair as CosmosBaseStoreV1beta1StoreKVPair,
+  BlockMetadata as CosmosBaseStoreV1beta1BlockMetadata,
+  BlockMetadata_DeliverTx as CosmosBaseStoreV1beta1BlockMetadata_DeliverTx,
+} from "./cosmos/base/store/v1beta1/listening_pb.js";
+export {
+  CommitInfo as CosmosBaseStoreV1beta1CommitInfo,
+  StoreInfo as CosmosBaseStoreV1beta1StoreInfo,
+  CommitID as CosmosBaseStoreV1beta1CommitID,
+} from "./cosmos/base/store/v1beta1/commit_info_pb.js";
+export {
+  Snapshot as CosmosBaseSnapshotsV1beta1Snapshot,
+  Metadata as CosmosBaseSnapshotsV1beta1Metadata,
+  SnapshotItem as CosmosBaseSnapshotsV1beta1SnapshotItem,
+  SnapshotStoreItem as CosmosBaseSnapshotsV1beta1SnapshotStoreItem,
+  SnapshotIAVLItem as CosmosBaseSnapshotsV1beta1SnapshotIAVLItem,
+  SnapshotExtensionMeta as CosmosBaseSnapshotsV1beta1SnapshotExtensionMeta,
+  SnapshotExtensionPayload as CosmosBaseSnapshotsV1beta1SnapshotExtensionPayload,
+  SnapshotKVItem as CosmosBaseSnapshotsV1beta1SnapshotKVItem,
+  SnapshotSchema as CosmosBaseSnapshotsV1beta1SnapshotSchema,
+} from "./cosmos/base/snapshots/v1beta1/snapshot_pb.js";
 export {
   AppDescriptor as CosmosBaseReflectionV2alpha1AppDescriptor,
   TxDescriptor as CosmosBaseReflectionV2alpha1TxDescriptor,
@@ -4270,13 +4418,14 @@ export {
 export {
   ConfigRequest as CosmosBaseNodeV1beta1ConfigRequest,
   ConfigResponse as CosmosBaseNodeV1beta1ConfigResponse,
-  StatusRequest as CosmosBaseNodeV1beta1StatusRequest,
-  StatusResponse as CosmosBaseNodeV1beta1StatusResponse,
 } from "./cosmos/base/node/v1beta1/query_pb.js";
 export {
   ServiceConfigService as CosmosBaseNodeV1beta1ServiceConfigService,
-  ServiceStatusService as CosmosBaseNodeV1beta1ServiceStatusService,
 } from "./cosmos/base/node/v1beta1/query_cosmes.js";
+export {
+  Pairs as CosmosBaseKvV1beta1Pairs,
+  Pair as CosmosBaseKvV1beta1Pair,
+} from "./cosmos/base/kv/v1beta1/kv_pb.js";
 export {
   TxResponse as CosmosBaseAbciV1beta1TxResponse,
   ABCIMessageLog as CosmosBaseAbciV1beta1ABCIMessageLog,
@@ -4288,7 +4437,6 @@ export {
   MsgData as CosmosBaseAbciV1beta1MsgData,
   TxMsgData as CosmosBaseAbciV1beta1TxMsgData,
   SearchTxsResult as CosmosBaseAbciV1beta1SearchTxsResult,
-  SearchBlocksResult as CosmosBaseAbciV1beta1SearchBlocksResult,
 } from "./cosmos/base/abci/v1beta1/abci_pb.js";
 export {
   MsgSend as CosmosBankV1beta1MsgSend,
@@ -4299,13 +4447,10 @@ export {
   MsgUpdateParamsResponse as CosmosBankV1beta1MsgUpdateParamsResponse,
   MsgSetSendEnabled as CosmosBankV1beta1MsgSetSendEnabled,
   MsgSetSendEnabledResponse as CosmosBankV1beta1MsgSetSendEnabledResponse,
-  MsgBurn as CosmosBankV1beta1MsgBurn,
-  MsgBurnResponse as CosmosBankV1beta1MsgBurnResponse,
 } from "./cosmos/bank/v1beta1/tx_pb.js";
 export {
   MsgSendService as CosmosBankV1beta1MsgSendService,
   MsgMultiSendService as CosmosBankV1beta1MsgMultiSendService,
-  MsgBurnService as CosmosBankV1beta1MsgBurnService,
   MsgUpdateParamsService as CosmosBankV1beta1MsgUpdateParamsService,
   MsgSetSendEnabledService as CosmosBankV1beta1MsgSetSendEnabledService,
 } from "./cosmos/bank/v1beta1/tx_cosmes.js";
@@ -4328,13 +4473,9 @@ export {
   QueryDenomsMetadataResponse as CosmosBankV1beta1QueryDenomsMetadataResponse,
   QueryDenomMetadataRequest as CosmosBankV1beta1QueryDenomMetadataRequest,
   QueryDenomMetadataResponse as CosmosBankV1beta1QueryDenomMetadataResponse,
-  QueryDenomMetadataByQueryStringRequest as CosmosBankV1beta1QueryDenomMetadataByQueryStringRequest,
-  QueryDenomMetadataByQueryStringResponse as CosmosBankV1beta1QueryDenomMetadataByQueryStringResponse,
   QueryDenomOwnersRequest as CosmosBankV1beta1QueryDenomOwnersRequest,
   DenomOwner as CosmosBankV1beta1DenomOwner,
   QueryDenomOwnersResponse as CosmosBankV1beta1QueryDenomOwnersResponse,
-  QueryDenomOwnersByQueryRequest as CosmosBankV1beta1QueryDenomOwnersByQueryRequest,
-  QueryDenomOwnersByQueryResponse as CosmosBankV1beta1QueryDenomOwnersByQueryResponse,
   QuerySendEnabledRequest as CosmosBankV1beta1QuerySendEnabledRequest,
   QuerySendEnabledResponse as CosmosBankV1beta1QuerySendEnabledResponse,
 } from "./cosmos/bank/v1beta1/query_pb.js";
@@ -4347,10 +4488,8 @@ export {
   QuerySupplyOfService as CosmosBankV1beta1QuerySupplyOfService,
   QueryParamsService as CosmosBankV1beta1QueryParamsService,
   QueryDenomMetadataService as CosmosBankV1beta1QueryDenomMetadataService,
-  QueryDenomMetadataByQueryStringService as CosmosBankV1beta1QueryDenomMetadataByQueryStringService,
   QueryDenomsMetadataService as CosmosBankV1beta1QueryDenomsMetadataService,
   QueryDenomOwnersService as CosmosBankV1beta1QueryDenomOwnersService,
-  QueryDenomOwnersByQueryService as CosmosBankV1beta1QueryDenomOwnersByQueryService,
   QuerySendEnabledService as CosmosBankV1beta1QuerySendEnabledService,
 } from "./cosmos/bank/v1beta1/query_cosmes.js";
 export {
@@ -4388,19 +4527,16 @@ export {
 } from "./cosmos/autocli/v1/options_pb.js";
 export {
   MsgGrant as CosmosAuthzV1beta1MsgGrant,
-  MsgGrantResponse as CosmosAuthzV1beta1MsgGrantResponse,
-  MsgExec as CosmosAuthzV1beta1MsgExec,
   MsgExecResponse as CosmosAuthzV1beta1MsgExecResponse,
+  MsgExec as CosmosAuthzV1beta1MsgExec,
+  MsgGrantResponse as CosmosAuthzV1beta1MsgGrantResponse,
   MsgRevoke as CosmosAuthzV1beta1MsgRevoke,
   MsgRevokeResponse as CosmosAuthzV1beta1MsgRevokeResponse,
-  MsgPruneExpiredGrants as CosmosAuthzV1beta1MsgPruneExpiredGrants,
-  MsgPruneExpiredGrantsResponse as CosmosAuthzV1beta1MsgPruneExpiredGrantsResponse,
 } from "./cosmos/authz/v1beta1/tx_pb.js";
 export {
   MsgGrantService as CosmosAuthzV1beta1MsgGrantService,
   MsgExecService as CosmosAuthzV1beta1MsgExecService,
   MsgRevokeService as CosmosAuthzV1beta1MsgRevokeService,
-  MsgPruneExpiredGrantsService as CosmosAuthzV1beta1MsgPruneExpiredGrantsService,
 } from "./cosmos/authz/v1beta1/tx_cosmes.js";
 export {
   QueryGrantsRequest as CosmosAuthzV1beta1QueryGrantsRequest,
@@ -4421,7 +4557,6 @@ export {
 export {
   EventGrant as CosmosAuthzV1beta1EventGrant,
   EventRevoke as CosmosAuthzV1beta1EventRevoke,
-  EventPruneExpiredGrants as CosmosAuthzV1beta1EventPruneExpiredGrants,
 } from "./cosmos/authz/v1beta1/event_pb.js";
 export {
   GenericAuthorization as CosmosAuthzV1beta1GenericAuthorization,
@@ -4507,78 +4642,6 @@ export {
   Module as CosmosAppRuntimeV1alpha1Module,
   StoreKeyConfig as CosmosAppRuntimeV1alpha1StoreKeyConfig,
 } from "./cosmos/app/runtime/v1alpha1/module_pb.js";
-export {
-  MsgInit as CosmosAccountsV1MsgInit,
-  MsgInitResponse as CosmosAccountsV1MsgInitResponse,
-  MsgExecute as CosmosAccountsV1MsgExecute,
-  MsgExecuteResponse as CosmosAccountsV1MsgExecuteResponse,
-  MsgExecuteBundle as CosmosAccountsV1MsgExecuteBundle,
-  MsgExecuteBundleResponse as CosmosAccountsV1MsgExecuteBundleResponse,
-} from "./cosmos/accounts/v1/tx_pb.js";
-export {
-  MsgInitService as CosmosAccountsV1MsgInitService,
-  MsgExecuteService as CosmosAccountsV1MsgExecuteService,
-  MsgExecuteBundleService as CosmosAccountsV1MsgExecuteBundleService,
-} from "./cosmos/accounts/v1/tx_cosmes.js";
-export {
-  AccountQueryRequest as CosmosAccountsV1AccountQueryRequest,
-  AccountQueryResponse as CosmosAccountsV1AccountQueryResponse,
-  SchemaRequest as CosmosAccountsV1SchemaRequest,
-  SchemaResponse as CosmosAccountsV1SchemaResponse,
-  SchemaResponse_Handler as CosmosAccountsV1SchemaResponse_Handler,
-  AccountTypeRequest as CosmosAccountsV1AccountTypeRequest,
-  AccountTypeResponse as CosmosAccountsV1AccountTypeResponse,
-  AccountNumberRequest as CosmosAccountsV1AccountNumberRequest,
-  AccountNumberResponse as CosmosAccountsV1AccountNumberResponse,
-  SimulateUserOperationRequest as CosmosAccountsV1SimulateUserOperationRequest,
-  SimulateUserOperationResponse as CosmosAccountsV1SimulateUserOperationResponse,
-} from "./cosmos/accounts/v1/query_pb.js";
-export {
-  QueryAccountQueryService as CosmosAccountsV1QueryAccountQueryService,
-  QuerySchemaService as CosmosAccountsV1QuerySchemaService,
-  QueryAccountTypeService as CosmosAccountsV1QueryAccountTypeService,
-  QueryAccountNumberService as CosmosAccountsV1QueryAccountNumberService,
-  QuerySimulateUserOperationService as CosmosAccountsV1QuerySimulateUserOperationService,
-} from "./cosmos/accounts/v1/query_cosmes.js";
-export {
-  GenesisState as CosmosAccountsV1GenesisState,
-  GenesisAccount as CosmosAccountsV1GenesisAccount,
-  KVPair as CosmosAccountsV1KVPair,
-} from "./cosmos/accounts/v1/genesis_pb.js";
-export {
-  UserOperation as CosmosAccountsV1UserOperation,
-  TxCompat as CosmosAccountsV1TxCompat,
-  UserOperationResponse as CosmosAccountsV1UserOperationResponse,
-} from "./cosmos/accounts/v1/account_abstraction_pb.js";
-export {
-  MsgInit as CosmosAccountsTestingRotationV1MsgInit,
-  MsgInitResponse as CosmosAccountsTestingRotationV1MsgInitResponse,
-  MsgRotatePubKey as CosmosAccountsTestingRotationV1MsgRotatePubKey,
-  MsgRotatePubKeyResponse as CosmosAccountsTestingRotationV1MsgRotatePubKeyResponse,
-} from "./cosmos/accounts/testing/rotation/v1/partial_pb.js";
-export {
-  MsgInit as CosmosAccountsTestingCounterV1MsgInit,
-  MsgInitResponse as CosmosAccountsTestingCounterV1MsgInitResponse,
-  MsgIncreaseCounter as CosmosAccountsTestingCounterV1MsgIncreaseCounter,
-  MsgIncreaseCounterResponse as CosmosAccountsTestingCounterV1MsgIncreaseCounterResponse,
-  MsgTestDependencies as CosmosAccountsTestingCounterV1MsgTestDependencies,
-  MsgTestDependenciesResponse as CosmosAccountsTestingCounterV1MsgTestDependenciesResponse,
-  QueryCounterRequest as CosmosAccountsTestingCounterV1QueryCounterRequest,
-  QueryCounterResponse as CosmosAccountsTestingCounterV1QueryCounterResponse,
-} from "./cosmos/accounts/testing/counter/v1/counter_pb.js";
-export {
-  Module as CosmosAccountsModuleV1Module,
-} from "./cosmos/accounts/module/v1/module_pb.js";
-export {
-  MsgAuthenticate as CosmosAccountsInterfacesAccountAbstractionV1MsgAuthenticate,
-  MsgAuthenticateResponse as CosmosAccountsInterfacesAccountAbstractionV1MsgAuthenticateResponse,
-  MsgPayBundler as CosmosAccountsInterfacesAccountAbstractionV1MsgPayBundler,
-  MsgPayBundlerResponse as CosmosAccountsInterfacesAccountAbstractionV1MsgPayBundlerResponse,
-  MsgExecute as CosmosAccountsInterfacesAccountAbstractionV1MsgExecute,
-  MsgExecuteResponse as CosmosAccountsInterfacesAccountAbstractionV1MsgExecuteResponse,
-  QueryAuthenticationMethods as CosmosAccountsInterfacesAccountAbstractionV1QueryAuthenticationMethods,
-  QueryAuthenticationMethodsResponse as CosmosAccountsInterfacesAccountAbstractionV1QueryAuthenticationMethodsResponse,
-} from "./cosmos/accounts/interfaces/account_abstraction/v1/interface_pb.js";
 export {
   GenesisOwners as CapabilityV1GenesisOwners,
   GenesisState as CapabilityV1GenesisState,

@@ -50,7 +50,7 @@ export class PubKey extends Message<PubKey> {
 }
 
 /**
- * PrivKey defines a ed25519 private key.
+ * Deprecated: PrivKey defines a ed25519 private key.
  * NOTE: ed25519 keys must not be used in SDK apps except in a tendermint validator context.
  *
  * @generated from message cosmos.crypto.ed25519.PrivKey

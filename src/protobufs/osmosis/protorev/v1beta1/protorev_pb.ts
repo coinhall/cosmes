@@ -649,6 +649,46 @@ export class BaseDenom extends Message<BaseDenom> {
 }
 
 /**
+ * BaseDenoms represents all of the base denoms that the module uses for its
+ * arbitrage trades.
+ *
+ * @generated from message osmosis.protorev.v1beta1.BaseDenoms
+ */
+export class BaseDenoms extends Message<BaseDenoms> {
+  /**
+   * @generated from field: repeated osmosis.protorev.v1beta1.BaseDenom base_denoms = 1;
+   */
+  baseDenoms: BaseDenom[] = [];
+
+  constructor(data?: PartialMessage<BaseDenoms>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "osmosis.protorev.v1beta1.BaseDenoms";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "base_denoms", kind: "message", T: BaseDenom, repeated: true },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): BaseDenoms {
+    return new BaseDenoms().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): BaseDenoms {
+    return new BaseDenoms().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): BaseDenoms {
+    return new BaseDenoms().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: BaseDenoms | PlainMessage<BaseDenoms> | undefined, b: BaseDenoms | PlainMessage<BaseDenoms> | undefined): boolean {
+    return proto3.util.equals(BaseDenoms, a, b);
+  }
+}
+
+/**
  * @generated from message osmosis.protorev.v1beta1.AllProtocolRevenue
  */
 export class AllProtocolRevenue extends Message<AllProtocolRevenue> {

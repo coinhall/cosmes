@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { QueryClientParamsRequest, QueryClientParamsResponse, QueryClientStateRequest, QueryClientStateResponse, QueryClientStatesRequest, QueryClientStatesResponse, QueryClientStatusRequest, QueryClientStatusResponse, QueryConsensusStateHeightsRequest, QueryConsensusStateHeightsResponse, QueryConsensusStateRequest, QueryConsensusStateResponse, QueryConsensusStatesRequest, QueryConsensusStatesResponse, QueryUpgradedClientStateRequest, QueryUpgradedClientStateResponse, QueryUpgradedConsensusStateRequest, QueryUpgradedConsensusStateResponse } from "./query_pb.js";
+import { QueryClientParamsRequest, QueryClientParamsResponse, QueryClientStateRequest, QueryClientStateResponse, QueryClientStatesRequest, QueryClientStatesResponse, QueryClientStatusRequest, QueryClientStatusResponse, QueryConsensusStateHeightsRequest, QueryConsensusStateHeightsResponse, QueryConsensusStateRequest, QueryConsensusStateResponse, QueryConsensusStatesRequest, QueryConsensusStatesResponse, QueryUpgradedClientStateRequest, QueryUpgradedClientStateResponse, QueryUpgradedConsensusStateRequest, QueryUpgradedConsensusStateResponse, QueryVerifyMembershipRequest, QueryVerifyMembershipResponse } from "./query_pb.js";
 
 const TYPE_NAME = "ibc.core.client.v1.Query";
 
@@ -115,5 +115,17 @@ export const QueryUpgradedConsensusStateService = {
   method: "UpgradedConsensusState",
   Request: QueryUpgradedConsensusStateRequest,
   Response: QueryUpgradedConsensusStateResponse,
+} as const;
+
+/**
+ * VerifyMembership queries an IBC light client for proof verification of a value at a given key path.
+ *
+ * @generated from rpc ibc.core.client.v1.Query.VerifyMembership
+ */
+export const QueryVerifyMembershipService = {
+  typeName: TYPE_NAME,
+  method: "VerifyMembership",
+  Request: QueryVerifyMembershipRequest,
+  Response: QueryVerifyMembershipResponse,
 } as const;
 

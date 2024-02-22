@@ -62,35 +62,41 @@ export class MsgGrant extends Message<MsgGrant> {
 }
 
 /**
- * MsgGrantResponse defines the Msg/MsgGrant response type.
+ * MsgExecResponse defines the Msg/MsgExecResponse response type.
  *
- * @generated from message cosmos.authz.v1beta1.MsgGrantResponse
+ * @generated from message cosmos.authz.v1beta1.MsgExecResponse
  */
-export class MsgGrantResponse extends Message<MsgGrantResponse> {
-  constructor(data?: PartialMessage<MsgGrantResponse>) {
+export class MsgExecResponse extends Message<MsgExecResponse> {
+  /**
+   * @generated from field: repeated bytes results = 1;
+   */
+  results: Uint8Array[] = [];
+
+  constructor(data?: PartialMessage<MsgExecResponse>) {
     super();
     proto3.util.initPartial(data, this);
   }
 
   static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "cosmos.authz.v1beta1.MsgGrantResponse";
+  static readonly typeName = "cosmos.authz.v1beta1.MsgExecResponse";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "results", kind: "scalar", T: 12 /* ScalarType.BYTES */, repeated: true },
   ]);
 
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgGrantResponse {
-    return new MsgGrantResponse().fromBinary(bytes, options);
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgExecResponse {
+    return new MsgExecResponse().fromBinary(bytes, options);
   }
 
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MsgGrantResponse {
-    return new MsgGrantResponse().fromJson(jsonValue, options);
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MsgExecResponse {
+    return new MsgExecResponse().fromJson(jsonValue, options);
   }
 
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MsgGrantResponse {
-    return new MsgGrantResponse().fromJsonString(jsonString, options);
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MsgExecResponse {
+    return new MsgExecResponse().fromJsonString(jsonString, options);
   }
 
-  static equals(a: MsgGrantResponse | PlainMessage<MsgGrantResponse> | undefined, b: MsgGrantResponse | PlainMessage<MsgGrantResponse> | undefined): boolean {
-    return proto3.util.equals(MsgGrantResponse, a, b);
+  static equals(a: MsgExecResponse | PlainMessage<MsgExecResponse> | undefined, b: MsgExecResponse | PlainMessage<MsgExecResponse> | undefined): boolean {
+    return proto3.util.equals(MsgExecResponse, a, b);
   }
 }
 
@@ -146,41 +152,35 @@ export class MsgExec extends Message<MsgExec> {
 }
 
 /**
- * MsgExecResponse defines the Msg/MsgExecResponse response type.
+ * MsgGrantResponse defines the Msg/MsgGrant response type.
  *
- * @generated from message cosmos.authz.v1beta1.MsgExecResponse
+ * @generated from message cosmos.authz.v1beta1.MsgGrantResponse
  */
-export class MsgExecResponse extends Message<MsgExecResponse> {
-  /**
-   * @generated from field: repeated bytes results = 1;
-   */
-  results: Uint8Array[] = [];
-
-  constructor(data?: PartialMessage<MsgExecResponse>) {
+export class MsgGrantResponse extends Message<MsgGrantResponse> {
+  constructor(data?: PartialMessage<MsgGrantResponse>) {
     super();
     proto3.util.initPartial(data, this);
   }
 
   static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "cosmos.authz.v1beta1.MsgExecResponse";
+  static readonly typeName = "cosmos.authz.v1beta1.MsgGrantResponse";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "results", kind: "scalar", T: 12 /* ScalarType.BYTES */, repeated: true },
   ]);
 
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgExecResponse {
-    return new MsgExecResponse().fromBinary(bytes, options);
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgGrantResponse {
+    return new MsgGrantResponse().fromBinary(bytes, options);
   }
 
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MsgExecResponse {
-    return new MsgExecResponse().fromJson(jsonValue, options);
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MsgGrantResponse {
+    return new MsgGrantResponse().fromJson(jsonValue, options);
   }
 
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MsgExecResponse {
-    return new MsgExecResponse().fromJsonString(jsonString, options);
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MsgGrantResponse {
+    return new MsgGrantResponse().fromJsonString(jsonString, options);
   }
 
-  static equals(a: MsgExecResponse | PlainMessage<MsgExecResponse> | undefined, b: MsgExecResponse | PlainMessage<MsgExecResponse> | undefined): boolean {
-    return proto3.util.equals(MsgExecResponse, a, b);
+  static equals(a: MsgGrantResponse | PlainMessage<MsgGrantResponse> | undefined, b: MsgGrantResponse | PlainMessage<MsgGrantResponse> | undefined): boolean {
+    return proto3.util.equals(MsgGrantResponse, a, b);
   }
 }
 
@@ -266,82 +266,6 @@ export class MsgRevokeResponse extends Message<MsgRevokeResponse> {
 
   static equals(a: MsgRevokeResponse | PlainMessage<MsgRevokeResponse> | undefined, b: MsgRevokeResponse | PlainMessage<MsgRevokeResponse> | undefined): boolean {
     return proto3.util.equals(MsgRevokeResponse, a, b);
-  }
-}
-
-/**
- * MsgPruneExpiredGrants prunes the expired grants.
- *
- * Since x/authz v1.0.0
- *
- * @generated from message cosmos.authz.v1beta1.MsgPruneExpiredGrants
- */
-export class MsgPruneExpiredGrants extends Message<MsgPruneExpiredGrants> {
-  /**
-   * @generated from field: string pruner = 1;
-   */
-  pruner = "";
-
-  constructor(data?: PartialMessage<MsgPruneExpiredGrants>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
-
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "cosmos.authz.v1beta1.MsgPruneExpiredGrants";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "pruner", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-  ]);
-
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgPruneExpiredGrants {
-    return new MsgPruneExpiredGrants().fromBinary(bytes, options);
-  }
-
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MsgPruneExpiredGrants {
-    return new MsgPruneExpiredGrants().fromJson(jsonValue, options);
-  }
-
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MsgPruneExpiredGrants {
-    return new MsgPruneExpiredGrants().fromJsonString(jsonString, options);
-  }
-
-  static equals(a: MsgPruneExpiredGrants | PlainMessage<MsgPruneExpiredGrants> | undefined, b: MsgPruneExpiredGrants | PlainMessage<MsgPruneExpiredGrants> | undefined): boolean {
-    return proto3.util.equals(MsgPruneExpiredGrants, a, b);
-  }
-}
-
-/**
- * MsgPruneExpiredGrantsResponse defines the Msg/MsgPruneExpiredGrantsResponse response type.
- *
- * Since x/authz v1.0.0
- *
- * @generated from message cosmos.authz.v1beta1.MsgPruneExpiredGrantsResponse
- */
-export class MsgPruneExpiredGrantsResponse extends Message<MsgPruneExpiredGrantsResponse> {
-  constructor(data?: PartialMessage<MsgPruneExpiredGrantsResponse>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
-
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "cosmos.authz.v1beta1.MsgPruneExpiredGrantsResponse";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-  ]);
-
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgPruneExpiredGrantsResponse {
-    return new MsgPruneExpiredGrantsResponse().fromBinary(bytes, options);
-  }
-
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MsgPruneExpiredGrantsResponse {
-    return new MsgPruneExpiredGrantsResponse().fromJson(jsonValue, options);
-  }
-
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MsgPruneExpiredGrantsResponse {
-    return new MsgPruneExpiredGrantsResponse().fromJsonString(jsonString, options);
-  }
-
-  static equals(a: MsgPruneExpiredGrantsResponse | PlainMessage<MsgPruneExpiredGrantsResponse> | undefined, b: MsgPruneExpiredGrantsResponse | PlainMessage<MsgPruneExpiredGrantsResponse> | undefined): boolean {
-    return proto3.util.equals(MsgPruneExpiredGrantsResponse, a, b);
   }
 }
 

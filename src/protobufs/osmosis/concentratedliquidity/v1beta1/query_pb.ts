@@ -183,6 +183,80 @@ export class PositionByIdResponse extends Message<PositionByIdResponse> {
 }
 
 /**
+ * @generated from message osmosis.concentratedliquidity.v1beta1.NumPoolPositionsRequest
+ */
+export class NumPoolPositionsRequest extends Message<NumPoolPositionsRequest> {
+  /**
+   * @generated from field: uint64 pool_id = 1;
+   */
+  poolId = protoInt64.zero;
+
+  constructor(data?: PartialMessage<NumPoolPositionsRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "osmosis.concentratedliquidity.v1beta1.NumPoolPositionsRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "pool_id", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): NumPoolPositionsRequest {
+    return new NumPoolPositionsRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): NumPoolPositionsRequest {
+    return new NumPoolPositionsRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): NumPoolPositionsRequest {
+    return new NumPoolPositionsRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: NumPoolPositionsRequest | PlainMessage<NumPoolPositionsRequest> | undefined, b: NumPoolPositionsRequest | PlainMessage<NumPoolPositionsRequest> | undefined): boolean {
+    return proto3.util.equals(NumPoolPositionsRequest, a, b);
+  }
+}
+
+/**
+ * @generated from message osmosis.concentratedliquidity.v1beta1.NumPoolPositionsResponse
+ */
+export class NumPoolPositionsResponse extends Message<NumPoolPositionsResponse> {
+  /**
+   * @generated from field: uint64 position_count = 1;
+   */
+  positionCount = protoInt64.zero;
+
+  constructor(data?: PartialMessage<NumPoolPositionsResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "osmosis.concentratedliquidity.v1beta1.NumPoolPositionsResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "position_count", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): NumPoolPositionsResponse {
+    return new NumPoolPositionsResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): NumPoolPositionsResponse {
+    return new NumPoolPositionsResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): NumPoolPositionsResponse {
+    return new NumPoolPositionsResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: NumPoolPositionsResponse | PlainMessage<NumPoolPositionsResponse> | undefined, b: NumPoolPositionsResponse | PlainMessage<NumPoolPositionsResponse> | undefined): boolean {
+    return proto3.util.equals(NumPoolPositionsResponse, a, b);
+  }
+}
+
+/**
  * =============================== Pools
  *
  * @generated from message osmosis.concentratedliquidity.v1beta1.PoolsRequest

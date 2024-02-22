@@ -13,7 +13,7 @@ import { Message, proto3, protoInt64 } from "@bufbuild/protobuf";
  */
 export class Module extends Message<Module> {
   /**
-   * max_metadata_len defines the maximum proposal metadata length.
+   * max_metadata_len defines the maximum proposal metadata length. 
    * Defaults to 255 if not explicitly set.
    *
    * @generated from field: uint64 max_metadata_len = 1;
@@ -27,22 +27,6 @@ export class Module extends Message<Module> {
    */
   authority = "";
 
-  /**
-   * max_title_len defines the maximum proposal title length.
-   * Defaults to 255 if not explicitly set.
-   *
-   * @generated from field: uint64 max_title_len = 3;
-   */
-  maxTitleLen = protoInt64.zero;
-
-  /**
-   * max_summary_len defines the maximum proposal summary length.
-   * Defaults to 10200 if not explicitly set.
-   *
-   * @generated from field: uint64 max_summary_len = 4;
-   */
-  maxSummaryLen = protoInt64.zero;
-
   constructor(data?: PartialMessage<Module>) {
     super();
     proto3.util.initPartial(data, this);
@@ -53,8 +37,6 @@ export class Module extends Message<Module> {
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "max_metadata_len", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
     { no: 2, name: "authority", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 3, name: "max_title_len", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
-    { no: 4, name: "max_summary_len", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Module {

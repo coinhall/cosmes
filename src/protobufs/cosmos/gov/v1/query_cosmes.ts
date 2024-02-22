@@ -5,21 +5,9 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { QueryConstitutionRequest, QueryConstitutionResponse, QueryDepositRequest, QueryDepositResponse, QueryDepositsRequest, QueryDepositsResponse, QueryMessageBasedParamsRequest, QueryMessageBasedParamsResponse, QueryParamsRequest, QueryParamsResponse, QueryProposalRequest, QueryProposalResponse, QueryProposalsRequest, QueryProposalsResponse, QueryProposalVoteOptionsRequest, QueryProposalVoteOptionsResponse, QueryTallyResultRequest, QueryTallyResultResponse, QueryVoteRequest, QueryVoteResponse, QueryVotesRequest, QueryVotesResponse } from "./query_pb.js";
+import { QueryDepositRequest, QueryDepositResponse, QueryDepositsRequest, QueryDepositsResponse, QueryParamsRequest, QueryParamsResponse, QueryProposalRequest, QueryProposalResponse, QueryProposalsRequest, QueryProposalsResponse, QueryTallyResultRequest, QueryTallyResultResponse, QueryVoteRequest, QueryVoteResponse, QueryVotesRequest, QueryVotesResponse } from "./query_pb.js";
 
 const TYPE_NAME = "cosmos.gov.v1.Query";
-
-/**
- * Constitution queries the chain's constitution.
- *
- * @generated from rpc cosmos.gov.v1.Query.Constitution
- */
-export const QueryConstitutionService = {
-  typeName: TYPE_NAME,
-  method: "Constitution",
-  Request: QueryConstitutionRequest,
-  Response: QueryConstitutionResponse,
-} as const;
 
 /**
  * Proposal queries proposal details based on ProposalID.
@@ -82,7 +70,7 @@ export const QueryParamsService = {
 } as const;
 
 /**
- * Deposit queries single deposit information based on proposalID, depositAddr.
+ * Deposit queries single deposit information based proposalID, depositAddr.
  *
  * @generated from rpc cosmos.gov.v1.Query.Deposit
  */
@@ -115,31 +103,5 @@ export const QueryTallyResultService = {
   method: "TallyResult",
   Request: QueryTallyResultRequest,
   Response: QueryTallyResultResponse,
-} as const;
-
-/**
- * ProposalVoteOptions queries the valid voting options for a proposal.
- * Since: cosmos-sdk x/gov v1.0.0
- *
- * @generated from rpc cosmos.gov.v1.Query.ProposalVoteOptions
- */
-export const QueryProposalVoteOptionsService = {
-  typeName: TYPE_NAME,
-  method: "ProposalVoteOptions",
-  Request: QueryProposalVoteOptionsRequest,
-  Response: QueryProposalVoteOptionsResponse,
-} as const;
-
-/**
- * MessageBasedParams queries the message specific governance params based on a msg url.
- * Since: cosmos-sdk x/gov v1.0.0
- *
- * @generated from rpc cosmos.gov.v1.Query.MessageBasedParams
- */
-export const QueryMessageBasedParamsService = {
-  typeName: TYPE_NAME,
-  method: "MessageBasedParams",
-  Request: QueryMessageBasedParamsRequest,
-  Response: QueryMessageBasedParamsResponse,
 } as const;
 

@@ -344,21 +344,14 @@ export class ValidatorSlashEvents extends Message<ValidatorSlashEvents> {
 
 /**
  * FeePool is the global fee pool for distribution.
- * It holds decimal coins. Once whole those coins can be burned or distributed to the community pool.
  *
  * @generated from message cosmos.distribution.v1beta1.FeePool
  */
 export class FeePool extends Message<FeePool> {
   /**
-   * @generated from field: repeated cosmos.base.v1beta1.DecCoin community_pool = 1 [deprecated = true];
-   * @deprecated
+   * @generated from field: repeated cosmos.base.v1beta1.DecCoin community_pool = 1;
    */
   communityPool: DecCoin[] = [];
-
-  /**
-   * @generated from field: repeated cosmos.base.v1beta1.DecCoin decimal_pool = 2;
-   */
-  decimalPool: DecCoin[] = [];
 
   constructor(data?: PartialMessage<FeePool>) {
     super();
@@ -369,7 +362,6 @@ export class FeePool extends Message<FeePool> {
   static readonly typeName = "cosmos.distribution.v1beta1.FeePool";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "community_pool", kind: "message", T: DecCoin, repeated: true },
-    { no: 2, name: "decimal_pool", kind: "message", T: DecCoin, repeated: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): FeePool {
@@ -560,10 +552,7 @@ export class DelegationDelegatorReward extends Message<DelegationDelegatorReward
  * CommunityPoolSpendProposalWithDeposit defines a CommunityPoolSpendProposal
  * with a deposit
  *
- * Deprecated: Do not use.
- *
  * @generated from message cosmos.distribution.v1beta1.CommunityPoolSpendProposalWithDeposit
- * @deprecated
  */
 export class CommunityPoolSpendProposalWithDeposit extends Message<CommunityPoolSpendProposalWithDeposit> {
   /**

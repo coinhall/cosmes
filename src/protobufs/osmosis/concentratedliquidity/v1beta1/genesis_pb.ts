@@ -229,6 +229,11 @@ export class GenesisState extends Message<GenesisState> {
    */
   nextIncentiveRecordId = protoInt64.zero;
 
+  /**
+   * @generated from field: uint64 incentives_accumulator_pool_id_migration_threshold = 6;
+   */
+  incentivesAccumulatorPoolIdMigrationThreshold = protoInt64.zero;
+
   constructor(data?: PartialMessage<GenesisState>) {
     super();
     proto3.util.initPartial(data, this);
@@ -242,6 +247,7 @@ export class GenesisState extends Message<GenesisState> {
     { no: 3, name: "position_data", kind: "message", T: PositionData, repeated: true },
     { no: 4, name: "next_position_id", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
     { no: 5, name: "next_incentive_record_id", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+    { no: 6, name: "incentives_accumulator_pool_id_migration_threshold", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): GenesisState {

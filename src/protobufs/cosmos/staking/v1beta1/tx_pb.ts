@@ -30,12 +30,7 @@ export class MsgCreateValidator extends Message<MsgCreateValidator> {
   minSelfDelegation = "";
 
   /**
-   * Deprecated: Use of Delegator Address in MsgCreateValidator is deprecated.
-   * The validator address bytes and delegator address bytes refer to the same account while creating validator (defer
-   * only in bech32 notation).
-   *
-   * @generated from field: string delegator_address = 4 [deprecated = true];
-   * @deprecated
+   * @generated from field: string delegator_address = 4;
    */
   delegatorAddress = "";
 
@@ -461,15 +456,6 @@ export class MsgUndelegateResponse extends Message<MsgUndelegateResponse> {
    */
   completionTime?: Timestamp;
 
-  /**
-   * amount returns the amount of undelegated coins
-   *
-   * Since: cosmos-sdk 0.50
-   *
-   * @generated from field: cosmos.base.v1beta1.Coin amount = 2;
-   */
-  amount?: Coin;
-
   constructor(data?: PartialMessage<MsgUndelegateResponse>) {
     super();
     proto3.util.initPartial(data, this);
@@ -479,7 +465,6 @@ export class MsgUndelegateResponse extends Message<MsgUndelegateResponse> {
   static readonly typeName = "cosmos.staking.v1beta1.MsgUndelegateResponse";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "completion_time", kind: "message", T: Timestamp },
-    { no: 2, name: "amount", kind: "message", T: Coin },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgUndelegateResponse {
@@ -683,89 +668,6 @@ export class MsgUpdateParamsResponse extends Message<MsgUpdateParamsResponse> {
 
   static equals(a: MsgUpdateParamsResponse | PlainMessage<MsgUpdateParamsResponse> | undefined, b: MsgUpdateParamsResponse | PlainMessage<MsgUpdateParamsResponse> | undefined): boolean {
     return proto3.util.equals(MsgUpdateParamsResponse, a, b);
-  }
-}
-
-/**
- * MsgRotateConsPubKey is the Msg/RotateConsPubKey request type.
- *
- * Since: cosmos-sdk 0.51
- *
- * @generated from message cosmos.staking.v1beta1.MsgRotateConsPubKey
- */
-export class MsgRotateConsPubKey extends Message<MsgRotateConsPubKey> {
-  /**
-   * @generated from field: string validator_address = 1;
-   */
-  validatorAddress = "";
-
-  /**
-   * @generated from field: google.protobuf.Any new_pubkey = 2;
-   */
-  newPubkey?: Any;
-
-  constructor(data?: PartialMessage<MsgRotateConsPubKey>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
-
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "cosmos.staking.v1beta1.MsgRotateConsPubKey";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "validator_address", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "new_pubkey", kind: "message", T: Any },
-  ]);
-
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgRotateConsPubKey {
-    return new MsgRotateConsPubKey().fromBinary(bytes, options);
-  }
-
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MsgRotateConsPubKey {
-    return new MsgRotateConsPubKey().fromJson(jsonValue, options);
-  }
-
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MsgRotateConsPubKey {
-    return new MsgRotateConsPubKey().fromJsonString(jsonString, options);
-  }
-
-  static equals(a: MsgRotateConsPubKey | PlainMessage<MsgRotateConsPubKey> | undefined, b: MsgRotateConsPubKey | PlainMessage<MsgRotateConsPubKey> | undefined): boolean {
-    return proto3.util.equals(MsgRotateConsPubKey, a, b);
-  }
-}
-
-/**
- * MsgRotateConsPubKeyResponse defines the response structure for executing a
- * MsgRotateConsPubKey message.
- *
- * Since: cosmos-sdk 0.51
- *
- * @generated from message cosmos.staking.v1beta1.MsgRotateConsPubKeyResponse
- */
-export class MsgRotateConsPubKeyResponse extends Message<MsgRotateConsPubKeyResponse> {
-  constructor(data?: PartialMessage<MsgRotateConsPubKeyResponse>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
-
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "cosmos.staking.v1beta1.MsgRotateConsPubKeyResponse";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-  ]);
-
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgRotateConsPubKeyResponse {
-    return new MsgRotateConsPubKeyResponse().fromBinary(bytes, options);
-  }
-
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MsgRotateConsPubKeyResponse {
-    return new MsgRotateConsPubKeyResponse().fromJson(jsonValue, options);
-  }
-
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MsgRotateConsPubKeyResponse {
-    return new MsgRotateConsPubKeyResponse().fromJsonString(jsonString, options);
-  }
-
-  static equals(a: MsgRotateConsPubKeyResponse | PlainMessage<MsgRotateConsPubKeyResponse> | undefined, b: MsgRotateConsPubKeyResponse | PlainMessage<MsgRotateConsPubKeyResponse> | undefined): boolean {
-    return proto3.util.equals(MsgRotateConsPubKeyResponse, a, b);
   }
 }
 

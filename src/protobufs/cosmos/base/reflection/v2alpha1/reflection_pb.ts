@@ -44,7 +44,7 @@ export class AppDescriptor extends Message<AppDescriptor> {
   configuration?: ConfigurationDescriptor;
 
   /**
-   * query_services provides metadata information regarding the available queryable endpoints
+   * query_services provides metadata information regarding the available queriable endpoints
    *
    * @generated from field: cosmos.base.reflection.v2alpha1.QueryServicesDescriptor query_services = 5;
    */
@@ -1016,7 +1016,7 @@ export class GetTxDescriptorResponse extends Message<GetTxDescriptorResponse> {
 }
 
 /**
- * QueryServicesDescriptor contains the list of cosmos-sdk queryable services
+ * QueryServicesDescriptor contains the list of cosmos-sdk queriable services
  *
  * @generated from message cosmos.base.reflection.v2alpha1.QueryServicesDescriptor
  */

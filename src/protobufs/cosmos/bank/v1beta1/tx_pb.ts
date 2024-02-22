@@ -275,8 +275,6 @@ export class MsgUpdateParamsResponse extends Message<MsgUpdateParamsResponse> {
  */
 export class MsgSetSendEnabled extends Message<MsgSetSendEnabled> {
   /**
-   * authority is the address that controls the module.
-   *
    * @generated from field: string authority = 1;
    */
   authority = "";
@@ -360,88 +358,6 @@ export class MsgSetSendEnabledResponse extends Message<MsgSetSendEnabledResponse
 
   static equals(a: MsgSetSendEnabledResponse | PlainMessage<MsgSetSendEnabledResponse> | undefined, b: MsgSetSendEnabledResponse | PlainMessage<MsgSetSendEnabledResponse> | undefined): boolean {
     return proto3.util.equals(MsgSetSendEnabledResponse, a, b);
-  }
-}
-
-/**
- * MsgBurn defines a message for burning coins.
- *
- * Since: cosmos-sdk 0.51
- *
- * @generated from message cosmos.bank.v1beta1.MsgBurn
- */
-export class MsgBurn extends Message<MsgBurn> {
-  /**
-   * @generated from field: string from_address = 1;
-   */
-  fromAddress = "";
-
-  /**
-   * @generated from field: repeated cosmos.base.v1beta1.Coin amount = 2;
-   */
-  amount: Coin[] = [];
-
-  constructor(data?: PartialMessage<MsgBurn>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
-
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "cosmos.bank.v1beta1.MsgBurn";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "from_address", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "amount", kind: "message", T: Coin, repeated: true },
-  ]);
-
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgBurn {
-    return new MsgBurn().fromBinary(bytes, options);
-  }
-
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MsgBurn {
-    return new MsgBurn().fromJson(jsonValue, options);
-  }
-
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MsgBurn {
-    return new MsgBurn().fromJsonString(jsonString, options);
-  }
-
-  static equals(a: MsgBurn | PlainMessage<MsgBurn> | undefined, b: MsgBurn | PlainMessage<MsgBurn> | undefined): boolean {
-    return proto3.util.equals(MsgBurn, a, b);
-  }
-}
-
-/**
- * MsgBurnResponse defines the Msg/Burn response type.
- *
- * Since: cosmos-sdk 0.51
- *
- * @generated from message cosmos.bank.v1beta1.MsgBurnResponse
- */
-export class MsgBurnResponse extends Message<MsgBurnResponse> {
-  constructor(data?: PartialMessage<MsgBurnResponse>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
-
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "cosmos.bank.v1beta1.MsgBurnResponse";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-  ]);
-
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgBurnResponse {
-    return new MsgBurnResponse().fromBinary(bytes, options);
-  }
-
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MsgBurnResponse {
-    return new MsgBurnResponse().fromJson(jsonValue, options);
-  }
-
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MsgBurnResponse {
-    return new MsgBurnResponse().fromJsonString(jsonString, options);
-  }
-
-  static equals(a: MsgBurnResponse | PlainMessage<MsgBurnResponse> | undefined, b: MsgBurnResponse | PlainMessage<MsgBurnResponse> | undefined): boolean {
-    return proto3.util.equals(MsgBurnResponse, a, b);
   }
 }
 

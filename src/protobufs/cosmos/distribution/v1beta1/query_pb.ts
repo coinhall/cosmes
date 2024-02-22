@@ -819,11 +819,7 @@ export class QueryDelegatorWithdrawAddressResponse extends Message<QueryDelegato
  * QueryCommunityPoolRequest is the request type for the Query/CommunityPool RPC
  * method.
  *
- * Deprecated
- * Since: cosmos-sdk 0.50
- *
  * @generated from message cosmos.distribution.v1beta1.QueryCommunityPoolRequest
- * @deprecated
  */
 export class QueryCommunityPoolRequest extends Message<QueryCommunityPoolRequest> {
   constructor(data?: PartialMessage<QueryCommunityPoolRequest>) {
@@ -857,11 +853,7 @@ export class QueryCommunityPoolRequest extends Message<QueryCommunityPoolRequest
  * QueryCommunityPoolResponse is the response type for the Query/CommunityPool
  * RPC method.
  *
- * Deprecated
- * Since: cosmos-sdk 0.50
- *
  * @generated from message cosmos.distribution.v1beta1.QueryCommunityPoolResponse
- * @deprecated
  */
 export class QueryCommunityPoolResponse extends Message<QueryCommunityPoolResponse> {
   /**

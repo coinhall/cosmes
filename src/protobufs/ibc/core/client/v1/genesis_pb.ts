@@ -89,8 +89,8 @@ export class GenesisState extends Message<GenesisState> {
 }
 
 /**
- * GenesisMetadata defines the genesis type for metadata that clients may return
- * with ExportMetadata
+ * GenesisMetadata defines the genesis type for metadata that will be used
+ * to export all client store keys that are not client or consensus states.
  *
  * @generated from message ibc.core.client.v1.GenesisMetadata
  */

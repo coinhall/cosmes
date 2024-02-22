@@ -127,3 +127,77 @@ export class TwapRecord extends Message<TwapRecord> {
   }
 }
 
+/**
+ * PruningState allows us to spread out the pruning of TWAP records over time,
+ * instead of pruning all at once at the end of the epoch.
+ *
+ * @generated from message osmosis.twap.v1beta1.PruningState
+ */
+export class PruningState extends Message<PruningState> {
+  /**
+   * is_pruning is true if the pruning process is ongoing.
+   * This tells the module to continue pruning the TWAP records
+   * at the EndBlock.
+   *
+   * @generated from field: bool is_pruning = 1;
+   */
+  isPruning = false;
+
+  /**
+   * last_kept_time is the time of the last kept TWAP record.
+   * This is used to determine all TWAP records that are older than
+   * last_kept_time and should be pruned.
+   *
+   * @generated from field: google.protobuf.Timestamp last_kept_time = 2;
+   */
+  lastKeptTime?: Timestamp;
+
+  /**
+   * Deprecated: This field is deprecated.
+   *
+   * @generated from field: bytes last_key_seen = 3 [deprecated = true];
+   * @deprecated
+   */
+  lastKeySeen = new Uint8Array(0);
+
+  /**
+   * last_seen_pool_id is the pool_id that we will begin pruning in the next
+   * block. This value starts at the highest pool_id at time of epoch, and
+   * decreases until it reaches 1. When it reaches 1, the pruning
+   * process is complete.
+   *
+   * @generated from field: uint64 last_seen_pool_id = 4;
+   */
+  lastSeenPoolId = protoInt64.zero;
+
+  constructor(data?: PartialMessage<PruningState>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "osmosis.twap.v1beta1.PruningState";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "is_pruning", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+    { no: 2, name: "last_kept_time", kind: "message", T: Timestamp },
+    { no: 3, name: "last_key_seen", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
+    { no: 4, name: "last_seen_pool_id", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PruningState {
+    return new PruningState().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): PruningState {
+    return new PruningState().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): PruningState {
+    return new PruningState().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: PruningState | PlainMessage<PruningState> | undefined, b: PruningState | PlainMessage<PruningState> | undefined): boolean {
+    return proto3.util.equals(PruningState, a, b);
+  }
+}
+
