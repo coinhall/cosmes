@@ -1,5 +1,15 @@
 # Changelog
 
+## `v0.0.56`
+
+### Features
+
+- Added Dymension's GAMM protobufs
+
+### Miscellaneous
+
+- Pinned Cosmos SDK protobuf to `v0.47.9`
+
 ## `v0.0.55`
 
 ### Features
