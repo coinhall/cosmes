@@ -93,7 +93,7 @@ export class MnemonicWallet extends ConnectedWallet {
       index,
     });
     const keyType =
-      chainId.startsWith("injective") || chainId.startsWith("dymension")
+      chainId.startsWith("injective") || chainId.startsWith("dymension") || chainId.startsWith("planq")
         ? "ethsecp256k1"
         : "secp256k1";
     const address = resolveBech32Address(publicKey, bech32Prefix, keyType);
