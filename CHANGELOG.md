@@ -1,5 +1,11 @@
 # Changelog
 
+## `v0.0.57`
+
+### Fixes
+
+- Allow Terra testnet to work correctly with Station extenion
+
 ## `v0.0.56`
 
 ### Features

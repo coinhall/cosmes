@@ -11,9 +11,14 @@ import { ChainInfo, WalletController } from "../WalletController";
 import { StationExtension } from "./StationExtension";
 import { StationWalletConnectV1 } from "./StationWalletConnectV1";
 
-const TERRA_CLASSIC_CHAIN_ID = "columbus-5";
-const TERRA_CHAIN_ID = "phoenix-1";
-const TERRA_CHAINS = [TERRA_CLASSIC_CHAIN_ID, TERRA_CHAIN_ID];
+const TERRA_CLASSIC_MAINNET_CHAIN_ID = "columbus-5";
+const TERRA_MAINNET_CHAIN_ID = "phoenix-1";
+const TERRA_TESTNET_CHAIN_ID = "pisco-1";
+const TERRA_CHAINS = [
+  TERRA_CLASSIC_MAINNET_CHAIN_ID,
+  TERRA_MAINNET_CHAIN_ID,
+  TERRA_TESTNET_CHAIN_ID,
+];
 
 export class StationController extends WalletController {
   private readonly wc: WalletConnectV1;
@@ -77,8 +82,10 @@ export class StationController extends WalletController {
     const { addresses, pubkey } = await ext.connect();
     // Station will only return one or the other, but not both
     // so we simply set the other one manually
-    addresses[TERRA_CLASSIC_CHAIN_ID] ??= addresses[TERRA_CHAIN_ID];
-    addresses[TERRA_CHAIN_ID] ??= addresses[TERRA_CLASSIC_CHAIN_ID];
+    addresses[TERRA_CLASSIC_MAINNET_CHAIN_ID] ??=
+      addresses[TERRA_MAINNET_CHAIN_ID] ?? addresses[TERRA_TESTNET_CHAIN_ID];
+    addresses[TERRA_MAINNET_CHAIN_ID] ??=
+      addresses[TERRA_CLASSIC_MAINNET_CHAIN_ID];
     for (const { chainId, rpc, gasPrice } of chains) {
       const address = addresses[chainId];
       if (address == null) {
