@@ -49,8 +49,8 @@ export class StationController extends WalletController {
     chains: ChainInfo<T>[]
   ) {
     for (const { chainId } of chains) {
-      // Station's WallectConnect only supports these chains
-      // TODO: update when Station supports more chains
+      // Station mobile's WallectConnect only supports these chains
+      // TODO: update when Station mobile supports more chains
       if (TERRA_CHAINS.includes(chainId)) {
         continue;
       }
@@ -58,9 +58,11 @@ export class StationController extends WalletController {
     }
     const wallets = new Map<T, ConnectedWallet>();
     const wc = await this.wc.connect();
+    // Station mobile only returns 1 address for now
+    // TODO: update when Station mobile supports more chains
+    const address = wc.accounts[0];
     for (let i = 0; i < chains.length; i++) {
       const { chainId, rpc, gasPrice } = chains[i];
-      const address = wc.accounts[i];
       // Since Station's WalletConnect doesn't support getting pub keys,
       // we need to query the account to get it.
       const key = await this.getPubKey(chainId, rpc, address);

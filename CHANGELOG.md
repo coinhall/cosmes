@@ -1,10 +1,16 @@
 # Changelog
 
+## `v0.0.58`
+
+### Fixes
+
+- Fix Station mobile wallet connect issue when connecting more than 1 chain
+
 ## `v0.0.57`
 
 ### Fixes
 
-- Allow Terra testnet to work correctly with Station extenion
+- Allow Terra testnet to work correctly with Station extension
 
 ## `v0.0.56`
 
