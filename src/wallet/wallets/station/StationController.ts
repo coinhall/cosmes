@@ -63,13 +63,19 @@ export class StationController extends WalletController {
     const address = wc.accounts[0];
     for (let i = 0; i < chains.length; i++) {
       const { chainId, rpc, gasPrice } = chains[i];
-      // Since Station's WalletConnect doesn't support getting pub keys,
-      // we need to query the account to get it.
-      const key = await this.getPubKey(chainId, rpc, address);
-      wallets.set(
-        chainId,
-        new StationWalletConnectV1(wc, chainId, key, address, rpc, gasPrice)
-      );
+      try {
+        // Since Station's WalletConnect doesn't support getting pub keys, we
+        // need to query the account to get it. However, if the wallet does
+        // not contain funds, the RPC will throw errors.
+        const key = await this.getPubKey(chainId, rpc, address);
+        wallets.set(
+          chainId,
+          new StationWalletConnectV1(wc, chainId, key, address, rpc, gasPrice)
+        );
+      } catch (err) {
+        // We simply log and ignore the error for now
+        console.warn(err);
+      }
     }
     this.wc.cacheSession(wc);
     return { wallets, wc: this.wc };

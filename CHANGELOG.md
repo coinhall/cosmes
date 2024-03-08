@@ -1,5 +1,11 @@
 # Changelog
 
+## `v0.0.59`
+
+### Fixes
+
+- Fix Station mobile wallet to not throw errors if pub keys do not exist
+
 ## `v0.0.58`
 
 ### Fixes
