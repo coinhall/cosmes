@@ -1,5 +1,11 @@
 # Changelog
 
+## `v0.0.60`
+
+### Features
+
+- Parse `EthermintAccount` in `toBaseAccount` util function
+
 ## `v0.0.59`
 
 ### Fixes
