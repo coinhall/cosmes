@@ -3,6 +3,7 @@ import { createStore } from "solid-js/store";
 
 import { MsgSend } from "cosmes/client";
 import {
+  BitgetController,
   CompassController,
   ConnectedWallet,
   CosmostationController,
@@ -35,6 +36,7 @@ const CHAINS: Record<string, string> = {
   "dymension_1100-1": "Dymension",
 };
 const WALLETS: Record<WalletName, string> = {
+  [WalletName.BITGET]: "Bitget",
   [WalletName.KEPLR]: "Keplr",
   [WalletName.COSMOSTATION]: "Cosmostation",
   [WalletName.STATION]: "Terra Station",
@@ -48,6 +50,7 @@ const TYPES: Record<WalletType, string> = {
   [WalletType.WALLETCONNECT]: "Wallet Connect",
 };
 const CONTROLLERS: Record<string, WalletController> = {
+  [WalletName.BITGET]: new BitgetController(WC_PROJECT_ID),
   [WalletName.STATION]: new StationController(),
   [WalletName.KEPLR]: new KeplrController(WC_PROJECT_ID),
   [WalletName.LEAP]: new LeapController(WC_PROJECT_ID),
