@@ -11,9 +11,14 @@ import { ChainInfo, WalletController } from "../WalletController";
 import { StationExtension } from "./StationExtension";
 import { StationWalletConnectV1 } from "./StationWalletConnectV1";
 
-const TERRA_CLASSIC_CHAIN_ID = "columbus-5";
-const TERRA_CHAIN_ID = "phoenix-1";
-const TERRA_CHAINS = [TERRA_CLASSIC_CHAIN_ID, TERRA_CHAIN_ID];
+const TERRA_CLASSIC_MAINNET_CHAIN_ID = "columbus-5";
+const TERRA_MAINNET_CHAIN_ID = "phoenix-1";
+const TERRA_TESTNET_CHAIN_ID = "pisco-1";
+const TERRA_CHAINS = [
+  TERRA_CLASSIC_MAINNET_CHAIN_ID,
+  TERRA_MAINNET_CHAIN_ID,
+  TERRA_TESTNET_CHAIN_ID,
+];
 
 export class StationController extends WalletController {
   private readonly wc: WalletConnectV1;
@@ -44,8 +49,8 @@ export class StationController extends WalletController {
     chains: ChainInfo<T>[]
   ) {
     for (const { chainId } of chains) {
-      // Station's WallectConnect only supports these chains
-      // TODO: update when Station supports more chains
+      // Station mobile's WallectConnect only supports these chains
+      // TODO: update when Station mobile supports more chains
       if (TERRA_CHAINS.includes(chainId)) {
         continue;
       }
@@ -53,16 +58,24 @@ export class StationController extends WalletController {
     }
     const wallets = new Map<T, ConnectedWallet>();
     const wc = await this.wc.connect();
+    // Station mobile only returns 1 address for now
+    // TODO: update when Station mobile supports more chains
+    const address = wc.accounts[0];
     for (let i = 0; i < chains.length; i++) {
       const { chainId, rpc, gasPrice } = chains[i];
-      const address = wc.accounts[i];
-      // Since Station's WalletConnect doesn't support getting pub keys,
-      // we need to query the account to get it.
-      const key = await this.getPubKey(chainId, rpc, address);
-      wallets.set(
-        chainId,
-        new StationWalletConnectV1(wc, chainId, key, address, rpc, gasPrice)
-      );
+      try {
+        // Since Station's WalletConnect doesn't support getting pub keys, we
+        // need to query the account to get it. However, if the wallet does
+        // not contain funds, the RPC will throw errors.
+        const key = await this.getPubKey(chainId, rpc, address);
+        wallets.set(
+          chainId,
+          new StationWalletConnectV1(wc, chainId, key, address, rpc, gasPrice)
+        );
+      } catch (err) {
+        // We simply log and ignore the error for now
+        console.warn(err);
+      }
     }
     this.wc.cacheSession(wc);
     return { wallets, wc: this.wc };
@@ -77,8 +90,10 @@ export class StationController extends WalletController {
     const { addresses, pubkey } = await ext.connect();
     // Station will only return one or the other, but not both
     // so we simply set the other one manually
-    addresses[TERRA_CLASSIC_CHAIN_ID] ??= addresses[TERRA_CHAIN_ID];
-    addresses[TERRA_CHAIN_ID] ??= addresses[TERRA_CLASSIC_CHAIN_ID];
+    addresses[TERRA_CLASSIC_MAINNET_CHAIN_ID] ??=
+      addresses[TERRA_MAINNET_CHAIN_ID] ?? addresses[TERRA_TESTNET_CHAIN_ID];
+    addresses[TERRA_MAINNET_CHAIN_ID] ??=
+      addresses[TERRA_CLASSIC_MAINNET_CHAIN_ID];
     for (const { chainId, rpc, gasPrice } of chains) {
       const address = addresses[chainId];
       if (address == null) {
