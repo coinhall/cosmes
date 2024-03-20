@@ -14,7 +14,7 @@ import { StationWalletConnectV1 } from "./StationWalletConnectV1";
 const TERRA_CLASSIC_MAINNET_CHAIN_ID = "columbus-5";
 const TERRA_MAINNET_CHAIN_ID = "phoenix-1";
 const TERRA_TESTNET_CHAIN_ID = "pisco-1";
-const TERRA_CHAINS = [
+const COIN_TYPE_330_CHAINS = [
   TERRA_CLASSIC_MAINNET_CHAIN_ID,
   TERRA_MAINNET_CHAIN_ID,
   TERRA_TESTNET_CHAIN_ID,
@@ -51,7 +51,7 @@ export class StationController extends WalletController {
     for (const { chainId } of chains) {
       // Station mobile's WallectConnect only supports these chains
       // TODO: update when Station mobile supports more chains
-      if (TERRA_CHAINS.includes(chainId)) {
+      if (COIN_TYPE_330_CHAINS.includes(chainId)) {
         continue;
       }
       throw new Error(`${chainId} not supported`);
@@ -99,7 +99,11 @@ export class StationController extends WalletController {
       if (address == null) {
         throw new Error(`${chainId} not supported`);
       }
-      const coinType = TERRA_CHAINS.includes(chainId) ? "330" : "118";
+      const coinType = address.startsWith("terra")
+        ? "330"
+        : address.startsWith("inj")
+        ? "60"
+        : "118";
       const key = pubkey
         ? new Secp256k1PubKey({
             chainId,

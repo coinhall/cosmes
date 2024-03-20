@@ -1,17 +1,17 @@
 import { PlainMessage } from "@bufbuild/protobuf";
 import {
+  RpcClient,
   Secp256k1PubKey,
   ToSignDocParams,
   ToStdSignDocParams,
   Tx,
 } from "cosmes/client";
-import { base16 } from "cosmes/codec";
 import {
   CosmosBaseV1beta1Coin as Coin,
   CosmosTxV1beta1Fee as Fee,
   CosmosTxV1beta1TxRaw as TxRaw,
 } from "cosmes/protobufs";
-import type { BroadcastMode, Keplr } from "cosmes/registry";
+import type { Keplr } from "cosmes/registry";
 
 import { WalletName } from "../../constants/WalletName";
 import { WalletType } from "../../constants/WalletType";
@@ -99,11 +99,6 @@ export class KeplrExtension extends ConnectedWallet {
       txRaw = tx.toSignedDirect(signed, signature.signature);
     }
 
-    const txHash = await this.ext.sendTx(
-      this.chainId,
-      txRaw.toBinary(),
-      "sync" as BroadcastMode
-    );
-    return base16.encode(txHash);
+    return RpcClient.broadcastTx(this.rpc, txRaw);
   }
 }

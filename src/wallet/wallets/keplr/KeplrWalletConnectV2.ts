@@ -89,7 +89,6 @@ export class KeplrWalletConnectV2 extends ConnectedWallet {
       txRaw = tx.toSignedDirect(signed, signature.signature);
     }
 
-    // Since `sendTx` on WC isn't implemented yet, we have to broadcast manually
     return RpcClient.broadcastTx(this.rpc, txRaw);
   }
 }

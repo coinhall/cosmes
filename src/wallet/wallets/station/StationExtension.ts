@@ -1,9 +1,10 @@
 import { PlainMessage } from "@bufbuild/protobuf";
-import { Secp256k1PubKey } from "cosmes/client";
+import { RpcClient, Secp256k1PubKey, Tx } from "cosmes/client";
 import { base64, utf8 } from "cosmes/codec";
 import {
   CosmosBaseV1beta1Coin as Coin,
   CosmosTxV1beta1Fee as Fee,
+  CosmosTxSigningV1beta1SignMode as SignMode,
 } from "cosmes/protobufs";
 
 import { WalletName } from "../../constants/WalletName";
@@ -51,17 +52,36 @@ export class StationExtension extends ConnectedWallet {
   }
 
   public async signAndBroadcastTx(
-    unsignedTx: UnsignedTx,
-    fee: Fee
+    { msgs, memo, timeoutHeight }: UnsignedTx,
+    fee: Fee,
+    _accountNumber: bigint,
+    sequence: bigint
   ): Promise<string> {
-    const { msgs, memo } = unsignedTx;
-    const { code, raw_log, txhash } = await this.normaliseError(
-      this.ext.post(toStationTx(this.chainId, fee, msgs, memo), true)
+    const { auth_info, signatures } = await this.normaliseError(
+      this.ext.sign(toStationTx(this.chainId, fee, msgs, memo), true)
     );
-    if (code) {
-      throw new Error(raw_log);
-    }
-    return txhash;
+    const tx = new Tx({
+      chainId: this.chainId,
+      pubKey: this.pubKey,
+      msgs: msgs,
+    });
+    const txRaw = tx.toSignedProto({
+      fee: new Fee({
+        amount: auth_info.fee.amount.slice(),
+        gasLimit: BigInt(auth_info.fee.gas_limit),
+        payer: fee.payer,
+        granter: fee.granter,
+      }),
+      sequence,
+      signMode:
+        auth_info.signer_infos[0].mode_info.single.mode === "SIGN_MODE_DIRECT"
+          ? SignMode.DIRECT
+          : SignMode.LEGACY_AMINO_JSON,
+      signature: base64.decode(signatures[0]),
+      memo: memo,
+      timeoutHeight,
+    });
+    return RpcClient.broadcastTx(this.rpc, txRaw);
   }
 
   /**
