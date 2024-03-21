@@ -57,6 +57,8 @@ export class StationWalletConnectV1 extends ConnectedWallet {
     { msgs, memo }: UnsignedTx,
     fee: Fee
   ): Promise<string> {
+    // Signing a tx without posting it isn't supported
+    // See: https://github.com/terra-money/wallet-kit/blob/79600bb096d64754160909871dfdf89944120ce8/src/%40terra-money/terra-station-mobile/index.ts#L304
     const { txhash } = await this.sendRequest<PostResponse>(
       "post",
       toStationTx(this.chainId, fee, msgs, memo)
