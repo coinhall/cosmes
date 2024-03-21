@@ -86,32 +86,51 @@ export class StationController extends WalletController {
     if (!ext) {
       throw new Error("Station extension is not installed");
     }
+    // This method never throws on Station
     await ext.enable(chains.map(({ chainId }) => chainId));
     for (const { chainId, rpc, gasPrice } of Object.values(chains)) {
-      const { bech32Address, pubKey, isNanoLedger } = await ext.getKey(chainId);
-      const key = new Secp256k1PubKey({
-        key: pubKey,
-        chainId,
-      });
-      wallets.set(
-        chainId,
-        new StationExtension(
-          this.id,
-          ext,
+      try {
+        const { bech32Address, pubKey, isNanoLedger } = await ext.getKey(
+          chainId
+        );
+        const key = new Secp256k1PubKey({
+          key: pubKey,
           chainId,
-          key,
-          bech32Address,
-          rpc,
-          gasPrice,
-          isNanoLedger
-        )
-      );
+        });
+        wallets.set(
+          chainId,
+          new StationExtension(
+            this.id,
+            ext,
+            chainId,
+            key,
+            bech32Address,
+            rpc,
+            gasPrice,
+            isNanoLedger
+          )
+        );
+      } catch (err) {
+        if (
+          err instanceof Error &&
+          err.message === "The requested chain is not available on Station."
+        ) {
+          // If the chain is not supported, we simply log and ignore it
+          err.message = `There is no chain info for ${chainId}`; // Change to Keplr's error message
+          console.warn(err);
+          continue;
+        }
+        throw err; // Rethrow unhandled errors
+      }
     }
     return wallets;
   }
 
   protected registerAccountChangeHandlers() {
     onWindowEvent("station_wallet_change", () =>
+      this.changeAccount(WalletType.EXTENSION)
+    );
+    onWindowEvent("station_network_change", () =>
       this.changeAccount(WalletType.EXTENSION)
     );
     // Station's WalletConnect v1 doesn't support account change events

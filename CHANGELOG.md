@@ -1,6 +1,6 @@
 # Changelog
 
-## `v0.0.61`
+## `v0.0.62`
 
 ### Improvements
 
