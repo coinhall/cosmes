@@ -1,3 +1,5 @@
+import { Keplr } from "cosmes/registry";
+
 export type Window = {
   station?: Station | undefined;
 };
@@ -8,6 +10,7 @@ export type Window = {
  * @see https://github.com/terra-money/wallet-kit/blob/79600bb096d64754160909871dfdf89944120ce8/src/%40terra-money/station-connector/index.ts#L66
  */
 export type Station = {
+  keplr?: Keplr | undefined;
   connect: () => Promise<ConnectResponse>;
   getPublicKey: () => Promise<GetPubKeyResponse>;
   signBytes(bytes: string, purgeQueue?: boolean): Promise<SignBytesResponse>;

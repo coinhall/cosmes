@@ -1,5 +1,4 @@
 import { Secp256k1PubKey, getAccount, toBaseAccount } from "cosmes/client";
-import { base64 } from "cosmes/codec";
 import { CosmosCryptoSecp256k1PubKey } from "cosmes/protobufs";
 
 import { WalletName } from "../../constants/WalletName";
@@ -83,37 +82,29 @@ export class StationController extends WalletController {
 
   protected async connectExtension<T extends string>(chains: ChainInfo<T>[]) {
     const wallets = new Map<T, ConnectedWallet>();
-    const ext = window.station;
+    const ext = window.station?.keplr;
     if (!ext) {
       throw new Error("Station extension is not installed");
     }
-    const { addresses, pubkey } = await ext.connect();
-    // Station will only return one or the other, but not both
-    // so we simply set the other one manually
-    addresses[TERRA_CLASSIC_MAINNET_CHAIN_ID] ??=
-      addresses[TERRA_MAINNET_CHAIN_ID] ?? addresses[TERRA_TESTNET_CHAIN_ID];
-    addresses[TERRA_MAINNET_CHAIN_ID] ??=
-      addresses[TERRA_CLASSIC_MAINNET_CHAIN_ID];
-    for (const { chainId, rpc, gasPrice } of chains) {
-      const address = addresses[chainId];
-      if (address == null) {
-        throw new Error(`${chainId} not supported`);
-      }
-      const coinType = address.startsWith("terra")
-        ? "330"
-        : address.startsWith("inj")
-        ? "60"
-        : "118";
-      const key = pubkey
-        ? new Secp256k1PubKey({
-            chainId,
-            key: base64.decode(pubkey[coinType]),
-          })
-        : // Legacy support for older versions of Station that don't return pubkey
-          await this.getPubKey(chainId, rpc, address);
+    await ext.enable(chains.map(({ chainId }) => chainId));
+    for (const { chainId, rpc, gasPrice } of Object.values(chains)) {
+      const { bech32Address, pubKey, isNanoLedger } = await ext.getKey(chainId);
+      const key = new Secp256k1PubKey({
+        key: pubKey,
+        chainId,
+      });
       wallets.set(
         chainId,
-        new StationExtension(ext, chainId, key, address, rpc, gasPrice)
+        new StationExtension(
+          this.id,
+          ext,
+          chainId,
+          key,
+          bech32Address,
+          rpc,
+          gasPrice,
+          isNanoLedger
+        )
       );
     }
     return wallets;
