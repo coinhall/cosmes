@@ -111,16 +111,12 @@ export class StationController extends WalletController {
           )
         );
       } catch (err) {
-        if (
-          err instanceof Error &&
-          err.message === "The requested chain is not available on Station."
-        ) {
-          // If the chain is not supported, we simply log and ignore it
-          err.message = `There is no chain info for ${chainId}`; // Change to Keplr's error message
-          console.warn(err);
+        if (err instanceof Error) {
+          // The `getKey` method throws if the chain is not supported
+          console.warn(`Failed to get public key for ${chainId}`, err);
           continue;
         }
-        throw err; // Rethrow unhandled errors
+        throw err; // Rethrow other stuff
       }
     }
     return wallets;
