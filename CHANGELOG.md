@@ -1,5 +1,18 @@
 # Changelog
 
+## `v0.0.63`
+
+### Fixes
+
+- Ignore all errors in retrieving public keys for Station Extension
+
+## `v0.0.62`
+
+### Improvements
+
+- Txs are now broadcasted directly via the user-specified RPC instead of via the wallet (closes <https://github.com/coinhall/cosmes/issues/17>)
+- Update Station extension to use Keplr's API interface
+
 ## `v0.0.60`
 
 ### Features

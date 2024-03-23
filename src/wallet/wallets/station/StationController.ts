@@ -1,5 +1,4 @@
 import { Secp256k1PubKey, getAccount, toBaseAccount } from "cosmes/client";
-import { base64 } from "cosmes/codec";
 import { CosmosCryptoSecp256k1PubKey } from "cosmes/protobufs";
 
 import { WalletName } from "../../constants/WalletName";
@@ -14,7 +13,7 @@ import { StationWalletConnectV1 } from "./StationWalletConnectV1";
 const TERRA_CLASSIC_MAINNET_CHAIN_ID = "columbus-5";
 const TERRA_MAINNET_CHAIN_ID = "phoenix-1";
 const TERRA_TESTNET_CHAIN_ID = "pisco-1";
-const TERRA_CHAINS = [
+const COIN_TYPE_330_CHAINS = [
   TERRA_CLASSIC_MAINNET_CHAIN_ID,
   TERRA_MAINNET_CHAIN_ID,
   TERRA_TESTNET_CHAIN_ID,
@@ -51,7 +50,7 @@ export class StationController extends WalletController {
     for (const { chainId } of chains) {
       // Station mobile's WallectConnect only supports these chains
       // TODO: update when Station mobile supports more chains
-      if (TERRA_CHAINS.includes(chainId)) {
+      if (COIN_TYPE_330_CHAINS.includes(chainId)) {
         continue;
       }
       throw new Error(`${chainId} not supported`);
@@ -83,40 +82,51 @@ export class StationController extends WalletController {
 
   protected async connectExtension<T extends string>(chains: ChainInfo<T>[]) {
     const wallets = new Map<T, ConnectedWallet>();
-    const ext = window.station;
+    const ext = window.station?.keplr;
     if (!ext) {
       throw new Error("Station extension is not installed");
     }
-    const { addresses, pubkey } = await ext.connect();
-    // Station will only return one or the other, but not both
-    // so we simply set the other one manually
-    addresses[TERRA_CLASSIC_MAINNET_CHAIN_ID] ??=
-      addresses[TERRA_MAINNET_CHAIN_ID] ?? addresses[TERRA_TESTNET_CHAIN_ID];
-    addresses[TERRA_MAINNET_CHAIN_ID] ??=
-      addresses[TERRA_CLASSIC_MAINNET_CHAIN_ID];
-    for (const { chainId, rpc, gasPrice } of chains) {
-      const address = addresses[chainId];
-      if (address == null) {
-        throw new Error(`${chainId} not supported`);
-      }
-      const coinType = TERRA_CHAINS.includes(chainId) ? "330" : "118";
-      const key = pubkey
-        ? new Secp256k1PubKey({
+    // This method never throws on Station
+    await ext.enable(chains.map(({ chainId }) => chainId));
+    for (const { chainId, rpc, gasPrice } of Object.values(chains)) {
+      try {
+        const { bech32Address, pubKey, isNanoLedger } = await ext.getKey(
+          chainId
+        );
+        const key = new Secp256k1PubKey({
+          key: pubKey,
+          chainId,
+        });
+        wallets.set(
+          chainId,
+          new StationExtension(
+            this.id,
+            ext,
             chainId,
-            key: base64.decode(pubkey[coinType]),
-          })
-        : // Legacy support for older versions of Station that don't return pubkey
-          await this.getPubKey(chainId, rpc, address);
-      wallets.set(
-        chainId,
-        new StationExtension(ext, chainId, key, address, rpc, gasPrice)
-      );
+            key,
+            bech32Address,
+            rpc,
+            gasPrice,
+            isNanoLedger
+          )
+        );
+      } catch (err) {
+        if (err instanceof Error) {
+          // The `getKey` method throws if the chain is not supported
+          console.warn(`Failed to get public key for ${chainId}`, err);
+          continue;
+        }
+        throw err; // Rethrow other stuff
+      }
     }
     return wallets;
   }
 
   protected registerAccountChangeHandlers() {
     onWindowEvent("station_wallet_change", () =>
+      this.changeAccount(WalletType.EXTENSION)
+    );
+    onWindowEvent("station_network_change", () =>
       this.changeAccount(WalletType.EXTENSION)
     );
     // Station's WalletConnect v1 doesn't support account change events

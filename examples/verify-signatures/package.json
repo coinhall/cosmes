@@ -6,13 +6,10 @@
     "start": "tsx src/index.ts"
   },
   "dependencies": {
-    "@keplr-wallet/cosmos": "^0.11.63",
-    "cosmes": "link:../..",
-    "secp256k1": "^5.0.0"
+    "cosmes": "link:../.."
   },
   "devDependencies": {
     "@types/node": "^20.2.0",
-    "@types/secp256k1": "^4.0.3",
     "tsx": "^3.12.7",
     "typescript": "^5.0.4"
   }

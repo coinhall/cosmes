@@ -154,7 +154,7 @@ See the [`benchmarks`](./benchmarks) folder, where the JS bundle size of CosmES 
 
 | Package       | Minified | Gzipped |
 |---------------|----------|---------|
-| CosmES        | 540 KB   | 146 KB  |
+| CosmES        | 537 KB   | 147 KB  |
 | Cosmos Kit v1 | 6004 KB  | 1392 KB |
 | Cosmos Kit v2 | 6273 KB  | 1453 KB |
 
