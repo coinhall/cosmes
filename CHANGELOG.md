@@ -1,5 +1,11 @@
 # Changelog
 
+## `v0.0.65`
+
+### Fixes
+
+- Fixed `verifyArbitrary` to verify arbitrary signatures done via Station's new Keplr interface
+
 ## `v0.0.64`
 
 ### Features
