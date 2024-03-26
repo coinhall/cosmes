@@ -10,6 +10,7 @@ import {
   LeapController,
   MetamaskInjectiveController,
   NinjiController,
+  OWalletController,
   StationController,
   UnsignedTx,
   WalletController,
@@ -33,6 +34,7 @@ const CHAINS: Record<string, string> = {
   "injective-1": "Injective",
   "pacific-1": "Sei",
   "dymension_1100-1": "Dymension",
+  Oraichain: "Oraichain",
 };
 const WALLETS: Record<WalletName, string> = {
   [WalletName.KEPLR]: "Keplr",
@@ -42,6 +44,7 @@ const WALLETS: Record<WalletName, string> = {
   [WalletName.COMPASS]: "Compass",
   [WalletName.METAMASK_INJECTIVE]: "MetaMask",
   [WalletName.NINJI]: "Ninji",
+  [WalletName.OWALLET]: "OWallet",
 };
 const TYPES: Record<WalletType, string> = {
   [WalletType.EXTENSION]: "Extension",
@@ -55,6 +58,7 @@ const CONTROLLERS: Record<string, WalletController> = {
   [WalletName.COSMOSTATION]: new CosmostationController(WC_PROJECT_ID),
   [WalletName.METAMASK_INJECTIVE]: new MetamaskInjectiveController(),
   [WalletName.NINJI]: new NinjiController(),
+  [WalletName.OWALLET]: new OWalletController(),
 };
 
 function getRpc(chain: string): string {
@@ -79,6 +83,8 @@ function getRpc(chain: string): string {
       return "https://rpc-sei-ia.cosmosia.notional.ventures";
     case "dymension_1100-1":
       return "https://rpc.dymension.nodestake.org";
+    case "Oraichain":
+      return "https://rpc.orai.io";
     default:
       throw new Error("Unknown chain");
   }
@@ -106,6 +112,8 @@ function getGasPrice(chain: string): { amount: string; denom: string } {
       return { amount: "0.1", denom: getDenom(chain) };
     case "dymension_1100-1":
       return { amount: "20000000000", denom: getDenom(chain) };
+    case "Oraichain":
+      return { amount: "0.003", denom: getDenom(chain) };
     default:
       throw new Error("Unknown chain");
   }
@@ -132,6 +140,8 @@ function getDenom(chain: string): string {
       return "usei";
     case "dymension_1100-1":
       return "adym";
+    case "Oraichain":
+      return "orai";
     default:
       throw new Error("Unknown chain");
   }
