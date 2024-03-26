@@ -1,5 +1,11 @@
 # Changelog
 
+## `v0.0.64`
+
+### Features
+
+- Added OWallet extension support (*does not support wallet connect yet*)
+
 ## `v0.0.63`
 
 ### Fixes
