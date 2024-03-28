@@ -127,6 +127,7 @@ This directory is a [Cosmos Kit](https://cosmoskit.com) alternative to interact 
 
 **Wallets supported**:
 
+- [Bitget](https://web3.bitget.com/) (for Sei only)
 - [Station](https://docs.terra.money/learn/station/)
 - [Keplr](https://www.keplr.app/)
 - [Leap](https://www.leapwallet.io/)
