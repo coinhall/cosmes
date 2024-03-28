@@ -1,10 +1,4 @@
-import {
-  base64,
-  utf8,
-  verifyADR36,
-  verifyECDSA,
-  verifyEIP191,
-} from "cosmes/codec";
+import { base64, utf8, verifyADR36, verifyEIP191 } from "cosmes/codec";
 
 import { WalletName } from "../constants/WalletName";
 
@@ -51,8 +45,6 @@ export function verifyArbitrary({
   };
   try {
     switch (wallet) {
-      case WalletName.STATION:
-        return verifyECDSA(params);
       case WalletName.METAMASK_INJECTIVE:
         return verifyEIP191(params);
       default:

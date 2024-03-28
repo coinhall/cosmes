@@ -131,6 +131,7 @@ This directory is a [Cosmos Kit](https://cosmoskit.com) alternative to interact 
 - [Keplr](https://www.keplr.app/)
 - [Leap](https://www.leapwallet.io/)
 - [Cosmostation](https://wallet.cosmostation.io/)
+- [OWallet](https://owallet.dev/)
 - [Compass](https://compasswallet.io/) (for Sei only)
 - [MetaMask](https://metamask.io/) (for Injective only)
 - [Ninji](https://ninji.xyz/) (for Injective only)

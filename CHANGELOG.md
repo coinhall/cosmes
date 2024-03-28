@@ -1,5 +1,23 @@
 # Changelog
 
+## `v0.0.65`
+
+### Fixes
+
+- Fixed `verifyArbitrary` to verify arbitrary signatures done via Station's new Keplr interface
+
+## `v0.0.64`
+
+### Features
+
+- Added OWallet extension support (*does not support wallet connect yet*)
+
+## `v0.0.63`
+
+### Fixes
+
+- Ignore all errors in retrieving public keys for Station Extension
+
 ## `v0.0.62`
 
 ### Improvements
