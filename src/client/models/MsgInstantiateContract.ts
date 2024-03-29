@@ -28,7 +28,15 @@ export class MsgInstantiateContract<T> implements Adapter {
   public toAmino() {
     return {
       type: "wasm/MsgInstantiateContract",
-      value: this.data,
+      value: {
+        sender: this.data.sender,
+        admin: this.data.admin,
+        code_id: this.data.codeId,
+        label: this.data.label,
+        msg: this.data.msg,
+        funds: this.data.funds,
+      }
     };
+  }
   }
 }
