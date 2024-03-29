@@ -38,5 +38,4 @@ export class MsgInstantiateContract<T> implements Adapter {
       }
     };
   }
-  }
 }
