@@ -1,5 +1,16 @@
 # Changelog
 
+## `v0.0.66`
+
+### Features
+
+- Add custom `WalletError` class to normalise wallet errors
+- Add `MsgInstantiateContract` class
+
+### Fixes
+
+- Fixed verification of station mobile signatures
+
 ## `v0.0.65`
 
 ### Fixes
