@@ -16,6 +16,7 @@ import {
   SignArbitraryResponse,
   UnsignedTx,
 } from "../ConnectedWallet";
+import { WalletError } from "../WalletError";
 import { Ethereum } from "./types";
 
 export class MetamaskInjectiveExtension extends ConnectedWallet {
@@ -46,10 +47,12 @@ export class MetamaskInjectiveExtension extends ConnectedWallet {
   }
 
   public async signArbitrary(data: string): Promise<SignArbitraryResponse> {
-    const signature = await this.ext.request<string>({
-      method: "personal_sign",
-      params: [base16.encode(utf8.decode(data)), this.ethAddress],
-    });
+    const signature = await WalletError.wrap(
+      this.ext.request<string>({
+        method: "personal_sign",
+        params: [base16.encode(utf8.decode(data)), this.ethAddress],
+      })
+    );
     if (!signature) {
       throw new Error("Failed to sign arbitrary message");
     }
@@ -81,10 +84,12 @@ export class MetamaskInjectiveExtension extends ConnectedWallet {
     });
     const typedData = this.getTypedData(stdSignDoc);
 
-    const signature = await this.ext.request<string>({
-      method: "eth_signTypedData_v4",
-      params: [this.ethAddress, JSON.stringify(typedData)],
-    });
+    const signature = await WalletError.wrap(
+      this.ext.request<string>({
+        method: "eth_signTypedData_v4",
+        params: [this.ethAddress, JSON.stringify(typedData)],
+      })
+    );
     if (!signature) {
       throw new Error("Failed to sign transaction");
     }

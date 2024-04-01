@@ -11,7 +11,7 @@ import {
   CosmosTxV1beta1Fee as Fee,
   CosmosTxV1beta1TxRaw as TxRaw,
 } from "cosmes/protobufs";
-import { WalletName, WalletType } from "cosmes/wallet";
+import { WalletError, WalletName, WalletType } from "cosmes/wallet";
 
 import { WalletConnectV2 } from "../../walletconnect/WalletConnectV2";
 import {
@@ -74,17 +74,13 @@ export class KeplrWalletConnectV2 extends ConnectedWallet {
     };
     let txRaw: TxRaw;
     if (this.useAmino) {
-      const { signed, signature } = await this.wc.signAmino(
-        this.chainId,
-        this.address,
-        tx.toStdSignDoc(params)
+      const { signed, signature } = await WalletError.wrap(
+        this.wc.signAmino(this.chainId, this.address, tx.toStdSignDoc(params))
       );
       txRaw = tx.toSignedAmino(signed, signature.signature);
     } else {
-      const { signed, signature } = await this.wc.signDirect(
-        this.chainId,
-        this.address,
-        tx.toSignDoc(params)
+      const { signed, signature } = await WalletError.wrap(
+        this.wc.signDirect(this.chainId, this.address, tx.toSignDoc(params))
       );
       txRaw = tx.toSignedDirect(signed, signature.signature);
     }
