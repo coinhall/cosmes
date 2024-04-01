@@ -31,11 +31,11 @@ export class MsgInstantiateContract<T> implements Adapter {
       value: {
         sender: this.data.sender,
         admin: this.data.admin,
-        code_id: this.data.codeId,
+        code_id: this.data.codeId.toString(),
         label: this.data.label,
         msg: this.data.msg,
         funds: this.data.funds,
-      }
+      },
     };
   }
 }
