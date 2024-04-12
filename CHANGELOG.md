@@ -1,5 +1,11 @@
 # Changelog
 
+## `v0.0.67`
+
+### Fixes
+
+- Fix `RpcClient`'s `RequestMessage` type error when using a request with an existing `height` field
+
 ## `v0.0.66`
 
 ### Features
