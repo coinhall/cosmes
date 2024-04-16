@@ -1,5 +1,11 @@
 # Changelog
 
+## `v0.0.68`
+
+### Chore
+
+- Regenerate `pnpm-lock.yaml` to fix dep issues
+
 ## `v0.0.67`
 
 ### Fixes
