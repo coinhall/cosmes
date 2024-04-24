@@ -149,7 +149,7 @@ This directory is a [Cosmos Kit](https://cosmoskit.com) alternative to interact 
 **Wallets supported**:
 
 - [Station](https://docs.terra.money/learn/station/)
-- [Galaxy Station](https://www.hexxagon.io)
+- [Galaxy Station](https://station.hexxagon.io)
 - [Keplr](https://www.keplr.app/)
 - [Leap](https://www.leapwallet.io/)
 - [Cosmostation](https://wallet.cosmostation.io/)
