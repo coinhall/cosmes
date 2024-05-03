@@ -519,3 +519,93 @@ export class MsgCommunityPoolSpendResponse extends Message<MsgCommunityPoolSpend
   }
 }
 
+/**
+ * DepositValidatorRewardsPool defines the request structure to provide
+ * additional rewards to delegators from a specific validator.
+ *
+ * Since: cosmos-sdk 0.50
+ *
+ * @generated from message cosmos.distribution.v1beta1.MsgDepositValidatorRewardsPool
+ */
+export class MsgDepositValidatorRewardsPool extends Message<MsgDepositValidatorRewardsPool> {
+  /**
+   * @generated from field: string depositor = 1;
+   */
+  depositor = "";
+
+  /**
+   * @generated from field: string validator_address = 2;
+   */
+  validatorAddress = "";
+
+  /**
+   * @generated from field: repeated cosmos.base.v1beta1.Coin amount = 3;
+   */
+  amount: Coin[] = [];
+
+  constructor(data?: PartialMessage<MsgDepositValidatorRewardsPool>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "cosmos.distribution.v1beta1.MsgDepositValidatorRewardsPool";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "depositor", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "validator_address", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "amount", kind: "message", T: Coin, repeated: true },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgDepositValidatorRewardsPool {
+    return new MsgDepositValidatorRewardsPool().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MsgDepositValidatorRewardsPool {
+    return new MsgDepositValidatorRewardsPool().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MsgDepositValidatorRewardsPool {
+    return new MsgDepositValidatorRewardsPool().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: MsgDepositValidatorRewardsPool | PlainMessage<MsgDepositValidatorRewardsPool> | undefined, b: MsgDepositValidatorRewardsPool | PlainMessage<MsgDepositValidatorRewardsPool> | undefined): boolean {
+    return proto3.util.equals(MsgDepositValidatorRewardsPool, a, b);
+  }
+}
+
+/**
+ * MsgDepositValidatorRewardsPoolResponse defines the response to executing a
+ * MsgDepositValidatorRewardsPool message.
+ *
+ * Since: cosmos-sdk 0.50
+ *
+ * @generated from message cosmos.distribution.v1beta1.MsgDepositValidatorRewardsPoolResponse
+ */
+export class MsgDepositValidatorRewardsPoolResponse extends Message<MsgDepositValidatorRewardsPoolResponse> {
+  constructor(data?: PartialMessage<MsgDepositValidatorRewardsPoolResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "cosmos.distribution.v1beta1.MsgDepositValidatorRewardsPoolResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgDepositValidatorRewardsPoolResponse {
+    return new MsgDepositValidatorRewardsPoolResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MsgDepositValidatorRewardsPoolResponse {
+    return new MsgDepositValidatorRewardsPoolResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MsgDepositValidatorRewardsPoolResponse {
+    return new MsgDepositValidatorRewardsPoolResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: MsgDepositValidatorRewardsPoolResponse | PlainMessage<MsgDepositValidatorRewardsPoolResponse> | undefined, b: MsgDepositValidatorRewardsPoolResponse | PlainMessage<MsgDepositValidatorRewardsPoolResponse> | undefined): boolean {
+    return proto3.util.equals(MsgDepositValidatorRewardsPoolResponse, a, b);
+  }
+}
+

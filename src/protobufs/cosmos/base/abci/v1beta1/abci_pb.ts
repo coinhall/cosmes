@@ -6,6 +6,7 @@
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
 import { Any, Message, proto3, protoInt64 } from "@bufbuild/protobuf";
 import { Event } from "../../../../tendermint/abci/types_pb.js";
+import { Block } from "../../../../tendermint/types/block_pb.js";
 
 /**
  * TxResponse defines a structure containing relevant tx data and metadata. The
@@ -644,6 +645,87 @@ export class SearchTxsResult extends Message<SearchTxsResult> {
 
   static equals(a: SearchTxsResult | PlainMessage<SearchTxsResult> | undefined, b: SearchTxsResult | PlainMessage<SearchTxsResult> | undefined): boolean {
     return proto3.util.equals(SearchTxsResult, a, b);
+  }
+}
+
+/**
+ * SearchBlocksResult defines a structure for querying blocks pageable
+ *
+ * @generated from message cosmos.base.abci.v1beta1.SearchBlocksResult
+ */
+export class SearchBlocksResult extends Message<SearchBlocksResult> {
+  /**
+   * Count of all blocks
+   *
+   * @generated from field: int64 total_count = 1;
+   */
+  totalCount = protoInt64.zero;
+
+  /**
+   * Count of blocks in current page
+   *
+   * @generated from field: int64 count = 2;
+   */
+  count = protoInt64.zero;
+
+  /**
+   * Index of current page, start from 1
+   *
+   * @generated from field: int64 page_number = 3;
+   */
+  pageNumber = protoInt64.zero;
+
+  /**
+   * Count of total pages
+   *
+   * @generated from field: int64 page_total = 4;
+   */
+  pageTotal = protoInt64.zero;
+
+  /**
+   * Max count blocks per page
+   *
+   * @generated from field: int64 limit = 5;
+   */
+  limit = protoInt64.zero;
+
+  /**
+   * List of blocks in current page
+   *
+   * @generated from field: repeated tendermint.types.Block blocks = 6;
+   */
+  blocks: Block[] = [];
+
+  constructor(data?: PartialMessage<SearchBlocksResult>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "cosmos.base.abci.v1beta1.SearchBlocksResult";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "total_count", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
+    { no: 2, name: "count", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
+    { no: 3, name: "page_number", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
+    { no: 4, name: "page_total", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
+    { no: 5, name: "limit", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
+    { no: 6, name: "blocks", kind: "message", T: Block, repeated: true },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): SearchBlocksResult {
+    return new SearchBlocksResult().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): SearchBlocksResult {
+    return new SearchBlocksResult().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): SearchBlocksResult {
+    return new SearchBlocksResult().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: SearchBlocksResult | PlainMessage<SearchBlocksResult> | undefined, b: SearchBlocksResult | PlainMessage<SearchBlocksResult> | undefined): boolean {
+    return proto3.util.equals(SearchBlocksResult, a, b);
   }
 }
 

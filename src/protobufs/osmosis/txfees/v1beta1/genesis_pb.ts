@@ -6,6 +6,7 @@
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
 import { Message, proto3 } from "@bufbuild/protobuf";
 import { FeeToken } from "./feetoken_pb.js";
+import { Params } from "./params_pb.js";
 
 /**
  * GenesisState defines the txfees module's genesis state.
@@ -23,6 +24,13 @@ export class GenesisState extends Message<GenesisState> {
    */
   feetokens: FeeToken[] = [];
 
+  /**
+   * params is the container of txfees parameters.
+   *
+   * @generated from field: osmosis.txfees.v1beta1.Params params = 4;
+   */
+  params?: Params;
+
   constructor(data?: PartialMessage<GenesisState>) {
     super();
     proto3.util.initPartial(data, this);
@@ -33,6 +41,7 @@ export class GenesisState extends Message<GenesisState> {
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "basedenom", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "feetokens", kind: "message", T: FeeToken, repeated: true },
+    { no: 4, name: "params", kind: "message", T: Params },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): GenesisState {

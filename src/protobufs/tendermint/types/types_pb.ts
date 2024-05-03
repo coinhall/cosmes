@@ -7,41 +7,7 @@ import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialM
 import { Message, proto3, protoInt64, Timestamp } from "@bufbuild/protobuf";
 import { Proof } from "../crypto/proof_pb.js";
 import { Consensus } from "../version/types_pb.js";
-import { ValidatorSet } from "./validator_pb.js";
-
-/**
- * BlockIdFlag indicates which BlcokID the signature is for
- *
- * @generated from enum tendermint.types.BlockIDFlag
- */
-export enum BlockIDFlag {
-  /**
-   * @generated from enum value: BLOCK_ID_FLAG_UNKNOWN = 0;
-   */
-  BLOCK_ID_FLAG_UNKNOWN = 0,
-
-  /**
-   * @generated from enum value: BLOCK_ID_FLAG_ABSENT = 1;
-   */
-  BLOCK_ID_FLAG_ABSENT = 1,
-
-  /**
-   * @generated from enum value: BLOCK_ID_FLAG_COMMIT = 2;
-   */
-  BLOCK_ID_FLAG_COMMIT = 2,
-
-  /**
-   * @generated from enum value: BLOCK_ID_FLAG_NIL = 3;
-   */
-  BLOCK_ID_FLAG_NIL = 3,
-}
-// Retrieve enum metadata with: proto3.getEnumType(BlockIDFlag)
-proto3.util.setEnumType(BlockIDFlag, "tendermint.types.BlockIDFlag", [
-  { no: 0, name: "BLOCK_ID_FLAG_UNKNOWN" },
-  { no: 1, name: "BLOCK_ID_FLAG_ABSENT" },
-  { no: 2, name: "BLOCK_ID_FLAG_COMMIT" },
-  { no: 3, name: "BLOCK_ID_FLAG_NIL" },
-]);
+import { BlockIDFlag, ValidatorSet } from "./validator_pb.js";
 
 /**
  * SignedMsgType is a type of signed message in the consensus.
@@ -409,7 +375,7 @@ export class Data extends Message<Data> {
 }
 
 /**
- * Vote represents a prevote, precommit, or commit vote from validators for
+ * Vote represents a prevote or precommit vote from validators for
  * consensus.
  *
  * @generated from message tendermint.types.Vote
@@ -453,9 +419,29 @@ export class Vote extends Message<Vote> {
   validatorIndex = 0;
 
   /**
+   * Vote signature by the validator if they participated in consensus for the
+   * associated block.
+   *
    * @generated from field: bytes signature = 8;
    */
   signature = new Uint8Array(0);
+
+  /**
+   * Vote extension provided by the application. Only valid for precommit
+   * messages.
+   *
+   * @generated from field: bytes extension = 9;
+   */
+  extension = new Uint8Array(0);
+
+  /**
+   * Vote extension signature by the validator if they participated in
+   * consensus for the associated block.
+   * Only valid for precommit messages.
+   *
+   * @generated from field: bytes extension_signature = 10;
+   */
+  extensionSignature = new Uint8Array(0);
 
   constructor(data?: PartialMessage<Vote>) {
     super();
@@ -473,6 +459,8 @@ export class Vote extends Message<Vote> {
     { no: 6, name: "validator_address", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
     { no: 7, name: "validator_index", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
     { no: 8, name: "signature", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
+    { no: 9, name: "extension", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
+    { no: 10, name: "extension_signature", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Vote {
@@ -603,6 +591,136 @@ export class CommitSig extends Message<CommitSig> {
 
   static equals(a: CommitSig | PlainMessage<CommitSig> | undefined, b: CommitSig | PlainMessage<CommitSig> | undefined): boolean {
     return proto3.util.equals(CommitSig, a, b);
+  }
+}
+
+/**
+ * @generated from message tendermint.types.ExtendedCommit
+ */
+export class ExtendedCommit extends Message<ExtendedCommit> {
+  /**
+   * @generated from field: int64 height = 1;
+   */
+  height = protoInt64.zero;
+
+  /**
+   * @generated from field: int32 round = 2;
+   */
+  round = 0;
+
+  /**
+   * @generated from field: tendermint.types.BlockID block_id = 3;
+   */
+  blockId?: BlockID;
+
+  /**
+   * @generated from field: repeated tendermint.types.ExtendedCommitSig extended_signatures = 4;
+   */
+  extendedSignatures: ExtendedCommitSig[] = [];
+
+  constructor(data?: PartialMessage<ExtendedCommit>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "tendermint.types.ExtendedCommit";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "height", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
+    { no: 2, name: "round", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
+    { no: 3, name: "block_id", kind: "message", T: BlockID },
+    { no: 4, name: "extended_signatures", kind: "message", T: ExtendedCommitSig, repeated: true },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ExtendedCommit {
+    return new ExtendedCommit().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ExtendedCommit {
+    return new ExtendedCommit().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ExtendedCommit {
+    return new ExtendedCommit().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: ExtendedCommit | PlainMessage<ExtendedCommit> | undefined, b: ExtendedCommit | PlainMessage<ExtendedCommit> | undefined): boolean {
+    return proto3.util.equals(ExtendedCommit, a, b);
+  }
+}
+
+/**
+ * ExtendedCommitSig retains all the same fields as CommitSig but adds vote
+ * extension-related fields. We use two signatures to ensure backwards compatibility.
+ * That is the digest of the original signature is still the same in prior versions
+ *
+ * @generated from message tendermint.types.ExtendedCommitSig
+ */
+export class ExtendedCommitSig extends Message<ExtendedCommitSig> {
+  /**
+   * @generated from field: tendermint.types.BlockIDFlag block_id_flag = 1;
+   */
+  blockIdFlag = BlockIDFlag.BLOCK_ID_FLAG_UNKNOWN;
+
+  /**
+   * @generated from field: bytes validator_address = 2;
+   */
+  validatorAddress = new Uint8Array(0);
+
+  /**
+   * @generated from field: google.protobuf.Timestamp timestamp = 3;
+   */
+  timestamp?: Timestamp;
+
+  /**
+   * @generated from field: bytes signature = 4;
+   */
+  signature = new Uint8Array(0);
+
+  /**
+   * Vote extension data
+   *
+   * @generated from field: bytes extension = 5;
+   */
+  extension = new Uint8Array(0);
+
+  /**
+   * Vote extension signature
+   *
+   * @generated from field: bytes extension_signature = 6;
+   */
+  extensionSignature = new Uint8Array(0);
+
+  constructor(data?: PartialMessage<ExtendedCommitSig>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "tendermint.types.ExtendedCommitSig";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "block_id_flag", kind: "enum", T: proto3.getEnumType(BlockIDFlag) },
+    { no: 2, name: "validator_address", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
+    { no: 3, name: "timestamp", kind: "message", T: Timestamp },
+    { no: 4, name: "signature", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
+    { no: 5, name: "extension", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
+    { no: 6, name: "extension_signature", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ExtendedCommitSig {
+    return new ExtendedCommitSig().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ExtendedCommitSig {
+    return new ExtendedCommitSig().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ExtendedCommitSig {
+    return new ExtendedCommitSig().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: ExtendedCommitSig | PlainMessage<ExtendedCommitSig> | undefined, b: ExtendedCommitSig | PlainMessage<ExtendedCommitSig> | undefined): boolean {
+    return proto3.util.equals(ExtendedCommitSig, a, b);
   }
 }
 

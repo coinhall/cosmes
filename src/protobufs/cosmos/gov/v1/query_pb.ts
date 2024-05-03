@@ -11,6 +11,78 @@ import { Deposit, DepositParams, Params, Proposal, ProposalStatus, TallyParams, 
 import { PageRequest, PageResponse } from "../../base/query/v1beta1/pagination_pb.js";
 
 /**
+ * QueryConstitutionRequest is the request type for the Query/Constitution RPC method
+ *
+ * @generated from message cosmos.gov.v1.QueryConstitutionRequest
+ */
+export class QueryConstitutionRequest extends Message<QueryConstitutionRequest> {
+  constructor(data?: PartialMessage<QueryConstitutionRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "cosmos.gov.v1.QueryConstitutionRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): QueryConstitutionRequest {
+    return new QueryConstitutionRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): QueryConstitutionRequest {
+    return new QueryConstitutionRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): QueryConstitutionRequest {
+    return new QueryConstitutionRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: QueryConstitutionRequest | PlainMessage<QueryConstitutionRequest> | undefined, b: QueryConstitutionRequest | PlainMessage<QueryConstitutionRequest> | undefined): boolean {
+    return proto3.util.equals(QueryConstitutionRequest, a, b);
+  }
+}
+
+/**
+ * QueryConstitutionResponse is the response type for the Query/Constitution RPC method
+ *
+ * @generated from message cosmos.gov.v1.QueryConstitutionResponse
+ */
+export class QueryConstitutionResponse extends Message<QueryConstitutionResponse> {
+  /**
+   * @generated from field: string constitution = 1;
+   */
+  constitution = "";
+
+  constructor(data?: PartialMessage<QueryConstitutionResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "cosmos.gov.v1.QueryConstitutionResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "constitution", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): QueryConstitutionResponse {
+    return new QueryConstitutionResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): QueryConstitutionResponse {
+    return new QueryConstitutionResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): QueryConstitutionResponse {
+    return new QueryConstitutionResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: QueryConstitutionResponse | PlainMessage<QueryConstitutionResponse> | undefined, b: QueryConstitutionResponse | PlainMessage<QueryConstitutionResponse> | undefined): boolean {
+    return proto3.util.equals(QueryConstitutionResponse, a, b);
+  }
+}
+
+/**
  * QueryProposalRequest is the request type for the Query/Proposal RPC method.
  *
  * @generated from message cosmos.gov.v1.QueryProposalRequest

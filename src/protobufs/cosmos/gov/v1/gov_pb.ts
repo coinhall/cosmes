@@ -302,6 +302,8 @@ export class Proposal extends Message<Proposal> {
 
   /**
    * metadata is any arbitrary metadata attached to the proposal.
+   * the recommended format of the metadata is to be found here:
+   * https://docs.cosmos.network/v0.47/modules/gov#proposal-3
    *
    * @generated from field: string metadata = 10;
    */
@@ -326,13 +328,31 @@ export class Proposal extends Message<Proposal> {
   summary = "";
 
   /**
-   * Proposer is the address of the proposal sumbitter
+   * proposer is the address of the proposal sumbitter
    *
    * Since: cosmos-sdk 0.47
    *
    * @generated from field: string proposer = 13;
    */
   proposer = "";
+
+  /**
+   * expedited defines if the proposal is expedited
+   *
+   * Since: cosmos-sdk 0.50
+   *
+   * @generated from field: bool expedited = 14;
+   */
+  expedited = false;
+
+  /**
+   * failed_reason defines the reason why the proposal failed
+   *
+   * Since: cosmos-sdk 0.50
+   *
+   * @generated from field: string failed_reason = 15;
+   */
+  failedReason = "";
 
   constructor(data?: PartialMessage<Proposal>) {
     super();
@@ -355,6 +375,8 @@ export class Proposal extends Message<Proposal> {
     { no: 11, name: "title", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 12, name: "summary", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 13, name: "proposer", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 14, name: "expedited", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+    { no: 15, name: "failed_reason", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Proposal {
@@ -468,7 +490,8 @@ export class Vote extends Message<Vote> {
   options: WeightedVoteOption[] = [];
 
   /**
-   * metadata is any  arbitrary metadata to attached to the vote.
+   * metadata is any arbitrary metadata attached to the vote.
+   * the recommended format of the metadata is to be found here: https://docs.cosmos.network/v0.47/modules/gov#vote-5
    *
    * @generated from field: string metadata = 5;
    */
@@ -509,6 +532,7 @@ export class Vote extends Message<Vote> {
  * DepositParams defines the params for deposits on governance proposals.
  *
  * @generated from message cosmos.gov.v1.DepositParams
+ * @deprecated
  */
 export class DepositParams extends Message<DepositParams> {
   /**
@@ -559,6 +583,7 @@ export class DepositParams extends Message<DepositParams> {
  * VotingParams defines the params for voting on governance proposals.
  *
  * @generated from message cosmos.gov.v1.VotingParams
+ * @deprecated
  */
 export class VotingParams extends Message<VotingParams> {
   /**
@@ -600,6 +625,7 @@ export class VotingParams extends Message<VotingParams> {
  * TallyParams defines the params for tallying votes on governance proposals.
  *
  * @generated from message cosmos.gov.v1.TallyParams
+ * @deprecated
  */
 export class TallyParams extends Message<TallyParams> {
   /**
@@ -716,6 +742,50 @@ export class Params extends Message<Params> {
   minInitialDepositRatio = "";
 
   /**
+   * The cancel ratio which will not be returned back to the depositors when a proposal is cancelled.
+   *
+   * Since: cosmos-sdk 0.50
+   *
+   * @generated from field: string proposal_cancel_ratio = 8;
+   */
+  proposalCancelRatio = "";
+
+  /**
+   * The address which will receive (proposal_cancel_ratio * deposit) proposal deposits.
+   * If empty, the (proposal_cancel_ratio * deposit) proposal deposits will be burned.
+   *
+   * Since: cosmos-sdk 0.50
+   *
+   * @generated from field: string proposal_cancel_dest = 9;
+   */
+  proposalCancelDest = "";
+
+  /**
+   * Duration of the voting period of an expedited proposal.
+   *
+   * Since: cosmos-sdk 0.50
+   *
+   * @generated from field: google.protobuf.Duration expedited_voting_period = 10;
+   */
+  expeditedVotingPeriod?: Duration;
+
+  /**
+   * Minimum proportion of Yes votes for proposal to pass. Default value: 0.67.
+   *
+   * Since: cosmos-sdk 0.50
+   *
+   * @generated from field: string expedited_threshold = 11;
+   */
+  expeditedThreshold = "";
+
+  /**
+   *  Minimum expedited deposit for a proposal to enter voting period.
+   *
+   * @generated from field: repeated cosmos.base.v1beta1.Coin expedited_min_deposit = 12;
+   */
+  expeditedMinDeposit: Coin[] = [];
+
+  /**
    * burn deposits if a proposal does not meet quorum
    *
    * @generated from field: bool burn_vote_quorum = 13;
@@ -736,6 +806,17 @@ export class Params extends Message<Params> {
    */
   burnVoteVeto = false;
 
+  /**
+   * The ratio representing the proportion of the deposit value minimum that must be met when making a deposit.
+   * Default value: 0.01. Meaning that for a chain with a min_deposit of 100stake, a deposit of 1stake would be
+   * required.
+   *
+   * Since: cosmos-sdk 0.50
+   *
+   * @generated from field: string min_deposit_ratio = 16;
+   */
+  minDepositRatio = "";
+
   constructor(data?: PartialMessage<Params>) {
     super();
     proto3.util.initPartial(data, this);
@@ -751,9 +832,15 @@ export class Params extends Message<Params> {
     { no: 5, name: "threshold", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 6, name: "veto_threshold", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 7, name: "min_initial_deposit_ratio", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 8, name: "proposal_cancel_ratio", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 9, name: "proposal_cancel_dest", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 10, name: "expedited_voting_period", kind: "message", T: Duration },
+    { no: 11, name: "expedited_threshold", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 12, name: "expedited_min_deposit", kind: "message", T: Coin, repeated: true },
     { no: 13, name: "burn_vote_quorum", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
     { no: 14, name: "burn_proposal_deposit_prevote", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
     { no: 15, name: "burn_vote_veto", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+    { no: 16, name: "min_deposit_ratio", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Params {

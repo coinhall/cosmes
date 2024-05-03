@@ -42,6 +42,13 @@ export enum AuthorizationType {
    * @generated from enum value: AUTHORIZATION_TYPE_REDELEGATE = 3;
    */
   REDELEGATE = 3,
+
+  /**
+   * AUTHORIZATION_TYPE_CANCEL_UNBONDING_DELEGATION defines an authorization type for Msg/MsgCancelUnbondingDelegation
+   *
+   * @generated from enum value: AUTHORIZATION_TYPE_CANCEL_UNBONDING_DELEGATION = 4;
+   */
+  CANCEL_UNBONDING_DELEGATION = 4,
 }
 // Retrieve enum metadata with: proto3.getEnumType(AuthorizationType)
 proto3.util.setEnumType(AuthorizationType, "cosmos.staking.v1beta1.AuthorizationType", [
@@ -49,6 +56,7 @@ proto3.util.setEnumType(AuthorizationType, "cosmos.staking.v1beta1.Authorization
   { no: 1, name: "AUTHORIZATION_TYPE_DELEGATE" },
   { no: 2, name: "AUTHORIZATION_TYPE_UNDELEGATE" },
   { no: 3, name: "AUTHORIZATION_TYPE_REDELEGATE" },
+  { no: 4, name: "AUTHORIZATION_TYPE_CANCEL_UNBONDING_DELEGATION" },
 ]);
 
 /**

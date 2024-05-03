@@ -13,14 +13,14 @@ import { Message, proto3 } from "@bufbuild/protobuf";
  */
 export class ModuleOptions extends Message<ModuleOptions> {
   /**
-   * tx describes the tx command for the module.
+   * tx describes the tx commands for the module.
    *
    * @generated from field: cosmos.autocli.v1.ServiceCommandDescriptor tx = 1;
    */
   tx?: ServiceCommandDescriptor;
 
   /**
-   * query describes the tx command for the module.
+   * query describes the queries commands for the module.
    *
    * @generated from field: cosmos.autocli.v1.ServiceCommandDescriptor query = 2;
    */
@@ -297,13 +297,6 @@ export class FlagOptions extends Message<FlagOptions> {
   defaultValue = "";
 
   /**
-   * default value is the default value as text if the flag is used without any value.
-   *
-   * @generated from field: string no_opt_default_value = 5;
-   */
-  noOptDefaultValue = "";
-
-  /**
    * deprecated is the usage text to show if this flag is deprecated.
    *
    * @generated from field: string deprecated = 6;
@@ -336,7 +329,6 @@ export class FlagOptions extends Message<FlagOptions> {
     { no: 2, name: "shorthand", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "usage", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 4, name: "default_value", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 5, name: "no_opt_default_value", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 6, name: "deprecated", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 7, name: "shorthand_deprecated", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 8, name: "hidden", kind: "scalar", T: 8 /* ScalarType.BOOL */ },

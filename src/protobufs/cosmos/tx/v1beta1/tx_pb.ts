@@ -251,14 +251,10 @@ export class SignDocDirectAux extends Message<SignDocDirectAux> {
   sequence = protoInt64.zero;
 
   /**
-   * Tip is the optional tip used for transactions fees paid in another denom.
-   * It should be left empty if the signer is not the tipper for this
-   * transaction.
+   * tips have been depreacted and should not be used
    *
-   * This field is ignored if the chain didn't enable tips, i.e. didn't add the
-   * `TipDecorator` in its posthandler.
-   *
-   * @generated from field: cosmos.tx.v1beta1.Tip tip = 6;
+   * @generated from field: cosmos.tx.v1beta1.Tip tip = 6 [deprecated = true];
+   * @deprecated
    */
   tip?: Tip;
 
@@ -416,7 +412,8 @@ export class AuthInfo extends Message<AuthInfo> {
    *
    * Since: cosmos-sdk 0.46
    *
-   * @generated from field: cosmos.tx.v1beta1.Tip tip = 3;
+   * @generated from field: cosmos.tx.v1beta1.Tip tip = 3 [deprecated = true];
+   * @deprecated
    */
   tip?: Tip;
 
@@ -743,6 +740,7 @@ export class Fee extends Message<Fee> {
  * Since: cosmos-sdk 0.46
  *
  * @generated from message cosmos.tx.v1beta1.Tip
+ * @deprecated
  */
 export class Tip extends Message<Tip> {
   /**

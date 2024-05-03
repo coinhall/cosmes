@@ -5,7 +5,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { MsgGrantAllowance, MsgGrantAllowanceResponse, MsgRevokeAllowance, MsgRevokeAllowanceResponse } from "./tx_pb.js";
+import { MsgGrantAllowance, MsgGrantAllowanceResponse, MsgPruneAllowances, MsgPruneAllowancesResponse, MsgRevokeAllowance, MsgRevokeAllowanceResponse } from "./tx_pb.js";
 
 const TYPE_NAME = "cosmos.feegrant.v1beta1.Msg";
 
@@ -33,5 +33,19 @@ export const MsgRevokeAllowanceService = {
   method: "RevokeAllowance",
   Request: MsgRevokeAllowance,
   Response: MsgRevokeAllowanceResponse,
+} as const;
+
+/**
+ * PruneAllowances prunes expired fee allowances, currently up to 75 at a time.
+ *
+ * Since cosmos-sdk 0.50
+ *
+ * @generated from rpc cosmos.feegrant.v1beta1.Msg.PruneAllowances
+ */
+export const MsgPruneAllowancesService = {
+  typeName: TYPE_NAME,
+  method: "PruneAllowances",
+  Request: MsgPruneAllowances,
+  Response: MsgPruneAllowancesResponse,
 } as const;
 

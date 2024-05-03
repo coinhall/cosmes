@@ -686,14 +686,14 @@ export class DVVTriplets extends Message<DVVTriplets> {
  */
 export class Delegation extends Message<Delegation> {
   /**
-   * delegator_address is the bech32-encoded address of the delegator.
+   * delegator_address is the encoded address of the delegator.
    *
    * @generated from field: string delegator_address = 1;
    */
   delegatorAddress = "";
 
   /**
-   * validator_address is the bech32-encoded address of the validator.
+   * validator_address is the encoded address of the validator.
    *
    * @generated from field: string validator_address = 2;
    */
@@ -744,14 +744,14 @@ export class Delegation extends Message<Delegation> {
  */
 export class UnbondingDelegation extends Message<UnbondingDelegation> {
   /**
-   * delegator_address is the bech32-encoded address of the delegator.
+   * delegator_address is the encoded address of the delegator.
    *
    * @generated from field: string delegator_address = 1;
    */
   delegatorAddress = "";
 
   /**
-   * validator_address is the bech32-encoded address of the validator.
+   * validator_address is the encoded address of the validator.
    *
    * @generated from field: string validator_address = 2;
    */

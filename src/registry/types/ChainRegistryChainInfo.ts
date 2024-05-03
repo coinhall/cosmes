@@ -6,7 +6,7 @@
  */
 
 /**
- * Cosmos Chain.json is a metadata file that contains information about a cosmos sdk based chain.
+ * Chain.json is a metadata file that contains information about a blockchain.
  */
 export interface ChainRegistryChainInfo {
   $schema?: string;
@@ -53,7 +53,7 @@ export interface ChainRegistryChainInfo {
   };
   daemon_name?: string;
   node_home?: string;
-  key_algos?: ("secp256k1" | "ethsecp256k1" | "ed25519" | "sr25519")[];
+  key_algos?: ("secp256k1" | "ethsecp256k1" | "ed25519" | "sr25519" | "bn254")[];
   slip44?: number;
   alternative_slip44s?: number[];
   fees?: {
@@ -75,6 +75,10 @@ export interface ChainRegistryChainInfo {
   codebase?: {
     git_repo?: string;
     recommended_version?: string;
+    /**
+     * Minimum accepted go version to build the binary.
+     */
+    go_version?: string;
     compatible_versions?: string[];
     binaries?: {
       "linux/amd64"?: string;
@@ -86,7 +90,7 @@ export interface ChainRegistryChainInfo {
     };
     cosmos_sdk_version?: string;
     consensus?: {
-      type: "tendermint" | "cometbft";
+      type: "tendermint" | "cometbft" | "sei-tendermint";
       version?: string;
     };
     cosmwasm_version?: string;
@@ -123,14 +127,22 @@ export interface ChainRegistryChainInfo {
        */
       proposal?: number;
       /**
+       * [Optional] Name of the previous version
+       */
+      previous_version_name?: string;
+      /**
        * [Optional] Name of the following version
        */
       next_version_name?: string;
       recommended_version?: string;
+      /**
+       * Minimum accepted go version to build the binary.
+       */
+      go_version?: string;
       compatible_versions?: string[];
       cosmos_sdk_version?: string;
       consensus?: {
-        type: "tendermint" | "cometbft";
+        type: "tendermint" | "cometbft" | "sei-tendermint";
         version?: string;
       };
       cosmwasm_version?: string;
@@ -154,18 +166,19 @@ export interface ChainRegistryChainInfo {
       };
     }[];
   };
-  images?: {
-    image_sync?: Pointer;
-    png?: string;
-    svg?: string;
-    theme?: {
-      primary_color_hex?: string;
-    };
-  }[];
+  images?: (
+    | {
+        [k: string]: unknown | undefined;
+      }
+    | {
+        [k: string]: unknown | undefined;
+      }
+  )[];
   logo_URIs?: {
     png?: string;
     svg?: string;
   };
+  description?: string;
   peers?: {
     seeds?: Peer[];
     persistent_peers?: Peer[];
@@ -195,19 +208,6 @@ export interface FeeToken {
 }
 export interface StakingToken {
   denom: string;
-}
-/**
- * The (primary) key used to identify an object within the Chain Registry.
- */
-export interface Pointer {
-  /**
-   * The chain name or platform from which the object resides. E.g., 'cosmoshub', 'ethereum', 'forex', or 'nasdaq'
-   */
-  chain_name: string;
-  /**
-   * The base denom of the asset from which the object originates. E.g., when describing ATOM from Cosmos Hub, specify 'uatom', NOT 'atom' nor 'ATOM'; base units are unique per platform.
-   */
-  base_denom?: string;
 }
 export interface Peer {
   id: string;

@@ -80,7 +80,7 @@ export const QueryDelegationRewardsService = {
 } as const;
 
 /**
- * DelegationTotalRewards queries the total rewards accrued by a each
+ * DelegationTotalRewards queries the total rewards accrued by each
  * validator.
  *
  * @generated from rpc cosmos.distribution.v1beta1.Query.DelegationTotalRewards

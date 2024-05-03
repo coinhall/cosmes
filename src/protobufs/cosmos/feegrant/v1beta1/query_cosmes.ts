@@ -10,7 +10,7 @@ import { QueryAllowanceRequest, QueryAllowanceResponse, QueryAllowancesByGranter
 const TYPE_NAME = "cosmos.feegrant.v1beta1.Query";
 
 /**
- * Allowance returns fee granted to the grantee by the granter.
+ * Allowance returns granted allwance to the grantee by the granter.
  *
  * @generated from rpc cosmos.feegrant.v1beta1.Query.Allowance
  */
@@ -22,7 +22,7 @@ export const QueryAllowanceService = {
 } as const;
 
 /**
- * Allowances returns all the grants for address.
+ * Allowances returns all the grants for the given grantee address.
  *
  * @generated from rpc cosmos.feegrant.v1beta1.Query.Allowances
  */

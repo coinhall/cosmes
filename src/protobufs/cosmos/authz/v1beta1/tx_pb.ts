@@ -62,41 +62,35 @@ export class MsgGrant extends Message<MsgGrant> {
 }
 
 /**
- * MsgExecResponse defines the Msg/MsgExecResponse response type.
+ * MsgGrantResponse defines the Msg/MsgGrant response type.
  *
- * @generated from message cosmos.authz.v1beta1.MsgExecResponse
+ * @generated from message cosmos.authz.v1beta1.MsgGrantResponse
  */
-export class MsgExecResponse extends Message<MsgExecResponse> {
-  /**
-   * @generated from field: repeated bytes results = 1;
-   */
-  results: Uint8Array[] = [];
-
-  constructor(data?: PartialMessage<MsgExecResponse>) {
+export class MsgGrantResponse extends Message<MsgGrantResponse> {
+  constructor(data?: PartialMessage<MsgGrantResponse>) {
     super();
     proto3.util.initPartial(data, this);
   }
 
   static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "cosmos.authz.v1beta1.MsgExecResponse";
+  static readonly typeName = "cosmos.authz.v1beta1.MsgGrantResponse";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "results", kind: "scalar", T: 12 /* ScalarType.BYTES */, repeated: true },
   ]);
 
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgExecResponse {
-    return new MsgExecResponse().fromBinary(bytes, options);
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgGrantResponse {
+    return new MsgGrantResponse().fromBinary(bytes, options);
   }
 
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MsgExecResponse {
-    return new MsgExecResponse().fromJson(jsonValue, options);
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MsgGrantResponse {
+    return new MsgGrantResponse().fromJson(jsonValue, options);
   }
 
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MsgExecResponse {
-    return new MsgExecResponse().fromJsonString(jsonString, options);
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MsgGrantResponse {
+    return new MsgGrantResponse().fromJsonString(jsonString, options);
   }
 
-  static equals(a: MsgExecResponse | PlainMessage<MsgExecResponse> | undefined, b: MsgExecResponse | PlainMessage<MsgExecResponse> | undefined): boolean {
-    return proto3.util.equals(MsgExecResponse, a, b);
+  static equals(a: MsgGrantResponse | PlainMessage<MsgGrantResponse> | undefined, b: MsgGrantResponse | PlainMessage<MsgGrantResponse> | undefined): boolean {
+    return proto3.util.equals(MsgGrantResponse, a, b);
   }
 }
 
@@ -152,35 +146,41 @@ export class MsgExec extends Message<MsgExec> {
 }
 
 /**
- * MsgGrantResponse defines the Msg/MsgGrant response type.
+ * MsgExecResponse defines the Msg/MsgExecResponse response type.
  *
- * @generated from message cosmos.authz.v1beta1.MsgGrantResponse
+ * @generated from message cosmos.authz.v1beta1.MsgExecResponse
  */
-export class MsgGrantResponse extends Message<MsgGrantResponse> {
-  constructor(data?: PartialMessage<MsgGrantResponse>) {
+export class MsgExecResponse extends Message<MsgExecResponse> {
+  /**
+   * @generated from field: repeated bytes results = 1;
+   */
+  results: Uint8Array[] = [];
+
+  constructor(data?: PartialMessage<MsgExecResponse>) {
     super();
     proto3.util.initPartial(data, this);
   }
 
   static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "cosmos.authz.v1beta1.MsgGrantResponse";
+  static readonly typeName = "cosmos.authz.v1beta1.MsgExecResponse";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "results", kind: "scalar", T: 12 /* ScalarType.BYTES */, repeated: true },
   ]);
 
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgGrantResponse {
-    return new MsgGrantResponse().fromBinary(bytes, options);
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgExecResponse {
+    return new MsgExecResponse().fromBinary(bytes, options);
   }
 
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MsgGrantResponse {
-    return new MsgGrantResponse().fromJson(jsonValue, options);
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MsgExecResponse {
+    return new MsgExecResponse().fromJson(jsonValue, options);
   }
 
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MsgGrantResponse {
-    return new MsgGrantResponse().fromJsonString(jsonString, options);
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MsgExecResponse {
+    return new MsgExecResponse().fromJsonString(jsonString, options);
   }
 
-  static equals(a: MsgGrantResponse | PlainMessage<MsgGrantResponse> | undefined, b: MsgGrantResponse | PlainMessage<MsgGrantResponse> | undefined): boolean {
-    return proto3.util.equals(MsgGrantResponse, a, b);
+  static equals(a: MsgExecResponse | PlainMessage<MsgExecResponse> | undefined, b: MsgExecResponse | PlainMessage<MsgExecResponse> | undefined): boolean {
+    return proto3.util.equals(MsgExecResponse, a, b);
   }
 }
 

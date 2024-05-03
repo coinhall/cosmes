@@ -37,7 +37,7 @@ export class GenesisState extends Message<GenesisState> {
   lastValidatorPowers: LastValidatorPower[] = [];
 
   /**
-   * delegations defines the validator set at genesis.
+   * validators defines the validator set at genesis.
    *
    * @generated from field: repeated cosmos.staking.v1beta1.Validator validators = 4;
    */
@@ -65,6 +65,8 @@ export class GenesisState extends Message<GenesisState> {
   redelegations: Redelegation[] = [];
 
   /**
+   * exported defines a bool to identify whether the chain dealing with exported or initialized genesis.
+   *
    * @generated from field: bool exported = 8;
    */
   exported = false;

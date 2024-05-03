@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { ConfigRequest, ConfigResponse } from "./query_pb.js";
+import { ConfigRequest, ConfigResponse, StatusRequest, StatusResponse } from "./query_pb.js";
 
 const TYPE_NAME = "cosmos.base.node.v1beta1.Service";
 
@@ -17,5 +17,17 @@ export const ServiceConfigService = {
   method: "Config",
   Request: ConfigRequest,
   Response: ConfigResponse,
+} as const;
+
+/**
+ * Status queries for the node status.
+ *
+ * @generated from rpc cosmos.base.node.v1beta1.Service.Status
+ */
+export const ServiceStatusService = {
+  typeName: TYPE_NAME,
+  method: "Status",
+  Request: StatusRequest,
+  Response: StatusResponse,
 } as const;
 

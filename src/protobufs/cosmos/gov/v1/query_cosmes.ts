@@ -5,9 +5,21 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { QueryDepositRequest, QueryDepositResponse, QueryDepositsRequest, QueryDepositsResponse, QueryParamsRequest, QueryParamsResponse, QueryProposalRequest, QueryProposalResponse, QueryProposalsRequest, QueryProposalsResponse, QueryTallyResultRequest, QueryTallyResultResponse, QueryVoteRequest, QueryVoteResponse, QueryVotesRequest, QueryVotesResponse } from "./query_pb.js";
+import { QueryConstitutionRequest, QueryConstitutionResponse, QueryDepositRequest, QueryDepositResponse, QueryDepositsRequest, QueryDepositsResponse, QueryParamsRequest, QueryParamsResponse, QueryProposalRequest, QueryProposalResponse, QueryProposalsRequest, QueryProposalsResponse, QueryTallyResultRequest, QueryTallyResultResponse, QueryVoteRequest, QueryVoteResponse, QueryVotesRequest, QueryVotesResponse } from "./query_pb.js";
 
 const TYPE_NAME = "cosmos.gov.v1.Query";
+
+/**
+ * Constitution queries the chain's constitution.
+ *
+ * @generated from rpc cosmos.gov.v1.Query.Constitution
+ */
+export const QueryConstitutionService = {
+  typeName: TYPE_NAME,
+  method: "Constitution",
+  Request: QueryConstitutionRequest,
+  Response: QueryConstitutionResponse,
+} as const;
 
 /**
  * Proposal queries proposal details based on ProposalID.
@@ -70,7 +82,7 @@ export const QueryParamsService = {
 } as const;
 
 /**
- * Deposit queries single deposit information based proposalID, depositAddr.
+ * Deposit queries single deposit information based on proposalID, depositAddr.
  *
  * @generated from rpc cosmos.gov.v1.Query.Deposit
  */

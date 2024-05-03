@@ -104,6 +104,7 @@ export class DecCoin extends Message<DecCoin> {
 
 /**
  * IntProto defines a Protobuf wrapper around an Int object.
+ * Deprecated: Prefer to use math.Int directly. It supports binary Marshal and Unmarshal.
  *
  * @generated from message cosmos.base.v1beta1.IntProto
  */
@@ -143,6 +144,7 @@ export class IntProto extends Message<IntProto> {
 
 /**
  * DecProto defines a Protobuf wrapper around a Dec object.
+ * Deprecated: Prefer to use math.LegacyDec directly. It supports binary Marshal and Unmarshal.
  *
  * @generated from message cosmos.base.v1beta1.DecProto
  */

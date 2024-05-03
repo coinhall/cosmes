@@ -7,7 +7,7 @@
 
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
 import { Message, proto3 } from "@bufbuild/protobuf";
-import { BlockParams, EvidenceParams, ValidatorParams } from "../../../tendermint/types/params_pb.js";
+import { ABCIParams, BlockParams, EvidenceParams, ValidatorParams } from "../../../tendermint/types/params_pb.js";
 
 /**
  * MsgUpdateParams is the Msg/UpdateParams request type.
@@ -43,6 +43,13 @@ export class MsgUpdateParams extends Message<MsgUpdateParams> {
    */
   validator?: ValidatorParams;
 
+  /**
+   * Since: cosmos-sdk 0.50
+   *
+   * @generated from field: tendermint.types.ABCIParams abci = 5;
+   */
+  abci?: ABCIParams;
+
   constructor(data?: PartialMessage<MsgUpdateParams>) {
     super();
     proto3.util.initPartial(data, this);
@@ -55,6 +62,7 @@ export class MsgUpdateParams extends Message<MsgUpdateParams> {
     { no: 2, name: "block", kind: "message", T: BlockParams },
     { no: 3, name: "evidence", kind: "message", T: EvidenceParams },
     { no: 4, name: "validator", kind: "message", T: ValidatorParams },
+    { no: 5, name: "abci", kind: "message", T: ABCIParams },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgUpdateParams {

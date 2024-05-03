@@ -9,7 +9,7 @@ import { PageRequest, PageResponse } from "../../../cosmos/base/query/v1beta1/pa
 import { FullPositionBreakdown, PositionWithPeriodLock } from "./position_pb.js";
 import { Params } from "../params_pb.js";
 import { Coin, DecCoin } from "../../../cosmos/base/v1beta1/coin_pb.js";
-import { UptimeTracker } from "./tickInfo_pb.js";
+import { UptimeTracker } from "./tick_info_pb.js";
 import { IncentiveRecord } from "./incentive_record_pb.js";
 
 /**
