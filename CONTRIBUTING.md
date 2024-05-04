@@ -101,7 +101,7 @@ pnpm version prerelease --no-git-tag-version --preid=rc
 To publish the package to NPM, run:
 
 ```sh
-pnpm publish
+pnpm publish --tag='sdk50'
 ```
 
 ### Testing & CI

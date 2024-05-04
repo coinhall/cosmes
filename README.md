@@ -36,11 +36,11 @@ A tree-shakeable, framework agnostic, [pure ESM](https://gist.github.com/sindres
 ## Installing
 
 ```sh
-npm install cosmes
+npm install cosmes@sdk50
 
-pnpm add cosmes
+pnpm add cosmes@sdk50
 
-yarn add cosmes
+yarn add cosmes@sdk50
 ```
 
 ### Using with TypeScript
