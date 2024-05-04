@@ -4,8 +4,8 @@
 // @ts-nocheck
 
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
-import { Message, proto3 } from "@bufbuild/protobuf";
-import { Params } from "./host_pb.js";
+import { Message, proto3, protoInt64 } from "@bufbuild/protobuf";
+import { Params, QueryRequest } from "./host_pb.js";
 
 /**
  * MsgUpdateParams defines the payload for Msg/UpdateParams
@@ -88,6 +88,104 @@ export class MsgUpdateParamsResponse extends Message<MsgUpdateParamsResponse> {
 
   static equals(a: MsgUpdateParamsResponse | PlainMessage<MsgUpdateParamsResponse> | undefined, b: MsgUpdateParamsResponse | PlainMessage<MsgUpdateParamsResponse> | undefined): boolean {
     return proto3.util.equals(MsgUpdateParamsResponse, a, b);
+  }
+}
+
+/**
+ * MsgModuleQuerySafe defines the payload for Msg/ModuleQuerySafe
+ *
+ * @generated from message ibc.applications.interchain_accounts.host.v1.MsgModuleQuerySafe
+ */
+export class MsgModuleQuerySafe extends Message<MsgModuleQuerySafe> {
+  /**
+   * signer address
+   *
+   * @generated from field: string signer = 1;
+   */
+  signer = "";
+
+  /**
+   * requests defines the module safe queries to execute.
+   *
+   * @generated from field: repeated ibc.applications.interchain_accounts.host.v1.QueryRequest requests = 2;
+   */
+  requests: QueryRequest[] = [];
+
+  constructor(data?: PartialMessage<MsgModuleQuerySafe>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "ibc.applications.interchain_accounts.host.v1.MsgModuleQuerySafe";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "signer", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "requests", kind: "message", T: QueryRequest, repeated: true },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgModuleQuerySafe {
+    return new MsgModuleQuerySafe().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MsgModuleQuerySafe {
+    return new MsgModuleQuerySafe().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MsgModuleQuerySafe {
+    return new MsgModuleQuerySafe().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: MsgModuleQuerySafe | PlainMessage<MsgModuleQuerySafe> | undefined, b: MsgModuleQuerySafe | PlainMessage<MsgModuleQuerySafe> | undefined): boolean {
+    return proto3.util.equals(MsgModuleQuerySafe, a, b);
+  }
+}
+
+/**
+ * MsgModuleQuerySafeResponse defines the response for Msg/ModuleQuerySafe
+ *
+ * @generated from message ibc.applications.interchain_accounts.host.v1.MsgModuleQuerySafeResponse
+ */
+export class MsgModuleQuerySafeResponse extends Message<MsgModuleQuerySafeResponse> {
+  /**
+   * height at which the responses were queried
+   *
+   * @generated from field: uint64 height = 1;
+   */
+  height = protoInt64.zero;
+
+  /**
+   * protobuf encoded responses for each query
+   *
+   * @generated from field: repeated bytes responses = 2;
+   */
+  responses: Uint8Array[] = [];
+
+  constructor(data?: PartialMessage<MsgModuleQuerySafeResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "ibc.applications.interchain_accounts.host.v1.MsgModuleQuerySafeResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "height", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+    { no: 2, name: "responses", kind: "scalar", T: 12 /* ScalarType.BYTES */, repeated: true },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgModuleQuerySafeResponse {
+    return new MsgModuleQuerySafeResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MsgModuleQuerySafeResponse {
+    return new MsgModuleQuerySafeResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MsgModuleQuerySafeResponse {
+    return new MsgModuleQuerySafeResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: MsgModuleQuerySafeResponse | PlainMessage<MsgModuleQuerySafeResponse> | undefined, b: MsgModuleQuerySafeResponse | PlainMessage<MsgModuleQuerySafeResponse> | undefined): boolean {
+    return proto3.util.equals(MsgModuleQuerySafeResponse, a, b);
   }
 }
 

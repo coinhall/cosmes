@@ -6,9 +6,9 @@
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
 import { Message, proto3, protoInt64, Timestamp } from "@bufbuild/protobuf";
 import { ConsensusParams } from "../types/params_pb.js";
-import { Header } from "../types/types_pb.js";
 import { ProofOps } from "../crypto/proof_pb.js";
 import { PublicKey } from "../crypto/keys_pb.js";
+import { BlockIDFlag } from "../types/validator_pb.js";
 
 /**
  * @generated from enum tendermint.abci.CheckTxType
@@ -95,28 +95,10 @@ export class Request extends Message<Request> {
     case: "query";
   } | {
     /**
-     * @generated from field: tendermint.abci.RequestBeginBlock begin_block = 7;
-     */
-    value: RequestBeginBlock;
-    case: "beginBlock";
-  } | {
-    /**
      * @generated from field: tendermint.abci.RequestCheckTx check_tx = 8;
      */
     value: RequestCheckTx;
     case: "checkTx";
-  } | {
-    /**
-     * @generated from field: tendermint.abci.RequestDeliverTx deliver_tx = 9;
-     */
-    value: RequestDeliverTx;
-    case: "deliverTx";
-  } | {
-    /**
-     * @generated from field: tendermint.abci.RequestEndBlock end_block = 10;
-     */
-    value: RequestEndBlock;
-    case: "endBlock";
   } | {
     /**
      * @generated from field: tendermint.abci.RequestCommit commit = 11;
@@ -159,6 +141,24 @@ export class Request extends Message<Request> {
      */
     value: RequestProcessProposal;
     case: "processProposal";
+  } | {
+    /**
+     * @generated from field: tendermint.abci.RequestExtendVote extend_vote = 18;
+     */
+    value: RequestExtendVote;
+    case: "extendVote";
+  } | {
+    /**
+     * @generated from field: tendermint.abci.RequestVerifyVoteExtension verify_vote_extension = 19;
+     */
+    value: RequestVerifyVoteExtension;
+    case: "verifyVoteExtension";
+  } | {
+    /**
+     * @generated from field: tendermint.abci.RequestFinalizeBlock finalize_block = 20;
+     */
+    value: RequestFinalizeBlock;
+    case: "finalizeBlock";
   } | { case: undefined; value?: undefined } = { case: undefined };
 
   constructor(data?: PartialMessage<Request>) {
@@ -174,10 +174,7 @@ export class Request extends Message<Request> {
     { no: 3, name: "info", kind: "message", T: RequestInfo, oneof: "value" },
     { no: 5, name: "init_chain", kind: "message", T: RequestInitChain, oneof: "value" },
     { no: 6, name: "query", kind: "message", T: RequestQuery, oneof: "value" },
-    { no: 7, name: "begin_block", kind: "message", T: RequestBeginBlock, oneof: "value" },
     { no: 8, name: "check_tx", kind: "message", T: RequestCheckTx, oneof: "value" },
-    { no: 9, name: "deliver_tx", kind: "message", T: RequestDeliverTx, oneof: "value" },
-    { no: 10, name: "end_block", kind: "message", T: RequestEndBlock, oneof: "value" },
     { no: 11, name: "commit", kind: "message", T: RequestCommit, oneof: "value" },
     { no: 12, name: "list_snapshots", kind: "message", T: RequestListSnapshots, oneof: "value" },
     { no: 13, name: "offer_snapshot", kind: "message", T: RequestOfferSnapshot, oneof: "value" },
@@ -185,6 +182,9 @@ export class Request extends Message<Request> {
     { no: 15, name: "apply_snapshot_chunk", kind: "message", T: RequestApplySnapshotChunk, oneof: "value" },
     { no: 16, name: "prepare_proposal", kind: "message", T: RequestPrepareProposal, oneof: "value" },
     { no: 17, name: "process_proposal", kind: "message", T: RequestProcessProposal, oneof: "value" },
+    { no: 18, name: "extend_vote", kind: "message", T: RequestExtendVote, oneof: "value" },
+    { no: 19, name: "verify_vote_extension", kind: "message", T: RequestVerifyVoteExtension, oneof: "value" },
+    { no: 20, name: "finalize_block", kind: "message", T: RequestFinalizeBlock, oneof: "value" },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Request {
@@ -450,61 +450,6 @@ export class RequestQuery extends Message<RequestQuery> {
 }
 
 /**
- * @generated from message tendermint.abci.RequestBeginBlock
- */
-export class RequestBeginBlock extends Message<RequestBeginBlock> {
-  /**
-   * @generated from field: bytes hash = 1;
-   */
-  hash = new Uint8Array(0);
-
-  /**
-   * @generated from field: tendermint.types.Header header = 2;
-   */
-  header?: Header;
-
-  /**
-   * @generated from field: tendermint.abci.CommitInfo last_commit_info = 3;
-   */
-  lastCommitInfo?: CommitInfo;
-
-  /**
-   * @generated from field: repeated tendermint.abci.Misbehavior byzantine_validators = 4;
-   */
-  byzantineValidators: Misbehavior[] = [];
-
-  constructor(data?: PartialMessage<RequestBeginBlock>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
-
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "tendermint.abci.RequestBeginBlock";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "hash", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
-    { no: 2, name: "header", kind: "message", T: Header },
-    { no: 3, name: "last_commit_info", kind: "message", T: CommitInfo },
-    { no: 4, name: "byzantine_validators", kind: "message", T: Misbehavior, repeated: true },
-  ]);
-
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): RequestBeginBlock {
-    return new RequestBeginBlock().fromBinary(bytes, options);
-  }
-
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): RequestBeginBlock {
-    return new RequestBeginBlock().fromJson(jsonValue, options);
-  }
-
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): RequestBeginBlock {
-    return new RequestBeginBlock().fromJsonString(jsonString, options);
-  }
-
-  static equals(a: RequestBeginBlock | PlainMessage<RequestBeginBlock> | undefined, b: RequestBeginBlock | PlainMessage<RequestBeginBlock> | undefined): boolean {
-    return proto3.util.equals(RequestBeginBlock, a, b);
-  }
-}
-
-/**
  * @generated from message tendermint.abci.RequestCheckTx
  */
 export class RequestCheckTx extends Message<RequestCheckTx> {
@@ -544,80 +489,6 @@ export class RequestCheckTx extends Message<RequestCheckTx> {
 
   static equals(a: RequestCheckTx | PlainMessage<RequestCheckTx> | undefined, b: RequestCheckTx | PlainMessage<RequestCheckTx> | undefined): boolean {
     return proto3.util.equals(RequestCheckTx, a, b);
-  }
-}
-
-/**
- * @generated from message tendermint.abci.RequestDeliverTx
- */
-export class RequestDeliverTx extends Message<RequestDeliverTx> {
-  /**
-   * @generated from field: bytes tx = 1;
-   */
-  tx = new Uint8Array(0);
-
-  constructor(data?: PartialMessage<RequestDeliverTx>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
-
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "tendermint.abci.RequestDeliverTx";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "tx", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
-  ]);
-
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): RequestDeliverTx {
-    return new RequestDeliverTx().fromBinary(bytes, options);
-  }
-
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): RequestDeliverTx {
-    return new RequestDeliverTx().fromJson(jsonValue, options);
-  }
-
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): RequestDeliverTx {
-    return new RequestDeliverTx().fromJsonString(jsonString, options);
-  }
-
-  static equals(a: RequestDeliverTx | PlainMessage<RequestDeliverTx> | undefined, b: RequestDeliverTx | PlainMessage<RequestDeliverTx> | undefined): boolean {
-    return proto3.util.equals(RequestDeliverTx, a, b);
-  }
-}
-
-/**
- * @generated from message tendermint.abci.RequestEndBlock
- */
-export class RequestEndBlock extends Message<RequestEndBlock> {
-  /**
-   * @generated from field: int64 height = 1;
-   */
-  height = protoInt64.zero;
-
-  constructor(data?: PartialMessage<RequestEndBlock>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
-
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "tendermint.abci.RequestEndBlock";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "height", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
-  ]);
-
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): RequestEndBlock {
-    return new RequestEndBlock().fromBinary(bytes, options);
-  }
-
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): RequestEndBlock {
-    return new RequestEndBlock().fromJson(jsonValue, options);
-  }
-
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): RequestEndBlock {
-    return new RequestEndBlock().fromJsonString(jsonString, options);
-  }
-
-  static equals(a: RequestEndBlock | PlainMessage<RequestEndBlock> | undefined, b: RequestEndBlock | PlainMessage<RequestEndBlock> | undefined): boolean {
-    return proto3.util.equals(RequestEndBlock, a, b);
   }
 }
 
@@ -1006,6 +877,239 @@ export class RequestProcessProposal extends Message<RequestProcessProposal> {
 }
 
 /**
+ * Extends a vote with application-injected data
+ *
+ * @generated from message tendermint.abci.RequestExtendVote
+ */
+export class RequestExtendVote extends Message<RequestExtendVote> {
+  /**
+   * the hash of the block that this vote may be referring to
+   *
+   * @generated from field: bytes hash = 1;
+   */
+  hash = new Uint8Array(0);
+
+  /**
+   * the height of the extended vote
+   *
+   * @generated from field: int64 height = 2;
+   */
+  height = protoInt64.zero;
+
+  /**
+   * info of the block that this vote may be referring to
+   *
+   * @generated from field: google.protobuf.Timestamp time = 3;
+   */
+  time?: Timestamp;
+
+  /**
+   * @generated from field: repeated bytes txs = 4;
+   */
+  txs: Uint8Array[] = [];
+
+  /**
+   * @generated from field: tendermint.abci.CommitInfo proposed_last_commit = 5;
+   */
+  proposedLastCommit?: CommitInfo;
+
+  /**
+   * @generated from field: repeated tendermint.abci.Misbehavior misbehavior = 6;
+   */
+  misbehavior: Misbehavior[] = [];
+
+  /**
+   * @generated from field: bytes next_validators_hash = 7;
+   */
+  nextValidatorsHash = new Uint8Array(0);
+
+  /**
+   * address of the public key of the original proposer of the block.
+   *
+   * @generated from field: bytes proposer_address = 8;
+   */
+  proposerAddress = new Uint8Array(0);
+
+  constructor(data?: PartialMessage<RequestExtendVote>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "tendermint.abci.RequestExtendVote";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "hash", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
+    { no: 2, name: "height", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
+    { no: 3, name: "time", kind: "message", T: Timestamp },
+    { no: 4, name: "txs", kind: "scalar", T: 12 /* ScalarType.BYTES */, repeated: true },
+    { no: 5, name: "proposed_last_commit", kind: "message", T: CommitInfo },
+    { no: 6, name: "misbehavior", kind: "message", T: Misbehavior, repeated: true },
+    { no: 7, name: "next_validators_hash", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
+    { no: 8, name: "proposer_address", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): RequestExtendVote {
+    return new RequestExtendVote().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): RequestExtendVote {
+    return new RequestExtendVote().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): RequestExtendVote {
+    return new RequestExtendVote().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: RequestExtendVote | PlainMessage<RequestExtendVote> | undefined, b: RequestExtendVote | PlainMessage<RequestExtendVote> | undefined): boolean {
+    return proto3.util.equals(RequestExtendVote, a, b);
+  }
+}
+
+/**
+ * Verify the vote extension
+ *
+ * @generated from message tendermint.abci.RequestVerifyVoteExtension
+ */
+export class RequestVerifyVoteExtension extends Message<RequestVerifyVoteExtension> {
+  /**
+   * the hash of the block that this received vote corresponds to
+   *
+   * @generated from field: bytes hash = 1;
+   */
+  hash = new Uint8Array(0);
+
+  /**
+   * the validator that signed the vote extension
+   *
+   * @generated from field: bytes validator_address = 2;
+   */
+  validatorAddress = new Uint8Array(0);
+
+  /**
+   * @generated from field: int64 height = 3;
+   */
+  height = protoInt64.zero;
+
+  /**
+   * @generated from field: bytes vote_extension = 4;
+   */
+  voteExtension = new Uint8Array(0);
+
+  constructor(data?: PartialMessage<RequestVerifyVoteExtension>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "tendermint.abci.RequestVerifyVoteExtension";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "hash", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
+    { no: 2, name: "validator_address", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
+    { no: 3, name: "height", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
+    { no: 4, name: "vote_extension", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): RequestVerifyVoteExtension {
+    return new RequestVerifyVoteExtension().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): RequestVerifyVoteExtension {
+    return new RequestVerifyVoteExtension().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): RequestVerifyVoteExtension {
+    return new RequestVerifyVoteExtension().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: RequestVerifyVoteExtension | PlainMessage<RequestVerifyVoteExtension> | undefined, b: RequestVerifyVoteExtension | PlainMessage<RequestVerifyVoteExtension> | undefined): boolean {
+    return proto3.util.equals(RequestVerifyVoteExtension, a, b);
+  }
+}
+
+/**
+ * @generated from message tendermint.abci.RequestFinalizeBlock
+ */
+export class RequestFinalizeBlock extends Message<RequestFinalizeBlock> {
+  /**
+   * @generated from field: repeated bytes txs = 1;
+   */
+  txs: Uint8Array[] = [];
+
+  /**
+   * @generated from field: tendermint.abci.CommitInfo decided_last_commit = 2;
+   */
+  decidedLastCommit?: CommitInfo;
+
+  /**
+   * @generated from field: repeated tendermint.abci.Misbehavior misbehavior = 3;
+   */
+  misbehavior: Misbehavior[] = [];
+
+  /**
+   * hash is the merkle root hash of the fields of the decided block.
+   *
+   * @generated from field: bytes hash = 4;
+   */
+  hash = new Uint8Array(0);
+
+  /**
+   * @generated from field: int64 height = 5;
+   */
+  height = protoInt64.zero;
+
+  /**
+   * @generated from field: google.protobuf.Timestamp time = 6;
+   */
+  time?: Timestamp;
+
+  /**
+   * @generated from field: bytes next_validators_hash = 7;
+   */
+  nextValidatorsHash = new Uint8Array(0);
+
+  /**
+   * proposer_address is the address of the public key of the original proposer of the block.
+   *
+   * @generated from field: bytes proposer_address = 8;
+   */
+  proposerAddress = new Uint8Array(0);
+
+  constructor(data?: PartialMessage<RequestFinalizeBlock>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "tendermint.abci.RequestFinalizeBlock";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "txs", kind: "scalar", T: 12 /* ScalarType.BYTES */, repeated: true },
+    { no: 2, name: "decided_last_commit", kind: "message", T: CommitInfo },
+    { no: 3, name: "misbehavior", kind: "message", T: Misbehavior, repeated: true },
+    { no: 4, name: "hash", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
+    { no: 5, name: "height", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
+    { no: 6, name: "time", kind: "message", T: Timestamp },
+    { no: 7, name: "next_validators_hash", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
+    { no: 8, name: "proposer_address", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): RequestFinalizeBlock {
+    return new RequestFinalizeBlock().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): RequestFinalizeBlock {
+    return new RequestFinalizeBlock().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): RequestFinalizeBlock {
+    return new RequestFinalizeBlock().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: RequestFinalizeBlock | PlainMessage<RequestFinalizeBlock> | undefined, b: RequestFinalizeBlock | PlainMessage<RequestFinalizeBlock> | undefined): boolean {
+    return proto3.util.equals(RequestFinalizeBlock, a, b);
+  }
+}
+
+/**
  * @generated from message tendermint.abci.Response
  */
 export class Response extends Message<Response> {
@@ -1050,28 +1154,10 @@ export class Response extends Message<Response> {
     case: "query";
   } | {
     /**
-     * @generated from field: tendermint.abci.ResponseBeginBlock begin_block = 8;
-     */
-    value: ResponseBeginBlock;
-    case: "beginBlock";
-  } | {
-    /**
      * @generated from field: tendermint.abci.ResponseCheckTx check_tx = 9;
      */
     value: ResponseCheckTx;
     case: "checkTx";
-  } | {
-    /**
-     * @generated from field: tendermint.abci.ResponseDeliverTx deliver_tx = 10;
-     */
-    value: ResponseDeliverTx;
-    case: "deliverTx";
-  } | {
-    /**
-     * @generated from field: tendermint.abci.ResponseEndBlock end_block = 11;
-     */
-    value: ResponseEndBlock;
-    case: "endBlock";
   } | {
     /**
      * @generated from field: tendermint.abci.ResponseCommit commit = 12;
@@ -1114,6 +1200,24 @@ export class Response extends Message<Response> {
      */
     value: ResponseProcessProposal;
     case: "processProposal";
+  } | {
+    /**
+     * @generated from field: tendermint.abci.ResponseExtendVote extend_vote = 19;
+     */
+    value: ResponseExtendVote;
+    case: "extendVote";
+  } | {
+    /**
+     * @generated from field: tendermint.abci.ResponseVerifyVoteExtension verify_vote_extension = 20;
+     */
+    value: ResponseVerifyVoteExtension;
+    case: "verifyVoteExtension";
+  } | {
+    /**
+     * @generated from field: tendermint.abci.ResponseFinalizeBlock finalize_block = 21;
+     */
+    value: ResponseFinalizeBlock;
+    case: "finalizeBlock";
   } | { case: undefined; value?: undefined } = { case: undefined };
 
   constructor(data?: PartialMessage<Response>) {
@@ -1130,10 +1234,7 @@ export class Response extends Message<Response> {
     { no: 4, name: "info", kind: "message", T: ResponseInfo, oneof: "value" },
     { no: 6, name: "init_chain", kind: "message", T: ResponseInitChain, oneof: "value" },
     { no: 7, name: "query", kind: "message", T: ResponseQuery, oneof: "value" },
-    { no: 8, name: "begin_block", kind: "message", T: ResponseBeginBlock, oneof: "value" },
     { no: 9, name: "check_tx", kind: "message", T: ResponseCheckTx, oneof: "value" },
-    { no: 10, name: "deliver_tx", kind: "message", T: ResponseDeliverTx, oneof: "value" },
-    { no: 11, name: "end_block", kind: "message", T: ResponseEndBlock, oneof: "value" },
     { no: 12, name: "commit", kind: "message", T: ResponseCommit, oneof: "value" },
     { no: 13, name: "list_snapshots", kind: "message", T: ResponseListSnapshots, oneof: "value" },
     { no: 14, name: "offer_snapshot", kind: "message", T: ResponseOfferSnapshot, oneof: "value" },
@@ -1141,6 +1242,9 @@ export class Response extends Message<Response> {
     { no: 16, name: "apply_snapshot_chunk", kind: "message", T: ResponseApplySnapshotChunk, oneof: "value" },
     { no: 17, name: "prepare_proposal", kind: "message", T: ResponsePrepareProposal, oneof: "value" },
     { no: 18, name: "process_proposal", kind: "message", T: ResponseProcessProposal, oneof: "value" },
+    { no: 19, name: "extend_vote", kind: "message", T: ResponseExtendVote, oneof: "value" },
+    { no: 20, name: "verify_vote_extension", kind: "message", T: ResponseVerifyVoteExtension, oneof: "value" },
+    { no: 21, name: "finalize_block", kind: "message", T: ResponseFinalizeBlock, oneof: "value" },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Response {
@@ -1469,43 +1573,6 @@ export class ResponseQuery extends Message<ResponseQuery> {
 }
 
 /**
- * @generated from message tendermint.abci.ResponseBeginBlock
- */
-export class ResponseBeginBlock extends Message<ResponseBeginBlock> {
-  /**
-   * @generated from field: repeated tendermint.abci.Event events = 1;
-   */
-  events: Event[] = [];
-
-  constructor(data?: PartialMessage<ResponseBeginBlock>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
-
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "tendermint.abci.ResponseBeginBlock";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "events", kind: "message", T: Event, repeated: true },
-  ]);
-
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ResponseBeginBlock {
-    return new ResponseBeginBlock().fromBinary(bytes, options);
-  }
-
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ResponseBeginBlock {
-    return new ResponseBeginBlock().fromJson(jsonValue, options);
-  }
-
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ResponseBeginBlock {
-    return new ResponseBeginBlock().fromJsonString(jsonString, options);
-  }
-
-  static equals(a: ResponseBeginBlock | PlainMessage<ResponseBeginBlock> | undefined, b: ResponseBeginBlock | PlainMessage<ResponseBeginBlock> | undefined): boolean {
-    return proto3.util.equals(ResponseBeginBlock, a, b);
-  }
-}
-
-/**
  * @generated from message tendermint.abci.ResponseCheckTx
  */
 export class ResponseCheckTx extends Message<ResponseCheckTx> {
@@ -1553,24 +1620,6 @@ export class ResponseCheckTx extends Message<ResponseCheckTx> {
    */
   codespace = "";
 
-  /**
-   * @generated from field: string sender = 9;
-   */
-  sender = "";
-
-  /**
-   * @generated from field: int64 priority = 10;
-   */
-  priority = protoInt64.zero;
-
-  /**
-   * mempool_error is set by CometBFT.
-   * ABCI applictions creating a ResponseCheckTX should not set mempool_error.
-   *
-   * @generated from field: string mempool_error = 11;
-   */
-  mempoolError = "";
-
   constructor(data?: PartialMessage<ResponseCheckTx>) {
     super();
     proto3.util.initPartial(data, this);
@@ -1587,9 +1636,6 @@ export class ResponseCheckTx extends Message<ResponseCheckTx> {
     { no: 6, name: "gas_used", jsonName: "gas_used", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
     { no: 7, name: "events", kind: "message", T: Event, repeated: true },
     { no: 8, name: "codespace", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 9, name: "sender", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 10, name: "priority", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
-    { no: 11, name: "mempool_error", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ResponseCheckTx {
@@ -1610,150 +1656,9 @@ export class ResponseCheckTx extends Message<ResponseCheckTx> {
 }
 
 /**
- * @generated from message tendermint.abci.ResponseDeliverTx
- */
-export class ResponseDeliverTx extends Message<ResponseDeliverTx> {
-  /**
-   * @generated from field: uint32 code = 1;
-   */
-  code = 0;
-
-  /**
-   * @generated from field: bytes data = 2;
-   */
-  data = new Uint8Array(0);
-
-  /**
-   * nondeterministic
-   *
-   * @generated from field: string log = 3;
-   */
-  log = "";
-
-  /**
-   * nondeterministic
-   *
-   * @generated from field: string info = 4;
-   */
-  info = "";
-
-  /**
-   * @generated from field: int64 gas_wanted = 5 [json_name = "gas_wanted"];
-   */
-  gasWanted = protoInt64.zero;
-
-  /**
-   * @generated from field: int64 gas_used = 6 [json_name = "gas_used"];
-   */
-  gasUsed = protoInt64.zero;
-
-  /**
-   * nondeterministic
-   *
-   * @generated from field: repeated tendermint.abci.Event events = 7;
-   */
-  events: Event[] = [];
-
-  /**
-   * @generated from field: string codespace = 8;
-   */
-  codespace = "";
-
-  constructor(data?: PartialMessage<ResponseDeliverTx>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
-
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "tendermint.abci.ResponseDeliverTx";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "code", kind: "scalar", T: 13 /* ScalarType.UINT32 */ },
-    { no: 2, name: "data", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
-    { no: 3, name: "log", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 4, name: "info", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 5, name: "gas_wanted", jsonName: "gas_wanted", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
-    { no: 6, name: "gas_used", jsonName: "gas_used", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
-    { no: 7, name: "events", kind: "message", T: Event, repeated: true },
-    { no: 8, name: "codespace", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-  ]);
-
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ResponseDeliverTx {
-    return new ResponseDeliverTx().fromBinary(bytes, options);
-  }
-
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ResponseDeliverTx {
-    return new ResponseDeliverTx().fromJson(jsonValue, options);
-  }
-
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ResponseDeliverTx {
-    return new ResponseDeliverTx().fromJsonString(jsonString, options);
-  }
-
-  static equals(a: ResponseDeliverTx | PlainMessage<ResponseDeliverTx> | undefined, b: ResponseDeliverTx | PlainMessage<ResponseDeliverTx> | undefined): boolean {
-    return proto3.util.equals(ResponseDeliverTx, a, b);
-  }
-}
-
-/**
- * @generated from message tendermint.abci.ResponseEndBlock
- */
-export class ResponseEndBlock extends Message<ResponseEndBlock> {
-  /**
-   * @generated from field: repeated tendermint.abci.ValidatorUpdate validator_updates = 1;
-   */
-  validatorUpdates: ValidatorUpdate[] = [];
-
-  /**
-   * @generated from field: tendermint.types.ConsensusParams consensus_param_updates = 2;
-   */
-  consensusParamUpdates?: ConsensusParams;
-
-  /**
-   * @generated from field: repeated tendermint.abci.Event events = 3;
-   */
-  events: Event[] = [];
-
-  constructor(data?: PartialMessage<ResponseEndBlock>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
-
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "tendermint.abci.ResponseEndBlock";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "validator_updates", kind: "message", T: ValidatorUpdate, repeated: true },
-    { no: 2, name: "consensus_param_updates", kind: "message", T: ConsensusParams },
-    { no: 3, name: "events", kind: "message", T: Event, repeated: true },
-  ]);
-
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ResponseEndBlock {
-    return new ResponseEndBlock().fromBinary(bytes, options);
-  }
-
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ResponseEndBlock {
-    return new ResponseEndBlock().fromJson(jsonValue, options);
-  }
-
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ResponseEndBlock {
-    return new ResponseEndBlock().fromJsonString(jsonString, options);
-  }
-
-  static equals(a: ResponseEndBlock | PlainMessage<ResponseEndBlock> | undefined, b: ResponseEndBlock | PlainMessage<ResponseEndBlock> | undefined): boolean {
-    return proto3.util.equals(ResponseEndBlock, a, b);
-  }
-}
-
-/**
  * @generated from message tendermint.abci.ResponseCommit
  */
 export class ResponseCommit extends Message<ResponseCommit> {
-  /**
-   * reserve 1
-   *
-   * @generated from field: bytes data = 2;
-   */
-  data = new Uint8Array(0);
-
   /**
    * @generated from field: int64 retain_height = 3;
    */
@@ -1767,7 +1672,6 @@ export class ResponseCommit extends Message<ResponseCommit> {
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "tendermint.abci.ResponseCommit";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 2, name: "data", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
     { no: 3, name: "retain_height", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
   ]);
 
@@ -2165,6 +2069,185 @@ proto3.util.setEnumType(ResponseProcessProposal_ProposalStatus, "tendermint.abci
 ]);
 
 /**
+ * @generated from message tendermint.abci.ResponseExtendVote
+ */
+export class ResponseExtendVote extends Message<ResponseExtendVote> {
+  /**
+   * @generated from field: bytes vote_extension = 1;
+   */
+  voteExtension = new Uint8Array(0);
+
+  constructor(data?: PartialMessage<ResponseExtendVote>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "tendermint.abci.ResponseExtendVote";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "vote_extension", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ResponseExtendVote {
+    return new ResponseExtendVote().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ResponseExtendVote {
+    return new ResponseExtendVote().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ResponseExtendVote {
+    return new ResponseExtendVote().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: ResponseExtendVote | PlainMessage<ResponseExtendVote> | undefined, b: ResponseExtendVote | PlainMessage<ResponseExtendVote> | undefined): boolean {
+    return proto3.util.equals(ResponseExtendVote, a, b);
+  }
+}
+
+/**
+ * @generated from message tendermint.abci.ResponseVerifyVoteExtension
+ */
+export class ResponseVerifyVoteExtension extends Message<ResponseVerifyVoteExtension> {
+  /**
+   * @generated from field: tendermint.abci.ResponseVerifyVoteExtension.VerifyStatus status = 1;
+   */
+  status = ResponseVerifyVoteExtension_VerifyStatus.UNKNOWN;
+
+  constructor(data?: PartialMessage<ResponseVerifyVoteExtension>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "tendermint.abci.ResponseVerifyVoteExtension";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "status", kind: "enum", T: proto3.getEnumType(ResponseVerifyVoteExtension_VerifyStatus) },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ResponseVerifyVoteExtension {
+    return new ResponseVerifyVoteExtension().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ResponseVerifyVoteExtension {
+    return new ResponseVerifyVoteExtension().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ResponseVerifyVoteExtension {
+    return new ResponseVerifyVoteExtension().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: ResponseVerifyVoteExtension | PlainMessage<ResponseVerifyVoteExtension> | undefined, b: ResponseVerifyVoteExtension | PlainMessage<ResponseVerifyVoteExtension> | undefined): boolean {
+    return proto3.util.equals(ResponseVerifyVoteExtension, a, b);
+  }
+}
+
+/**
+ * @generated from enum tendermint.abci.ResponseVerifyVoteExtension.VerifyStatus
+ */
+export enum ResponseVerifyVoteExtension_VerifyStatus {
+  /**
+   * @generated from enum value: UNKNOWN = 0;
+   */
+  UNKNOWN = 0,
+
+  /**
+   * @generated from enum value: ACCEPT = 1;
+   */
+  ACCEPT = 1,
+
+  /**
+   * Rejecting the vote extension will reject the entire precommit by the sender.
+   * Incorrectly implementing this thus has liveness implications as it may affect
+   * CometBFT's ability to receive 2/3+ valid votes to finalize the block.
+   * Honest nodes should never be rejected.
+   *
+   * @generated from enum value: REJECT = 2;
+   */
+  REJECT = 2,
+}
+// Retrieve enum metadata with: proto3.getEnumType(ResponseVerifyVoteExtension_VerifyStatus)
+proto3.util.setEnumType(ResponseVerifyVoteExtension_VerifyStatus, "tendermint.abci.ResponseVerifyVoteExtension.VerifyStatus", [
+  { no: 0, name: "UNKNOWN" },
+  { no: 1, name: "ACCEPT" },
+  { no: 2, name: "REJECT" },
+]);
+
+/**
+ * @generated from message tendermint.abci.ResponseFinalizeBlock
+ */
+export class ResponseFinalizeBlock extends Message<ResponseFinalizeBlock> {
+  /**
+   * set of block events emmitted as part of executing the block
+   *
+   * @generated from field: repeated tendermint.abci.Event events = 1;
+   */
+  events: Event[] = [];
+
+  /**
+   * the result of executing each transaction including the events
+   * the particular transction emitted. This should match the order
+   * of the transactions delivered in the block itself
+   *
+   * @generated from field: repeated tendermint.abci.ExecTxResult tx_results = 2;
+   */
+  txResults: ExecTxResult[] = [];
+
+  /**
+   * a list of updates to the validator set. These will reflect the validator set at current height + 2.
+   *
+   * @generated from field: repeated tendermint.abci.ValidatorUpdate validator_updates = 3;
+   */
+  validatorUpdates: ValidatorUpdate[] = [];
+
+  /**
+   * updates to the consensus params, if any.
+   *
+   * @generated from field: tendermint.types.ConsensusParams consensus_param_updates = 4;
+   */
+  consensusParamUpdates?: ConsensusParams;
+
+  /**
+   * app_hash is the hash of the applications' state which is used to confirm that execution of the transactions was
+   * deterministic. It is up to the application to decide which algorithm to use.
+   *
+   * @generated from field: bytes app_hash = 5;
+   */
+  appHash = new Uint8Array(0);
+
+  constructor(data?: PartialMessage<ResponseFinalizeBlock>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "tendermint.abci.ResponseFinalizeBlock";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "events", kind: "message", T: Event, repeated: true },
+    { no: 2, name: "tx_results", kind: "message", T: ExecTxResult, repeated: true },
+    { no: 3, name: "validator_updates", kind: "message", T: ValidatorUpdate, repeated: true },
+    { no: 4, name: "consensus_param_updates", kind: "message", T: ConsensusParams },
+    { no: 5, name: "app_hash", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ResponseFinalizeBlock {
+    return new ResponseFinalizeBlock().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ResponseFinalizeBlock {
+    return new ResponseFinalizeBlock().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ResponseFinalizeBlock {
+    return new ResponseFinalizeBlock().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: ResponseFinalizeBlock | PlainMessage<ResponseFinalizeBlock> | undefined, b: ResponseFinalizeBlock | PlainMessage<ResponseFinalizeBlock> | undefined): boolean {
+    return proto3.util.equals(ResponseFinalizeBlock, a, b);
+  }
+}
+
+/**
  * @generated from message tendermint.abci.CommitInfo
  */
 export class CommitInfo extends Message<CommitInfo> {
@@ -2208,6 +2291,10 @@ export class CommitInfo extends Message<CommitInfo> {
 }
 
 /**
+ * ExtendedCommitInfo is similar to CommitInfo except that it is only used in
+ * the PrepareProposal request such that CometBFT can provide vote extensions
+ * to the application.
+ *
  * @generated from message tendermint.abci.ExtendedCommitInfo
  */
 export class ExtendedCommitInfo extends Message<ExtendedCommitInfo> {
@@ -2257,7 +2344,7 @@ export class ExtendedCommitInfo extends Message<ExtendedCommitInfo> {
 
 /**
  * Event allows application developers to attach additional information to
- * ResponseBeginBlock, ResponseEndBlock, ResponseCheckTx and ResponseDeliverTx.
+ * ResponseFinalizeBlock and ResponseCheckTx.
  * Later, transactions may be queried using these events.
  *
  * @generated from message tendermint.abci.Event
@@ -2356,6 +2443,95 @@ export class EventAttribute extends Message<EventAttribute> {
 }
 
 /**
+ * ExecTxResult contains results of executing one individual transaction.
+ *
+ * * Its structure is equivalent to #ResponseDeliverTx which will be deprecated/deleted
+ *
+ * @generated from message tendermint.abci.ExecTxResult
+ */
+export class ExecTxResult extends Message<ExecTxResult> {
+  /**
+   * @generated from field: uint32 code = 1;
+   */
+  code = 0;
+
+  /**
+   * @generated from field: bytes data = 2;
+   */
+  data = new Uint8Array(0);
+
+  /**
+   * nondeterministic
+   *
+   * @generated from field: string log = 3;
+   */
+  log = "";
+
+  /**
+   * nondeterministic
+   *
+   * @generated from field: string info = 4;
+   */
+  info = "";
+
+  /**
+   * @generated from field: int64 gas_wanted = 5 [json_name = "gas_wanted"];
+   */
+  gasWanted = protoInt64.zero;
+
+  /**
+   * @generated from field: int64 gas_used = 6 [json_name = "gas_used"];
+   */
+  gasUsed = protoInt64.zero;
+
+  /**
+   * nondeterministic
+   *
+   * @generated from field: repeated tendermint.abci.Event events = 7;
+   */
+  events: Event[] = [];
+
+  /**
+   * @generated from field: string codespace = 8;
+   */
+  codespace = "";
+
+  constructor(data?: PartialMessage<ExecTxResult>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "tendermint.abci.ExecTxResult";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "code", kind: "scalar", T: 13 /* ScalarType.UINT32 */ },
+    { no: 2, name: "data", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
+    { no: 3, name: "log", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 4, name: "info", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 5, name: "gas_wanted", jsonName: "gas_wanted", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
+    { no: 6, name: "gas_used", jsonName: "gas_used", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
+    { no: 7, name: "events", kind: "message", T: Event, repeated: true },
+    { no: 8, name: "codespace", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ExecTxResult {
+    return new ExecTxResult().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ExecTxResult {
+    return new ExecTxResult().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ExecTxResult {
+    return new ExecTxResult().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: ExecTxResult | PlainMessage<ExecTxResult> | undefined, b: ExecTxResult | PlainMessage<ExecTxResult> | undefined): boolean {
+    return proto3.util.equals(ExecTxResult, a, b);
+  }
+}
+
+/**
  * TxResult contains results of executing the transaction.
  *
  * One usage is indexing transaction results.
@@ -2379,9 +2555,9 @@ export class TxResult extends Message<TxResult> {
   tx = new Uint8Array(0);
 
   /**
-   * @generated from field: tendermint.abci.ResponseDeliverTx result = 4;
+   * @generated from field: tendermint.abci.ExecTxResult result = 4;
    */
-  result?: ResponseDeliverTx;
+  result?: ExecTxResult;
 
   constructor(data?: PartialMessage<TxResult>) {
     super();
@@ -2394,7 +2570,7 @@ export class TxResult extends Message<TxResult> {
     { no: 1, name: "height", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
     { no: 2, name: "index", kind: "scalar", T: 13 /* ScalarType.UINT32 */ },
     { no: 3, name: "tx", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
-    { no: 4, name: "result", kind: "message", T: ResponseDeliverTx },
+    { no: 4, name: "result", kind: "message", T: ExecTxResult },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TxResult {
@@ -2415,8 +2591,6 @@ export class TxResult extends Message<TxResult> {
 }
 
 /**
- * Validator
- *
  * @generated from message tendermint.abci.Validator
  */
 export class Validator extends Message<Validator> {
@@ -2466,8 +2640,6 @@ export class Validator extends Message<Validator> {
 }
 
 /**
- * ValidatorUpdate
- *
  * @generated from message tendermint.abci.ValidatorUpdate
  */
 export class ValidatorUpdate extends Message<ValidatorUpdate> {
@@ -2511,8 +2683,6 @@ export class ValidatorUpdate extends Message<ValidatorUpdate> {
 }
 
 /**
- * VoteInfo
- *
  * @generated from message tendermint.abci.VoteInfo
  */
 export class VoteInfo extends Message<VoteInfo> {
@@ -2522,9 +2692,9 @@ export class VoteInfo extends Message<VoteInfo> {
   validator?: Validator;
 
   /**
-   * @generated from field: bool signed_last_block = 2;
+   * @generated from field: tendermint.types.BlockIDFlag block_id_flag = 3;
    */
-  signedLastBlock = false;
+  blockIdFlag = BlockIDFlag.BLOCK_ID_FLAG_UNKNOWN;
 
   constructor(data?: PartialMessage<VoteInfo>) {
     super();
@@ -2535,7 +2705,7 @@ export class VoteInfo extends Message<VoteInfo> {
   static readonly typeName = "tendermint.abci.VoteInfo";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "validator", kind: "message", T: Validator },
-    { no: 2, name: "signed_last_block", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+    { no: 3, name: "block_id_flag", kind: "enum", T: proto3.getEnumType(BlockIDFlag) },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): VoteInfo {
@@ -2560,21 +2730,32 @@ export class VoteInfo extends Message<VoteInfo> {
  */
 export class ExtendedVoteInfo extends Message<ExtendedVoteInfo> {
   /**
+   * The validator that sent the vote.
+   *
    * @generated from field: tendermint.abci.Validator validator = 1;
    */
   validator?: Validator;
 
   /**
-   * @generated from field: bool signed_last_block = 2;
-   */
-  signedLastBlock = false;
-
-  /**
-   * Reserved for future use
+   * Non-deterministic extension provided by the sending validator's application.
    *
    * @generated from field: bytes vote_extension = 3;
    */
   voteExtension = new Uint8Array(0);
+
+  /**
+   * Vote extension signature created by CometBFT
+   *
+   * @generated from field: bytes extension_signature = 4;
+   */
+  extensionSignature = new Uint8Array(0);
+
+  /**
+   * block_id_flag indicates whether the validator voted for a block, nil, or did not vote at all
+   *
+   * @generated from field: tendermint.types.BlockIDFlag block_id_flag = 5;
+   */
+  blockIdFlag = BlockIDFlag.BLOCK_ID_FLAG_UNKNOWN;
 
   constructor(data?: PartialMessage<ExtendedVoteInfo>) {
     super();
@@ -2585,8 +2766,9 @@ export class ExtendedVoteInfo extends Message<ExtendedVoteInfo> {
   static readonly typeName = "tendermint.abci.ExtendedVoteInfo";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "validator", kind: "message", T: Validator },
-    { no: 2, name: "signed_last_block", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
     { no: 3, name: "vote_extension", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
+    { no: 4, name: "extension_signature", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
+    { no: 5, name: "block_id_flag", kind: "enum", T: proto3.getEnumType(BlockIDFlag) },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ExtendedVoteInfo {

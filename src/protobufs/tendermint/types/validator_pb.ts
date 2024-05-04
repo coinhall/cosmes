@@ -8,6 +8,48 @@ import { Message, proto3, protoInt64 } from "@bufbuild/protobuf";
 import { PublicKey } from "../crypto/keys_pb.js";
 
 /**
+ * BlockIdFlag indicates which BlockID the signature is for
+ *
+ * @generated from enum tendermint.types.BlockIDFlag
+ */
+export enum BlockIDFlag {
+  /**
+   * indicates an error condition
+   *
+   * @generated from enum value: BLOCK_ID_FLAG_UNKNOWN = 0;
+   */
+  BLOCK_ID_FLAG_UNKNOWN = 0,
+
+  /**
+   * the vote was not received
+   *
+   * @generated from enum value: BLOCK_ID_FLAG_ABSENT = 1;
+   */
+  BLOCK_ID_FLAG_ABSENT = 1,
+
+  /**
+   * voted for the block that received the majority
+   *
+   * @generated from enum value: BLOCK_ID_FLAG_COMMIT = 2;
+   */
+  BLOCK_ID_FLAG_COMMIT = 2,
+
+  /**
+   * voted for nil
+   *
+   * @generated from enum value: BLOCK_ID_FLAG_NIL = 3;
+   */
+  BLOCK_ID_FLAG_NIL = 3,
+}
+// Retrieve enum metadata with: proto3.getEnumType(BlockIDFlag)
+proto3.util.setEnumType(BlockIDFlag, "tendermint.types.BlockIDFlag", [
+  { no: 0, name: "BLOCK_ID_FLAG_UNKNOWN" },
+  { no: 1, name: "BLOCK_ID_FLAG_ABSENT" },
+  { no: 2, name: "BLOCK_ID_FLAG_COMMIT" },
+  { no: 3, name: "BLOCK_ID_FLAG_NIL" },
+]);
+
+/**
  * @generated from message tendermint.types.ValidatorSet
  */
 export class ValidatorSet extends Message<ValidatorSet> {

@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { MsgUpdateParams, MsgUpdateParamsResponse } from "./tx_pb.js";
+import { MsgModuleQuerySafe, MsgModuleQuerySafeResponse, MsgUpdateParams, MsgUpdateParamsResponse } from "./tx_pb.js";
 
 const TYPE_NAME = "ibc.applications.interchain_accounts.host.v1.Msg";
 
@@ -17,5 +17,17 @@ export const MsgUpdateParamsService = {
   method: "UpdateParams",
   Request: MsgUpdateParams,
   Response: MsgUpdateParamsResponse,
+} as const;
+
+/**
+ * ModuleQuerySafe defines a rpc handler for MsgModuleQuerySafe.
+ *
+ * @generated from rpc ibc.applications.interchain_accounts.host.v1.Msg.ModuleQuerySafe
+ */
+export const MsgModuleQuerySafeService = {
+  typeName: TYPE_NAME,
+  method: "ModuleQuerySafe",
+  Request: MsgModuleQuerySafe,
+  Response: MsgModuleQuerySafeResponse,
 } as const;
 

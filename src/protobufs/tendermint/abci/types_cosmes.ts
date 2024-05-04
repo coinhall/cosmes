@@ -3,14 +3,14 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { RequestApplySnapshotChunk, RequestBeginBlock, RequestCheckTx, RequestCommit, RequestDeliverTx, RequestEcho, RequestEndBlock, RequestFlush, RequestInfo, RequestInitChain, RequestListSnapshots, RequestLoadSnapshotChunk, RequestOfferSnapshot, RequestPrepareProposal, RequestProcessProposal, RequestQuery, ResponseApplySnapshotChunk, ResponseBeginBlock, ResponseCheckTx, ResponseCommit, ResponseDeliverTx, ResponseEcho, ResponseEndBlock, ResponseFlush, ResponseInfo, ResponseInitChain, ResponseListSnapshots, ResponseLoadSnapshotChunk, ResponseOfferSnapshot, ResponsePrepareProposal, ResponseProcessProposal, ResponseQuery } from "./types_pb.js";
+import { RequestApplySnapshotChunk, RequestCheckTx, RequestCommit, RequestEcho, RequestExtendVote, RequestFinalizeBlock, RequestFlush, RequestInfo, RequestInitChain, RequestListSnapshots, RequestLoadSnapshotChunk, RequestOfferSnapshot, RequestPrepareProposal, RequestProcessProposal, RequestQuery, RequestVerifyVoteExtension, ResponseApplySnapshotChunk, ResponseCheckTx, ResponseCommit, ResponseEcho, ResponseExtendVote, ResponseFinalizeBlock, ResponseFlush, ResponseInfo, ResponseInitChain, ResponseListSnapshots, ResponseLoadSnapshotChunk, ResponseOfferSnapshot, ResponsePrepareProposal, ResponseProcessProposal, ResponseQuery, ResponseVerifyVoteExtension } from "./types_pb.js";
 
-const TYPE_NAME = "tendermint.abci.ABCIApplication";
+const TYPE_NAME = "tendermint.abci.ABCI";
 
 /**
- * @generated from rpc tendermint.abci.ABCIApplication.Echo
+ * @generated from rpc tendermint.abci.ABCI.Echo
  */
-export const ABCIApplicationEchoService = {
+export const ABCIEchoService = {
   typeName: TYPE_NAME,
   method: "Echo",
   Request: RequestEcho,
@@ -18,9 +18,9 @@ export const ABCIApplicationEchoService = {
 } as const;
 
 /**
- * @generated from rpc tendermint.abci.ABCIApplication.Flush
+ * @generated from rpc tendermint.abci.ABCI.Flush
  */
-export const ABCIApplicationFlushService = {
+export const ABCIFlushService = {
   typeName: TYPE_NAME,
   method: "Flush",
   Request: RequestFlush,
@@ -28,9 +28,9 @@ export const ABCIApplicationFlushService = {
 } as const;
 
 /**
- * @generated from rpc tendermint.abci.ABCIApplication.Info
+ * @generated from rpc tendermint.abci.ABCI.Info
  */
-export const ABCIApplicationInfoService = {
+export const ABCIInfoService = {
   typeName: TYPE_NAME,
   method: "Info",
   Request: RequestInfo,
@@ -38,19 +38,9 @@ export const ABCIApplicationInfoService = {
 } as const;
 
 /**
- * @generated from rpc tendermint.abci.ABCIApplication.DeliverTx
+ * @generated from rpc tendermint.abci.ABCI.CheckTx
  */
-export const ABCIApplicationDeliverTxService = {
-  typeName: TYPE_NAME,
-  method: "DeliverTx",
-  Request: RequestDeliverTx,
-  Response: ResponseDeliverTx,
-} as const;
-
-/**
- * @generated from rpc tendermint.abci.ABCIApplication.CheckTx
- */
-export const ABCIApplicationCheckTxService = {
+export const ABCICheckTxService = {
   typeName: TYPE_NAME,
   method: "CheckTx",
   Request: RequestCheckTx,
@@ -58,9 +48,9 @@ export const ABCIApplicationCheckTxService = {
 } as const;
 
 /**
- * @generated from rpc tendermint.abci.ABCIApplication.Query
+ * @generated from rpc tendermint.abci.ABCI.Query
  */
-export const ABCIApplicationQueryService = {
+export const ABCIQueryService = {
   typeName: TYPE_NAME,
   method: "Query",
   Request: RequestQuery,
@@ -68,9 +58,9 @@ export const ABCIApplicationQueryService = {
 } as const;
 
 /**
- * @generated from rpc tendermint.abci.ABCIApplication.Commit
+ * @generated from rpc tendermint.abci.ABCI.Commit
  */
-export const ABCIApplicationCommitService = {
+export const ABCICommitService = {
   typeName: TYPE_NAME,
   method: "Commit",
   Request: RequestCommit,
@@ -78,9 +68,9 @@ export const ABCIApplicationCommitService = {
 } as const;
 
 /**
- * @generated from rpc tendermint.abci.ABCIApplication.InitChain
+ * @generated from rpc tendermint.abci.ABCI.InitChain
  */
-export const ABCIApplicationInitChainService = {
+export const ABCIInitChainService = {
   typeName: TYPE_NAME,
   method: "InitChain",
   Request: RequestInitChain,
@@ -88,29 +78,9 @@ export const ABCIApplicationInitChainService = {
 } as const;
 
 /**
- * @generated from rpc tendermint.abci.ABCIApplication.BeginBlock
+ * @generated from rpc tendermint.abci.ABCI.ListSnapshots
  */
-export const ABCIApplicationBeginBlockService = {
-  typeName: TYPE_NAME,
-  method: "BeginBlock",
-  Request: RequestBeginBlock,
-  Response: ResponseBeginBlock,
-} as const;
-
-/**
- * @generated from rpc tendermint.abci.ABCIApplication.EndBlock
- */
-export const ABCIApplicationEndBlockService = {
-  typeName: TYPE_NAME,
-  method: "EndBlock",
-  Request: RequestEndBlock,
-  Response: ResponseEndBlock,
-} as const;
-
-/**
- * @generated from rpc tendermint.abci.ABCIApplication.ListSnapshots
- */
-export const ABCIApplicationListSnapshotsService = {
+export const ABCIListSnapshotsService = {
   typeName: TYPE_NAME,
   method: "ListSnapshots",
   Request: RequestListSnapshots,
@@ -118,9 +88,9 @@ export const ABCIApplicationListSnapshotsService = {
 } as const;
 
 /**
- * @generated from rpc tendermint.abci.ABCIApplication.OfferSnapshot
+ * @generated from rpc tendermint.abci.ABCI.OfferSnapshot
  */
-export const ABCIApplicationOfferSnapshotService = {
+export const ABCIOfferSnapshotService = {
   typeName: TYPE_NAME,
   method: "OfferSnapshot",
   Request: RequestOfferSnapshot,
@@ -128,9 +98,9 @@ export const ABCIApplicationOfferSnapshotService = {
 } as const;
 
 /**
- * @generated from rpc tendermint.abci.ABCIApplication.LoadSnapshotChunk
+ * @generated from rpc tendermint.abci.ABCI.LoadSnapshotChunk
  */
-export const ABCIApplicationLoadSnapshotChunkService = {
+export const ABCILoadSnapshotChunkService = {
   typeName: TYPE_NAME,
   method: "LoadSnapshotChunk",
   Request: RequestLoadSnapshotChunk,
@@ -138,9 +108,9 @@ export const ABCIApplicationLoadSnapshotChunkService = {
 } as const;
 
 /**
- * @generated from rpc tendermint.abci.ABCIApplication.ApplySnapshotChunk
+ * @generated from rpc tendermint.abci.ABCI.ApplySnapshotChunk
  */
-export const ABCIApplicationApplySnapshotChunkService = {
+export const ABCIApplySnapshotChunkService = {
   typeName: TYPE_NAME,
   method: "ApplySnapshotChunk",
   Request: RequestApplySnapshotChunk,
@@ -148,9 +118,9 @@ export const ABCIApplicationApplySnapshotChunkService = {
 } as const;
 
 /**
- * @generated from rpc tendermint.abci.ABCIApplication.PrepareProposal
+ * @generated from rpc tendermint.abci.ABCI.PrepareProposal
  */
-export const ABCIApplicationPrepareProposalService = {
+export const ABCIPrepareProposalService = {
   typeName: TYPE_NAME,
   method: "PrepareProposal",
   Request: RequestPrepareProposal,
@@ -158,12 +128,42 @@ export const ABCIApplicationPrepareProposalService = {
 } as const;
 
 /**
- * @generated from rpc tendermint.abci.ABCIApplication.ProcessProposal
+ * @generated from rpc tendermint.abci.ABCI.ProcessProposal
  */
-export const ABCIApplicationProcessProposalService = {
+export const ABCIProcessProposalService = {
   typeName: TYPE_NAME,
   method: "ProcessProposal",
   Request: RequestProcessProposal,
   Response: ResponseProcessProposal,
+} as const;
+
+/**
+ * @generated from rpc tendermint.abci.ABCI.ExtendVote
+ */
+export const ABCIExtendVoteService = {
+  typeName: TYPE_NAME,
+  method: "ExtendVote",
+  Request: RequestExtendVote,
+  Response: ResponseExtendVote,
+} as const;
+
+/**
+ * @generated from rpc tendermint.abci.ABCI.VerifyVoteExtension
+ */
+export const ABCIVerifyVoteExtensionService = {
+  typeName: TYPE_NAME,
+  method: "VerifyVoteExtension",
+  Request: RequestVerifyVoteExtension,
+  Response: ResponseVerifyVoteExtension,
+} as const;
+
+/**
+ * @generated from rpc tendermint.abci.ABCI.FinalizeBlock
+ */
+export const ABCIFinalizeBlockService = {
+  typeName: TYPE_NAME,
+  method: "FinalizeBlock",
+  Request: RequestFinalizeBlock,
+  Response: ResponseFinalizeBlock,
 } as const;
 

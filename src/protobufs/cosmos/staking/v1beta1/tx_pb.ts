@@ -30,7 +30,12 @@ export class MsgCreateValidator extends Message<MsgCreateValidator> {
   minSelfDelegation = "";
 
   /**
-   * @generated from field: string delegator_address = 4;
+   * Deprecated: Use of Delegator Address in MsgCreateValidator is deprecated.
+   * The validator address bytes and delegator address bytes refer to the same account while creating validator (defer
+   * only in bech32 notation).
+   *
+   * @generated from field: string delegator_address = 4 [deprecated = true];
+   * @deprecated
    */
   delegatorAddress = "";
 
@@ -456,6 +461,15 @@ export class MsgUndelegateResponse extends Message<MsgUndelegateResponse> {
    */
   completionTime?: Timestamp;
 
+  /**
+   * amount returns the amount of undelegated coins
+   *
+   * Since: cosmos-sdk 0.50
+   *
+   * @generated from field: cosmos.base.v1beta1.Coin amount = 2;
+   */
+  amount?: Coin;
+
   constructor(data?: PartialMessage<MsgUndelegateResponse>) {
     super();
     proto3.util.initPartial(data, this);
@@ -465,6 +479,7 @@ export class MsgUndelegateResponse extends Message<MsgUndelegateResponse> {
   static readonly typeName = "cosmos.staking.v1beta1.MsgUndelegateResponse";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "completion_time", kind: "message", T: Timestamp },
+    { no: 2, name: "amount", kind: "message", T: Coin },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgUndelegateResponse {

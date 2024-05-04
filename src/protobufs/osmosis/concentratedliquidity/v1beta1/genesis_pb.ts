@@ -5,7 +5,7 @@
 
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
 import { Any, Message, proto3, protoInt64 } from "@bufbuild/protobuf";
-import { TickInfo } from "./tickInfo_pb.js";
+import { TickInfo } from "./tick_info_pb.js";
 import { IncentiveRecord } from "./incentive_record_pb.js";
 import { Position } from "./position_pb.js";
 import { AccumulatorContent, Record } from "../../accum/v1beta1/accum_pb.js";
@@ -234,6 +234,11 @@ export class GenesisState extends Message<GenesisState> {
    */
   incentivesAccumulatorPoolIdMigrationThreshold = protoInt64.zero;
 
+  /**
+   * @generated from field: uint64 spread_factor_pool_id_migration_threshold = 7;
+   */
+  spreadFactorPoolIdMigrationThreshold = protoInt64.zero;
+
   constructor(data?: PartialMessage<GenesisState>) {
     super();
     proto3.util.initPartial(data, this);
@@ -248,6 +253,7 @@ export class GenesisState extends Message<GenesisState> {
     { no: 4, name: "next_position_id", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
     { no: 5, name: "next_incentive_record_id", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
     { no: 6, name: "incentives_accumulator_pool_id_migration_threshold", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+    { no: 7, name: "spread_factor_pool_id_migration_threshold", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): GenesisState {

@@ -19,16 +19,16 @@ export class ValidatorSigningInfo extends Message<ValidatorSigningInfo> {
   address = "";
 
   /**
-   * Height at which validator was first a candidate OR was unjailed
+   * Height at which validator was first a candidate OR was un-jailed
    *
    * @generated from field: int64 start_height = 2;
    */
   startHeight = protoInt64.zero;
 
   /**
-   * Index which is incremented each time the validator was a bonded
-   * in a block and may have signed a precommit or not. This in conjunction with the
-   * `SignedBlocksWindow` param determines the index in the `MissedBlocksBitArray`.
+   * Index which is incremented every time a validator is bonded in a block and
+   * _may_ have signed a pre-commit or not. This in conjunction with the
+   * signed_blocks_window param determines the index in the missed block bitmap.
    *
    * @generated from field: int64 index_offset = 3;
    */
@@ -42,16 +42,17 @@ export class ValidatorSigningInfo extends Message<ValidatorSigningInfo> {
   jailedUntil?: Timestamp;
 
   /**
-   * Whether or not a validator has been tombstoned (killed out of validator set). It is set
-   * once the validator commits an equivocation or for any other configured misbehiavor.
+   * Whether or not a validator has been tombstoned (killed out of validator
+   * set). It is set once the validator commits an equivocation or for any other
+   * configured misbehavior.
    *
    * @generated from field: bool tombstoned = 5;
    */
   tombstoned = false;
 
   /**
-   * A counter kept to avoid unnecessary array reads.
-   * Note that `Sum(MissedBlocksBitArray)` always equals `MissedBlocksCounter`.
+   * A counter of missed (unsigned) blocks. It is used to avoid unnecessary
+   * reads in the missed block bitmap.
    *
    * @generated from field: int64 missed_blocks_counter = 6;
    */

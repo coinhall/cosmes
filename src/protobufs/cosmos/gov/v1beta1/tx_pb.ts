@@ -220,7 +220,7 @@ export class MsgVoteWeighted extends Message<MsgVoteWeighted> {
   voter = "";
 
   /**
-   * options defines the weighted vote options. 
+   * options defines the weighted vote options.
    *
    * @generated from field: repeated cosmos.gov.v1beta1.WeightedVoteOption options = 3;
    */

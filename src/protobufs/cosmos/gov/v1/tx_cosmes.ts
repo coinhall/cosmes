@@ -5,7 +5,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { MsgDeposit, MsgDepositResponse, MsgExecLegacyContent, MsgExecLegacyContentResponse, MsgSubmitProposal, MsgSubmitProposalResponse, MsgUpdateParams, MsgUpdateParamsResponse, MsgVote, MsgVoteResponse, MsgVoteWeighted, MsgVoteWeightedResponse } from "./tx_pb.js";
+import { MsgCancelProposal, MsgCancelProposalResponse, MsgDeposit, MsgDepositResponse, MsgExecLegacyContent, MsgExecLegacyContentResponse, MsgSubmitProposal, MsgSubmitProposalResponse, MsgUpdateParams, MsgUpdateParamsResponse, MsgVote, MsgVoteResponse, MsgVoteWeighted, MsgVoteWeightedResponse } from "./tx_pb.js";
 
 const TYPE_NAME = "cosmos.gov.v1.Msg";
 
@@ -83,5 +83,19 @@ export const MsgUpdateParamsService = {
   method: "UpdateParams",
   Request: MsgUpdateParams,
   Response: MsgUpdateParamsResponse,
+} as const;
+
+/**
+ * CancelProposal defines a method to cancel governance proposal
+ *
+ * Since: cosmos-sdk 0.50
+ *
+ * @generated from rpc cosmos.gov.v1.Msg.CancelProposal
+ */
+export const MsgCancelProposalService = {
+  typeName: TYPE_NAME,
+  method: "CancelProposal",
+  Request: MsgCancelProposal,
+  Response: MsgCancelProposalResponse,
 } as const;
 

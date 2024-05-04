@@ -136,7 +136,7 @@ export class WeightedVoteOption extends Message<WeightedVoteOption> {
   option = VoteOption.UNSPECIFIED;
 
   /**
-   * weight is the vote weight associated with the vote option. 
+   * weight is the vote weight associated with the vote option.
    *
    * @generated from field: string weight = 2;
    */

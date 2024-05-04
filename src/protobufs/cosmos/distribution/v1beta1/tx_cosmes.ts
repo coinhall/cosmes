@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { MsgCommunityPoolSpend, MsgCommunityPoolSpendResponse, MsgFundCommunityPool, MsgFundCommunityPoolResponse, MsgSetWithdrawAddress, MsgSetWithdrawAddressResponse, MsgUpdateParams, MsgUpdateParamsResponse, MsgWithdrawDelegatorReward, MsgWithdrawDelegatorRewardResponse, MsgWithdrawValidatorCommission, MsgWithdrawValidatorCommissionResponse } from "./tx_pb.js";
+import { MsgCommunityPoolSpend, MsgCommunityPoolSpendResponse, MsgDepositValidatorRewardsPool, MsgDepositValidatorRewardsPoolResponse, MsgFundCommunityPool, MsgFundCommunityPoolResponse, MsgSetWithdrawAddress, MsgSetWithdrawAddressResponse, MsgUpdateParams, MsgUpdateParamsResponse, MsgWithdrawDelegatorReward, MsgWithdrawDelegatorRewardResponse, MsgWithdrawValidatorCommission, MsgWithdrawValidatorCommissionResponse } from "./tx_pb.js";
 
 const TYPE_NAME = "cosmos.distribution.v1beta1.Msg";
 
@@ -89,5 +89,20 @@ export const MsgCommunityPoolSpendService = {
   method: "CommunityPoolSpend",
   Request: MsgCommunityPoolSpend,
   Response: MsgCommunityPoolSpendResponse,
+} as const;
+
+/**
+ * DepositValidatorRewardsPool defines a method to provide additional rewards
+ * to delegators to a specific validator.
+ *
+ * Since: cosmos-sdk 0.50
+ *
+ * @generated from rpc cosmos.distribution.v1beta1.Msg.DepositValidatorRewardsPool
+ */
+export const MsgDepositValidatorRewardsPoolService = {
+  typeName: TYPE_NAME,
+  method: "DepositValidatorRewardsPool",
+  Request: MsgDepositValidatorRewardsPool,
+  Response: MsgDepositValidatorRewardsPoolResponse,
 } as const;
 

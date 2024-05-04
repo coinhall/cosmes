@@ -6,7 +6,7 @@
 // @ts-nocheck
 
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
-import { Any, Message, proto3, protoInt64 } from "@bufbuild/protobuf";
+import { Any, Message, proto3, protoInt64, Timestamp } from "@bufbuild/protobuf";
 import { Coin } from "../../base/v1beta1/coin_pb.js";
 import { Params, VoteOption, WeightedVoteOption } from "./gov_pb.js";
 
@@ -63,6 +63,15 @@ export class MsgSubmitProposal extends Message<MsgSubmitProposal> {
    */
   summary = "";
 
+  /**
+   * expedited defines if the proposal is expedited or not
+   *
+   * Since: cosmos-sdk 0.50
+   *
+   * @generated from field: bool expedited = 7;
+   */
+  expedited = false;
+
   constructor(data?: PartialMessage<MsgSubmitProposal>) {
     super();
     proto3.util.initPartial(data, this);
@@ -77,6 +86,7 @@ export class MsgSubmitProposal extends Message<MsgSubmitProposal> {
     { no: 4, name: "metadata", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 5, name: "title", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 6, name: "summary", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 7, name: "expedited", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgSubmitProposal {
@@ -592,6 +602,117 @@ export class MsgUpdateParamsResponse extends Message<MsgUpdateParamsResponse> {
 
   static equals(a: MsgUpdateParamsResponse | PlainMessage<MsgUpdateParamsResponse> | undefined, b: MsgUpdateParamsResponse | PlainMessage<MsgUpdateParamsResponse> | undefined): boolean {
     return proto3.util.equals(MsgUpdateParamsResponse, a, b);
+  }
+}
+
+/**
+ * MsgCancelProposal is the Msg/CancelProposal request type.
+ *
+ * Since: cosmos-sdk 0.50
+ *
+ * @generated from message cosmos.gov.v1.MsgCancelProposal
+ */
+export class MsgCancelProposal extends Message<MsgCancelProposal> {
+  /**
+   * proposal_id defines the unique id of the proposal.
+   *
+   * @generated from field: uint64 proposal_id = 1;
+   */
+  proposalId = protoInt64.zero;
+
+  /**
+   * proposer is the account address of the proposer.
+   *
+   * @generated from field: string proposer = 2;
+   */
+  proposer = "";
+
+  constructor(data?: PartialMessage<MsgCancelProposal>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "cosmos.gov.v1.MsgCancelProposal";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "proposal_id", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+    { no: 2, name: "proposer", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgCancelProposal {
+    return new MsgCancelProposal().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MsgCancelProposal {
+    return new MsgCancelProposal().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MsgCancelProposal {
+    return new MsgCancelProposal().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: MsgCancelProposal | PlainMessage<MsgCancelProposal> | undefined, b: MsgCancelProposal | PlainMessage<MsgCancelProposal> | undefined): boolean {
+    return proto3.util.equals(MsgCancelProposal, a, b);
+  }
+}
+
+/**
+ * MsgCancelProposalResponse defines the response structure for executing a
+ * MsgCancelProposal message.
+ *
+ * Since: cosmos-sdk 0.50
+ *
+ * @generated from message cosmos.gov.v1.MsgCancelProposalResponse
+ */
+export class MsgCancelProposalResponse extends Message<MsgCancelProposalResponse> {
+  /**
+   * proposal_id defines the unique id of the proposal.
+   *
+   * @generated from field: uint64 proposal_id = 1;
+   */
+  proposalId = protoInt64.zero;
+
+  /**
+   * canceled_time is the time when proposal is canceled.
+   *
+   * @generated from field: google.protobuf.Timestamp canceled_time = 2;
+   */
+  canceledTime?: Timestamp;
+
+  /**
+   * canceled_height defines the block height at which the proposal is canceled.
+   *
+   * @generated from field: uint64 canceled_height = 3;
+   */
+  canceledHeight = protoInt64.zero;
+
+  constructor(data?: PartialMessage<MsgCancelProposalResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "cosmos.gov.v1.MsgCancelProposalResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "proposal_id", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+    { no: 2, name: "canceled_time", kind: "message", T: Timestamp },
+    { no: 3, name: "canceled_height", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgCancelProposalResponse {
+    return new MsgCancelProposalResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MsgCancelProposalResponse {
+    return new MsgCancelProposalResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MsgCancelProposalResponse {
+    return new MsgCancelProposalResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: MsgCancelProposalResponse | PlainMessage<MsgCancelProposalResponse> | undefined, b: MsgCancelProposalResponse | PlainMessage<MsgCancelProposalResponse> | undefined): boolean {
+    return proto3.util.equals(MsgCancelProposalResponse, a, b);
   }
 }
 

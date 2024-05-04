@@ -79,6 +79,18 @@ export class GenesisState extends Message<GenesisState> {
    */
   params?: Params;
 
+  /**
+   * The constitution allows builders to lay a foundation and define purpose.
+   * This is an immutable string set in genesis.
+   * There are no amendments, to go outside of scope, just fork.
+   * constitution is an immutable string in genesis for a chain builder to lay out their vision, ideas and ideals.
+   *
+   * Since: cosmos-sdk 0.50
+   *
+   * @generated from field: string constitution = 9;
+   */
+  constitution = "";
+
   constructor(data?: PartialMessage<GenesisState>) {
     super();
     proto3.util.initPartial(data, this);
@@ -95,6 +107,7 @@ export class GenesisState extends Message<GenesisState> {
     { no: 6, name: "voting_params", kind: "message", T: VotingParams },
     { no: 7, name: "tally_params", kind: "message", T: TallyParams },
     { no: 8, name: "params", kind: "message", T: Params },
+    { no: 9, name: "constitution", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): GenesisState {

@@ -13,7 +13,7 @@ import { Message, proto3, protoInt64 } from "@bufbuild/protobuf";
  */
 export class Module extends Message<Module> {
   /**
-   * max_metadata_len defines the maximum proposal metadata length. 
+   * max_metadata_len defines the maximum proposal metadata length.
    * Defaults to 255 if not explicitly set.
    *
    * @generated from field: uint64 max_metadata_len = 1;

@@ -56,3 +56,55 @@ export class Params extends Message<Params> {
   }
 }
 
+/**
+ * QueryRequest defines the parameters for a particular query request
+ * by an interchain account.
+ *
+ * @generated from message ibc.applications.interchain_accounts.host.v1.QueryRequest
+ */
+export class QueryRequest extends Message<QueryRequest> {
+  /**
+   * path defines the path of the query request as defined by ADR-021.
+   * https://github.com/cosmos/cosmos-sdk/blob/main/docs/architecture/adr-021-protobuf-query-encoding.md#custom-query-registration-and-routing
+   *
+   * @generated from field: string path = 1;
+   */
+  path = "";
+
+  /**
+   * data defines the payload of the query request as defined by ADR-021.
+   * https://github.com/cosmos/cosmos-sdk/blob/main/docs/architecture/adr-021-protobuf-query-encoding.md#custom-query-registration-and-routing
+   *
+   * @generated from field: bytes data = 2;
+   */
+  data = new Uint8Array(0);
+
+  constructor(data?: PartialMessage<QueryRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "ibc.applications.interchain_accounts.host.v1.QueryRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "path", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "data", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): QueryRequest {
+    return new QueryRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): QueryRequest {
+    return new QueryRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): QueryRequest {
+    return new QueryRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: QueryRequest | PlainMessage<QueryRequest> | undefined, b: QueryRequest | PlainMessage<QueryRequest> | undefined): boolean {
+    return proto3.util.equals(QueryRequest, a, b);
+  }
+}
+

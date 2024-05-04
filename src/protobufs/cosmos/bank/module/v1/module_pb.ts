@@ -13,8 +13,8 @@ import { Message, proto3 } from "@bufbuild/protobuf";
  */
 export class Module extends Message<Module> {
   /**
-   * blocked_module_accounts configures exceptional module accounts which should be blocked from receiving funds.
-   * If left empty it defaults to the list of account names supplied in the auth module configuration as
+   * blocked_module_accounts_override configures exceptional module accounts which should be blocked from receiving
+   * funds. If left empty it defaults to the list of account names supplied in the auth module configuration as
    * module_account_permissions
    *
    * @generated from field: repeated string blocked_module_accounts_override = 1;
@@ -28,6 +28,16 @@ export class Module extends Message<Module> {
    */
   authority = "";
 
+  /**
+   * restrictions_order specifies the order of send restrictions and should be
+   * a list of module names which provide a send restriction instance. If no
+   * order is provided, then restrictions will be applied in alphabetical order
+   * of module names.
+   *
+   * @generated from field: repeated string restrictions_order = 3;
+   */
+  restrictionsOrder: string[] = [];
+
   constructor(data?: PartialMessage<Module>) {
     super();
     proto3.util.initPartial(data, this);
@@ -38,6 +48,7 @@ export class Module extends Message<Module> {
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "blocked_module_accounts_override", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
     { no: 2, name: "authority", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "restrictions_order", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Module {

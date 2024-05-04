@@ -35,7 +35,7 @@ import { fileURLToPath } from "url";
  */
 const REPOS = [
   {
-    repo: "cosmos/cosmos-sdk#v0.47.9",
+    repo: "cosmos/cosmos-sdk#v0.50.6",
     paths: ["proto"],
   },
   {
