@@ -1,5 +1,11 @@
 # Changelog
 
+## `v0.0.69`
+
+### Chore
+
+- Pin `@walletconnect/sign-client` dep to v2.8.x to reduce bundle size
+
 ## `v0.0.68`
 
 ### Chore
