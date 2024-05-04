@@ -170,7 +170,7 @@ See the [`benchmarks`](./benchmarks) folder, where the bundle size of CosmES is 
 
 ### Results
 
-> Last updated: 4th May 2023
+> Last updated: 4th May 2024
 
 | Package       | Minified | Gzipped |
 |---------------|----------|---------|
