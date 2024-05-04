@@ -13,7 +13,7 @@ export function App() {
       {isWalletConnected ? (
         <button
           className="py-1 px-3 rounded bg-red-600 text-red-50"
-          onClick={disconnect}
+          onClick={() => disconnect()}
         >
           Disconnect Wallet
         </button>
