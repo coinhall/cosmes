@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   cosmes:
-    specifier: link:../..
-    version: link:../..
+    specifier: file:../..
+    version: file:../..
 
 devDependencies:
   '@types/node':
