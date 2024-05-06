@@ -11,11 +11,11 @@ import { WalletError } from "../WalletError";
 import { GalaxyStationExtension } from "./GalaxyStationExtension";
 import { GalaxyStationWalletConnectV1 } from "./GalaxyStationWalletConnectV1";
 
-const TERRA_MAINNET_CHAIN_ID = "columbus-5";
-const TERRA_TESTNET_CHAIN_ID = "octagon-1";
 const COIN_TYPE_330_CHAINS = [
-  TERRA_MAINNET_CHAIN_ID,
-  TERRA_TESTNET_CHAIN_ID,
+  "columbus-5",
+  "phoenix-1",
+  "octagon-1",
+  "pisco-1",
 ];
 
 export class GalaxyStationController extends WalletController {
