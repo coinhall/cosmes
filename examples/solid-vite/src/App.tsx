@@ -108,7 +108,7 @@ function getGasPrice(chain: string): { amount: string; denom: string } {
     case "neutron-1":
       return { amount: "0.01", denom: getDenom(chain) };
     case "migaloo-1":
-      return { amount: "0.25", denom: getDenom(chain) };
+      return { amount: "1", denom: getDenom(chain) };
     case "injective-1":
       return { amount: "500000000", denom: getDenom(chain) };
     case "pacific-1":

@@ -29,12 +29,14 @@ A tree-shakeable, framework agnostic, [pure ESM](https://gist.github.com/sindres
 
 - **Fully tree-shakeable**: import and bundle only the modules you need
 - **Framework agnostic**: integrate with any web framework (React, Vue, Svelte, Solid, etc.)
-- **Lightweight and  minimal**: 146 KB gzipped to connect a React app to Keplr via browser extension or WalletConnect, 10x smaller than Cosmos Kit (see [benchmarks](#benchmarks))
+- **Lightweight and  minimal**: 153 KB gzipped to connect a React app to Keplr via browser extension or WalletConnect, 10x smaller than Cosmos Kit V2 (see [benchmarks](#benchmarks))
 - **Uses modern web APIs**: no dependencies on Node.js and minimal dependencies on third-party libraries where possible
 - **Supports modern bundlers**: works with Vite, SWC, Rollup, etc.
 - **Fully typed**: written in TypeScript and ships with type definitions
 
 ## Installing
+
+For Cosmos SDK v0.47 and below:
 
 ```sh
 npm install cosmes
@@ -43,6 +45,21 @@ pnpm add cosmes
 
 yarn add cosmes
 ```
+
+For Cosmos SDK v0.50, install using the `sdk50` tag:
+
+```sh
+npm install cosmes@sdk50
+
+pnpm add cosmes@sdk50
+
+yarn add cosmes@sdk50
+```
+
+> [!IMPORTANT]  
+> The bump from v0.47 to v0.50 introduces significant breaking changes and is not recommended to be used unless necessary. To reduce the impact on consumers, the `main` branch and the published package on npm with the `latest` tag will continue to target v0.47 until the majority of live chains have migrated to v0.50.
+>
+> The [`parallel/sdk50`](https://github.com/coinhall/cosmes/tree/parallel/sdk50) branch targetting v0.50 will be developed and maintained in parallel with the `main` branch, where the same patch version number should have feature parity (eg. `cosmes@0.0.69` should have the same features as `cosmes@0.0.69-sdk50.0`).
 
 ### Using with TypeScript
 
@@ -167,19 +184,21 @@ This directory is a [Cosmos Kit](https://cosmoskit.com) alternative to interact 
 
 ## Benchmarks
 
-See the [`benchmarks`](./benchmarks) folder, where the JS bundle size of CosmES is compared against Cosmos Kit. The following are adhered to:
+See the [`benchmarks`](./benchmarks) folder, where the bundle size of CosmES is compared against Cosmos Kit. The following are adhered to:
 
 - Apps should only contain the minimal functionality of connecting to Osmosis via Keplr using both the browser extension and WalletConnect wallets
 - Apps should be built using React 18 (as Cosmos Kit has a [hard dependency](https://docs.cosmoskit.com/get-started)) and Vite
-- Use the bundle size as reported by Vite after running the `vite build` command (including the size of all other dependencies like React)
+- Use the total sum of all generated bundles as reported by Vite after running the `vite build` command, including the size of all other dependencies like React/HTML/CSS/etc. (note: this is crude and not 100% accurate, but is the simplest method)
 
 ### Results
 
+> Last updated: 4th May 2024
+
 | Package       | Minified | Gzipped |
 |---------------|----------|---------|
-| CosmES        | 537 KB   | 147 KB  |
-| Cosmos Kit v1 | 6004 KB  | 1392 KB |
-| Cosmos Kit v2 | 6273 KB  | 1453 KB |
+| CosmES        | 553 KB   | 153 KB  |
+| Cosmos Kit v1 | 6010 KB  | 1399 KB |
+| Cosmos Kit v2 | 6780 KB  | 1556 KB |
 
 ## See More
 
