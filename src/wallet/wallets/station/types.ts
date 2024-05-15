@@ -1,3 +1,5 @@
+import { Keplr } from "cosmes/registry";
+
 export type Window = {
   station?: Station | undefined;
 };
@@ -8,10 +10,12 @@ export type Window = {
  * @see https://github.com/terra-money/wallet-kit/blob/79600bb096d64754160909871dfdf89944120ce8/src/%40terra-money/station-connector/index.ts#L66
  */
 export type Station = {
+  keplr?: Keplr | undefined;
   connect: () => Promise<ConnectResponse>;
   getPublicKey: () => Promise<GetPubKeyResponse>;
   signBytes(bytes: string, purgeQueue?: boolean): Promise<SignBytesResponse>;
   post: (tx: StationTx, purgeQueue?: boolean) => Promise<PostResponse>;
+  sign: (tx: StationTx, purgeQueue?: boolean) => Promise<SignResponse>;
 };
 
 export type StationTx = {
@@ -29,6 +33,7 @@ export type ConnectResponse = {
    */
   pubkey?:
     | {
+        "60": string;
         "118": string;
         "330": string;
       }
@@ -59,4 +64,27 @@ export type PostResponse = {
   code?: number | undefined;
   raw_log: string;
   txhash: string;
+};
+
+// Unnecessary fields are omitted for brevity
+export type SignResponse = {
+  auth_info: {
+    fee: {
+      amount: {
+        amount: string;
+        denom: string;
+      }[];
+      gas_limit: string;
+      granter: string;
+      payer: string;
+    };
+    signer_infos: {
+      mode_info: {
+        single: {
+          mode: string;
+        };
+      };
+    }[];
+  };
+  signatures: string[];
 };

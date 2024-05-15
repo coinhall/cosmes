@@ -1,17 +1,17 @@
 import { PlainMessage } from "@bufbuild/protobuf";
 import {
+  RpcClient,
   Secp256k1PubKey,
   ToSignDocParams,
   ToStdSignDocParams,
   Tx,
 } from "cosmes/client";
-import { base16 } from "cosmes/codec";
 import {
   CosmosBaseV1beta1Coin as Coin,
   CosmosTxV1beta1Fee as Fee,
   CosmosTxV1beta1TxRaw as TxRaw,
 } from "cosmes/protobufs";
-import type { BroadcastMode, Keplr } from "cosmes/registry";
+import type { Keplr } from "cosmes/registry";
 
 import { WalletName } from "../../constants/WalletName";
 import { WalletType } from "../../constants/WalletType";
@@ -55,7 +55,9 @@ export class KeplrExtension extends ConnectedWallet {
   }
 
   public async signArbitrary(data: string): Promise<SignArbitraryResponse> {
-    const res = await this.ext.signArbitrary(this.chainId, this.address, data);
+    const res = await this.normaliseError(
+      this.ext.signArbitrary(this.chainId, this.address, data)
+    );
     return {
       data,
       pubKey: res.pub_key.value,
@@ -84,26 +86,38 @@ export class KeplrExtension extends ConnectedWallet {
     };
     let txRaw: TxRaw;
     if (this.useAmino) {
-      const { signed, signature } = await this.ext.signAmino(
-        this.chainId,
-        this.address,
-        tx.toStdSignDoc(params)
+      const { signed, signature } = await this.normaliseError(
+        this.ext.signAmino(this.chainId, this.address, tx.toStdSignDoc(params))
       );
       txRaw = tx.toSignedAmino(signed, signature.signature);
     } else {
-      const { signed, signature } = await this.ext.signDirect(
-        this.chainId,
-        this.address,
-        tx.toSignDoc(params)
+      const { signed, signature } = await this.normaliseError(
+        this.ext.signDirect(this.chainId, this.address, tx.toSignDoc(params))
       );
       txRaw = tx.toSignedDirect(signed, signature.signature);
     }
 
-    const txHash = await this.ext.sendTx(
-      this.chainId,
-      txRaw.toBinary(),
-      "sync" as BroadcastMode
-    );
-    return base16.encode(txHash);
+    return RpcClient.broadcastTx(this.rpc, txRaw);
+  }
+
+  /**
+   * Returns the result of the `promise` if it resolves successfully, normalising
+   * any errors thrown into a standard `Error` instance.
+   *
+   * It is best to wrap all wallet API calls with this function as some wallets
+   * throw raw strings instead of actual `Error` instances.
+   */
+  private async normaliseError<T>(promise: Promise<T>): Promise<T> {
+    try {
+      return await promise;
+    } catch (err) {
+      if (typeof err === "string") {
+        throw new Error(err);
+      }
+      if (err instanceof Error) {
+        throw err;
+      }
+      throw new Error("Unknown error: " + JSON.stringify(err));
+    }
   }
 }

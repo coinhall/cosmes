@@ -1,4 +1,4 @@
-import { LeapExtension } from "../leap/LeapExtension";
+import { KeplrExtension } from "../keplr/KeplrExtension";
 
-// Ninji's API is similar to Leap.
-export const NinjiExtension = LeapExtension;
+// Ninji's API is similar to Keplr.
+export const NinjiExtension = KeplrExtension;
