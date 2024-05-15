@@ -66,6 +66,11 @@ const REPOS = [
     repo: "dymensionxyz/osmosis#main-dym",
     paths: ["proto"],
   },
+  {
+    repo: "Kava-Labs/kava#master",
+    paths: ["proto"],
+  },
+  
 ];
 
 const __dirname = dirname(fileURLToPath(import.meta.url));

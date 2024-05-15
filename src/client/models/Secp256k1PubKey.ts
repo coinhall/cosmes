@@ -27,7 +27,7 @@ export class Secp256k1PubKey implements Adapter {
   public toProto() {
     return this.type === "injective"
       ? new ProtoInjectiveSecp256k1PubKey(this.data)
-      : this.type === "dymension" || this.type === "evmos" || this.type === "planq"
+      : (this.type === "dymension" || this.type === "evmos" || this.type === "planq")
       ? new ProtoEthermintSecp256k1PubKey(this.data)
       : new ProtoSecp256k1PubKey(this.data);
   }

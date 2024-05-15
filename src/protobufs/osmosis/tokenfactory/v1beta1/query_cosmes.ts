@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { QueryBeforeSendHookAddressRequest, QueryBeforeSendHookAddressResponse, QueryDenomAuthorityMetadataRequest, QueryDenomAuthorityMetadataResponse, QueryDenomsFromCreatorRequest, QueryDenomsFromCreatorResponse, QueryParamsRequest, QueryParamsResponse } from "./query_pb.js";
+import { QueryAllBeforeSendHooksAddressesRequest, QueryAllBeforeSendHooksAddressesResponse, QueryBeforeSendHookAddressRequest, QueryBeforeSendHookAddressResponse, QueryDenomAuthorityMetadataRequest, QueryDenomAuthorityMetadataResponse, QueryDenomsFromCreatorRequest, QueryDenomsFromCreatorResponse, QueryParamsRequest, QueryParamsResponse } from "./query_pb.js";
 
 const TYPE_NAME = "osmosis.tokenfactory.v1beta1.Query";
 
@@ -57,5 +57,21 @@ export const QueryBeforeSendHookAddressService = {
   method: "BeforeSendHookAddress",
   Request: QueryBeforeSendHookAddressRequest,
   Response: QueryBeforeSendHookAddressResponse,
+} as const;
+
+/**
+ * AllBeforeSendHooksAddresses defines a gRPC query method for
+ * getting all addresses with before send hook registered.
+ * The response returns two arrays, an array with a list of denom and an array
+ * of before send hook addresses. The idx of denom corresponds to before send
+ * hook addresse's idx.
+ *
+ * @generated from rpc osmosis.tokenfactory.v1beta1.Query.AllBeforeSendHooksAddresses
+ */
+export const QueryAllBeforeSendHooksAddressesService = {
+  typeName: TYPE_NAME,
+  method: "AllBeforeSendHooksAddresses",
+  Request: QueryAllBeforeSendHooksAddressesRequest,
+  Response: QueryAllBeforeSendHooksAddressesResponse,
 } as const;
 

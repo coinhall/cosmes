@@ -5,6 +5,7 @@ import {
   CosmosVestingV1beta1ContinuousVestingAccount as ContinuousVestingAccount,
   CosmosVestingV1beta1DelayedVestingAccount as DelayedVesting,
   InjectiveTypesV1beta1EthAccount as InjectiveAccount,
+  EthermintTypesV1EthAccount as EthAccount,
   CosmosVestingV1beta1PeriodicVestingAccount as PeriodicVestingAccount,
 } from "cosmes/protobufs";
 
@@ -55,6 +56,14 @@ export function toBaseAccount({ typeUrl, value }: Any): BaseAccount {
         throw new Error(ERR_UNABLE_TO_RESOLVE_BASE_ACCOUNT);
       }
       return baseAccount;
+    }
+    case EthAccount.typeName: {
+      return BaseAccount.fromBinary(value)
+/*       const { baseAccount } = EthAccount.fromBinary(value);
+      if (!baseAccount) {
+        throw new Error(ERR_UNABLE_TO_RESOLVE_BASE_ACCOUNT);
+      }
+      return baseAccount;   */    
     }
     default: {
       throw new Error(`${ERR_UNKNOWN_ACCOUNT_TYPE}: ${typeUrl.slice(1)}`);

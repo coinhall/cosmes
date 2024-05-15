@@ -56,6 +56,17 @@ export class Params extends Message<Params> {
    */
   internalUptime?: Duration;
 
+  /**
+   * min_value_for_distribution is the minimum amount a token must be worth
+   * in order to be eligible for distribution. If the token is worth
+   * less than this amount (or the route between the two denoms is not
+   * registered), it will not be distributed and is forfeited to the remaining
+   * distributees that are eligible.
+   *
+   * @generated from field: cosmos.base.v1beta1.Coin min_value_for_distribution = 5;
+   */
+  minValueForDistribution?: Coin;
+
   constructor(data?: PartialMessage<Params>) {
     super();
     proto3.util.initPartial(data, this);
@@ -68,6 +79,7 @@ export class Params extends Message<Params> {
     { no: 2, name: "group_creation_fee", kind: "message", T: Coin, repeated: true },
     { no: 3, name: "unrestricted_creator_whitelist", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
     { no: 4, name: "internal_uptime", kind: "message", T: Duration },
+    { no: 5, name: "min_value_for_distribution", kind: "message", T: Coin },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Params {
