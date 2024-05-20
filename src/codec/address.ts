@@ -15,7 +15,7 @@ import { ethhex } from "./ethhex";
 export function resolveBech32Address(
   publicKey: string | Uint8Array,
   prefix: string,
-  type: "secp256k1" | "ethsecp256k1" = "secp256k1"
+  type: "secp256k1" | "ed25519" | "ethsecp256k1" = "secp256k1"
 ): string {
   const pubKey =
     typeof publicKey === "string" ? base64.decode(publicKey) : publicKey;
@@ -23,10 +23,13 @@ export function resolveBech32Address(
     type === "secp256k1"
       ? // For cosmos: take the ripemd160 of the sha256 of the public key
         ripemd160(sha256(pubKey))
-      : // For eth: take the last 20 bytes of the keccak of the uncompressed public key without the first byte
-        keccak_256(
-          ProjectivePoint.fromHex(pubKey).toRawBytes(false).slice(1)
-        ).slice(-20);
+      : type === "ed25519"
+        ? // For cosmos: take the first 20 bytes of the sha256 of the public key
+          sha256(pubKey).slice(0, 20)
+        : // For eth: take the last 20 bytes of the keccak of the uncompressed public key without the first byte
+          keccak_256(
+            ProjectivePoint.fromHex(pubKey).toRawBytes(false).slice(1)
+          ).slice(-20);
   return bech32.encode(prefix, bech32.toWords(address));
 }
 
