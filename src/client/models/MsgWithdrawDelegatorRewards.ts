@@ -10,7 +10,7 @@ export class MsgWithdrawDelegatorRewards implements Adapter {
   private readonly data: Data;
   private readonly isLegacy: boolean;
 
-  constructor(data: Data, isLegacy: boolean = false) {
+  constructor(data: Data, isLegacy = false) {
     this.data = data;
     this.isLegacy = isLegacy;
   }
