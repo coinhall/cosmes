@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { MsgAddToConcentratedLiquiditySuperfluidPosition, MsgAddToConcentratedLiquiditySuperfluidPositionResponse, MsgCreateFullRangePositionAndSuperfluidDelegate, MsgCreateFullRangePositionAndSuperfluidDelegateResponse, MsgLockAndSuperfluidDelegate, MsgLockAndSuperfluidDelegateResponse, MsgSuperfluidDelegate, MsgSuperfluidDelegateResponse, MsgSuperfluidUnbondLock, MsgSuperfluidUnbondLockResponse, MsgSuperfluidUndelegate, MsgSuperfluidUndelegateAndUnbondLock, MsgSuperfluidUndelegateAndUnbondLockResponse, MsgSuperfluidUndelegateResponse, MsgUnbondConvertAndStake, MsgUnbondConvertAndStakeResponse, MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition, MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionResponse, MsgUnPoolWhitelistedPool, MsgUnPoolWhitelistedPoolResponse } from "./tx_pb.js";
+import { MsgAddToConcentratedLiquiditySuperfluidPosition, MsgAddToConcentratedLiquiditySuperfluidPositionResponse, MsgCreateFullRangePositionAndSuperfluidDelegate, MsgCreateFullRangePositionAndSuperfluidDelegateResponse, MsgLockAndSuperfluidDelegate, MsgLockAndSuperfluidDelegateResponse, MsgSetDenomRiskFactor, MsgSetDenomRiskFactorResponse, MsgSuperfluidDelegate, MsgSuperfluidDelegateResponse, MsgSuperfluidUnbondLock, MsgSuperfluidUnbondLockResponse, MsgSuperfluidUndelegate, MsgSuperfluidUndelegateAndUnbondLock, MsgSuperfluidUndelegateAndUnbondLockResponse, MsgSuperfluidUndelegateResponse, MsgUnbondConvertAndStake, MsgUnbondConvertAndStakeResponse, MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition, MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionResponse, MsgUnPoolWhitelistedPool, MsgUnPoolWhitelistedPoolResponse, MsgUnsetDenomRiskFactor, MsgUnsetDenomRiskFactorResponse } from "./tx_pb.js";
 
 const TYPE_NAME = "osmosis.superfluid.Msg";
 
@@ -119,5 +119,25 @@ export const MsgUnbondConvertAndStakeService = {
   method: "UnbondConvertAndStake",
   Request: MsgUnbondConvertAndStake,
   Response: MsgUnbondConvertAndStakeResponse,
+} as const;
+
+/**
+ * @generated from rpc osmosis.superfluid.Msg.SetDenomRiskFactor
+ */
+export const MsgSetDenomRiskFactorService = {
+  typeName: TYPE_NAME,
+  method: "SetDenomRiskFactor",
+  Request: MsgSetDenomRiskFactor,
+  Response: MsgSetDenomRiskFactorResponse,
+} as const;
+
+/**
+ * @generated from rpc osmosis.superfluid.Msg.UnsetDenomRiskFactor
+ */
+export const MsgUnsetDenomRiskFactorService = {
+  typeName: TYPE_NAME,
+  method: "UnsetDenomRiskFactor",
+  Request: MsgUnsetDenomRiskFactor,
+  Response: MsgUnsetDenomRiskFactorResponse,
 } as const;
 

@@ -957,3 +957,161 @@ export class MsgUnbondConvertAndStakeResponse extends Message<MsgUnbondConvertAn
   }
 }
 
+/**
+ * ===================== MsgSetDenomRiskFactor
+ *
+ * @generated from message osmosis.superfluid.MsgSetDenomRiskFactor
+ */
+export class MsgSetDenomRiskFactor extends Message<MsgSetDenomRiskFactor> {
+  /**
+   * @generated from field: string sender = 1;
+   */
+  sender = "";
+
+  /**
+   * @generated from field: string denom = 2;
+   */
+  denom = "";
+
+  /**
+   * @generated from field: string risk_factor = 3;
+   */
+  riskFactor = "";
+
+  constructor(data?: PartialMessage<MsgSetDenomRiskFactor>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "osmosis.superfluid.MsgSetDenomRiskFactor";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "sender", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "denom", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "risk_factor", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgSetDenomRiskFactor {
+    return new MsgSetDenomRiskFactor().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MsgSetDenomRiskFactor {
+    return new MsgSetDenomRiskFactor().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MsgSetDenomRiskFactor {
+    return new MsgSetDenomRiskFactor().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: MsgSetDenomRiskFactor | PlainMessage<MsgSetDenomRiskFactor> | undefined, b: MsgSetDenomRiskFactor | PlainMessage<MsgSetDenomRiskFactor> | undefined): boolean {
+    return proto3.util.equals(MsgSetDenomRiskFactor, a, b);
+  }
+}
+
+/**
+ * @generated from message osmosis.superfluid.MsgSetDenomRiskFactorResponse
+ */
+export class MsgSetDenomRiskFactorResponse extends Message<MsgSetDenomRiskFactorResponse> {
+  constructor(data?: PartialMessage<MsgSetDenomRiskFactorResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "osmosis.superfluid.MsgSetDenomRiskFactorResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgSetDenomRiskFactorResponse {
+    return new MsgSetDenomRiskFactorResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MsgSetDenomRiskFactorResponse {
+    return new MsgSetDenomRiskFactorResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MsgSetDenomRiskFactorResponse {
+    return new MsgSetDenomRiskFactorResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: MsgSetDenomRiskFactorResponse | PlainMessage<MsgSetDenomRiskFactorResponse> | undefined, b: MsgSetDenomRiskFactorResponse | PlainMessage<MsgSetDenomRiskFactorResponse> | undefined): boolean {
+    return proto3.util.equals(MsgSetDenomRiskFactorResponse, a, b);
+  }
+}
+
+/**
+ * ===================== MsgUnsetDenomRiskFactor
+ *
+ * @generated from message osmosis.superfluid.MsgUnsetDenomRiskFactor
+ */
+export class MsgUnsetDenomRiskFactor extends Message<MsgUnsetDenomRiskFactor> {
+  /**
+   * @generated from field: string sender = 1;
+   */
+  sender = "";
+
+  /**
+   * @generated from field: string denom = 2;
+   */
+  denom = "";
+
+  constructor(data?: PartialMessage<MsgUnsetDenomRiskFactor>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "osmosis.superfluid.MsgUnsetDenomRiskFactor";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "sender", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "denom", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgUnsetDenomRiskFactor {
+    return new MsgUnsetDenomRiskFactor().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MsgUnsetDenomRiskFactor {
+    return new MsgUnsetDenomRiskFactor().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MsgUnsetDenomRiskFactor {
+    return new MsgUnsetDenomRiskFactor().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: MsgUnsetDenomRiskFactor | PlainMessage<MsgUnsetDenomRiskFactor> | undefined, b: MsgUnsetDenomRiskFactor | PlainMessage<MsgUnsetDenomRiskFactor> | undefined): boolean {
+    return proto3.util.equals(MsgUnsetDenomRiskFactor, a, b);
+  }
+}
+
+/**
+ * @generated from message osmosis.superfluid.MsgUnsetDenomRiskFactorResponse
+ */
+export class MsgUnsetDenomRiskFactorResponse extends Message<MsgUnsetDenomRiskFactorResponse> {
+  constructor(data?: PartialMessage<MsgUnsetDenomRiskFactorResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "osmosis.superfluid.MsgUnsetDenomRiskFactorResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgUnsetDenomRiskFactorResponse {
+    return new MsgUnsetDenomRiskFactorResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MsgUnsetDenomRiskFactorResponse {
+    return new MsgUnsetDenomRiskFactorResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MsgUnsetDenomRiskFactorResponse {
+    return new MsgUnsetDenomRiskFactorResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: MsgUnsetDenomRiskFactorResponse | PlainMessage<MsgUnsetDenomRiskFactorResponse> | undefined, b: MsgUnsetDenomRiskFactorResponse | PlainMessage<MsgUnsetDenomRiskFactorResponse> | undefined): boolean {
+    return proto3.util.equals(MsgUnsetDenomRiskFactorResponse, a, b);
+  }
+}
+

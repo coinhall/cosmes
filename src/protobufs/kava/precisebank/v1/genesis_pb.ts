@@ -19,6 +19,14 @@ export class GenesisState extends Message<GenesisState> {
    */
   balances: FractionalBalance[] = [];
 
+  /**
+   * remainder is an internal value of how much extra fractional digits are
+   * still backed by the reserve, but not assigned to any account.
+   *
+   * @generated from field: string remainder = 2;
+   */
+  remainder = "";
+
   constructor(data?: PartialMessage<GenesisState>) {
     super();
     proto3.util.initPartial(data, this);
@@ -28,6 +36,7 @@ export class GenesisState extends Message<GenesisState> {
   static readonly typeName = "kava.precisebank.v1.GenesisState";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "balances", kind: "message", T: FractionalBalance, repeated: true },
+    { no: 2, name: "remainder", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): GenesisState {
