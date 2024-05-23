@@ -7,6 +7,7 @@ import { onWindowEvent } from "../../utils/window";
 import { WalletConnectV1 } from "../../walletconnect/WalletConnectV1";
 import { ConnectedWallet } from "../ConnectedWallet";
 import { ChainInfo, WalletController } from "../WalletController";
+import { WalletError } from "../WalletError";
 import { StationExtension } from "./StationExtension";
 import { StationWalletConnectV1 } from "./StationWalletConnectV1";
 
@@ -56,7 +57,7 @@ export class StationController extends WalletController {
       throw new Error(`${chainId} not supported`);
     }
     const wallets = new Map<T, ConnectedWallet>();
-    const wc = await this.wc.connect();
+    const wc = await WalletError.wrap(this.wc.connect());
     // Station mobile only returns 1 address for now
     // TODO: update when Station mobile supports more chains
     const address = wc.accounts[0];
@@ -66,7 +67,9 @@ export class StationController extends WalletController {
         // Since Station's WalletConnect doesn't support getting pub keys, we
         // need to query the account to get it. However, if the wallet does
         // not contain funds, the RPC will throw errors.
-        const key = await this.getPubKey(chainId, rpc, address);
+        const key = await WalletError.wrap(
+          this.getPubKey(chainId, rpc, address)
+        );
         wallets.set(
           chainId,
           new StationWalletConnectV1(wc, chainId, key, address, rpc, gasPrice)
@@ -87,11 +90,11 @@ export class StationController extends WalletController {
       throw new Error("Station extension is not installed");
     }
     // This method never throws on Station
-    await ext.enable(chains.map(({ chainId }) => chainId));
+    await WalletError.wrap(ext.enable(chains.map(({ chainId }) => chainId)));
     for (const { chainId, rpc, gasPrice } of Object.values(chains)) {
       try {
-        const { bech32Address, pubKey, isNanoLedger } = await ext.getKey(
-          chainId
+        const { bech32Address, pubKey, isNanoLedger } = await WalletError.wrap(
+          ext.getKey(chainId)
         );
         const key = new Secp256k1PubKey({
           key: pubKey,

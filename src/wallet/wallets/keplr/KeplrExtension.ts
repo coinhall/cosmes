@@ -20,6 +20,7 @@ import {
   SignArbitraryResponse,
   UnsignedTx,
 } from "../ConnectedWallet";
+import { WalletError } from "../WalletError";
 
 export class KeplrExtension extends ConnectedWallet {
   private readonly ext: Keplr;
@@ -55,7 +56,7 @@ export class KeplrExtension extends ConnectedWallet {
   }
 
   public async signArbitrary(data: string): Promise<SignArbitraryResponse> {
-    const res = await this.normaliseError(
+    const res = await WalletError.wrap(
       this.ext.signArbitrary(this.chainId, this.address, data)
     );
     return {
@@ -86,38 +87,17 @@ export class KeplrExtension extends ConnectedWallet {
     };
     let txRaw: TxRaw;
     if (this.useAmino) {
-      const { signed, signature } = await this.normaliseError(
+      const { signed, signature } = await WalletError.wrap(
         this.ext.signAmino(this.chainId, this.address, tx.toStdSignDoc(params))
       );
       txRaw = tx.toSignedAmino(signed, signature.signature);
     } else {
-      const { signed, signature } = await this.normaliseError(
+      const { signed, signature } = await WalletError.wrap(
         this.ext.signDirect(this.chainId, this.address, tx.toSignDoc(params))
       );
       txRaw = tx.toSignedDirect(signed, signature.signature);
     }
 
     return RpcClient.broadcastTx(this.rpc, txRaw);
-  }
-
-  /**
-   * Returns the result of the `promise` if it resolves successfully, normalising
-   * any errors thrown into a standard `Error` instance.
-   *
-   * It is best to wrap all wallet API calls with this function as some wallets
-   * throw raw strings instead of actual `Error` instances.
-   */
-  private async normaliseError<T>(promise: Promise<T>): Promise<T> {
-    try {
-      return await promise;
-    } catch (err) {
-      if (typeof err === "string") {
-        throw new Error(err);
-      }
-      if (err instanceof Error) {
-        throw err;
-      }
-      throw new Error("Unknown error: " + JSON.stringify(err));
-    }
   }
 }

@@ -15,6 +15,7 @@ import {
   SignArbitraryResponse,
   UnsignedTx,
 } from "../ConnectedWallet";
+import { WalletError } from "../WalletError";
 import { PostResponse, SignBytesResponse } from "./types";
 import { toStationTx } from "./utils/toStationTx";
 
@@ -92,9 +93,9 @@ export class StationWalletConnectV1 extends ConnectedWallet {
       if (err instanceof Error) {
         // Error messages are JSON stringified (eg. '{"code":1,"message":"Denied by user"}')
         const { message } = JSON.parse(err.message);
-        throw new Error(message);
+        throw new WalletError(message, err);
       }
-      throw err;
+      throw new WalletError("unknown error", err);
     }
   }
 }

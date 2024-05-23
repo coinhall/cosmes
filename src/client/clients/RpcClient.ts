@@ -50,14 +50,21 @@ type BroadcastTxResult = {
   log: string;
 };
 
-type RequestMessage<T extends Message<T>> = PartialMessage<T> & {
-  /**
-   * The block height at which the query should be executed. Providing a height
-   * that is outside the range of the full node will result in an error. Leave
-   * this field empty to default to the latest block.
-   */
-  height?: number | undefined;
-};
+/**
+ * Wraps the request message with an optional `height` field.
+ */
+type RequestMessage<T extends Message<T>> = T extends {
+  height: bigint | string | number;
+}
+  ? PartialMessage<T>
+  : PartialMessage<T> & {
+      /**
+       * The block height at which the query should be executed. Providing a height
+       * that is outside the range of the full node will result in an error. Leave
+       * this field empty to default to the latest block.
+       */
+      height?: number | undefined;
+    };
 
 export class RpcClient {
   private static async doRequest<T>(

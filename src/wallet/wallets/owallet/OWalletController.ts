@@ -2,21 +2,22 @@ import { Secp256k1PubKey } from "cosmes/client";
 
 import { WalletName } from "../../constants/WalletName";
 import { WalletType } from "../../constants/WalletType";
+import { onWindowEvent } from "../../utils/window";
 import { WalletConnectV1 } from "../../walletconnect/WalletConnectV1";
 import { WalletConnectV2 } from "../../walletconnect/WalletConnectV2";
 import { ConnectedWallet } from "../ConnectedWallet";
 import { ChainInfo, WalletController } from "../WalletController";
 import { WalletError } from "../WalletError";
-import { NinjiExtension } from "./NinjiExtension";
+import { OWalletExtension } from "./OWalletExtension";
 
-export class NinjiController extends WalletController {
+export class OWalletController extends WalletController {
   constructor() {
-    super(WalletName.NINJI);
+    super(WalletName.OWALLET);
     this.registerAccountChangeHandlers();
   }
 
   public async isInstalled(type: WalletType) {
-    return type === WalletType.EXTENSION ? "ninji" in window : false;
+    return type === WalletType.EXTENSION ? "owallet" in window : false;
   }
 
   protected async connectWalletConnect<T extends string>(
@@ -25,15 +26,15 @@ export class NinjiController extends WalletController {
     wallets: Map<T, ConnectedWallet>;
     wc: WalletConnectV1 | WalletConnectV2;
   }> {
-    // Ninji does not support WC yet
+    // OWallet does not support WC yet
     throw new Error("WalletConnect not supported");
   }
 
   protected async connectExtension<T extends string>(chains: ChainInfo<T>[]) {
     const wallets = new Map<T, ConnectedWallet>();
-    const ext = window.ninji;
+    const ext = window.owallet;
     if (!ext) {
-      throw new Error("Ninji extension is not installed");
+      throw new Error("OWallet extension is not installed");
     }
     await WalletError.wrap(ext.enable(chains.map(({ chainId }) => chainId)));
     for (const { chainId, rpc, gasPrice } of Object.values(chains)) {
@@ -46,7 +47,7 @@ export class NinjiController extends WalletController {
       });
       wallets.set(
         chainId,
-        new NinjiExtension(
+        new OWalletExtension(
           this.id,
           ext,
           chainId,
@@ -65,19 +66,16 @@ export class NinjiController extends WalletController {
     /**
      * ! IMPORTANT !
      *
-     * Since Leap also uses the same event key, this causes issues when a user
-     * has both leap and ninji wallets connected simultaneously. For example,
-     * a change in Leap's keystore will trigger Ninji to emit this event as
+     * Since Keplr also uses the same event key, this causes issues when a user
+     * has both Keplr and OWallet wallets connected simultaneously. For example,
+     * a change in Keplr's keystore will trigger OWallet to emit this event as
      * well, leading to a race condition when `changeAccount` is called.
      *
-     * The Ninji team has been notified to possibly change this event emitted
-     * to `accountsChanged` instead.
+     * The OWallet team has been notified to possibly change this event emitted
+     * to `owallet_keystorechange` instead.
      */
-
-    if (typeof window !== "undefined" && window.ninji) {
-      window.ninji.on("accountsChanged", () =>
-        this.changeAccount(WalletType.EXTENSION)
-      );
-    }
+    onWindowEvent("keplr_keystorechange", () =>
+      this.changeAccount(WalletType.EXTENSION)
+    );
   }
 }

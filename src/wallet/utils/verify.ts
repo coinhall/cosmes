@@ -51,12 +51,12 @@ export function verifyArbitrary({
   };
   try {
     switch (wallet) {
-      case WalletName.STATION:
-        return verifyECDSA(params);
       case WalletName.METAMASK_INJECTIVE:
         return verifyEIP191(params);
       default:
-        return verifyADR36(params);
+        // Station mobile uses `verifyECDSA`, all other wallets uses `verifyADR36`.
+        // We can remove `verifyECDSA` once Station mobile uses `verifyECDSA`.
+        return verifyADR36(params) || verifyECDSA(params);
     }
   } catch (err) {
     return false;

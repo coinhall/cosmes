@@ -13,6 +13,7 @@ import { WalletConnectV1 } from "../../walletconnect/WalletConnectV1";
 import { WalletConnectV2 } from "../../walletconnect/WalletConnectV2";
 import { ConnectedWallet } from "../ConnectedWallet";
 import { ChainInfo, WalletController } from "../WalletController";
+import { WalletError } from "../WalletError";
 import { MetamaskInjectiveExtension } from "./MetamaskInjectiveExtension";
 import { Ethereum } from "./types";
 
@@ -48,9 +49,11 @@ export class MetamaskInjectiveController extends WalletController {
       throw new Error("MetaMask extension is not installed");
     }
 
-    const ethAddresses = await ext.request<string[]>({
-      method: "eth_requestAccounts",
-    });
+    const ethAddresses = await WalletError.wrap(
+      ext.request<string[]>({
+        method: "eth_requestAccounts",
+      })
+    );
     const ethAddress = ethAddresses?.[0];
     if (!ethAddress) {
       throw new Error("Failed to connect to MetaMask");
@@ -58,12 +61,8 @@ export class MetamaskInjectiveController extends WalletController {
     const injAddress = translateEthToBech32Address(ethAddress, "inj");
 
     const [chain] = chains;
-    const pubKey = await this.getPubKey(
-      ext,
-      chain.chainId,
-      chain.rpc,
-      ethAddress,
-      injAddress
+    const pubKey = await WalletError.wrap(
+      this.getPubKey(ext, chain.chainId, chain.rpc, ethAddress, injAddress)
     );
     const wallets = new Map<T, ConnectedWallet>();
     wallets.set(

@@ -1,5 +1,46 @@
 # Changelog
 
+## `v0.0.69`
+
+### Chore
+
+- Pin `@walletconnect/sign-client` dep to v2.8.x to reduce bundle size
+
+## `v0.0.68`
+
+### Chore
+
+- Regenerate `pnpm-lock.yaml` to fix dep issues
+
+## `v0.0.67`
+
+### Fixes
+
+- Fix `RpcClient`'s `RequestMessage` type error when using a request with an existing `height` field
+
+## `v0.0.66`
+
+### Features
+
+- Add custom `WalletError` class to normalise wallet errors
+- Add `MsgInstantiateContract` class
+
+### Fixes
+
+- Fixed verification of station mobile signatures
+
+## `v0.0.65`
+
+### Fixes
+
+- Fixed `verifyArbitrary` to verify arbitrary signatures done via Station's new Keplr interface
+
+## `v0.0.64`
+
+### Features
+
+- Added OWallet extension support (*does not support wallet connect yet*)
+
 ## `v0.0.63`
 
 ### Fixes
