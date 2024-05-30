@@ -37,6 +37,12 @@ export { MsgIbcTransfer } from "./models/MsgIbcTransfer";
 export { MsgOsmosisSinglePoolSwap } from "./models/MsgOsmosisSinglePoolSwap";
 export { MsgSend } from "./models/MsgSend";
 export { MsgSwapExactAmountIn } from "./models/MsgSwapExactAmountIn";
+export { MsgDelegate } from "./models/MsgDelegate";
+export { MsgUndelegate } from "./models/MsgUndelegate";
+export { MsgBeginRedelegate } from "./models/MsgBeginRedelegate";
+export { MsgWithdrawDelegatorRewards } from "./models/MsgWithdrawDelegatorRewards";
+export { MsgWithdrawValidatorCommission } from "./models/MsgWithdrawValidatorCommission";
+
 export { Secp256k1PubKey } from "./models/Secp256k1PubKey";
 export {
   Tx,
