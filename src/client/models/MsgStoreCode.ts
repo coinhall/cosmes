@@ -1,8 +1,8 @@
 import { PlainMessage } from "@bufbuild/protobuf";
-import { base64, utf8 } from "cosmes/codec";
+import { base64 } from "cosmes/codec";
 import { CosmwasmWasmV1MsgStoreCode as ProtoMsgStoreCode } from "cosmes/protobufs";
 
-import { DeepPrettify, Prettify } from "../../typeutils/prettify";
+import { DeepPrettify } from "../../typeutils/prettify";
 import { Adapter } from "./Adapter";
 
 type Data = DeepPrettify<PlainMessage<ProtoMsgStoreCode>>;
