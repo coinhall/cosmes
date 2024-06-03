@@ -32,11 +32,19 @@ export { RpcClient } from "./clients/RpcClient";
 export { type Adapter } from "./models/Adapter";
 export { MsgExecuteContract } from "./models/MsgExecuteContract";
 export { MsgInstantiateContract } from "./models/MsgInstantiateContract";
+export { MsgStoreCode } from "./models/MsgStoreCode";
+export { MsgMigrateContract } from "./models/MsgMigrateContract";
 export { MsgExecuteContractInjective } from "./models/MsgExecuteContractInjective";
 export { MsgIbcTransfer } from "./models/MsgIbcTransfer";
 export { MsgOsmosisSinglePoolSwap } from "./models/MsgOsmosisSinglePoolSwap";
 export { MsgSend } from "./models/MsgSend";
 export { MsgSwapExactAmountIn } from "./models/MsgSwapExactAmountIn";
+export { MsgDelegate } from "./models/MsgDelegate";
+export { MsgUndelegate } from "./models/MsgUndelegate";
+export { MsgBeginRedelegate } from "./models/MsgBeginRedelegate";
+export { MsgWithdrawDelegatorRewards } from "./models/MsgWithdrawDelegatorRewards";
+export { MsgWithdrawValidatorCommission } from "./models/MsgWithdrawValidatorCommission";
+
 export { Secp256k1PubKey } from "./models/Secp256k1PubKey";
 export {
   Tx,
