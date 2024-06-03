@@ -77,6 +77,10 @@ const REPOS = [
     repo: "elys-network/elys#main",
     paths: ["proto"],
   },
+  {
+    repo: "onomyprotocol/market#main",
+    paths: ["proto"],
+  },
 ];
 /**
  * TODO: Add more repos here when necessary.
@@ -107,6 +111,7 @@ console.log("Copying Third Party Proto...");
 {
   //cpSync(join(TMP_DIR, id("cosmos/cosmos-sdk#v0.47.9"),"proto"),join(TMP_DIR,id("elys-network/elys#main"),""),{recursive: true})
   copyDirectoryRecursiveSync(join(TMP_DIR, id("cosmos/cosmos-sdk#v0.47.9"),"proto"), join(TMP_DIR,id("elys-network/elys#main"),"proto"))
+  copyDirectoryRecursiveSync(join(TMP_DIR, id("cosmos/cosmos-sdk#v0.47.9"),"proto"), join(TMP_DIR,id("onomyprotocol/market#main"),"proto"))
 }
 
 

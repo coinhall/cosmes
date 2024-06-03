@@ -209,3 +209,77 @@ export class QueryRewardsResponse extends Message<QueryRewardsResponse> {
   }
 }
 
+/**
+ * @generated from message elys.estaking.QueryInvariantRequest
+ */
+export class QueryInvariantRequest extends Message<QueryInvariantRequest> {
+  constructor(data?: PartialMessage<QueryInvariantRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "elys.estaking.QueryInvariantRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): QueryInvariantRequest {
+    return new QueryInvariantRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): QueryInvariantRequest {
+    return new QueryInvariantRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): QueryInvariantRequest {
+    return new QueryInvariantRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: QueryInvariantRequest | PlainMessage<QueryInvariantRequest> | undefined, b: QueryInvariantRequest | PlainMessage<QueryInvariantRequest> | undefined): boolean {
+    return proto3.util.equals(QueryInvariantRequest, a, b);
+  }
+}
+
+/**
+ * @generated from message elys.estaking.QueryInvariantResponse
+ */
+export class QueryInvariantResponse extends Message<QueryInvariantResponse> {
+  /**
+   * @generated from field: string total_bonded = 1;
+   */
+  totalBonded = "";
+
+  /**
+   * @generated from field: string bonded_validator_tokens_sum = 2;
+   */
+  bondedValidatorTokensSum = "";
+
+  constructor(data?: PartialMessage<QueryInvariantResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "elys.estaking.QueryInvariantResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "total_bonded", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "bonded_validator_tokens_sum", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): QueryInvariantResponse {
+    return new QueryInvariantResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): QueryInvariantResponse {
+    return new QueryInvariantResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): QueryInvariantResponse {
+    return new QueryInvariantResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: QueryInvariantResponse | PlainMessage<QueryInvariantResponse> | undefined, b: QueryInvariantResponse | PlainMessage<QueryInvariantResponse> | undefined): boolean {
+    return proto3.util.equals(QueryInvariantResponse, a, b);
+  }
+}
+

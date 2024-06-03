@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { QueryParamsRequest, QueryParamsResponse, QueryRewardsRequest, QueryRewardsResponse } from "./query_pb.js";
+import { QueryInvariantRequest, QueryInvariantResponse, QueryParamsRequest, QueryParamsResponse, QueryRewardsRequest, QueryRewardsResponse } from "./query_pb.js";
 
 const TYPE_NAME = "elys.estaking.Query";
 
@@ -29,5 +29,17 @@ export const QueryRewardsService = {
   method: "Rewards",
   Request: QueryRewardsRequest,
   Response: QueryRewardsResponse,
+} as const;
+
+/**
+ * Invariant queries the invariant values
+ *
+ * @generated from rpc elys.estaking.Query.Invariant
+ */
+export const QueryInvariantService = {
+  typeName: TYPE_NAME,
+  method: "Invariant",
+  Request: QueryInvariantRequest,
+  Response: QueryInvariantResponse,
 } as const;
 

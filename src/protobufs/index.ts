@@ -1279,6 +1279,142 @@ export {
   Record as OsmosisAccumV1beta1Record,
 } from "./osmosis/accum/v1beta1/accum_pb.js";
 export {
+  MsgCreatePool as MarketMsgCreatePool,
+  MsgCreatePoolResponse as MarketMsgCreatePoolResponse,
+  MsgCreateDrop as MarketMsgCreateDrop,
+  MsgCreateDropResponse as MarketMsgCreateDropResponse,
+  MsgRedeemDrop as MarketMsgRedeemDrop,
+  MsgRedeemDropResponse as MarketMsgRedeemDropResponse,
+  MsgCreateOrder as MarketMsgCreateOrder,
+  MsgCreateOrderResponse as MarketMsgCreateOrderResponse,
+  MsgCancelOrder as MarketMsgCancelOrder,
+  MsgCancelOrderResponse as MarketMsgCancelOrderResponse,
+  MsgMarketOrder as MarketMsgMarketOrder,
+  MsgMarketOrderResponse as MarketMsgMarketOrderResponse,
+} from "./market/tx_pb.js";
+export {
+  MsgCreatePoolService as MarketMsgCreatePoolService,
+  MsgCreateDropService as MarketMsgCreateDropService,
+  MsgRedeemDropService as MarketMsgRedeemDropService,
+  MsgCreateOrderService as MarketMsgCreateOrderService,
+  MsgCancelOrderService as MarketMsgCancelOrderService,
+  MsgMarketOrderService as MarketMsgMarketOrderService,
+} from "./market/tx_cosmes.js";
+export {
+  QueryParamsRequest as MarketQueryParamsRequest,
+  QueryParamsResponse as MarketQueryParamsResponse,
+  QueryGetPoolRequest as MarketQueryGetPoolRequest,
+  QueryGetPoolResponse as MarketQueryGetPoolResponse,
+  QueryAllPoolRequest as MarketQueryAllPoolRequest,
+  QueryAllPoolResponse as MarketQueryAllPoolResponse,
+  QueryVolumeRequest as MarketQueryVolumeRequest,
+  QueryVolumeResponse as MarketQueryVolumeResponse,
+  QueryAllVolumeRequest as MarketQueryAllVolumeRequest,
+  QueryAllVolumeResponse as MarketQueryAllVolumeResponse,
+  QueryBurnedRequest as MarketQueryBurnedRequest,
+  QueryBurnedResponse as MarketQueryBurnedResponse,
+  QueryDropRequest as MarketQueryDropRequest,
+  QueryDropCoinRequest as MarketQueryDropCoinRequest,
+  QueryDropCoinResponse as MarketQueryDropCoinResponse,
+  QueryDropResponse as MarketQueryDropResponse,
+  QueryDropAmountsRequest as MarketQueryDropAmountsRequest,
+  QueryDropAmountsResponse as MarketQueryDropAmountsResponse,
+  QueryDropsToCoinsRequest as MarketQueryDropsToCoinsRequest,
+  QueryDropsToCoinsResponse as MarketQueryDropsToCoinsResponse,
+  QueryDropPairsRequest as MarketQueryDropPairsRequest,
+  QueryDropPairsResponse as MarketQueryDropPairsResponse,
+  QueryDropOwnerPairRequest as MarketQueryDropOwnerPairRequest,
+  QueryDropOwnerPairSumRequest as MarketQueryDropOwnerPairSumRequest,
+  QueryDropOwnerPairSumResponse as MarketQueryDropOwnerPairSumResponse,
+  QueryDropOwnerPairUidsRequest as MarketQueryDropOwnerPairUidsRequest,
+  QueryUidsResponse as MarketQueryUidsResponse,
+  QueryDropOwnerPairDetailRequest as MarketQueryDropOwnerPairDetailRequest,
+  QueryAllDropRequest as MarketQueryAllDropRequest,
+  QueryDropsResponse as MarketQueryDropsResponse,
+  QueryGetMemberRequest as MarketQueryGetMemberRequest,
+  QueryGetMemberResponse as MarketQueryGetMemberResponse,
+  QueryAllMemberRequest as MarketQueryAllMemberRequest,
+  QueryAllMemberResponse as MarketQueryAllMemberResponse,
+  QueryGetBurningsRequest as MarketQueryGetBurningsRequest,
+  QueryGetBurningsResponse as MarketQueryGetBurningsResponse,
+  QueryAllBurningsRequest as MarketQueryAllBurningsRequest,
+  QueryAllBurningsResponse as MarketQueryAllBurningsResponse,
+  QueryOrderRequest as MarketQueryOrderRequest,
+  QueryOrderResponse as MarketQueryOrderResponse,
+  QueryOrdersResponse as MarketQueryOrdersResponse,
+  QueryAllOrderRequest as MarketQueryAllOrderRequest,
+  QueryOrderOwnerRequest as MarketQueryOrderOwnerRequest,
+  QueryOrderOwnerUidsResponse as MarketQueryOrderOwnerUidsResponse,
+  QueryOrderOwnerPairRequest as MarketQueryOrderOwnerPairRequest,
+  QueryOrderOwnerPairResponse as MarketQueryOrderOwnerPairResponse,
+  QueryBookRequest as MarketQueryBookRequest,
+  QueryBookResponse as MarketQueryBookResponse,
+  QueryBookendsRequest as MarketQueryBookendsRequest,
+  QueryBookendsResponse as MarketQueryBookendsResponse,
+  QueryHistoryRequest as MarketQueryHistoryRequest,
+  QueryHistoryResponse as MarketQueryHistoryResponse,
+  QueryQuoteRequest as MarketQueryQuoteRequest,
+  QueryQuoteResponse as MarketQueryQuoteResponse,
+} from "./market/query_pb.js";
+export {
+  QueryParamsService as MarketQueryParamsService,
+  QueryBurnedService as MarketQueryBurnedService,
+  QueryPoolService as MarketQueryPoolService,
+  QueryPoolAllService as MarketQueryPoolAllService,
+  QueryVolumeService as MarketQueryVolumeService,
+  QueryVolumeAllService as MarketQueryVolumeAllService,
+  QueryDropService as MarketQueryDropService,
+  QueryDropAmountsService as MarketQueryDropAmountsService,
+  QueryDropCoinService as MarketQueryDropCoinService,
+  QueryDropsToCoinsService as MarketQueryDropsToCoinsService,
+  QueryDropPairsService as MarketQueryDropPairsService,
+  QueryDropOwnerPairService as MarketQueryDropOwnerPairService,
+  QueryDropAllService as MarketQueryDropAllService,
+  QueryMemberService as MarketQueryMemberService,
+  QueryMemberAllService as MarketQueryMemberAllService,
+  QueryBurningsService as MarketQueryBurningsService,
+  QueryBurningsAllService as MarketQueryBurningsAllService,
+  QueryOrderService as MarketQueryOrderService,
+  QueryOrderAllService as MarketQueryOrderAllService,
+  QueryOrderOwnerService as MarketQueryOrderOwnerService,
+  QueryOrderOwnerUidsService as MarketQueryOrderOwnerUidsService,
+  QueryBookService as MarketQueryBookService,
+  QueryBookendsService as MarketQueryBookendsService,
+  QueryHistoryService as MarketQueryHistoryService,
+  QueryQuoteService as MarketQueryQuoteService,
+} from "./market/query_cosmes.js";
+export {
+  DenomMetadataProposal as MarketDenomMetadataProposal,
+} from "./market/proposal_pb.js";
+export {
+  Pool as MarketPool,
+  Leader as MarketLeader,
+  Volume as MarketVolume,
+} from "./market/pool_pb.js";
+export {
+  Params as MarketParams,
+} from "./market/params_pb.js";
+export {
+  Order as MarketOrder,
+  Orders as MarketOrders,
+  OrderResponse as MarketOrderResponse,
+} from "./market/order_pb.js";
+export {
+  Member as MarketMember,
+} from "./market/member_pb.js";
+export {
+  GenesisState as MarketGenesisState,
+} from "./market/genesis_pb.js";
+export {
+  Drop as MarketDrop,
+  Drops as MarketDrops,
+  DropPairs as MarketDropPairs,
+} from "./market/drop_pb.js";
+export {
+  Burnings as MarketBurnings,
+  Burned as MarketBurned,
+} from "./market/burnings_pb.js";
+export {
   QueryCirculatingSupplyRequest as KavaValidatorvestingV1beta1QueryCirculatingSupplyRequest,
   QueryCirculatingSupplyResponse as KavaValidatorvestingV1beta1QueryCirculatingSupplyResponse,
   QueryTotalSupplyRequest as KavaValidatorvestingV1beta1QueryTotalSupplyRequest,
@@ -3455,8 +3591,27 @@ export {
   Params as IbcCoreChannelV1Params,
 } from "./ibc/core/channel/v1/channel_pb.js";
 export {
+  Token as IbcApplicationsTransferV2Token,
+  Denom as IbcApplicationsTransferV2Denom,
+  Trace as IbcApplicationsTransferV2Trace,
+} from "./ibc/applications/transfer/v2/token_pb.js";
+export {
+  QueryDenomRequest as IbcApplicationsTransferV2QueryDenomRequest,
+  QueryDenomResponse as IbcApplicationsTransferV2QueryDenomResponse,
+  QueryDenomsRequest as IbcApplicationsTransferV2QueryDenomsRequest,
+  QueryDenomsResponse as IbcApplicationsTransferV2QueryDenomsResponse,
+} from "./ibc/applications/transfer/v2/queryv2_pb.js";
+export {
+  QueryV2DenomsService as IbcApplicationsTransferV2QueryV2DenomsService,
+  QueryV2DenomService as IbcApplicationsTransferV2QueryV2DenomService,
+} from "./ibc/applications/transfer/v2/queryv2_cosmes.js";
+export {
   FungibleTokenPacketData as IbcApplicationsTransferV2FungibleTokenPacketData,
+  FungibleTokenPacketDataV2 as IbcApplicationsTransferV2FungibleTokenPacketDataV2,
 } from "./ibc/applications/transfer/v2/packet_pb.js";
+export {
+  GenesisState as IbcApplicationsTransferV2GenesisState,
+} from "./ibc/applications/transfer/v2/genesis_pb.js";
 export {
   MsgTransfer as IbcApplicationsTransferV1MsgTransfer,
   MsgTransferResponse as IbcApplicationsTransferV1MsgTransferResponse,
@@ -3472,10 +3627,6 @@ export {
   Params as IbcApplicationsTransferV1Params,
 } from "./ibc/applications/transfer/v1/transfer_pb.js";
 export {
-  QueryDenomTraceRequest as IbcApplicationsTransferV1QueryDenomTraceRequest,
-  QueryDenomTraceResponse as IbcApplicationsTransferV1QueryDenomTraceResponse,
-  QueryDenomTracesRequest as IbcApplicationsTransferV1QueryDenomTracesRequest,
-  QueryDenomTracesResponse as IbcApplicationsTransferV1QueryDenomTracesResponse,
   QueryParamsRequest as IbcApplicationsTransferV1QueryParamsRequest,
   QueryParamsResponse as IbcApplicationsTransferV1QueryParamsResponse,
   QueryDenomHashRequest as IbcApplicationsTransferV1QueryDenomHashRequest,
@@ -3486,16 +3637,11 @@ export {
   QueryTotalEscrowForDenomResponse as IbcApplicationsTransferV1QueryTotalEscrowForDenomResponse,
 } from "./ibc/applications/transfer/v1/query_pb.js";
 export {
-  QueryDenomTracesService as IbcApplicationsTransferV1QueryDenomTracesService,
-  QueryDenomTraceService as IbcApplicationsTransferV1QueryDenomTraceService,
   QueryParamsService as IbcApplicationsTransferV1QueryParamsService,
   QueryDenomHashService as IbcApplicationsTransferV1QueryDenomHashService,
   QueryEscrowAddressService as IbcApplicationsTransferV1QueryEscrowAddressService,
   QueryTotalEscrowForDenomService as IbcApplicationsTransferV1QueryTotalEscrowForDenomService,
 } from "./ibc/applications/transfer/v1/query_cosmes.js";
-export {
-  GenesisState as IbcApplicationsTransferV1GenesisState,
-} from "./ibc/applications/transfer/v1/genesis_pb.js";
 export {
   Allocation as IbcApplicationsTransferV1Allocation,
   TransferAuthorization as IbcApplicationsTransferV1TransferAuthorization,
@@ -4258,10 +4404,13 @@ export {
   QueryRewardsRequest as ElysEstakingQueryRewardsRequest,
   DelegationDelegatorReward as ElysEstakingDelegationDelegatorReward,
   QueryRewardsResponse as ElysEstakingQueryRewardsResponse,
+  QueryInvariantRequest as ElysEstakingQueryInvariantRequest,
+  QueryInvariantResponse as ElysEstakingQueryInvariantResponse,
 } from "./elys/estaking/query_pb.js";
 export {
   QueryParamsService as ElysEstakingQueryParamsService,
   QueryRewardsService as ElysEstakingQueryRewardsService,
+  QueryInvariantService as ElysEstakingQueryInvariantService,
 } from "./elys/estaking/query_cosmes.js";
 export {
   Params as ElysEstakingParams,

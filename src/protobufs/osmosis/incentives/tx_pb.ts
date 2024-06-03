@@ -9,7 +9,7 @@ import { QueryCondition } from "../lockup/lock_pb.js";
 import { Coin } from "../../cosmos/base/v1beta1/coin_pb.js";
 
 /**
- * MsgCreateGauge creates a gague to distribute rewards to users
+ * MsgCreateGauge creates a gauge to distribute rewards to users
  *
  * @generated from message osmosis.incentives.MsgCreateGauge
  */
