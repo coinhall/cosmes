@@ -39,6 +39,8 @@ export type ConnectMnemonicWalletOptions = Prettify<
      * Address index number for HD derivation (default: `0`).
      */
     index?: number | undefined;
+
+    algo?: "secp256k1" | "ethsecp256k1" | undefined;
   } & ChainInfo<string>
 >;
 
@@ -78,12 +80,15 @@ export class MnemonicWallet extends ConnectedWallet {
   public readonly publicKey: string;
   public readonly privateKey: Uint8Array;
   public readonly keyType: "secp256k1" | "ethsecp256k1";
+  public readonly algo: string | undefined;
+
 
   constructor({
     mnemonic,
     bech32Prefix,
     coinType,
     index,
+    algo,
     chainId,
     gasPrice,
     rpc,
@@ -92,11 +97,16 @@ export class MnemonicWallet extends ConnectedWallet {
       coinType,
       index,
     });
+
     const keyType =
-      chainId.startsWith("injective") || chainId.startsWith("dymension") || chainId.startsWith("planq") || chainId.startsWith("kavaevm")
+      algo ? algo :
+      chainId.startsWith("injective") || chainId.startsWith("dymension") || chainId.startsWith("planq") 
         ? "ethsecp256k1"
-        : "secp256k1";
+        : "secp256k1"
+
+
     const address = resolveBech32Address(publicKey, bech32Prefix, keyType);
+    
     super(
       // We typecast here instead of adding "mnemonic" to `WalletName` and
       // `WalletType` as this wallet is considered a special wallet that is
@@ -106,15 +116,19 @@ export class MnemonicWallet extends ConnectedWallet {
       chainId,
       new Secp256k1PubKey({
         chainId,
+        algo,
         key: publicKey,
       }),
       address,
       rpc,
-      gasPrice
+      gasPrice,
+     
     );
     this.publicKey = base64.encode(publicKey);
     this.privateKey = privateKey;
+    this.algo = algo
     this.keyType = keyType;
+    
   }
 
   public async signArbitrary(data: string): Promise<SignArbitraryResponse> {
