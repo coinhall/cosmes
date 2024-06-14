@@ -8,9 +8,11 @@ type Data = DeepPrettify<PlainMessage<ProtoMsgSend>>;
 
 export class MsgSend implements Adapter {
   private readonly data: Data;
+  private readonly legacy: boolean;
 
-  constructor(data: Data) {
+  constructor(data: Data, legacy = false) {
     this.data = data;
+    this.legacy = legacy;
   }
 
   public toProto() {
@@ -19,7 +21,7 @@ export class MsgSend implements Adapter {
 
   public toAmino() {
     return {
-      type: "cosmos-sdk/MsgSend",
+      type: this.legacy ? "bank/MsgSend" : "cosmos-sdk/MsgSend",
       value: {
         from_address: this.data.fromAddress,
         to_address: this.data.toAddress,
