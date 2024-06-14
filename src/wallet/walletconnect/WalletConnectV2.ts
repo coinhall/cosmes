@@ -183,7 +183,7 @@ export class WalletConnectV2 {
   public async signAmino(
     chainId: string,
     signerAddress: string,
-    stdSignDoc: StdSignDoc
+    stdSignDoc: StdSignDoc,
   ): Promise<SignAminoResponse> {
     const { signature, signed } = await this.request<WcSignAminoResponse>(
       chainId,
@@ -202,7 +202,7 @@ export class WalletConnectV2 {
   public async signDirect(
     chainId: string,
     signerAddress: string,
-    signDoc: SignDoc
+    signDoc: SignDoc,
   ): Promise<SignDirectResponse> {
     const { signature, signed } = await this.request<WcSignDirectResponse>(
       chainId,
@@ -264,7 +264,7 @@ export class WalletConnectV2 {
     }
   }
 
-  private async request<T>(chainId: string, method: Method, params: unknown) {
+  protected async request<T>(chainId: string, method: Method, params: unknown) {
     const session = localStorage.getItem(this.sessionStorageKey);
     if (!session || !this.signClient) {
       throw new Error("Session not found for " + chainId);

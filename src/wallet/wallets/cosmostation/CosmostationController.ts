@@ -4,19 +4,19 @@ import { base64 } from "cosmes/codec";
 import { WalletName } from "../../constants/WalletName";
 import { WalletType } from "../../constants/WalletType";
 import { onWindowEvent } from "../../utils/window";
-import { WalletConnectV2 } from "../../walletconnect/WalletConnectV2";
 import { ConnectedWallet } from "../ConnectedWallet";
 import { ChainInfo, WalletController } from "../WalletController";
 import { WalletError } from "../WalletError";
 import { CosmostationExtension } from "./CosmostationExtension";
 import { CosmostationWalletConnectV2 } from "./CosmostationWalletConnectV2";
+import { WalletConnectV2Keplr } from "../../walletconnect/WalletConnectV2Keplr";
 
 export class CosmostationController extends WalletController {
-  private readonly wc: WalletConnectV2;
+  private readonly wc: WalletConnectV2Keplr;
 
   constructor(wcProjectId: string) {
     super(WalletName.COSMOSTATION);
-    this.wc = new WalletConnectV2(wcProjectId, {
+    this.wc = new WalletConnectV2Keplr(wcProjectId, {
       // https://github.com/cosmostation/cosmostation-wc-modal/blob/main/src/modal.tsx#L22-L34
       name: "Cosmostation",
       android:

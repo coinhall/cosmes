@@ -4,19 +4,19 @@ import { base64 } from "cosmes/codec";
 import { WalletName } from "../../constants/WalletName";
 import { WalletType } from "../../constants/WalletType";
 import { onWindowEvent } from "../../utils/window";
-import { WalletConnectV2 } from "../../walletconnect/WalletConnectV2";
 import { ConnectedWallet } from "../ConnectedWallet";
 import { ChainInfo, WalletController } from "../WalletController";
 import { WalletError } from "../WalletError";
 import { LeapExtension } from "./LeapExtension";
 import { LeapWalletConnectV2 } from "./LeapWalletConnectV2";
+import { WalletConnectV2Keplr } from "../../walletconnect/WalletConnectV2Keplr";
 
 export class LeapController extends WalletController {
-  private readonly wc: WalletConnectV2;
+  private readonly wc: WalletConnectV2Keplr;
 
   constructor(wcProjectId: string) {
     super(WalletName.LEAP);
-    this.wc = new WalletConnectV2(wcProjectId, {
+    this.wc = new WalletConnectV2Keplr(wcProjectId, {
       name: "Leap",
       android:
         "leapcosmos://wcV2#Intent;package=io.leapwallet.cosmos;scheme=leapwallet;end;",

@@ -13,20 +13,20 @@ import {
 } from "cosmes/protobufs";
 import { WalletError, WalletName, WalletType } from "cosmes/wallet";
 
-import { WalletConnectV2 } from "../../walletconnect/WalletConnectV2";
 import {
   ConnectedWallet,
   SignArbitraryResponse,
   UnsignedTx,
 } from "../ConnectedWallet";
+import { WalletConnectV2Keplr } from "../../walletconnect/WalletConnectV2Keplr";
 
 export class KeplrWalletConnectV2 extends ConnectedWallet {
-  private readonly wc: WalletConnectV2;
+  private readonly wc: WalletConnectV2Keplr;
   private readonly useAmino: boolean;
 
   constructor(
     walletName: WalletName,
-    wc: WalletConnectV2,
+    wc: WalletConnectV2Keplr,
     chainId: string,
     pubKey: Secp256k1PubKey,
     address: string,
@@ -72,15 +72,20 @@ export class KeplrWalletConnectV2 extends ConnectedWallet {
       memo,
       timeoutHeight,
     };
+    const signOptions = {
+      preferNoSetFee: true,
+      preferNoSetMemo: true,
+    };
+
     let txRaw: TxRaw;
     if (this.useAmino) {
       const { signed, signature } = await WalletError.wrap(
-        this.wc.signAmino(this.chainId, this.address, tx.toStdSignDoc(params))
+        this.wc.signAminoKeplr(this.chainId, this.address, tx.toStdSignDoc(params), signOptions)
       );
       txRaw = tx.toSignedAmino(signed, signature.signature);
     } else {
       const { signed, signature } = await WalletError.wrap(
-        this.wc.signDirect(this.chainId, this.address, tx.toSignDoc(params))
+        this.wc.signDirectKeplr(this.chainId, this.address, tx.toSignDoc(params), signOptions)
       );
       txRaw = tx.toSignedDirect(signed, signature.signature);
     }
