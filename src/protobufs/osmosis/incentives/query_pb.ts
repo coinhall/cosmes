@@ -85,7 +85,7 @@ export class ModuleToDistributeCoinsResponse extends Message<ModuleToDistributeC
  */
 export class GaugeByIDRequest extends Message<GaugeByIDRequest> {
   /**
-   * Gague ID being queried
+   * Gauge ID being queried
    *
    * @generated from field: uint64 id = 1;
    */
@@ -124,7 +124,7 @@ export class GaugeByIDRequest extends Message<GaugeByIDRequest> {
  */
 export class GaugeByIDResponse extends Message<GaugeByIDResponse> {
   /**
-   * Gauge that corresponds to provided gague ID
+   * Gauge that corresponds to provided gauge ID
    *
    * @generated from field: osmosis.incentives.Gauge gauge = 1;
    */
@@ -288,7 +288,7 @@ export class ActiveGaugesRequest extends Message<ActiveGaugesRequest> {
  */
 export class ActiveGaugesResponse extends Message<ActiveGaugesResponse> {
   /**
-   * Active gagues only
+   * Active gauges only
    *
    * @generated from field: repeated osmosis.incentives.Gauge data = 1;
    */
@@ -335,7 +335,7 @@ export class ActiveGaugesResponse extends Message<ActiveGaugesResponse> {
  */
 export class ActiveGaugesPerDenomRequest extends Message<ActiveGaugesPerDenomRequest> {
   /**
-   * Desired denom when querying active gagues
+   * Desired denom when querying active gauges
    *
    * @generated from field: string denom = 1;
    */
@@ -382,7 +382,7 @@ export class ActiveGaugesPerDenomRequest extends Message<ActiveGaugesPerDenomReq
  */
 export class ActiveGaugesPerDenomResponse extends Message<ActiveGaugesPerDenomResponse> {
   /**
-   * Active gagues that match denom in query
+   * Active gauges that match denom in query
    *
    * @generated from field: repeated osmosis.incentives.Gauge data = 1;
    */
@@ -515,7 +515,7 @@ export class UpcomingGaugesResponse extends Message<UpcomingGaugesResponse> {
  */
 export class UpcomingGaugesPerDenomRequest extends Message<UpcomingGaugesPerDenomRequest> {
   /**
-   * Filter for upcoming gagues that match specific denom
+   * Filter for upcoming gauges that match specific denom
    *
    * @generated from field: string denom = 1;
    */
@@ -562,7 +562,7 @@ export class UpcomingGaugesPerDenomRequest extends Message<UpcomingGaugesPerDeno
  */
 export class UpcomingGaugesPerDenomResponse extends Message<UpcomingGaugesPerDenomResponse> {
   /**
-   * Upcoming gagues that match denom in query
+   * Upcoming gauges that match denom in query
    *
    * @generated from field: repeated osmosis.incentives.Gauge upcoming_gauges = 1;
    */

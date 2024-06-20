@@ -15,14 +15,33 @@ export interface ChainRegistryAssetList {
 }
 export interface Asset {
   /**
+   * [OPTIONAL] Whether the asset has been deprecated for use. For readability, it is best to omit this property unless TRUE.
+   */
+  deprecated?: boolean;
+  /**
    * [OPTIONAL] A short description of the asset
    */
   description?: string;
+  /**
+   * [OPTIONAL] A long description of the asset
+   */
+  extended_description?: string;
   denom_units: DenomUnit[];
   /**
    * [OPTIONAL] The potential options for type of asset. By default, assumes sdk.coin
    */
-  type_asset?: "sdk.coin" | "cw20" | "erc20" | "ics20" | "snip20" | "snip25";
+  type_asset?:
+    | "sdk.coin"
+    | "cw20"
+    | "erc20"
+    | "ics20"
+    | "snip20"
+    | "snip25"
+    | "bitcoin-like"
+    | "evm-base"
+    | "svm-base"
+    | "substrate"
+    | "unknown";
   /**
    * [OPTIONAL] The address of the asset. Only required for type_asset : cw20, snip20
    */
@@ -69,6 +88,8 @@ export interface Asset {
       svg?: string;
       theme?: {
         primary_color_hex?: string;
+        circle?: boolean;
+        dark_mode?: boolean;
       };
     },
     ...{
@@ -77,6 +98,8 @@ export interface Asset {
       svg?: string;
       theme?: {
         primary_color_hex?: string;
+        circle?: boolean;
+        dark_mode?: boolean;
       };
     }[]
   ];
@@ -85,6 +108,11 @@ export interface Asset {
    */
   coingecko_id?: string;
   keywords?: string[];
+  socials?: {
+    website?: string;
+    twitter?: string;
+    [k: string]: unknown | undefined;
+  };
 }
 export interface DenomUnit {
   denom: string;

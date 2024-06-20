@@ -9,6 +9,7 @@
 import { spawnSync } from "child_process";
 import degit from "degit";
 import {
+  cpSync,
   mkdirSync,
   readFileSync,
   readdirSync,
@@ -17,6 +18,8 @@ import {
   statSync,
   writeFileSync,
 } from "fs";
+import * as fs from 'fs';
+import * as path from 'path';
 import { globSync } from "glob";
 import { capitalize } from "lodash-es";
 import { dirname, join } from "path";
@@ -66,8 +69,24 @@ const REPOS = [
     repo: "dymensionxyz/osmosis#main-dym",
     paths: ["proto"],
   },
+  {
+    repo: "Kava-Labs/kava#master",
+    paths: ["proto"],
+  },
+  {
+    repo: "elys-network/elys#main",
+    paths: ["proto"],
+  },
+  {
+    repo: "onomyprotocol/market#main",
+    paths: ["proto"],
+  },
 ];
-
+/**
+ * TODO: Add more repos here when necessary.
+ * @type {Repo[]}
+ */
+const THIRD = [];
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const PROTOBUFS_DIR = join(__dirname, "..", "src", "protobufs");
 const TMP_DIR = join(PROTOBUFS_DIR, ".tmp");
@@ -85,9 +104,18 @@ console.log("Initialising directories...");
 console.log("Cloning required repos...");
 {
   await Promise.all(
-    REPOS.map(({ repo }) => degit(repo).clone(join(TMP_DIR, id(repo))))
+    REPOS.map(({ repo }) => degit(repo).clone(join(TMP_DIR, id(repo)))).concat(THIRD.map(({ repo }) => degit(repo).clone(join(TMP_DIR, id(repo)))))
   );
 }
+console.log("Copying Third Party Proto...");
+{
+  //cpSync(join(TMP_DIR, id("cosmos/cosmos-sdk#v0.47.9"),"proto"),join(TMP_DIR,id("elys-network/elys#main"),""),{recursive: true})
+  copyDirectoryRecursiveSync(join(TMP_DIR, id("cosmos/cosmos-sdk#v0.47.9"),"proto"), join(TMP_DIR,id("elys-network/elys#main"),"proto"))
+  copyDirectoryRecursiveSync(join(TMP_DIR, id("cosmos/cosmos-sdk#v0.47.9"),"proto"), join(TMP_DIR,id("onomyprotocol/market#main"),"proto"))
+}
+
+
+
 
 console.log("Generating TS files from proto files...");
 {
@@ -216,3 +244,28 @@ console.log("Cleaning up...");
 }
 
 console.log("Proto generation completed successfully!");
+
+
+function copyDirectoryRecursiveSync(src, dest) {
+  // Vérifier si le dossier de destination existe, sinon le créer
+  if (!fs.existsSync(dest)) {
+      fs.mkdirSync(dest, { recursive: true });
+  }
+
+  // Lire le contenu du dossier source
+  const entries = fs.readdirSync(src, { withFileTypes: true });
+
+  // Parcourir chaque entrée (fichier ou dossier)
+  for (const entry of entries) {
+      const srcPath = path.join(src, entry.name);
+      const destPath = path.join(dest, entry.name);
+
+      if (entry.isDirectory()) {
+          // Si c'est un dossier, appeler récursivement la fonction
+          copyDirectoryRecursiveSync(srcPath, destPath);
+      } else {
+          // Si c'est un fichier, le copier
+          fs.copyFileSync(srcPath, destPath);
+      }
+  }
+}

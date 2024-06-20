@@ -42,8 +42,8 @@ export class Allocation extends Message<Allocation> {
   allowList: string[] = [];
 
   /**
-   * allow list of packet data keys, an empty list prohibits all packet data keys;
-   * a list only with "*" permits any packet data key
+   * allow list of memo strings, an empty list prohibits all memo strings;
+   * a list only with "*" permits any memo string
    *
    * @generated from field: repeated string allowed_packet_data = 5;
    */

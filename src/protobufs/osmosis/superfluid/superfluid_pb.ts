@@ -58,6 +58,14 @@ export class SuperfluidAsset extends Message<SuperfluidAsset> {
    */
   assetType = SuperfluidAssetType.SuperfluidAssetTypeNative;
 
+  /**
+   * For non-osmo native assets, we need a pool_id osmo/asset to determine the
+   * twap of the asset
+   *
+   * @generated from field: uint64 price_pool_id = 3;
+   */
+  pricePoolId = protoInt64.zero;
+
   constructor(data?: PartialMessage<SuperfluidAsset>) {
     super();
     proto3.util.initPartial(data, this);
@@ -68,6 +76,7 @@ export class SuperfluidAsset extends Message<SuperfluidAsset> {
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "denom", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "asset_type", kind: "enum", T: proto3.getEnumType(SuperfluidAssetType) },
+    { no: 3, name: "price_pool_id", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): SuperfluidAsset {
@@ -409,6 +418,56 @@ export class ConcentratedPoolUserPositionRecord extends Message<ConcentratedPool
 
   static equals(a: ConcentratedPoolUserPositionRecord | PlainMessage<ConcentratedPoolUserPositionRecord> | undefined, b: ConcentratedPoolUserPositionRecord | PlainMessage<ConcentratedPoolUserPositionRecord> | undefined): boolean {
     return proto3.util.equals(ConcentratedPoolUserPositionRecord, a, b);
+  }
+}
+
+/**
+ * The DenomRiskFactor stores the risk factor of a superfluid asset
+ *
+ * @generated from message osmosis.superfluid.DenomRiskFactor
+ */
+export class DenomRiskFactor extends Message<DenomRiskFactor> {
+  /**
+   * superfluid asset denom, can be LP token or native token
+   *
+   * @generated from field: string denom = 1;
+   */
+  denom = "";
+
+  /**
+   * risk_factor is to be cut on OSMO equivalent value of the denom tokens
+   * for superfluid staking. It defaults to params.minimum_risk_factor
+   *
+   * @generated from field: string risk_factor = 2;
+   */
+  riskFactor = "";
+
+  constructor(data?: PartialMessage<DenomRiskFactor>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "osmosis.superfluid.DenomRiskFactor";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "denom", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "risk_factor", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): DenomRiskFactor {
+    return new DenomRiskFactor().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): DenomRiskFactor {
+    return new DenomRiskFactor().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): DenomRiskFactor {
+    return new DenomRiskFactor().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: DenomRiskFactor | PlainMessage<DenomRiskFactor> | undefined, b: DenomRiskFactor | PlainMessage<DenomRiskFactor> | undefined): boolean {
+    return proto3.util.equals(DenomRiskFactor, a, b);
   }
 }
 

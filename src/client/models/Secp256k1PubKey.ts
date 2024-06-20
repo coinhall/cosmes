@@ -12,24 +12,34 @@ import { Adapter } from "./Adapter";
 type Data = DeepPrettify<
   {
     chainId?: string | undefined;
+    algo?: string | undefined;
   } & PlainMessage<ProtoSecp256k1PubKey>
 >;
 
 export class Secp256k1PubKey implements Adapter {
   private readonly data: Data;
   private readonly type: string;
+  private readonly algo: string | undefined;
 
   constructor(data: Data) {
     this.data = data;
     this.type = data.chainId?.split(/[-_]/, 2).at(0) ?? "";
+    this.algo = data.algo
   }
 
   public toProto() {
-    return this.type === "injective"
-      ? new ProtoInjectiveSecp256k1PubKey(this.data)
-      : this.type === "dymension" || this.type === "evmos"
-      ? new ProtoEthermintSecp256k1PubKey(this.data)
-      : new ProtoSecp256k1PubKey(this.data);
+
+    if(this.algo){
+      return this.algo === "ethsecp256k1" ? new ProtoEthermintSecp256k1PubKey(this.data) : new ProtoSecp256k1PubKey(this.data)
+    }
+    else{
+      return this.type === "injective"
+        ? new ProtoInjectiveSecp256k1PubKey(this.data)
+        : (this.type === "dymension" || this.type === "evmos" || this.type === "planq")
+        ? new ProtoEthermintSecp256k1PubKey(this.data)
+        : new ProtoSecp256k1PubKey(this.data)
+    }
+
   }
 
   // TODO: needs to be updated to include injective/dymension support

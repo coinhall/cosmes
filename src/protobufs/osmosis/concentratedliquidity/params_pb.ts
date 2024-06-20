@@ -38,19 +38,6 @@ export class Params extends Message<Params> {
   balancerSharesRewardDiscount = "";
 
   /**
-   * authorized_quote_denoms is a list of quote denoms that can be used as
-   * token1 when creating a pool. We limit the quote assets to a small set for
-   * the purposes of having convenient price increments stemming from tick to
-   * price conversion. These increments are in a human readable magnitude only
-   * for token1 as a quote. For limit orders in the future, this will be a
-   * desirable property in terms of UX as to allow users to set limit orders at
-   * prices in terms of token1 (quote asset) that are easy to reason about.
-   *
-   * @generated from field: repeated string authorized_quote_denoms = 4;
-   */
-  authorizedQuoteDenoms: string[] = [];
-
-  /**
    * @generated from field: repeated google.protobuf.Duration authorized_uptimes = 5;
    */
   authorizedUptimes: Duration[] = [];
@@ -92,7 +79,6 @@ export class Params extends Message<Params> {
     { no: 1, name: "authorized_tick_spacing", kind: "scalar", T: 4 /* ScalarType.UINT64 */, repeated: true },
     { no: 2, name: "authorized_spread_factors", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
     { no: 3, name: "balancer_shares_reward_discount", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 4, name: "authorized_quote_denoms", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
     { no: 5, name: "authorized_uptimes", kind: "message", T: Duration, repeated: true },
     { no: 6, name: "is_permissionless_pool_creation_enabled", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
     { no: 7, name: "unrestricted_pool_creator_whitelist", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },

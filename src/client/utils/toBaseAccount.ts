@@ -6,6 +6,7 @@ import {
   CosmosVestingV1beta1DelayedVestingAccount as DelayedVesting,
   EthermintTypesV1EthAccount as EthermintAccount,
   InjectiveTypesV1beta1EthAccount as InjectiveAccount,
+  EthermintTypesV1EthAccount as EthAccount,
   CosmosVestingV1beta1PeriodicVestingAccount as PeriodicVestingAccount,
 } from "cosmes/protobufs";
 

@@ -5,6 +5,7 @@
 
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
 import { Message, proto3 } from "@bufbuild/protobuf";
+import { Token } from "./token_pb.js";
 
 /**
  * FungibleTokenPacketData defines a struct for the packet payload
@@ -78,6 +79,73 @@ export class FungibleTokenPacketData extends Message<FungibleTokenPacketData> {
 
   static equals(a: FungibleTokenPacketData | PlainMessage<FungibleTokenPacketData> | undefined, b: FungibleTokenPacketData | PlainMessage<FungibleTokenPacketData> | undefined): boolean {
     return proto3.util.equals(FungibleTokenPacketData, a, b);
+  }
+}
+
+/**
+ * FungibleTokenPacketDataV2 defines a struct for the packet payload
+ * See FungibleTokenPacketDataV2 spec:
+ * https://github.com/cosmos/ibc/tree/master/spec/app/ics-020-fungible-token-transfer#data-structures
+ *
+ * @generated from message ibc.applications.transfer.v2.FungibleTokenPacketDataV2
+ */
+export class FungibleTokenPacketDataV2 extends Message<FungibleTokenPacketDataV2> {
+  /**
+   * the tokens to be transferred
+   *
+   * @generated from field: repeated ibc.applications.transfer.v2.Token tokens = 1;
+   */
+  tokens: Token[] = [];
+
+  /**
+   * the sender address
+   *
+   * @generated from field: string sender = 2;
+   */
+  sender = "";
+
+  /**
+   * the recipient address on the destination chain
+   *
+   * @generated from field: string receiver = 3;
+   */
+  receiver = "";
+
+  /**
+   * optional memo
+   *
+   * @generated from field: string memo = 4;
+   */
+  memo = "";
+
+  constructor(data?: PartialMessage<FungibleTokenPacketDataV2>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "ibc.applications.transfer.v2.FungibleTokenPacketDataV2";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "tokens", kind: "message", T: Token, repeated: true },
+    { no: 2, name: "sender", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "receiver", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 4, name: "memo", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): FungibleTokenPacketDataV2 {
+    return new FungibleTokenPacketDataV2().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): FungibleTokenPacketDataV2 {
+    return new FungibleTokenPacketDataV2().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): FungibleTokenPacketDataV2 {
+    return new FungibleTokenPacketDataV2().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: FungibleTokenPacketDataV2 | PlainMessage<FungibleTokenPacketDataV2> | undefined, b: FungibleTokenPacketDataV2 | PlainMessage<FungibleTokenPacketDataV2> | undefined): boolean {
+    return proto3.util.equals(FungibleTokenPacketDataV2, a, b);
   }
 }
 
