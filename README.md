@@ -10,6 +10,7 @@ A tree-shakeable, framework agnostic, [pure ESM](https://gist.github.com/sindres
   - [Using with TypeScript](#using-with-typescript)
   - [Using with Vite](#using-with-vite)
   - [Using Station wallet](#using-station-wallet)
+  - [Using Galaxy Station wallet](#using-galaxy-station-wallet)
 - [Examples](#examples)
 - [Modules](#modules)
   - [`cosmes/client`](#cosmesclient)
@@ -109,6 +110,26 @@ See [`examples/solid-vite`](./examples/solid-vite) for a working example.
 
 > This can be removed once support for WalletConnect v1 is no longer required.
 
+### Using Galaxy Station wallet
+
+The Galaxy Station wallet currently relies on WalletConnect v1. If you want to import and use `GalaxyStationController`, a polyfill for `Buffer` is required:
+
+```ts
+// First, install the buffer package
+npm install buffer
+
+// Then, create a new file 'polyfill.ts'
+import { Buffer } from "buffer";
+(window as any).Buffer = Buffer;
+
+// Finally, import the above file in your entry file
+import "./polyfill";
+```
+
+See [`examples/solid-vite`](./examples/solid-vite) for a working example.
+
+> This can be removed once support for WalletConnect v1 is no longer required.
+
 ## Examples
 
 Docs do not exist yet - see the [`examples`](./examples) folder for various working examples:
@@ -145,6 +166,7 @@ This directory is a [Cosmos Kit](https://cosmoskit.com) alternative to interact 
 **Wallets supported**:
 
 - [Station](https://docs.terra.money/learn/station/)
+- [Galaxy Station](https://station.hexxagon.io)
 - [Keplr](https://www.keplr.app/)
 - [Leap](https://www.leapwallet.io/)
 - [Cosmostation](https://wallet.cosmostation.io/)

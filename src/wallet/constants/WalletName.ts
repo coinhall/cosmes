@@ -3,6 +3,7 @@
  */
 export const WalletName = {
   STATION: "station",
+  GALAXYSTATION: "galaxystation",
   KEPLR: "keplr",
   LEAP: "leap",
   COMPASS: "compass",
