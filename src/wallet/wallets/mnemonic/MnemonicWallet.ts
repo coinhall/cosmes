@@ -93,7 +93,7 @@ export class MnemonicWallet extends ConnectedWallet {
     chainId,
     gasPrice,
     rpc,
-  }: ConnectMnemonicWalletOptions,useAmino: boolean) {
+  }: ConnectMnemonicWalletOptions,useAmino?: boolean) {
     const { publicKey, privateKey } = resolveKeyPair(mnemonic, {
       coinType,
       index,
@@ -129,7 +129,7 @@ export class MnemonicWallet extends ConnectedWallet {
     this.privateKey = privateKey;
     this.algo = algo
     this.keyType = keyType;
-    this.useAmino = useAmino;
+    this.useAmino = useAmino ?? false;
   }
 
   public async signArbitrary(data: string): Promise<SignArbitraryResponse> {
