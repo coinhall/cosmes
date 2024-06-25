@@ -559,3 +559,138 @@ export class MsgDewhitelistResponse extends Message<MsgDewhitelistResponse> {
   }
 }
 
+/**
+ * @generated from message elys.perpetual.MsgAddCollateral
+ */
+export class MsgAddCollateral extends Message<MsgAddCollateral> {
+  /**
+   * @generated from field: string creator = 1;
+   */
+  creator = "";
+
+  /**
+   * @generated from field: string amount = 2;
+   */
+  amount = "";
+
+  /**
+   * @generated from field: uint64 id = 3;
+   */
+  id = protoInt64.zero;
+
+  constructor(data?: PartialMessage<MsgAddCollateral>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "elys.perpetual.MsgAddCollateral";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "creator", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "amount", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "id", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgAddCollateral {
+    return new MsgAddCollateral().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MsgAddCollateral {
+    return new MsgAddCollateral().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MsgAddCollateral {
+    return new MsgAddCollateral().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: MsgAddCollateral | PlainMessage<MsgAddCollateral> | undefined, b: MsgAddCollateral | PlainMessage<MsgAddCollateral> | undefined): boolean {
+    return proto3.util.equals(MsgAddCollateral, a, b);
+  }
+}
+
+/**
+ * @generated from message elys.perpetual.MsgAddCollateralResponse
+ */
+export class MsgAddCollateralResponse extends Message<MsgAddCollateralResponse> {
+  constructor(data?: PartialMessage<MsgAddCollateralResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "elys.perpetual.MsgAddCollateralResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgAddCollateralResponse {
+    return new MsgAddCollateralResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MsgAddCollateralResponse {
+    return new MsgAddCollateralResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MsgAddCollateralResponse {
+    return new MsgAddCollateralResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: MsgAddCollateralResponse | PlainMessage<MsgAddCollateralResponse> | undefined, b: MsgAddCollateralResponse | PlainMessage<MsgAddCollateralResponse> | undefined): boolean {
+    return proto3.util.equals(MsgAddCollateralResponse, a, b);
+  }
+}
+
+/**
+ * @generated from message elys.perpetual.MsgBrokerAddCollateral
+ */
+export class MsgBrokerAddCollateral extends Message<MsgBrokerAddCollateral> {
+  /**
+   * @generated from field: string creator = 1;
+   */
+  creator = "";
+
+  /**
+   * @generated from field: string amount = 2;
+   */
+  amount = "";
+
+  /**
+   * @generated from field: int32 id = 3;
+   */
+  id = 0;
+
+  /**
+   * @generated from field: string owner = 4;
+   */
+  owner = "";
+
+  constructor(data?: PartialMessage<MsgBrokerAddCollateral>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "elys.perpetual.MsgBrokerAddCollateral";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "creator", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "amount", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "id", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
+    { no: 4, name: "owner", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgBrokerAddCollateral {
+    return new MsgBrokerAddCollateral().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MsgBrokerAddCollateral {
+    return new MsgBrokerAddCollateral().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MsgBrokerAddCollateral {
+    return new MsgBrokerAddCollateral().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: MsgBrokerAddCollateral | PlainMessage<MsgBrokerAddCollateral> | undefined, b: MsgBrokerAddCollateral | PlainMessage<MsgBrokerAddCollateral> | undefined): boolean {
+    return proto3.util.equals(MsgBrokerAddCollateral, a, b);
+  }
+}
+

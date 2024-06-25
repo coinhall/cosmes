@@ -105,39 +105,45 @@ export class Position extends Message<Position> {
 }
 
 /**
- * @generated from message elys.leveragelp.WhiteList
+ * @generated from message elys.leveragelp.AddressId
  */
-export class WhiteList extends Message<WhiteList> {
+export class AddressId extends Message<AddressId> {
   /**
-   * @generated from field: repeated string validator_list = 1;
+   * @generated from field: string address = 1;
    */
-  validatorList: string[] = [];
+  address = "";
 
-  constructor(data?: PartialMessage<WhiteList>) {
+  /**
+   * @generated from field: uint64 id = 2;
+   */
+  id = protoInt64.zero;
+
+  constructor(data?: PartialMessage<AddressId>) {
     super();
     proto3.util.initPartial(data, this);
   }
 
   static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "elys.leveragelp.WhiteList";
+  static readonly typeName = "elys.leveragelp.AddressId";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "validator_list", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
+    { no: 1, name: "address", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "id", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
   ]);
 
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): WhiteList {
-    return new WhiteList().fromBinary(bytes, options);
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): AddressId {
+    return new AddressId().fromBinary(bytes, options);
   }
 
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): WhiteList {
-    return new WhiteList().fromJson(jsonValue, options);
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): AddressId {
+    return new AddressId().fromJson(jsonValue, options);
   }
 
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): WhiteList {
-    return new WhiteList().fromJsonString(jsonString, options);
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): AddressId {
+    return new AddressId().fromJsonString(jsonString, options);
   }
 
-  static equals(a: WhiteList | PlainMessage<WhiteList> | undefined, b: WhiteList | PlainMessage<WhiteList> | undefined): boolean {
-    return proto3.util.equals(WhiteList, a, b);
+  static equals(a: AddressId | PlainMessage<AddressId> | undefined, b: AddressId | PlainMessage<AddressId> | undefined): boolean {
+    return proto3.util.equals(AddressId, a, b);
   }
 }
 

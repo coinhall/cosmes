@@ -9,6 +9,7 @@ import { Params } from "./params_pb.js";
 import { PageRequest, PageResponse } from "../../cosmos/base/query/v1beta1/pagination_pb.js";
 import { Position } from "./types_pb.js";
 import { Pool } from "./pool_pb.js";
+import { Coin } from "../../cosmos/base/v1beta1/coin_pb.js";
 
 /**
  * ParamsRequest is request type for the Query/Params RPC method.
@@ -801,6 +802,417 @@ export class PositionResponse extends Message<PositionResponse> {
 
   static equals(a: PositionResponse | PlainMessage<PositionResponse> | undefined, b: PositionResponse | PlainMessage<PositionResponse> | undefined): boolean {
     return proto3.util.equals(PositionResponse, a, b);
+  }
+}
+
+/**
+ * @generated from message elys.leveragelp.QueryLiquidationPriceRequest
+ */
+export class QueryLiquidationPriceRequest extends Message<QueryLiquidationPriceRequest> {
+  /**
+   * @generated from field: string address = 1;
+   */
+  address = "";
+
+  /**
+   * @generated from field: uint64 position_id = 2;
+   */
+  positionId = protoInt64.zero;
+
+  constructor(data?: PartialMessage<QueryLiquidationPriceRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "elys.leveragelp.QueryLiquidationPriceRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "address", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "position_id", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): QueryLiquidationPriceRequest {
+    return new QueryLiquidationPriceRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): QueryLiquidationPriceRequest {
+    return new QueryLiquidationPriceRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): QueryLiquidationPriceRequest {
+    return new QueryLiquidationPriceRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: QueryLiquidationPriceRequest | PlainMessage<QueryLiquidationPriceRequest> | undefined, b: QueryLiquidationPriceRequest | PlainMessage<QueryLiquidationPriceRequest> | undefined): boolean {
+    return proto3.util.equals(QueryLiquidationPriceRequest, a, b);
+  }
+}
+
+/**
+ * @generated from message elys.leveragelp.QueryLiquidationPriceResponse
+ */
+export class QueryLiquidationPriceResponse extends Message<QueryLiquidationPriceResponse> {
+  /**
+   * @generated from field: string price = 1;
+   */
+  price = "";
+
+  constructor(data?: PartialMessage<QueryLiquidationPriceResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "elys.leveragelp.QueryLiquidationPriceResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "price", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): QueryLiquidationPriceResponse {
+    return new QueryLiquidationPriceResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): QueryLiquidationPriceResponse {
+    return new QueryLiquidationPriceResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): QueryLiquidationPriceResponse {
+    return new QueryLiquidationPriceResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: QueryLiquidationPriceResponse | PlainMessage<QueryLiquidationPriceResponse> | undefined, b: QueryLiquidationPriceResponse | PlainMessage<QueryLiquidationPriceResponse> | undefined): boolean {
+    return proto3.util.equals(QueryLiquidationPriceResponse, a, b);
+  }
+}
+
+/**
+ * @generated from message elys.leveragelp.QueryOpenEstRequest
+ */
+export class QueryOpenEstRequest extends Message<QueryOpenEstRequest> {
+  /**
+   * @generated from field: string collateral_asset = 1;
+   */
+  collateralAsset = "";
+
+  /**
+   * @generated from field: string collateral_amount = 2;
+   */
+  collateralAmount = "";
+
+  /**
+   * @generated from field: uint64 amm_pool_id = 3;
+   */
+  ammPoolId = protoInt64.zero;
+
+  /**
+   * @generated from field: string leverage = 4;
+   */
+  leverage = "";
+
+  constructor(data?: PartialMessage<QueryOpenEstRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "elys.leveragelp.QueryOpenEstRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "collateral_asset", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "collateral_amount", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "amm_pool_id", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+    { no: 4, name: "leverage", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): QueryOpenEstRequest {
+    return new QueryOpenEstRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): QueryOpenEstRequest {
+    return new QueryOpenEstRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): QueryOpenEstRequest {
+    return new QueryOpenEstRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: QueryOpenEstRequest | PlainMessage<QueryOpenEstRequest> | undefined, b: QueryOpenEstRequest | PlainMessage<QueryOpenEstRequest> | undefined): boolean {
+    return proto3.util.equals(QueryOpenEstRequest, a, b);
+  }
+}
+
+/**
+ * @generated from message elys.leveragelp.QueryOpenEstResponse
+ */
+export class QueryOpenEstResponse extends Message<QueryOpenEstResponse> {
+  /**
+   * @generated from field: string position_size = 1;
+   */
+  positionSize = "";
+
+  /**
+   * @generated from field: string weight_balance_ratio = 2;
+   */
+  weightBalanceRatio = "";
+
+  /**
+   * @generated from field: string borrow_fee = 3;
+   */
+  borrowFee = "";
+
+  constructor(data?: PartialMessage<QueryOpenEstResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "elys.leveragelp.QueryOpenEstResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "position_size", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "weight_balance_ratio", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "borrow_fee", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): QueryOpenEstResponse {
+    return new QueryOpenEstResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): QueryOpenEstResponse {
+    return new QueryOpenEstResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): QueryOpenEstResponse {
+    return new QueryOpenEstResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: QueryOpenEstResponse | PlainMessage<QueryOpenEstResponse> | undefined, b: QueryOpenEstResponse | PlainMessage<QueryOpenEstResponse> | undefined): boolean {
+    return proto3.util.equals(QueryOpenEstResponse, a, b);
+  }
+}
+
+/**
+ * @generated from message elys.leveragelp.QueryCloseEstRequest
+ */
+export class QueryCloseEstRequest extends Message<QueryCloseEstRequest> {
+  /**
+   * @generated from field: string owner = 1;
+   */
+  owner = "";
+
+  /**
+   * @generated from field: uint64 id = 2;
+   */
+  id = protoInt64.zero;
+
+  /**
+   * @generated from field: string lp_amount = 3;
+   */
+  lpAmount = "";
+
+  constructor(data?: PartialMessage<QueryCloseEstRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "elys.leveragelp.QueryCloseEstRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "owner", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "id", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+    { no: 3, name: "lp_amount", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): QueryCloseEstRequest {
+    return new QueryCloseEstRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): QueryCloseEstRequest {
+    return new QueryCloseEstRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): QueryCloseEstRequest {
+    return new QueryCloseEstRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: QueryCloseEstRequest | PlainMessage<QueryCloseEstRequest> | undefined, b: QueryCloseEstRequest | PlainMessage<QueryCloseEstRequest> | undefined): boolean {
+    return proto3.util.equals(QueryCloseEstRequest, a, b);
+  }
+}
+
+/**
+ * @generated from message elys.leveragelp.QueryRewardsRequest
+ */
+export class QueryRewardsRequest extends Message<QueryRewardsRequest> {
+  /**
+   * @generated from field: string address = 1;
+   */
+  address = "";
+
+  /**
+   * @generated from field: repeated uint64 ids = 2;
+   */
+  ids: bigint[] = [];
+
+  constructor(data?: PartialMessage<QueryRewardsRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "elys.leveragelp.QueryRewardsRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "address", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "ids", kind: "scalar", T: 4 /* ScalarType.UINT64 */, repeated: true },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): QueryRewardsRequest {
+    return new QueryRewardsRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): QueryRewardsRequest {
+    return new QueryRewardsRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): QueryRewardsRequest {
+    return new QueryRewardsRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: QueryRewardsRequest | PlainMessage<QueryRewardsRequest> | undefined, b: QueryRewardsRequest | PlainMessage<QueryRewardsRequest> | undefined): boolean {
+    return proto3.util.equals(QueryRewardsRequest, a, b);
+  }
+}
+
+/**
+ * @generated from message elys.leveragelp.RewardInfo
+ */
+export class RewardInfo extends Message<RewardInfo> {
+  /**
+   * @generated from field: uint64 position_id = 1;
+   */
+  positionId = protoInt64.zero;
+
+  /**
+   * @generated from field: repeated cosmos.base.v1beta1.Coin reward = 2;
+   */
+  reward: Coin[] = [];
+
+  constructor(data?: PartialMessage<RewardInfo>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "elys.leveragelp.RewardInfo";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "position_id", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+    { no: 2, name: "reward", kind: "message", T: Coin, repeated: true },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): RewardInfo {
+    return new RewardInfo().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): RewardInfo {
+    return new RewardInfo().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): RewardInfo {
+    return new RewardInfo().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: RewardInfo | PlainMessage<RewardInfo> | undefined, b: RewardInfo | PlainMessage<RewardInfo> | undefined): boolean {
+    return proto3.util.equals(RewardInfo, a, b);
+  }
+}
+
+/**
+ * @generated from message elys.leveragelp.QueryRewardsResponse
+ */
+export class QueryRewardsResponse extends Message<QueryRewardsResponse> {
+  /**
+   * @generated from field: repeated elys.leveragelp.RewardInfo rewards = 1;
+   */
+  rewards: RewardInfo[] = [];
+
+  /**
+   * @generated from field: repeated cosmos.base.v1beta1.Coin total_rewards = 2;
+   */
+  totalRewards: Coin[] = [];
+
+  constructor(data?: PartialMessage<QueryRewardsResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "elys.leveragelp.QueryRewardsResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "rewards", kind: "message", T: RewardInfo, repeated: true },
+    { no: 2, name: "total_rewards", kind: "message", T: Coin, repeated: true },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): QueryRewardsResponse {
+    return new QueryRewardsResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): QueryRewardsResponse {
+    return new QueryRewardsResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): QueryRewardsResponse {
+    return new QueryRewardsResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: QueryRewardsResponse | PlainMessage<QueryRewardsResponse> | undefined, b: QueryRewardsResponse | PlainMessage<QueryRewardsResponse> | undefined): boolean {
+    return proto3.util.equals(QueryRewardsResponse, a, b);
+  }
+}
+
+/**
+ * @generated from message elys.leveragelp.QueryCloseEstResponse
+ */
+export class QueryCloseEstResponse extends Message<QueryCloseEstResponse> {
+  /**
+   * @generated from field: string liability = 1;
+   */
+  liability = "";
+
+  /**
+   * @generated from field: string weight_balance_ratio = 2;
+   */
+  weightBalanceRatio = "";
+
+  /**
+   * @generated from field: string amount_returned = 3;
+   */
+  amountReturned = "";
+
+  constructor(data?: PartialMessage<QueryCloseEstResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "elys.leveragelp.QueryCloseEstResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "liability", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "weight_balance_ratio", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "amount_returned", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): QueryCloseEstResponse {
+    return new QueryCloseEstResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): QueryCloseEstResponse {
+    return new QueryCloseEstResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): QueryCloseEstResponse {
+    return new QueryCloseEstResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: QueryCloseEstResponse | PlainMessage<QueryCloseEstResponse> | undefined, b: QueryCloseEstResponse | PlainMessage<QueryCloseEstResponse> | undefined): boolean {
+    return proto3.util.equals(QueryCloseEstResponse, a, b);
   }
 }
 

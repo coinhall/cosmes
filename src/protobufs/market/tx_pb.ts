@@ -59,6 +59,36 @@ export class MsgCreatePool extends Message<MsgCreatePool> {
  * @generated from message pendulumlabs.market.market.MsgCreatePoolResponse
  */
 export class MsgCreatePoolResponse extends Message<MsgCreatePoolResponse> {
+  /**
+   * @generated from field: string creator = 1;
+   */
+  creator = "";
+
+  /**
+   * @generated from field: uint64 drop_uid = 2;
+   */
+  dropUid = protoInt64.zero;
+
+  /**
+   * @generated from field: string pair = 3;
+   */
+  pair = "";
+
+  /**
+   * @generated from field: string drops = 4;
+   */
+  drops = "";
+
+  /**
+   * @generated from field: string coin1 = 5;
+   */
+  coin1 = "";
+
+  /**
+   * @generated from field: string coin2 = 6;
+   */
+  coin2 = "";
+
   constructor(data?: PartialMessage<MsgCreatePoolResponse>) {
     super();
     proto3.util.initPartial(data, this);
@@ -67,6 +97,12 @@ export class MsgCreatePoolResponse extends Message<MsgCreatePoolResponse> {
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "pendulumlabs.market.market.MsgCreatePoolResponse";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "creator", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "drop_uid", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+    { no: 3, name: "pair", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 4, name: "drops", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 5, name: "coin1", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 6, name: "coin2", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgCreatePoolResponse {
@@ -139,6 +175,36 @@ export class MsgCreateDrop extends Message<MsgCreateDrop> {
  * @generated from message pendulumlabs.market.market.MsgCreateDropResponse
  */
 export class MsgCreateDropResponse extends Message<MsgCreateDropResponse> {
+  /**
+   * @generated from field: string creator = 1;
+   */
+  creator = "";
+
+  /**
+   * @generated from field: uint64 uid = 2;
+   */
+  uid = protoInt64.zero;
+
+  /**
+   * @generated from field: string pair = 3;
+   */
+  pair = "";
+
+  /**
+   * @generated from field: string drops = 4;
+   */
+  drops = "";
+
+  /**
+   * @generated from field: string coin1 = 5;
+   */
+  coin1 = "";
+
+  /**
+   * @generated from field: string coin2 = 6;
+   */
+  coin2 = "";
+
   constructor(data?: PartialMessage<MsgCreateDropResponse>) {
     super();
     proto3.util.initPartial(data, this);
@@ -147,6 +213,12 @@ export class MsgCreateDropResponse extends Message<MsgCreateDropResponse> {
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "pendulumlabs.market.market.MsgCreateDropResponse";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "creator", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "uid", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+    { no: 3, name: "pair", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 4, name: "drops", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 5, name: "coin1", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 6, name: "coin2", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgCreateDropResponse {
@@ -213,6 +285,36 @@ export class MsgRedeemDrop extends Message<MsgRedeemDrop> {
  * @generated from message pendulumlabs.market.market.MsgRedeemDropResponse
  */
 export class MsgRedeemDropResponse extends Message<MsgRedeemDropResponse> {
+  /**
+   * @generated from field: string creator = 1;
+   */
+  creator = "";
+
+  /**
+   * @generated from field: uint64 uid = 2;
+   */
+  uid = protoInt64.zero;
+
+  /**
+   * @generated from field: string pair = 3;
+   */
+  pair = "";
+
+  /**
+   * @generated from field: string drops = 4;
+   */
+  drops = "";
+
+  /**
+   * @generated from field: string coin1 = 9;
+   */
+  coin1 = "";
+
+  /**
+   * @generated from field: string coin2 = 10;
+   */
+  coin2 = "";
+
   constructor(data?: PartialMessage<MsgRedeemDropResponse>) {
     super();
     proto3.util.initPartial(data, this);
@@ -221,6 +323,12 @@ export class MsgRedeemDropResponse extends Message<MsgRedeemDropResponse> {
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "pendulumlabs.market.market.MsgRedeemDropResponse";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "creator", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "uid", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+    { no: 3, name: "pair", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 4, name: "drops", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 9, name: "coin1", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 10, name: "coin2", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgRedeemDropResponse {
@@ -504,17 +612,22 @@ export class MsgMarketOrder extends Message<MsgMarketOrder> {
  */
 export class MsgMarketOrderResponse extends Message<MsgMarketOrderResponse> {
   /**
-   * @generated from field: string amountBid = 1;
+   * @generated from field: string uid = 1;
+   */
+  uid = "";
+
+  /**
+   * @generated from field: string amountBid = 2;
    */
   amountBid = "";
 
   /**
-   * @generated from field: string amountAsk = 2;
+   * @generated from field: string amountAsk = 3;
    */
   amountAsk = "";
 
   /**
-   * @generated from field: string slippage = 3;
+   * @generated from field: string slippage = 4;
    */
   slippage = "";
 
@@ -526,9 +639,10 @@ export class MsgMarketOrderResponse extends Message<MsgMarketOrderResponse> {
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "pendulumlabs.market.market.MsgMarketOrderResponse";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "amountBid", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "amountAsk", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 3, name: "slippage", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 1, name: "uid", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "amountBid", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "amountAsk", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 4, name: "slippage", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgMarketOrderResponse {

@@ -3,5 +3,17 @@
 /* eslint-disable */
 // @ts-nocheck
 
+import { MsgUpdateParams, MsgUpdateParamsResponse } from "./tx_pb.js";
+
 const TYPE_NAME = "elys.burner.Msg";
+
+/**
+ * @generated from rpc elys.burner.Msg.UpdateParams
+ */
+export const MsgUpdateParamsService = {
+  typeName: TYPE_NAME,
+  method: "UpdateParams",
+  Request: MsgUpdateParams,
+  Response: MsgUpdateParamsResponse,
+} as const;
 

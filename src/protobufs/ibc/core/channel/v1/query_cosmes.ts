@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { QueryChannelClientStateRequest, QueryChannelClientStateResponse, QueryChannelConsensusStateRequest, QueryChannelConsensusStateResponse, QueryChannelParamsRequest, QueryChannelParamsResponse, QueryChannelRequest, QueryChannelResponse, QueryChannelsRequest, QueryChannelsResponse, QueryConnectionChannelsRequest, QueryConnectionChannelsResponse, QueryNextSequenceReceiveRequest, QueryNextSequenceReceiveResponse, QueryNextSequenceSendRequest, QueryNextSequenceSendResponse, QueryPacketAcknowledgementRequest, QueryPacketAcknowledgementResponse, QueryPacketAcknowledgementsRequest, QueryPacketAcknowledgementsResponse, QueryPacketCommitmentRequest, QueryPacketCommitmentResponse, QueryPacketCommitmentsRequest, QueryPacketCommitmentsResponse, QueryPacketReceiptRequest, QueryPacketReceiptResponse, QueryUnreceivedAcksRequest, QueryUnreceivedAcksResponse, QueryUnreceivedPacketsRequest, QueryUnreceivedPacketsResponse, QueryUpgradeErrorRequest, QueryUpgradeErrorResponse, QueryUpgradeRequest, QueryUpgradeResponse } from "./query_pb.js";
+import { QueryChannelClientStateRequest, QueryChannelClientStateResponse, QueryChannelConsensusStateRequest, QueryChannelConsensusStateResponse, QueryChannelRequest, QueryChannelResponse, QueryChannelsRequest, QueryChannelsResponse, QueryConnectionChannelsRequest, QueryConnectionChannelsResponse, QueryNextSequenceReceiveRequest, QueryNextSequenceReceiveResponse, QueryPacketAcknowledgementRequest, QueryPacketAcknowledgementResponse, QueryPacketAcknowledgementsRequest, QueryPacketAcknowledgementsResponse, QueryPacketCommitmentRequest, QueryPacketCommitmentResponse, QueryPacketCommitmentsRequest, QueryPacketCommitmentsResponse, QueryPacketReceiptRequest, QueryPacketReceiptResponse, QueryUnreceivedAcksRequest, QueryUnreceivedAcksResponse, QueryUnreceivedPacketsRequest, QueryUnreceivedPacketsResponse } from "./query_pb.js";
 
 const TYPE_NAME = "ibc.core.channel.v1.Query";
 
@@ -169,53 +169,5 @@ export const QueryNextSequenceReceiveService = {
   method: "NextSequenceReceive",
   Request: QueryNextSequenceReceiveRequest,
   Response: QueryNextSequenceReceiveResponse,
-} as const;
-
-/**
- * NextSequenceSend returns the next send sequence for a given channel.
- *
- * @generated from rpc ibc.core.channel.v1.Query.NextSequenceSend
- */
-export const QueryNextSequenceSendService = {
-  typeName: TYPE_NAME,
-  method: "NextSequenceSend",
-  Request: QueryNextSequenceSendRequest,
-  Response: QueryNextSequenceSendResponse,
-} as const;
-
-/**
- * UpgradeError returns the error receipt if the upgrade handshake failed.
- *
- * @generated from rpc ibc.core.channel.v1.Query.UpgradeError
- */
-export const QueryUpgradeErrorService = {
-  typeName: TYPE_NAME,
-  method: "UpgradeError",
-  Request: QueryUpgradeErrorRequest,
-  Response: QueryUpgradeErrorResponse,
-} as const;
-
-/**
- * Upgrade returns the upgrade for a given port and channel id.
- *
- * @generated from rpc ibc.core.channel.v1.Query.Upgrade
- */
-export const QueryUpgradeService = {
-  typeName: TYPE_NAME,
-  method: "Upgrade",
-  Request: QueryUpgradeRequest,
-  Response: QueryUpgradeResponse,
-} as const;
-
-/**
- * ChannelParams queries all parameters of the ibc channel submodule.
- *
- * @generated from rpc ibc.core.channel.v1.Query.ChannelParams
- */
-export const QueryChannelParamsService = {
-  typeName: TYPE_NAME,
-  method: "ChannelParams",
-  Request: QueryChannelParamsRequest,
-  Response: QueryChannelParamsResponse,
 } as const;
 

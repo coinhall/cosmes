@@ -3,21 +3,9 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { MsgModuleQuerySafe, MsgModuleQuerySafeResponse, MsgUpdateParams, MsgUpdateParamsResponse } from "./tx_pb.js";
+import { MsgModuleQuerySafe, MsgModuleQuerySafeResponse } from "./tx_pb.js";
 
 const TYPE_NAME = "ibc.applications.interchain_accounts.host.v1.Msg";
-
-/**
- * UpdateParams defines a rpc handler for MsgUpdateParams.
- *
- * @generated from rpc ibc.applications.interchain_accounts.host.v1.Msg.UpdateParams
- */
-export const MsgUpdateParamsService = {
-  typeName: TYPE_NAME,
-  method: "UpdateParams",
-  Request: MsgUpdateParams,
-  Response: MsgUpdateParamsResponse,
-} as const;
 
 /**
  * ModuleQuerySafe defines a rpc handler for MsgModuleQuerySafe.

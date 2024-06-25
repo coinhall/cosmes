@@ -224,4 +224,7 @@ export interface Explorer {
   url?: string;
   tx_page?: string;
   account_page?: string;
+  validator_page?: string;
+  proposal_page?: string;
+  block_page?: string;
 }

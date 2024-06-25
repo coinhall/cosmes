@@ -249,7 +249,7 @@ export class MsgWithdrawElysStakingRewardsResponse extends Message<MsgWithdrawEl
 }
 
 /**
- * MsgWithdrawElysStakingRewards represents delegation withdrawal to a delegator from all the validators and Eden/EdenB commitment.
+ * MsgWithdrawAllRewards represents delegation withdrawal to a delegator from all the validators and Eden/EdenB commitment.
  *
  * @generated from message elys.estaking.MsgWithdrawAllRewards
  */

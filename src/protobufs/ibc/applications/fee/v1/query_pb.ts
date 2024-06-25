@@ -5,7 +5,7 @@
 
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
 import { Message, proto3, protoInt64 } from "@bufbuild/protobuf";
-import { PageRequest, PageResponse } from "../../../../cosmos/base/query/v1beta1/pagination_pb.js";
+import { PageRequest } from "../../../../cosmos/base/query/v1beta1/pagination_pb.js";
 import { IdentifiedPacketFees } from "./fee_pb.js";
 import { PacketId } from "../../../core/channel/v1/channel_pb.js";
 import { Coin } from "../../../../cosmos/base/v1beta1/coin_pb.js";
@@ -73,13 +73,6 @@ export class QueryIncentivizedPacketsResponse extends Message<QueryIncentivizedP
    */
   incentivizedPackets: IdentifiedPacketFees[] = [];
 
-  /**
-   * pagination defines the pagination in the response.
-   *
-   * @generated from field: cosmos.base.query.v1beta1.PageResponse pagination = 2;
-   */
-  pagination?: PageResponse;
-
   constructor(data?: PartialMessage<QueryIncentivizedPacketsResponse>) {
     super();
     proto3.util.initPartial(data, this);
@@ -89,7 +82,6 @@ export class QueryIncentivizedPacketsResponse extends Message<QueryIncentivizedP
   static readonly typeName = "ibc.applications.fee.v1.QueryIncentivizedPacketsResponse";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "incentivized_packets", kind: "message", T: IdentifiedPacketFees, repeated: true },
-    { no: 2, name: "pagination", kind: "message", T: PageResponse },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): QueryIncentivizedPacketsResponse {
@@ -274,13 +266,6 @@ export class QueryIncentivizedPacketsForChannelResponse extends Message<QueryInc
    */
   incentivizedPackets: IdentifiedPacketFees[] = [];
 
-  /**
-   * pagination defines the pagination in the response.
-   *
-   * @generated from field: cosmos.base.query.v1beta1.PageResponse pagination = 2;
-   */
-  pagination?: PageResponse;
-
   constructor(data?: PartialMessage<QueryIncentivizedPacketsForChannelResponse>) {
     super();
     proto3.util.initPartial(data, this);
@@ -290,7 +275,6 @@ export class QueryIncentivizedPacketsForChannelResponse extends Message<QueryInc
   static readonly typeName = "ibc.applications.fee.v1.QueryIncentivizedPacketsForChannelResponse";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "incentivized_packets", kind: "message", T: IdentifiedPacketFees, repeated: true },
-    { no: 2, name: "pagination", kind: "message", T: PageResponse },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): QueryIncentivizedPacketsForChannelResponse {
@@ -798,13 +782,6 @@ export class QueryFeeEnabledChannelsResponse extends Message<QueryFeeEnabledChan
    */
   feeEnabledChannels: FeeEnabledChannel[] = [];
 
-  /**
-   * pagination defines the pagination in the response.
-   *
-   * @generated from field: cosmos.base.query.v1beta1.PageResponse pagination = 2;
-   */
-  pagination?: PageResponse;
-
   constructor(data?: PartialMessage<QueryFeeEnabledChannelsResponse>) {
     super();
     proto3.util.initPartial(data, this);
@@ -814,7 +791,6 @@ export class QueryFeeEnabledChannelsResponse extends Message<QueryFeeEnabledChan
   static readonly typeName = "ibc.applications.fee.v1.QueryFeeEnabledChannelsResponse";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "fee_enabled_channels", kind: "message", T: FeeEnabledChannel, repeated: true },
-    { no: 2, name: "pagination", kind: "message", T: PageResponse },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): QueryFeeEnabledChannelsResponse {

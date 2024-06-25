@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { MsgClose, MsgCloseResponse, MsgDewhitelist, MsgDewhitelistResponse, MsgOpen, MsgOpenResponse, MsgUpdateParams, MsgUpdateParamsResponse, MsgUpdatePools, MsgUpdatePoolsResponse, MsgWhitelist, MsgWhitelistResponse } from "./tx_pb.js";
+import { MsgClaimRewards, MsgClaimRewardsResponse, MsgClose, MsgCloseResponse, MsgDewhitelist, MsgDewhitelistResponse, MsgOpen, MsgOpenResponse, MsgUpdateParams, MsgUpdateParamsResponse, MsgUpdatePools, MsgUpdatePoolsResponse, MsgUpdateStopLoss, MsgUpdateStopLossResponse, MsgWhitelist, MsgWhitelistResponse } from "./tx_pb.js";
 
 const TYPE_NAME = "elys.leveragelp.Msg";
 
@@ -25,6 +25,16 @@ export const MsgCloseService = {
   method: "Close",
   Request: MsgClose,
   Response: MsgCloseResponse,
+} as const;
+
+/**
+ * @generated from rpc elys.leveragelp.Msg.ClaimRewards
+ */
+export const MsgClaimRewardsService = {
+  typeName: TYPE_NAME,
+  method: "ClaimRewards",
+  Request: MsgClaimRewards,
+  Response: MsgClaimRewardsResponse,
 } as const;
 
 /**
@@ -65,5 +75,15 @@ export const MsgDewhitelistService = {
   method: "Dewhitelist",
   Request: MsgDewhitelist,
   Response: MsgDewhitelistResponse,
+} as const;
+
+/**
+ * @generated from rpc elys.leveragelp.Msg.UpdateStopLoss
+ */
+export const MsgUpdateStopLossService = {
+  typeName: TYPE_NAME,
+  method: "UpdateStopLoss",
+  Request: MsgUpdateStopLoss,
+  Response: MsgUpdateStopLossResponse,
 } as const;
 

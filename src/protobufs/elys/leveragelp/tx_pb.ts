@@ -187,6 +187,80 @@ export class MsgCloseResponse extends Message<MsgCloseResponse> {
 }
 
 /**
+ * @generated from message elys.leveragelp.MsgClaimRewards
+ */
+export class MsgClaimRewards extends Message<MsgClaimRewards> {
+  /**
+   * @generated from field: string sender = 1;
+   */
+  sender = "";
+
+  /**
+   * @generated from field: repeated uint64 ids = 2;
+   */
+  ids: bigint[] = [];
+
+  constructor(data?: PartialMessage<MsgClaimRewards>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "elys.leveragelp.MsgClaimRewards";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "sender", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "ids", kind: "scalar", T: 4 /* ScalarType.UINT64 */, repeated: true },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgClaimRewards {
+    return new MsgClaimRewards().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MsgClaimRewards {
+    return new MsgClaimRewards().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MsgClaimRewards {
+    return new MsgClaimRewards().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: MsgClaimRewards | PlainMessage<MsgClaimRewards> | undefined, b: MsgClaimRewards | PlainMessage<MsgClaimRewards> | undefined): boolean {
+    return proto3.util.equals(MsgClaimRewards, a, b);
+  }
+}
+
+/**
+ * @generated from message elys.leveragelp.MsgClaimRewardsResponse
+ */
+export class MsgClaimRewardsResponse extends Message<MsgClaimRewardsResponse> {
+  constructor(data?: PartialMessage<MsgClaimRewardsResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "elys.leveragelp.MsgClaimRewardsResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgClaimRewardsResponse {
+    return new MsgClaimRewardsResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MsgClaimRewardsResponse {
+    return new MsgClaimRewardsResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MsgClaimRewardsResponse {
+    return new MsgClaimRewardsResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: MsgClaimRewardsResponse | PlainMessage<MsgClaimRewardsResponse> | undefined, b: MsgClaimRewardsResponse | PlainMessage<MsgClaimRewardsResponse> | undefined): boolean {
+    return proto3.util.equals(MsgClaimRewardsResponse, a, b);
+  }
+}
+
+/**
  * @generated from message elys.leveragelp.MsgUpdateParams
  */
 export class MsgUpdateParams extends Message<MsgUpdateParams> {
@@ -484,6 +558,86 @@ export class MsgDewhitelistResponse extends Message<MsgDewhitelistResponse> {
 
   static equals(a: MsgDewhitelistResponse | PlainMessage<MsgDewhitelistResponse> | undefined, b: MsgDewhitelistResponse | PlainMessage<MsgDewhitelistResponse> | undefined): boolean {
     return proto3.util.equals(MsgDewhitelistResponse, a, b);
+  }
+}
+
+/**
+ * @generated from message elys.leveragelp.MsgUpdateStopLoss
+ */
+export class MsgUpdateStopLoss extends Message<MsgUpdateStopLoss> {
+  /**
+   * @generated from field: string creator = 1;
+   */
+  creator = "";
+
+  /**
+   * @generated from field: int32 position = 2;
+   */
+  position = 0;
+
+  /**
+   * @generated from field: string price = 3;
+   */
+  price = "";
+
+  constructor(data?: PartialMessage<MsgUpdateStopLoss>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "elys.leveragelp.MsgUpdateStopLoss";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "creator", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "position", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
+    { no: 3, name: "price", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgUpdateStopLoss {
+    return new MsgUpdateStopLoss().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MsgUpdateStopLoss {
+    return new MsgUpdateStopLoss().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MsgUpdateStopLoss {
+    return new MsgUpdateStopLoss().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: MsgUpdateStopLoss | PlainMessage<MsgUpdateStopLoss> | undefined, b: MsgUpdateStopLoss | PlainMessage<MsgUpdateStopLoss> | undefined): boolean {
+    return proto3.util.equals(MsgUpdateStopLoss, a, b);
+  }
+}
+
+/**
+ * @generated from message elys.leveragelp.MsgUpdateStopLossResponse
+ */
+export class MsgUpdateStopLossResponse extends Message<MsgUpdateStopLossResponse> {
+  constructor(data?: PartialMessage<MsgUpdateStopLossResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "elys.leveragelp.MsgUpdateStopLossResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgUpdateStopLossResponse {
+    return new MsgUpdateStopLossResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MsgUpdateStopLossResponse {
+    return new MsgUpdateStopLossResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MsgUpdateStopLossResponse {
+    return new MsgUpdateStopLossResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: MsgUpdateStopLossResponse | PlainMessage<MsgUpdateStopLossResponse> | undefined, b: MsgUpdateStopLossResponse | PlainMessage<MsgUpdateStopLossResponse> | undefined): boolean {
+    return proto3.util.equals(MsgUpdateStopLossResponse, a, b);
   }
 }
 

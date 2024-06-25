@@ -840,6 +840,11 @@ export class SuperfluidDelegationsByDelegatorResponse extends Message<Superfluid
    */
   totalEquivalentStakedAmount?: Coin;
 
+  /**
+   * @generated from field: cosmos.base.v1beta1.Coin total_equivalent_non_osmo_staked_amount = 4;
+   */
+  totalEquivalentNonOsmoStakedAmount?: Coin;
+
   constructor(data?: PartialMessage<SuperfluidDelegationsByDelegatorResponse>) {
     super();
     proto3.util.initPartial(data, this);
@@ -851,6 +856,7 @@ export class SuperfluidDelegationsByDelegatorResponse extends Message<Superfluid
     { no: 1, name: "superfluid_delegation_records", kind: "message", T: SuperfluidDelegationRecord, repeated: true },
     { no: 2, name: "total_delegated_coins", kind: "message", T: Coin, repeated: true },
     { no: 3, name: "total_equivalent_staked_amount", kind: "message", T: Coin },
+    { no: 4, name: "total_equivalent_non_osmo_staked_amount", kind: "message", T: Coin },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): SuperfluidDelegationsByDelegatorResponse {
@@ -1183,6 +1189,11 @@ export class QueryTotalDelegationByDelegatorResponse extends Message<QueryTotalD
    */
   totalEquivalentStakedAmount?: Coin;
 
+  /**
+   * @generated from field: cosmos.base.v1beta1.Coin total_equivalent_non_osmo_staked_amount = 5;
+   */
+  totalEquivalentNonOsmoStakedAmount?: Coin;
+
   constructor(data?: PartialMessage<QueryTotalDelegationByDelegatorResponse>) {
     super();
     proto3.util.initPartial(data, this);
@@ -1195,6 +1206,7 @@ export class QueryTotalDelegationByDelegatorResponse extends Message<QueryTotalD
     { no: 2, name: "delegation_response", kind: "message", T: DelegationResponse, repeated: true },
     { no: 3, name: "total_delegated_coins", kind: "message", T: Coin, repeated: true },
     { no: 4, name: "total_equivalent_staked_amount", kind: "message", T: Coin },
+    { no: 5, name: "total_equivalent_non_osmo_staked_amount", kind: "message", T: Coin },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): QueryTotalDelegationByDelegatorResponse {

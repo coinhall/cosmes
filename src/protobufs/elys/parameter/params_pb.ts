@@ -37,6 +37,28 @@ export class Params extends Message<Params> {
    */
   totalBlocksPerYear = protoInt64.zero;
 
+  /**
+   * default 1 day = 86400
+   *
+   * @generated from field: int64 rewards_data_lifetime = 6;
+   */
+  rewardsDataLifetime = protoInt64.zero;
+
+  /**
+   * @generated from field: string wasm_max_label_size = 7;
+   */
+  wasmMaxLabelSize = "";
+
+  /**
+   * @generated from field: string wasm_max_size = 8;
+   */
+  wasmMaxSize = "";
+
+  /**
+   * @generated from field: string wasm_max_proposal_wasm_size = 9;
+   */
+  wasmMaxProposalWasmSize = "";
+
   constructor(data?: PartialMessage<Params>) {
     super();
     proto3.util.initPartial(data, this);
@@ -50,6 +72,10 @@ export class Params extends Message<Params> {
     { no: 3, name: "min_self_delegation", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 4, name: "broker_address", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 5, name: "total_blocks_per_year", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
+    { no: 6, name: "rewards_data_lifetime", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
+    { no: 7, name: "wasm_max_label_size", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 8, name: "wasm_max_size", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 9, name: "wasm_max_proposal_wasm_size", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Params {
@@ -93,6 +119,11 @@ export class LegacyParams extends Message<LegacyParams> {
    */
   brokerAddress = "";
 
+  /**
+   * @generated from field: int64 total_blocks_per_year = 5;
+   */
+  totalBlocksPerYear = protoInt64.zero;
+
   constructor(data?: PartialMessage<LegacyParams>) {
     super();
     proto3.util.initPartial(data, this);
@@ -105,6 +136,7 @@ export class LegacyParams extends Message<LegacyParams> {
     { no: 2, name: "max_voting_power", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "min_self_delegation", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 4, name: "broker_address", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 5, name: "total_blocks_per_year", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): LegacyParams {

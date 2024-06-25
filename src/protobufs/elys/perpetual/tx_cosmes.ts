@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { MsgBrokerClose, MsgBrokerOpen, MsgClose, MsgCloseResponse, MsgDewhitelist, MsgDewhitelistResponse, MsgOpen, MsgOpenResponse, MsgUpdateParams, MsgUpdateParamsResponse, MsgWhitelist, MsgWhitelistResponse } from "./tx_pb.js";
+import { MsgAddCollateral, MsgAddCollateralResponse, MsgBrokerAddCollateral, MsgBrokerClose, MsgBrokerOpen, MsgClose, MsgCloseResponse, MsgDewhitelist, MsgDewhitelistResponse, MsgOpen, MsgOpenResponse, MsgUpdateParams, MsgUpdateParamsResponse, MsgWhitelist, MsgWhitelistResponse } from "./tx_pb.js";
 
 const TYPE_NAME = "elys.perpetual.Msg";
 
@@ -75,5 +75,25 @@ export const MsgDewhitelistService = {
   method: "Dewhitelist",
   Request: MsgDewhitelist,
   Response: MsgDewhitelistResponse,
+} as const;
+
+/**
+ * @generated from rpc elys.perpetual.Msg.AddCollateral
+ */
+export const MsgAddCollateralService = {
+  typeName: TYPE_NAME,
+  method: "AddCollateral",
+  Request: MsgAddCollateral,
+  Response: MsgAddCollateralResponse,
+} as const;
+
+/**
+ * @generated from rpc elys.perpetual.Msg.BrokerAddCollateral
+ */
+export const MsgBrokerAddCollateralService = {
+  typeName: TYPE_NAME,
+  method: "BrokerAddCollateral",
+  Request: MsgBrokerAddCollateral,
+  Response: MsgAddCollateralResponse,
 } as const;
 

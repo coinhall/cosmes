@@ -471,22 +471,19 @@ export class MsgSetDenomPairTakerFeeResponse extends Message<MsgSetDenomPairTake
  */
 export class DenomPairTakerFee extends Message<DenomPairTakerFee> {
   /**
-   * denom0 and denom1 get automatically lexigographically sorted
-   * when being stored, so the order of input here does not matter.
-   *
-   * @generated from field: string denom0 = 1;
-   */
-  denom0 = "";
-
-  /**
-   * @generated from field: string denom1 = 2;
-   */
-  denom1 = "";
-
-  /**
    * @generated from field: string taker_fee = 3;
    */
   takerFee = "";
+
+  /**
+   * @generated from field: string tokenInDenom = 4;
+   */
+  tokenInDenom = "";
+
+  /**
+   * @generated from field: string tokenOutDenom = 5;
+   */
+  tokenOutDenom = "";
 
   constructor(data?: PartialMessage<DenomPairTakerFee>) {
     super();
@@ -496,9 +493,9 @@ export class DenomPairTakerFee extends Message<DenomPairTakerFee> {
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "osmosis.poolmanager.v1beta1.DenomPairTakerFee";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "denom0", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "denom1", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "taker_fee", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 4, name: "tokenInDenom", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 5, name: "tokenOutDenom", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): DenomPairTakerFee {

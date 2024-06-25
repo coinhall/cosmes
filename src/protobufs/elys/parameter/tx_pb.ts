@@ -376,3 +376,89 @@ export class MsgUpdateTotalBlocksPerYearResponse extends Message<MsgUpdateTotalB
   }
 }
 
+/**
+ * @generated from message elys.parameter.MsgUpdateWasmConfig
+ */
+export class MsgUpdateWasmConfig extends Message<MsgUpdateWasmConfig> {
+  /**
+   * @generated from field: string creator = 1;
+   */
+  creator = "";
+
+  /**
+   * @generated from field: string wasm_max_label_size = 2;
+   */
+  wasmMaxLabelSize = "";
+
+  /**
+   * @generated from field: string wasm_max_size = 3;
+   */
+  wasmMaxSize = "";
+
+  /**
+   * @generated from field: string wasm_max_proposal_wasm_size = 4;
+   */
+  wasmMaxProposalWasmSize = "";
+
+  constructor(data?: PartialMessage<MsgUpdateWasmConfig>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "elys.parameter.MsgUpdateWasmConfig";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "creator", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "wasm_max_label_size", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "wasm_max_size", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 4, name: "wasm_max_proposal_wasm_size", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgUpdateWasmConfig {
+    return new MsgUpdateWasmConfig().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MsgUpdateWasmConfig {
+    return new MsgUpdateWasmConfig().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MsgUpdateWasmConfig {
+    return new MsgUpdateWasmConfig().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: MsgUpdateWasmConfig | PlainMessage<MsgUpdateWasmConfig> | undefined, b: MsgUpdateWasmConfig | PlainMessage<MsgUpdateWasmConfig> | undefined): boolean {
+    return proto3.util.equals(MsgUpdateWasmConfig, a, b);
+  }
+}
+
+/**
+ * @generated from message elys.parameter.MsgUpdateWasmConfigResponse
+ */
+export class MsgUpdateWasmConfigResponse extends Message<MsgUpdateWasmConfigResponse> {
+  constructor(data?: PartialMessage<MsgUpdateWasmConfigResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "elys.parameter.MsgUpdateWasmConfigResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgUpdateWasmConfigResponse {
+    return new MsgUpdateWasmConfigResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MsgUpdateWasmConfigResponse {
+    return new MsgUpdateWasmConfigResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MsgUpdateWasmConfigResponse {
+    return new MsgUpdateWasmConfigResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: MsgUpdateWasmConfigResponse | PlainMessage<MsgUpdateWasmConfigResponse> | undefined, b: MsgUpdateWasmConfigResponse | PlainMessage<MsgUpdateWasmConfigResponse> | undefined): boolean {
+    return proto3.util.equals(MsgUpdateWasmConfigResponse, a, b);
+  }
+}
+

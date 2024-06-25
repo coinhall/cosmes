@@ -6,7 +6,6 @@
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
 import { Message, proto3 } from "@bufbuild/protobuf";
 import { IncentiveInfo } from "./incentive_pb.js";
-import { DexRewardsTracker } from "./dex_rewards_traker_pb.js";
 
 /**
  * Params defines the parameters for the module.
@@ -34,26 +33,19 @@ export class Params extends Message<Params> {
   rewardPortionForStakers = "";
 
   /**
-   * Tracking dex rewards given to LPs
-   *
-   * @generated from field: elys.masterchef.DexRewardsTracker dex_rewards_lps = 4;
-   */
-  dexRewardsLps?: DexRewardsTracker;
-
-  /**
    * Maximum eden reward apr for lps - [0 - 0.3]
    *
-   * @generated from field: string max_eden_reward_apr_lps = 5;
+   * @generated from field: string max_eden_reward_apr_lps = 4;
    */
   maxEdenRewardAprLps = "";
 
   /**
-   * @generated from field: repeated elys.masterchef.SupportedRewardDenom supported_reward_denoms = 6;
+   * @generated from field: repeated elys.masterchef.SupportedRewardDenom supported_reward_denoms = 5;
    */
   supportedRewardDenoms: SupportedRewardDenom[] = [];
 
   /**
-   * @generated from field: string protocol_revenue_address = 7;
+   * @generated from field: string protocol_revenue_address = 6;
    */
   protocolRevenueAddress = "";
 
@@ -68,10 +60,9 @@ export class Params extends Message<Params> {
     { no: 1, name: "lp_incentives", kind: "message", T: IncentiveInfo },
     { no: 2, name: "reward_portion_for_lps", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "reward_portion_for_stakers", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 4, name: "dex_rewards_lps", kind: "message", T: DexRewardsTracker },
-    { no: 5, name: "max_eden_reward_apr_lps", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 6, name: "supported_reward_denoms", kind: "message", T: SupportedRewardDenom, repeated: true },
-    { no: 7, name: "protocol_revenue_address", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 4, name: "max_eden_reward_apr_lps", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 5, name: "supported_reward_denoms", kind: "message", T: SupportedRewardDenom, repeated: true },
+    { no: 6, name: "protocol_revenue_address", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Params {

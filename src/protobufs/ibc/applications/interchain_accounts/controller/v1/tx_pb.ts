@@ -7,7 +7,6 @@ import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialM
 import { Message, proto3, protoInt64 } from "@bufbuild/protobuf";
 import { Order } from "../../../../core/channel/v1/channel_pb.js";
 import { InterchainAccountPacketData } from "../../v1/packet_pb.js";
-import { Params } from "./controller_pb.js";
 
 /**
  * MsgRegisterInterchainAccount defines the payload for Msg/RegisterAccount
@@ -207,90 +206,6 @@ export class MsgSendTxResponse extends Message<MsgSendTxResponse> {
 
   static equals(a: MsgSendTxResponse | PlainMessage<MsgSendTxResponse> | undefined, b: MsgSendTxResponse | PlainMessage<MsgSendTxResponse> | undefined): boolean {
     return proto3.util.equals(MsgSendTxResponse, a, b);
-  }
-}
-
-/**
- * MsgUpdateParams defines the payload for Msg/UpdateParams
- *
- * @generated from message ibc.applications.interchain_accounts.controller.v1.MsgUpdateParams
- */
-export class MsgUpdateParams extends Message<MsgUpdateParams> {
-  /**
-   * signer address
-   *
-   * @generated from field: string signer = 1;
-   */
-  signer = "";
-
-  /**
-   * params defines the 27-interchain-accounts/controller parameters to update.
-   *
-   * NOTE: All parameters must be supplied.
-   *
-   * @generated from field: ibc.applications.interchain_accounts.controller.v1.Params params = 2;
-   */
-  params?: Params;
-
-  constructor(data?: PartialMessage<MsgUpdateParams>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
-
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "ibc.applications.interchain_accounts.controller.v1.MsgUpdateParams";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "signer", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "params", kind: "message", T: Params },
-  ]);
-
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgUpdateParams {
-    return new MsgUpdateParams().fromBinary(bytes, options);
-  }
-
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MsgUpdateParams {
-    return new MsgUpdateParams().fromJson(jsonValue, options);
-  }
-
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MsgUpdateParams {
-    return new MsgUpdateParams().fromJsonString(jsonString, options);
-  }
-
-  static equals(a: MsgUpdateParams | PlainMessage<MsgUpdateParams> | undefined, b: MsgUpdateParams | PlainMessage<MsgUpdateParams> | undefined): boolean {
-    return proto3.util.equals(MsgUpdateParams, a, b);
-  }
-}
-
-/**
- * MsgUpdateParamsResponse defines the response for Msg/UpdateParams
- *
- * @generated from message ibc.applications.interchain_accounts.controller.v1.MsgUpdateParamsResponse
- */
-export class MsgUpdateParamsResponse extends Message<MsgUpdateParamsResponse> {
-  constructor(data?: PartialMessage<MsgUpdateParamsResponse>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
-
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "ibc.applications.interchain_accounts.controller.v1.MsgUpdateParamsResponse";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-  ]);
-
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgUpdateParamsResponse {
-    return new MsgUpdateParamsResponse().fromBinary(bytes, options);
-  }
-
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MsgUpdateParamsResponse {
-    return new MsgUpdateParamsResponse().fromJson(jsonValue, options);
-  }
-
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MsgUpdateParamsResponse {
-    return new MsgUpdateParamsResponse().fromJsonString(jsonString, options);
-  }
-
-  static equals(a: MsgUpdateParamsResponse | PlainMessage<MsgUpdateParamsResponse> | undefined, b: MsgUpdateParamsResponse | PlainMessage<MsgUpdateParamsResponse> | undefined): boolean {
-    return proto3.util.equals(MsgUpdateParamsResponse, a, b);
   }
 }
 

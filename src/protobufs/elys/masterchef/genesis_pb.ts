@@ -7,7 +7,7 @@ import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialM
 import { Message, proto3, protoInt64 } from "@bufbuild/protobuf";
 import { Params } from "./params_pb.js";
 import { ExternalIncentive } from "./external_incentive_pb.js";
-import { PoolInfo, PoolRewardInfo, UserRewardInfo } from "./pool_pb.js";
+import { PoolInfo, PoolRewardInfo, PoolRewardsAccum, UserRewardInfo } from "./pool_pb.js";
 
 /**
  * GenesisState defines the masterchef module's genesis state.
@@ -45,6 +45,11 @@ export class GenesisState extends Message<GenesisState> {
    */
   userRewardInfos: UserRewardInfo[] = [];
 
+  /**
+   * @generated from field: repeated elys.masterchef.PoolRewardsAccum pool_rewards_accum = 7;
+   */
+  poolRewardsAccum: PoolRewardsAccum[] = [];
+
   constructor(data?: PartialMessage<GenesisState>) {
     super();
     proto3.util.initPartial(data, this);
@@ -59,6 +64,7 @@ export class GenesisState extends Message<GenesisState> {
     { no: 4, name: "pool_infos", kind: "message", T: PoolInfo, repeated: true },
     { no: 5, name: "pool_reward_infos", kind: "message", T: PoolRewardInfo, repeated: true },
     { no: 6, name: "user_reward_infos", kind: "message", T: UserRewardInfo, repeated: true },
+    { no: 7, name: "pool_rewards_accum", kind: "message", T: PoolRewardsAccum, repeated: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): GenesisState {

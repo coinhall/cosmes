@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { MsgRegisterInterchainAccount, MsgRegisterInterchainAccountResponse, MsgSendTx, MsgSendTxResponse, MsgUpdateParams, MsgUpdateParamsResponse } from "./tx_pb.js";
+import { MsgRegisterInterchainAccount, MsgRegisterInterchainAccountResponse, MsgSendTx, MsgSendTxResponse } from "./tx_pb.js";
 
 const TYPE_NAME = "ibc.applications.interchain_accounts.controller.v1.Msg";
 
@@ -29,17 +29,5 @@ export const MsgSendTxService = {
   method: "SendTx",
   Request: MsgSendTx,
   Response: MsgSendTxResponse,
-} as const;
-
-/**
- * UpdateParams defines a rpc handler for MsgUpdateParams.
- *
- * @generated from rpc ibc.applications.interchain_accounts.controller.v1.Msg.UpdateParams
- */
-export const MsgUpdateParamsService = {
-  typeName: TYPE_NAME,
-  method: "UpdateParams",
-  Request: MsgUpdateParams,
-  Response: MsgUpdateParamsResponse,
 } as const;
 

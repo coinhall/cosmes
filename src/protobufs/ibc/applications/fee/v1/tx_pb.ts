@@ -227,7 +227,7 @@ export class MsgPayPacketFee extends Message<MsgPayPacketFee> {
   sourcePortId = "";
 
   /**
-   * the source channel unique identifier
+   * the source channel unique identifer
    *
    * @generated from field: string source_channel_id = 3;
    */

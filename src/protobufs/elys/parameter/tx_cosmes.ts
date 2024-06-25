@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { MsgUpdateBrokerAddress, MsgUpdateBrokerAddressResponse, MsgUpdateMaxVotingPower, MsgUpdateMaxVotingPowerResponse, MsgUpdateMinCommission, MsgUpdateMinCommissionResponse, MsgUpdateMinSelfDelegation, MsgUpdateMinSelfDelegationResponse, MsgUpdateTotalBlocksPerYear, MsgUpdateTotalBlocksPerYearResponse } from "./tx_pb.js";
+import { MsgUpdateBrokerAddress, MsgUpdateBrokerAddressResponse, MsgUpdateMaxVotingPower, MsgUpdateMaxVotingPowerResponse, MsgUpdateMinCommission, MsgUpdateMinCommissionResponse, MsgUpdateMinSelfDelegation, MsgUpdateMinSelfDelegationResponse, MsgUpdateTotalBlocksPerYear, MsgUpdateTotalBlocksPerYearResponse, MsgUpdateWasmConfig, MsgUpdateWasmConfigResponse } from "./tx_pb.js";
 
 const TYPE_NAME = "elys.parameter.Msg";
 
@@ -55,5 +55,15 @@ export const MsgUpdateTotalBlocksPerYearService = {
   method: "UpdateTotalBlocksPerYear",
   Request: MsgUpdateTotalBlocksPerYear,
   Response: MsgUpdateTotalBlocksPerYearResponse,
+} as const;
+
+/**
+ * @generated from rpc elys.parameter.Msg.UpdateWasmConfig
+ */
+export const MsgUpdateWasmConfigService = {
+  typeName: TYPE_NAME,
+  method: "UpdateWasmConfig",
+  Request: MsgUpdateWasmConfig,
+  Response: MsgUpdateWasmConfigResponse,
 } as const;
 

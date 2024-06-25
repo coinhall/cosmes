@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { MsgConnectionOpenAck, MsgConnectionOpenAckResponse, MsgConnectionOpenConfirm, MsgConnectionOpenConfirmResponse, MsgConnectionOpenInit, MsgConnectionOpenInitResponse, MsgConnectionOpenTry, MsgConnectionOpenTryResponse, MsgUpdateParams, MsgUpdateParamsResponse } from "./tx_pb.js";
+import { MsgConnectionOpenAck, MsgConnectionOpenAckResponse, MsgConnectionOpenConfirm, MsgConnectionOpenConfirmResponse, MsgConnectionOpenInit, MsgConnectionOpenInitResponse, MsgConnectionOpenTry, MsgConnectionOpenTryResponse } from "./tx_pb.js";
 
 const TYPE_NAME = "ibc.core.connection.v1.Msg";
 
@@ -54,18 +54,5 @@ export const MsgConnectionOpenConfirmService = {
   method: "ConnectionOpenConfirm",
   Request: MsgConnectionOpenConfirm,
   Response: MsgConnectionOpenConfirmResponse,
-} as const;
-
-/**
- * UpdateConnectionParams defines a rpc handler method for
- * MsgUpdateParams.
- *
- * @generated from rpc ibc.core.connection.v1.Msg.UpdateConnectionParams
- */
-export const MsgUpdateConnectionParamsService = {
-  typeName: TYPE_NAME,
-  method: "UpdateConnectionParams",
-  Request: MsgUpdateParams,
-  Response: MsgUpdateParamsResponse,
 } as const;
 

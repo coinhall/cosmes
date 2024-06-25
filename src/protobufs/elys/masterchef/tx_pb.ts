@@ -113,12 +113,12 @@ export class MsgAddExternalIncentive extends Message<MsgAddExternalIncentive> {
   poolId = protoInt64.zero;
 
   /**
-   * @generated from field: uint64 from_block = 4;
+   * @generated from field: int64 from_block = 4;
    */
   fromBlock = protoInt64.zero;
 
   /**
-   * @generated from field: uint64 to_block = 5;
+   * @generated from field: int64 to_block = 5;
    */
   toBlock = protoInt64.zero;
 
@@ -138,8 +138,8 @@ export class MsgAddExternalIncentive extends Message<MsgAddExternalIncentive> {
     { no: 1, name: "sender", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "reward_denom", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "pool_id", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
-    { no: 4, name: "from_block", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
-    { no: 5, name: "to_block", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+    { no: 4, name: "from_block", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
+    { no: 5, name: "to_block", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
     { no: 6, name: "amount_per_block", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 

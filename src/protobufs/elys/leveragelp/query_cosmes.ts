@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { IsWhitelistedRequest, IsWhitelistedResponse, ParamsRequest, ParamsResponse, PositionRequest, PositionResponse, PositionsByPoolRequest, PositionsByPoolResponse, PositionsForAddressRequest, PositionsForAddressResponse, PositionsRequest, PositionsResponse, QueryAllPoolRequest, QueryAllPoolResponse, QueryGetPoolRequest, QueryGetPoolResponse, StatusRequest, StatusResponse, WhitelistRequest, WhitelistResponse } from "./query_pb.js";
+import { IsWhitelistedRequest, IsWhitelistedResponse, ParamsRequest, ParamsResponse, PositionRequest, PositionResponse, PositionsByPoolRequest, PositionsByPoolResponse, PositionsForAddressRequest, PositionsForAddressResponse, PositionsRequest, PositionsResponse, QueryAllPoolRequest, QueryAllPoolResponse, QueryCloseEstRequest, QueryCloseEstResponse, QueryGetPoolRequest, QueryGetPoolResponse, QueryLiquidationPriceRequest, QueryLiquidationPriceResponse, QueryOpenEstRequest, QueryOpenEstResponse, QueryRewardsRequest, QueryRewardsResponse, StatusRequest, StatusResponse, WhitelistRequest, WhitelistResponse } from "./query_pb.js";
 
 const TYPE_NAME = "elys.leveragelp.Query";
 
@@ -123,5 +123,53 @@ export const QueryPositionService = {
   method: "Position",
   Request: PositionRequest,
   Response: PositionResponse,
+} as const;
+
+/**
+ * Query a liquidation price for a position
+ *
+ * @generated from rpc elys.leveragelp.Query.LiquidationPrice
+ */
+export const QueryLiquidationPriceService = {
+  typeName: TYPE_NAME,
+  method: "LiquidationPrice",
+  Request: QueryLiquidationPriceRequest,
+  Response: QueryLiquidationPriceResponse,
+} as const;
+
+/**
+ * Get estimated amount of return value opening a position
+ *
+ * @generated from rpc elys.leveragelp.Query.OpenEst
+ */
+export const QueryOpenEstService = {
+  typeName: TYPE_NAME,
+  method: "OpenEst",
+  Request: QueryOpenEstRequest,
+  Response: QueryOpenEstResponse,
+} as const;
+
+/**
+ * Get estimated amount of return value closing a position
+ *
+ * @generated from rpc elys.leveragelp.Query.CloseEst
+ */
+export const QueryCloseEstService = {
+  typeName: TYPE_NAME,
+  method: "CloseEst",
+  Request: QueryCloseEstRequest,
+  Response: QueryCloseEstResponse,
+} as const;
+
+/**
+ * Queries rewards on leveragelp
+ *
+ * @generated from rpc elys.leveragelp.Query.Rewards
+ */
+export const QueryRewardsService = {
+  typeName: TYPE_NAME,
+  method: "Rewards",
+  Request: QueryRewardsRequest,
+  Response: QueryRewardsResponse,
 } as const;
 

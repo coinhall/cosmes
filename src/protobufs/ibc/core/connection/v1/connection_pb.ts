@@ -363,7 +363,7 @@ export class ConnectionPaths extends Message<ConnectionPaths> {
 }
 
 /**
- * Version defines the versioning scheme used to negotiate the IBC version in
+ * Version defines the versioning scheme used to negotiate the IBC verison in
  * the connection handshake.
  *
  * @generated from message ibc.core.connection.v1.Version

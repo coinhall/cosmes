@@ -5,8 +5,6 @@
 
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
 import { Any, Message, proto3 } from "@bufbuild/protobuf";
-import { Plan } from "../../../../cosmos/upgrade/v1beta1/upgrade_pb.js";
-import { Params } from "./client_pb.js";
 
 /**
  * MsgCreateClient defines a message to create an IBC client
@@ -309,30 +307,32 @@ export class MsgUpgradeClientResponse extends Message<MsgUpgradeClientResponse> 
 /**
  * MsgSubmitMisbehaviour defines an sdk.Msg type that submits Evidence for
  * light client misbehaviour.
- * This message has been deprecated. Use MsgUpdateClient instead.
+ * Warning: DEPRECATED
  *
  * @generated from message ibc.core.client.v1.MsgSubmitMisbehaviour
- * @deprecated
  */
 export class MsgSubmitMisbehaviour extends Message<MsgSubmitMisbehaviour> {
   /**
    * client unique identifier
    *
-   * @generated from field: string client_id = 1;
+   * @generated from field: string client_id = 1 [deprecated = true];
+   * @deprecated
    */
   clientId = "";
 
   /**
    * misbehaviour used for freezing the light client
    *
-   * @generated from field: google.protobuf.Any misbehaviour = 2;
+   * @generated from field: google.protobuf.Any misbehaviour = 2 [deprecated = true];
+   * @deprecated
    */
   misbehaviour?: Any;
 
   /**
    * signer address
    *
-   * @generated from field: string signer = 3;
+   * @generated from field: string signer = 3 [deprecated = true];
+   * @deprecated
    */
   signer = "";
 
@@ -397,276 +397,6 @@ export class MsgSubmitMisbehaviourResponse extends Message<MsgSubmitMisbehaviour
 
   static equals(a: MsgSubmitMisbehaviourResponse | PlainMessage<MsgSubmitMisbehaviourResponse> | undefined, b: MsgSubmitMisbehaviourResponse | PlainMessage<MsgSubmitMisbehaviourResponse> | undefined): boolean {
     return proto3.util.equals(MsgSubmitMisbehaviourResponse, a, b);
-  }
-}
-
-/**
- * MsgRecoverClient defines the message used to recover a frozen or expired client.
- *
- * @generated from message ibc.core.client.v1.MsgRecoverClient
- */
-export class MsgRecoverClient extends Message<MsgRecoverClient> {
-  /**
-   * the client identifier for the client to be updated if the proposal passes
-   *
-   * @generated from field: string subject_client_id = 1;
-   */
-  subjectClientId = "";
-
-  /**
-   * the substitute client identifier for the client which will replace the subject
-   * client
-   *
-   * @generated from field: string substitute_client_id = 2;
-   */
-  substituteClientId = "";
-
-  /**
-   * signer address
-   *
-   * @generated from field: string signer = 3;
-   */
-  signer = "";
-
-  constructor(data?: PartialMessage<MsgRecoverClient>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
-
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "ibc.core.client.v1.MsgRecoverClient";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "subject_client_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "substitute_client_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 3, name: "signer", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-  ]);
-
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgRecoverClient {
-    return new MsgRecoverClient().fromBinary(bytes, options);
-  }
-
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MsgRecoverClient {
-    return new MsgRecoverClient().fromJson(jsonValue, options);
-  }
-
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MsgRecoverClient {
-    return new MsgRecoverClient().fromJsonString(jsonString, options);
-  }
-
-  static equals(a: MsgRecoverClient | PlainMessage<MsgRecoverClient> | undefined, b: MsgRecoverClient | PlainMessage<MsgRecoverClient> | undefined): boolean {
-    return proto3.util.equals(MsgRecoverClient, a, b);
-  }
-}
-
-/**
- * MsgRecoverClientResponse defines the Msg/RecoverClient response type.
- *
- * @generated from message ibc.core.client.v1.MsgRecoverClientResponse
- */
-export class MsgRecoverClientResponse extends Message<MsgRecoverClientResponse> {
-  constructor(data?: PartialMessage<MsgRecoverClientResponse>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
-
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "ibc.core.client.v1.MsgRecoverClientResponse";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-  ]);
-
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgRecoverClientResponse {
-    return new MsgRecoverClientResponse().fromBinary(bytes, options);
-  }
-
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MsgRecoverClientResponse {
-    return new MsgRecoverClientResponse().fromJson(jsonValue, options);
-  }
-
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MsgRecoverClientResponse {
-    return new MsgRecoverClientResponse().fromJsonString(jsonString, options);
-  }
-
-  static equals(a: MsgRecoverClientResponse | PlainMessage<MsgRecoverClientResponse> | undefined, b: MsgRecoverClientResponse | PlainMessage<MsgRecoverClientResponse> | undefined): boolean {
-    return proto3.util.equals(MsgRecoverClientResponse, a, b);
-  }
-}
-
-/**
- * MsgIBCSoftwareUpgrade defines the message used to schedule an upgrade of an IBC client using a v1 governance proposal
- *
- * @generated from message ibc.core.client.v1.MsgIBCSoftwareUpgrade
- */
-export class MsgIBCSoftwareUpgrade extends Message<MsgIBCSoftwareUpgrade> {
-  /**
-   * @generated from field: cosmos.upgrade.v1beta1.Plan plan = 1;
-   */
-  plan?: Plan;
-
-  /**
-   * An UpgradedClientState must be provided to perform an IBC breaking upgrade.
-   * This will make the chain commit to the correct upgraded (self) client state
-   * before the upgrade occurs, so that connecting chains can verify that the
-   * new upgraded client is valid by verifying a proof on the previous version
-   * of the chain. This will allow IBC connections to persist smoothly across
-   * planned chain upgrades. Correspondingly, the UpgradedClientState field has been
-   * deprecated in the Cosmos SDK to allow for this logic to exist solely in
-   * the 02-client module.
-   *
-   * @generated from field: google.protobuf.Any upgraded_client_state = 2;
-   */
-  upgradedClientState?: Any;
-
-  /**
-   * signer address
-   *
-   * @generated from field: string signer = 3;
-   */
-  signer = "";
-
-  constructor(data?: PartialMessage<MsgIBCSoftwareUpgrade>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
-
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "ibc.core.client.v1.MsgIBCSoftwareUpgrade";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "plan", kind: "message", T: Plan },
-    { no: 2, name: "upgraded_client_state", kind: "message", T: Any },
-    { no: 3, name: "signer", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-  ]);
-
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgIBCSoftwareUpgrade {
-    return new MsgIBCSoftwareUpgrade().fromBinary(bytes, options);
-  }
-
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MsgIBCSoftwareUpgrade {
-    return new MsgIBCSoftwareUpgrade().fromJson(jsonValue, options);
-  }
-
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MsgIBCSoftwareUpgrade {
-    return new MsgIBCSoftwareUpgrade().fromJsonString(jsonString, options);
-  }
-
-  static equals(a: MsgIBCSoftwareUpgrade | PlainMessage<MsgIBCSoftwareUpgrade> | undefined, b: MsgIBCSoftwareUpgrade | PlainMessage<MsgIBCSoftwareUpgrade> | undefined): boolean {
-    return proto3.util.equals(MsgIBCSoftwareUpgrade, a, b);
-  }
-}
-
-/**
- * MsgIBCSoftwareUpgradeResponse defines the Msg/IBCSoftwareUpgrade response type.
- *
- * @generated from message ibc.core.client.v1.MsgIBCSoftwareUpgradeResponse
- */
-export class MsgIBCSoftwareUpgradeResponse extends Message<MsgIBCSoftwareUpgradeResponse> {
-  constructor(data?: PartialMessage<MsgIBCSoftwareUpgradeResponse>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
-
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "ibc.core.client.v1.MsgIBCSoftwareUpgradeResponse";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-  ]);
-
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgIBCSoftwareUpgradeResponse {
-    return new MsgIBCSoftwareUpgradeResponse().fromBinary(bytes, options);
-  }
-
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MsgIBCSoftwareUpgradeResponse {
-    return new MsgIBCSoftwareUpgradeResponse().fromJson(jsonValue, options);
-  }
-
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MsgIBCSoftwareUpgradeResponse {
-    return new MsgIBCSoftwareUpgradeResponse().fromJsonString(jsonString, options);
-  }
-
-  static equals(a: MsgIBCSoftwareUpgradeResponse | PlainMessage<MsgIBCSoftwareUpgradeResponse> | undefined, b: MsgIBCSoftwareUpgradeResponse | PlainMessage<MsgIBCSoftwareUpgradeResponse> | undefined): boolean {
-    return proto3.util.equals(MsgIBCSoftwareUpgradeResponse, a, b);
-  }
-}
-
-/**
- * MsgUpdateParams defines the sdk.Msg type to update the client parameters.
- *
- * @generated from message ibc.core.client.v1.MsgUpdateParams
- */
-export class MsgUpdateParams extends Message<MsgUpdateParams> {
-  /**
-   * signer address
-   *
-   * @generated from field: string signer = 1;
-   */
-  signer = "";
-
-  /**
-   * params defines the client parameters to update.
-   *
-   * NOTE: All parameters must be supplied.
-   *
-   * @generated from field: ibc.core.client.v1.Params params = 2;
-   */
-  params?: Params;
-
-  constructor(data?: PartialMessage<MsgUpdateParams>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
-
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "ibc.core.client.v1.MsgUpdateParams";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "signer", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "params", kind: "message", T: Params },
-  ]);
-
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgUpdateParams {
-    return new MsgUpdateParams().fromBinary(bytes, options);
-  }
-
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MsgUpdateParams {
-    return new MsgUpdateParams().fromJson(jsonValue, options);
-  }
-
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MsgUpdateParams {
-    return new MsgUpdateParams().fromJsonString(jsonString, options);
-  }
-
-  static equals(a: MsgUpdateParams | PlainMessage<MsgUpdateParams> | undefined, b: MsgUpdateParams | PlainMessage<MsgUpdateParams> | undefined): boolean {
-    return proto3.util.equals(MsgUpdateParams, a, b);
-  }
-}
-
-/**
- * MsgUpdateParamsResponse defines the MsgUpdateParams response type.
- *
- * @generated from message ibc.core.client.v1.MsgUpdateParamsResponse
- */
-export class MsgUpdateParamsResponse extends Message<MsgUpdateParamsResponse> {
-  constructor(data?: PartialMessage<MsgUpdateParamsResponse>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
-
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "ibc.core.client.v1.MsgUpdateParamsResponse";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-  ]);
-
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgUpdateParamsResponse {
-    return new MsgUpdateParamsResponse().fromBinary(bytes, options);
-  }
-
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MsgUpdateParamsResponse {
-    return new MsgUpdateParamsResponse().fromJson(jsonValue, options);
-  }
-
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MsgUpdateParamsResponse {
-    return new MsgUpdateParamsResponse().fromJsonString(jsonString, options);
-  }
-
-  static equals(a: MsgUpdateParamsResponse | PlainMessage<MsgUpdateParamsResponse> | undefined, b: MsgUpdateParamsResponse | PlainMessage<MsgUpdateParamsResponse> | undefined): boolean {
-    return proto3.util.equals(MsgUpdateParamsResponse, a, b);
   }
 }
 

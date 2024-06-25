@@ -46,7 +46,7 @@ const REPOS = [
     paths: ["proto"],
   },
   {
-    repo: "cosmos/ibc-go#main",
+    repo: "cosmos/ibc-go#v7.6.0",
     paths: ["proto"],
   },
   {

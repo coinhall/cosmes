@@ -5,6 +5,7 @@
 
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
 import { Message, proto3, protoInt64 } from "@bufbuild/protobuf";
+import { SwapAmountInRoute } from "../poolmanager/v1beta1/swap_route_pb.js";
 import { Coin } from "../../cosmos/base/v1beta1/coin_pb.js";
 import { SyntheticLock } from "../lockup/lock_pb.js";
 
@@ -59,12 +60,12 @@ export class SuperfluidAsset extends Message<SuperfluidAsset> {
   assetType = SuperfluidAssetType.SuperfluidAssetTypeNative;
 
   /**
-   * For non-osmo native assets, we need a pool_id osmo/asset to determine the
-   * twap of the asset
+   * For non-osmo native assets, we need a route to determine the
+   * twap of the asset into osmo
    *
-   * @generated from field: uint64 price_pool_id = 3;
+   * @generated from field: repeated osmosis.poolmanager.v1beta1.SwapAmountInRoute price_route = 3;
    */
-  pricePoolId = protoInt64.zero;
+  priceRoute: SwapAmountInRoute[] = [];
 
   constructor(data?: PartialMessage<SuperfluidAsset>) {
     super();
@@ -76,7 +77,7 @@ export class SuperfluidAsset extends Message<SuperfluidAsset> {
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "denom", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "asset_type", kind: "enum", T: proto3.getEnumType(SuperfluidAssetType) },
-    { no: 3, name: "price_pool_id", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+    { no: 3, name: "price_route", kind: "message", T: SwapAmountInRoute, repeated: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): SuperfluidAsset {
