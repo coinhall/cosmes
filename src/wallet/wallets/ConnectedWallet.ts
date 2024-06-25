@@ -166,7 +166,31 @@ export abstract class ConnectedWallet {
     this.sequence = sequence + 1n;
     return hash;
   }
-
+    /**
+   * Signs and broadcasts the given `unsignedTx`, returning the tx hash if successful.
+   * The `fee` parameter can (and should) be obtained by running `estimateFee` on
+   * the `unsignedTx` prior to calling this method.
+   *
+   * **Important**: successful execution of this method does not guarantee that the
+   * tx was successfully included in a block. Use `pollTx` to poll for the result of
+   * the tx.
+   *
+   * @throws if the user denies the signing of the tx.
+   * @throws if the tx fails to broadcast.
+   */
+    public async broadcastStdTx(unsignedTx: UnsignedTx, fee: Fee): Promise<string> {
+      const { accountNumber, sequence } = await this.getAuthInfo(true);
+      const hash = await this.signAndBroadcastStdTx(
+        unsignedTx,
+        fee,
+        accountNumber,
+        sequence
+      );
+      // Greedily increment the sequence for the next tx. This may result in the wrong
+      // sequence, but if `estimateFee` was called prior to this, it will be corrected
+      this.sequence = sequence + 1n;
+      return hash;
+    }
   /**
    * Polls for the tx matching the given `txHash` every `intervalSeconds` until it is
    * included in a block or when `maxAttempts` is reached (default: 2s, 64 attempts).
@@ -203,6 +227,18 @@ export abstract class ConnectedWallet {
     return this.pollTx(txHash, pollOpts);
   }
 
+  public async broadcastStdTxSync(
+    unsignedTx: UnsignedTx,
+    feeOrFeeMultiplier: Fee | number = 1.4,
+    pollOpts: PollTxOptions = {}
+  ): Promise<Required<PlainMessage<GetTxResponse>>> {
+    const fee =
+      typeof feeOrFeeMultiplier === "number"
+        ? await this.estimateFee(unsignedTx, feeOrFeeMultiplier)
+        : feeOrFeeMultiplier;
+    const txHash = await this.broadcastStdTx(unsignedTx, fee);
+    return this.pollTx(txHash, pollOpts);
+  }
   /**
    * Signs the UTF-8 encoded `data` string. Note that some mobile wallets do not
    * support this method.
@@ -223,4 +259,15 @@ export abstract class ConnectedWallet {
     accountNumber: bigint,
     sequence: bigint
   ): Promise<string>;
+    /**
+   * Signs the given `unsignedTx` and broadcasts the resulting signed tx, returning
+   * the hex encoded tx hash if successful. This abstract method should be implemented
+   * by the concrete child classes.
+   */
+    protected abstract signAndBroadcastStdTx(
+      unsignedTx: UnsignedTx,
+      fee: Fee,
+      accountNumber: bigint,
+      sequence: bigint
+    ): Promise<string>;
 }
