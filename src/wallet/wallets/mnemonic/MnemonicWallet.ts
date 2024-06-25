@@ -182,4 +182,28 @@ export class MnemonicWallet extends ConnectedWallet {
     const signature = signDirect(doc, this.privateKey, this.keyType);
     return RpcClient.broadcastTx(this.rpc, tx.toSignedDirect(doc, signature));
   }
+
+
+
+  public async signAndBroadcastStdTx(
+    { msgs, memo, timeoutHeight }: UnsignedTx,
+    fee: Fee,
+    accountNumber: bigint,
+    sequence: bigint
+  ): Promise<string> {
+    const tx = new Tx({
+      chainId: this.chainId,
+      pubKey: this.pubKey,
+      msgs: msgs,
+    });
+    const doc = tx.toStdSignDoc({
+      accountNumber,
+      sequence,
+      fee,
+      memo,
+      timeoutHeight,
+    });
+    const signature = signAmino(doc, this.privateKey, this.keyType);
+    return RpcClient.broadcastTx(this.rpc, tx.toSignedAmino(doc, signature));
+  }
 }
