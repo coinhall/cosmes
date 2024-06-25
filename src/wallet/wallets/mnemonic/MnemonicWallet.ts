@@ -1,4 +1,4 @@
-import { RpcClient, Secp256k1PubKey, Tx } from "cosmes/client";
+import { RpcClient, Secp256k1PubKey, ToSignDocParams, ToStdSignDocParams, Tx } from "cosmes/client";
 import {
   base64,
   resolveBech32Address,
@@ -19,6 +19,7 @@ import {
   UnsignedTx,
 } from "../ConnectedWallet";
 import { ChainInfo } from "../WalletController";
+import { TxRaw } from "cosmes/protobufs/cosmos/tx/v1beta1/tx_pb";
 
 export type ConnectMnemonicWalletOptions = Prettify<
   {
@@ -81,7 +82,7 @@ export class MnemonicWallet extends ConnectedWallet {
   public readonly privateKey: Uint8Array;
   public readonly keyType: "secp256k1" | "ethsecp256k1";
   public readonly algo: string | undefined;
-
+  private readonly useAmino: boolean;
 
   constructor({
     mnemonic,
@@ -92,7 +93,7 @@ export class MnemonicWallet extends ConnectedWallet {
     chainId,
     gasPrice,
     rpc,
-  }: ConnectMnemonicWalletOptions) {
+  }: ConnectMnemonicWalletOptions,useAmino: boolean) {
     const { publicKey, privateKey } = resolveKeyPair(mnemonic, {
       coinType,
       index,
@@ -128,7 +129,7 @@ export class MnemonicWallet extends ConnectedWallet {
     this.privateKey = privateKey;
     this.algo = algo
     this.keyType = keyType;
-    
+    this.useAmino = useAmino;
   }
 
   public async signArbitrary(data: string): Promise<SignArbitraryResponse> {
@@ -167,43 +168,29 @@ export class MnemonicWallet extends ConnectedWallet {
     accountNumber: bigint,
     sequence: bigint
   ): Promise<string> {
-    const tx = new Tx({
-      chainId: this.chainId,
-      pubKey: this.pubKey,
-      msgs: msgs,
-    });
-    const doc = tx.toSignDoc({
-      accountNumber,
-      sequence,
-      fee,
-      memo,
-      timeoutHeight,
-    });
-    const signature = signDirect(doc, this.privateKey, this.keyType);
-    return RpcClient.broadcastTx(this.rpc, tx.toSignedDirect(doc, signature));
+      const tx = new Tx({
+        chainId: this.chainId,
+        pubKey: this.pubKey,
+        msgs: msgs,
+      });
+      const params: ToStdSignDocParams | ToSignDocParams = {
+        accountNumber,
+        sequence,
+        fee,
+        memo,
+        timeoutHeight,
+      };
+
+      let txRaw: TxRaw;
+      if (this.useAmino) {
+        const signature = signAmino(tx.toStdSignDoc(params), this.privateKey, this.keyType)
+        txRaw = tx.toSignedAmino(tx.toStdSignDoc(params), signature);
+      } 
+      else {
+        const signature = signDirect(tx.toSignDoc(params), this.privateKey, this.keyType)
+        txRaw = tx.toSignedDirect(tx.toSignDoc(params), signature);
+      }
+      return RpcClient.broadcastTx(this.rpc, txRaw);
   }
 
-
-
-  public async signAndBroadcastStdTx(
-    { msgs, memo, timeoutHeight }: UnsignedTx,
-    fee: Fee,
-    accountNumber: bigint,
-    sequence: bigint
-  ): Promise<string> {
-    const tx = new Tx({
-      chainId: this.chainId,
-      pubKey: this.pubKey,
-      msgs: msgs,
-    });
-    const doc = tx.toStdSignDoc({
-      accountNumber,
-      sequence,
-      fee,
-      memo,
-      timeoutHeight,
-    });
-    const signature = signAmino(doc, this.privateKey, this.keyType);
-    return RpcClient.broadcastTx(this.rpc, tx.toSignedAmino(doc, signature));
-  }
 }
