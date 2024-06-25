@@ -3668,6 +3668,150 @@ export {
   IncentivizedAcknowledgement as IbcApplicationsFeeV1IncentivizedAcknowledgement,
 } from "./ibc/applications/fee/v1/ack_pb.js";
 export {
+  ClawbackVestingAccount as EvmosVestingV2ClawbackVestingAccount,
+  ClawbackProposal as EvmosVestingV2ClawbackProposal,
+} from "./evmos/vesting/v2/vesting_pb.js";
+export {
+  MsgCreateClawbackVestingAccount as EvmosVestingV2MsgCreateClawbackVestingAccount,
+  MsgCreateClawbackVestingAccountResponse as EvmosVestingV2MsgCreateClawbackVestingAccountResponse,
+  MsgFundVestingAccount as EvmosVestingV2MsgFundVestingAccount,
+  MsgFundVestingAccountResponse as EvmosVestingV2MsgFundVestingAccountResponse,
+  MsgClawback as EvmosVestingV2MsgClawback,
+  MsgClawbackResponse as EvmosVestingV2MsgClawbackResponse,
+  MsgUpdateVestingFunder as EvmosVestingV2MsgUpdateVestingFunder,
+  MsgUpdateVestingFunderResponse as EvmosVestingV2MsgUpdateVestingFunderResponse,
+  MsgConvertVestingAccount as EvmosVestingV2MsgConvertVestingAccount,
+  MsgConvertVestingAccountResponse as EvmosVestingV2MsgConvertVestingAccountResponse,
+} from "./evmos/vesting/v2/tx_pb.js";
+export {
+  MsgCreateClawbackVestingAccountService as EvmosVestingV2MsgCreateClawbackVestingAccountService,
+  MsgFundVestingAccountService as EvmosVestingV2MsgFundVestingAccountService,
+  MsgClawbackService as EvmosVestingV2MsgClawbackService,
+  MsgUpdateVestingFunderService as EvmosVestingV2MsgUpdateVestingFunderService,
+  MsgConvertVestingAccountService as EvmosVestingV2MsgConvertVestingAccountService,
+} from "./evmos/vesting/v2/tx_cosmes.js";
+export {
+  QueryBalancesRequest as EvmosVestingV2QueryBalancesRequest,
+  QueryBalancesResponse as EvmosVestingV2QueryBalancesResponse,
+} from "./evmos/vesting/v2/query_pb.js";
+export {
+  QueryBalancesService as EvmosVestingV2QueryBalancesService,
+} from "./evmos/vesting/v2/query_cosmes.js";
+export {
+  EventCreateClawbackVestingAccount as EvmosVestingV2EventCreateClawbackVestingAccount,
+  EventFundVestingAccount as EvmosVestingV2EventFundVestingAccount,
+  EventClawback as EvmosVestingV2EventClawback,
+  EventUpdateVestingFunder as EvmosVestingV2EventUpdateVestingFunder,
+} from "./evmos/vesting/v2/events_pb.js";
+export {
+  ClawbackVestingAccount as EvmosVestingV1ClawbackVestingAccount,
+} from "./evmos/vesting/v1/vesting_pb.js";
+export {
+  MsgUpdateParams as EvmosInflationV1MsgUpdateParams,
+  MsgUpdateParamsResponse as EvmosInflationV1MsgUpdateParamsResponse,
+} from "./evmos/inflation/v1/tx_pb.js";
+export {
+  MsgUpdateParamsService as EvmosInflationV1MsgUpdateParamsService,
+} from "./evmos/inflation/v1/tx_cosmes.js";
+export {
+  QueryPeriodRequest as EvmosInflationV1QueryPeriodRequest,
+  QueryPeriodResponse as EvmosInflationV1QueryPeriodResponse,
+  QueryEpochMintProvisionRequest as EvmosInflationV1QueryEpochMintProvisionRequest,
+  QueryEpochMintProvisionResponse as EvmosInflationV1QueryEpochMintProvisionResponse,
+  QuerySkippedEpochsRequest as EvmosInflationV1QuerySkippedEpochsRequest,
+  QuerySkippedEpochsResponse as EvmosInflationV1QuerySkippedEpochsResponse,
+  QueryCirculatingSupplyRequest as EvmosInflationV1QueryCirculatingSupplyRequest,
+  QueryCirculatingSupplyResponse as EvmosInflationV1QueryCirculatingSupplyResponse,
+  QueryInflationRateRequest as EvmosInflationV1QueryInflationRateRequest,
+  QueryInflationRateResponse as EvmosInflationV1QueryInflationRateResponse,
+  QueryParamsRequest as EvmosInflationV1QueryParamsRequest,
+  QueryParamsResponse as EvmosInflationV1QueryParamsResponse,
+} from "./evmos/inflation/v1/query_pb.js";
+export {
+  QueryPeriodService as EvmosInflationV1QueryPeriodService,
+  QueryEpochMintProvisionService as EvmosInflationV1QueryEpochMintProvisionService,
+  QuerySkippedEpochsService as EvmosInflationV1QuerySkippedEpochsService,
+  QueryCirculatingSupplyService as EvmosInflationV1QueryCirculatingSupplyService,
+  QueryInflationRateService as EvmosInflationV1QueryInflationRateService,
+  QueryParamsService as EvmosInflationV1QueryParamsService,
+} from "./evmos/inflation/v1/query_cosmes.js";
+export {
+  InflationDistribution as EvmosInflationV1InflationDistribution,
+  ExponentialCalculation as EvmosInflationV1ExponentialCalculation,
+} from "./evmos/inflation/v1/inflation_pb.js";
+export {
+  GenesisState as EvmosInflationV1GenesisState,
+  Params as EvmosInflationV1Params,
+} from "./evmos/inflation/v1/genesis_pb.js";
+export {
+  Incentive as EvmosIncentivesV1Incentive,
+  GasMeter as EvmosIncentivesV1GasMeter,
+  RegisterIncentiveProposal as EvmosIncentivesV1RegisterIncentiveProposal,
+  CancelIncentiveProposal as EvmosIncentivesV1CancelIncentiveProposal,
+} from "./evmos/incentives/v1/incentives_pb.js";
+export {
+  GenesisState as EvmosIncentivesV1GenesisState,
+  Params as EvmosIncentivesV1Params,
+} from "./evmos/incentives/v1/genesis_pb.js";
+export {
+  MsgConvertCoin as EvmosErc20V1MsgConvertCoin,
+  MsgConvertCoinResponse as EvmosErc20V1MsgConvertCoinResponse,
+  MsgConvertERC20 as EvmosErc20V1MsgConvertERC20,
+  MsgConvertERC20Response as EvmosErc20V1MsgConvertERC20Response,
+  MsgUpdateParams as EvmosErc20V1MsgUpdateParams,
+  MsgUpdateParamsResponse as EvmosErc20V1MsgUpdateParamsResponse,
+} from "./evmos/erc20/v1/tx_pb.js";
+export {
+  MsgConvertCoinService as EvmosErc20V1MsgConvertCoinService,
+  MsgConvertERC20Service as EvmosErc20V1MsgConvertERC20Service,
+  MsgUpdateParamsService as EvmosErc20V1MsgUpdateParamsService,
+} from "./evmos/erc20/v1/tx_cosmes.js";
+export {
+  QueryTokenPairsRequest as EvmosErc20V1QueryTokenPairsRequest,
+  QueryTokenPairsResponse as EvmosErc20V1QueryTokenPairsResponse,
+  QueryTokenPairRequest as EvmosErc20V1QueryTokenPairRequest,
+  QueryTokenPairResponse as EvmosErc20V1QueryTokenPairResponse,
+  QueryParamsRequest as EvmosErc20V1QueryParamsRequest,
+  QueryParamsResponse as EvmosErc20V1QueryParamsResponse,
+} from "./evmos/erc20/v1/query_pb.js";
+export {
+  QueryTokenPairsService as EvmosErc20V1QueryTokenPairsService,
+  QueryTokenPairService as EvmosErc20V1QueryTokenPairService,
+  QueryParamsService as EvmosErc20V1QueryParamsService,
+} from "./evmos/erc20/v1/query_cosmes.js";
+export {
+  GenesisState as EvmosErc20V1GenesisState,
+  Params as EvmosErc20V1Params,
+} from "./evmos/erc20/v1/genesis_pb.js";
+export {
+  EventRegisterPair as EvmosErc20V1EventRegisterPair,
+  EventToggleTokenConversion as EvmosErc20V1EventToggleTokenConversion,
+  EventConvertCoin as EvmosErc20V1EventConvertCoin,
+  EventConvertERC20 as EvmosErc20V1EventConvertERC20,
+} from "./evmos/erc20/v1/events_pb.js";
+export {
+  Owner as EvmosErc20V1Owner,
+  TokenPair as EvmosErc20V1TokenPair,
+  RegisterCoinProposal as EvmosErc20V1RegisterCoinProposal,
+  ProposalMetadata as EvmosErc20V1ProposalMetadata,
+  RegisterERC20Proposal as EvmosErc20V1RegisterERC20Proposal,
+  ToggleTokenConversionProposal as EvmosErc20V1ToggleTokenConversionProposal,
+} from "./evmos/erc20/v1/erc20_pb.js";
+export {
+  QueryEpochsInfoRequest as EvmosEpochsV1QueryEpochsInfoRequest,
+  QueryEpochsInfoResponse as EvmosEpochsV1QueryEpochsInfoResponse,
+  QueryCurrentEpochRequest as EvmosEpochsV1QueryCurrentEpochRequest,
+  QueryCurrentEpochResponse as EvmosEpochsV1QueryCurrentEpochResponse,
+} from "./evmos/epochs/v1/query_pb.js";
+export {
+  QueryEpochInfosService as EvmosEpochsV1QueryEpochInfosService,
+  QueryCurrentEpochService as EvmosEpochsV1QueryCurrentEpochService,
+} from "./evmos/epochs/v1/query_cosmes.js";
+export {
+  EpochInfo as EvmosEpochsV1EpochInfo,
+  GenesisState as EvmosEpochsV1GenesisState,
+} from "./evmos/epochs/v1/genesis_pb.js";
+export {
   ExtensionOptionsWeb3Tx as EthermintTypesV1ExtensionOptionsWeb3Tx,
 } from "./ethermint/types/v1/web3_pb.js";
 export {
@@ -3768,7 +3912,10 @@ export {
   GenesisAccount as EthermintEvmV1GenesisAccount,
 } from "./ethermint/evm/v1/genesis_pb.js";
 export {
+  AccessType as EthermintEvmV1AccessType,
   Params as EthermintEvmV1Params,
+  AccessControl as EthermintEvmV1AccessControl,
+  AccessControlType as EthermintEvmV1AccessControlType,
   ChainConfig as EthermintEvmV1ChainConfig,
   State as EthermintEvmV1State,
   TransactionLogs as EthermintEvmV1TransactionLogs,

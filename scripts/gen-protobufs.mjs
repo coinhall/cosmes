@@ -66,6 +66,10 @@ const REPOS = [
     paths: ["proto"],
   },
   {
+    repo: "evmos/evmos#main",
+    paths: ["proto"],
+  },
+  {
     repo: "dymensionxyz/osmosis#main-dym",
     paths: ["proto"],
   },
