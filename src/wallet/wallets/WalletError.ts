@@ -27,10 +27,15 @@ export class WalletError extends Error {
       if (typeof err === "string") {
         throw new WalletError(err, err);
       }
-      if (err instanceof Error) {
-        throw new WalletError(err.message, err);
+      if (this.isRecord(err)) {
+        // Takes into account normal error instances and objects with the 'error' key
+        throw new WalletError(err.message ?? err.error ?? "unknown error", err);
       }
       throw new WalletError("unknown error", err);
     }
+  }
+
+  private static isRecord(value: unknown): value is Record<string, string> {
+    return typeof value === "object" && value != null;
   }
 }
