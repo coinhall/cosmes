@@ -14,6 +14,7 @@ type StorageSession = {
 };
 
 type GetAccountResponse = {
+  name?: string | undefined;
   address: string;
   algo: string;
   pubkey: string;

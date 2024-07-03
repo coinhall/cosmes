@@ -46,6 +46,8 @@ export abstract class ConnectedWallet {
   public readonly id: WalletName;
   /** The type of connection to the wallet. */
   public readonly type: WalletType;
+  /** The user-defined label for this wallet, if any. */
+  public readonly label: string | undefined;
   /** The chain ID this wallet is connected to. */
   public readonly chainId: string;
   /** The public key. */
@@ -62,6 +64,7 @@ export abstract class ConnectedWallet {
   constructor(
     id: WalletName,
     type: WalletType,
+    label: string | undefined,
     chainId: string,
     pubKey: Secp256k1PubKey,
     address: string,
@@ -70,6 +73,7 @@ export abstract class ConnectedWallet {
   ) {
     this.id = id;
     this.type = type;
+    this.label = label;
     this.chainId = chainId;
     this.pubKey = pubKey;
     this.address = address;

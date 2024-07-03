@@ -72,7 +72,15 @@ export class StationController extends WalletController {
         );
         wallets.set(
           chainId,
-          new StationWalletConnectV1(wc, chainId, key, address, rpc, gasPrice)
+          new StationWalletConnectV1(
+            undefined,
+            wc,
+            chainId,
+            key,
+            address,
+            rpc,
+            gasPrice
+          )
         );
       } catch (err) {
         // We simply log and ignore the error for now
@@ -93,9 +101,8 @@ export class StationController extends WalletController {
     await WalletError.wrap(ext.enable(chains.map(({ chainId }) => chainId)));
     for (const { chainId, rpc, gasPrice } of Object.values(chains)) {
       try {
-        const { bech32Address, pubKey, isNanoLedger } = await WalletError.wrap(
-          ext.getKey(chainId)
-        );
+        const { name, bech32Address, pubKey, isNanoLedger } =
+          await WalletError.wrap(ext.getKey(chainId));
         const key = new Secp256k1PubKey({
           key: pubKey,
           chainId,
@@ -104,6 +111,7 @@ export class StationController extends WalletController {
           chainId,
           new StationExtension(
             this.id,
+            name,
             ext,
             chainId,
             key,

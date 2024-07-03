@@ -39,7 +39,7 @@ const CHAINS: Record<string, string> = {
 const WALLETS: Record<WalletName, string> = {
   [WalletName.KEPLR]: "Keplr",
   [WalletName.COSMOSTATION]: "Cosmostation",
-  [WalletName.STATION]: "Terra Station",
+  [WalletName.STATION]: "Station",
   [WalletName.LEAP]: "Leap",
   [WalletName.COMPASS]: "Compass",
   [WalletName.METAMASK_INJECTIVE]: "MetaMask",
@@ -325,13 +325,13 @@ const App: Component = () => {
         Broadcast Tx
       </button>
 
-      <div class="flex flex-col">
-        <code>CONNECTED WALLETS</code>
+      <div class="flex flex-col items-center border py-2 px-4 border-gray-400">
+        <div class="font-semibold">Connected Wallets</div>
         <For each={Object.values(wallets)}>
           {(wallet) => (
             <code>
-              {wallet.address.slice(0, 10)}
-              ...{wallet.address.slice(-5)} | {WALLETS[wallet.id]}
+              {wallet.address.slice(0, 10)}…{wallet.address.slice(-5)} [
+              {WALLETS[wallet.id]}: {wallet.label ?? "-"}]
             </code>
           )}
         </For>

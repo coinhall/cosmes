@@ -103,6 +103,7 @@ export class MnemonicWallet extends ConnectedWallet {
       // unlikely to be used by most consumers of CosmES.
       "mnemonic" as WalletName,
       "mnemonic" as WalletType,
+      undefined,
       chainId,
       new Secp256k1PubKey({
         chainId,
