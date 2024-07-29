@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { ActiveGaugesPerDenomRequest, ActiveGaugesPerDenomResponse, ActiveGaugesRequest, ActiveGaugesResponse, GaugeByIDRequest, GaugeByIDResponse, GaugesRequest, GaugesResponse, ModuleToDistributeCoinsRequest, ModuleToDistributeCoinsResponse, QueryAllGroupsGaugesRequest, QueryAllGroupsGaugesResponse, QueryAllGroupsRequest, QueryAllGroupsResponse, QueryAllGroupsWithGaugeRequest, QueryAllGroupsWithGaugeResponse, QueryCurrentWeightByGroupGaugeIDRequest, QueryCurrentWeightByGroupGaugeIDResponse, QueryGroupByGroupGaugeIDRequest, QueryGroupByGroupGaugeIDResponse, QueryLockableDurationsRequest, QueryLockableDurationsResponse, RewardsEstRequest, RewardsEstResponse, UpcomingGaugesPerDenomRequest, UpcomingGaugesPerDenomResponse, UpcomingGaugesRequest, UpcomingGaugesResponse } from "./query_pb.js";
+import { ActiveGaugesPerDenomRequest, ActiveGaugesPerDenomResponse, ActiveGaugesRequest, ActiveGaugesResponse, GaugeByIDRequest, GaugeByIDResponse, GaugesRequest, GaugesResponse, ModuleToDistributeCoinsRequest, ModuleToDistributeCoinsResponse, ParamsRequest, ParamsResponse, QueryAllGroupsGaugesRequest, QueryAllGroupsGaugesResponse, QueryAllGroupsRequest, QueryAllGroupsResponse, QueryAllGroupsWithGaugeRequest, QueryAllGroupsWithGaugeResponse, QueryCurrentWeightByGroupGaugeIDRequest, QueryCurrentWeightByGroupGaugeIDResponse, QueryGroupByGroupGaugeIDRequest, QueryGroupByGroupGaugeIDResponse, QueryLockableDurationsRequest, QueryLockableDurationsResponse, RewardsEstRequest, RewardsEstResponse, UpcomingGaugesPerDenomRequest, UpcomingGaugesPerDenomResponse, UpcomingGaugesRequest, UpcomingGaugesResponse } from "./query_pb.js";
 
 const TYPE_NAME = "osmosis.incentives.Query";
 
@@ -178,5 +178,17 @@ export const QueryCurrentWeightByGroupGaugeIDService = {
   method: "CurrentWeightByGroupGaugeID",
   Request: QueryCurrentWeightByGroupGaugeIDRequest,
   Response: QueryCurrentWeightByGroupGaugeIDResponse,
+} as const;
+
+/**
+ * Params returns incentives module params.
+ *
+ * @generated from rpc osmosis.incentives.Query.Params
+ */
+export const QueryParamsService = {
+  typeName: TYPE_NAME,
+  method: "Params",
+  Request: ParamsRequest,
+  Response: ParamsResponse,
 } as const;
 

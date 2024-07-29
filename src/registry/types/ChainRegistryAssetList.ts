@@ -186,7 +186,7 @@ export interface IbcCw20Transition {
   };
 }
 export interface NonIbcTransition {
-  type: "bridge" | "liquid-stake" | "synthetic" | "wrapped" | "additional-mintage" | "test-mintage";
+  type: "bridge" | "liquid-stake" | "synthetic" | "wrapped" | "additional-mintage" | "test-mintage" | "legacy-mintage";
   counterparty: {
     /**
      * The chain or platform from which the asset originates. E.g., 'cosmoshub', 'ethereum', 'forex', or 'nasdaq'

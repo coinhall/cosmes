@@ -73,12 +73,20 @@ export class Params extends Message<Params> {
   enableErc20 = false;
 
   /**
-   * enable_evm_hook is the parameter to enable the EVM hook that converts an ERC20 token to a Cosmos
-   * Coin by transferring the Tokens through a MsgEthereumTx to the ModuleAddress Ethereum address.
+   * native_precompiles defines the slice of hex addresses of the
+   * active precompiles that are used to interact with native staking coins as ERC20s
    *
-   * @generated from field: bool enable_evm_hook = 2;
+   * @generated from field: repeated string native_precompiles = 3;
    */
-  enableEvmHook = false;
+  nativePrecompiles: string[] = [];
+
+  /**
+   * dynamic_precompiles defines the slice of hex addresses of the
+   * active precompiles that are used to interact with Bank coins as ERC20s
+   *
+   * @generated from field: repeated string dynamic_precompiles = 4;
+   */
+  dynamicPrecompiles: string[] = [];
 
   constructor(data?: PartialMessage<Params>) {
     super();
@@ -89,7 +97,8 @@ export class Params extends Message<Params> {
   static readonly typeName = "evmos.erc20.v1.Params";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "enable_erc20", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
-    { no: 2, name: "enable_evm_hook", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+    { no: 3, name: "native_precompiles", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
+    { no: 4, name: "dynamic_precompiles", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Params {

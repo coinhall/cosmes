@@ -641,3 +641,83 @@ export class MsgUpdateStopLossResponse extends Message<MsgUpdateStopLossResponse
   }
 }
 
+/**
+ * @generated from message elys.leveragelp.MsgAddCollateral
+ */
+export class MsgAddCollateral extends Message<MsgAddCollateral> {
+  /**
+   * @generated from field: string creator = 1;
+   */
+  creator = "";
+
+  /**
+   * @generated from field: uint64 id = 2;
+   */
+  id = protoInt64.zero;
+
+  /**
+   * @generated from field: string collateral = 3;
+   */
+  collateral = "";
+
+  constructor(data?: PartialMessage<MsgAddCollateral>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "elys.leveragelp.MsgAddCollateral";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "creator", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "id", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+    { no: 3, name: "collateral", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgAddCollateral {
+    return new MsgAddCollateral().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MsgAddCollateral {
+    return new MsgAddCollateral().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MsgAddCollateral {
+    return new MsgAddCollateral().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: MsgAddCollateral | PlainMessage<MsgAddCollateral> | undefined, b: MsgAddCollateral | PlainMessage<MsgAddCollateral> | undefined): boolean {
+    return proto3.util.equals(MsgAddCollateral, a, b);
+  }
+}
+
+/**
+ * @generated from message elys.leveragelp.MsgAddCollateralResponse
+ */
+export class MsgAddCollateralResponse extends Message<MsgAddCollateralResponse> {
+  constructor(data?: PartialMessage<MsgAddCollateralResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "elys.leveragelp.MsgAddCollateralResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgAddCollateralResponse {
+    return new MsgAddCollateralResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MsgAddCollateralResponse {
+    return new MsgAddCollateralResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MsgAddCollateralResponse {
+    return new MsgAddCollateralResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: MsgAddCollateralResponse | PlainMessage<MsgAddCollateralResponse> | undefined, b: MsgAddCollateralResponse | PlainMessage<MsgAddCollateralResponse> | undefined): boolean {
+    return proto3.util.equals(MsgAddCollateralResponse, a, b);
+  }
+}
+

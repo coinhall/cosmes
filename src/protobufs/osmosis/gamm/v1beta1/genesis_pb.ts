@@ -5,47 +5,8 @@
 
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
 import { Any, Message, proto3, protoInt64 } from "@bufbuild/protobuf";
-import { Coin } from "../../../cosmos/base/v1beta1/coin_pb.js";
+import { Params } from "./params_pb.js";
 import { MigrationRecords } from "./shared_pb.js";
-
-/**
- * Params holds parameters for the incentives module
- *
- * @generated from message osmosis.gamm.v1beta1.Params
- */
-export class Params extends Message<Params> {
-  /**
-   * @generated from field: repeated cosmos.base.v1beta1.Coin pool_creation_fee = 1;
-   */
-  poolCreationFee: Coin[] = [];
-
-  constructor(data?: PartialMessage<Params>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
-
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "osmosis.gamm.v1beta1.Params";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "pool_creation_fee", kind: "message", T: Coin, repeated: true },
-  ]);
-
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Params {
-    return new Params().fromBinary(bytes, options);
-  }
-
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): Params {
-    return new Params().fromJson(jsonValue, options);
-  }
-
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): Params {
-    return new Params().fromJsonString(jsonString, options);
-  }
-
-  static equals(a: Params | PlainMessage<Params> | undefined, b: Params | PlainMessage<Params> | undefined): boolean {
-    return proto3.util.equals(Params, a, b);
-  }
-}
 
 /**
  * GenesisState defines the gamm module's genesis state.

@@ -6,7 +6,7 @@
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
 import { Message, proto3, protoInt64 } from "@bufbuild/protobuf";
 import { Params } from "./params_pb.js";
-import { BaseDenom, CyclicArbTracker, InfoByPoolType, TokenPairArbRoutes } from "./protorev_pb.js";
+import { BaseDenom, CyclicArbTracker, InfoByPoolType, PoolWeights, TokenPairArbRoutes } from "./protorev_pb.js";
 import { Coin } from "../../../cosmos/base/v1beta1/coin_pb.js";
 
 /**
@@ -36,6 +36,16 @@ export class GenesisState extends Message<GenesisState> {
    * @generated from field: repeated osmosis.protorev.v1beta1.BaseDenom base_denoms = 3;
    */
   baseDenoms: BaseDenom[] = [];
+
+  /**
+   * DEPRECATED: pool_weights are weights that are being used to calculate the
+   * compute cost of each route. This field is deprecated.
+   * It is replaced by the `info_by_pool_type` field.
+   *
+   * @generated from field: osmosis.protorev.v1beta1.PoolWeights pool_weights = 4 [deprecated = true];
+   * @deprecated
+   */
+  poolWeights?: PoolWeights;
 
   /**
    * The number of days since module genesis.
@@ -119,6 +129,7 @@ export class GenesisState extends Message<GenesisState> {
     { no: 1, name: "params", kind: "message", T: Params },
     { no: 2, name: "token_pair_arb_routes", kind: "message", T: TokenPairArbRoutes, repeated: true },
     { no: 3, name: "base_denoms", kind: "message", T: BaseDenom, repeated: true },
+    { no: 4, name: "pool_weights", kind: "message", T: PoolWeights },
     { no: 5, name: "days_since_module_genesis", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
     { no: 6, name: "developer_fees", kind: "message", T: Coin, repeated: true },
     { no: 7, name: "latest_block_height", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },

@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { MsgClaimRewards, MsgClaimRewardsResponse, MsgClose, MsgCloseResponse, MsgDewhitelist, MsgDewhitelistResponse, MsgOpen, MsgOpenResponse, MsgUpdateParams, MsgUpdateParamsResponse, MsgUpdatePools, MsgUpdatePoolsResponse, MsgUpdateStopLoss, MsgUpdateStopLossResponse, MsgWhitelist, MsgWhitelistResponse } from "./tx_pb.js";
+import { MsgAddCollateral, MsgAddCollateralResponse, MsgClaimRewards, MsgClaimRewardsResponse, MsgClose, MsgCloseResponse, MsgDewhitelist, MsgDewhitelistResponse, MsgOpen, MsgOpenResponse, MsgUpdateParams, MsgUpdateParamsResponse, MsgUpdatePools, MsgUpdatePoolsResponse, MsgUpdateStopLoss, MsgUpdateStopLossResponse, MsgWhitelist, MsgWhitelistResponse } from "./tx_pb.js";
 
 const TYPE_NAME = "elys.leveragelp.Msg";
 
@@ -85,5 +85,15 @@ export const MsgUpdateStopLossService = {
   method: "UpdateStopLoss",
   Request: MsgUpdateStopLoss,
   Response: MsgUpdateStopLossResponse,
+} as const;
+
+/**
+ * @generated from rpc elys.leveragelp.Msg.AddCollateral
+ */
+export const MsgAddCollateralService = {
+  typeName: TYPE_NAME,
+  method: "AddCollateral",
+  Request: MsgAddCollateral,
+  Response: MsgAddCollateralResponse,
 } as const;
 

@@ -85,6 +85,10 @@ const REPOS = [
     repo: "onomyprotocol/market#main",
     paths: ["proto"],
   },
+  {
+    repo: "pryzm-finance/pryzmjs#main",
+    paths: ["proto"],
+  },
 ];
 /**
  * TODO: Add more repos here when necessary.
@@ -116,6 +120,18 @@ console.log("Copying Third Party Proto...");
   //cpSync(join(TMP_DIR, id("cosmos/cosmos-sdk#v0.47.9"),"proto"),join(TMP_DIR,id("elys-network/elys#main"),""),{recursive: true})
   copyDirectoryRecursiveSync(join(TMP_DIR, id("cosmos/cosmos-sdk#v0.47.9"),"proto"), join(TMP_DIR,id("elys-network/elys#main"),"proto"))
   copyDirectoryRecursiveSync(join(TMP_DIR, id("cosmos/cosmos-sdk#v0.47.9"),"proto"), join(TMP_DIR,id("onomyprotocol/market#main"),"proto"))
+  rmSync( join(TMP_DIR,id("pryzm-finance/pryzmjs#main"),"proto/cosmos") , { recursive: true, force: true });
+  rmSync( join(TMP_DIR,id("pryzm-finance/pryzmjs#main"),"proto/alliance") , { recursive: true, force: true });
+  rmSync( join(TMP_DIR,id("pryzm-finance/pryzmjs#main"),"proto/gogoproto") , { recursive: true, force: true });
+  rmSync( join(TMP_DIR,id("pryzm-finance/pryzmjs#main"),"proto/cosmos_proto") , { recursive: true, force: true });
+  rmSync( join(TMP_DIR,id("pryzm-finance/pryzmjs#main"),"proto/google") , { recursive: true, force: true });
+  rmSync( join(TMP_DIR,id("pryzm-finance/pryzmjs#main"),"proto/ibc") , { recursive: true, force: true });
+  //rmSync( join(TMP_DIR,id("pryzm-finance/pryzmjs#main"),"proto/amino") , { recursive: true, force: true });
+  //copyDirectoryRecursiveSync(join(TMP_DIR, id("cosmos/cosmos-sdk#v0.47.9"),"proto"), join(TMP_DIR,id("pryzm-finance/pryzmjs#main"),"proto"));
+  copyDirectoryRecursiveSync(join(TMP_DIR, id("cosmos/ibc-go#v7.6.0"),"proto"), join(TMP_DIR,id("pryzm-finance/pryzmjs#main"),"proto"));
+  rmSync( join(TMP_DIR,id("pryzm-finance/pryzmjs#main"),"proto/amino") , { recursive: true, force: true });
+  rmSync( join(TMP_DIR,id("pryzm-finance/pryzmjs#main"),"proto/tendermint") , { recursive: true, force: true });
+  //rmSync( join(TMP_DIR,id("pryzm-finance/pryzmjs#main"),"proto/cosmos/app") , { recursive: true, force: true });
 }
 
 
@@ -124,24 +140,28 @@ console.log("Copying Third Party Proto...");
 console.log("Generating TS files from proto files...");
 {
   for (const { repo, paths } of REPOS) {
+    
     for (const path of paths) {
-      spawnSync(
-        "pnpm",
-        [
-          "buf",
-          "generate",
-          join(TMP_DIR, id(repo), path),
-          "--output",
-          join(
-            PROTOBUFS_DIR,
-            repo.startsWith("dymensionxyz") ? "dymension" : ""
-          ),
-        ],
-        {
-          cwd: process.cwd(),
-          stdio: "inherit",
-        }
-      );
+      
+        spawnSync(
+          "pnpm",
+          [
+            "buf",
+            "generate",
+            join(TMP_DIR, id(repo), path),
+            "--output",
+            join(
+              PROTOBUFS_DIR,
+              repo.startsWith("dymensionxyz") ? "dymension" : ""
+            ),
+          ],
+          {
+            cwd: process.cwd(),
+            stdio: "inherit",
+          }
+        );
+        
+      
     }
     console.log(`✔️ [${repo}]`);
   }

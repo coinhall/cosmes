@@ -4,9 +4,10 @@
 // @ts-nocheck
 
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
-import { Message, proto3 } from "@bufbuild/protobuf";
+import { Message, proto3, protoInt64 } from "@bufbuild/protobuf";
 import { FeeToken } from "./feetoken_pb.js";
 import { Params } from "./params_pb.js";
+import { Coin } from "../../../cosmos/base/v1beta1/coin_pb.js";
 
 /**
  * GenesisState defines the txfees module's genesis state.
@@ -25,6 +26,14 @@ export class GenesisState extends Message<GenesisState> {
   feetokens: FeeToken[] = [];
 
   /**
+   * DEPRECATED
+   *
+   * @generated from field: osmosis.txfees.v1beta1.TxFeesTracker txFeesTracker = 3 [deprecated = true];
+   * @deprecated
+   */
+  txFeesTracker?: TxFeesTracker;
+
+  /**
    * params is the container of txfees parameters.
    *
    * @generated from field: osmosis.txfees.v1beta1.Params params = 4;
@@ -41,6 +50,7 @@ export class GenesisState extends Message<GenesisState> {
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "basedenom", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "feetokens", kind: "message", T: FeeToken, repeated: true },
+    { no: 3, name: "txFeesTracker", kind: "message", T: TxFeesTracker },
     { no: 4, name: "params", kind: "message", T: Params },
   ]);
 
@@ -58,6 +68,49 @@ export class GenesisState extends Message<GenesisState> {
 
   static equals(a: GenesisState | PlainMessage<GenesisState> | undefined, b: GenesisState | PlainMessage<GenesisState> | undefined): boolean {
     return proto3.util.equals(GenesisState, a, b);
+  }
+}
+
+/**
+ * @generated from message osmosis.txfees.v1beta1.TxFeesTracker
+ */
+export class TxFeesTracker extends Message<TxFeesTracker> {
+  /**
+   * @generated from field: repeated cosmos.base.v1beta1.Coin tx_fees = 1;
+   */
+  txFees: Coin[] = [];
+
+  /**
+   * @generated from field: int64 height_accounting_starts_from = 2;
+   */
+  heightAccountingStartsFrom = protoInt64.zero;
+
+  constructor(data?: PartialMessage<TxFeesTracker>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "osmosis.txfees.v1beta1.TxFeesTracker";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "tx_fees", kind: "message", T: Coin, repeated: true },
+    { no: 2, name: "height_accounting_starts_from", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TxFeesTracker {
+    return new TxFeesTracker().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TxFeesTracker {
+    return new TxFeesTracker().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TxFeesTracker {
+    return new TxFeesTracker().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: TxFeesTracker | PlainMessage<TxFeesTracker> | undefined, b: TxFeesTracker | PlainMessage<TxFeesTracker> | undefined): boolean {
+    return proto3.util.equals(TxFeesTracker, a, b);
   }
 }
 

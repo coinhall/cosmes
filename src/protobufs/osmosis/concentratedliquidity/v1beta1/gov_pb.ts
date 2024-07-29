@@ -179,6 +179,14 @@ export class PoolRecord extends Message<PoolRecord> {
   tickSpacing = protoInt64.zero;
 
   /**
+   * DEPRECATED
+   *
+   * @generated from field: string exponent_at_price_one = 4 [deprecated = true];
+   * @deprecated
+   */
+  exponentAtPriceOne = "";
+
+  /**
    * @generated from field: string spread_factor = 5;
    */
   spreadFactor = "";
@@ -194,6 +202,7 @@ export class PoolRecord extends Message<PoolRecord> {
     { no: 1, name: "denom0", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "denom1", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "tick_spacing", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+    { no: 4, name: "exponent_at_price_one", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 5, name: "spread_factor", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 

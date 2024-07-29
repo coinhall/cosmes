@@ -7,6 +7,7 @@ import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialM
 import { Message, proto3, protoInt64 } from "@bufbuild/protobuf";
 import { Params } from "./params_pb.js";
 import { Commitments } from "./commitments_pb.js";
+import { Coin } from "../../cosmos/base/v1beta1/coin_pb.js";
 
 /**
  * QueryParamsRequest is request type for the Query/Params RPC method.
@@ -221,6 +222,233 @@ export class QueryNumberOfCommitmentsResponse extends Message<QueryNumberOfCommi
 
   static equals(a: QueryNumberOfCommitmentsResponse | PlainMessage<QueryNumberOfCommitmentsResponse> | undefined, b: QueryNumberOfCommitmentsResponse | PlainMessage<QueryNumberOfCommitmentsResponse> | undefined): boolean {
     return proto3.util.equals(QueryNumberOfCommitmentsResponse, a, b);
+  }
+}
+
+/**
+ * @generated from message elys.commitment.QueryCommittedTokensLockedRequest
+ */
+export class QueryCommittedTokensLockedRequest extends Message<QueryCommittedTokensLockedRequest> {
+  /**
+   * @generated from field: string address = 1;
+   */
+  address = "";
+
+  constructor(data?: PartialMessage<QueryCommittedTokensLockedRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "elys.commitment.QueryCommittedTokensLockedRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "address", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): QueryCommittedTokensLockedRequest {
+    return new QueryCommittedTokensLockedRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): QueryCommittedTokensLockedRequest {
+    return new QueryCommittedTokensLockedRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): QueryCommittedTokensLockedRequest {
+    return new QueryCommittedTokensLockedRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: QueryCommittedTokensLockedRequest | PlainMessage<QueryCommittedTokensLockedRequest> | undefined, b: QueryCommittedTokensLockedRequest | PlainMessage<QueryCommittedTokensLockedRequest> | undefined): boolean {
+    return proto3.util.equals(QueryCommittedTokensLockedRequest, a, b);
+  }
+}
+
+/**
+ * @generated from message elys.commitment.QueryCommittedTokensLockedResponse
+ */
+export class QueryCommittedTokensLockedResponse extends Message<QueryCommittedTokensLockedResponse> {
+  /**
+   * @generated from field: string address = 1;
+   */
+  address = "";
+
+  /**
+   * @generated from field: repeated cosmos.base.v1beta1.Coin locked_committed = 2;
+   */
+  lockedCommitted: Coin[] = [];
+
+  /**
+   * @generated from field: repeated cosmos.base.v1beta1.Coin total_committed = 3;
+   */
+  totalCommitted: Coin[] = [];
+
+  constructor(data?: PartialMessage<QueryCommittedTokensLockedResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "elys.commitment.QueryCommittedTokensLockedResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "address", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "locked_committed", kind: "message", T: Coin, repeated: true },
+    { no: 3, name: "total_committed", kind: "message", T: Coin, repeated: true },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): QueryCommittedTokensLockedResponse {
+    return new QueryCommittedTokensLockedResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): QueryCommittedTokensLockedResponse {
+    return new QueryCommittedTokensLockedResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): QueryCommittedTokensLockedResponse {
+    return new QueryCommittedTokensLockedResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: QueryCommittedTokensLockedResponse | PlainMessage<QueryCommittedTokensLockedResponse> | undefined, b: QueryCommittedTokensLockedResponse | PlainMessage<QueryCommittedTokensLockedResponse> | undefined): boolean {
+    return proto3.util.equals(QueryCommittedTokensLockedResponse, a, b);
+  }
+}
+
+/**
+ * @generated from message elys.commitment.QueryCommitmentVestingInfoRequest
+ */
+export class QueryCommitmentVestingInfoRequest extends Message<QueryCommitmentVestingInfoRequest> {
+  /**
+   * @generated from field: string address = 1;
+   */
+  address = "";
+
+  constructor(data?: PartialMessage<QueryCommitmentVestingInfoRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "elys.commitment.QueryCommitmentVestingInfoRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "address", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): QueryCommitmentVestingInfoRequest {
+    return new QueryCommitmentVestingInfoRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): QueryCommitmentVestingInfoRequest {
+    return new QueryCommitmentVestingInfoRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): QueryCommitmentVestingInfoRequest {
+    return new QueryCommitmentVestingInfoRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: QueryCommitmentVestingInfoRequest | PlainMessage<QueryCommitmentVestingInfoRequest> | undefined, b: QueryCommitmentVestingInfoRequest | PlainMessage<QueryCommitmentVestingInfoRequest> | undefined): boolean {
+    return proto3.util.equals(QueryCommitmentVestingInfoRequest, a, b);
+  }
+}
+
+/**
+ * @generated from message elys.commitment.QueryCommitmentVestingInfoResponse
+ */
+export class QueryCommitmentVestingInfoResponse extends Message<QueryCommitmentVestingInfoResponse> {
+  /**
+   * @generated from field: string total = 1;
+   */
+  total = "";
+
+  /**
+   * @generated from field: repeated elys.commitment.VestingDetails vesting_details = 2;
+   */
+  vestingDetails: VestingDetails[] = [];
+
+  constructor(data?: PartialMessage<QueryCommitmentVestingInfoResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "elys.commitment.QueryCommitmentVestingInfoResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "total", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "vesting_details", kind: "message", T: VestingDetails, repeated: true },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): QueryCommitmentVestingInfoResponse {
+    return new QueryCommitmentVestingInfoResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): QueryCommitmentVestingInfoResponse {
+    return new QueryCommitmentVestingInfoResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): QueryCommitmentVestingInfoResponse {
+    return new QueryCommitmentVestingInfoResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: QueryCommitmentVestingInfoResponse | PlainMessage<QueryCommitmentVestingInfoResponse> | undefined, b: QueryCommitmentVestingInfoResponse | PlainMessage<QueryCommitmentVestingInfoResponse> | undefined): boolean {
+    return proto3.util.equals(QueryCommitmentVestingInfoResponse, a, b);
+  }
+}
+
+/**
+ * @generated from message elys.commitment.VestingDetails
+ */
+export class VestingDetails extends Message<VestingDetails> {
+  /**
+   * @generated from field: string id = 1;
+   */
+  id = "";
+
+  /**
+   * @generated from field: string totalVesting = 2;
+   */
+  totalVesting = "";
+
+  /**
+   * @generated from field: string claimed = 3;
+   */
+  claimed = "";
+
+  /**
+   * @generated from field: string vestedSoFar = 4;
+   */
+  vestedSoFar = "";
+
+  /**
+   * @generated from field: int64 remaining_blocks = 5;
+   */
+  remainingBlocks = protoInt64.zero;
+
+  constructor(data?: PartialMessage<VestingDetails>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "elys.commitment.VestingDetails";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "totalVesting", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "claimed", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 4, name: "vestedSoFar", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 5, name: "remaining_blocks", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): VestingDetails {
+    return new VestingDetails().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): VestingDetails {
+    return new VestingDetails().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): VestingDetails {
+    return new VestingDetails().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: VestingDetails | PlainMessage<VestingDetails> | undefined, b: VestingDetails | PlainMessage<VestingDetails> | undefined): boolean {
+    return proto3.util.equals(VestingDetails, a, b);
   }
 }
 

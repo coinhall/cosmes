@@ -28,6 +28,14 @@ export class QuerySpotPriceRequest extends Message<QuerySpotPriceRequest> {
    */
   quoteAssetDenom = "";
 
+  /**
+   * DEPRECATED
+   *
+   * @generated from field: bool withSwapFee = 4 [deprecated = true];
+   * @deprecated
+   */
+  withSwapFee = false;
+
   constructor(data?: PartialMessage<QuerySpotPriceRequest>) {
     super();
     proto3.util.initPartial(data, this);
@@ -39,6 +47,7 @@ export class QuerySpotPriceRequest extends Message<QuerySpotPriceRequest> {
     { no: 1, name: "pool_id", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
     { no: 2, name: "base_asset_denom", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "quote_asset_denom", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 4, name: "withSwapFee", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): QuerySpotPriceRequest {

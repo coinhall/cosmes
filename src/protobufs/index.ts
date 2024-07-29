@@ -134,6 +134,1098 @@ export {
   ABCIApplicationProcessProposalService as TendermintAbciABCIApplicationProcessProposalService,
 } from "./tendermint/abci/types_cosmes.js";
 export {
+  Params as RefractedlabsOracleV1Params,
+} from "./refractedlabs/oracle/v1/params_pb.js";
+export {
+  NamespaceVote as RefractedlabsOracleV1NamespaceVote,
+  ModuleVote as RefractedlabsOracleV1ModuleVote,
+  OracleVote as RefractedlabsOracleV1OracleVote,
+} from "./refractedlabs/oracle/v1/oracle_vote_pb.js";
+export {
+  OraclePreVote as RefractedlabsOracleV1OraclePreVote,
+} from "./refractedlabs/oracle/v1/oracle_pre_vote_pb.js";
+export {
+  MissCounter as RefractedlabsOracleV1MissCounter,
+} from "./refractedlabs/oracle/v1/miss_counter_pb.js";
+export {
+  GenesisState as RefractedlabsOracleV1GenesisState,
+} from "./refractedlabs/oracle/v1/genesis_pb.js";
+export {
+  FeederDelegation as RefractedlabsOracleV1FeederDelegation,
+} from "./refractedlabs/oracle/v1/feeder_delegation_pb.js";
+export {
+  VoteType as RefractedlabsOracleV1VoteType,
+  EventDelegateFeedConsent as RefractedlabsOracleV1EventDelegateFeedConsent,
+  EventOraclePreVote as RefractedlabsOracleV1EventOraclePreVote,
+  EventOracleVote as RefractedlabsOracleV1EventOracleVote,
+  BallotVoteResult as RefractedlabsOracleV1BallotVoteResult,
+  ValidatorVoteIntervalSummary as RefractedlabsOracleV1ValidatorVoteIntervalSummary,
+  EventVoteIntervalEnds as RefractedlabsOracleV1EventVoteIntervalEnds,
+  ValidatorSlashWindowSummary as RefractedlabsOracleV1ValidatorSlashWindowSummary,
+  EventSlashWindowEnds as RefractedlabsOracleV1EventSlashWindowEnds,
+  EventSetParams as RefractedlabsOracleV1EventSetParams,
+} from "./refractedlabs/oracle/v1/event_pb.js";
+export {
+  Position as RefractedlabsFlowtradeV1Position,
+} from "./refractedlabs/flowtrade/v1/position_pb.js";
+export {
+  Params as RefractedlabsFlowtradeV1Params,
+  GasParameters as RefractedlabsFlowtradeV1GasParameters,
+} from "./refractedlabs/flowtrade/v1/params_pb.js";
+export {
+  GenesisState as RefractedlabsFlowtradeV1GenesisState,
+} from "./refractedlabs/flowtrade/v1/genesis_pb.js";
+export {
+  FlowStatus as RefractedlabsFlowtradeV1FlowStatus,
+  Flow as RefractedlabsFlowtradeV1Flow,
+  FlowInfo as RefractedlabsFlowtradeV1FlowInfo,
+  FlowCreationRequest as RefractedlabsFlowtradeV1FlowCreationRequest,
+} from "./refractedlabs/flowtrade/v1/flow_pb.js";
+export {
+  EventSetParams as RefractedlabsFlowtradeV1EventSetParams,
+  EventFlowCreated as RefractedlabsFlowtradeV1EventFlowCreated,
+  EventFlowEnded as RefractedlabsFlowtradeV1EventFlowEnded,
+  EventFlowStopped as RefractedlabsFlowtradeV1EventFlowStopped,
+  EventFlowCheckedOut as RefractedlabsFlowtradeV1EventFlowCheckedOut,
+  EventFlowTokenInClaimed as RefractedlabsFlowtradeV1EventFlowTokenInClaimed,
+  EventFlowTokenOutClaimed as RefractedlabsFlowtradeV1EventFlowTokenOutClaimed,
+  EventJoinFlow as RefractedlabsFlowtradeV1EventJoinFlow,
+  EventExitFlow as RefractedlabsFlowtradeV1EventExitFlow,
+  EventSetOperator as RefractedlabsFlowtradeV1EventSetOperator,
+  EventSetFlow as RefractedlabsFlowtradeV1EventSetFlow,
+  EventSetPosition as RefractedlabsFlowtradeV1EventSetPosition,
+} from "./refractedlabs/flowtrade/v1/events_pb.js";
+export {
+  UserStakeState as PryzmYstakingV1UserStakeState,
+} from "./pryzm/ystaking/v1/user_stake_state_pb.js";
+export {
+  MsgBond as PryzmYstakingV1MsgBond,
+  MsgBondResponse as PryzmYstakingV1MsgBondResponse,
+  MsgUnbond as PryzmYstakingV1MsgUnbond,
+  MsgUnbondResponse as PryzmYstakingV1MsgUnbondResponse,
+  MsgClaimReward as PryzmYstakingV1MsgClaimReward,
+  MsgClaimRewardResponse as PryzmYstakingV1MsgClaimRewardResponse,
+  MsgExitPool as PryzmYstakingV1MsgExitPool,
+  MsgExitPoolResponse as PryzmYstakingV1MsgExitPoolResponse,
+} from "./pryzm/ystaking/v1/tx_pb.js";
+export {
+  MsgBondService as PryzmYstakingV1MsgBondService,
+  MsgUnbondService as PryzmYstakingV1MsgUnbondService,
+  MsgClaimRewardService as PryzmYstakingV1MsgClaimRewardService,
+  MsgExitPoolService as PryzmYstakingV1MsgExitPoolService,
+} from "./pryzm/ystaking/v1/tx_cosmes.js";
+export {
+  QueryBondedAmountRequest as PryzmYstakingV1QueryBondedAmountRequest,
+  QueryBondedAmountResponse as PryzmYstakingV1QueryBondedAmountResponse,
+  QueryRewardRequest as PryzmYstakingV1QueryRewardRequest,
+  QueryRewardResponse as PryzmYstakingV1QueryRewardResponse,
+  QueryGetUserStakeStateRequest as PryzmYstakingV1QueryGetUserStakeStateRequest,
+  QueryGetUserStakeStateResponse as PryzmYstakingV1QueryGetUserStakeStateResponse,
+  QueryAllUserStakeStateRequest as PryzmYstakingV1QueryAllUserStakeStateRequest,
+  QueryAllUserStakeStateResponse as PryzmYstakingV1QueryAllUserStakeStateResponse,
+  QueryGetAssetPoolStateRequest as PryzmYstakingV1QueryGetAssetPoolStateRequest,
+  QueryGetAssetPoolStateResponse as PryzmYstakingV1QueryGetAssetPoolStateResponse,
+  QueryAllAssetPoolStateRequest as PryzmYstakingV1QueryAllAssetPoolStateRequest,
+  QueryAllAssetPoolStateResponse as PryzmYstakingV1QueryAllAssetPoolStateResponse,
+  QueryGetAssetMaturityPoolStateRequest as PryzmYstakingV1QueryGetAssetMaturityPoolStateRequest,
+  QueryGetAssetMaturityPoolStateResponse as PryzmYstakingV1QueryGetAssetMaturityPoolStateResponse,
+  QueryAllAssetMaturityPoolStateRequest as PryzmYstakingV1QueryAllAssetMaturityPoolStateRequest,
+  QueryAllAssetMaturityPoolStateResponse as PryzmYstakingV1QueryAllAssetMaturityPoolStateResponse,
+} from "./pryzm/ystaking/v1/query_pb.js";
+export {
+  QueryBondedAmountService as PryzmYstakingV1QueryBondedAmountService,
+  QueryRewardService as PryzmYstakingV1QueryRewardService,
+  QueryUserStakeStateService as PryzmYstakingV1QueryUserStakeStateService,
+  QueryUserStakeStateAllService as PryzmYstakingV1QueryUserStakeStateAllService,
+  QueryAssetPoolStateService as PryzmYstakingV1QueryAssetPoolStateService,
+  QueryAssetPoolStateAllService as PryzmYstakingV1QueryAssetPoolStateAllService,
+  QueryAssetMaturityPoolStateService as PryzmYstakingV1QueryAssetMaturityPoolStateService,
+  QueryAssetMaturityPoolStateAllService as PryzmYstakingV1QueryAssetMaturityPoolStateAllService,
+} from "./pryzm/ystaking/v1/query_cosmes.js";
+export {
+  GenesisState as PryzmYstakingV1GenesisState,
+} from "./pryzm/ystaking/v1/genesis_pb.js";
+export {
+  EventYStakingBond as PryzmYstakingV1EventYStakingBond,
+  EventYStakingUnbond as PryzmYstakingV1EventYStakingUnbond,
+  EventYStakingExitPool as PryzmYstakingV1EventYStakingExitPool,
+  EventYStakingClaimReward as PryzmYstakingV1EventYStakingClaimReward,
+  EventDeactivateYStakingMaturityPool as PryzmYstakingV1EventDeactivateYStakingMaturityPool,
+  EventSetUserStakeState as PryzmYstakingV1EventSetUserStakeState,
+  EventSetAssetPoolState as PryzmYstakingV1EventSetAssetPoolState,
+  EventSetAssetMaturityPoolState as PryzmYstakingV1EventSetAssetMaturityPoolState,
+  EventDeleteUserStakeState as PryzmYstakingV1EventDeleteUserStakeState,
+  EventDeleteAssetPoolState as PryzmYstakingV1EventDeleteAssetPoolState,
+  EventDeleteAssetMaturityPoolState as PryzmYstakingV1EventDeleteAssetMaturityPoolState,
+} from "./pryzm/ystaking/v1/event_pb.js";
+export {
+  AssetPoolState as PryzmYstakingV1AssetPoolState,
+  AssetMaturityPoolState as PryzmYstakingV1AssetMaturityPoolState,
+} from "./pryzm/ystaking/v1/asset_pool_state_pb.js";
+export {
+  MsgUpdateParams as PryzmTreasuryV1MsgUpdateParams,
+  MsgUpdateParamsResponse as PryzmTreasuryV1MsgUpdateParamsResponse,
+  MsgSetAction as PryzmTreasuryV1MsgSetAction,
+  MsgSetActionResponse as PryzmTreasuryV1MsgSetActionResponse,
+} from "./pryzm/treasury/v1/tx_pb.js";
+export {
+  MsgUpdateParamsService as PryzmTreasuryV1MsgUpdateParamsService,
+  MsgSetActionService as PryzmTreasuryV1MsgSetActionService,
+} from "./pryzm/treasury/v1/tx_cosmes.js";
+export {
+  QueryParamsRequest as PryzmTreasuryV1QueryParamsRequest,
+  QueryParamsResponse as PryzmTreasuryV1QueryParamsResponse,
+  QueryGetActionRequest as PryzmTreasuryV1QueryGetActionRequest,
+  QueryGetActionResponse as PryzmTreasuryV1QueryGetActionResponse,
+  QueryGetFlowTradeRequest as PryzmTreasuryV1QueryGetFlowTradeRequest,
+  QueryGetFlowTradeResponse as PryzmTreasuryV1QueryGetFlowTradeResponse,
+  QueryAllFlowTradeRequest as PryzmTreasuryV1QueryAllFlowTradeRequest,
+  QueryAllFlowTradeResponse as PryzmTreasuryV1QueryAllFlowTradeResponse,
+} from "./pryzm/treasury/v1/query_pb.js";
+export {
+  QueryParamsService as PryzmTreasuryV1QueryParamsService,
+  QueryActionService as PryzmTreasuryV1QueryActionService,
+  QueryFlowTradeService as PryzmTreasuryV1QueryFlowTradeService,
+  QueryFlowTradeAllService as PryzmTreasuryV1QueryFlowTradeAllService,
+} from "./pryzm/treasury/v1/query_cosmes.js";
+export {
+  Params as PryzmTreasuryV1Params,
+} from "./pryzm/treasury/v1/params_pb.js";
+export {
+  GenesisState as PryzmTreasuryV1GenesisState,
+} from "./pryzm/treasury/v1/genesis_pb.js";
+export {
+  FlowTrade as PryzmTreasuryV1FlowTrade,
+} from "./pryzm/treasury/v1/flow_trade_pb.js";
+export {
+  EventSetParams as PryzmTreasuryV1EventSetParams,
+  EventTreasuryCollectFee as PryzmTreasuryV1EventTreasuryCollectFee,
+  EventCreateFlowForAmount as PryzmTreasuryV1EventCreateFlowForAmount,
+  EventExecuteActionForAmount as PryzmTreasuryV1EventExecuteActionForAmount,
+  EventSetAction as PryzmTreasuryV1EventSetAction,
+  EventSetFlowTrade as PryzmTreasuryV1EventSetFlowTrade,
+  EventRemoveFlowTrade as PryzmTreasuryV1EventRemoveFlowTrade,
+} from "./pryzm/treasury/v1/event_pb.js";
+export {
+  ActionType as PryzmTreasuryV1ActionType,
+  ActionFlowTradeSettings as PryzmTreasuryV1ActionFlowTradeSettings,
+  Action as PryzmTreasuryV1Action,
+} from "./pryzm/treasury/v1/action_pb.js";
+export {
+  MsgRefract as PryzmRefractorV1MsgRefract,
+  MsgRefractResponse as PryzmRefractorV1MsgRefractResponse,
+  MsgRedeem as PryzmRefractorV1MsgRedeem,
+  MsgRedeemResponse as PryzmRefractorV1MsgRedeemResponse,
+} from "./pryzm/refractor/v1/tx_pb.js";
+export {
+  MsgRefractService as PryzmRefractorV1MsgRefractService,
+  MsgRedeemService as PryzmRefractorV1MsgRedeemService,
+} from "./pryzm/refractor/v1/tx_cosmes.js";
+export {
+  QueryGetAssetStateRequest as PryzmRefractorV1QueryGetAssetStateRequest,
+  QueryGetAssetStateResponse as PryzmRefractorV1QueryGetAssetStateResponse,
+  QueryGetCPExchangeRateRequest as PryzmRefractorV1QueryGetCPExchangeRateRequest,
+  QueryGetCPExchangeRateResponse as PryzmRefractorV1QueryGetCPExchangeRateResponse,
+  QuerySimulateRefractRequest as PryzmRefractorV1QuerySimulateRefractRequest,
+  QuerySimulateRefractResponse as PryzmRefractorV1QuerySimulateRefractResponse,
+  QuerySimulateRedeemRequest as PryzmRefractorV1QuerySimulateRedeemRequest,
+  QuerySimulateRedeemResponse as PryzmRefractorV1QuerySimulateRedeemResponse,
+} from "./pryzm/refractor/v1/query_pb.js";
+export {
+  QueryAssetStateService as PryzmRefractorV1QueryAssetStateService,
+  QueryCPExchangeRateService as PryzmRefractorV1QueryCPExchangeRateService,
+  QuerySimulateRefractService as PryzmRefractorV1QuerySimulateRefractService,
+  QuerySimulateRedeemService as PryzmRefractorV1QuerySimulateRedeemService,
+} from "./pryzm/refractor/v1/query_cosmes.js";
+export {
+  GenesisState as PryzmRefractorV1GenesisState,
+} from "./pryzm/refractor/v1/genesis_pb.js";
+export {
+  EventRefract as PryzmRefractorV1EventRefract,
+  EventRedeem as PryzmRefractorV1EventRedeem,
+  EventRefractorYieldDistribution as PryzmRefractorV1EventRefractorYieldDistribution,
+  EventSetAssetState as PryzmRefractorV1EventSetAssetState,
+} from "./pryzm/refractor/v1/event_pb.js";
+export {
+  AssetState as PryzmRefractorV1AssetState,
+} from "./pryzm/refractor/v1/asset_state_pb.js";
+export {
+  Vote as PryzmPgovV1Vote,
+} from "./pryzm/pgov/v1/vote_pb.js";
+export {
+  MsgUpdateParams as PryzmPgovV1MsgUpdateParams,
+  MsgUpdateParamsResponse as PryzmPgovV1MsgUpdateParamsResponse,
+  MsgStakePAssets as PryzmPgovV1MsgStakePAssets,
+  MsgStakePAssetsResponse as PryzmPgovV1MsgStakePAssetsResponse,
+  MsgUnstakePAssets as PryzmPgovV1MsgUnstakePAssets,
+  MsgUnstakePAssetsResponse as PryzmPgovV1MsgUnstakePAssetsResponse,
+  MsgSubmitVote as PryzmPgovV1MsgSubmitVote,
+  MsgSubmitVoteResponse as PryzmPgovV1MsgSubmitVoteResponse,
+  MsgSubmitProposal as PryzmPgovV1MsgSubmitProposal,
+  MsgSubmitProposalResponse as PryzmPgovV1MsgSubmitProposalResponse,
+  MsgRetryVoteTransmit as PryzmPgovV1MsgRetryVoteTransmit,
+  MsgRetryVoteTransmitResponse as PryzmPgovV1MsgRetryVoteTransmitResponse,
+} from "./pryzm/pgov/v1/tx_pb.js";
+export {
+  MsgUpdateParamsService as PryzmPgovV1MsgUpdateParamsService,
+  MsgStakePAssetsService as PryzmPgovV1MsgStakePAssetsService,
+  MsgUnstakePAssetsService as PryzmPgovV1MsgUnstakePAssetsService,
+  MsgSubmitVoteService as PryzmPgovV1MsgSubmitVoteService,
+  MsgSubmitProposalService as PryzmPgovV1MsgSubmitProposalService,
+  MsgRetryVoteTransmitService as PryzmPgovV1MsgRetryVoteTransmitService,
+} from "./pryzm/pgov/v1/tx_cosmes.js";
+export {
+  StakedPAsset as PryzmPgovV1StakedPAsset,
+  TotalStakedPAsset as PryzmPgovV1TotalStakedPAsset,
+} from "./pryzm/pgov/v1/staked_p_asset_pb.js";
+export {
+  VoteReplyData as PryzmPgovV1VoteReplyData,
+} from "./pryzm/pgov/v1/reply_pb.js";
+export {
+  QueryParamsRequest as PryzmPgovV1QueryParamsRequest,
+  QueryParamsResponse as PryzmPgovV1QueryParamsResponse,
+  QueryGetStakedPAssetRequest as PryzmPgovV1QueryGetStakedPAssetRequest,
+  QueryGetStakedPAssetResponse as PryzmPgovV1QueryGetStakedPAssetResponse,
+  QueryAllStakedPAssetRequest as PryzmPgovV1QueryAllStakedPAssetRequest,
+  QueryAllStakedPAssetResponse as PryzmPgovV1QueryAllStakedPAssetResponse,
+  QueryAllTotalStakedPAssetRequest as PryzmPgovV1QueryAllTotalStakedPAssetRequest,
+  QueryAllTotalStakedPAssetResponse as PryzmPgovV1QueryAllTotalStakedPAssetResponse,
+  QueryGetTotalStakedPAssetRequest as PryzmPgovV1QueryGetTotalStakedPAssetRequest,
+  QueryGetTotalStakedPAssetResponse as PryzmPgovV1QueryGetTotalStakedPAssetResponse,
+  QueryGetVoteRequest as PryzmPgovV1QueryGetVoteRequest,
+  QueryGetVoteResponse as PryzmPgovV1QueryGetVoteResponse,
+  QueryAllVoteRequest as PryzmPgovV1QueryAllVoteRequest,
+  QueryAllVoteResponse as PryzmPgovV1QueryAllVoteResponse,
+  QueryGetProposalRequest as PryzmPgovV1QueryGetProposalRequest,
+  QueryGetProposalResponse as PryzmPgovV1QueryGetProposalResponse,
+  QueryAllProposalRequest as PryzmPgovV1QueryAllProposalRequest,
+  QueryAllProposalResponse as PryzmPgovV1QueryAllProposalResponse,
+} from "./pryzm/pgov/v1/query_pb.js";
+export {
+  QueryParamsService as PryzmPgovV1QueryParamsService,
+  QueryStakedPAssetService as PryzmPgovV1QueryStakedPAssetService,
+  QueryStakedPAssetAllService as PryzmPgovV1QueryStakedPAssetAllService,
+  QueryTotalStakedPAssetService as PryzmPgovV1QueryTotalStakedPAssetService,
+  QueryTotalStakedPAssetAllService as PryzmPgovV1QueryTotalStakedPAssetAllService,
+  QueryVoteService as PryzmPgovV1QueryVoteService,
+  QueryVoteAllService as PryzmPgovV1QueryVoteAllService,
+  QueryProposalService as PryzmPgovV1QueryProposalService,
+  QueryProposalAllService as PryzmPgovV1QueryProposalAllService,
+} from "./pryzm/pgov/v1/query_cosmes.js";
+export {
+  ProposalStatus as PryzmPgovV1ProposalStatus,
+  Proposal as PryzmPgovV1Proposal,
+} from "./pryzm/pgov/v1/proposal_pb.js";
+export {
+  Params as PryzmPgovV1Params,
+} from "./pryzm/pgov/v1/params_pb.js";
+export {
+  GenesisState as PryzmPgovV1GenesisState,
+} from "./pryzm/pgov/v1/genesis_pb.js";
+export {
+  EventSetParams as PryzmPgovV1EventSetParams,
+  EventSetProposal as PryzmPgovV1EventSetProposal,
+  EventPAssetStake as PryzmPgovV1EventPAssetStake,
+  EventPAssetUnstake as PryzmPgovV1EventPAssetUnstake,
+  EventVoteSubmit as PryzmPgovV1EventVoteSubmit,
+  EventProposalEnd as PryzmPgovV1EventProposalEnd,
+  EventVoteTransmit as PryzmPgovV1EventVoteTransmit,
+  EventVoteTransmitFailure as PryzmPgovV1EventVoteTransmitFailure,
+  EventVoteAckSuccess as PryzmPgovV1EventVoteAckSuccess,
+  EventVoteAckFailure as PryzmPgovV1EventVoteAckFailure,
+  EventVoteTimeout as PryzmPgovV1EventVoteTimeout,
+} from "./pryzm/pgov/v1/event_pb.js";
+export {
+  MsgUpdateParams as PryzmMintV1MsgUpdateParams,
+  MsgUpdateParamsResponse as PryzmMintV1MsgUpdateParamsResponse,
+  MsgDappAccountSpend as PryzmMintV1MsgDappAccountSpend,
+  MsgDappAccountSpendResponse as PryzmMintV1MsgDappAccountSpendResponse,
+} from "./pryzm/mint/v1/tx_pb.js";
+export {
+  MsgUpdateParamsService as PryzmMintV1MsgUpdateParamsService,
+  MsgDappAccountSpendService as PryzmMintV1MsgDappAccountSpendService,
+} from "./pryzm/mint/v1/tx_cosmes.js";
+export {
+  QueryParamsRequest as PryzmMintV1QueryParamsRequest,
+  QueryParamsResponse as PryzmMintV1QueryParamsResponse,
+  QueryMinterRequest as PryzmMintV1QueryMinterRequest,
+  QueryMinterResponse as PryzmMintV1QueryMinterResponse,
+} from "./pryzm/mint/v1/query_pb.js";
+export {
+  QueryParamsService as PryzmMintV1QueryParamsService,
+  QueryMinterService as PryzmMintV1QueryMinterService,
+} from "./pryzm/mint/v1/query_cosmes.js";
+export {
+  DistributionProportions as PryzmMintV1DistributionProportions,
+  Params as PryzmMintV1Params,
+} from "./pryzm/mint/v1/params_pb.js";
+export {
+  Minter as PryzmMintV1Minter,
+} from "./pryzm/mint/v1/minter_pb.js";
+export {
+  GenesisState as PryzmMintV1GenesisState,
+} from "./pryzm/mint/v1/genesis_pb.js";
+export {
+  EventMint as PryzmMintV1EventMint,
+  EventSetParams as PryzmMintV1EventSetParams,
+} from "./pryzm/mint/v1/event_pb.js";
+export {
+  Unbonding as PryzmIncentivesV1Unbonding,
+} from "./pryzm/incentives/v1/unbonding_pb.js";
+export {
+  MsgUpdateParams as PryzmIncentivesV1MsgUpdateParams,
+  MsgUpdateParamsResponse as PryzmIncentivesV1MsgUpdateParamsResponse,
+  WeightedRewardToken as PryzmIncentivesV1WeightedRewardToken,
+  MsgCreatePool as PryzmIncentivesV1MsgCreatePool,
+  MsgCreatePoolResponse as PryzmIncentivesV1MsgCreatePoolResponse,
+  MsgUpdateRewardTokenWeight as PryzmIncentivesV1MsgUpdateRewardTokenWeight,
+  MsgUpdateRewardTokenWeightResponse as PryzmIncentivesV1MsgUpdateRewardTokenWeightResponse,
+  MsgAddRewardTokenToPool as PryzmIncentivesV1MsgAddRewardTokenToPool,
+  MsgAddRewardTokenToPoolResponse as PryzmIncentivesV1MsgAddRewardTokenToPoolResponse,
+  MsgBond as PryzmIncentivesV1MsgBond,
+  MsgBondResponse as PryzmIncentivesV1MsgBondResponse,
+  MsgUnbond as PryzmIncentivesV1MsgUnbond,
+  MsgUnbondResponse as PryzmIncentivesV1MsgUnbondResponse,
+  MsgClaimReward as PryzmIncentivesV1MsgClaimReward,
+  MsgClaimRewardResponse as PryzmIncentivesV1MsgClaimRewardResponse,
+  MsgClaimUnbonding as PryzmIncentivesV1MsgClaimUnbonding,
+  MsgClaimUnbondingResponse as PryzmIncentivesV1MsgClaimUnbondingResponse,
+  MsgCancelUnbonding as PryzmIncentivesV1MsgCancelUnbonding,
+  MsgCancelUnbondingResponse as PryzmIncentivesV1MsgCancelUnbondingResponse,
+  MsgIncentivizePool as PryzmIncentivesV1MsgIncentivizePool,
+  MsgIncentivizePoolResponse as PryzmIncentivesV1MsgIncentivizePoolResponse,
+} from "./pryzm/incentives/v1/tx_pb.js";
+export {
+  MsgUpdateParamsService as PryzmIncentivesV1MsgUpdateParamsService,
+  MsgCreatePoolService as PryzmIncentivesV1MsgCreatePoolService,
+  MsgUpdateRewardTokenWeightService as PryzmIncentivesV1MsgUpdateRewardTokenWeightService,
+  MsgAddRewardTokenToPoolService as PryzmIncentivesV1MsgAddRewardTokenToPoolService,
+  MsgBondService as PryzmIncentivesV1MsgBondService,
+  MsgUnbondService as PryzmIncentivesV1MsgUnbondService,
+  MsgClaimRewardService as PryzmIncentivesV1MsgClaimRewardService,
+  MsgClaimUnbondingService as PryzmIncentivesV1MsgClaimUnbondingService,
+  MsgCancelUnbondingService as PryzmIncentivesV1MsgCancelUnbondingService,
+  MsgIncentivizePoolService as PryzmIncentivesV1MsgIncentivizePoolService,
+} from "./pryzm/incentives/v1/tx_cosmes.js";
+export {
+  QueryParamsRequest as PryzmIncentivesV1QueryParamsRequest,
+  QueryParamsResponse as PryzmIncentivesV1QueryParamsResponse,
+  QueryGetPoolRequest as PryzmIncentivesV1QueryGetPoolRequest,
+  QueryGetPoolResponse as PryzmIncentivesV1QueryGetPoolResponse,
+  QueryAllPoolRequest as PryzmIncentivesV1QueryAllPoolRequest,
+  QueryAllPoolResponse as PryzmIncentivesV1QueryAllPoolResponse,
+  QueryGetBondRequest as PryzmIncentivesV1QueryGetBondRequest,
+  QueryGetBondResponse as PryzmIncentivesV1QueryGetBondResponse,
+  QueryAllBondRequest as PryzmIncentivesV1QueryAllBondRequest,
+  QueryAllBondResponse as PryzmIncentivesV1QueryAllBondResponse,
+  QueryGetUnbondingRequest as PryzmIncentivesV1QueryGetUnbondingRequest,
+  QueryGetUnbondingResponse as PryzmIncentivesV1QueryGetUnbondingResponse,
+  QueryAllUnbondingRequest as PryzmIncentivesV1QueryAllUnbondingRequest,
+  QueryAllUnbondingResponse as PryzmIncentivesV1QueryAllUnbondingResponse,
+} from "./pryzm/incentives/v1/query_pb.js";
+export {
+  QueryParamsService as PryzmIncentivesV1QueryParamsService,
+  QueryPoolService as PryzmIncentivesV1QueryPoolService,
+  QueryPoolAllService as PryzmIncentivesV1QueryPoolAllService,
+  QueryBondService as PryzmIncentivesV1QueryBondService,
+  QueryBondAllService as PryzmIncentivesV1QueryBondAllService,
+  QueryUnbondingService as PryzmIncentivesV1QueryUnbondingService,
+  QueryUnbondingAllService as PryzmIncentivesV1QueryUnbondingAllService,
+} from "./pryzm/incentives/v1/query_cosmes.js";
+export {
+  PoolRewardToken as PryzmIncentivesV1PoolRewardToken,
+  Pool as PryzmIncentivesV1Pool,
+} from "./pryzm/incentives/v1/pool_pb.js";
+export {
+  Params as PryzmIncentivesV1Params,
+} from "./pryzm/incentives/v1/params_pb.js";
+export {
+  GenesisState as PryzmIncentivesV1GenesisState,
+} from "./pryzm/incentives/v1/genesis_pb.js";
+export {
+  EventSetParams as PryzmIncentivesV1EventSetParams,
+  EventSetBond as PryzmIncentivesV1EventSetBond,
+  EventRemoveBond as PryzmIncentivesV1EventRemoveBond,
+  EventSetPool as PryzmIncentivesV1EventSetPool,
+  EventSetUnbonding as PryzmIncentivesV1EventSetUnbonding,
+  EventRemoveUnbonding as PryzmIncentivesV1EventRemoveUnbonding,
+  EventClaimReward as PryzmIncentivesV1EventClaimReward,
+  EventBond as PryzmIncentivesV1EventBond,
+  EventUnbond as PryzmIncentivesV1EventUnbond,
+  EventClaimUnbonding as PryzmIncentivesV1EventClaimUnbonding,
+  EventCancelUnbonding as PryzmIncentivesV1EventCancelUnbonding,
+  EventIncentivizePool as PryzmIncentivesV1EventIncentivizePool,
+} from "./pryzm/incentives/v1/event_pb.js";
+export {
+  BondRewardToken as PryzmIncentivesV1BondRewardToken,
+  Bond as PryzmIncentivesV1Bond,
+} from "./pryzm/incentives/v1/bond_pb.js";
+export {
+  Undelegation as PryzmIcstakingV1Undelegation,
+  ChannelUndelegation as PryzmIcstakingV1ChannelUndelegation,
+} from "./pryzm/icstaking/v1/undelegation_pb.js";
+export {
+  ICARegistrationType as PryzmIcstakingV1ICARegistrationType,
+  MsgUpdateParams as PryzmIcstakingV1MsgUpdateParams,
+  MsgUpdateParamsResponse as PryzmIcstakingV1MsgUpdateParamsResponse,
+  MsgRegisterHostChain as PryzmIcstakingV1MsgRegisterHostChain,
+  MsgRegisterHostChainResponse as PryzmIcstakingV1MsgRegisterHostChainResponse,
+  MsgUpdateHostChain as PryzmIcstakingV1MsgUpdateHostChain,
+  MsgUpdateHostChainResponse as PryzmIcstakingV1MsgUpdateHostChainResponse,
+  MsgStake as PryzmIcstakingV1MsgStake,
+  MsgStakeResponse as PryzmIcstakingV1MsgStakeResponse,
+  MsgStakeLsmShares as PryzmIcstakingV1MsgStakeLsmShares,
+  MsgStakeLsmSharesResponse as PryzmIcstakingV1MsgStakeLsmSharesResponse,
+  MsgUnstake as PryzmIcstakingV1MsgUnstake,
+  MsgUnstakeResponse as PryzmIcstakingV1MsgUnstakeResponse,
+  MsgRedeemUnstaked as PryzmIcstakingV1MsgRedeemUnstaked,
+  MsgRedeemUnstakedResponse as PryzmIcstakingV1MsgRedeemUnstakedResponse,
+  MsgInstantUnstake as PryzmIcstakingV1MsgInstantUnstake,
+  MsgInstantUnstakeResponse as PryzmIcstakingV1MsgInstantUnstakeResponse,
+  MsgRebalanceDelegations as PryzmIcstakingV1MsgRebalanceDelegations,
+  MsgRebalanceDelegationsResponse as PryzmIcstakingV1MsgRebalanceDelegationsResponse,
+  MsgRegisterInterchainAccount as PryzmIcstakingV1MsgRegisterInterchainAccount,
+  MsgRegisterInterchainAccountResponse as PryzmIcstakingV1MsgRegisterInterchainAccountResponse,
+  MsgCreateMultiSigConnection as PryzmIcstakingV1MsgCreateMultiSigConnection,
+  MsgCreateMultiSigConnectionResponse as PryzmIcstakingV1MsgCreateMultiSigConnectionResponse,
+  MsgUpdateMultiSigConnection as PryzmIcstakingV1MsgUpdateMultiSigConnection,
+  MsgUpdateMultiSigConnectionResponse as PryzmIcstakingV1MsgUpdateMultiSigConnectionResponse,
+  MsgAcknowledgeMultiSigPacket as PryzmIcstakingV1MsgAcknowledgeMultiSigPacket,
+  MsgAcknowledgeMultiSigPacketResponse as PryzmIcstakingV1MsgAcknowledgeMultiSigPacketResponse,
+  MsgRegisterHostAccounts as PryzmIcstakingV1MsgRegisterHostAccounts,
+  MsgRegisterHostAccountsResponse as PryzmIcstakingV1MsgRegisterHostAccountsResponse,
+  MsgRetryFailedLsmTransfer as PryzmIcstakingV1MsgRetryFailedLsmTransfer,
+  MsgRetryFailedLsmTransferResponse as PryzmIcstakingV1MsgRetryFailedLsmTransferResponse,
+} from "./pryzm/icstaking/v1/tx_pb.js";
+export {
+  MsgUpdateParamsService as PryzmIcstakingV1MsgUpdateParamsService,
+  MsgRegisterHostChainService as PryzmIcstakingV1MsgRegisterHostChainService,
+  MsgUpdateHostChainService as PryzmIcstakingV1MsgUpdateHostChainService,
+  MsgStakeService as PryzmIcstakingV1MsgStakeService,
+  MsgStakeLsmSharesService as PryzmIcstakingV1MsgStakeLsmSharesService,
+  MsgUnstakeService as PryzmIcstakingV1MsgUnstakeService,
+  MsgRedeemUnstakedService as PryzmIcstakingV1MsgRedeemUnstakedService,
+  MsgInstantUnstakeService as PryzmIcstakingV1MsgInstantUnstakeService,
+  MsgRebalanceDelegationsService as PryzmIcstakingV1MsgRebalanceDelegationsService,
+  MsgRegisterInterchainAccountService as PryzmIcstakingV1MsgRegisterInterchainAccountService,
+  MsgCreateMultiSigConnectionService as PryzmIcstakingV1MsgCreateMultiSigConnectionService,
+  MsgUpdateMultiSigConnectionService as PryzmIcstakingV1MsgUpdateMultiSigConnectionService,
+  MsgAcknowledgeMultiSigPacketService as PryzmIcstakingV1MsgAcknowledgeMultiSigPacketService,
+  MsgRegisterHostAccountsService as PryzmIcstakingV1MsgRegisterHostAccountsService,
+  MsgRetryFailedLsmTransferService as PryzmIcstakingV1MsgRetryFailedLsmTransferService,
+} from "./pryzm/icstaking/v1/tx_cosmes.js";
+export {
+  SweepTransfer as PryzmIcstakingV1SweepTransfer,
+} from "./pryzm/icstaking/v1/sweep_pb.js";
+export {
+  ReplyData as PryzmIcstakingV1ReplyData,
+  PacketId as PryzmIcstakingV1PacketId,
+  DelegateTransferReplyData as PryzmIcstakingV1DelegateTransferReplyData,
+  DelegateTransferSession as PryzmIcstakingV1DelegateTransferSession,
+  TransferPacketState as PryzmIcstakingV1TransferPacketState,
+  DelegateReplyData as PryzmIcstakingV1DelegateReplyData,
+  DelegationEntry as PryzmIcstakingV1DelegationEntry,
+  UndelegateReplyData as PryzmIcstakingV1UndelegateReplyData,
+  UndelegationEntry as PryzmIcstakingV1UndelegationEntry,
+  RedelegateReplyData as PryzmIcstakingV1RedelegateReplyData,
+  RedelegationEntry as PryzmIcstakingV1RedelegationEntry,
+  CompoundData as PryzmIcstakingV1CompoundData,
+  CollectUndelegatedReplyData as PryzmIcstakingV1CollectUndelegatedReplyData,
+  SweepData as PryzmIcstakingV1SweepData,
+  ChannelSweep as PryzmIcstakingV1ChannelSweep,
+  LsmTransferData as PryzmIcstakingV1LsmTransferData,
+  LsmReplyData as PryzmIcstakingV1LsmReplyData,
+} from "./pryzm/icstaking/v1/reply_pb.js";
+export {
+  QueryParamsRequest as PryzmIcstakingV1QueryParamsRequest,
+  QueryParamsResponse as PryzmIcstakingV1QueryParamsResponse,
+  QueryGetHostChainRequest as PryzmIcstakingV1QueryGetHostChainRequest,
+  QueryGetHostChainResponse as PryzmIcstakingV1QueryGetHostChainResponse,
+  QueryAllHostChainRequest as PryzmIcstakingV1QueryAllHostChainRequest,
+  QueryAllHostChainResponse as PryzmIcstakingV1QueryAllHostChainResponse,
+  QueryGetHostChainStateRequest as PryzmIcstakingV1QueryGetHostChainStateRequest,
+  QueryGetHostChainStateResponse as PryzmIcstakingV1QueryGetHostChainStateResponse,
+  QueryAllHostChainStateRequest as PryzmIcstakingV1QueryAllHostChainStateRequest,
+  QueryAllHostChainStateResponse as PryzmIcstakingV1QueryAllHostChainStateResponse,
+  QueryGetUndelegationRequest as PryzmIcstakingV1QueryGetUndelegationRequest,
+  QueryGetUndelegationResponse as PryzmIcstakingV1QueryGetUndelegationResponse,
+  QueryAllUndelegationRequest as PryzmIcstakingV1QueryAllUndelegationRequest,
+  QueryAllUndelegationResponse as PryzmIcstakingV1QueryAllUndelegationResponse,
+  QueryIncompleteUndelegationRequest as PryzmIcstakingV1QueryIncompleteUndelegationRequest,
+  QueryIncompleteUndelegationResponse as PryzmIcstakingV1QueryIncompleteUndelegationResponse,
+  QueryGetChannelUndelegationRequest as PryzmIcstakingV1QueryGetChannelUndelegationRequest,
+  QueryGetChannelUndelegationResponse as PryzmIcstakingV1QueryGetChannelUndelegationResponse,
+  QueryAllChannelUndelegationRequest as PryzmIcstakingV1QueryAllChannelUndelegationRequest,
+  QueryAllChannelUndelegationResponse as PryzmIcstakingV1QueryAllChannelUndelegationResponse,
+  QueryDelegationQueueBalanceRequest as PryzmIcstakingV1QueryDelegationQueueBalanceRequest,
+  QueryDelegationQueueBalanceResponse as PryzmIcstakingV1QueryDelegationQueueBalanceResponse,
+  QueryEpochInfoRequest as PryzmIcstakingV1QueryEpochInfoRequest,
+  QueryEpochInfoResponse as PryzmIcstakingV1QueryEpochInfoResponse,
+  QueryAllReplyDataRequest as PryzmIcstakingV1QueryAllReplyDataRequest,
+  QueryAllReplyDataResponse as PryzmIcstakingV1QueryAllReplyDataResponse,
+  QueryGetMultiSigConnectionRequest as PryzmIcstakingV1QueryGetMultiSigConnectionRequest,
+  QueryGetMultiSigConnectionResponse as PryzmIcstakingV1QueryGetMultiSigConnectionResponse,
+  QueryAllMultiSigConnectionRequest as PryzmIcstakingV1QueryAllMultiSigConnectionRequest,
+  QueryAllMultiSigConnectionResponse as PryzmIcstakingV1QueryAllMultiSigConnectionResponse,
+  QueryGetMultiSigPacketRequest as PryzmIcstakingV1QueryGetMultiSigPacketRequest,
+  QueryGetMultiSigPacketResponse as PryzmIcstakingV1QueryGetMultiSigPacketResponse,
+  QueryAllMultiSigPacketRequest as PryzmIcstakingV1QueryAllMultiSigPacketRequest,
+  QueryAllMultiSigPacketResponse as PryzmIcstakingV1QueryAllMultiSigPacketResponse,
+  QueryAllFailedLsmTransferRequest as PryzmIcstakingV1QueryAllFailedLsmTransferRequest,
+  QueryAllFailedLsmTransferResponse as PryzmIcstakingV1QueryAllFailedLsmTransferResponse,
+  QueryAllRedeemableLsmRequest as PryzmIcstakingV1QueryAllRedeemableLsmRequest,
+  QueryAllRedeemableLsmResponse as PryzmIcstakingV1QueryAllRedeemableLsmResponse,
+  QueryAllSweepTransferRequest as PryzmIcstakingV1QueryAllSweepTransferRequest,
+  QueryAllSweepTransferResponse as PryzmIcstakingV1QueryAllSweepTransferResponse,
+  QuerySimulateStakeRequest as PryzmIcstakingV1QuerySimulateStakeRequest,
+  QuerySimulateStakeResponse as PryzmIcstakingV1QuerySimulateStakeResponse,
+} from "./pryzm/icstaking/v1/query_pb.js";
+export {
+  QueryParamsService as PryzmIcstakingV1QueryParamsService,
+  QueryHostChainService as PryzmIcstakingV1QueryHostChainService,
+  QueryHostChainAllService as PryzmIcstakingV1QueryHostChainAllService,
+  QueryHostChainStateService as PryzmIcstakingV1QueryHostChainStateService,
+  QueryHostChainStateAllService as PryzmIcstakingV1QueryHostChainStateAllService,
+  QueryUndelegationService as PryzmIcstakingV1QueryUndelegationService,
+  QueryUndelegationAllService as PryzmIcstakingV1QueryUndelegationAllService,
+  QueryIncompleteUndelegationAllService as PryzmIcstakingV1QueryIncompleteUndelegationAllService,
+  QueryChannelUndelegationService as PryzmIcstakingV1QueryChannelUndelegationService,
+  QueryChannelUndelegationAllService as PryzmIcstakingV1QueryChannelUndelegationAllService,
+  QueryDelegationQueueBalanceService as PryzmIcstakingV1QueryDelegationQueueBalanceService,
+  QueryEpochInfoService as PryzmIcstakingV1QueryEpochInfoService,
+  QueryReplyDataAllService as PryzmIcstakingV1QueryReplyDataAllService,
+  QueryRedeemableLsmAllService as PryzmIcstakingV1QueryRedeemableLsmAllService,
+  QueryFailedLsmTransferAllService as PryzmIcstakingV1QueryFailedLsmTransferAllService,
+  QueryMultiSigConnectionService as PryzmIcstakingV1QueryMultiSigConnectionService,
+  QueryMultiSigConnectionAllService as PryzmIcstakingV1QueryMultiSigConnectionAllService,
+  QueryMultiSigPacketService as PryzmIcstakingV1QueryMultiSigPacketService,
+  QueryMultiSigPacketAllService as PryzmIcstakingV1QueryMultiSigPacketAllService,
+  QuerySweepTransferAllService as PryzmIcstakingV1QuerySweepTransferAllService,
+  QuerySimulateStakeService as PryzmIcstakingV1QuerySimulateStakeService,
+} from "./pryzm/icstaking/v1/query_cosmes.js";
+export {
+  Params as PryzmIcstakingV1Params,
+  StakingParams as PryzmIcstakingV1StakingParams,
+  FeeRatios as PryzmIcstakingV1FeeRatios,
+  RebalanceParams as PryzmIcstakingV1RebalanceParams,
+} from "./pryzm/icstaking/v1/params_pb.js";
+export {
+  OraclePayload as PryzmIcstakingV1OraclePayload,
+} from "./pryzm/icstaking/v1/oracle_payload_pb.js";
+export {
+  MultiSigConnection as PryzmIcstakingV1MultiSigConnection,
+  MultiSigPacket as PryzmIcstakingV1MultiSigPacket,
+  Acknowledgement as PryzmIcstakingV1Acknowledgement,
+} from "./pryzm/icstaking/v1/multisig_pb.js";
+export {
+  RedeemableLsm as PryzmIcstakingV1RedeemableLsm,
+  FailedLsmTransfer as PryzmIcstakingV1FailedLsmTransfer,
+} from "./pryzm/icstaking/v1/lsm_pb.js";
+export {
+  LoopBackPacket as PryzmIcstakingV1LoopBackPacket,
+  LoopBackMsgs as PryzmIcstakingV1LoopBackMsgs,
+  LoopBackTransfer as PryzmIcstakingV1LoopBackTransfer,
+} from "./pryzm/icstaking/v1/loopback_pb.js";
+export {
+  ConnectionType as PryzmIcstakingV1ConnectionType,
+  TransferChannelType as PryzmIcstakingV1TransferChannelType,
+  AccountState as PryzmIcstakingV1AccountState,
+  State as PryzmIcstakingV1State,
+  HostChain as PryzmIcstakingV1HostChain,
+  TransferChannel as PryzmIcstakingV1TransferChannel,
+  Validator as PryzmIcstakingV1Validator,
+  HostChainState as PryzmIcstakingV1HostChainState,
+  HostAccounts as PryzmIcstakingV1HostAccounts,
+  HostAccount as PryzmIcstakingV1HostAccount,
+  ValidatorState as PryzmIcstakingV1ValidatorState,
+} from "./pryzm/icstaking/v1/host_chain_pb.js";
+export {
+  GenesisState as PryzmIcstakingV1GenesisState,
+  HostChainEpochTime as PryzmIcstakingV1HostChainEpochTime,
+  HostChainUndelegationEpoch as PryzmIcstakingV1HostChainUndelegationEpoch,
+} from "./pryzm/icstaking/v1/genesis_pb.js";
+export {
+  EventSetHostChain as PryzmIcstakingV1EventSetHostChain,
+  EventSetHostChainState as PryzmIcstakingV1EventSetHostChainState,
+  EventSetParams as PryzmIcstakingV1EventSetParams,
+  EventSetUndelegation as PryzmIcstakingV1EventSetUndelegation,
+  EventSetChannelUndelegation as PryzmIcstakingV1EventSetChannelUndelegation,
+  EventStake as PryzmIcstakingV1EventStake,
+  EventStakeLsmShares as PryzmIcstakingV1EventStakeLsmShares,
+  EventUnstake as PryzmIcstakingV1EventUnstake,
+  EventRedeemUnstaked as PryzmIcstakingV1EventRedeemUnstaked,
+  EventInstantUnstake as PryzmIcstakingV1EventInstantUnstake,
+  EventSetMultiSigConnection as PryzmIcstakingV1EventSetMultiSigConnection,
+  EventSetMultiSigPacket as PryzmIcstakingV1EventSetMultiSigPacket,
+  EventAcknowledgeMultiSigPacket as PryzmIcstakingV1EventAcknowledgeMultiSigPacket,
+} from "./pryzm/icstaking/v1/event_pb.js";
+export {
+  MsgRegisterAsset as PryzmAssetsV1MsgRegisterAsset,
+  MsgRegisterAssetResponse as PryzmAssetsV1MsgRegisterAssetResponse,
+  MsgDisableAsset as PryzmAssetsV1MsgDisableAsset,
+  MsgDisableAssetResponse as PryzmAssetsV1MsgDisableAssetResponse,
+  MsgUpdateMaturityParams as PryzmAssetsV1MsgUpdateMaturityParams,
+  MsgUpdateMaturityParamsResponse as PryzmAssetsV1MsgUpdateMaturityParamsResponse,
+  MsgUpdateFeeRatios as PryzmAssetsV1MsgUpdateFeeRatios,
+  MsgUpdateFeeRatiosResponse as PryzmAssetsV1MsgUpdateFeeRatiosResponse,
+  MsgUpdateParams as PryzmAssetsV1MsgUpdateParams,
+  MsgUpdateParamsResponse as PryzmAssetsV1MsgUpdateParamsResponse,
+  MsgIntroduceMaturityLevel as PryzmAssetsV1MsgIntroduceMaturityLevel,
+  MsgIntroduceMaturityLevelResponse as PryzmAssetsV1MsgIntroduceMaturityLevelResponse,
+} from "./pryzm/assets/v1/tx_pb.js";
+export {
+  MsgUpdateParamsService as PryzmAssetsV1MsgUpdateParamsService,
+  MsgRegisterAssetService as PryzmAssetsV1MsgRegisterAssetService,
+  MsgDisableAssetService as PryzmAssetsV1MsgDisableAssetService,
+  MsgUpdateMaturityParamsService as PryzmAssetsV1MsgUpdateMaturityParamsService,
+  MsgUpdateFeeRatiosService as PryzmAssetsV1MsgUpdateFeeRatiosService,
+  MsgIntroduceMaturityLevelService as PryzmAssetsV1MsgIntroduceMaturityLevelService,
+} from "./pryzm/assets/v1/tx_cosmes.js";
+export {
+  RefractableAsset as PryzmAssetsV1RefractableAsset,
+  MaturityParams as PryzmAssetsV1MaturityParams,
+  FeeRatios as PryzmAssetsV1FeeRatios,
+} from "./pryzm/assets/v1/refractable_asset_pb.js";
+export {
+  QueryParamsRequest as PryzmAssetsV1QueryParamsRequest,
+  QueryParamsResponse as PryzmAssetsV1QueryParamsResponse,
+  QueryGetRefractableAssetRequest as PryzmAssetsV1QueryGetRefractableAssetRequest,
+  QueryGetRefractableAssetResponse as PryzmAssetsV1QueryGetRefractableAssetResponse,
+  QueryAllRefractableAssetRequest as PryzmAssetsV1QueryAllRefractableAssetRequest,
+  QueryAllRefractableAssetResponse as PryzmAssetsV1QueryAllRefractableAssetResponse,
+  QueryGetMaturityLevelRequest as PryzmAssetsV1QueryGetMaturityLevelRequest,
+  QueryGetMaturityLevelResponse as PryzmAssetsV1QueryGetMaturityLevelResponse,
+  QueryAllMaturityLevelRequest as PryzmAssetsV1QueryAllMaturityLevelRequest,
+  QueryAllMaturityLevelResponse as PryzmAssetsV1QueryAllMaturityLevelResponse,
+} from "./pryzm/assets/v1/query_pb.js";
+export {
+  QueryParamsService as PryzmAssetsV1QueryParamsService,
+  QueryRefractableAssetService as PryzmAssetsV1QueryRefractableAssetService,
+  QueryRefractableAssetAllService as PryzmAssetsV1QueryRefractableAssetAllService,
+  QueryMaturityLevelService as PryzmAssetsV1QueryMaturityLevelService,
+  QueryMaturityLevelAllService as PryzmAssetsV1QueryMaturityLevelAllService,
+} from "./pryzm/assets/v1/query_cosmes.js";
+export {
+  Params as PryzmAssetsV1Params,
+} from "./pryzm/assets/v1/params_pb.js";
+export {
+  OraclePayload as PryzmAssetsV1OraclePayload,
+} from "./pryzm/assets/v1/oracle_payload_pb.js";
+export {
+  MaturityLevel as PryzmAssetsV1MaturityLevel,
+} from "./pryzm/assets/v1/maturity_level_pb.js";
+export {
+  GenesisState as PryzmAssetsV1GenesisState,
+} from "./pryzm/assets/v1/genesis_pb.js";
+export {
+  EventSetParams as PryzmAssetsV1EventSetParams,
+  EventAddMaturityLevel as PryzmAssetsV1EventAddMaturityLevel,
+  EventDeactivateMaturityLevel as PryzmAssetsV1EventDeactivateMaturityLevel,
+  EventSetRefractableAsset as PryzmAssetsV1EventSetRefractableAsset,
+  EventSetMaturityLevel as PryzmAssetsV1EventSetMaturityLevel,
+} from "./pryzm/assets/v1/event_pb.js";
+export {
+  YammConfiguration as PryzmAmmV1YammConfiguration,
+} from "./pryzm/amm/v1/yamm_configuration_pb.js";
+export {
+  WhitelistedRoute as PryzmAmmV1WhitelistedRoute,
+} from "./pryzm/amm/v1/whitelisted_route_pb.js";
+export {
+  WeightedPoolProperties as PryzmAmmV1WeightedPoolProperties,
+  WeightedToken as PryzmAmmV1WeightedToken,
+} from "./pryzm/amm/v1/weighted_token_pb.js";
+export {
+  WeightUpdateTiming as PryzmAmmV1WeightUpdateTiming,
+} from "./pryzm/amm/v1/weight_update_timing_pb.js";
+export {
+  VirtualBalancePoolToken as PryzmAmmV1VirtualBalancePoolToken,
+} from "./pryzm/amm/v1/virtual_balance_pool_token_pb.js";
+export {
+  MsgSingleSwap as PryzmAmmV1MsgSingleSwap,
+  MsgSingleSwapResponse as PryzmAmmV1MsgSingleSwapResponse,
+  MsgJoinAllTokensExactLpt as PryzmAmmV1MsgJoinAllTokensExactLpt,
+  MsgJoinAllTokensExactLptResponse as PryzmAmmV1MsgJoinAllTokensExactLptResponse,
+  MsgJoinTokenExactLpt as PryzmAmmV1MsgJoinTokenExactLpt,
+  MsgJoinTokenExactLptResponse as PryzmAmmV1MsgJoinTokenExactLptResponse,
+  MsgJoinExactTokens as PryzmAmmV1MsgJoinExactTokens,
+  MsgJoinExactTokensResponse as PryzmAmmV1MsgJoinExactTokensResponse,
+  MsgZeroImpactJoinYamm as PryzmAmmV1MsgZeroImpactJoinYamm,
+  MsgZeroImpactJoinYammResponse as PryzmAmmV1MsgZeroImpactJoinYammResponse,
+  MsgExitExactTokens as PryzmAmmV1MsgExitExactTokens,
+  MsgExitExactTokensResponse as PryzmAmmV1MsgExitExactTokensResponse,
+  MsgExitTokenExactLpt as PryzmAmmV1MsgExitTokenExactLpt,
+  MsgExitTokenExactLptResponse as PryzmAmmV1MsgExitTokenExactLptResponse,
+  MsgExitAllTokensExactLpt as PryzmAmmV1MsgExitAllTokensExactLpt,
+  MsgExitAllTokensExactLptResponse as PryzmAmmV1MsgExitAllTokensExactLptResponse,
+  CreateWeightedPoolToken as PryzmAmmV1CreateWeightedPoolToken,
+  MsgCreateWeightedPool as PryzmAmmV1MsgCreateWeightedPool,
+  MsgCreateWeightedPoolResponse as PryzmAmmV1MsgCreateWeightedPoolResponse,
+  MsgUpdateSwapFee as PryzmAmmV1MsgUpdateSwapFee,
+  MsgUpdateSwapFeeResponse as PryzmAmmV1MsgUpdateSwapFeeResponse,
+  MsgInitializePool as PryzmAmmV1MsgInitializePool,
+  MsgInitializePoolResponse as PryzmAmmV1MsgInitializePoolResponse,
+  MsgUpdateWeights as PryzmAmmV1MsgUpdateWeights,
+  MsgUpdateWeightsResponse as PryzmAmmV1MsgUpdateWeightsResponse,
+  MsgBatchSwap as PryzmAmmV1MsgBatchSwap,
+  MsgBatchSwapResponse as PryzmAmmV1MsgBatchSwapResponse,
+  MsgSetYammConfiguration as PryzmAmmV1MsgSetYammConfiguration,
+  MsgSetYammConfigurationResponse as PryzmAmmV1MsgSetYammConfigurationResponse,
+  MsgWhitelistRoute as PryzmAmmV1MsgWhitelistRoute,
+  MsgWhitelistRouteResponse as PryzmAmmV1MsgWhitelistRouteResponse,
+  MsgSetWhitelistedRouteEnabled as PryzmAmmV1MsgSetWhitelistedRouteEnabled,
+  MsgSetWhitelistedRouteEnabledResponse as PryzmAmmV1MsgSetWhitelistedRouteEnabledResponse,
+  MsgSubmitOrder as PryzmAmmV1MsgSubmitOrder,
+  MsgSubmitOrderResponse as PryzmAmmV1MsgSubmitOrderResponse,
+  MsgCancelOrder as PryzmAmmV1MsgCancelOrder,
+  MsgCancelOrderResponse as PryzmAmmV1MsgCancelOrderResponse,
+  MsgProposeMatch as PryzmAmmV1MsgProposeMatch,
+  MsgProposeMatchResponse as PryzmAmmV1MsgProposeMatchResponse,
+  MsgSetCircuitBreakers as PryzmAmmV1MsgSetCircuitBreakers,
+  MsgSetCircuitBreakersResponse as PryzmAmmV1MsgSetCircuitBreakersResponse,
+  MsgSetRecoveryMode as PryzmAmmV1MsgSetRecoveryMode,
+  MsgSetRecoveryModeResponse as PryzmAmmV1MsgSetRecoveryModeResponse,
+  MsgRecoveryExit as PryzmAmmV1MsgRecoveryExit,
+  MsgRecoveryExitResponse as PryzmAmmV1MsgRecoveryExitResponse,
+  MsgSetPauseMode as PryzmAmmV1MsgSetPauseMode,
+  MsgSetPauseModeResponse as PryzmAmmV1MsgSetPauseModeResponse,
+  MsgSetVaultPauseMode as PryzmAmmV1MsgSetVaultPauseMode,
+  MsgSetVaultPauseModeResponse as PryzmAmmV1MsgSetVaultPauseModeResponse,
+  MsgCreateOraclePricePair as PryzmAmmV1MsgCreateOraclePricePair,
+  MsgCreateOraclePricePairResponse as PryzmAmmV1MsgCreateOraclePricePairResponse,
+  MsgUpdateOraclePricePair as PryzmAmmV1MsgUpdateOraclePricePair,
+  MsgUpdateOraclePricePairResponse as PryzmAmmV1MsgUpdateOraclePricePairResponse,
+  MsgDeleteOraclePricePair as PryzmAmmV1MsgDeleteOraclePricePair,
+  MsgDeleteOraclePricePairResponse as PryzmAmmV1MsgDeleteOraclePricePairResponse,
+  MsgSetSwapProtocolFee as PryzmAmmV1MsgSetSwapProtocolFee,
+  MsgSetSwapProtocolFeeResponse as PryzmAmmV1MsgSetSwapProtocolFeeResponse,
+  MsgSetJoinExitProtocolFee as PryzmAmmV1MsgSetJoinExitProtocolFee,
+  MsgSetJoinExitProtocolFeeResponse as PryzmAmmV1MsgSetJoinExitProtocolFeeResponse,
+  MsgIntroduceYammLpToWeightedPool as PryzmAmmV1MsgIntroduceYammLpToWeightedPool,
+  MsgIntroduceYammLpToWeightedPoolResponse as PryzmAmmV1MsgIntroduceYammLpToWeightedPoolResponse,
+  MsgIntroduceAssetBaseTokenToWeightedPool as PryzmAmmV1MsgIntroduceAssetBaseTokenToWeightedPool,
+  MsgIntroduceAssetBaseTokenToWeightedPoolResponse as PryzmAmmV1MsgIntroduceAssetBaseTokenToWeightedPoolResponse,
+  MsgCancelPendingTokenIntroduction as PryzmAmmV1MsgCancelPendingTokenIntroduction,
+  MsgCancelPendingTokenIntroductionResponse as PryzmAmmV1MsgCancelPendingTokenIntroductionResponse,
+  MsgRemoveTokenFromWeightedPool as PryzmAmmV1MsgRemoveTokenFromWeightedPool,
+  MsgRemoveTokenFromWeightedPoolResponse as PryzmAmmV1MsgRemoveTokenFromWeightedPoolResponse,
+  MsgUpdateParams as PryzmAmmV1MsgUpdateParams,
+  MsgUpdateParamsResponse as PryzmAmmV1MsgUpdateParamsResponse,
+  MsgAddMaturityToYamm as PryzmAmmV1MsgAddMaturityToYamm,
+  MsgAddMaturityToYammResponse as PryzmAmmV1MsgAddMaturityToYammResponse,
+  MsgSetInitializationAllowList as PryzmAmmV1MsgSetInitializationAllowList,
+  MsgSetInitializationAllowListResponse as PryzmAmmV1MsgSetInitializationAllowListResponse,
+  MsgSetPoolAdmins as PryzmAmmV1MsgSetPoolAdmins,
+  MsgSetPoolAdminsResponse as PryzmAmmV1MsgSetPoolAdminsResponse,
+  MsgSetPauseAllowList as PryzmAmmV1MsgSetPauseAllowList,
+  MsgSetPauseAllowListResponse as PryzmAmmV1MsgSetPauseAllowListResponse,
+  MsgSetPauseWindow as PryzmAmmV1MsgSetPauseWindow,
+  MsgSetPauseWindowResponse as PryzmAmmV1MsgSetPauseWindowResponse,
+  MsgSetOrderPairDisabled as PryzmAmmV1MsgSetOrderPairDisabled,
+  MsgSetOrderPairDisabledResponse as PryzmAmmV1MsgSetOrderPairDisabledResponse,
+} from "./pryzm/amm/v1/tx_pb.js";
+export {
+  MsgSingleSwapService as PryzmAmmV1MsgSingleSwapService,
+  MsgJoinAllTokensExactLptService as PryzmAmmV1MsgJoinAllTokensExactLptService,
+  MsgJoinTokenExactLptService as PryzmAmmV1MsgJoinTokenExactLptService,
+  MsgJoinExactTokensService as PryzmAmmV1MsgJoinExactTokensService,
+  MsgZeroImpactJoinYammService as PryzmAmmV1MsgZeroImpactJoinYammService,
+  MsgExitExactTokensService as PryzmAmmV1MsgExitExactTokensService,
+  MsgExitTokenExactLptService as PryzmAmmV1MsgExitTokenExactLptService,
+  MsgExitAllTokensExactLptService as PryzmAmmV1MsgExitAllTokensExactLptService,
+  MsgCreateWeightedPoolService as PryzmAmmV1MsgCreateWeightedPoolService,
+  MsgUpdateSwapFeeService as PryzmAmmV1MsgUpdateSwapFeeService,
+  MsgInitializePoolService as PryzmAmmV1MsgInitializePoolService,
+  MsgUpdateWeightsService as PryzmAmmV1MsgUpdateWeightsService,
+  MsgBatchSwapService as PryzmAmmV1MsgBatchSwapService,
+  MsgSetYammConfigurationService as PryzmAmmV1MsgSetYammConfigurationService,
+  MsgWhitelistRouteService as PryzmAmmV1MsgWhitelistRouteService,
+  MsgSetWhitelistedRouteEnabledService as PryzmAmmV1MsgSetWhitelistedRouteEnabledService,
+  MsgSubmitOrderService as PryzmAmmV1MsgSubmitOrderService,
+  MsgCancelOrderService as PryzmAmmV1MsgCancelOrderService,
+  MsgProposeMatchService as PryzmAmmV1MsgProposeMatchService,
+  MsgSetCircuitBreakersService as PryzmAmmV1MsgSetCircuitBreakersService,
+  MsgSetRecoveryModeService as PryzmAmmV1MsgSetRecoveryModeService,
+  MsgRecoveryExitService as PryzmAmmV1MsgRecoveryExitService,
+  MsgSetPauseModeService as PryzmAmmV1MsgSetPauseModeService,
+  MsgSetVaultPauseModeService as PryzmAmmV1MsgSetVaultPauseModeService,
+  MsgCreateOraclePricePairService as PryzmAmmV1MsgCreateOraclePricePairService,
+  MsgUpdateOraclePricePairService as PryzmAmmV1MsgUpdateOraclePricePairService,
+  MsgDeleteOraclePricePairService as PryzmAmmV1MsgDeleteOraclePricePairService,
+  MsgSetSwapProtocolFeeService as PryzmAmmV1MsgSetSwapProtocolFeeService,
+  MsgSetJoinExitProtocolFeeService as PryzmAmmV1MsgSetJoinExitProtocolFeeService,
+  MsgIntroduceYammLpToWeightedPoolService as PryzmAmmV1MsgIntroduceYammLpToWeightedPoolService,
+  MsgIntroduceAssetBaseTokenToWeightedPoolService as PryzmAmmV1MsgIntroduceAssetBaseTokenToWeightedPoolService,
+  MsgCancelPendingTokenIntroductionService as PryzmAmmV1MsgCancelPendingTokenIntroductionService,
+  MsgRemoveTokenFromWeightedPoolService as PryzmAmmV1MsgRemoveTokenFromWeightedPoolService,
+  MsgUpdateParamsService as PryzmAmmV1MsgUpdateParamsService,
+  MsgAddMaturityToYammService as PryzmAmmV1MsgAddMaturityToYammService,
+  MsgSetInitializationAllowListService as PryzmAmmV1MsgSetInitializationAllowListService,
+  MsgSetPoolAdminsService as PryzmAmmV1MsgSetPoolAdminsService,
+  MsgSetPauseAllowListService as PryzmAmmV1MsgSetPauseAllowListService,
+  MsgSetPauseWindowService as PryzmAmmV1MsgSetPauseWindowService,
+  MsgSetOrderPairDisabledService as PryzmAmmV1MsgSetOrderPairDisabledService,
+} from "./pryzm/amm/v1/tx_cosmes.js";
+export {
+  TokenWeight as PryzmAmmV1TokenWeight,
+} from "./pryzm/amm/v1/token_weight_pb.js";
+export {
+  TokenCircuitBreakerSettings as PryzmAmmV1TokenCircuitBreakerSettings,
+  CircuitBreakerSettings as PryzmAmmV1CircuitBreakerSettings,
+} from "./pryzm/amm/v1/token_circuit_breaker_settings_pb.js";
+export {
+  ScheduleOrder as PryzmAmmV1ScheduleOrder,
+} from "./pryzm/amm/v1/schedule_order_pb.js";
+export {
+  ExecutableOrderCount as PryzmAmmV1ExecutableOrderCount,
+} from "./pryzm/amm/v1/schedule_order_count_pb.js";
+export {
+  RouteStep as PryzmAmmV1RouteStep,
+} from "./pryzm/amm/v1/route_step_pb.js";
+export {
+  QueryParamsRequest as PryzmAmmV1QueryParamsRequest,
+  QueryParamsResponse as PryzmAmmV1QueryParamsResponse,
+  QueryGetPoolTokenRequest as PryzmAmmV1QueryGetPoolTokenRequest,
+  QueryGetPoolTokenResponse as PryzmAmmV1QueryGetPoolTokenResponse,
+  QueryAllPoolTokenRequest as PryzmAmmV1QueryAllPoolTokenRequest,
+  QueryAllPoolTokenResponse as PryzmAmmV1QueryAllPoolTokenResponse,
+  QueryAllPoolTokenForPoolRequest as PryzmAmmV1QueryAllPoolTokenForPoolRequest,
+  QueryAllPoolTokenForPoolResponse as PryzmAmmV1QueryAllPoolTokenForPoolResponse,
+  QueryAllPoolTokenWeightRequest as PryzmAmmV1QueryAllPoolTokenWeightRequest,
+  QueryAllPoolTokenWeightResponse as PryzmAmmV1QueryAllPoolTokenWeightResponse,
+  QueryGetPoolTokenWeightRequest as PryzmAmmV1QueryGetPoolTokenWeightRequest,
+  QueryGetPoolTokenWeightResponse as PryzmAmmV1QueryGetPoolTokenWeightResponse,
+  QueryGetPoolRequest as PryzmAmmV1QueryGetPoolRequest,
+  QueryGetPoolResponse as PryzmAmmV1QueryGetPoolResponse,
+  QueryAllPoolRequest as PryzmAmmV1QueryAllPoolRequest,
+  QueryAllPoolResponse as PryzmAmmV1QueryAllPoolResponse,
+  QueryGetWeightedTokenRequest as PryzmAmmV1QueryGetWeightedTokenRequest,
+  QueryGetWeightedTokenResponse as PryzmAmmV1QueryGetWeightedTokenResponse,
+  QueryAllWeightedTokenRequest as PryzmAmmV1QueryAllWeightedTokenRequest,
+  QueryAllWeightedTokenResponse as PryzmAmmV1QueryAllWeightedTokenResponse,
+  QueryGetWeightUpdateTimingRequest as PryzmAmmV1QueryGetWeightUpdateTimingRequest,
+  QueryGetWeightUpdateTimingResponse as PryzmAmmV1QueryGetWeightUpdateTimingResponse,
+  QueryAllWeightUpdateTimingRequest as PryzmAmmV1QueryAllWeightUpdateTimingRequest,
+  QueryAllWeightUpdateTimingResponse as PryzmAmmV1QueryAllWeightUpdateTimingResponse,
+  QuerySimulateSingleSwapRequest as PryzmAmmV1QuerySimulateSingleSwapRequest,
+  QuerySimulateSingleSwapResponse as PryzmAmmV1QuerySimulateSingleSwapResponse,
+  QuerySimulateInitializePoolRequest as PryzmAmmV1QuerySimulateInitializePoolRequest,
+  QuerySimulateInitializePoolResponse as PryzmAmmV1QuerySimulateInitializePoolResponse,
+  QuerySimulateJoinAllTokensExactLptRequest as PryzmAmmV1QuerySimulateJoinAllTokensExactLptRequest,
+  QuerySimulateJoinAllTokensExactLptResponse as PryzmAmmV1QuerySimulateJoinAllTokensExactLptResponse,
+  QuerySimulateJoinExactTokensRequest as PryzmAmmV1QuerySimulateJoinExactTokensRequest,
+  QuerySimulateJoinExactTokensResponse as PryzmAmmV1QuerySimulateJoinExactTokensResponse,
+  QuerySimulateZeroImpactJoinYammRequest as PryzmAmmV1QuerySimulateZeroImpactJoinYammRequest,
+  QuerySimulateZeroImpactJoinYammResponse as PryzmAmmV1QuerySimulateZeroImpactJoinYammResponse,
+  QuerySimulateJoinTokenExactLptRequest as PryzmAmmV1QuerySimulateJoinTokenExactLptRequest,
+  QuerySimulateJoinTokenExactLptResponse as PryzmAmmV1QuerySimulateJoinTokenExactLptResponse,
+  QuerySimulateExitTokenExactLptRequest as PryzmAmmV1QuerySimulateExitTokenExactLptRequest,
+  QuerySimulateExitTokenExactLptResponse as PryzmAmmV1QuerySimulateExitTokenExactLptResponse,
+  QuerySimulateExitExactTokensRequest as PryzmAmmV1QuerySimulateExitExactTokensRequest,
+  QuerySimulateExitExactTokensResponse as PryzmAmmV1QuerySimulateExitExactTokensResponse,
+  QuerySimulateExitAllTokensExactLptRequest as PryzmAmmV1QuerySimulateExitAllTokensExactLptRequest,
+  QuerySimulateExitAllTokensExactLptResponse as PryzmAmmV1QuerySimulateExitAllTokensExactLptResponse,
+  QuerySpotPriceRequest as PryzmAmmV1QuerySpotPriceRequest,
+  QuerySpotPriceResponse as PryzmAmmV1QuerySpotPriceResponse,
+  QueryGetIntroducingPoolTokenRequest as PryzmAmmV1QueryGetIntroducingPoolTokenRequest,
+  QueryGetIntroducingPoolTokenResponse as PryzmAmmV1QueryGetIntroducingPoolTokenResponse,
+  QueryAllIntroducingPoolTokenRequest as PryzmAmmV1QueryAllIntroducingPoolTokenRequest,
+  QueryAllIntroducingPoolTokenResponse as PryzmAmmV1QueryAllIntroducingPoolTokenResponse,
+  QueryGetExpiringPoolTokenRequest as PryzmAmmV1QueryGetExpiringPoolTokenRequest,
+  QueryGetExpiringPoolTokenResponse as PryzmAmmV1QueryGetExpiringPoolTokenResponse,
+  QueryAllExpiringPoolTokenRequest as PryzmAmmV1QueryAllExpiringPoolTokenRequest,
+  QueryAllExpiringPoolTokenResponse as PryzmAmmV1QueryAllExpiringPoolTokenResponse,
+  QueryLpTokenRequest as PryzmAmmV1QueryLpTokenRequest,
+  QueryLpTokenResponse as PryzmAmmV1QueryLpTokenResponse,
+  QuerySimulateBatchSwapRequest as PryzmAmmV1QuerySimulateBatchSwapRequest,
+  QuerySimulateBatchSwapResponse as PryzmAmmV1QuerySimulateBatchSwapResponse,
+  QueryGetYammConfigurationRequest as PryzmAmmV1QueryGetYammConfigurationRequest,
+  QueryGetYammConfigurationResponse as PryzmAmmV1QueryGetYammConfigurationResponse,
+  QueryAllYammConfigurationRequest as PryzmAmmV1QueryAllYammConfigurationRequest,
+  QueryAllYammConfigurationResponse as PryzmAmmV1QueryAllYammConfigurationResponse,
+  QueryGetWhitelistedRouteRequest as PryzmAmmV1QueryGetWhitelistedRouteRequest,
+  QueryGetWhitelistedRouteResponse as PryzmAmmV1QueryGetWhitelistedRouteResponse,
+  QueryAllWhitelistedRouteRequest as PryzmAmmV1QueryAllWhitelistedRouteRequest,
+  QueryAllWhitelistedRouteResponse as PryzmAmmV1QueryAllWhitelistedRouteResponse,
+  QueryGetOrderRequest as PryzmAmmV1QueryGetOrderRequest,
+  QueryGetOrderResponse as PryzmAmmV1QueryGetOrderResponse,
+  QueryAllOrderRequest as PryzmAmmV1QueryAllOrderRequest,
+  QueryAllOrderResponse as PryzmAmmV1QueryAllOrderResponse,
+  QueryGetExecutableOrderRequest as PryzmAmmV1QueryGetExecutableOrderRequest,
+  QueryGetExecutableOrderResponse as PryzmAmmV1QueryGetExecutableOrderResponse,
+  QueryAllExecutableOrderRequest as PryzmAmmV1QueryAllExecutableOrderRequest,
+  QueryAllExecutableOrderResponse as PryzmAmmV1QueryAllExecutableOrderResponse,
+  QueryGetScheduleOrderRequest as PryzmAmmV1QueryGetScheduleOrderRequest,
+  QueryGetScheduleOrderResponse as PryzmAmmV1QueryGetScheduleOrderResponse,
+  QueryAllScheduleOrderRequest as PryzmAmmV1QueryAllScheduleOrderRequest,
+  QueryAllScheduleOrderResponse as PryzmAmmV1QueryAllScheduleOrderResponse,
+  QueryGetOraclePricePairRequest as PryzmAmmV1QueryGetOraclePricePairRequest,
+  QueryGetOraclePricePairResponse as PryzmAmmV1QueryGetOraclePricePairResponse,
+  QueryAllOraclePricePairRequest as PryzmAmmV1QueryAllOraclePricePairRequest,
+  QueryAllOraclePricePairResponse as PryzmAmmV1QueryAllOraclePricePairResponse,
+  QueryVaultPauseModeRequest as PryzmAmmV1QueryVaultPauseModeRequest,
+  QueryVaultPauseModeResponse as PryzmAmmV1QueryVaultPauseModeResponse,
+  QueryGetPendingTokenIntroductionRequest as PryzmAmmV1QueryGetPendingTokenIntroductionRequest,
+  QueryGetPendingTokenIntroductionResponse as PryzmAmmV1QueryGetPendingTokenIntroductionResponse,
+  QueryAllPendingTokenIntroductionRequest as PryzmAmmV1QueryAllPendingTokenIntroductionRequest,
+  QueryAllPendingTokenIntroductionResponse as PryzmAmmV1QueryAllPendingTokenIntroductionResponse,
+  QueryYammPoolIdRequest as PryzmAmmV1QueryYammPoolIdRequest,
+  QueryYammPoolIdResponse as PryzmAmmV1QueryYammPoolIdResponse,
+  QueryOrderStepBoundsRequest as PryzmAmmV1QueryOrderStepBoundsRequest,
+  QueryOrderStepBoundsResponse as PryzmAmmV1QueryOrderStepBoundsResponse,
+  QueryAllDisabledOrderPairRequest as PryzmAmmV1QueryAllDisabledOrderPairRequest,
+  QueryAllDisabledOrderPairResponse as PryzmAmmV1QueryAllDisabledOrderPairResponse,
+  QueryOrderPairDisabledRequest as PryzmAmmV1QueryOrderPairDisabledRequest,
+  QueryOrderPairDisabledResponse as PryzmAmmV1QueryOrderPairDisabledResponse,
+} from "./pryzm/amm/v1/query_pb.js";
+export {
+  QueryParamsService as PryzmAmmV1QueryParamsService,
+  QueryPoolTokenService as PryzmAmmV1QueryPoolTokenService,
+  QueryPoolTokenAllService as PryzmAmmV1QueryPoolTokenAllService,
+  QueryPoolTokenAllForPoolService as PryzmAmmV1QueryPoolTokenAllForPoolService,
+  QueryPoolTokenWeightAllService as PryzmAmmV1QueryPoolTokenWeightAllService,
+  QueryPoolTokenWeightService as PryzmAmmV1QueryPoolTokenWeightService,
+  QueryPoolService as PryzmAmmV1QueryPoolService,
+  QueryPoolAllService as PryzmAmmV1QueryPoolAllService,
+  QueryWeightedTokenService as PryzmAmmV1QueryWeightedTokenService,
+  QueryWeightedTokenAllService as PryzmAmmV1QueryWeightedTokenAllService,
+  QueryWeightUpdateTimingService as PryzmAmmV1QueryWeightUpdateTimingService,
+  QueryWeightUpdateTimingAllService as PryzmAmmV1QueryWeightUpdateTimingAllService,
+  QuerySimulateSingleSwapService as PryzmAmmV1QuerySimulateSingleSwapService,
+  QuerySimulateInitializePoolService as PryzmAmmV1QuerySimulateInitializePoolService,
+  QuerySimulateJoinAllTokensExactLptService as PryzmAmmV1QuerySimulateJoinAllTokensExactLptService,
+  QuerySimulateJoinExactTokensService as PryzmAmmV1QuerySimulateJoinExactTokensService,
+  QuerySimulateZeroImpactJoinYammService as PryzmAmmV1QuerySimulateZeroImpactJoinYammService,
+  QuerySimulateJoinTokenExactLptService as PryzmAmmV1QuerySimulateJoinTokenExactLptService,
+  QuerySimulateExitTokenExactLptService as PryzmAmmV1QuerySimulateExitTokenExactLptService,
+  QuerySimulateExitExactTokensService as PryzmAmmV1QuerySimulateExitExactTokensService,
+  QuerySimulateExitAllTokensExactLptService as PryzmAmmV1QuerySimulateExitAllTokensExactLptService,
+  QuerySpotPriceService as PryzmAmmV1QuerySpotPriceService,
+  QueryIntroducingPoolTokenService as PryzmAmmV1QueryIntroducingPoolTokenService,
+  QueryIntroducingPoolTokenAllService as PryzmAmmV1QueryIntroducingPoolTokenAllService,
+  QueryExpiringPoolTokenService as PryzmAmmV1QueryExpiringPoolTokenService,
+  QueryExpiringPoolTokenAllService as PryzmAmmV1QueryExpiringPoolTokenAllService,
+  QueryLpTokenService as PryzmAmmV1QueryLpTokenService,
+  QuerySimulateBatchSwapService as PryzmAmmV1QuerySimulateBatchSwapService,
+  QueryYammConfigurationService as PryzmAmmV1QueryYammConfigurationService,
+  QueryYammConfigurationAllService as PryzmAmmV1QueryYammConfigurationAllService,
+  QueryWhitelistedRouteService as PryzmAmmV1QueryWhitelistedRouteService,
+  QueryWhitelistedRouteAllService as PryzmAmmV1QueryWhitelistedRouteAllService,
+  QueryOrderService as PryzmAmmV1QueryOrderService,
+  QueryOrderAllService as PryzmAmmV1QueryOrderAllService,
+  QueryExecutableOrderService as PryzmAmmV1QueryExecutableOrderService,
+  QueryExecutableOrderAllService as PryzmAmmV1QueryExecutableOrderAllService,
+  QueryScheduleOrderService as PryzmAmmV1QueryScheduleOrderService,
+  QueryScheduleOrderAllService as PryzmAmmV1QueryScheduleOrderAllService,
+  QueryOraclePricePairService as PryzmAmmV1QueryOraclePricePairService,
+  QueryOraclePricePairAllService as PryzmAmmV1QueryOraclePricePairAllService,
+  QueryVaultPauseModeService as PryzmAmmV1QueryVaultPauseModeService,
+  QueryPendingTokenIntroductionService as PryzmAmmV1QueryPendingTokenIntroductionService,
+  QueryPendingTokenIntroductionAllService as PryzmAmmV1QueryPendingTokenIntroductionAllService,
+  QueryYammPoolIdService as PryzmAmmV1QueryYammPoolIdService,
+  QueryOrderStepBoundsService as PryzmAmmV1QueryOrderStepBoundsService,
+  QueryDisabledOrderPairAllService as PryzmAmmV1QueryDisabledOrderPairAllService,
+  QueryOrderPairDisabledService as PryzmAmmV1QueryOrderPairDisabledService,
+} from "./pryzm/amm/v1/query_cosmes.js";
+export {
+  CircuitBreaker as PryzmAmmV1CircuitBreaker,
+  PoolToken as PryzmAmmV1PoolToken,
+  TokenAmount as PryzmAmmV1TokenAmount,
+} from "./pryzm/amm/v1/pool_token_pb.js";
+export {
+  PoolType as PryzmAmmV1PoolType,
+  PoolPauseWindow as PryzmAmmV1PoolPauseWindow,
+  Pool as PryzmAmmV1Pool,
+} from "./pryzm/amm/v1/pool_pb.js";
+export {
+  PendingTokenIntroduction as PryzmAmmV1PendingTokenIntroduction,
+} from "./pryzm/amm/v1/pending_token_introduction_pb.js";
+export {
+  OrderParameters as PryzmAmmV1OrderParameters,
+  YammParameters as PryzmAmmV1YammParameters,
+  GeneralPoolParameters as PryzmAmmV1GeneralPoolParameters,
+  AuthorizationParameters as PryzmAmmV1AuthorizationParameters,
+  GasParameters as PryzmAmmV1GasParameters,
+  Params as PryzmAmmV1Params,
+} from "./pryzm/amm/v1/params_pb.js";
+export {
+  PairMatchProposal as PryzmAmmV1PairMatchProposal,
+} from "./pryzm/amm/v1/pair_match_proposal_pb.js";
+export {
+  Order as PryzmAmmV1Order,
+  DisabledOrderPair as PryzmAmmV1DisabledOrderPair,
+} from "./pryzm/amm/v1/order_pb.js";
+export {
+  TwapAlgorithm as PryzmAmmV1TwapAlgorithm,
+  Pair as PryzmAmmV1Pair,
+  OraclePricePair as PryzmAmmV1OraclePricePair,
+} from "./pryzm/amm/v1/oracle_price_pair_pb.js";
+export {
+  OraclePayloadDataSourceBlockHeight as PryzmAmmV1OraclePayloadDataSourceBlockHeight,
+  OraclePayload as PryzmAmmV1OraclePayload,
+} from "./pryzm/amm/v1/oracle_payload_pb.js";
+export {
+  SwapType as PryzmAmmV1SwapType,
+  JoinType as PryzmAmmV1JoinType,
+  ExitType as PryzmAmmV1ExitType,
+  Swap as PryzmAmmV1Swap,
+  SwapStep as PryzmAmmV1SwapStep,
+  SwapSummary as PryzmAmmV1SwapSummary,
+  JoinSummary as PryzmAmmV1JoinSummary,
+  ExitSummary as PryzmAmmV1ExitSummary,
+} from "./pryzm/amm/v1/operations_pb.js";
+export {
+  GenesisPoolData as PryzmAmmV1GenesisPoolData,
+  YammPoolAssetId as PryzmAmmV1YammPoolAssetId,
+  GenesisState as PryzmAmmV1GenesisState,
+} from "./pryzm/amm/v1/genesis_pb.js";
+export {
+  RemoveOrderReason as PryzmAmmV1RemoveOrderReason,
+  EventSetPool as PryzmAmmV1EventSetPool,
+  EventSetPoolCount as PryzmAmmV1EventSetPoolCount,
+  EventSetOrderPairDisabled as PryzmAmmV1EventSetOrderPairDisabled,
+  EventSetLpTokenSupply as PryzmAmmV1EventSetLpTokenSupply,
+  EventSetPoolToken as PryzmAmmV1EventSetPoolToken,
+  EventRemovePoolToken as PryzmAmmV1EventRemovePoolToken,
+  EventSetWeightedToken as PryzmAmmV1EventSetWeightedToken,
+  EventRemoveWeightedToken as PryzmAmmV1EventRemoveWeightedToken,
+  EventSetWeightUpdateTiming as PryzmAmmV1EventSetWeightUpdateTiming,
+  EventSetWhitelistedRoute as PryzmAmmV1EventSetWhitelistedRoute,
+  EventSetYammConfiguration as PryzmAmmV1EventSetYammConfiguration,
+  EventSetOrder as PryzmAmmV1EventSetOrder,
+  EventSetOrderCount as PryzmAmmV1EventSetOrderCount,
+  EventRemoveOrder as PryzmAmmV1EventRemoveOrder,
+  EventCancelOrder as PryzmAmmV1EventCancelOrder,
+  EventSetScheduleOrder as PryzmAmmV1EventSetScheduleOrder,
+  EventRemoveScheduleOrder as PryzmAmmV1EventRemoveScheduleOrder,
+  EventSetExecutableOrder as PryzmAmmV1EventSetExecutableOrder,
+  EventRemoveExecutableOrder as PryzmAmmV1EventRemoveExecutableOrder,
+  EventSetIntroducingPoolToken as PryzmAmmV1EventSetIntroducingPoolToken,
+  EventRemoveIntroducingPoolToken as PryzmAmmV1EventRemoveIntroducingPoolToken,
+  EventSetExpiringPoolToken as PryzmAmmV1EventSetExpiringPoolToken,
+  EventRemoveExpiringPoolToken as PryzmAmmV1EventRemoveExpiringPoolToken,
+  EventSetYammPoolForAssetId as PryzmAmmV1EventSetYammPoolForAssetId,
+  EventSetVaultPaused as PryzmAmmV1EventSetVaultPaused,
+  EventExecuteOrder as PryzmAmmV1EventExecuteOrder,
+  EventExecuteOrdersForPair as PryzmAmmV1EventExecuteOrdersForPair,
+  EventExecuteMatchProposalOrder as PryzmAmmV1EventExecuteMatchProposalOrder,
+  EventExecuteMatchProposalPair as PryzmAmmV1EventExecuteMatchProposalPair,
+  EventExecuteMatchProposal as PryzmAmmV1EventExecuteMatchProposal,
+  EventExitPool as PryzmAmmV1EventExitPool,
+  EventJoinPool as PryzmAmmV1EventJoinPool,
+  EventSwap as PryzmAmmV1EventSwap,
+  EventExitPoolRequest as PryzmAmmV1EventExitPoolRequest,
+  EventJoinPoolRequest as PryzmAmmV1EventJoinPoolRequest,
+  EventSingleSwapRequest as PryzmAmmV1EventSingleSwapRequest,
+  EventBatchSwapRequest as PryzmAmmV1EventBatchSwapRequest,
+  EventYAssetSwapRefractorAction as PryzmAmmV1EventYAssetSwapRefractorAction,
+  EventYAssetSwap as PryzmAmmV1EventYAssetSwap,
+  EventSetOraclePricePair as PryzmAmmV1EventSetOraclePricePair,
+  EventRemoveOraclePricePair as PryzmAmmV1EventRemoveOraclePricePair,
+  EventSetPendingTokenIntroduction as PryzmAmmV1EventSetPendingTokenIntroduction,
+  EventRemovePendingTokenIntroduction as PryzmAmmV1EventRemovePendingTokenIntroduction,
+  EventSetParams as PryzmAmmV1EventSetParams,
+} from "./pryzm/amm/v1/event_pb.js";
+export {
   MsgSetValidatorSetPreference as OsmosisValsetprefV1beta1MsgSetValidatorSetPreference,
   MsgSetValidatorSetPreferenceResponse as OsmosisValsetprefV1beta1MsgSetValidatorSetPreferenceResponse,
   MsgDelegateToValidatorSet as OsmosisValsetprefV1beta1MsgDelegateToValidatorSet,
@@ -203,6 +1295,7 @@ export {
 } from "./osmosis/txfees/v1beta1/gov_pb.js";
 export {
   GenesisState as OsmosisTxfeesV1beta1GenesisState,
+  TxFeesTracker as OsmosisTxfeesV1beta1TxFeesTracker,
 } from "./osmosis/txfees/v1beta1/genesis_pb.js";
 export {
   FeeToken as OsmosisTxfeesV1beta1FeeToken,
@@ -243,8 +1336,6 @@ export {
   MsgBurnResponse as OsmosisTokenfactoryV1beta1MsgBurnResponse,
   MsgChangeAdmin as OsmosisTokenfactoryV1beta1MsgChangeAdmin,
   MsgChangeAdminResponse as OsmosisTokenfactoryV1beta1MsgChangeAdminResponse,
-  MsgSetBeforeSendHook as OsmosisTokenfactoryV1beta1MsgSetBeforeSendHook,
-  MsgSetBeforeSendHookResponse as OsmosisTokenfactoryV1beta1MsgSetBeforeSendHookResponse,
   MsgSetDenomMetadata as OsmosisTokenfactoryV1beta1MsgSetDenomMetadata,
   MsgSetDenomMetadataResponse as OsmosisTokenfactoryV1beta1MsgSetDenomMetadataResponse,
   MsgForceTransfer as OsmosisTokenfactoryV1beta1MsgForceTransfer,
@@ -256,7 +1347,6 @@ export {
   MsgBurnService as OsmosisTokenfactoryV1beta1MsgBurnService,
   MsgChangeAdminService as OsmosisTokenfactoryV1beta1MsgChangeAdminService,
   MsgSetDenomMetadataService as OsmosisTokenfactoryV1beta1MsgSetDenomMetadataService,
-  MsgSetBeforeSendHookService as OsmosisTokenfactoryV1beta1MsgSetBeforeSendHookService,
   MsgForceTransferService as OsmosisTokenfactoryV1beta1MsgForceTransferService,
 } from "./osmosis/tokenfactory/v1beta1/tx_cosmes.js";
 export {
@@ -266,17 +1356,11 @@ export {
   QueryDenomAuthorityMetadataResponse as OsmosisTokenfactoryV1beta1QueryDenomAuthorityMetadataResponse,
   QueryDenomsFromCreatorRequest as OsmosisTokenfactoryV1beta1QueryDenomsFromCreatorRequest,
   QueryDenomsFromCreatorResponse as OsmosisTokenfactoryV1beta1QueryDenomsFromCreatorResponse,
-  QueryBeforeSendHookAddressRequest as OsmosisTokenfactoryV1beta1QueryBeforeSendHookAddressRequest,
-  QueryBeforeSendHookAddressResponse as OsmosisTokenfactoryV1beta1QueryBeforeSendHookAddressResponse,
-  QueryAllBeforeSendHooksAddressesRequest as OsmosisTokenfactoryV1beta1QueryAllBeforeSendHooksAddressesRequest,
-  QueryAllBeforeSendHooksAddressesResponse as OsmosisTokenfactoryV1beta1QueryAllBeforeSendHooksAddressesResponse,
 } from "./osmosis/tokenfactory/v1beta1/query_pb.js";
 export {
   QueryParamsService as OsmosisTokenfactoryV1beta1QueryParamsService,
   QueryDenomAuthorityMetadataService as OsmosisTokenfactoryV1beta1QueryDenomAuthorityMetadataService,
   QueryDenomsFromCreatorService as OsmosisTokenfactoryV1beta1QueryDenomsFromCreatorService,
-  QueryBeforeSendHookAddressService as OsmosisTokenfactoryV1beta1QueryBeforeSendHookAddressService,
-  QueryAllBeforeSendHooksAddressesService as OsmosisTokenfactoryV1beta1QueryAllBeforeSendHooksAddressesService,
 } from "./osmosis/tokenfactory/v1beta1/query_cosmes.js";
 export {
   Params as OsmosisTokenfactoryV1beta1Params,
@@ -571,6 +1655,10 @@ export {
   MsgSplitRouteSwapExactAmountOutResponse as OsmosisPoolmanagerV1beta1MsgSplitRouteSwapExactAmountOutResponse,
   MsgSetDenomPairTakerFee as OsmosisPoolmanagerV1beta1MsgSetDenomPairTakerFee,
   MsgSetDenomPairTakerFeeResponse as OsmosisPoolmanagerV1beta1MsgSetDenomPairTakerFeeResponse,
+  MsgSetTakerFeeShareAgreementForDenom as OsmosisPoolmanagerV1beta1MsgSetTakerFeeShareAgreementForDenom,
+  MsgSetTakerFeeShareAgreementForDenomResponse as OsmosisPoolmanagerV1beta1MsgSetTakerFeeShareAgreementForDenomResponse,
+  MsgSetRegisteredAlloyedPool as OsmosisPoolmanagerV1beta1MsgSetRegisteredAlloyedPool,
+  MsgSetRegisteredAlloyedPoolResponse as OsmosisPoolmanagerV1beta1MsgSetRegisteredAlloyedPoolResponse,
   DenomPairTakerFee as OsmosisPoolmanagerV1beta1DenomPairTakerFee,
 } from "./osmosis/poolmanager/v1beta1/tx_pb.js";
 export {
@@ -579,10 +1667,17 @@ export {
   MsgSplitRouteSwapExactAmountInService as OsmosisPoolmanagerV1beta1MsgSplitRouteSwapExactAmountInService,
   MsgSplitRouteSwapExactAmountOutService as OsmosisPoolmanagerV1beta1MsgSplitRouteSwapExactAmountOutService,
   MsgSetDenomPairTakerFeeService as OsmosisPoolmanagerV1beta1MsgSetDenomPairTakerFeeService,
+  MsgSetTakerFeeShareAgreementForDenomService as OsmosisPoolmanagerV1beta1MsgSetTakerFeeShareAgreementForDenomService,
+  MsgSetRegisteredAlloyedPoolService as OsmosisPoolmanagerV1beta1MsgSetRegisteredAlloyedPoolService,
 } from "./osmosis/poolmanager/v1beta1/tx_cosmes.js";
 export {
   TrackedVolume as OsmosisPoolmanagerV1beta1TrackedVolume,
 } from "./osmosis/poolmanager/v1beta1/tracked_volume_pb.js";
+export {
+  TakerFeeShareAgreement as OsmosisPoolmanagerV1beta1TakerFeeShareAgreement,
+  TakerFeeSkimAccumulator as OsmosisPoolmanagerV1beta1TakerFeeSkimAccumulator,
+  AlloyContractTakerFeeShareState as OsmosisPoolmanagerV1beta1AlloyContractTakerFeeShareState,
+} from "./osmosis/poolmanager/v1beta1/taker_fee_share_pb.js";
 export {
   SwapAmountInRoute as OsmosisPoolmanagerV1beta1SwapAmountInRoute,
   SwapAmountOutRoute as OsmosisPoolmanagerV1beta1SwapAmountOutRoute,
@@ -620,6 +1715,20 @@ export {
   TradingPairTakerFeeResponse as OsmosisPoolmanagerV1beta1TradingPairTakerFeeResponse,
   EstimateTradeBasedOnPriceImpactRequest as OsmosisPoolmanagerV1beta1EstimateTradeBasedOnPriceImpactRequest,
   EstimateTradeBasedOnPriceImpactResponse as OsmosisPoolmanagerV1beta1EstimateTradeBasedOnPriceImpactResponse,
+  AllTakerFeeShareAgreementsRequest as OsmosisPoolmanagerV1beta1AllTakerFeeShareAgreementsRequest,
+  AllTakerFeeShareAgreementsResponse as OsmosisPoolmanagerV1beta1AllTakerFeeShareAgreementsResponse,
+  TakerFeeShareAgreementFromDenomRequest as OsmosisPoolmanagerV1beta1TakerFeeShareAgreementFromDenomRequest,
+  TakerFeeShareAgreementFromDenomResponse as OsmosisPoolmanagerV1beta1TakerFeeShareAgreementFromDenomResponse,
+  TakerFeeShareDenomsToAccruedValueRequest as OsmosisPoolmanagerV1beta1TakerFeeShareDenomsToAccruedValueRequest,
+  TakerFeeShareDenomsToAccruedValueResponse as OsmosisPoolmanagerV1beta1TakerFeeShareDenomsToAccruedValueResponse,
+  AllTakerFeeShareAccumulatorsRequest as OsmosisPoolmanagerV1beta1AllTakerFeeShareAccumulatorsRequest,
+  AllTakerFeeShareAccumulatorsResponse as OsmosisPoolmanagerV1beta1AllTakerFeeShareAccumulatorsResponse,
+  RegisteredAlloyedPoolFromDenomRequest as OsmosisPoolmanagerV1beta1RegisteredAlloyedPoolFromDenomRequest,
+  RegisteredAlloyedPoolFromDenomResponse as OsmosisPoolmanagerV1beta1RegisteredAlloyedPoolFromDenomResponse,
+  RegisteredAlloyedPoolFromPoolIdRequest as OsmosisPoolmanagerV1beta1RegisteredAlloyedPoolFromPoolIdRequest,
+  RegisteredAlloyedPoolFromPoolIdResponse as OsmosisPoolmanagerV1beta1RegisteredAlloyedPoolFromPoolIdResponse,
+  AllRegisteredAlloyedPoolsRequest as OsmosisPoolmanagerV1beta1AllRegisteredAlloyedPoolsRequest,
+  AllRegisteredAlloyedPoolsResponse as OsmosisPoolmanagerV1beta1AllRegisteredAlloyedPoolsResponse,
 } from "./osmosis/poolmanager/v1beta1/query_pb.js";
 export {
   QueryParamsService as OsmosisPoolmanagerV1beta1QueryParamsService,
@@ -639,6 +1748,13 @@ export {
   QueryTotalVolumeForPoolService as OsmosisPoolmanagerV1beta1QueryTotalVolumeForPoolService,
   QueryTradingPairTakerFeeService as OsmosisPoolmanagerV1beta1QueryTradingPairTakerFeeService,
   QueryEstimateTradeBasedOnPriceImpactService as OsmosisPoolmanagerV1beta1QueryEstimateTradeBasedOnPriceImpactService,
+  QueryAllTakerFeeShareAgreementsService as OsmosisPoolmanagerV1beta1QueryAllTakerFeeShareAgreementsService,
+  QueryTakerFeeShareAgreementFromDenomService as OsmosisPoolmanagerV1beta1QueryTakerFeeShareAgreementFromDenomService,
+  QueryTakerFeeShareDenomsToAccruedValueService as OsmosisPoolmanagerV1beta1QueryTakerFeeShareDenomsToAccruedValueService,
+  QueryAllTakerFeeShareAccumulatorsService as OsmosisPoolmanagerV1beta1QueryAllTakerFeeShareAccumulatorsService,
+  QueryRegisteredAlloyedPoolFromDenomService as OsmosisPoolmanagerV1beta1QueryRegisteredAlloyedPoolFromDenomService,
+  QueryRegisteredAlloyedPoolFromPoolIdService as OsmosisPoolmanagerV1beta1QueryRegisteredAlloyedPoolFromPoolIdService,
+  QueryAllRegisteredAlloyedPoolsService as OsmosisPoolmanagerV1beta1QueryAllRegisteredAlloyedPoolsService,
 } from "./osmosis/poolmanager/v1beta1/query_cosmes.js";
 export {
   PoolType as OsmosisPoolmanagerV1beta1PoolType,
@@ -859,6 +1975,8 @@ export {
   QueryCurrentWeightByGroupGaugeIDRequest as OsmosisIncentivesQueryCurrentWeightByGroupGaugeIDRequest,
   QueryCurrentWeightByGroupGaugeIDResponse as OsmosisIncentivesQueryCurrentWeightByGroupGaugeIDResponse,
   GaugeWeight as OsmosisIncentivesGaugeWeight,
+  ParamsRequest as OsmosisIncentivesParamsRequest,
+  ParamsResponse as OsmosisIncentivesParamsResponse,
 } from "./osmosis/incentives/query_pb.js";
 export {
   QueryModuleToDistributeCoinsService as OsmosisIncentivesQueryModuleToDistributeCoinsService,
@@ -875,6 +1993,7 @@ export {
   QueryAllGroupsWithGaugeService as OsmosisIncentivesQueryAllGroupsWithGaugeService,
   QueryGroupByGroupGaugeIDService as OsmosisIncentivesQueryGroupByGroupGaugeIDService,
   QueryCurrentWeightByGroupGaugeIDService as OsmosisIncentivesQueryCurrentWeightByGroupGaugeIDService,
+  QueryParamsService as OsmosisIncentivesQueryParamsService,
 } from "./osmosis/incentives/query_cosmes.js";
 export {
   Params as OsmosisIncentivesParams,
@@ -963,6 +2082,8 @@ export {
   BalancerToConcentratedPoolLink as OsmosisGammV1beta1BalancerToConcentratedPoolLink,
 } from "./osmosis/gamm/v1beta1/shared_pb.js";
 export {
+  ParamsRequest as OsmosisGammV1beta1ParamsRequest,
+  ParamsResponse as OsmosisGammV1beta1ParamsResponse,
   QueryPoolRequest as OsmosisGammV1beta1QueryPoolRequest,
   QueryPoolResponse as OsmosisGammV1beta1QueryPoolResponse,
   QueryPoolsRequest as OsmosisGammV1beta1QueryPoolsRequest,
@@ -1016,7 +2137,11 @@ export {
   QueryEstimateSwapExactAmountOutService as OsmosisGammV1beta1QueryEstimateSwapExactAmountOutService,
   QueryConcentratedPoolIdLinkFromCFMMService as OsmosisGammV1beta1QueryConcentratedPoolIdLinkFromCFMMService,
   QueryCFMMConcentratedPoolLinksService as OsmosisGammV1beta1QueryCFMMConcentratedPoolLinksService,
+  QueryParamsService as OsmosisGammV1beta1QueryParamsService,
 } from "./osmosis/gamm/v1beta1/query_cosmes.js";
+export {
+  Params as OsmosisGammV1beta1Params,
+} from "./osmosis/gamm/v1beta1/params_pb.js";
 export {
   ReplaceMigrationRecordsProposal as OsmosisGammV1beta1ReplaceMigrationRecordsProposal,
   UpdateMigrationRecordsProposal as OsmosisGammV1beta1UpdateMigrationRecordsProposal,
@@ -1025,7 +2150,6 @@ export {
   SetScalingFactorControllerProposal as OsmosisGammV1beta1SetScalingFactorControllerProposal,
 } from "./osmosis/gamm/v1beta1/gov_pb.js";
 export {
-  Params as OsmosisGammV1beta1Params,
   GenesisState as OsmosisGammV1beta1GenesisState,
 } from "./osmosis/gamm/v1beta1/genesis_pb.js";
 export {
@@ -1156,6 +2280,12 @@ export {
 export {
   InstantiateMsg as OsmosisCosmwasmpoolV1beta1ModelInstantiateMsg,
 } from "./osmosis/cosmwasmpool/v1beta1/model/instantiate_msg_pb.js";
+export {
+  ShareDenomResponse as OsmosisCosmwasmpoolV1beta1ModelV3ShareDenomResponse,
+  TotalPoolLiquidityResponse as OsmosisCosmwasmpoolV1beta1ModelV3TotalPoolLiquidityResponse,
+  AssetConfig as OsmosisCosmwasmpoolV1beta1ModelV3AssetConfig,
+  ListAssetConfigsResponse as OsmosisCosmwasmpoolV1beta1ModelV3ListAssetConfigsResponse,
+} from "./osmosis/cosmwasmpool/v1beta1/model/v3/pool_query_msg_pb.js";
 export {
   Params as OsmosisConcentratedliquidityParams,
 } from "./osmosis/concentratedliquidity/params_pb.js";
@@ -1566,6 +2696,19 @@ export {
 export {
   GenesisState as KavaPricefeedV1beta1GenesisState,
 } from "./kava/pricefeed/v1beta1/genesis_pb.js";
+export {
+  QueryTotalFractionalBalancesRequest as KavaPrecisebankV1QueryTotalFractionalBalancesRequest,
+  QueryTotalFractionalBalancesResponse as KavaPrecisebankV1QueryTotalFractionalBalancesResponse,
+  QueryRemainderRequest as KavaPrecisebankV1QueryRemainderRequest,
+  QueryRemainderResponse as KavaPrecisebankV1QueryRemainderResponse,
+  QueryFractionalBalanceRequest as KavaPrecisebankV1QueryFractionalBalanceRequest,
+  QueryFractionalBalanceResponse as KavaPrecisebankV1QueryFractionalBalanceResponse,
+} from "./kava/precisebank/v1/query_pb.js";
+export {
+  QueryTotalFractionalBalancesService as KavaPrecisebankV1QueryTotalFractionalBalancesService,
+  QueryRemainderService as KavaPrecisebankV1QueryRemainderService,
+  QueryFractionalBalanceService as KavaPrecisebankV1QueryFractionalBalanceService,
+} from "./kava/precisebank/v1/query_cosmes.js";
 export {
   GenesisState as KavaPrecisebankV1GenesisState,
   FractionalBalance as KavaPrecisebankV1FractionalBalance,
@@ -3754,15 +4897,14 @@ export {
   Params as EvmosIncentivesV1Params,
 } from "./evmos/incentives/v1/genesis_pb.js";
 export {
-  MsgConvertCoin as EvmosErc20V1MsgConvertCoin,
-  MsgConvertCoinResponse as EvmosErc20V1MsgConvertCoinResponse,
   MsgConvertERC20 as EvmosErc20V1MsgConvertERC20,
   MsgConvertERC20Response as EvmosErc20V1MsgConvertERC20Response,
+  MsgConvertCoin as EvmosErc20V1MsgConvertCoin,
+  MsgConvertCoinResponse as EvmosErc20V1MsgConvertCoinResponse,
   MsgUpdateParams as EvmosErc20V1MsgUpdateParams,
   MsgUpdateParamsResponse as EvmosErc20V1MsgUpdateParamsResponse,
 } from "./evmos/erc20/v1/tx_pb.js";
 export {
-  MsgConvertCoinService as EvmosErc20V1MsgConvertCoinService,
   MsgConvertERC20Service as EvmosErc20V1MsgConvertERC20Service,
   MsgUpdateParamsService as EvmosErc20V1MsgUpdateParamsService,
 } from "./evmos/erc20/v1/tx_cosmes.js";
@@ -4044,6 +5186,10 @@ export {
   QueryLiquidTotalResponse as ElysTierQueryLiquidTotalResponse,
   QueryGetAmmPriceRequest as ElysTierQueryGetAmmPriceRequest,
   QueryGetAmmPriceResponse as ElysTierQueryGetAmmPriceResponse,
+  QueryGetConsolidatedPriceRequest as ElysTierQueryGetConsolidatedPriceRequest,
+  QueryGetConsolidatedPriceResponse as ElysTierQueryGetConsolidatedPriceResponse,
+  QueryStakedRequest as ElysTierQueryStakedRequest,
+  QueryStakedResponse as ElysTierQueryStakedResponse,
 } from "./elys/tier/query_pb.js";
 export {
   QueryParamsService as ElysTierQueryParamsService,
@@ -4056,6 +5202,8 @@ export {
   QueryPerpetualService as ElysTierQueryPerpetualService,
   QueryLiquidTotalService as ElysTierQueryLiquidTotalService,
   QueryGetAmmPriceService as ElysTierQueryGetAmmPriceService,
+  QueryGetConsolidatedPriceService as ElysTierQueryGetConsolidatedPriceService,
+  QueryStakedService as ElysTierQueryStakedService,
 } from "./elys/tier/query_cosmes.js";
 export {
   Portfolio as ElysTierPortfolio,
@@ -4074,10 +5222,13 @@ export {
   MsgBondResponse as ElysStablestakeMsgBondResponse,
   MsgUnbond as ElysStablestakeMsgUnbond,
   MsgUnbondResponse as ElysStablestakeMsgUnbondResponse,
+  MsgUpdateParams as ElysStablestakeMsgUpdateParams,
+  MsgUpdateParamsResponse as ElysStablestakeMsgUpdateParamsResponse,
 } from "./elys/stablestake/tx_pb.js";
 export {
   MsgBondService as ElysStablestakeMsgBondService,
   MsgUnbondService as ElysStablestakeMsgUnbondService,
+  MsgUpdateParamsService as ElysStablestakeMsgUpdateParamsService,
 } from "./elys/stablestake/tx_cosmes.js";
 export {
   QueryParamsRequest as ElysStablestakeQueryParamsRequest,
@@ -4368,6 +5519,7 @@ export {
 export {
   Position as ElysLeveragelpPosition,
   AddressId as ElysLeveragelpAddressId,
+  PositionAndInterest as ElysLeveragelpPositionAndInterest,
 } from "./elys/leveragelp/types_pb.js";
 export {
   MsgOpen as ElysLeveragelpMsgOpen,
@@ -4386,6 +5538,8 @@ export {
   MsgDewhitelistResponse as ElysLeveragelpMsgDewhitelistResponse,
   MsgUpdateStopLoss as ElysLeveragelpMsgUpdateStopLoss,
   MsgUpdateStopLossResponse as ElysLeveragelpMsgUpdateStopLossResponse,
+  MsgAddCollateral as ElysLeveragelpMsgAddCollateral,
+  MsgAddCollateralResponse as ElysLeveragelpMsgAddCollateralResponse,
 } from "./elys/leveragelp/tx_pb.js";
 export {
   MsgOpenService as ElysLeveragelpMsgOpenService,
@@ -4396,6 +5550,7 @@ export {
   MsgWhitelistService as ElysLeveragelpMsgWhitelistService,
   MsgDewhitelistService as ElysLeveragelpMsgDewhitelistService,
   MsgUpdateStopLossService as ElysLeveragelpMsgUpdateStopLossService,
+  MsgAddCollateralService as ElysLeveragelpMsgAddCollateralService,
 } from "./elys/leveragelp/tx_cosmes.js";
 export {
   ParamsRequest as ElysLeveragelpParamsRequest,
@@ -4427,6 +5582,8 @@ export {
   RewardInfo as ElysLeveragelpRewardInfo,
   QueryRewardsResponse as ElysLeveragelpQueryRewardsResponse,
   QueryCloseEstResponse as ElysLeveragelpQueryCloseEstResponse,
+  QueryCommittedTokensLockedRequest as ElysLeveragelpQueryCommittedTokensLockedRequest,
+  QueryCommittedTokensLockedResponse as ElysLeveragelpQueryCommittedTokensLockedResponse,
 } from "./elys/leveragelp/query_pb.js";
 export {
   QueryParamsService as ElysLeveragelpQueryParamsService,
@@ -4443,6 +5600,7 @@ export {
   QueryOpenEstService as ElysLeveragelpQueryOpenEstService,
   QueryCloseEstService as ElysLeveragelpQueryCloseEstService,
   QueryRewardsService as ElysLeveragelpQueryRewardsService,
+  QueryCommittedTokensLockedService as ElysLeveragelpQueryCommittedTokensLockedService,
 } from "./elys/leveragelp/query_cosmes.js";
 export {
   Pool as ElysLeveragelpPool,
@@ -4604,11 +5762,18 @@ export {
   QueryShowCommitmentsResponse as ElysCommitmentQueryShowCommitmentsResponse,
   QueryNumberOfCommitmentsRequest as ElysCommitmentQueryNumberOfCommitmentsRequest,
   QueryNumberOfCommitmentsResponse as ElysCommitmentQueryNumberOfCommitmentsResponse,
+  QueryCommittedTokensLockedRequest as ElysCommitmentQueryCommittedTokensLockedRequest,
+  QueryCommittedTokensLockedResponse as ElysCommitmentQueryCommittedTokensLockedResponse,
+  QueryCommitmentVestingInfoRequest as ElysCommitmentQueryCommitmentVestingInfoRequest,
+  QueryCommitmentVestingInfoResponse as ElysCommitmentQueryCommitmentVestingInfoResponse,
+  VestingDetails as ElysCommitmentVestingDetails,
 } from "./elys/commitment/query_pb.js";
 export {
   QueryParamsService as ElysCommitmentQueryParamsService,
   QueryShowCommitmentsService as ElysCommitmentQueryShowCommitmentsService,
+  QueryCommittedTokensLockedService as ElysCommitmentQueryCommittedTokensLockedService,
   QueryNumberOfCommitmentsService as ElysCommitmentQueryNumberOfCommitmentsService,
+  QueryCommitmentVestingInfoService as ElysCommitmentQueryCommitmentVestingInfoService,
 } from "./elys/commitment/query_cosmes.js";
 export {
   EarnType as ElysCommitmentEarnType,
@@ -4849,296 +6014,301 @@ export {
   AccountedPool as ElysAccountedpoolAccountedPool,
 } from "./elys/accountedpool/accounted_pool_pb.js";
 export {
-  QueryParamsRequest as DymensionTxfeesV1beta1QueryParamsRequest,
-  QueryParamsResponse as DymensionTxfeesV1beta1QueryParamsResponse,
-  QueryFeeTokensRequest as DymensionTxfeesV1beta1QueryFeeTokensRequest,
-  QueryFeeTokensResponse as DymensionTxfeesV1beta1QueryFeeTokensResponse,
-  QueryDenomSpotPriceRequest as DymensionTxfeesV1beta1QueryDenomSpotPriceRequest,
-  QueryDenomSpotPriceResponse as DymensionTxfeesV1beta1QueryDenomSpotPriceResponse,
-  QueryDenomPoolIdRequest as DymensionTxfeesV1beta1QueryDenomPoolIdRequest,
-  QueryDenomPoolIdResponse as DymensionTxfeesV1beta1QueryDenomPoolIdResponse,
-  QueryBaseDenomRequest as DymensionTxfeesV1beta1QueryBaseDenomRequest,
-  QueryBaseDenomResponse as DymensionTxfeesV1beta1QueryBaseDenomResponse,
-} from "./dymension/txfees/v1beta1/query_pb.js";
+  Node as DymensionStoreV1beta1Node,
+  Child as DymensionStoreV1beta1Child,
+  Leaf as DymensionStoreV1beta1Leaf,
+} from "./dymension/store/v1beta1/tree_pb.js";
 export {
-  QueryParamsService as DymensionTxfeesV1beta1QueryParamsService,
-  QueryFeeTokensService as DymensionTxfeesV1beta1QueryFeeTokensService,
-  QueryDenomSpotPriceService as DymensionTxfeesV1beta1QueryDenomSpotPriceService,
-  QueryDenomPoolIdService as DymensionTxfeesV1beta1QueryDenomPoolIdService,
-  QueryBaseDenomService as DymensionTxfeesV1beta1QueryBaseDenomService,
-} from "./dymension/txfees/v1beta1/query_cosmes.js";
+  QueryParamsRequest as DymensionDymensionxyzDymensionTxfeesV1beta1QueryParamsRequest,
+  QueryParamsResponse as DymensionDymensionxyzDymensionTxfeesV1beta1QueryParamsResponse,
+  QueryFeeTokensRequest as DymensionDymensionxyzDymensionTxfeesV1beta1QueryFeeTokensRequest,
+  QueryFeeTokensResponse as DymensionDymensionxyzDymensionTxfeesV1beta1QueryFeeTokensResponse,
+  QueryDenomSpotPriceRequest as DymensionDymensionxyzDymensionTxfeesV1beta1QueryDenomSpotPriceRequest,
+  QueryDenomSpotPriceResponse as DymensionDymensionxyzDymensionTxfeesV1beta1QueryDenomSpotPriceResponse,
+  QueryDenomPoolIdRequest as DymensionDymensionxyzDymensionTxfeesV1beta1QueryDenomPoolIdRequest,
+  QueryDenomPoolIdResponse as DymensionDymensionxyzDymensionTxfeesV1beta1QueryDenomPoolIdResponse,
+  QueryBaseDenomRequest as DymensionDymensionxyzDymensionTxfeesV1beta1QueryBaseDenomRequest,
+  QueryBaseDenomResponse as DymensionDymensionxyzDymensionTxfeesV1beta1QueryBaseDenomResponse,
+} from "./dymension/dymensionxyz/dymension/txfees/v1beta1/query_pb.js";
 export {
-  GenesisState as DymensionTxfeesV1beta1GenesisState,
-  Params as DymensionTxfeesV1beta1Params,
-} from "./dymension/txfees/v1beta1/genesis_pb.js";
+  QueryParamsService as DymensionDymensionxyzDymensionTxfeesV1beta1QueryParamsService,
+  QueryFeeTokensService as DymensionDymensionxyzDymensionTxfeesV1beta1QueryFeeTokensService,
+  QueryDenomSpotPriceService as DymensionDymensionxyzDymensionTxfeesV1beta1QueryDenomSpotPriceService,
+  QueryDenomPoolIdService as DymensionDymensionxyzDymensionTxfeesV1beta1QueryDenomPoolIdService,
+  QueryBaseDenomService as DymensionDymensionxyzDymensionTxfeesV1beta1QueryBaseDenomService,
+} from "./dymension/dymensionxyz/dymension/txfees/v1beta1/query_cosmes.js";
 export {
-  FeeToken as DymensionTxfeesV1beta1FeeToken,
-} from "./dymension/txfees/v1beta1/feetoken_pb.js";
+  GenesisState as DymensionDymensionxyzDymensionTxfeesV1beta1GenesisState,
+  Params as DymensionDymensionxyzDymensionTxfeesV1beta1Params,
+} from "./dymension/dymensionxyz/dymension/txfees/v1beta1/genesis_pb.js";
 export {
-  SwapAmountInRoute as DymensionPoolmanagerV1beta1SwapAmountInRoute,
-  SwapAmountOutRoute as DymensionPoolmanagerV1beta1SwapAmountOutRoute,
-} from "./dymension/poolmanager/v1beta1/swap_route_pb.js";
+  FeeToken as DymensionDymensionxyzDymensionTxfeesV1beta1FeeToken,
+} from "./dymension/dymensionxyz/dymension/txfees/v1beta1/feetoken_pb.js";
 export {
-  PoolType as DymensionPoolmanagerV1beta1PoolType,
-  ModuleRoute as DymensionPoolmanagerV1beta1ModuleRoute,
-} from "./dymension/poolmanager/v1beta1/module_route_pb.js";
+  SwapAmountInRoute as DymensionDymensionxyzDymensionPoolmanagerV1beta1SwapAmountInRoute,
+  SwapAmountOutRoute as DymensionDymensionxyzDymensionPoolmanagerV1beta1SwapAmountOutRoute,
+} from "./dymension/dymensionxyz/dymension/poolmanager/v1beta1/swap_route_pb.js";
 export {
-  GenesisState as DymensionPoolmanagerV1beta1GenesisState,
-} from "./dymension/poolmanager/v1beta1/genesis_pb.js";
+  PoolType as DymensionDymensionxyzDymensionPoolmanagerV1beta1PoolType,
+  ModuleRoute as DymensionDymensionxyzDymensionPoolmanagerV1beta1ModuleRoute,
+} from "./dymension/dymensionxyz/dymension/poolmanager/v1beta1/module_route_pb.js";
 export {
-  MsgLockTokens as DymensionLockupMsgLockTokens,
-  MsgLockTokensResponse as DymensionLockupMsgLockTokensResponse,
-  MsgBeginUnlockingAll as DymensionLockupMsgBeginUnlockingAll,
-  MsgBeginUnlockingAllResponse as DymensionLockupMsgBeginUnlockingAllResponse,
-  MsgBeginUnlocking as DymensionLockupMsgBeginUnlocking,
-  MsgBeginUnlockingResponse as DymensionLockupMsgBeginUnlockingResponse,
-  MsgExtendLockup as DymensionLockupMsgExtendLockup,
-  MsgExtendLockupResponse as DymensionLockupMsgExtendLockupResponse,
-  MsgForceUnlock as DymensionLockupMsgForceUnlock,
-  MsgForceUnlockResponse as DymensionLockupMsgForceUnlockResponse,
-} from "./dymension/lockup/tx_pb.js";
+  GenesisState as DymensionDymensionxyzDymensionPoolmanagerV1beta1GenesisState,
+} from "./dymension/dymensionxyz/dymension/poolmanager/v1beta1/genesis_pb.js";
 export {
-  MsgLockTokensService as DymensionLockupMsgLockTokensService,
-  MsgBeginUnlockingAllService as DymensionLockupMsgBeginUnlockingAllService,
-  MsgBeginUnlockingService as DymensionLockupMsgBeginUnlockingService,
-  MsgExtendLockupService as DymensionLockupMsgExtendLockupService,
-  MsgForceUnlockService as DymensionLockupMsgForceUnlockService,
-} from "./dymension/lockup/tx_cosmes.js";
+  MsgLockTokens as DymensionDymensionxyzDymensionLockupMsgLockTokens,
+  MsgLockTokensResponse as DymensionDymensionxyzDymensionLockupMsgLockTokensResponse,
+  MsgBeginUnlockingAll as DymensionDymensionxyzDymensionLockupMsgBeginUnlockingAll,
+  MsgBeginUnlockingAllResponse as DymensionDymensionxyzDymensionLockupMsgBeginUnlockingAllResponse,
+  MsgBeginUnlocking as DymensionDymensionxyzDymensionLockupMsgBeginUnlocking,
+  MsgBeginUnlockingResponse as DymensionDymensionxyzDymensionLockupMsgBeginUnlockingResponse,
+  MsgExtendLockup as DymensionDymensionxyzDymensionLockupMsgExtendLockup,
+  MsgExtendLockupResponse as DymensionDymensionxyzDymensionLockupMsgExtendLockupResponse,
+  MsgForceUnlock as DymensionDymensionxyzDymensionLockupMsgForceUnlock,
+  MsgForceUnlockResponse as DymensionDymensionxyzDymensionLockupMsgForceUnlockResponse,
+} from "./dymension/dymensionxyz/dymension/lockup/tx_pb.js";
 export {
-  ModuleBalanceRequest as DymensionLockupModuleBalanceRequest,
-  ModuleBalanceResponse as DymensionLockupModuleBalanceResponse,
-  ModuleLockedAmountRequest as DymensionLockupModuleLockedAmountRequest,
-  ModuleLockedAmountResponse as DymensionLockupModuleLockedAmountResponse,
-  AccountUnlockableCoinsRequest as DymensionLockupAccountUnlockableCoinsRequest,
-  AccountUnlockableCoinsResponse as DymensionLockupAccountUnlockableCoinsResponse,
-  AccountUnlockingCoinsRequest as DymensionLockupAccountUnlockingCoinsRequest,
-  AccountUnlockingCoinsResponse as DymensionLockupAccountUnlockingCoinsResponse,
-  AccountLockedCoinsRequest as DymensionLockupAccountLockedCoinsRequest,
-  AccountLockedCoinsResponse as DymensionLockupAccountLockedCoinsResponse,
-  AccountLockedPastTimeRequest as DymensionLockupAccountLockedPastTimeRequest,
-  AccountLockedPastTimeResponse as DymensionLockupAccountLockedPastTimeResponse,
-  AccountLockedPastTimeNotUnlockingOnlyRequest as DymensionLockupAccountLockedPastTimeNotUnlockingOnlyRequest,
-  AccountLockedPastTimeNotUnlockingOnlyResponse as DymensionLockupAccountLockedPastTimeNotUnlockingOnlyResponse,
-  AccountUnlockedBeforeTimeRequest as DymensionLockupAccountUnlockedBeforeTimeRequest,
-  AccountUnlockedBeforeTimeResponse as DymensionLockupAccountUnlockedBeforeTimeResponse,
-  AccountLockedPastTimeDenomRequest as DymensionLockupAccountLockedPastTimeDenomRequest,
-  AccountLockedPastTimeDenomResponse as DymensionLockupAccountLockedPastTimeDenomResponse,
-  LockedDenomRequest as DymensionLockupLockedDenomRequest,
-  LockedDenomResponse as DymensionLockupLockedDenomResponse,
-  LockedRequest as DymensionLockupLockedRequest,
-  LockedResponse as DymensionLockupLockedResponse,
-  NextLockIDRequest as DymensionLockupNextLockIDRequest,
-  NextLockIDResponse as DymensionLockupNextLockIDResponse,
-  AccountLockedLongerDurationRequest as DymensionLockupAccountLockedLongerDurationRequest,
-  AccountLockedLongerDurationResponse as DymensionLockupAccountLockedLongerDurationResponse,
-  AccountLockedDurationRequest as DymensionLockupAccountLockedDurationRequest,
-  AccountLockedDurationResponse as DymensionLockupAccountLockedDurationResponse,
-  AccountLockedLongerDurationNotUnlockingOnlyRequest as DymensionLockupAccountLockedLongerDurationNotUnlockingOnlyRequest,
-  AccountLockedLongerDurationNotUnlockingOnlyResponse as DymensionLockupAccountLockedLongerDurationNotUnlockingOnlyResponse,
-  AccountLockedLongerDurationDenomRequest as DymensionLockupAccountLockedLongerDurationDenomRequest,
-  AccountLockedLongerDurationDenomResponse as DymensionLockupAccountLockedLongerDurationDenomResponse,
-  QueryParamsRequest as DymensionLockupQueryParamsRequest,
-  QueryParamsResponse as DymensionLockupQueryParamsResponse,
-} from "./dymension/lockup/query_pb.js";
+  MsgLockTokensService as DymensionDymensionxyzDymensionLockupMsgLockTokensService,
+  MsgBeginUnlockingAllService as DymensionDymensionxyzDymensionLockupMsgBeginUnlockingAllService,
+  MsgBeginUnlockingService as DymensionDymensionxyzDymensionLockupMsgBeginUnlockingService,
+  MsgExtendLockupService as DymensionDymensionxyzDymensionLockupMsgExtendLockupService,
+  MsgForceUnlockService as DymensionDymensionxyzDymensionLockupMsgForceUnlockService,
+} from "./dymension/dymensionxyz/dymension/lockup/tx_cosmes.js";
 export {
-  QueryModuleBalanceService as DymensionLockupQueryModuleBalanceService,
-  QueryModuleLockedAmountService as DymensionLockupQueryModuleLockedAmountService,
-  QueryAccountUnlockableCoinsService as DymensionLockupQueryAccountUnlockableCoinsService,
-  QueryAccountUnlockingCoinsService as DymensionLockupQueryAccountUnlockingCoinsService,
-  QueryAccountLockedCoinsService as DymensionLockupQueryAccountLockedCoinsService,
-  QueryAccountLockedPastTimeService as DymensionLockupQueryAccountLockedPastTimeService,
-  QueryAccountLockedPastTimeNotUnlockingOnlyService as DymensionLockupQueryAccountLockedPastTimeNotUnlockingOnlyService,
-  QueryAccountUnlockedBeforeTimeService as DymensionLockupQueryAccountUnlockedBeforeTimeService,
-  QueryAccountLockedPastTimeDenomService as DymensionLockupQueryAccountLockedPastTimeDenomService,
-  QueryLockedDenomService as DymensionLockupQueryLockedDenomService,
-  QueryLockedByIDService as DymensionLockupQueryLockedByIDService,
-  QueryNextLockIDService as DymensionLockupQueryNextLockIDService,
-  QueryAccountLockedLongerDurationService as DymensionLockupQueryAccountLockedLongerDurationService,
-  QueryAccountLockedDurationService as DymensionLockupQueryAccountLockedDurationService,
-  QueryAccountLockedLongerDurationNotUnlockingOnlyService as DymensionLockupQueryAccountLockedLongerDurationNotUnlockingOnlyService,
-  QueryAccountLockedLongerDurationDenomService as DymensionLockupQueryAccountLockedLongerDurationDenomService,
-  QueryParamsService as DymensionLockupQueryParamsService,
-} from "./dymension/lockup/query_cosmes.js";
+  ModuleBalanceRequest as DymensionDymensionxyzDymensionLockupModuleBalanceRequest,
+  ModuleBalanceResponse as DymensionDymensionxyzDymensionLockupModuleBalanceResponse,
+  ModuleLockedAmountRequest as DymensionDymensionxyzDymensionLockupModuleLockedAmountRequest,
+  ModuleLockedAmountResponse as DymensionDymensionxyzDymensionLockupModuleLockedAmountResponse,
+  AccountUnlockableCoinsRequest as DymensionDymensionxyzDymensionLockupAccountUnlockableCoinsRequest,
+  AccountUnlockableCoinsResponse as DymensionDymensionxyzDymensionLockupAccountUnlockableCoinsResponse,
+  AccountUnlockingCoinsRequest as DymensionDymensionxyzDymensionLockupAccountUnlockingCoinsRequest,
+  AccountUnlockingCoinsResponse as DymensionDymensionxyzDymensionLockupAccountUnlockingCoinsResponse,
+  AccountLockedCoinsRequest as DymensionDymensionxyzDymensionLockupAccountLockedCoinsRequest,
+  AccountLockedCoinsResponse as DymensionDymensionxyzDymensionLockupAccountLockedCoinsResponse,
+  AccountLockedPastTimeRequest as DymensionDymensionxyzDymensionLockupAccountLockedPastTimeRequest,
+  AccountLockedPastTimeResponse as DymensionDymensionxyzDymensionLockupAccountLockedPastTimeResponse,
+  AccountLockedPastTimeNotUnlockingOnlyRequest as DymensionDymensionxyzDymensionLockupAccountLockedPastTimeNotUnlockingOnlyRequest,
+  AccountLockedPastTimeNotUnlockingOnlyResponse as DymensionDymensionxyzDymensionLockupAccountLockedPastTimeNotUnlockingOnlyResponse,
+  AccountUnlockedBeforeTimeRequest as DymensionDymensionxyzDymensionLockupAccountUnlockedBeforeTimeRequest,
+  AccountUnlockedBeforeTimeResponse as DymensionDymensionxyzDymensionLockupAccountUnlockedBeforeTimeResponse,
+  AccountLockedPastTimeDenomRequest as DymensionDymensionxyzDymensionLockupAccountLockedPastTimeDenomRequest,
+  AccountLockedPastTimeDenomResponse as DymensionDymensionxyzDymensionLockupAccountLockedPastTimeDenomResponse,
+  LockedDenomRequest as DymensionDymensionxyzDymensionLockupLockedDenomRequest,
+  LockedDenomResponse as DymensionDymensionxyzDymensionLockupLockedDenomResponse,
+  LockedRequest as DymensionDymensionxyzDymensionLockupLockedRequest,
+  LockedResponse as DymensionDymensionxyzDymensionLockupLockedResponse,
+  NextLockIDRequest as DymensionDymensionxyzDymensionLockupNextLockIDRequest,
+  NextLockIDResponse as DymensionDymensionxyzDymensionLockupNextLockIDResponse,
+  AccountLockedLongerDurationRequest as DymensionDymensionxyzDymensionLockupAccountLockedLongerDurationRequest,
+  AccountLockedLongerDurationResponse as DymensionDymensionxyzDymensionLockupAccountLockedLongerDurationResponse,
+  AccountLockedDurationRequest as DymensionDymensionxyzDymensionLockupAccountLockedDurationRequest,
+  AccountLockedDurationResponse as DymensionDymensionxyzDymensionLockupAccountLockedDurationResponse,
+  AccountLockedLongerDurationNotUnlockingOnlyRequest as DymensionDymensionxyzDymensionLockupAccountLockedLongerDurationNotUnlockingOnlyRequest,
+  AccountLockedLongerDurationNotUnlockingOnlyResponse as DymensionDymensionxyzDymensionLockupAccountLockedLongerDurationNotUnlockingOnlyResponse,
+  AccountLockedLongerDurationDenomRequest as DymensionDymensionxyzDymensionLockupAccountLockedLongerDurationDenomRequest,
+  AccountLockedLongerDurationDenomResponse as DymensionDymensionxyzDymensionLockupAccountLockedLongerDurationDenomResponse,
+  QueryParamsRequest as DymensionDymensionxyzDymensionLockupQueryParamsRequest,
+  QueryParamsResponse as DymensionDymensionxyzDymensionLockupQueryParamsResponse,
+} from "./dymension/dymensionxyz/dymension/lockup/query_pb.js";
 export {
-  Params as DymensionLockupParams,
-} from "./dymension/lockup/params_pb.js";
+  QueryModuleBalanceService as DymensionDymensionxyzDymensionLockupQueryModuleBalanceService,
+  QueryModuleLockedAmountService as DymensionDymensionxyzDymensionLockupQueryModuleLockedAmountService,
+  QueryAccountUnlockableCoinsService as DymensionDymensionxyzDymensionLockupQueryAccountUnlockableCoinsService,
+  QueryAccountUnlockingCoinsService as DymensionDymensionxyzDymensionLockupQueryAccountUnlockingCoinsService,
+  QueryAccountLockedCoinsService as DymensionDymensionxyzDymensionLockupQueryAccountLockedCoinsService,
+  QueryAccountLockedPastTimeService as DymensionDymensionxyzDymensionLockupQueryAccountLockedPastTimeService,
+  QueryAccountLockedPastTimeNotUnlockingOnlyService as DymensionDymensionxyzDymensionLockupQueryAccountLockedPastTimeNotUnlockingOnlyService,
+  QueryAccountUnlockedBeforeTimeService as DymensionDymensionxyzDymensionLockupQueryAccountUnlockedBeforeTimeService,
+  QueryAccountLockedPastTimeDenomService as DymensionDymensionxyzDymensionLockupQueryAccountLockedPastTimeDenomService,
+  QueryLockedDenomService as DymensionDymensionxyzDymensionLockupQueryLockedDenomService,
+  QueryLockedByIDService as DymensionDymensionxyzDymensionLockupQueryLockedByIDService,
+  QueryNextLockIDService as DymensionDymensionxyzDymensionLockupQueryNextLockIDService,
+  QueryAccountLockedLongerDurationService as DymensionDymensionxyzDymensionLockupQueryAccountLockedLongerDurationService,
+  QueryAccountLockedDurationService as DymensionDymensionxyzDymensionLockupQueryAccountLockedDurationService,
+  QueryAccountLockedLongerDurationNotUnlockingOnlyService as DymensionDymensionxyzDymensionLockupQueryAccountLockedLongerDurationNotUnlockingOnlyService,
+  QueryAccountLockedLongerDurationDenomService as DymensionDymensionxyzDymensionLockupQueryAccountLockedLongerDurationDenomService,
+  QueryParamsService as DymensionDymensionxyzDymensionLockupQueryParamsService,
+} from "./dymension/dymensionxyz/dymension/lockup/query_cosmes.js";
 export {
-  LockQueryType as DymensionLockupLockQueryType,
-  PeriodLock as DymensionLockupPeriodLock,
-  QueryCondition as DymensionLockupQueryCondition,
-} from "./dymension/lockup/lock_pb.js";
+  Params as DymensionDymensionxyzDymensionLockupParams,
+} from "./dymension/dymensionxyz/dymension/lockup/params_pb.js";
 export {
-  GenesisState as DymensionLockupGenesisState,
-} from "./dymension/lockup/genesis_pb.js";
+  LockQueryType as DymensionDymensionxyzDymensionLockupLockQueryType,
+  PeriodLock as DymensionDymensionxyzDymensionLockupPeriodLock,
+  QueryCondition as DymensionDymensionxyzDymensionLockupQueryCondition,
+} from "./dymension/dymensionxyz/dymension/lockup/lock_pb.js";
 export {
-  MsgCreateGauge as DymensionIncentivesMsgCreateGauge,
-  MsgCreateGaugeResponse as DymensionIncentivesMsgCreateGaugeResponse,
-  MsgAddToGauge as DymensionIncentivesMsgAddToGauge,
-  MsgAddToGaugeResponse as DymensionIncentivesMsgAddToGaugeResponse,
-} from "./dymension/incentives/tx_pb.js";
+  GenesisState as DymensionDymensionxyzDymensionLockupGenesisState,
+} from "./dymension/dymensionxyz/dymension/lockup/genesis_pb.js";
 export {
-  MsgCreateGaugeService as DymensionIncentivesMsgCreateGaugeService,
-  MsgAddToGaugeService as DymensionIncentivesMsgAddToGaugeService,
-} from "./dymension/incentives/tx_cosmes.js";
+  MsgCreateGauge as DymensionDymensionxyzDymensionIncentivesMsgCreateGauge,
+  MsgCreateGaugeResponse as DymensionDymensionxyzDymensionIncentivesMsgCreateGaugeResponse,
+  MsgAddToGauge as DymensionDymensionxyzDymensionIncentivesMsgAddToGauge,
+  MsgAddToGaugeResponse as DymensionDymensionxyzDymensionIncentivesMsgAddToGaugeResponse,
+} from "./dymension/dymensionxyz/dymension/incentives/tx_pb.js";
 export {
-  ModuleToDistributeCoinsRequest as DymensionIncentivesModuleToDistributeCoinsRequest,
-  ModuleToDistributeCoinsResponse as DymensionIncentivesModuleToDistributeCoinsResponse,
-  GaugeByIDRequest as DymensionIncentivesGaugeByIDRequest,
-  GaugeByIDResponse as DymensionIncentivesGaugeByIDResponse,
-  GaugesRequest as DymensionIncentivesGaugesRequest,
-  GaugesResponse as DymensionIncentivesGaugesResponse,
-  ActiveGaugesRequest as DymensionIncentivesActiveGaugesRequest,
-  ActiveGaugesResponse as DymensionIncentivesActiveGaugesResponse,
-  ActiveGaugesPerDenomRequest as DymensionIncentivesActiveGaugesPerDenomRequest,
-  ActiveGaugesPerDenomResponse as DymensionIncentivesActiveGaugesPerDenomResponse,
-  UpcomingGaugesRequest as DymensionIncentivesUpcomingGaugesRequest,
-  UpcomingGaugesResponse as DymensionIncentivesUpcomingGaugesResponse,
-  UpcomingGaugesPerDenomRequest as DymensionIncentivesUpcomingGaugesPerDenomRequest,
-  UpcomingGaugesPerDenomResponse as DymensionIncentivesUpcomingGaugesPerDenomResponse,
-  RewardsEstRequest as DymensionIncentivesRewardsEstRequest,
-  RewardsEstResponse as DymensionIncentivesRewardsEstResponse,
-  QueryLockableDurationsRequest as DymensionIncentivesQueryLockableDurationsRequest,
-  QueryLockableDurationsResponse as DymensionIncentivesQueryLockableDurationsResponse,
-} from "./dymension/incentives/query_pb.js";
+  MsgCreateGaugeService as DymensionDymensionxyzDymensionIncentivesMsgCreateGaugeService,
+  MsgAddToGaugeService as DymensionDymensionxyzDymensionIncentivesMsgAddToGaugeService,
+} from "./dymension/dymensionxyz/dymension/incentives/tx_cosmes.js";
 export {
-  QueryModuleToDistributeCoinsService as DymensionIncentivesQueryModuleToDistributeCoinsService,
-  QueryGaugeByIDService as DymensionIncentivesQueryGaugeByIDService,
-  QueryGaugesService as DymensionIncentivesQueryGaugesService,
-  QueryActiveGaugesService as DymensionIncentivesQueryActiveGaugesService,
-  QueryActiveGaugesPerDenomService as DymensionIncentivesQueryActiveGaugesPerDenomService,
-  QueryUpcomingGaugesService as DymensionIncentivesQueryUpcomingGaugesService,
-  QueryUpcomingGaugesPerDenomService as DymensionIncentivesQueryUpcomingGaugesPerDenomService,
-  QueryRewardsEstService as DymensionIncentivesQueryRewardsEstService,
-  QueryLockableDurationsService as DymensionIncentivesQueryLockableDurationsService,
-} from "./dymension/incentives/query_cosmes.js";
+  ModuleToDistributeCoinsRequest as DymensionDymensionxyzDymensionIncentivesModuleToDistributeCoinsRequest,
+  ModuleToDistributeCoinsResponse as DymensionDymensionxyzDymensionIncentivesModuleToDistributeCoinsResponse,
+  GaugeByIDRequest as DymensionDymensionxyzDymensionIncentivesGaugeByIDRequest,
+  GaugeByIDResponse as DymensionDymensionxyzDymensionIncentivesGaugeByIDResponse,
+  GaugesRequest as DymensionDymensionxyzDymensionIncentivesGaugesRequest,
+  GaugesResponse as DymensionDymensionxyzDymensionIncentivesGaugesResponse,
+  ActiveGaugesRequest as DymensionDymensionxyzDymensionIncentivesActiveGaugesRequest,
+  ActiveGaugesResponse as DymensionDymensionxyzDymensionIncentivesActiveGaugesResponse,
+  ActiveGaugesPerDenomRequest as DymensionDymensionxyzDymensionIncentivesActiveGaugesPerDenomRequest,
+  ActiveGaugesPerDenomResponse as DymensionDymensionxyzDymensionIncentivesActiveGaugesPerDenomResponse,
+  UpcomingGaugesRequest as DymensionDymensionxyzDymensionIncentivesUpcomingGaugesRequest,
+  UpcomingGaugesResponse as DymensionDymensionxyzDymensionIncentivesUpcomingGaugesResponse,
+  UpcomingGaugesPerDenomRequest as DymensionDymensionxyzDymensionIncentivesUpcomingGaugesPerDenomRequest,
+  UpcomingGaugesPerDenomResponse as DymensionDymensionxyzDymensionIncentivesUpcomingGaugesPerDenomResponse,
+  RewardsEstRequest as DymensionDymensionxyzDymensionIncentivesRewardsEstRequest,
+  RewardsEstResponse as DymensionDymensionxyzDymensionIncentivesRewardsEstResponse,
+  QueryLockableDurationsRequest as DymensionDymensionxyzDymensionIncentivesQueryLockableDurationsRequest,
+  QueryLockableDurationsResponse as DymensionDymensionxyzDymensionIncentivesQueryLockableDurationsResponse,
+} from "./dymension/dymensionxyz/dymension/incentives/query_pb.js";
 export {
-  Params as DymensionIncentivesParams,
-} from "./dymension/incentives/params_pb.js";
+  QueryModuleToDistributeCoinsService as DymensionDymensionxyzDymensionIncentivesQueryModuleToDistributeCoinsService,
+  QueryGaugeByIDService as DymensionDymensionxyzDymensionIncentivesQueryGaugeByIDService,
+  QueryGaugesService as DymensionDymensionxyzDymensionIncentivesQueryGaugesService,
+  QueryActiveGaugesService as DymensionDymensionxyzDymensionIncentivesQueryActiveGaugesService,
+  QueryActiveGaugesPerDenomService as DymensionDymensionxyzDymensionIncentivesQueryActiveGaugesPerDenomService,
+  QueryUpcomingGaugesService as DymensionDymensionxyzDymensionIncentivesQueryUpcomingGaugesService,
+  QueryUpcomingGaugesPerDenomService as DymensionDymensionxyzDymensionIncentivesQueryUpcomingGaugesPerDenomService,
+  QueryRewardsEstService as DymensionDymensionxyzDymensionIncentivesQueryRewardsEstService,
+  QueryLockableDurationsService as DymensionDymensionxyzDymensionIncentivesQueryLockableDurationsService,
+} from "./dymension/dymensionxyz/dymension/incentives/query_cosmes.js";
 export {
-  GenesisState as DymensionIncentivesGenesisState,
-} from "./dymension/incentives/genesis_pb.js";
+  Params as DymensionDymensionxyzDymensionIncentivesParams,
+} from "./dymension/dymensionxyz/dymension/incentives/params_pb.js";
 export {
-  Gauge as DymensionIncentivesGauge,
-  LockableDurationsInfo as DymensionIncentivesLockableDurationsInfo,
-} from "./dymension/incentives/gauge_pb.js";
+  GenesisState as DymensionDymensionxyzDymensionIncentivesGenesisState,
+} from "./dymension/dymensionxyz/dymension/incentives/genesis_pb.js";
 export {
-  QuerySpotPriceRequest as DymensionGammV2QuerySpotPriceRequest,
-  QuerySpotPriceResponse as DymensionGammV2QuerySpotPriceResponse,
-} from "./dymension/gamm/v2/query_pb.js";
+  Gauge as DymensionDymensionxyzDymensionIncentivesGauge,
+  LockableDurationsInfo as DymensionDymensionxyzDymensionIncentivesLockableDurationsInfo,
+} from "./dymension/dymensionxyz/dymension/incentives/gauge_pb.js";
 export {
-  QuerySpotPriceService as DymensionGammV2QuerySpotPriceService,
-} from "./dymension/gamm/v2/query_cosmes.js";
+  QuerySpotPriceRequest as DymensionDymensionxyzDymensionGammV2QuerySpotPriceRequest,
+  QuerySpotPriceResponse as DymensionDymensionxyzDymensionGammV2QuerySpotPriceResponse,
+} from "./dymension/dymensionxyz/dymension/gamm/v2/query_pb.js";
 export {
-  MsgSwapExactAmountIn as DymensionGammV1beta1MsgSwapExactAmountIn,
-  MsgSwapExactAmountInResponse as DymensionGammV1beta1MsgSwapExactAmountInResponse,
-  MsgSwapExactAmountOut as DymensionGammV1beta1MsgSwapExactAmountOut,
-  MsgSwapExactAmountOutResponse as DymensionGammV1beta1MsgSwapExactAmountOutResponse,
-} from "./dymension/gamm/v1beta1/tx_swap_pb.js";
+  QuerySpotPriceService as DymensionDymensionxyzDymensionGammV2QuerySpotPriceService,
+} from "./dymension/dymensionxyz/dymension/gamm/v2/query_cosmes.js";
 export {
-  MsgJoinPool as DymensionGammV1beta1MsgJoinPool,
-  MsgJoinPoolResponse as DymensionGammV1beta1MsgJoinPoolResponse,
-  MsgExitPool as DymensionGammV1beta1MsgExitPool,
-  MsgExitPoolResponse as DymensionGammV1beta1MsgExitPoolResponse,
-  MsgJoinSwapExternAmountIn as DymensionGammV1beta1MsgJoinSwapExternAmountIn,
-  MsgJoinSwapExternAmountInResponse as DymensionGammV1beta1MsgJoinSwapExternAmountInResponse,
-  MsgJoinSwapShareAmountOut as DymensionGammV1beta1MsgJoinSwapShareAmountOut,
-  MsgJoinSwapShareAmountOutResponse as DymensionGammV1beta1MsgJoinSwapShareAmountOutResponse,
-  MsgExitSwapShareAmountIn as DymensionGammV1beta1MsgExitSwapShareAmountIn,
-  MsgExitSwapShareAmountInResponse as DymensionGammV1beta1MsgExitSwapShareAmountInResponse,
-  MsgExitSwapExternAmountOut as DymensionGammV1beta1MsgExitSwapExternAmountOut,
-  MsgExitSwapExternAmountOutResponse as DymensionGammV1beta1MsgExitSwapExternAmountOutResponse,
-} from "./dymension/gamm/v1beta1/tx_liquidity_pb.js";
+  MsgSwapExactAmountIn as DymensionDymensionxyzDymensionGammV1beta1MsgSwapExactAmountIn,
+  MsgSwapExactAmountInResponse as DymensionDymensionxyzDymensionGammV1beta1MsgSwapExactAmountInResponse,
+  MsgSwapExactAmountOut as DymensionDymensionxyzDymensionGammV1beta1MsgSwapExactAmountOut,
+  MsgSwapExactAmountOutResponse as DymensionDymensionxyzDymensionGammV1beta1MsgSwapExactAmountOutResponse,
+} from "./dymension/dymensionxyz/dymension/gamm/v1beta1/tx_swap_pb.js";
 export {
-  MsgJoinPoolService as DymensionGammV1beta1MsgJoinPoolService,
-  MsgJoinSwapExternAmountInService as DymensionGammV1beta1MsgJoinSwapExternAmountInService,
-  MsgJoinSwapShareAmountOutService as DymensionGammV1beta1MsgJoinSwapShareAmountOutService,
-  MsgExitPoolService as DymensionGammV1beta1MsgExitPoolService,
-  MsgExitSwapExternAmountOutService as DymensionGammV1beta1MsgExitSwapExternAmountOutService,
-  MsgExitSwapShareAmountInService as DymensionGammV1beta1MsgExitSwapShareAmountInService,
-  MsgSwapExactAmountInService as DymensionGammV1beta1MsgSwapExactAmountInService,
-  MsgSwapExactAmountOutService as DymensionGammV1beta1MsgSwapExactAmountOutService,
-} from "./dymension/gamm/v1beta1/tx_cosmes.js";
+  MsgJoinPool as DymensionDymensionxyzDymensionGammV1beta1MsgJoinPool,
+  MsgJoinPoolResponse as DymensionDymensionxyzDymensionGammV1beta1MsgJoinPoolResponse,
+  MsgExitPool as DymensionDymensionxyzDymensionGammV1beta1MsgExitPool,
+  MsgExitPoolResponse as DymensionDymensionxyzDymensionGammV1beta1MsgExitPoolResponse,
+  MsgJoinSwapExternAmountIn as DymensionDymensionxyzDymensionGammV1beta1MsgJoinSwapExternAmountIn,
+  MsgJoinSwapExternAmountInResponse as DymensionDymensionxyzDymensionGammV1beta1MsgJoinSwapExternAmountInResponse,
+  MsgJoinSwapShareAmountOut as DymensionDymensionxyzDymensionGammV1beta1MsgJoinSwapShareAmountOut,
+  MsgJoinSwapShareAmountOutResponse as DymensionDymensionxyzDymensionGammV1beta1MsgJoinSwapShareAmountOutResponse,
+  MsgExitSwapShareAmountIn as DymensionDymensionxyzDymensionGammV1beta1MsgExitSwapShareAmountIn,
+  MsgExitSwapShareAmountInResponse as DymensionDymensionxyzDymensionGammV1beta1MsgExitSwapShareAmountInResponse,
+  MsgExitSwapExternAmountOut as DymensionDymensionxyzDymensionGammV1beta1MsgExitSwapExternAmountOut,
+  MsgExitSwapExternAmountOutResponse as DymensionDymensionxyzDymensionGammV1beta1MsgExitSwapExternAmountOutResponse,
+} from "./dymension/dymensionxyz/dymension/gamm/v1beta1/tx_liquidity_pb.js";
 export {
-  QueryParamsRequest as DymensionGammV1beta1QueryParamsRequest,
-  QueryParamsResponse as DymensionGammV1beta1QueryParamsResponse,
-  QueryPoolRequest as DymensionGammV1beta1QueryPoolRequest,
-  QueryPoolResponse as DymensionGammV1beta1QueryPoolResponse,
-  QueryPoolsRequest as DymensionGammV1beta1QueryPoolsRequest,
-  QueryPoolsResponse as DymensionGammV1beta1QueryPoolsResponse,
-  QueryNumPoolsRequest as DymensionGammV1beta1QueryNumPoolsRequest,
-  QueryNumPoolsResponse as DymensionGammV1beta1QueryNumPoolsResponse,
-  QueryCalcJoinPoolSharesRequest as DymensionGammV1beta1QueryCalcJoinPoolSharesRequest,
-  QueryCalcJoinPoolSharesResponse as DymensionGammV1beta1QueryCalcJoinPoolSharesResponse,
-  QueryCalcExitPoolCoinsFromSharesRequest as DymensionGammV1beta1QueryCalcExitPoolCoinsFromSharesRequest,
-  QueryCalcExitPoolCoinsFromSharesResponse as DymensionGammV1beta1QueryCalcExitPoolCoinsFromSharesResponse,
-  QueryPoolParamsRequest as DymensionGammV1beta1QueryPoolParamsRequest,
-  QueryPoolParamsResponse as DymensionGammV1beta1QueryPoolParamsResponse,
-  QueryTotalPoolLiquidityRequest as DymensionGammV1beta1QueryTotalPoolLiquidityRequest,
-  QueryTotalPoolLiquidityResponse as DymensionGammV1beta1QueryTotalPoolLiquidityResponse,
-  QueryTotalSharesRequest as DymensionGammV1beta1QueryTotalSharesRequest,
-  QueryTotalSharesResponse as DymensionGammV1beta1QueryTotalSharesResponse,
-  QueryCalcJoinPoolNoSwapSharesRequest as DymensionGammV1beta1QueryCalcJoinPoolNoSwapSharesRequest,
-  QueryCalcJoinPoolNoSwapSharesResponse as DymensionGammV1beta1QueryCalcJoinPoolNoSwapSharesResponse,
-  QuerySpotPriceRequest as DymensionGammV1beta1QuerySpotPriceRequest,
-  QueryPoolsWithFilterRequest as DymensionGammV1beta1QueryPoolsWithFilterRequest,
-  QueryPoolsWithFilterResponse as DymensionGammV1beta1QueryPoolsWithFilterResponse,
-  QuerySpotPriceResponse as DymensionGammV1beta1QuerySpotPriceResponse,
-  QuerySwapExactAmountInRequest as DymensionGammV1beta1QuerySwapExactAmountInRequest,
-  QuerySwapExactAmountInResponse as DymensionGammV1beta1QuerySwapExactAmountInResponse,
-  QuerySwapExactAmountOutRequest as DymensionGammV1beta1QuerySwapExactAmountOutRequest,
-  QuerySwapExactAmountOutResponse as DymensionGammV1beta1QuerySwapExactAmountOutResponse,
-  QueryTotalLiquidityRequest as DymensionGammV1beta1QueryTotalLiquidityRequest,
-  QueryTotalLiquidityResponse as DymensionGammV1beta1QueryTotalLiquidityResponse,
-} from "./dymension/gamm/v1beta1/query_pb.js";
+  MsgJoinPoolService as DymensionDymensionxyzDymensionGammV1beta1MsgJoinPoolService,
+  MsgJoinSwapExternAmountInService as DymensionDymensionxyzDymensionGammV1beta1MsgJoinSwapExternAmountInService,
+  MsgJoinSwapShareAmountOutService as DymensionDymensionxyzDymensionGammV1beta1MsgJoinSwapShareAmountOutService,
+  MsgExitPoolService as DymensionDymensionxyzDymensionGammV1beta1MsgExitPoolService,
+  MsgExitSwapExternAmountOutService as DymensionDymensionxyzDymensionGammV1beta1MsgExitSwapExternAmountOutService,
+  MsgExitSwapShareAmountInService as DymensionDymensionxyzDymensionGammV1beta1MsgExitSwapShareAmountInService,
+  MsgSwapExactAmountInService as DymensionDymensionxyzDymensionGammV1beta1MsgSwapExactAmountInService,
+  MsgSwapExactAmountOutService as DymensionDymensionxyzDymensionGammV1beta1MsgSwapExactAmountOutService,
+} from "./dymension/dymensionxyz/dymension/gamm/v1beta1/tx_cosmes.js";
 export {
-  QueryParamsService as DymensionGammV1beta1QueryParamsService,
-  QueryPoolsService as DymensionGammV1beta1QueryPoolsService,
-  QueryNumPoolsService as DymensionGammV1beta1QueryNumPoolsService,
-  QueryTotalLiquidityService as DymensionGammV1beta1QueryTotalLiquidityService,
-  QueryPoolsWithFilterService as DymensionGammV1beta1QueryPoolsWithFilterService,
-  QueryPoolService as DymensionGammV1beta1QueryPoolService,
-  QueryCalcJoinPoolNoSwapSharesService as DymensionGammV1beta1QueryCalcJoinPoolNoSwapSharesService,
-  QueryCalcJoinPoolSharesService as DymensionGammV1beta1QueryCalcJoinPoolSharesService,
-  QueryCalcExitPoolCoinsFromSharesService as DymensionGammV1beta1QueryCalcExitPoolCoinsFromSharesService,
-  QueryPoolParamsService as DymensionGammV1beta1QueryPoolParamsService,
-  QueryTotalPoolLiquidityService as DymensionGammV1beta1QueryTotalPoolLiquidityService,
-  QueryTotalSharesService as DymensionGammV1beta1QueryTotalSharesService,
-  QuerySpotPriceService as DymensionGammV1beta1QuerySpotPriceService,
-  QueryEstimateSwapExactAmountInService as DymensionGammV1beta1QueryEstimateSwapExactAmountInService,
-  QueryEstimateSwapExactAmountOutService as DymensionGammV1beta1QueryEstimateSwapExactAmountOutService,
-} from "./dymension/gamm/v1beta1/query_cosmes.js";
+  QueryParamsRequest as DymensionDymensionxyzDymensionGammV1beta1QueryParamsRequest,
+  QueryParamsResponse as DymensionDymensionxyzDymensionGammV1beta1QueryParamsResponse,
+  QueryPoolRequest as DymensionDymensionxyzDymensionGammV1beta1QueryPoolRequest,
+  QueryPoolResponse as DymensionDymensionxyzDymensionGammV1beta1QueryPoolResponse,
+  QueryPoolsRequest as DymensionDymensionxyzDymensionGammV1beta1QueryPoolsRequest,
+  QueryPoolsResponse as DymensionDymensionxyzDymensionGammV1beta1QueryPoolsResponse,
+  QueryNumPoolsRequest as DymensionDymensionxyzDymensionGammV1beta1QueryNumPoolsRequest,
+  QueryNumPoolsResponse as DymensionDymensionxyzDymensionGammV1beta1QueryNumPoolsResponse,
+  QueryCalcJoinPoolSharesRequest as DymensionDymensionxyzDymensionGammV1beta1QueryCalcJoinPoolSharesRequest,
+  QueryCalcJoinPoolSharesResponse as DymensionDymensionxyzDymensionGammV1beta1QueryCalcJoinPoolSharesResponse,
+  QueryCalcExitPoolCoinsFromSharesRequest as DymensionDymensionxyzDymensionGammV1beta1QueryCalcExitPoolCoinsFromSharesRequest,
+  QueryCalcExitPoolCoinsFromSharesResponse as DymensionDymensionxyzDymensionGammV1beta1QueryCalcExitPoolCoinsFromSharesResponse,
+  QueryPoolParamsRequest as DymensionDymensionxyzDymensionGammV1beta1QueryPoolParamsRequest,
+  QueryPoolParamsResponse as DymensionDymensionxyzDymensionGammV1beta1QueryPoolParamsResponse,
+  QueryTotalPoolLiquidityRequest as DymensionDymensionxyzDymensionGammV1beta1QueryTotalPoolLiquidityRequest,
+  QueryTotalPoolLiquidityResponse as DymensionDymensionxyzDymensionGammV1beta1QueryTotalPoolLiquidityResponse,
+  QueryTotalSharesRequest as DymensionDymensionxyzDymensionGammV1beta1QueryTotalSharesRequest,
+  QueryTotalSharesResponse as DymensionDymensionxyzDymensionGammV1beta1QueryTotalSharesResponse,
+  QueryCalcJoinPoolNoSwapSharesRequest as DymensionDymensionxyzDymensionGammV1beta1QueryCalcJoinPoolNoSwapSharesRequest,
+  QueryCalcJoinPoolNoSwapSharesResponse as DymensionDymensionxyzDymensionGammV1beta1QueryCalcJoinPoolNoSwapSharesResponse,
+  QuerySpotPriceRequest as DymensionDymensionxyzDymensionGammV1beta1QuerySpotPriceRequest,
+  QueryPoolsWithFilterRequest as DymensionDymensionxyzDymensionGammV1beta1QueryPoolsWithFilterRequest,
+  QueryPoolsWithFilterResponse as DymensionDymensionxyzDymensionGammV1beta1QueryPoolsWithFilterResponse,
+  QuerySpotPriceResponse as DymensionDymensionxyzDymensionGammV1beta1QuerySpotPriceResponse,
+  QuerySwapExactAmountInRequest as DymensionDymensionxyzDymensionGammV1beta1QuerySwapExactAmountInRequest,
+  QuerySwapExactAmountInResponse as DymensionDymensionxyzDymensionGammV1beta1QuerySwapExactAmountInResponse,
+  QuerySwapExactAmountOutRequest as DymensionDymensionxyzDymensionGammV1beta1QuerySwapExactAmountOutRequest,
+  QuerySwapExactAmountOutResponse as DymensionDymensionxyzDymensionGammV1beta1QuerySwapExactAmountOutResponse,
+  QueryTotalLiquidityRequest as DymensionDymensionxyzDymensionGammV1beta1QueryTotalLiquidityRequest,
+  QueryTotalLiquidityResponse as DymensionDymensionxyzDymensionGammV1beta1QueryTotalLiquidityResponse,
+} from "./dymension/dymensionxyz/dymension/gamm/v1beta1/query_pb.js";
 export {
-  GenesisState as DymensionGammV1beta1GenesisState,
-  Params as DymensionGammV1beta1Params,
-  GlobalFees as DymensionGammV1beta1GlobalFees,
-} from "./dymension/gamm/v1beta1/genesis_pb.js";
+  QueryParamsService as DymensionDymensionxyzDymensionGammV1beta1QueryParamsService,
+  QueryPoolsService as DymensionDymensionxyzDymensionGammV1beta1QueryPoolsService,
+  QueryNumPoolsService as DymensionDymensionxyzDymensionGammV1beta1QueryNumPoolsService,
+  QueryTotalLiquidityService as DymensionDymensionxyzDymensionGammV1beta1QueryTotalLiquidityService,
+  QueryPoolsWithFilterService as DymensionDymensionxyzDymensionGammV1beta1QueryPoolsWithFilterService,
+  QueryPoolService as DymensionDymensionxyzDymensionGammV1beta1QueryPoolService,
+  QueryCalcJoinPoolNoSwapSharesService as DymensionDymensionxyzDymensionGammV1beta1QueryCalcJoinPoolNoSwapSharesService,
+  QueryCalcJoinPoolSharesService as DymensionDymensionxyzDymensionGammV1beta1QueryCalcJoinPoolSharesService,
+  QueryCalcExitPoolCoinsFromSharesService as DymensionDymensionxyzDymensionGammV1beta1QueryCalcExitPoolCoinsFromSharesService,
+  QueryPoolParamsService as DymensionDymensionxyzDymensionGammV1beta1QueryPoolParamsService,
+  QueryTotalPoolLiquidityService as DymensionDymensionxyzDymensionGammV1beta1QueryTotalPoolLiquidityService,
+  QueryTotalSharesService as DymensionDymensionxyzDymensionGammV1beta1QueryTotalSharesService,
+  QuerySpotPriceService as DymensionDymensionxyzDymensionGammV1beta1QuerySpotPriceService,
+  QueryEstimateSwapExactAmountInService as DymensionDymensionxyzDymensionGammV1beta1QueryEstimateSwapExactAmountInService,
+  QueryEstimateSwapExactAmountOutService as DymensionDymensionxyzDymensionGammV1beta1QueryEstimateSwapExactAmountOutService,
+} from "./dymension/dymensionxyz/dymension/gamm/v1beta1/query_cosmes.js";
 export {
-  MsgCreateBalancerPool as DymensionGammPoolModelsBalancerMsgCreateBalancerPool,
-  MsgCreateBalancerPoolResponse as DymensionGammPoolModelsBalancerMsgCreateBalancerPoolResponse,
-} from "./dymension/gamm/pool-models/balancer/tx_pb.js";
+  GenesisState as DymensionDymensionxyzDymensionGammV1beta1GenesisState,
+  Params as DymensionDymensionxyzDymensionGammV1beta1Params,
+  GlobalFees as DymensionDymensionxyzDymensionGammV1beta1GlobalFees,
+} from "./dymension/dymensionxyz/dymension/gamm/v1beta1/genesis_pb.js";
 export {
-  MsgCreateBalancerPoolService as DymensionGammPoolModelsBalancerMsgCreateBalancerPoolService,
-} from "./dymension/gamm/pool-models/balancer/tx_cosmes.js";
+  SmoothWeightChangeParams as DymensionDymensionxyzDymensionGammV1beta1SmoothWeightChangeParams,
+  PoolParams as DymensionDymensionxyzDymensionGammV1beta1PoolParams,
+  PoolAsset as DymensionDymensionxyzDymensionGammV1beta1PoolAsset,
+  Pool as DymensionDymensionxyzDymensionGammV1beta1Pool,
+} from "./dymension/dymensionxyz/dymension/gamm/v1beta1/balancerPool_pb.js";
 export {
-  SmoothWeightChangeParams as DymensionGammPoolModelsBalancerSmoothWeightChangeParams,
-  PoolParams as DymensionGammPoolModelsBalancerPoolParams,
-  PoolAsset as DymensionGammPoolModelsBalancerPoolAsset,
-  Pool as DymensionGammPoolModelsBalancerPool,
-} from "./dymension/gamm/pool-models/balancer/balancerPool_pb.js";
+  MsgCreateBalancerPool as DymensionDymensionxyzDymensionGammPoolmodelsBalancerV1beta1MsgCreateBalancerPool,
+  MsgCreateBalancerPoolResponse as DymensionDymensionxyzDymensionGammPoolmodelsBalancerV1beta1MsgCreateBalancerPoolResponse,
+} from "./dymension/dymensionxyz/dymension/gamm/poolmodels/balancer/v1beta1/tx_pb.js";
 export {
-  QueryEpochsInfoRequest as DymensionEpochsQueryEpochsInfoRequest,
-  QueryEpochsInfoResponse as DymensionEpochsQueryEpochsInfoResponse,
-  QueryCurrentEpochRequest as DymensionEpochsQueryCurrentEpochRequest,
-  QueryCurrentEpochResponse as DymensionEpochsQueryCurrentEpochResponse,
-} from "./dymension/epochs/query_pb.js";
+  MsgCreateBalancerPoolService as DymensionDymensionxyzDymensionGammPoolmodelsBalancerV1beta1MsgCreateBalancerPoolService,
+} from "./dymension/dymensionxyz/dymension/gamm/poolmodels/balancer/v1beta1/tx_cosmes.js";
 export {
-  QueryEpochInfosService as DymensionEpochsQueryEpochInfosService,
-  QueryCurrentEpochService as DymensionEpochsQueryCurrentEpochService,
-} from "./dymension/epochs/query_cosmes.js";
+  QueryEpochsInfoRequest as DymensionDymensionxyzDymensionEpochsV1beta1QueryEpochsInfoRequest,
+  QueryEpochsInfoResponse as DymensionDymensionxyzDymensionEpochsV1beta1QueryEpochsInfoResponse,
+  QueryCurrentEpochRequest as DymensionDymensionxyzDymensionEpochsV1beta1QueryCurrentEpochRequest,
+  QueryCurrentEpochResponse as DymensionDymensionxyzDymensionEpochsV1beta1QueryCurrentEpochResponse,
+} from "./dymension/dymensionxyz/dymension/epochs/v1beta1/query_pb.js";
 export {
-  EpochInfo as DymensionEpochsEpochInfo,
-  GenesisState as DymensionEpochsGenesisState,
-} from "./dymension/epochs/genesis_pb.js";
+  QueryEpochInfosService as DymensionDymensionxyzDymensionEpochsV1beta1QueryEpochInfosService,
+  QueryCurrentEpochService as DymensionDymensionxyzDymensionEpochsV1beta1QueryCurrentEpochService,
+} from "./dymension/dymensionxyz/dymension/epochs/v1beta1/query_cosmes.js";
+export {
+  EpochInfo as DymensionDymensionxyzDymensionEpochsV1beta1EpochInfo,
+  GenesisState as DymensionDymensionxyzDymensionEpochsV1beta1GenesisState,
+} from "./dymension/dymensionxyz/dymension/epochs/v1beta1/genesis_pb.js";
 export {
   AccessType as CosmwasmWasmV1AccessType,
   ContractCodeHistoryOperationType as CosmwasmWasmV1ContractCodeHistoryOperationType,
@@ -5265,6 +6435,7 @@ export {
 export {
   MsgIBCSend as CosmwasmWasmV1MsgIBCSend,
   MsgIBCSendResponse as CosmwasmWasmV1MsgIBCSendResponse,
+  MsgIBCWriteAcknowledgementResponse as CosmwasmWasmV1MsgIBCWriteAcknowledgementResponse,
   MsgIBCCloseChannel as CosmwasmWasmV1MsgIBCCloseChannel,
 } from "./cosmwasm/wasm/v1/ibc_pb.js";
 export {
@@ -6516,3 +7687,7 @@ export {
   Module as CosmosAppRuntimeV1alpha1Module,
   StoreKeyConfig as CosmosAppRuntimeV1alpha1StoreKeyConfig,
 } from "./cosmos/app/runtime/v1alpha1/module_pb.js";
+export {
+  CaptchaVersion as CaptchaCaptchaVersion,
+  CaptchaRequest as CaptchaCaptchaRequest,
+} from "./captcha/request_pb.js";

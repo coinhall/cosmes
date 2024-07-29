@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { MsgBurn, MsgBurnResponse, MsgChangeAdmin, MsgChangeAdminResponse, MsgCreateDenom, MsgCreateDenomResponse, MsgForceTransfer, MsgForceTransferResponse, MsgMint, MsgMintResponse, MsgSetBeforeSendHook, MsgSetBeforeSendHookResponse, MsgSetDenomMetadata, MsgSetDenomMetadataResponse } from "./tx_pb.js";
+import { MsgBurn, MsgBurnResponse, MsgChangeAdmin, MsgChangeAdminResponse, MsgCreateDenom, MsgCreateDenomResponse, MsgForceTransfer, MsgForceTransferResponse, MsgMint, MsgMintResponse, MsgSetDenomMetadata, MsgSetDenomMetadataResponse } from "./tx_pb.js";
 
 const TYPE_NAME = "osmosis.tokenfactory.v1beta1.Msg";
 
@@ -55,16 +55,6 @@ export const MsgSetDenomMetadataService = {
   method: "SetDenomMetadata",
   Request: MsgSetDenomMetadata,
   Response: MsgSetDenomMetadataResponse,
-} as const;
-
-/**
- * @generated from rpc osmosis.tokenfactory.v1beta1.Msg.SetBeforeSendHook
- */
-export const MsgSetBeforeSendHookService = {
-  typeName: TYPE_NAME,
-  method: "SetBeforeSendHook",
-  Request: MsgSetBeforeSendHook,
-  Response: MsgSetBeforeSendHookResponse,
 } as const;
 
 /**

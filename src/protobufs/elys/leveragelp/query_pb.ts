@@ -7,7 +7,7 @@ import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialM
 import { Message, proto3, protoInt64 } from "@bufbuild/protobuf";
 import { Params } from "./params_pb.js";
 import { PageRequest, PageResponse } from "../../cosmos/base/query/v1beta1/pagination_pb.js";
-import { Position } from "./types_pb.js";
+import { Position, PositionAndInterest } from "./types_pb.js";
 import { Pool } from "./pool_pb.js";
 import { Coin } from "../../cosmos/base/v1beta1/coin_pb.js";
 
@@ -373,9 +373,9 @@ export class PositionsForAddressRequest extends Message<PositionsForAddressReque
  */
 export class PositionsForAddressResponse extends Message<PositionsForAddressResponse> {
   /**
-   * @generated from field: repeated elys.leveragelp.Position positions = 1;
+   * @generated from field: repeated elys.leveragelp.PositionAndInterest positions = 1;
    */
-  positions: Position[] = [];
+  positions: PositionAndInterest[] = [];
 
   /**
    * @generated from field: cosmos.base.query.v1beta1.PageResponse pagination = 2;
@@ -390,7 +390,7 @@ export class PositionsForAddressResponse extends Message<PositionsForAddressResp
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "elys.leveragelp.PositionsForAddressResponse";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "positions", kind: "message", T: Position, repeated: true },
+    { no: 1, name: "positions", kind: "message", T: PositionAndInterest, repeated: true },
     { no: 2, name: "pagination", kind: "message", T: PageResponse },
   ]);
 
@@ -777,6 +777,11 @@ export class PositionResponse extends Message<PositionResponse> {
    */
   position?: Position;
 
+  /**
+   * @generated from field: string locked_lp_token = 2;
+   */
+  lockedLpToken = "";
+
   constructor(data?: PartialMessage<PositionResponse>) {
     super();
     proto3.util.initPartial(data, this);
@@ -786,6 +791,7 @@ export class PositionResponse extends Message<PositionResponse> {
   static readonly typeName = "elys.leveragelp.PositionResponse";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "position", kind: "message", T: Position },
+    { no: 2, name: "locked_lp_token", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PositionResponse {
@@ -1213,6 +1219,92 @@ export class QueryCloseEstResponse extends Message<QueryCloseEstResponse> {
 
   static equals(a: QueryCloseEstResponse | PlainMessage<QueryCloseEstResponse> | undefined, b: QueryCloseEstResponse | PlainMessage<QueryCloseEstResponse> | undefined): boolean {
     return proto3.util.equals(QueryCloseEstResponse, a, b);
+  }
+}
+
+/**
+ * @generated from message elys.leveragelp.QueryCommittedTokensLockedRequest
+ */
+export class QueryCommittedTokensLockedRequest extends Message<QueryCommittedTokensLockedRequest> {
+  /**
+   * @generated from field: string address = 1;
+   */
+  address = "";
+
+  constructor(data?: PartialMessage<QueryCommittedTokensLockedRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "elys.leveragelp.QueryCommittedTokensLockedRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "address", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): QueryCommittedTokensLockedRequest {
+    return new QueryCommittedTokensLockedRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): QueryCommittedTokensLockedRequest {
+    return new QueryCommittedTokensLockedRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): QueryCommittedTokensLockedRequest {
+    return new QueryCommittedTokensLockedRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: QueryCommittedTokensLockedRequest | PlainMessage<QueryCommittedTokensLockedRequest> | undefined, b: QueryCommittedTokensLockedRequest | PlainMessage<QueryCommittedTokensLockedRequest> | undefined): boolean {
+    return proto3.util.equals(QueryCommittedTokensLockedRequest, a, b);
+  }
+}
+
+/**
+ * @generated from message elys.leveragelp.QueryCommittedTokensLockedResponse
+ */
+export class QueryCommittedTokensLockedResponse extends Message<QueryCommittedTokensLockedResponse> {
+  /**
+   * @generated from field: string address = 1;
+   */
+  address = "";
+
+  /**
+   * @generated from field: repeated cosmos.base.v1beta1.Coin locked_committed = 2;
+   */
+  lockedCommitted: Coin[] = [];
+
+  /**
+   * @generated from field: repeated cosmos.base.v1beta1.Coin total_committed = 3;
+   */
+  totalCommitted: Coin[] = [];
+
+  constructor(data?: PartialMessage<QueryCommittedTokensLockedResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "elys.leveragelp.QueryCommittedTokensLockedResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "address", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "locked_committed", kind: "message", T: Coin, repeated: true },
+    { no: 3, name: "total_committed", kind: "message", T: Coin, repeated: true },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): QueryCommittedTokensLockedResponse {
+    return new QueryCommittedTokensLockedResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): QueryCommittedTokensLockedResponse {
+    return new QueryCommittedTokensLockedResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): QueryCommittedTokensLockedResponse {
+    return new QueryCommittedTokensLockedResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: QueryCommittedTokensLockedResponse | PlainMessage<QueryCommittedTokensLockedResponse> | undefined, b: QueryCommittedTokensLockedResponse | PlainMessage<QueryCommittedTokensLockedResponse> | undefined): boolean {
+    return proto3.util.equals(QueryCommittedTokensLockedResponse, a, b);
   }
 }
 

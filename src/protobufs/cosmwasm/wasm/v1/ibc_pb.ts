@@ -116,6 +116,39 @@ export class MsgIBCSendResponse extends Message<MsgIBCSendResponse> {
 }
 
 /**
+ * MsgIBCWriteAcknowledgementResponse
+ *
+ * @generated from message cosmwasm.wasm.v1.MsgIBCWriteAcknowledgementResponse
+ */
+export class MsgIBCWriteAcknowledgementResponse extends Message<MsgIBCWriteAcknowledgementResponse> {
+  constructor(data?: PartialMessage<MsgIBCWriteAcknowledgementResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "cosmwasm.wasm.v1.MsgIBCWriteAcknowledgementResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MsgIBCWriteAcknowledgementResponse {
+    return new MsgIBCWriteAcknowledgementResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MsgIBCWriteAcknowledgementResponse {
+    return new MsgIBCWriteAcknowledgementResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MsgIBCWriteAcknowledgementResponse {
+    return new MsgIBCWriteAcknowledgementResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: MsgIBCWriteAcknowledgementResponse | PlainMessage<MsgIBCWriteAcknowledgementResponse> | undefined, b: MsgIBCWriteAcknowledgementResponse | PlainMessage<MsgIBCWriteAcknowledgementResponse> | undefined): boolean {
+    return proto3.util.equals(MsgIBCWriteAcknowledgementResponse, a, b);
+  }
+}
+
+/**
  * MsgIBCCloseChannel port and channel need to be owned by the contract
  *
  * @generated from message cosmwasm.wasm.v1.MsgIBCCloseChannel

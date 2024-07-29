@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { QueryNumberOfCommitmentsRequest, QueryNumberOfCommitmentsResponse, QueryParamsRequest, QueryParamsResponse, QueryShowCommitmentsRequest, QueryShowCommitmentsResponse } from "./query_pb.js";
+import { QueryCommitmentVestingInfoRequest, QueryCommitmentVestingInfoResponse, QueryCommittedTokensLockedRequest, QueryCommittedTokensLockedResponse, QueryNumberOfCommitmentsRequest, QueryNumberOfCommitmentsResponse, QueryParamsRequest, QueryParamsResponse, QueryShowCommitmentsRequest, QueryShowCommitmentsResponse } from "./query_pb.js";
 
 const TYPE_NAME = "elys.commitment.Query";
 
@@ -32,6 +32,18 @@ export const QueryShowCommitmentsService = {
 } as const;
 
 /**
+ * Queries sum of committed tokens locked and not unlockable
+ *
+ * @generated from rpc elys.commitment.Query.CommittedTokensLocked
+ */
+export const QueryCommittedTokensLockedService = {
+  typeName: TYPE_NAME,
+  method: "CommittedTokensLocked",
+  Request: QueryCommittedTokensLockedRequest,
+  Response: QueryCommittedTokensLockedResponse,
+} as const;
+
+/**
  * Queries the total number of commitment items.
  *
  * @generated from rpc elys.commitment.Query.NumberOfCommitments
@@ -41,5 +53,17 @@ export const QueryNumberOfCommitmentsService = {
   method: "NumberOfCommitments",
   Request: QueryNumberOfCommitmentsRequest,
   Response: QueryNumberOfCommitmentsResponse,
+} as const;
+
+/**
+ * Queries a list of CommitmentVestingInfo items.
+ *
+ * @generated from rpc elys.commitment.Query.CommitmentVestingInfo
+ */
+export const QueryCommitmentVestingInfoService = {
+  typeName: TYPE_NAME,
+  method: "CommitmentVestingInfo",
+  Request: QueryCommitmentVestingInfoRequest,
+  Response: QueryCommitmentVestingInfoResponse,
 } as const;
 

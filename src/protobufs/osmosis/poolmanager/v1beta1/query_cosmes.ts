@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { AllPoolsRequest, AllPoolsResponse, EstimateSinglePoolSwapExactAmountInRequest, EstimateSinglePoolSwapExactAmountOutRequest, EstimateSwapExactAmountInRequest, EstimateSwapExactAmountInResponse, EstimateSwapExactAmountInWithPrimitiveTypesRequest, EstimateSwapExactAmountOutRequest, EstimateSwapExactAmountOutResponse, EstimateSwapExactAmountOutWithPrimitiveTypesRequest, EstimateTradeBasedOnPriceImpactRequest, EstimateTradeBasedOnPriceImpactResponse, ListPoolsByDenomRequest, ListPoolsByDenomResponse, NumPoolsRequest, NumPoolsResponse, ParamsRequest, ParamsResponse, PoolRequest, PoolResponse, SpotPriceRequest, SpotPriceResponse, TotalLiquidityRequest, TotalLiquidityResponse, TotalPoolLiquidityRequest, TotalPoolLiquidityResponse, TotalVolumeForPoolRequest, TotalVolumeForPoolResponse, TradingPairTakerFeeRequest, TradingPairTakerFeeResponse } from "./query_pb.js";
+import { AllPoolsRequest, AllPoolsResponse, AllRegisteredAlloyedPoolsRequest, AllRegisteredAlloyedPoolsResponse, AllTakerFeeShareAccumulatorsRequest, AllTakerFeeShareAccumulatorsResponse, AllTakerFeeShareAgreementsRequest, AllTakerFeeShareAgreementsResponse, EstimateSinglePoolSwapExactAmountInRequest, EstimateSinglePoolSwapExactAmountOutRequest, EstimateSwapExactAmountInRequest, EstimateSwapExactAmountInResponse, EstimateSwapExactAmountInWithPrimitiveTypesRequest, EstimateSwapExactAmountOutRequest, EstimateSwapExactAmountOutResponse, EstimateSwapExactAmountOutWithPrimitiveTypesRequest, EstimateTradeBasedOnPriceImpactRequest, EstimateTradeBasedOnPriceImpactResponse, ListPoolsByDenomRequest, ListPoolsByDenomResponse, NumPoolsRequest, NumPoolsResponse, ParamsRequest, ParamsResponse, PoolRequest, PoolResponse, RegisteredAlloyedPoolFromDenomRequest, RegisteredAlloyedPoolFromDenomResponse, RegisteredAlloyedPoolFromPoolIdRequest, RegisteredAlloyedPoolFromPoolIdResponse, SpotPriceRequest, SpotPriceResponse, TakerFeeShareAgreementFromDenomRequest, TakerFeeShareAgreementFromDenomResponse, TakerFeeShareDenomsToAccruedValueRequest, TakerFeeShareDenomsToAccruedValueResponse, TotalLiquidityRequest, TotalLiquidityResponse, TotalPoolLiquidityRequest, TotalPoolLiquidityResponse, TotalVolumeForPoolRequest, TotalVolumeForPoolResponse, TradingPairTakerFeeRequest, TradingPairTakerFeeResponse } from "./query_pb.js";
 
 const TYPE_NAME = "osmosis.poolmanager.v1beta1.Query";
 
@@ -215,5 +215,111 @@ export const QueryEstimateTradeBasedOnPriceImpactService = {
   method: "EstimateTradeBasedOnPriceImpact",
   Request: EstimateTradeBasedOnPriceImpactRequest,
   Response: EstimateTradeBasedOnPriceImpactResponse,
+} as const;
+
+/**
+ * AllTakerFeeShareAgreements returns all taker fee share agreements.
+ * A taker fee share agreement includes the denom of the denom getting the
+ * taker fees, the percent of the taker fees that the denom gets when it is
+ * in the route being traded against, and the address that the taker fees are
+ * sent to at epoch.
+ *
+ * @generated from rpc osmosis.poolmanager.v1beta1.Query.AllTakerFeeShareAgreements
+ */
+export const QueryAllTakerFeeShareAgreementsService = {
+  typeName: TYPE_NAME,
+  method: "AllTakerFeeShareAgreements",
+  Request: AllTakerFeeShareAgreementsRequest,
+  Response: AllTakerFeeShareAgreementsResponse,
+} as const;
+
+/**
+ * TakerFeeShareAgreementFromDenom returns the taker fee share agreement for a
+ * given denom. A taker fee share agreement includes the denom of the denom
+ * getting the taker fees, the percent of the taker fees that the denom gets
+ * when it is in the route being traded against, and the address that the
+ * taker fees are sent to at epoch.
+ *
+ * @generated from rpc osmosis.poolmanager.v1beta1.Query.TakerFeeShareAgreementFromDenom
+ */
+export const QueryTakerFeeShareAgreementFromDenomService = {
+  typeName: TYPE_NAME,
+  method: "TakerFeeShareAgreementFromDenom",
+  Request: TakerFeeShareAgreementFromDenomRequest,
+  Response: TakerFeeShareAgreementFromDenomResponse,
+} as const;
+
+/**
+ * TakerFeeShareDenomsToAccruedValue returns the accrued value (as an Int) of
+ * the given taker fee denom (the collected fees) for the given fee share
+ * denom (the denom with the taker fee share agreement)
+ *
+ * @generated from rpc osmosis.poolmanager.v1beta1.Query.TakerFeeShareDenomsToAccruedValue
+ */
+export const QueryTakerFeeShareDenomsToAccruedValueService = {
+  typeName: TYPE_NAME,
+  method: "TakerFeeShareDenomsToAccruedValue",
+  Request: TakerFeeShareDenomsToAccruedValueRequest,
+  Response: TakerFeeShareDenomsToAccruedValueResponse,
+} as const;
+
+/**
+ * AllTakerFeeShareAccumulators returns all taker fee share accumulators. A
+ * taker fee share accumulator includes the denom of the denom getting the
+ * taker fees, and an accumulated value of coins that the denom has accrued
+ * since the last time it was distributed in the epoch prior.
+ *
+ * @generated from rpc osmosis.poolmanager.v1beta1.Query.AllTakerFeeShareAccumulators
+ */
+export const QueryAllTakerFeeShareAccumulatorsService = {
+  typeName: TYPE_NAME,
+  method: "AllTakerFeeShareAccumulators",
+  Request: AllTakerFeeShareAccumulatorsRequest,
+  Response: AllTakerFeeShareAccumulatorsResponse,
+} as const;
+
+/**
+ * RegisteredAlloyedPoolFromDenom returns the registered alloyed pool state
+ * from the given denom. The registered alloyed pool contains the pool's
+ * contract address, along with the current distribution composition of taker
+ * fee share denoms within the alloyed pool.
+ *
+ * @generated from rpc osmosis.poolmanager.v1beta1.Query.RegisteredAlloyedPoolFromDenom
+ */
+export const QueryRegisteredAlloyedPoolFromDenomService = {
+  typeName: TYPE_NAME,
+  method: "RegisteredAlloyedPoolFromDenom",
+  Request: RegisteredAlloyedPoolFromDenomRequest,
+  Response: RegisteredAlloyedPoolFromDenomResponse,
+} as const;
+
+/**
+ * RegisteredAlloyedPoolFromPoolId returns the registered alloyed pool state
+ * from the given pool id. The registered alloyed pool contains the pool's
+ * contract address, along with the current distribution composition of taker
+ * fee share denoms within the alloyed pool.
+ *
+ * @generated from rpc osmosis.poolmanager.v1beta1.Query.RegisteredAlloyedPoolFromPoolId
+ */
+export const QueryRegisteredAlloyedPoolFromPoolIdService = {
+  typeName: TYPE_NAME,
+  method: "RegisteredAlloyedPoolFromPoolId",
+  Request: RegisteredAlloyedPoolFromPoolIdRequest,
+  Response: RegisteredAlloyedPoolFromPoolIdResponse,
+} as const;
+
+/**
+ * AllRegisteredAlloyedPools returns all registered alloyed pools. The
+ * registered alloyed pool contains the pool's contract address, along with
+ * the current distribution composition of taker fee share denoms within the
+ * alloyed pool.
+ *
+ * @generated from rpc osmosis.poolmanager.v1beta1.Query.AllRegisteredAlloyedPools
+ */
+export const QueryAllRegisteredAlloyedPoolsService = {
+  typeName: TYPE_NAME,
+  method: "AllRegisteredAlloyedPools",
+  Request: AllRegisteredAlloyedPoolsRequest,
+  Response: AllRegisteredAlloyedPoolsResponse,
 } as const;
 

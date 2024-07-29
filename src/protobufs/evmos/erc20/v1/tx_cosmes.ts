@@ -6,22 +6,9 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { MsgConvertCoin, MsgConvertCoinResponse, MsgConvertERC20, MsgConvertERC20Response, MsgUpdateParams, MsgUpdateParamsResponse } from "./tx_pb.js";
+import { MsgConvertERC20, MsgConvertERC20Response, MsgUpdateParams, MsgUpdateParamsResponse } from "./tx_pb.js";
 
 const TYPE_NAME = "evmos.erc20.v1.Msg";
-
-/**
- * ConvertCoin mints a ERC20 representation of the native Cosmos coin denom
- * that is registered on the token mapping.
- *
- * @generated from rpc evmos.erc20.v1.Msg.ConvertCoin
- */
-export const MsgConvertCoinService = {
-  typeName: TYPE_NAME,
-  method: "ConvertCoin",
-  Request: MsgConvertCoin,
-  Response: MsgConvertCoinResponse,
-} as const;
 
 /**
  * ConvertERC20 mints a native Cosmos coin representation of the ERC20 token

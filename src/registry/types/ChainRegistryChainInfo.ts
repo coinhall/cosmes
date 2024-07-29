@@ -8,10 +8,39 @@
 /**
  * Chain.json is a metadata file that contains information about a blockchain.
  */
-export interface ChainRegistryChainInfo {
+export type ChainRegistryChainInfo = ChainRegistryChainInfo1 & ChainRegistryChainInfo2;
+export type ChainRegistryChainInfo1 = {
+  [k: string]: unknown | undefined;
+};
+
+export interface ChainRegistryChainInfo2 {
   $schema?: string;
   chain_name: string;
-  chain_id: string;
+  /**
+   * The 'type' of chain as the corresponding CAIP-2 Namespace value. E.G., 'cosmos' or 'eip155'. Namespaces cna be found here: https://github.com/ChainAgnostic/namespaces/tree/main.
+   */
+  chain_type:
+    | "cosmos"
+    | "eip155"
+    | "bip122"
+    | "polkadot"
+    | "solana"
+    | "algorand"
+    | "arweave"
+    | "ergo"
+    | "fil"
+    | "hedera"
+    | "monero"
+    | "reef"
+    | "stacks"
+    | "starknet"
+    | "stellar"
+    | "tezos"
+    | "vechain"
+    | "waves"
+    | "xrpl"
+    | "unknown";
+  chain_id?: string;
   pre_fork_chain_name?: string;
   pretty_name?: string;
   website?: string;
@@ -21,7 +50,7 @@ export interface ChainRegistryChainInfo {
   /**
    * The default prefix for the human-readable part of addresses that identifies the coin type. Must be registered with SLIP-0173. E.g., 'cosmos'
    */
-  bech32_prefix: string;
+  bech32_prefix?: string;
   /**
    * Used to override the bech32_prefix for specific uses.
    */

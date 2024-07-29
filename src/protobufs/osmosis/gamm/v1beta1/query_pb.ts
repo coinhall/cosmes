@@ -5,10 +5,81 @@
 
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
 import { Any, Message, proto3, protoInt64 } from "@bufbuild/protobuf";
+import { Params } from "./params_pb.js";
 import { PageRequest, PageResponse } from "../../../cosmos/base/query/v1beta1/pagination_pb.js";
 import { Coin } from "../../../cosmos/base/v1beta1/coin_pb.js";
 import { SwapAmountInRoute, SwapAmountOutRoute } from "../../poolmanager/v1beta1/swap_route_pb.js";
 import { MigrationRecords } from "./shared_pb.js";
+
+/**
+ * =============================== Params
+ *
+ * @generated from message osmosis.gamm.v1beta1.ParamsRequest
+ */
+export class ParamsRequest extends Message<ParamsRequest> {
+  constructor(data?: PartialMessage<ParamsRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "osmosis.gamm.v1beta1.ParamsRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ParamsRequest {
+    return new ParamsRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ParamsRequest {
+    return new ParamsRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ParamsRequest {
+    return new ParamsRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: ParamsRequest | PlainMessage<ParamsRequest> | undefined, b: ParamsRequest | PlainMessage<ParamsRequest> | undefined): boolean {
+    return proto3.util.equals(ParamsRequest, a, b);
+  }
+}
+
+/**
+ * @generated from message osmosis.gamm.v1beta1.ParamsResponse
+ */
+export class ParamsResponse extends Message<ParamsResponse> {
+  /**
+   * @generated from field: osmosis.gamm.v1beta1.Params params = 1;
+   */
+  params?: Params;
+
+  constructor(data?: PartialMessage<ParamsResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "osmosis.gamm.v1beta1.ParamsResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "params", kind: "message", T: Params },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ParamsResponse {
+    return new ParamsResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ParamsResponse {
+    return new ParamsResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ParamsResponse {
+    return new ParamsResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: ParamsResponse | PlainMessage<ParamsResponse> | undefined, b: ParamsResponse | PlainMessage<ParamsResponse> | undefined): boolean {
+    return proto3.util.equals(ParamsResponse, a, b);
+  }
+}
 
 /**
  * =============================== Pool
@@ -839,6 +910,14 @@ export class QuerySpotPriceRequest extends Message<QuerySpotPriceRequest> {
    */
   quoteAssetDenom = "";
 
+  /**
+   * DEPRECATED
+   *
+   * @generated from field: bool withSwapFee = 4 [deprecated = true];
+   * @deprecated
+   */
+  withSwapFee = false;
+
   constructor(data?: PartialMessage<QuerySpotPriceRequest>) {
     super();
     proto3.util.initPartial(data, this);
@@ -850,6 +929,7 @@ export class QuerySpotPriceRequest extends Message<QuerySpotPriceRequest> {
     { no: 1, name: "pool_id", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
     { no: 2, name: "base_asset_denom", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "quote_asset_denom", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 4, name: "withSwapFee", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): QuerySpotPriceRequest {

@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { IsWhitelistedRequest, IsWhitelistedResponse, ParamsRequest, ParamsResponse, PositionRequest, PositionResponse, PositionsByPoolRequest, PositionsByPoolResponse, PositionsForAddressRequest, PositionsForAddressResponse, PositionsRequest, PositionsResponse, QueryAllPoolRequest, QueryAllPoolResponse, QueryCloseEstRequest, QueryCloseEstResponse, QueryGetPoolRequest, QueryGetPoolResponse, QueryLiquidationPriceRequest, QueryLiquidationPriceResponse, QueryOpenEstRequest, QueryOpenEstResponse, QueryRewardsRequest, QueryRewardsResponse, StatusRequest, StatusResponse, WhitelistRequest, WhitelistResponse } from "./query_pb.js";
+import { IsWhitelistedRequest, IsWhitelistedResponse, ParamsRequest, ParamsResponse, PositionRequest, PositionResponse, PositionsByPoolRequest, PositionsByPoolResponse, PositionsForAddressRequest, PositionsForAddressResponse, PositionsRequest, PositionsResponse, QueryAllPoolRequest, QueryAllPoolResponse, QueryCloseEstRequest, QueryCloseEstResponse, QueryCommittedTokensLockedRequest, QueryCommittedTokensLockedResponse, QueryGetPoolRequest, QueryGetPoolResponse, QueryLiquidationPriceRequest, QueryLiquidationPriceResponse, QueryOpenEstRequest, QueryOpenEstResponse, QueryRewardsRequest, QueryRewardsResponse, StatusRequest, StatusResponse, WhitelistRequest, WhitelistResponse } from "./query_pb.js";
 
 const TYPE_NAME = "elys.leveragelp.Query";
 
@@ -171,5 +171,17 @@ export const QueryRewardsService = {
   method: "Rewards",
   Request: QueryRewardsRequest,
   Response: QueryRewardsResponse,
+} as const;
+
+/**
+ * Queries a list of CommittedTokensLocked items.
+ *
+ * @generated from rpc elys.leveragelp.Query.CommittedTokensLocked
+ */
+export const QueryCommittedTokensLockedService = {
+  typeName: TYPE_NAME,
+  method: "CommittedTokensLocked",
+  Request: QueryCommittedTokensLockedRequest,
+  Response: QueryCommittedTokensLockedResponse,
 } as const;
 

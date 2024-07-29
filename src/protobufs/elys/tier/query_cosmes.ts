@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { QueryAllPortfolioRequest, QueryAllPortfolioResponse, QueryCalculateDiscountRequest, QueryCalculateDiscountResponse, QueryGetAmmPriceRequest, QueryGetAmmPriceResponse, QueryGetPortfolioRequest, QueryGetPortfolioResponse, QueryLeverageLpTotalRequest, QueryLeverageLpTotalResponse, QueryLiquidTotalRequest, QueryLiquidTotalResponse, QueryParamsRequest, QueryParamsResponse, QueryPerpetualRequest, QueryPerpetualResponse, QueryRewardsTotalRequest, QueryRewardsTotalResponse, QueryStakedPoolRequest, QueryStakedPoolResponse } from "./query_pb.js";
+import { QueryAllPortfolioRequest, QueryAllPortfolioResponse, QueryCalculateDiscountRequest, QueryCalculateDiscountResponse, QueryGetAmmPriceRequest, QueryGetAmmPriceResponse, QueryGetConsolidatedPriceRequest, QueryGetConsolidatedPriceResponse, QueryGetPortfolioRequest, QueryGetPortfolioResponse, QueryLeverageLpTotalRequest, QueryLeverageLpTotalResponse, QueryLiquidTotalRequest, QueryLiquidTotalResponse, QueryParamsRequest, QueryParamsResponse, QueryPerpetualRequest, QueryPerpetualResponse, QueryRewardsTotalRequest, QueryRewardsTotalResponse, QueryStakedPoolRequest, QueryStakedPoolResponse, QueryStakedRequest, QueryStakedResponse } from "./query_pb.js";
 
 const TYPE_NAME = "elys.tier.Query";
 
@@ -123,5 +123,29 @@ export const QueryGetAmmPriceService = {
   method: "GetAmmPrice",
   Request: QueryGetAmmPriceRequest,
   Response: QueryGetAmmPriceResponse,
+} as const;
+
+/**
+ * Queries a list of GetConsolidatedPrice items.
+ *
+ * @generated from rpc elys.tier.Query.GetConsolidatedPrice
+ */
+export const QueryGetConsolidatedPriceService = {
+  typeName: TYPE_NAME,
+  method: "GetConsolidatedPrice",
+  Request: QueryGetConsolidatedPriceRequest,
+  Response: QueryGetConsolidatedPriceResponse,
+} as const;
+
+/**
+ * Queries a list of Staked items.
+ *
+ * @generated from rpc elys.tier.Query.Staked
+ */
+export const QueryStakedService = {
+  typeName: TYPE_NAME,
+  method: "Staked",
+  Request: QueryStakedRequest,
+  Response: QueryStakedResponse,
 } as const;
 

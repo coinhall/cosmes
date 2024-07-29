@@ -147,3 +147,52 @@ export class AddressId extends Message<AddressId> {
   }
 }
 
+/**
+ * @generated from message elys.leveragelp.PositionAndInterest
+ */
+export class PositionAndInterest extends Message<PositionAndInterest> {
+  /**
+   * @generated from field: elys.leveragelp.Position position = 1;
+   */
+  position?: Position;
+
+  /**
+   * @generated from field: string interest_rate_hour = 2;
+   */
+  interestRateHour = "";
+
+  /**
+   * @generated from field: string interest_rate_hour_usd = 3;
+   */
+  interestRateHourUsd = "";
+
+  constructor(data?: PartialMessage<PositionAndInterest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "elys.leveragelp.PositionAndInterest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "position", kind: "message", T: Position },
+    { no: 2, name: "interest_rate_hour", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "interest_rate_hour_usd", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PositionAndInterest {
+    return new PositionAndInterest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): PositionAndInterest {
+    return new PositionAndInterest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): PositionAndInterest {
+    return new PositionAndInterest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: PositionAndInterest | PlainMessage<PositionAndInterest> | undefined, b: PositionAndInterest | PlainMessage<PositionAndInterest> | undefined): boolean {
+    return proto3.util.equals(PositionAndInterest, a, b);
+  }
+}
+

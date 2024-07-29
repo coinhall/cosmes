@@ -92,11 +92,6 @@ export class QueryGetPortfolioRequest extends Message<QueryGetPortfolioRequest> 
    */
   user = "";
 
-  /**
-   * @generated from field: string assetType = 2;
-   */
-  assetType = "";
-
   constructor(data?: PartialMessage<QueryGetPortfolioRequest>) {
     super();
     proto3.util.initPartial(data, this);
@@ -106,7 +101,6 @@ export class QueryGetPortfolioRequest extends Message<QueryGetPortfolioRequest> 
   static readonly typeName = "elys.tier.QueryGetPortfolioRequest";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "user", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "assetType", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): QueryGetPortfolioRequest {
@@ -776,6 +770,184 @@ export class QueryGetAmmPriceResponse extends Message<QueryGetAmmPriceResponse> 
 
   static equals(a: QueryGetAmmPriceResponse | PlainMessage<QueryGetAmmPriceResponse> | undefined, b: QueryGetAmmPriceResponse | PlainMessage<QueryGetAmmPriceResponse> | undefined): boolean {
     return proto3.util.equals(QueryGetAmmPriceResponse, a, b);
+  }
+}
+
+/**
+ * @generated from message elys.tier.QueryGetConsolidatedPriceRequest
+ */
+export class QueryGetConsolidatedPriceRequest extends Message<QueryGetConsolidatedPriceRequest> {
+  /**
+   * @generated from field: string denom = 1;
+   */
+  denom = "";
+
+  constructor(data?: PartialMessage<QueryGetConsolidatedPriceRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "elys.tier.QueryGetConsolidatedPriceRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "denom", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): QueryGetConsolidatedPriceRequest {
+    return new QueryGetConsolidatedPriceRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): QueryGetConsolidatedPriceRequest {
+    return new QueryGetConsolidatedPriceRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): QueryGetConsolidatedPriceRequest {
+    return new QueryGetConsolidatedPriceRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: QueryGetConsolidatedPriceRequest | PlainMessage<QueryGetConsolidatedPriceRequest> | undefined, b: QueryGetConsolidatedPriceRequest | PlainMessage<QueryGetConsolidatedPriceRequest> | undefined): boolean {
+    return proto3.util.equals(QueryGetConsolidatedPriceRequest, a, b);
+  }
+}
+
+/**
+ * @generated from message elys.tier.QueryGetConsolidatedPriceResponse
+ */
+export class QueryGetConsolidatedPriceResponse extends Message<QueryGetConsolidatedPriceResponse> {
+  /**
+   * @generated from field: string ammPrice = 1;
+   */
+  ammPrice = "";
+
+  /**
+   * @generated from field: string oraclePrice = 2;
+   */
+  oraclePrice = "";
+
+  /**
+   * @generated from field: string oraclePriceDec = 3;
+   */
+  oraclePriceDec = "";
+
+  constructor(data?: PartialMessage<QueryGetConsolidatedPriceResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "elys.tier.QueryGetConsolidatedPriceResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "ammPrice", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "oraclePrice", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "oraclePriceDec", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): QueryGetConsolidatedPriceResponse {
+    return new QueryGetConsolidatedPriceResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): QueryGetConsolidatedPriceResponse {
+    return new QueryGetConsolidatedPriceResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): QueryGetConsolidatedPriceResponse {
+    return new QueryGetConsolidatedPriceResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: QueryGetConsolidatedPriceResponse | PlainMessage<QueryGetConsolidatedPriceResponse> | undefined, b: QueryGetConsolidatedPriceResponse | PlainMessage<QueryGetConsolidatedPriceResponse> | undefined): boolean {
+    return proto3.util.equals(QueryGetConsolidatedPriceResponse, a, b);
+  }
+}
+
+/**
+ * @generated from message elys.tier.QueryStakedRequest
+ */
+export class QueryStakedRequest extends Message<QueryStakedRequest> {
+  /**
+   * @generated from field: string user = 1;
+   */
+  user = "";
+
+  constructor(data?: PartialMessage<QueryStakedRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "elys.tier.QueryStakedRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "user", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): QueryStakedRequest {
+    return new QueryStakedRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): QueryStakedRequest {
+    return new QueryStakedRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): QueryStakedRequest {
+    return new QueryStakedRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: QueryStakedRequest | PlainMessage<QueryStakedRequest> | undefined, b: QueryStakedRequest | PlainMessage<QueryStakedRequest> | undefined): boolean {
+    return proto3.util.equals(QueryStakedRequest, a, b);
+  }
+}
+
+/**
+ * @generated from message elys.tier.QueryStakedResponse
+ */
+export class QueryStakedResponse extends Message<QueryStakedResponse> {
+  /**
+   * @generated from field: string commitments = 1;
+   */
+  commitments = "";
+
+  /**
+   * @generated from field: string delegations = 2;
+   */
+  delegations = "";
+
+  /**
+   * @generated from field: string unbondings = 3;
+   */
+  unbondings = "";
+
+  /**
+   * @generated from field: string totalVested = 4;
+   */
+  totalVested = "";
+
+  constructor(data?: PartialMessage<QueryStakedResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "elys.tier.QueryStakedResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "commitments", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "delegations", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "unbondings", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 4, name: "totalVested", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): QueryStakedResponse {
+    return new QueryStakedResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): QueryStakedResponse {
+    return new QueryStakedResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): QueryStakedResponse {
+    return new QueryStakedResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: QueryStakedResponse | PlainMessage<QueryStakedResponse> | undefined, b: QueryStakedResponse | PlainMessage<QueryStakedResponse> | undefined): boolean {
+    return proto3.util.equals(QueryStakedResponse, a, b);
   }
 }
 

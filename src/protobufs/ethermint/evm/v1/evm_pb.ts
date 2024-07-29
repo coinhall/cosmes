@@ -60,9 +60,9 @@ export class Params extends Message<Params> {
   /**
    * extra_eips defines the additional EIPs for the vm.Config
    *
-   * @generated from field: repeated int64 extra_eips = 4;
+   * @generated from field: repeated string extra_eips = 4;
    */
-  extraEips: bigint[] = [];
+  extraEips: string[] = [];
 
   /**
    * chain_config defines the EVM chain configuration parameters
@@ -80,14 +80,6 @@ export class Params extends Message<Params> {
   allowUnprotectedTxs = false;
 
   /**
-   * active_precompiles defines the slice of hex addresses of the precompiled
-   * contracts that are active
-   *
-   * @generated from field: repeated string active_precompiles = 7;
-   */
-  activePrecompiles: string[] = [];
-
-  /**
    * evm_channels is the list of channel identifiers from EVM compatible chains
    *
    * @generated from field: repeated string evm_channels = 8;
@@ -101,6 +93,14 @@ export class Params extends Message<Params> {
    */
   accessControl?: AccessControl;
 
+  /**
+   * active_static_precompiles defines the slice of hex addresses of the precompiled
+   * contracts that are active
+   *
+   * @generated from field: repeated string active_static_precompiles = 10;
+   */
+  activeStaticPrecompiles: string[] = [];
+
   constructor(data?: PartialMessage<Params>) {
     super();
     proto3.util.initPartial(data, this);
@@ -110,12 +110,12 @@ export class Params extends Message<Params> {
   static readonly typeName = "ethermint.evm.v1.Params";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "evm_denom", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 4, name: "extra_eips", kind: "scalar", T: 3 /* ScalarType.INT64 */, repeated: true },
+    { no: 4, name: "extra_eips", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
     { no: 5, name: "chain_config", kind: "message", T: ChainConfig },
     { no: 6, name: "allow_unprotected_txs", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
-    { no: 7, name: "active_precompiles", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
     { no: 8, name: "evm_channels", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
     { no: 9, name: "access_control", kind: "message", T: AccessControl },
+    { no: 10, name: "active_static_precompiles", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Params {
@@ -199,7 +199,7 @@ export class AccessControlType extends Message<AccessControlType> {
   accessType = AccessType.PERMISSIONLESS;
 
   /**
-   * allowlist_addresses defines defines different things depending on the AccessType:
+   * access_control_list defines defines different things depending on the AccessType:
    * - ACCESS_TYPE_PERMISSIONLESS: list of addresses that are blocked from performing the operation
    * - ACCESS_TYPE_RESTRICTED: ignored
    * - ACCESS_TYPE_PERMISSIONED: list of addresses that are allowed to perform the operation

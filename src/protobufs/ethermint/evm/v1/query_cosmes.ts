@@ -50,7 +50,7 @@ export const QueryValidatorAccountService = {
 
 /**
  * Balance queries the balance of a the EVM denomination for a single
- * EthAccount.
+ * account.
  *
  * @generated from rpc ethermint.evm.v1.Query.Balance
  */

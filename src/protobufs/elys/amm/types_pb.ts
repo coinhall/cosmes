@@ -175,6 +175,11 @@ export class EarnPool extends Message<EarnPool> {
    */
   useOracle = false;
 
+  /**
+   * @generated from field: bool is_leveragelp = 16;
+   */
+  isLeveragelp = false;
+
   constructor(data?: PartialMessage<EarnPool>) {
     super();
     proto3.util.initPartial(data, this);
@@ -198,6 +203,7 @@ export class EarnPool extends Message<EarnPool> {
     { no: 13, name: "swap_fee", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 14, name: "fee_denom", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 15, name: "use_oracle", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+    { no: 16, name: "is_leveragelp", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): EarnPool {
