@@ -1,5 +1,27 @@
 # Changelog
 
+## `v0.0.71`
+
+### Features
+
+- Add optional `label` field to `ConnectedWallet` instances, which contains the user-defined label of the wallet
+
+### Fixes
+
+- Handle more wallet errors in the `wrap` function
+
+## `v0.0.70`
+
+### Features
+
+- Add legacy amino type to `MsgSend` model
+- Add `MsgMigrateContract`, `MsgStoreCode`, `MsgBeginRedelegate`, `MsgDelegate`, `MsgUndelegate`, `MsgWithdrawDelegatorRewards`, `MsgWithdrawValidatorCommission` models
+- Add ed25519 signature type
+
+### Fixes
+
+- Add Keplr default sign options to `WalletConnectV2`
+
 ## `v0.0.69`
 
 ### Chore

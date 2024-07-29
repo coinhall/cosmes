@@ -23,6 +23,7 @@ export class StationWalletConnectV1 extends ConnectedWallet {
   private readonly wc: WalletConnect;
 
   constructor(
+    label: string | undefined,
     wc: WalletConnect,
     chainId: string,
     pubKey: Secp256k1PubKey,
@@ -33,6 +34,7 @@ export class StationWalletConnectV1 extends ConnectedWallet {
     super(
       WalletName.STATION,
       WalletType.WALLETCONNECT,
+      label,
       chainId,
       pubKey,
       address,

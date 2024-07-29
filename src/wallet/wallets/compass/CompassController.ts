@@ -38,9 +38,8 @@ export class CompassController extends WalletController {
     }
     await WalletError.wrap(ext.enable(chains.map(({ chainId }) => chainId)));
     for (const { chainId, rpc, gasPrice } of Object.values(chains)) {
-      const { bech32Address, pubKey, isNanoLedger } = await WalletError.wrap(
-        ext.getKey(chainId)
-      );
+      const { name, bech32Address, pubKey, isNanoLedger } =
+        await WalletError.wrap(ext.getKey(chainId));
       const key = new Secp256k1PubKey({
         chainId,
         key: pubKey,
@@ -49,6 +48,7 @@ export class CompassController extends WalletController {
         chainId,
         new CompassExtension(
           this.id,
+          name,
           ext,
           chainId,
           key,

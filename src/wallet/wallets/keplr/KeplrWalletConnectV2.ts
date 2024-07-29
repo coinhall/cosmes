@@ -26,6 +26,7 @@ export class KeplrWalletConnectV2 extends ConnectedWallet {
 
   constructor(
     walletName: WalletName,
+    label: string | undefined,
     wc: WalletConnectV2,
     chainId: string,
     pubKey: Secp256k1PubKey,
@@ -37,6 +38,7 @@ export class KeplrWalletConnectV2 extends ConnectedWallet {
     super(
       walletName,
       WalletType.WALLETCONNECT,
+      label,
       chainId,
       pubKey,
       address,

@@ -14,6 +14,7 @@ type StorageSession = {
 };
 
 type GetAccountResponse = {
+  name?: string | undefined;
   address: string;
   algo: string;
   pubkey: string;
@@ -55,6 +56,11 @@ const Event = {
   ACCOUNTS_CHANGED: "accountsChanged",
 } as const;
 type Event = (typeof Event)[keyof typeof Event];
+
+const DEFAULT_SIGN_OPTIONS = {
+  preferNoSetFee: true,
+  preferNoSetMemo: true,
+};
 
 export class WalletConnectV2 {
   private readonly projectId: string;
@@ -191,6 +197,7 @@ export class WalletConnectV2 {
       {
         signerAddress,
         signDoc: stdSignDoc,
+        signOptions: DEFAULT_SIGN_OPTIONS,
       }
     );
     return {
@@ -210,6 +217,7 @@ export class WalletConnectV2 {
       {
         signerAddress,
         signDoc,
+        signOptions: DEFAULT_SIGN_OPTIONS,
       }
     );
     return {
