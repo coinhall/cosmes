@@ -38,7 +38,7 @@ export class LeapController extends WalletController {
     );
     for (let i = 0; i < chains.length; i++) {
       const { chainId, rpc, gasPrice } = chains[i];
-      const { pubkey, address } = await WalletError.wrap(
+      const { name, pubkey, address } = await WalletError.wrap(
         this.wc.getAccount(chainId)
       );
       const key = new Secp256k1PubKey({
@@ -49,6 +49,7 @@ export class LeapController extends WalletController {
         chainId,
         new LeapWalletConnectV2(
           this.id,
+          name,
           this.wc,
           chainId,
           key,
@@ -70,9 +71,8 @@ export class LeapController extends WalletController {
     }
     await WalletError.wrap(ext.enable(chains.map(({ chainId }) => chainId)));
     for (const { chainId, rpc, gasPrice } of Object.values(chains)) {
-      const { bech32Address, pubKey, isNanoLedger } = await WalletError.wrap(
-        ext.getKey(chainId)
-      );
+      const { name, bech32Address, pubKey, isNanoLedger } =
+        await WalletError.wrap(ext.getKey(chainId));
       const key = new Secp256k1PubKey({
         chainId,
         key: pubKey,
@@ -81,6 +81,7 @@ export class LeapController extends WalletController {
         chainId,
         new LeapExtension(
           this.id,
+          name,
           ext,
           chainId,
           key,

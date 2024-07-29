@@ -69,6 +69,7 @@ export class MetamaskInjectiveController extends WalletController {
       chain.chainId,
       new MetamaskInjectiveExtension(
         this.id,
+        undefined,
         ext,
         chain.chainId,
         pubKey,

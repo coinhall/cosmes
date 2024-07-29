@@ -25,6 +25,7 @@ export class MetamaskInjectiveExtension extends ConnectedWallet {
 
   constructor(
     walletName: WalletName,
+    label: string | undefined,
     ext: Ethereum,
     chainId: string,
     pubKey: Secp256k1PubKey,
@@ -36,6 +37,7 @@ export class MetamaskInjectiveExtension extends ConnectedWallet {
     super(
       walletName,
       WalletType.EXTENSION,
+      label,
       chainId,
       pubKey,
       bech32Address,
