@@ -1,4 +1,4 @@
-import { DymensionGammV1beta1QueryEstimateSwapExactAmountInService as SwapService } from "cosmes/protobufs";
+import { DymensionxyzDymensionGammV1beta1QueryEstimateSwapExactAmountInService as SwapService } from "cosmes/protobufs";
 
 import { RpcClient } from "../clients/RpcClient";
 

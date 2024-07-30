@@ -9,6 +9,7 @@
 import { spawnSync } from "child_process";
 import degit from "degit";
 import {
+  copyFileSync,
   cpSync,
   mkdirSync,
   readFileSync,
@@ -134,9 +135,35 @@ console.log("Copying Third Party Proto...");
   rmSync( join(TMP_DIR,id("pryzm-finance/pryzmjs#main"),"proto/amino") , { recursive: true, force: true });
   rmSync( join(TMP_DIR,id("pryzm-finance/pryzmjs#main"),"proto/tendermint") , { recursive: true, force: true });
   //rmSync( join(TMP_DIR,id("pryzm-finance/pryzmjs#main"),"proto/cosmos/app") , { recursive: true, force: true });
+  const dymensionDir = join(TMP_DIR,id("dymensionxyz/osmosis#main-dym"),"proto");
+  const dymensionOsmosisDir = join(dymensionDir, "osmosis");
+  rmSync( dymensionOsmosisDir , { recursive: true, force: true });
 }
 
+/* console.log("Flattening dymension protobufs...");
+{
+  // Move all dirs in protobufs/dymension/osmosis out into protobufs/dymension
+  const dymensionDir = join(TMP_DIR,id("dymensionxyz/osmosis#main-dym"),"proto");
+  const dymensionOsmosisDir = join(dymensionDir, "osmosis");
+  const dymensionDymxyzDir = join(dymensionDir, "dymensionxyz/dymension");
+  // Move all subdirs up one level
+  readdirSync(dymensionOsmosisDir).forEach((file) => {
+    const currentFile = join(dymensionOsmosisDir, file);
+    const stats = statSync(currentFile);
+    if (stats.isDirectory()) {
+      copyDirectoryRecursiveSync(currentFile, join(dymensionDir, file));
+    }
+  });
+  readdirSync(dymensionDymxyzDir).forEach((file) => {
+    const currentFile = join(dymensionDymxyzDir, file);
+    const stats = statSync(currentFile);
+    if (stats.isDirectory()) {
+      copyDirectoryRecursiveSync(currentFile, join(dymensionDir, file));
+    }
+  });
 
+
+} */
 
 
 console.log("Generating TS files from proto files...");
@@ -152,10 +179,7 @@ console.log("Generating TS files from proto files...");
             "generate",
             join(TMP_DIR, id(repo), path),
             "--output",
-            join(
-              PROTOBUFS_DIR,
-              repo.startsWith("dymensionxyz") ? "dymension" : ""
-            ),
+            PROTOBUFS_DIR
           ],
           {
             cwd: process.cwd(),
@@ -169,9 +193,16 @@ console.log("Generating TS files from proto files...");
   }
 }
 
-console.log("Flattening dymension protobufs...");
+/*  console.log("Cleaning dymension protobufs...");
 {
-  // Move all dirs in protobufs/dymension/osmosis out into protobufs/dymension
+  const dymensionDir = join(PROTOBUFS_DIR, "dymension");
+  const dymensionOsmosisDir = join(dymensionDir, "osmosis");
+
+  rmSync( dymensionOsmosisDir , { recursive: true, force: true });
+  rmSync( join(dymensionDir, "dymensionxyz") , { recursive: true, force: true });
+} */
+/*
+ // Move all dirs in protobufs/dymension/osmosis out into protobufs/dymension
   const dymensionDir = join(PROTOBUFS_DIR, "dymension");
   const dymensionOsmosisDir = join(dymensionDir, "osmosis");
   const dymensionDymxyzDir = join(dymensionDir, "dymensionxyz/dymension");
@@ -199,7 +230,7 @@ console.log("Flattening dymension protobufs...");
       rmSync(currentFile, { recursive: true, force: true });
     }
   });
-}
+} */
 
 console.log("Generating src/index.ts file and renaming exports...");
 {
