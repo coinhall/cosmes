@@ -18,9 +18,11 @@ import {
   statSync,
   writeFileSync,
 } from "fs";
+// @ts-ignore
+import { globSync } from "glob";
 import * as fs from 'fs';
 import * as path from 'path';
-import { globSync } from "glob";
+
 import { capitalize } from "lodash-es";
 import { dirname, join } from "path";
 import { fileURLToPath } from "url";
@@ -172,6 +174,7 @@ console.log("Flattening dymension protobufs...");
   // Move all dirs in protobufs/dymension/osmosis out into protobufs/dymension
   const dymensionDir = join(PROTOBUFS_DIR, "dymension");
   const dymensionOsmosisDir = join(dymensionDir, "osmosis");
+  const dymensionDymxyzDir = join(dymensionDir, "dymensionxyz/dymension");
   // Move all subdirs up one level
   readdirSync(dymensionOsmosisDir).forEach((file) => {
     const currentFile = join(dymensionOsmosisDir, file);
@@ -180,6 +183,14 @@ console.log("Flattening dymension protobufs...");
       renameSync(currentFile, join(dymensionDir, file));
     }
   });
+  readdirSync(dymensionDymxyzDir).forEach((file) => {
+    const currentFile = join(dymensionDymxyzDir, file);
+    const stats = statSync(currentFile);
+    if (stats.isDirectory()) {
+      renameSync(currentFile, join(dymensionDir, file));
+    }
+  });
+
   // Remove all empty dirs
   readdirSync(dymensionDir).forEach((file) => {
     const currentFile = join(dymensionDir, file);

@@ -125,7 +125,7 @@ export function toKeplrChainInfo(
     });
 
   return {
-    chainId: chainRegistryChainInfo.chain_id,
+    chainId: chainRegistryChainInfo.chain_id ?? "",
     chainName: chainRegistryChainInfo.chain_name,
 
     rpc: (options.getRpcEndpoint ?? getRpcEndpoint)(chainRegistryChainInfo),
@@ -135,7 +135,7 @@ export function toKeplrChainInfo(
       coinType: chainRegistryChainInfo.slip44 ?? 118,
     },
     bech32Config: {
-      bech32PrefixAccAddr: chainRegistryChainInfo.bech32_prefix,
+      bech32PrefixAccAddr: chainRegistryChainInfo.bech32_prefix ?? "",
       bech32PrefixAccPub: `${chainRegistryChainInfo.bech32_prefix}pub`,
       bech32PrefixValAddr: `${chainRegistryChainInfo.bech32_prefix}valoper`,
       bech32PrefixValPub: `${chainRegistryChainInfo.bech32_prefix}valoperpub`,
