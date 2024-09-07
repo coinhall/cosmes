@@ -1,6 +1,8 @@
 import { describe, expect, it } from "vitest";
 
-import { sortObjectByKey } from "./serialise";
+import { sortObjectByKey, serialiseSignDoc } from "./serialise";
+import { StdSignDoc } from "cosmes/registry";
+
 
 describe("sortObjectByKey", () => {
   it("should sort keys correctly", () => {
@@ -34,5 +36,28 @@ describe("sortObjectByKey", () => {
     expect(JSON.stringify(obj)).not.toBe(JSON.stringify(expected));
     // After sorting, the stringified versions of the objects should be equal
     expect(JSON.stringify(sortObjectByKey(obj))).toBe(JSON.stringify(expected));
+  });
+});
+
+describe("serialiseSignDoc", () => {
+  it('should serialize and return a Uint8Array', () => {
+    const doc: StdSignDoc = {
+      account_number: '12345',
+      chain_id: 'cosmoshub-4',
+      fee: {
+        amount: [{ denom: 'uatom', amount: '5000' }],
+        gas: '200000',
+      },
+      memo: 'test memo',
+      msgs: [],
+      sequence: '1',
+    };
+
+    const result = serialiseSignDoc(doc);
+
+    expect(result).toBeInstanceOf(Uint8Array);
+    const decodedResult = new TextDecoder().decode(result);
+    expect(decodedResult).toContain('cosmoshub-4');
+    expect(decodedResult).toContain('uatom');
   });
 });
