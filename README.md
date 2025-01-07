@@ -58,7 +58,7 @@ yarn add cosmes@sdk50
 > [!IMPORTANT]  
 > The bump from v0.47 to v0.50 introduces significant breaking changes and is not recommended to be used unless necessary. To reduce the impact on consumers, the `main` branch and the published package on npm with the `latest` tag will continue to target v0.47 until the majority of live chains have migrated to v0.50.
 >
-> The [`parallel/sdk50`](https://github.com/coinhall/cosmes/tree/parallel/sdk50) branch targetting v0.50 will be developed and maintained in parallel with the `main` branch, where the same patch version number should have feature parity (eg. `cosmes@0.0.69` should have the same features as `cosmes@0.0.69-sdk50.0`).
+> The [`parallel/sdk50`](https://github.com/coinhall/cosmes/tree/parallel/sdk50) branch targeting v0.50 will be developed and maintained in parallel with the `main` branch, where the same patch version number should have feature parity (eg. `cosmes@0.0.69` should have the same features as `cosmes@0.0.69-sdk50.0`).
 
 ### Using with TypeScript
 
