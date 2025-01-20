@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "buffer": "^6.0.3",
-    "cosmes": "link:../..",
+    "cosmes": "file:../..",
     "solid-js": "^1.7.3"
   },
   "devDependencies": {
